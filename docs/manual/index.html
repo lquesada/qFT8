@@ -347,6 +347,8 @@
                 </li>
                 <li><a href="#sota">Summits On The Air (<!-- do not translate -->SOTA<!-- end do not translate -->)</a>
                 </li>
+                <li><a href="#pota">Parks On The Air (<!-- do not translate -->POTA<!-- end do not translate -->)</a>
+                </li>
                 <li><a href="#remote-control">Remote Control Web Server</a></li>
                 <li><a href="#troubleshooting">Troubleshooting</a></li>
             </ul>
@@ -1401,8 +1403,11 @@
                 only those not yet uploaded to <!-- do not translate -->QRZ<!-- end do not translate --> (for manual
                 uploading). You can also add a
                 <strong>Summits On The Air (<!-- do not translate -->SOTA<!-- end do not translate -->)</strong>
+                reference or a <strong>Parks On The Air
+                    (<!-- do not translate -->POTA<!-- end do not translate -->)</strong>
                 reference to the export for submission to
-                <!-- do not translate -->SOTAData<!-- end do not translate -->.
+                <!-- do not translate -->SOTAData<!-- end do not translate --> or
+                <!-- do not translate -->POTA<!-- end do not translate -->.
             </p>
 
             <h4>Station Tracker</h4>
@@ -1715,6 +1720,15 @@
                     <code>&lt;<!-- do not translate -->MY_SOTA_REF<!-- end do not translate -->&gt;</code> field of
                     every exported record.
                 </li>
+                <li><strong><!-- do not translate -->POTA<!-- end do not translate --> reference</strong>: As detailed
+                    in the <a href="#pota"><!-- do not translate -->POTA<!-- end do not translate --> section</a>,
+                    <!-- do not translate -->qFT8<!-- end do not translate --> can
+                    automatically inject the park reference into the
+                    <code>&lt;<!-- do not translate -->MY_SIG<!-- end do not translate -->&gt;</code>,
+                    <code>&lt;<!-- do not translate -->MY_SIG_INFO<!-- end do not translate -->&gt;</code>, and
+                    <code>&lt;<!-- do not translate -->MY_POTA_REF<!-- end do not translate -->&gt;</code> fields of
+                    every exported record.
+                </li>
             </ul>
 
             <div class="highlight">
@@ -1888,6 +1902,83 @@
                     generates an <!-- do not translate -->ADIF<!-- end do not translate --> file with the necessary
                     <!-- do not translate -->SOTA<!-- end do not translate --> fields
                     pre-filled and ready for upload.
+                </li>
+            </ol>
+
+            <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
+        </section>
+
+        <section id="pota">
+            <h2>Parks On The Air (POTA)</h2>
+            <p>
+                qFT8 supports POTA (Parks On The Air) activators. The process is very similar to
+                <!-- do not translate -->SOTA<!-- end do not translate --> activations. Here are the steps:
+            </p>
+
+            <h3>1. Set your CQ Modifier</h3>
+            <p>
+                Go to the <strong>Settings</strong> tab and set the
+                <strong><!-- do not translate -->CQ modifier<!-- end do not translate --></strong> to
+                <code><!-- do not translate -->POTA<!-- end do not translate --></code>. Every
+                <!-- do not translate -->CQ<!-- end do not translate --> call will now transmit
+                <code><!-- do not translate -->CQ POTA [Callsign]<!-- end do not translate --></code>.
+            </p>
+
+            <h3>2. Configure AUTO Mode</h3>
+            <p>
+                In the <strong>Stations</strong> tab, set the target selector to
+                <strong><!-- do not translate -->Call CQ<!-- end do not translate --></strong> and engage
+                <strong><!-- do not translate -->AUTO<!-- end do not translate --></strong> mode.
+            </p>
+
+            <h3>3. Start Activating</h3>
+            <p>
+                Press the <strong><!-- do not translate -->TX<!-- end do not translate --></strong> button to
+                enable transmission. qFT8 will automatically call
+                <!-- do not translate -->CQ<!-- end do not translate --> and reply to any stations that call you.
+            </p>
+
+            <div class="highlight">
+                <p><strong>Manual Overrides:</strong> Several stations may reach you at once. If you want to prioritize
+                    a specifically interesting
+                    station while <!-- do not translate -->CQing<!-- end do not translate -->, you can manually tap the
+                    <strong><!-- do not translate -->CALL<!-- end do not translate --></strong> button for that station.
+                    Once
+                    the <!-- do not translate -->QSO<!-- end do not translate --> is completed,
+                    <!-- do not translate -->qFT8<!-- end do not translate --> will automatically fallback to calling
+                    <!-- do not translate -->CQ<!-- end do not translate -->.
+                </p>
+            </div>
+
+            <h3>4. Exporting your POTA Log</h3>
+            <p>
+                When you wrap up your activation, export a valid ADIF log for
+                <!-- do not translate -->POTA<!-- end do not translate -->:
+            </p>
+            <ol>
+                <li>Go to <strong>Settings</strong> and tap
+                    <strong><!-- do not translate -->ADIF File Export<!-- end do not translate --></strong>.
+                </li>
+                <li>Choose <strong><!-- do not translate -->Selected time range<!-- end do not translate --></strong>
+                    and specify the <!-- do not translate -->UTC<!-- end do not translate --> start and end times of
+                    your activation.</li>
+                <li>Set the filter to <strong><!-- do not translate -->All QSOs<!-- end do not translate --></strong>.
+                </li>
+                <li>In the <strong><!-- do not translate -->Event<!-- end do not translate --></strong> selection,
+                    select <strong><!-- do not translate -->POTA<!-- end do not translate --></strong>.</li>
+                <li>Input your park reference (e.g., <code>K-1234</code>).</li>
+                <li>Press <strong><!-- do not translate -->EXPORT QSOs<!-- end do not translate --></strong>. This
+                    generates an <!-- do not translate -->ADIF<!-- end do not translate --> file with the following
+                    fields injected into every record:
+                    <ul>
+                        <li><code>&lt;<!-- do not translate -->MY_SIG<!-- end do not translate -->&gt;</code> set to
+                            <code>POTA</code>
+                        </li>
+                        <li><code>&lt;<!-- do not translate -->MY_SIG_INFO<!-- end do not translate -->&gt;</code> set
+                            to your park reference</li>
+                        <li><code>&lt;<!-- do not translate -->MY_POTA_REF<!-- end do not translate -->&gt;</code> set
+                            to your park reference</li>
+                    </ul>
                 </li>
             </ol>
 

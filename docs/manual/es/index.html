@@ -348,6 +348,8 @@
                 </li>
                 <li><a href="#sota">Summits On The Air (<!-- do not translate -->SOTA<!-- end do not translate -->)</a>
                 </li>
+                <li><a href="#pota">Parks On The Air (<!-- do not translate -->POTA<!-- end do not translate -->)</a>
+                </li>
                 <li><a href="#remote-control">Servidor Web de Control Remoto</a></li>
                 <li><a href="#troubleshooting">Solución de Problemas</a></li>
             </ul>
@@ -1469,8 +1471,10 @@
                 confirmados (útil para solicitudes de premios), o solo los que aún no se han subido a
                 <!-- do not translate -->QRZ<!-- end do not translate --> (para subirlos manualmente). También puede
                 añadir una referencia de <strong>Summits On The Air
-                    (<!-- do not translate -->SOTA<!-- end do not translate -->)</strong> a la exportación para enviarla
-                a <!-- do not translate -->SOTAData<!-- end do not translate -->.
+                    (<!-- do not translate -->SOTA<!-- end do not translate -->)</strong> o de <strong>Parks On The Air
+                    (<!-- do not translate -->POTA<!-- end do not translate -->)</strong> a la exportación para enviarla
+                a <!-- do not translate -->SOTAData<!-- end do not translate --> o
+                <!-- do not translate -->POTA<!-- end do not translate -->.
             </p>
 
             <h4>Rastreador de estaciones ("Station Tracker")</h4>
@@ -1799,6 +1803,16 @@
                     <code>&lt;<!-- do not translate -->MY_SOTA_REF<!-- end do not translate -->&gt;</code> de cada
                     registro exportado.
                 </li>
+                <li><strong>Referencia <!-- do not translate -->POTA<!-- end do not translate --></strong>: Como se
+                    detalla en la <a href="#pota">sección
+                        <!-- do not translate -->POTA<!-- end do not translate --></a>,
+                    <!-- do not translate -->qFT8<!-- end do not translate --> puede inyectar automáticamente la
+                    referencia del parque en los campos
+                    <code>&lt;<!-- do not translate -->MY_SIG<!-- end do not translate -->&gt;</code>,
+                    <code>&lt;<!-- do not translate -->MY_SIG_INFO<!-- end do not translate -->&gt;</code> y
+                    <code>&lt;<!-- do not translate -->MY_POTA_REF<!-- end do not translate -->&gt;</code> de cada
+                    registro exportado.
+                </li>
             </ul>
 
             <div class="highlight">
@@ -1975,6 +1989,86 @@
                     genera un archivo <!-- do not translate -->ADIF<!-- end do not translate --> con los campos
                     <!-- do not translate -->SOTA<!-- end do not translate --> necesarios precubiertos y listos para su
                     subida.
+                </li>
+            </ol>
+
+            <a href="#top" class="back-to-toc">&uarr; Volver a la Tabla de Contenidos</a>
+        </section>
+
+        <section id="pota">
+            <h2>Parks On The Air (<!-- do not translate -->POTA<!-- end do not translate -->)</h2>
+            <p>
+                qFT8 soporta activadores de <!-- do not translate -->POTA<!-- end do not translate --> (Parks On The
+                Air). El proceso es muy similar a las activaciones
+                <!-- do not translate -->SOTA<!-- end do not translate -->. Estos son los pasos:
+            </p>
+
+            <h3>1. Configure su modificador <!-- do not translate -->CQ<!-- end do not translate --></h3>
+            <p>
+                Vaya a la pestaña <strong>Ajustes</strong> y establezca el <strong>Modificador
+                    <!-- do not translate -->CQ<!-- end do not translate --></strong> como
+                <code><!-- do not translate -->POTA<!-- end do not translate --></code>. Cada llamada
+                <!-- do not translate -->CQ<!-- end do not translate --> transmitirá ahora
+                <code><!-- do not translate -->CQ POTA [Callsign]<!-- end do not translate --></code>.
+            </p>
+
+            <h3>2. Configure el modo <!-- do not translate -->AUTO<!-- end do not translate --></h3>
+            <p>
+                En la pestaña <strong>Estaciones</strong>, seleccione el objetivo como
+                <strong>Llamar <!-- do not translate -->CQ<!-- end do not translate --></strong> y active el modo
+                <strong><!-- do not translate -->AUTO<!-- end do not translate --></strong>.
+            </p>
+
+            <h3>3. Comience la activación</h3>
+            <p>
+                Pulse el botón <strong><!-- do not translate -->TX<!-- end do not translate --></strong> para
+                habilitar la transmisión. qFT8 llamará automáticamente
+                <!-- do not translate -->CQ<!-- end do not translate --> y responderá a cualquier estación que le
+                llame.
+            </p>
+
+            <div class="highlight">
+                <p><strong>Intervenciones manuales:</strong> Varias estaciones pueden contactar con usted a la vez. Si
+                    desea dar prioridad a una estación específicamente interesante mientras llama
+                    <!-- do not translate -->CQ<!-- end do not translate -->, puede pulsar manualmente el botón
+                    <strong><!-- do not translate -->CALL<!-- end do not translate --></strong> de esa estación. Una vez
+                    finalizado el <!-- do not translate -->QSO<!-- end do not translate -->,
+                    <!-- do not translate -->qFT8<!-- end do not translate --> volverá automáticamente a llamar
+                    <!-- do not translate -->CQ<!-- end do not translate -->.
+                </p>
+            </div>
+
+            <h3>4. Exportación del registro <!-- do not translate -->POTA<!-- end do not translate --></h3>
+            <p>
+                Cuando termine la activación, puede exportar un registro
+                <!-- do not translate -->ADIF<!-- end do not translate --> válido para
+                <!-- do not translate -->POTA<!-- end do not translate -->:
+            </p>
+            <ol>
+                <li>Vaya a <strong>Ajustes</strong> y pulse <strong>Exportación de archivos
+                        <!-- do not translate -->ADIF<!-- end do not translate --></strong>.
+                </li>
+                <li>Seleccione <strong>Rango de tiempo seleccionado</strong> y especifique las horas
+                    <!-- do not translate -->UTC<!-- end do not translate --> de inicio y fin de la activación.
+                </li>
+                <li>Establezca el filtro en <strong>Todos los
+                        <!-- do not translate -->QSO<!-- end do not translate --></strong>.
+                </li>
+                <li>En la selección de <strong>Evento</strong>, seleccione
+                    <strong><!-- do not translate -->POTA<!-- end do not translate --></strong>.
+                </li>
+                <li>Introduzca la referencia del parque (por ejemplo, <code>K-1234</code>).</li>
+                <li>Pulse <strong><!-- do not translate -->EXPORT QSOs<!-- end do not translate --></strong>. Esto
+                    genera un archivo <!-- do not translate -->ADIF<!-- end do not translate --> con los siguientes
+                    campos inyectados en cada registro:
+                    <ul>
+                        <li><code>&lt;<!-- do not translate -->MY_SIG<!-- end do not translate -->&gt;</code>
+                            establecido como <code>POTA</code></li>
+                        <li><code>&lt;<!-- do not translate -->MY_SIG_INFO<!-- end do not translate -->&gt;</code>
+                            establecido como la referencia del parque</li>
+                        <li><code>&lt;<!-- do not translate -->MY_POTA_REF<!-- end do not translate -->&gt;</code>
+                            establecido como la referencia del parque</li>
+                    </ul>
                 </li>
             </ol>
 
