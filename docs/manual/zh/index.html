@@ -1,0 +1,1749 @@
+html
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>qFT8 用户手册</title>
+<meta content="qFT8 User Manual" property="og:title"/>
+<meta content="Comprehensive guide for using qFT8 with your Android device and QMX transceiver." property="og:description"/>
+<meta content="https://qft8.com/qft8.png" property="og:image"/>
+<meta content="https://qft8.com/manual/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../../favicon.png" rel="icon" type="image/png"/>
+<style>
+        :root {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #03dac6;
+            --secondary-color: #2c2c2c;
+            --surface-color: #2c2c2c;
+            --link-color: #81d4fa;
+            --danger-color: #ff5252;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .disclaimer-banner {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--danger-color);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 82, 82, 0.2);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 92%;
+            margin: 40px auto;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-toc {
+            display: block;
+            text-align: right;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Phone Mockup CSS */
+        .phone-mockup {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto 30px auto;
+            border: 12px solid #000000;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
+            background-color: #000;
+            display: flex;
+        }
+
+        .phone-mockup img {
+            display: block;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .phone-mockup img.camera {
+            width: 5.4726%;
+        }
+
+        .phone-mockup img.screen {
+            width: 94.5274%;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .toc li,
+        .toc ul ul li {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+
+
+        .footer {
+            background-color: #0f0f0f;
+            width: 100%;
+            padding: 50px 20px;
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            box-sizing: border-box;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 12px;
+                margin: 20px 0;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .phone-mockup {
+                border-width: 8px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .back-link {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto 0 auto;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 600px) {
+            .back-link {
+                margin: 10px 0;
+                padding: 0 15px;
+            }
+        }
+
+        @media print {
+
+            body,
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 10mm !important;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            p,
+            li,
+            a,
+            span,
+            div {
+                color: #000 !important;
+            }
+
+            .back-link,
+            .back-to-toc,
+            .footer-links {
+                display: none !important;
+            }
+
+            .disclaimer-banner {
+                border: 1px solid #000 !important;
+                background: transparent !important;
+            }
+
+            .phone-mockup {
+                border: 2px solid #000 !important;
+                box-shadow: none !important;
+            }
+
+            .toc {
+                background: transparent !important;
+                border: 1px solid #eee !important;
+            }
+        }
+
+        .highlight {
+            background-color: rgba(3, 218, 198, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+<div class="back-link">
+<a href="../../">← 返回qFT8.com</a>
+</div>
+<div class="container">
+<div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <a href="../">English</a> / <a href="../es/">Español</a> / <a href="../de/">Deutsch</a> / <a href="../fr/">Français</a> / <a href="../it/">Italiano</a> / <a href="../pt/">Português</a> / <a href="../pt-br/">Português (BR)</a> / <a href="../ru/">Русский</a> / <a href="../ja/">日本語</a> / <strong>中文</strong></div>
+<h1 id="top">qFT8 用户手册</h1>
+<div class="toc">
+<h3>目录</h3>
+<ul>
+<li><a href="#what-is-qft8">qFT8是什么？</a>
+<ul>
+<li><a href="#supported-devices">支持的设备</a></li>
+</ul>
+</li>
+<li><a href="#quick-setup">快速设置</a>
+<ul>
+<li><a href="#initial-permissions">授予初始权限</a></li>
+<li><a href="#mandatory-callsign">输入呼号</a></li>
+<li><a href="#usb-permission">授予 USB 连接权限</a></li>
+<li><a href="#audio-check">音频检查</a></li>
+<li><a href="#import-qsos">[可选] 导入 QSO</a></li>
+</ul>
+</li>
+<li><a href="#first-qso">您的第一个 QSO 与 qFT8</a></li>
+<li><a href="#ft8-introduction">FT8 数字模式简介</a></li>
+<li><a href="#user-interface">qFT8 用户界面</a>
+<ul>
+<li><a href="#ui-bottom-bar">底部栏</a></li>
+<li><a href="#ui-spectrogram">频谱图</a></li>
+<li><a href="#ui-stations-tab">车站选项卡</a></li>
+<li><a href="#ui-log-tab">日志选项卡</a></li>
+<li><a href="#ui-settings-tab">设置选项卡</a></li>
+</ul>
+</li>
+<li><a href="#auto-mode">自动化操作
+                        （<span translate="no">AUTO</span>）</a></li>
+<li><a href="#call-mode">手动操作
+                        （<span translate="no">CALL</span>）</a></li>
+<li><a href="#adif-import-export"><span translate="no">ADIF</span>导入/导出</a></li>
+<li><a href="#qrz-integration"><span translate="no">QRZ</span>一体化</a>
+</li>
+<li><a href="#lotw-integration"><span translate="no">LoTW</span>一体化</a></li>
+<li><a href="#sota">峰会直播（<span translate="no">SOTA</span>）</a>
+</li>
+<li><a href="#pota">空中公园 (<span translate="no">POTA</span>）</a>
+</li>
+<li><a href="#remote-control">远程控制网络服务器</a></li>
+<li><a href="#troubleshooting">故障排除</a></li>
+</ul>
+</div>
+<div class="disclaimer-banner">免责声明：通过使用 qFT8，您承担法律合规性、安全性和
+            设备损坏</div>
+<section id="what-is-qft8">
+<h2>qFT8是什么？</h2>
+<p>qFT8 是一个<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">安卓
+                    电话</a>应用程序用于<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">业余无线电</a>解码和传输<a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a>使用数字数据消息<a href="https://qrp-labs.com/qmx.html" target="_blank">QRP 实验室 QMX
+                    收发器。</a>
+</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Screenshot" class="screen" height="1080" src="../../screenshot.jpg" width="2280"/>
+</div>
+<p>qFT8 目前不支持其他收发器。不过，您可以尝试将 qFT8 靠近扬声器，然后
+                启用 VOX 的收发器麦克风，或通过音频插孔连接到收发器
+                输入/输出。您也可以尝试不带收发器的 qFT8：它使用手机扬声器进行传输，
+                使用手机麦克风收听信号。多部运行 qFT8 的电话可以通过以下方式相互联系
+                当它们足够近时发出音频。</p>
+<p>qFT8 是一款免费应用程序，不包含广告。它是可用的源。源代码可以在以下位置找到<a href="https://github.com/lquesada/qFT8" target="_blank">GitHub</a>。</p>
+<p>
+<a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>）
+                于2026年开发了qFT8，拥有版权，并保留所有权利（包含的部分除外）<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>，版权所有 © 2023 BG7YOZ，以及<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>，版权所有 © 2018 Kārlis Gobas，均根据 MIT 许可发布）。<span translate="no">Luis Quesada Torres</span>不是
+                与 FT8 数字模式的创建者或 QRPLabs 有关联，并且
+                同样，FT8 的创建者和 QRPLabs 都没有参与 qFT8 的开发，并且
+                不以任何方式认可它。</p>
+<h3>主要特点</h3>
+<ul>
+<li>快速设置</li>
+<li>跟踪呼号而不是消息</li>
+<li>手动的<span translate="no">CALL</span>模式和<span translate="no">AUTO</span>手术</li>
+<li>自动的<span translate="no">NTP</span> / <span translate="no">GPS</span>时间同步</li>
+<li>自动近似定位</li>
+<li><span translate="no">ADIF</span>日志导入导出</li>
+<li><span translate="no">QRZ</span> / <span translate="no">LoTW</span>集成：上传、确认</li>
+<li>具有可配置限制的重试逻辑</li>
+<li><span translate="no">SOTA</span> / <span translate="no">POTA</span>：<span translate="no">CQ</span>修改器、参考<span translate="no">ADIF</span>出口</li>
+<li>用于完全远程操作的 Web 服务器</li>
+<li>省电模式：屏幕关闭时运行</li>
+</ul>
+<h3 id="supported-devices">支持的设备</h3>
+<ul>
+<li><strong>QRP实验室<span translate="no">QMX</span>或者<span translate="no">QMX+</span></strong>— 通过电缆完全支持</li>
+<li><strong>QRP实验室<span translate="no">QDX</span>或者<span translate="no">QDX-M</span></strong>— 通过电缆完全支持（该设备没有<span translate="no">W</span>或者<span translate="no">SWR</span>米，不过）</li>
+<li><strong>任何带有麦克风和扬声器的收发器</strong>— 通过扬声器/麦克风支持，但并不理想</li>
+<li><strong>通过电缆的任何其他收发器</strong>— 不支持</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="quick-setup">
+<h2>快速设置</h2>
+<p>请确保您正在使用<strong>正确的电源</strong>对于收发器
+                （例如 QMX ≤12V），否则会损坏它。</p>
+<p>另请确保您用于连接手机和收发器的 USB-C 电缆
+                是<strong>额定数据传输</strong>。 qFT8 无法发现的大多数连接问题
+                收发器
+                这是由于使用了不兼容的电缆或适配器造成的。</p>
+<h3 id="initial-permissions">授予初始权限</h3>
+<p>第一次打开qFT8时，会请求几个权限：</p>
+<ul>
+<li><em>允许 qFT8 录制音频</em>：此许可是强制性的。 qFT8需要它来收集
+                    来自收发器的信号。 qFT8 不存储、共享或上传任何录音。</li>
+<li><em>允许 qFT8 访问该设备的大致位置</em>：可选但推荐。
+                    qFT8 使用它来获取您的<span translate="no">Maidenhead</span>网格
+                    定位器，在期间共享<span translate="no">FT8</span>交流。
+                    qFT8 确实
+                    不访问也不共享精确的位置数据。</li>
+<li><em>允许 qFT8 向您发送通知</em>：可选但推荐。 qFT8 用它来
+                    作为前台服务运行，同时最小化或关闭屏幕以节省电池。
+                    通知仅在连接到收发器时才有效。</li>
+<li><em>让应用程序始终在后台运行</em>：可选但推荐。 qFT8 需要
+                    屏幕关闭时仍能持续运行。</li>
+</ul>
+<div class="highlight">
+<p><strong>关键原则：</strong>qFT8 不会向专用于此的服务器提交任何信息
+                    应用程序。
+                    所有数据处理都在您的设备本地进行。您可以明确授权共享呼号，
+                    日期和时间，以及可选的大致位置（如果您输入有效）<span translate="no">QRZ API Key</span>。</p>
+<p>有关更多详细信息，请参阅 qFT8<a href="../../privacy/">隐私政策</a>。</p>
+</div>
+<h3 id="mandatory-callsign">输入呼号</h3>
+<p>输入一个<strong>呼号为必填项</strong>让 qFT8 发挥作用。如果您不打算
+                连接到实际的收发器，可以输入任何呼号用于测试目的，例如XX1XXX。</p>
+<p>qFT8 将要求您输入呼号并确认以下信息：</p>
+<ul>
+<li>连接到收发器时，您必须持有有效许可证才能使用该软件。</li>
+<li>您不得在无人看管的情况下运行该软件。</li>
+<li><em>免责声明</em>：使用qFT8，您承担所有法律责任
+                    合规性、安全性和设备损坏。</li>
+</ul>
+<h3 id="usb-permission">授予 USB 连接权限</h3>
+<p>当插入收发器并打开 qFT8 时，将出现一个系统对话框：</p>
+<p><em>“打开 qFT8 来处理 QMX 收发器。”</em></p>
+<ul>
+<li>这个权限是<strong>强制的</strong>用于与收发器通信。</li>
+<li>如果未获得许可，qFT8 将能够接收信号但无法发送信号。</li>
+<li>为了方便起见，您可以选择“连接 QMX 收发器时始终打开 qFT8”。</li>
+</ul>
+<p>如果您在连接 Android 设备时遇到问题，请检查<a href="#trouble-not-recognized">Android 设备无法识别<span translate="no">QMX</span>或者它断开连接</a>故障排除部分。</p>
+<p>
+<span translate="no">qFT8</span>自动配置<span translate="no">QMX</span>无论何时连接收发器，因此
+                不需要配置任何“<span translate="no">VOX
+                off</span>“，”<span translate="no">Rise
+                Threshold</span>“，
+                ”<span translate="no">Fall Threshold</span>“，”<span translate="no">Cycle
+                Min</span>“，”<span translate="no">Sample Min</span>“，
+                ”<span translate="no">Discard</span>“，”<span translate="no">IQ
+                Mode</span>“，”<span translate="no">Sideband
+                Mode</span>“， 或者 ”<span translate="no">RIT
+                Status</span>“，
+                等等——它们是自动处理的。请注意，此配置是临时的：<span translate="no">QMX</span>设置菜单仍将显示您保留的值，并重新启动<span translate="no">QMX</span>会将所有设置恢复到正常操作状态。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="audio-check">音频检查</h3>
+<p>在开始操作之前，请务必验证手机和设备之间的音频信号是否正常。<span translate="no">QMX</span>工作正常。按<span translate="no">TX</span>按钮并等待<span translate="no">QMX</span>开始在下一个传输
+                序列。</p>
+<h4>一切正常</h4>
+<p>如果<span translate="no">TX</span>按钮显示功率输出（例如
+                5 <span translate="no">W</span>），一切正常。上<span translate="no">QMX LCD</span>，你应该看到一个<strong>酒吧</strong>在“<span translate="no">A</span>”<span translate="no">VFO</span>屏幕左上角的标记
+                — 这意味着<span translate="no">QMX</span>正在接收良好的音频
+                来自电话的信号。您还应该确认没有
+                ”<span translate="no">S</span>” 在频率后显示
+                的<span translate="no">LCD</span>，这表明<span translate="no">SWR</span>保护。</p>
+<h4>”<span translate="no">S</span>" 显示在频率之后</h4>
+<p>如果<span translate="no">QMX LCD</span>显示一个
+                ”<strong><span translate="no">S</span></strong>” 在频率之后，
+                意味着<span translate="no">SWR</span>保护已启动。你的天线
+                未针对当前频段进行正确调谐。您可以使用<span translate="no">SWR</span>检查选项中的<span translate="no">QMX</span>菜单来测量<span translate="no">SWR</span>并且需要调整你的天线。</p>
+<ul>
+<li><strong>旧版固件</strong>（1.03.000 之前）：您必须进入和离开<span translate="no">TUNE</span>菜单上的<span translate="no">QMX</span>或重新启动它以重置<span translate="no">SWR</span>保护。</li>
+<li><strong>固件 1.03.000+</strong>: 可以设置
+                    ”<span translate="no">SWR Protection reset options</span>“ 到<strong><span translate="no">TX-&gt;RX</span></strong>在<span translate="no">QMX</span>保护菜单，所以它会重置
+                    自动。</li>
+</ul>
+<h4>两个点而不是一个条</h4>
+<p>如果<span translate="no">QMX</span>节目<strong>两个点</strong>而不是“下面的栏”<span translate="no">A</span>”<span translate="no">VFO</span>屏幕左上角的标记，
+                音频音量是<strong>太低</strong>或者<strong>太高了</strong>。</p>
+<p>
+<strong>尝试：</strong>前往<span translate="no">qFT8</span>设置，找到
+                的“<span translate="no">Set system volume to [X] when transmitting</span>”
+                选项，并尝试不同的值（例如 70%、80%、60%、100%）。其中之一应该转动两个点
+                进了一家酒吧。</p>
+<p>在某些手机上，此选项可能不起作用。在这种情况下，请取消选中它并手动调整您的手机
+                将音量调整为不同的值（100%、90%、80% 等），直到出现条形图。</p>
+<h4>“下没有任何内容”<span translate="no">A</span>”</h4>
+<p>如果“”下方没有横线且没有点<span translate="no">A</span>”<span translate="no">VFO</span>左上角的标记<span translate="no">QMX LCD</span>屏幕显示，手机可能不正常
+                控制收发器。这通常意味着<span translate="no">USB</span>权限未授予或已授予
+                不小心被解雇了。接收可以，但发送不行。</p>
+<p>
+<strong>尝试：</strong>拔掉插头<span translate="no">QMX</span>从
+                手机并将其重新插入 - 权限对话框应该再次出现。也可能是电缆
+                不适合<span translate="no">QMX</span>;尝试不同的<span translate="no">USB-C</span>电缆。</p>
+<p>一旦您看到“<span translate="no">A</span>”<span translate="no">VFO</span>左上角的标记<span translate="no">QMX LCD</span>屏幕和电源输出<span translate="no">TX</span>按钮，你的<span translate="no">QMX</span>已正确设置并准备好运行！</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="import-qsos">[可选] 导入 QSO</h3>
+<p>您现在可以导入现有的 QSO；有两种方法。两种方式都需要进入设置
+                使用
+                qFT8 底部栏中最右侧的按钮。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings Button" class="screen" height="1080" src="../settingsbutton.jpg" width="2280"/>
+</div>
+<p><strong>手动方法</strong>: 转到“<span translate="no">ADIF File
+                Import</span>“设置”部分，单击“<span translate="no">IMPORT
+                QSOs</span>" 按钮，然后选择要导入的 .adi 文件。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 ADIF Import" class="screen" height="1080" src="../adif.jpg" width="2280"/>
+</div>
+<p><strong>QRZ 自动方法</strong>: 需要主动<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span>付费订阅</a>。去
+                到
+                的“<span translate="no">QRZ Syncing</span>“设置部分，输入<span translate="no">QRZ API Key</span>对于您的呼号，请按
+                ”<span translate="no">VALIDATE</span>”，然后单击
+                ”<span translate="no">IMPORT QSOs FROM QRZ</span>“按钮。这将
+                还设置自动上传<span translate="no">QRZ</span>和
+                确认
+                检查。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 QRZ Syncing" class="screen" height="1080" src="../qrzsync.jpg" width="2280"/>
+</div>
+<p><strong>LoTW 自动方法</strong>: 免费。前往“<span translate="no">LoTW
+                Syncing</span>“设置部分，输入您的<span translate="no">Callsign</span>和<span translate="no">LoTW
+                password</span>，并根据需要启用后台同步。这也将
+                让你
+                执行初始“<span translate="no">IMPORT QSOs FROM LoTW</span>”。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="first-qso">
+<h2>您的第一个 QSO 与 qFT8</h2>
+<p>注意：准确的时间对于 FT8 至关重要。 qFT8在应用程序上自动同步时间
+                通过 NTP（互联网）或 GPS（卫星）进行初始化。如果您在野外作业
+                没有互联网接入，您可以使用<strong>GPS同步</strong>设置中的按钮
+                选项卡直接从 GPS 卫星同步时钟。这需要精确
+                位置许可和清晰的天空视野。</p>
+<p>此时，收发器应连接到正确的电源和天线，并且所有
+                应授予权限。
+                确保将天线调谐至合理的频段<span translate="no">SWR</span>（理想情况下始终低于 2）
+                这不会触发<span translate="no">SWR</span>保护。<strong>禁用它是一个坏主意<span translate="no">SWR</span>保护
+                    在<span translate="no">QMX</span></strong>;它可能会损坏
+                决赛或
+                天线调谐器。</p>
+<p>您现在可以在 qFT8 的底部栏中或收发器中选择要使用的频段。设置它
+                其中一个会将其同步到另一个。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Band Selector" class="screen" height="1080" src="../bandselector.jpg" width="2280"/>
+</div>
+<p>此时，频谱图将显示信号并开始解码消息，并且“Stations”选项卡将
+                正在更新您正在收听的电台。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations Button" class="screen" height="1080" src="../stationsbutton.jpg" width="2280"/>
+</div>
+<p>按<span translate="no">TX</span>按钮（最左边的按钮
+                底部）将启用传输。</p>
+<p>如果一切正确，则<span translate="no">TX</span>按钮将
+                最终点亮“<span translate="no">TX Transmitting</span>”和
+                将显示
+                传输功率和<span translate="no">SWR</span>（例如，“5.0W <span translate="no">SWR</span> 1.2 英寸）。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 TX Button" class="screen" height="1080" src="../txbutton.jpg" width="2280"/>
+</div>
+<p>鉴于 ”<span translate="no">AUTO</span>" 默认选择模式，qFT8
+                将开始制作 QSO 并将其记录在日志中
+                选项卡。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log Button" class="screen" height="1080" src="../logbutton.jpg" width="2280"/>
+</div>
+<p>您可以点击频谱图来更改<span translate="no">Tx</span>频率偏移，您可以通过点击更改顺序
+                底部栏中的 0 和 1 按钮，
+                您可以点击不同的“<span translate="no">CALL</span>” 呼叫按钮
+                特定电台，或者您可以使用
+                ”<span translate="no">AUTO</span>“站点”选项卡中的“按钮来决定
+                策略。
+                以下部分将详细介绍所有这些高级功能。</p>
+<p>请注意，qFT8 将开始呼叫站，或者，如果没有一个站可到达，则将开始呼叫 CQ。
+                最终，如果一切设置正确并且传播良好，qFT8 将实现 QSO。</p>
+<p>如果 qFT8 没有接收到正确的信号并且没有解码消息，则这是一个明显的迹象，表明存在某些问题
+                是
+                错误：该频段的传播可能是封闭的，天线可能没有正确调谐，天线可能
+                没有正确连接到收发器，收发器可能没有正确连接到
+                电话，或者您的某些设备可能无法正常工作。
+                请参阅<a href="#troubleshooting">故障排除部分</a>以下为常见问题。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="ft8-introduction">
+<h2>FT8 数字模式简介</h2>
+<p>FT8 是一种数字协议，专为多跳零星 E 和其他弱信号条件而设计。
+                它的特点是结构化的消息和精确的计时。</p>
+<h3>循环和序列</h3>
+<p>FT8 运营于<strong>15 秒周期</strong>。每个通信周期都有严格的定时，
+                正好开始于<strong>00、15、30 和 45 秒</strong>每一分钟。
+                因此，您的设备时钟必须准确同步<strong><span translate="no">UTC</span>时间</strong>。</p>
+<p>协议中有两个序列：</p>
+<ul>
+<li><strong>序列 0（偶数）</strong>：周期开始于<strong>00 和 30</strong>秒。</li>
+<li><strong>序列 1（奇数）</strong>：周期开始于<strong>15 和 45</strong>秒。</li>
+</ul>
+<p>站通常交替进行发送和接收。以序列 0 发送的站点
+                将监听序列 1 中的响应，反之亦然。
+                在每个 15 秒周期内，消息在大约 15 秒之间的窗口中传输<strong>+0.5 秒和 +13 秒</strong>。这在周期结束时留下了解码时间以及
+                开始
+                以便准备下一次传输。</p>
+<h3>信号特征</h3>
+<p>每个 FT8 消息都作为频率略有变化的音调序列进行传输
+                （有时被描述为“摇摆”）。
+                FT8信号非常窄，仅占据约<strong>50Hz 带宽</strong>。
+                这种效率允许在单个 3kHz 无线电频段内同时进行数十个对话。</p>
+<h3>QSO 的 6 个阶段</h3>
+<p>标准 FT8 触点通常经过六个阶段。这是一个交换的例子<strong>HB9IPH</strong>和<strong>XX1XXX</strong>：</p>
+<ol>
+<li><strong><span translate="no">1/6 CQ</span></strong>: 车站寻找
+                    任何可以交谈的人。<br/>
+<em>例子：<code>CQ HB9IPH JN47</code></em><br/>笔记：<code>JN47</code>是一个<strong><span translate="no">Maidenhead</span>网格定位器</strong>,
+                    这表明
+                    车站的大致地理位置。
+                    还可能有一个<strong><span translate="no">CQ</span>修饰语</strong>，这是其他运算符的注释（例如，<code>CQ SOTA HB9IPH</code>对于峰会直播节目，或<code>CQ US HB9IPH</code>当
+                    试图联系美国的某人）。
+                    修饰符和位置可能不适合同一条消息；在这种情况下，位置是
+                    省略。如果呼号很长，则可能既不包含位置也不包含
+                    修饰符将适合<span translate="no">CQ</span>！</li>
+<li><strong><span translate="no">2/6 CALL</span></strong>: 又一站
+                    响应<span translate="no">CQ</span>。<br/>
+<em>例子：<code>HB9IPH XX1XXX JO21</code></em><br/>注意：响应者还分享了他们的位置（<code>JO21</code>），如果
+                    呼号太长，无法容纳所有内容。</li>
+<li><strong><span translate="no">3/6 RPT</span></strong>: 第一站
+                    发送信号报告。<br/>
+<em>例子：<code>XX1XXX HB9IPH -10</code></em><br/>注：<strong>信号报告</strong>（例如。，<code>-10</code>) 表示信号强度
+                    相对于本底噪声<span translate="no">dB</span>。</li>
+<li><strong><span translate="no">4/6 RRPT</span></strong>：第二站
+                    承认该报告并发送自己的报告。<br/>
+<em>例子：<code>HB9IPH XX1XXX R-12</code></em><br/>注意：“R”前缀确认已收到先前的报告，后跟<strong>信号报告</strong>对于第一站。</li>
+<li><strong><span translate="no">5/6 RR73</span></strong>: 第一站
+                    确认一切并发送“Roger-Roger 73”。<br/>
+<em>例子：<code>XX1XXX HB9IPH RR73</code></em>
+</li>
+<li><strong><span translate="no">6/6 73</span></strong>：第二站
+                    发送最后一个“73”以关闭联系。<br/>
+<em>例子：<code>HB9IPH XX1XXX 73</code></em>
+</li>
+</ol>
+<p>因为<a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem" target="_blank">两个
+                    将军%27问题</a>，理论上不可能确切知道对方站
+                已收到您的最后一次通信，除非他们确认如此。但是，那么您需要确认他们的
+                确认，他们需要确认，等等。
+                FT8 数字模式通过结构化阶段缓解了这一问题：技术上可以考虑 QSO
+                完成
+                后阶段<span translate="no">4/6</span>（当两个信号报告都有
+                已交换）。
+                在实践中，为了确保两个站都同意交换发生，当一个站
+                已收到<span translate="no">RR73</span>并发出了73。
+                有效地，要么传输<span translate="no">RR73</span>或 73
+                触发 QSO 的记录。</p>
+<p>请注意，站点也可能会呼叫其他站点，即使它们尚未发送<span translate="no">CQ</span>第一的。
+                例如，位于稀有位置的电台可能会“堆积”许多电台呼叫它们
+                同时；在这种情况下，稀有电台可能只是从一个 QSO 移动到下一个
+                无需邀请新来电者<span translate="no">CQ</span>。</p>
+<p>有些电台可能会使用<strong>存款准备金率</strong>而不是第 5 阶段的 RR73。
+                在这种情况下，联系人需要额外的交换：第二个站发送 73，然后
+                第一站再次发送73结束。</p>
+<p>FT8还支持<strong>免费短信</strong>（最多 13 个字符），但 qFT8 没有
+                目前支持发送这些自定义消息。</p>
+<h3>协议限制和回退</h3>
+<p>FT8 消息被高度压缩为<strong>77位</strong>。有时，信息复杂
+                （如长的、非标准的呼号）不适合标准消息格式。</p>
+<ul>
+<li><strong>哈希呼号</strong>：如果呼号太长，它可能会作为哈希值发送。
+                    如果接收站最近看到呼叫 CQ 的呼号，他们的软件可以映射哈希值
+                    回来
+                    到原来的呼号。否则将显示为<code>&lt;...&gt;</code>。这是很多
+                    当您的呼号不标准时，更难实现 QSO。</li>
+<li><strong>自由文本后备</strong>：某些消息可能会被强制输入 13 个字符的自由文本
+                    格式，其稳定性不如标准结构化消息。</li>
+<li><strong>非标准呼号</strong>：如果两个站都使用很长，不标准
+                    呼号，他们可能根本无法使用 FT8 数字相互通信
+                    模式。</li>
+<li><strong>跳台</strong>：如果呼号太长，协议可能无法适应
+                    信号报告（<span translate="no">stages 3/6 and 4/6</span>）。在这些
+                    在这种情况下，交易所可以直接跳过
+                    初始的<span translate="no">CALL (2/6)</span>至最终确认
+                    （<span translate="no">5/6 and 6/6</span>）。</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="user-interface">
+<h2>qFT8 用户界面</h2>
+<p>qFT8 应用程序分为三个部分：</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Overview" class="screen" height="1080" src="../overview.jpg" width="2280"/>
+</div>
+<ol>
+<li><strong>底部栏</strong>：始终可见，监督和控制传输并控制
+                    qFT8。</li>
+<li><strong>频谱图</strong>：始终可见，要查看解码的消息，请参阅<span translate="no">UTC</span>生活时间和
+                    调谐频率，并控制传输频率偏移。</li>
+<li><strong>选项卡区域</strong>：显示三个选项卡之一
+                    （车站、
+                    日志，和
+                    设置）。哪个
+                    此处显示的一个可以通过底部栏最右侧的按钮进行控制。</li>
+</ol>
+<p>以下部分详细描述了所有这些组件。</p>
+<h3 id="ui-bottom-bar">底部栏</h3>
+<p>底部栏显示重要信息：传输布防/撤防状态、qFT8是否处于
+                发射、发射功率、驻波比
+                （<span translate="no">SWR</span>），正在传输的消息，
+                当前和选定的序列、频段选择器以及用于导航不同选项卡的按钮。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Bottom bar" class="screen" height="1080" src="../bottombar.jpg" width="2280"/>
+</div>
+<p>这些是底部栏的详细组件：</p>
+<ol>
+<li><strong>循环进度条</strong>： 这<span style="color: #ffff00; font-weight: bold;">黄色的</span>循环内条形图从 0 秒开始
+                    （最左边）
+                    和
+                    在循环内的 15 秒结束（最右侧）。</li>
+<li><strong>Tx 触发标记</strong>： 这<span style="color: #ff5252; font-weight: bold;">红色的</span>条形左侧的点表示
+                    发送方
+                    触发时间。如果 Tx 为 ON（参见第 4 项）并且当前序列是所选序列（参见第 4 项）
+                    #6)
+                    传输从此时开始。</li>
+<li><strong>解码时间标记</strong>： 这<span style="color: #ffffff; font-weight: bold;">白色的</span>条形右侧的点
+                    表示
+                    解码时间，即从接收到的信号中解码消息并随后进行处理的时间。</li>
+<li><strong>发送按钮</strong>: Can be disarmed
+                    （<span translate="no">OFF</span>）或武装
+                    （<span translate="no">ON</span>）。它还显示传输时
+                    正在发生，
+                    和发射功率和<span translate="no">SWR</span>。</li>
+<li><strong>消息选择器</strong>：显示选择发送或正在发送的消息（如果
+                    就是这种情况，突出显示在<span style="color: #ff5252; font-weight: bold;">红色的</span>）。在<span translate="no">AUTO</span>模式，它是自动管理的。在<span translate="no">CALL</span>模式是
+                    默认情况下也会自动管理，但可以点击它来选择下一条要发送的消息
+                    手动。</li>
+<li><strong>序列选择器</strong>： 这<span style="color: #ffff00; font-weight: bold;">黄色的</span>按钮顶部的线条显示
+                    当前
+                    序列（0 或 1）。点击 0 或 1 选择传出传输的顺序。</li>
+<li><strong>频段选择器</strong>：当连接收发器时，它会更改收发器中的频段
+                    收发器。</li>
+<li><strong>站点选项卡按钮</strong>：打开列出您听过的所有电台或
+                    可以交流。</li>
+<li><strong>日志选项卡按钮</strong>：打开列出所有<span translate="no">QSO</span>你已经做到了。该按钮将被标记
+                    如果您有未上传到 QRZ 的 QSO，则带有黄点。</li>
+<li><strong>设置选项卡按钮</strong>：打开选项卡以配置 qFT8。</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="ui-spectrogram">频谱图</h3>
+<p>频谱图显示了峰值视图，以及包含传入信号和消息、传出信号的瀑布
+                和消息，用于注释的序列变化的标记<span translate="no">UTC</span>时间和解码时间，以及
+                选择传输的偏移频率。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Spectrogram" class="screen" height="1080" src="../spectrogram.jpg" width="2280"/>
+</div>
+<p>这些是频谱图的详细组成部分：</p>
+<ol>
+<li><strong>瀑布景观</strong>：显示一段时间内接收到的信号的最近历史记录。</li>
+<li><strong>实时峰值</strong>：显示整个频率信号的瞬时强度
+                    范围。</li>
+<li><strong>序列分隔符</strong>： 这些<span style="color: #ff5252; font-weight: bold;">红色的</span>水平线充当视觉分隔符
+                    周期数，
+                    并注释为<span translate="no">UTC</span>时间和<span translate="no">time</span>花了解码。</li>
+<li><strong>选定的频率偏移</strong>：这个垂直<span style="color: #ffff00; font-weight: bold;">黄色的</span>叠加在频谱图上表明
+                    当前选择的传输频率偏移。</li>
+<li><strong>传入消息</strong>，以颜色编码显示：<ul>
+<li><span style="color: #00ff00; font-weight: bold;">绿色的</span>: CQ 消息。</li>
+<li><span style="color: #00ffff; font-weight: bold;">青色</span>：其他人之间的消息
+                            站。</li>
+<li><span style="color: #ffff00; font-weight: bold;">黄色的</span>：您发送的消息。</li>
+<li><span style="color: #ff9800; font-weight: bold;">橙子</span>：传入消息定向
+                            给你。</li>
+</ul>
+</li>
+<li><strong>当前的<span translate="no">UTC</span>时间和
+                        序列</strong>：显示在瀑布顶部。</li>
+<li><strong>调谐频率和频段</strong>：收发器当前调谐到的频率和频段。</li>
+<li><strong>频率轴</strong>：显示频率范围<span translate="no">Hz</span>在选定的频段内。</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="ui-stations-tab">车站选项卡</h3>
+<p>“站”选项卡是用于监控频段上的活动和操作 qFT8 的命令中心。它
+                顶部具有过滤和自动化控制功能，后面是活动电台列表。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations tab" class="screen" height="1080" src="../stations.jpg" width="2280"/>
+</div>
+<p>这些是“站点”选项卡的详细组件：</p>
+<ol>
+<li><strong><span translate="no">AUTO</span>通话模式按钮</strong>：
+                    参与“<span translate="no">AUTO</span>“会尽力召集最好的
+                    站根据
+                    根据用户选择的标准。</li>
+<li><strong>手动的<span translate="no">CALL</span>模式按钮</strong>：
+                    参与“<span translate="no">CALL</span>”对于一个站会坚持
+                    这么称呼
+                    站直至达到<span translate="no">QSO</span>，然后会下降
+                    回到“<span translate="no">AUTO</span>”。</li>
+<li><strong>目标</strong>：设置自动模式的标准：<ul>
+<li><strong><span translate="no">Anyone</span></strong>：任何呼号
+                            你没有<span translate="no">QSO</span>暂时还没有。</li>
+<li><strong><span translate="no">DXCC</span></strong>: 优先考虑新的
+                            国家/实体。</li>
+<li><strong><span translate="no">Grid</span></strong>: 优先考虑新的<span translate="no">Maidenhead</span>网格正方形。</li>
+<li><strong><span translate="no">ITU zone</span></strong>：优先
+                            新的<span translate="no">ITU</span>区。</li>
+<li><strong><span translate="no">CQ zone</span></strong>：优先
+                            新的<span translate="no">CQ</span>区。</li>
+<li><strong><span translate="no">I/C/D/G</span></strong>：优先
+                            第一<span translate="no">ITU</span>区，那么<span translate="no">CQ</span>区，那么<span translate="no">DXCC</span>， 然后<span translate="no">Grid</span>。</li>
+<li><strong><span translate="no">Call CQ</span></strong>: 只是打电话
+                            CQ 并回复任何呼叫您电台的电台。</li>
+</ul>在所有情况下，满足相同标准的电台均按信号强度排序。例如，<span translate="no">Anyone</span>将首先优先考虑新呼号，
+                    但其中最强烈的信号将位于列表的顶部。</li>
+<li><strong>周期性</strong>：联系该目标的频率：<ul>
+<li><strong><span translate="no">once</span></strong>： 在一个
+                            一生。</li>
+<li><strong><span translate="no">daily</span></strong>: 每一次<span translate="no">UTC</span>日期。</li>
+<li><strong><span translate="no">weekly</span></strong>：每 7 次
+                            天滚动窗口。</li>
+<li><strong><span translate="no">monthly</span></strong>: 每隔一次
+                            月滚动窗口。</li>
+<li><strong><span translate="no">yearly</span></strong>: 每隔一次
+                            年滚动窗口。</li>
+</ul>
+</li>
+<li><strong>预选赛</strong>：这些限制如何适用：<ul>
+<li><span translate="no">per callsign or zone</span></li>
+<li><span translate="no">per band</span></li>
+<li><span translate="no">in different bands</span></li>
+<li><span translate="no">until zone confirmed</span></li>
+<li><span translate="no">per band + until zone confirmed</span></li>
+</ul>
+</li>
+<li><strong><span translate="no">Spy</span>模式</strong>：启用后，qFT8
+                    还会尝试呼叫您未曾听到呼叫的电台<span translate="no">CQ</span>然而（标记为<span translate="no">DIRECT</span>）。这对于拥有更多站点很有用
+                    到达并加入连环撞车。</li>
+<li><strong><span translate="no">Busy</span>模式</strong>：启用后，qFT8
+                    还将尝试呼叫已投入使用的电台
+                    在一个<span translate="no">QSO</span>与其他人（标记为<span translate="no">BUSY</span>）。这对于加入堆积很有用。</li>
+<li><strong>+ 按钮</strong>：通过输入呼号手动呼叫任意电台。</li>
+<li><strong>车站信息</strong>：显示每个解码电台的详细状态。</li>
+</ol>
+<p>各个站条目由四个信息丰富的行组成：</p>
+<p><strong>第一行</strong>显示车站详细信息（从左到右）：</p>
+<ul>
+<li><strong><span translate="no">QSO Status</span></strong>: 表示您的<span translate="no">QSO</span>该电台的历史记录（<span style="color: grey;">✗</span> = 没有<span translate="no">QSO</span>, ✓ = 已记录
+                    本地,<span style="color: #FFD700; font-weight: bold;">★</span>= 通过 QRZ 或 LoTW 确认）。</li>
+<li><strong>呼号</strong>: 电台的呼号。</li>
+<li><strong><span translate="no">DXCC</span></strong>：国家或实体
+                    该电台的呼号所属。</li>
+<li><strong>网格单元</strong>： 这<span translate="no">Maidenhead</span>网格广场本台正在报道。</li>
+<li><strong><span translate="no">CQ zone</span></strong>： 这<span translate="no">CQ</span>该电台呼号所属的区域。</li>
+<li><strong><span translate="no">ITU zone</span></strong>： 这<span translate="no">ITU</span>该电台呼号所属的区域。</li>
+<li><strong>乐队</strong>：最后一次听到该电台的乐队。</li>
+</ul>
+<p><strong>第二排</strong>显示通讯状态（从左到右）：</p>
+<ul>
+<li><strong>状态</strong>：当前沟通阶段：<ul>
+<li><span style="color: #cd853f; font-weight: bold;"><span translate="no">DIRECT</span>：
+                            听说而且看似免费
+                            现在，
+                            但从未打电话<span translate="no">CQ</span>。</li>
+<li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/6
+                                CQ</span>: 听到呼唤声<span translate="no">CQ</span>和
+                            看起来现在是免费的。</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/6
+                                CALL</span>: 给你打电话了。</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/6
+                                RPT</span>: 给您发送了信号报告。</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">4/6
+                                RRPT</span>: Replyed back to your
+                            与自己的报告。</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6
+                                RR73</span>: 确认您的报告
+                            与<span translate="no">RR73</span>。</li>
+<li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6
+                                DONE</span>：<span translate="no">QSO</span>已完成 (73
+                            交换）。</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>：
+                            最后几首没听过
+                            的周期。</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO
+                                LONG</span>：您的呼号和他们的
+                            呼号太长，无法建立通信<span translate="no">FT8</span>数字模式限制。</li>
+</ul>
+</li>
+<li><strong>信号强度</strong>：实力<span translate="no">dB</span>（如果最近没有听到，则显示“？？？”）。</li>
+<li><strong>顺序</strong>：听到该电台发射的最后一个序列（0 或 1）。</li>
+<li><strong>增量时间 (Δt)</strong>：它们的时间与时间之间的时间同步偏移（以秒为单位）
+                    你的。</li>
+<li><strong>距离</strong>：他们和您的站点网格单元格之间的估计距离。</li>
+</ul>
+<p><strong>第三行和第四行</strong>显示最后发送和最后接收的消息，
+                包括<span translate="no">UTC</span>时间、频率偏移和
+                消息文本（前缀为<span translate="no">Rx:</span>或者<span translate="no">Tx:</span>）。</p>
+<p>需要关注的关键视觉指标：</p>
+<ul>
+<li><strong><span style="color: #ff5252; font-weight: bold;">红色的</span>呼号</strong>：<span translate="no">AUTO</span>模式有
+                    超出了该站的重试限制。它将是
+                    暂时忽略，除非您点击“<span translate="no">CALL</span>” 到
+                    手动重置它。</li>
+<li><strong><span style="color: #aaaaaa; font-weight: bold;">灰色的</span>呼号</strong>：
+                    呼号与您的逗号分隔的排除前缀设置相匹配。<span translate="no">AUTO</span>模式永远不会以该电台为目标。</li>
+<li><strong><span style="color: #e040fb; font-weight: bold;">紫色的</span>突出显示区域</strong>：
+                    该区域/实体
+                    （<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">CQ
+                    zone</span>, <span translate="no">ITU zone</span>）
+                    是一个
+                    考虑到您当前的过滤器所需的目标。</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">红色的</span>序号</strong>: 的
+                    电台与您选择的序列相同，导致
+                    一场冲突。按“<span translate="no">CALL</span>“ 会自动
+                    切换你的顺序。</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">红色的</span>乐队</strong>: 车站是
+                    最后一次听到是在另一个乐队。</li>
+</ul>
+<p>电台会根据相关性自动排序。改变你的目标标准或限制将会
+                立即重新排序列表。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="ui-log-tab">日志选项卡</h3>
+<p>日志选项卡显示已实现的 QSO。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log tab" class="screen" height="1080" src="../log.jpg" width="2280"/>
+</div>
+<p>以下是“日志”选项卡的详细组成部分：</p>
+<ol>
+<li><strong>呼号文本过滤器</strong>：基于呼号是否包含 QSO 的过滤器
+                    输入的文本。</li>
+<li><strong>状态过滤器</strong>：QSO 过滤器显示：<ul>
+<li><span translate="no">All</span>：显示所有已记录的 QSO。</li>
+<li><span translate="no">Confirmed</span>：仅显示具有以下功能的 QSO
+                            已被证实。</li>
+<li><span translate="no">Not confirmed</span>：显示不存在的 QSO
+                            尚未确认。</li>
+<li><span translate="no">Not uploaded</span>：显示还没有的 QSO
+                            已上传至QRZ。</li>
+<li><span translate="no">Duplicated</span>：显示 QSO，QRZ
+                            识别为重复项。</li>
+<li><span translate="no">Rejected</span>：显示 QSO
+                            被 QRZ 中的其他电台拒绝。</li>
+<li><span translate="no">Wrong Callsign</span>：显示记录的 QSO
+                            呼号与当前配置的呼号不同。</li>
+<li><span translate="no">Non FT8</span>：显示记录的 QSO
+                            FT8 以外的模式。</li>
+</ul>
+</li>
+<li><strong>最近限制过滤器</strong>：仅显示最近 100 个 QSO 的过滤器
+                    给定的标准。</li>
+<li><strong>QSO 列表</strong>：显示以下列的日志条目（从左到右）
+                    右）：<ul>
+<li><strong><span translate="no">QRZ</span></strong>: 表示
+                            您使用此电台的历史记录：<ul>
+<li><strong><span style="color: grey;">✗</span></strong>： 不<span translate="no">QSO</span>记录。</li>
+<li><span style="color: grey; font-weight: bold;">✓</span>：本地记录/待处理
+                                    上传。</li>
+<li><span style="color: #00ff00; font-weight: bold;">✓</span>: 已上传至<span translate="no">QRZ</span>。</li>
+<li><span style="color: #FFD700; font-weight: bold;">★</span>：在 QRZ 或 LoTW 上确认
+                                    （适用于 QRZ 上传的 QSO）。</li>
+<span translate="no">QRZ</span>或
+                                手动。</ul></li>
+<li><span style="color: #00ffff; font-weight: bold;">🛸</span>：
+                            非<span translate="no">FT8</span>模式。</li>
+<li><span style="color: #00ff00; font-weight: bold;">♻️</span>：报告为重复<span translate="no">QRZ</span>。</li>
+<li><span style="color: grey; font-weight: bold;">❕</span>：电台呼号不匹配，
+                            已经上传了。</li>
+<li><span style="color: #ff9800; font-weight: bold;">⚠️</span>: 车站呼号
+                            不匹配，未上传。</li>
+<li><span style="color: #ff5252; font-weight: bold;">⛔</span>：拒绝状态。</li>
+</ul>
+</li>
+<li><strong><span translate="no">Callsign</span></strong>: 的
+                    电台的呼号。</li>
+<li><strong><span translate="no">DXCC</span></strong>: 国家或
+                    该电台呼号所属的实体。</li>
+<li><strong><span translate="no">Grid cell</span></strong>: 的
+                    梅登黑德网格广场本台正在报道。</li>
+<li><strong><span translate="no">CQ zone</span></strong>：CQ区
+                    该电台的呼号所属。</li>
+<li><strong><span translate="no">ITU zone</span></strong>：国际电联
+                    该电台呼号所属的区域。</li>
+<li><strong><span translate="no">Band</span></strong>: 乐队开着
+                    最后听到的是哪个电台。</li>
+
+
+</ol>
+<p>需要关注的关键视觉指标：</p>
+<ul>
+<li><strong><span style="color: #ffff00; font-weight: bold;">黄色的</span>请注意下面的呼号</strong>：
+                    此 QSO 适用于与该电台不同的电台
+                    配置。</li>
+<li><strong><span style="color: #00ffff; font-weight: bold;">青色</span>请注意下面的呼号</strong>：
+                    该 QSO 处于 FT8 以外的模式。</li>
+<li><strong><span style="color: #00ff00; font-weight: bold;">绿色的</span>突出显示区域</strong>（<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>）：
+                    这是第一个
+                    您的日志中存在该区域未经确认的 QSO。</li>
+<li><strong><span style="color: #ffff00; font-weight: bold;">黄色的</span>突出显示区域</strong>（<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>）：
+                    这是第一个
+                    在您的日志中确认了该区域的 QSO。</li>
+</ul>
+<p><strong>编辑 QSO</strong>：点击任意<span translate="no">QSO</span>列表中将打开一个提示，允许手动
+                标记一个<span translate="no">QSO</span>已在当地确认/未确认
+                qFT8，或删除<span translate="no">QSO</span>本地在 qFT8 中。<strong>请注意，这些操作仅是本地的，不会同步到<span translate="no">QRZ</span>。</strong>删除一个<span translate="no">QSO</span>在
+                应用程序是不可逆的，除非您保留日志文件的导出副本或将其上传到<span translate="no">QRZ</span>。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3 id="ui-settings-tab">设置选项卡</h3>
+<p>设置选项卡允许配置 qFT8。</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings tab" class="screen" height="1080" src="../settings.jpg" width="2280"/>
+</div>
+<p>设置选项卡分为以下部分：</p>
+<h4>基本设置</h4>
+<ul>
+<li><strong><span translate="no">Callsign</span></strong>：您的业余无线电
+                    呼号。这是强制性的，并且必须与中的一致
+                    您的许可证，并且您必须遵守所有法规和限制才能进行传输。</li>
+<li><strong><span translate="no">CQ modifier</span></strong>：可选文本
+                    这将附加到您的<span translate="no">CQ</span>经常打电话
+                    用于
+                    事件（例如，“<span translate="no">SOTA</span>”）。</li>
+<li><strong>时间偏移</strong>：用于将您的设备的时钟与其他电台同步。 qFT8
+                    如果互联网连接可用，则会在启动时自动同步。您还可以
+                    通过按手动触发同步<strong><span translate="no">SYNC</span></strong>按钮。</li>
+<li><strong>地点 （<span translate="no">Maidenhead</span>网格）</strong>: 一个
+                    车站位置的粗略表示。
+                    这可以在启动时使用您的手机自动更新<span translate="no">GPS</span>如果“启动时更新”
+                    复选框已启用。您还可以随时按<strong><span translate="no">GPS</span></strong>按钮。</li>
+</ul>
+<h4>车站定位自动化</h4>
+<p>详细信息如<strong>国际电联专区</strong>, <strong>重庆区</strong>， 和<strong>车站名称</strong>根据您的呼号自动确定。这些字段不需要手动配置，
+                确保您上传的 LoTW 始终与您的许可证信息匹配。</p>
+<h4>日志同步策略</h4>
+<p>本节定义了用于确定何时考虑 QSO 的策略
+                已上传（绿色复选标记<span style="color: #4CAF50;">✓</span>）以及何时应该
+                显示确认星号（<span style="color: #FFD700;">★</span>）。</p>
+<ul>
+<li><strong>任何一个<span translate="no">LoTW</span>和<span translate="no">QRZ</span></strong>：如果您只配置了其中一项服务，那么这是一个很好的默认值。</li>
+<li><strong>两个都</strong>：选择此项以获得最大安全性，需要<span translate="no">QSO</span>在被视为最终确定并准备好进行检查确认之前成功发送到两个服务。</li>
+<li><strong><span translate="no">QRZ</span>（除进口自<span translate="no">LoTW</span>）</strong>：推荐如果<span translate="no">QRZ</span>是你的主要日志。<em>笔记：<span translate="no">QSOs</span>进口自<span translate="no">LoTW</span>标记为已同步但未上传到<span translate="no">QRZ</span>避免 API 限制（仅允许一对一上传）；这些可以在内部同步<span translate="no">QRZ</span>稍后自己。</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: 如果您考虑的话推荐<span translate="no">LoTW</span>你的主要真相来源。</li>
+</ul>
+<h4>QRZ 同步</h4>
+<p>本节处理与<span translate="no">QRZ.com</span>航海日志。<strong>请注意，QRZ 是付费订阅服务</strong>;如果您更喜欢免费的替代方案，请参阅<a href="#lotw-integration">LoTW 同步</a>下面的部分。
+                要启用 QRZ 集成，您必须提供您的<strong>QRZ API 密钥</strong>，可以找到
+                于<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">官方 QRZ 日志 API 页面</a>。
+                按<strong>证实</strong>验证您的密钥和订阅状态。</p>
+<ul>
+<li><strong>导入按钮</strong>: 导入选项<span translate="no">QSOs</span>从你的<span translate="no">QRZ</span>日志。</li>
+<li><strong>自动行为</strong>：配置是否以及何时<span translate="no">QSOs</span>会自动上传
+                    到<span translate="no">QRZ</span>并检查确认。</li>
+</ul>
+<h4>LoTW 同步</h4>
+<p>本节处理与<span translate="no">ARRL Logbook of the World
+                (LoTW)</span>。要解锁所有功能，您必须提供四个特定要求：
+                你的<strong>LoTW 用户名</strong>， 你的<strong>密码</strong>（用于网站登录），
+                一个<strong>.p12 TQSL 证书</strong>文件，以及<strong>证书密码</strong>（可能是空的）。
+                有关证书的帮助，请参阅<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">LoTW 官方帮助页面</a>。</p>
+<ul>
+<li><strong>导入按钮</strong>: 导入选项<span translate="no">QSOs</span>从<span translate="no">LoTW</span>。</li>
+<li><strong>自动行为</strong>：配置是否<span translate="no">qFT8</span>自动检查确认<span translate="no">LoTW</span>。</li>
+<li><strong>证书管理</strong>：加载你的<span translate="no">.p12</span> TQSL证书并输入其密码
+                    启用<strong>自动后台上传</strong>。按<strong>证实</strong>以确保
+                    所有凭据和证书都正常工作。</li>
+</ul>
+<h4>ADIF 文件导入</h4>
+<p>允许您从标准“.adi”文件导入现有日志。</p>
+<h4>ADIF 文件导出</h4>
+<p>允许您将日志导出到<span translate="no">.adi</span>文件。你
+                可以选择导出完整日志或特定时间
+                范围。过滤选项允许导出所有<span translate="no">QSOs</span>,
+                仅确认的（对于奖励索赔有用），或者
+                仅那些尚未上传到的<span translate="no">QRZ</span>（对于手动
+                上传）。您还可以添加一个<strong>峰会直播（<span translate="no">SOTA</span>）</strong>参考或<strong>空中公园
+                    （<span translate="no">POTA</span>）</strong>提交至的导出参考<span translate="no">SOTAData</span>或者<span translate="no">POTA</span>。</p>
+<h4>车站追踪器</h4>
+<p>此部分允许配置何时从“站”选项卡自动清理站。</p>
+<h4>自动模式</h4>
+<p>此部分允许配置自动化逻辑的行为，包括重试次数
+                与单个站通话。您还可以指定要排除的以逗号分隔的前缀列表；
+                自动模式永远不会定位呼号以这些前缀开头的电台。</p>
+<h4><span translate="no">FT8 Settings</span></h4>
+<p>此部分可以微调解码算法
+                （<span translate="no">Fast</span>与<span translate="no">Deep</span>），调整解码和<span translate="no">Start Tx</span>计时，并设置<span translate="no">PTT</span>延误以确保您的
+                收发器转换
+                正确接收和发送。您还可以启用系统卷的自动缩放
+                收发器。</p>
+<h4>频段设置</h4>
+<p>此部分允许配置 qFT8 如何处理频段信息。您可以设置是否qFT8和
+                收发器应在连接时自动交换选定的频段信息。本节还允许
+                您可以自定义底部栏选择器中显示的频段。</p>
+<h4>远程控制网络服务器</h4>
+<p>此部分允许配置嵌入式 Web 服务器以进行远程控制。有关更多详细信息，请参阅<a href="#remote-control">远程控制网络服务器</a>下面的部分。</p>
+<h4>普斯克记者</h4>
+<p>本节提供了直接链接<span translate="no">PSKReporter</span>，预先填写您的呼号，其中
+                你可以看到
+                哪些电台在过去 6 小时内收到了您的传输。<strong>笔记：</strong>qFT8仅允许查看您自己的景点；它不会自动
+                报告其他站的地点<span translate="no">PSK Reporter</span>。</p>
+<h4>删除 QSO</h4>
+<p>此部分允许从 qFT8 中删除 QSO。<strong>至关重要的是，这仅影响本地 qFT8 日志
+                    并且不会影响已上传到 QRZ.com 的记录。</strong>
+</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="auto-mode">
+<h2>自动操作（AUTO）</h2>
+<p>
+<strong><span translate="no">AUTO mode</span></strong>是主要的方法
+                使用qFT8。在此模式下，应用程序自动
+                在每个周期结束时分析解码的消息并选择最相关的站进行联系
+                根据您的目标标准。</p>
+<h3>目标选择的工作原理</h3>
+<p>这<strong>车站选项卡</strong>显示活动电台列表，按最相关的顺序排序
+                候选人（根据您的标准）出现在顶部。在每个解码周期结束时，qFT8 都会查看
+                此排序列表并尝试呼叫第一个符合条件的电台。如果没有找到符合条件的目标，则
+                会自动开始通话<strong>重庆</strong>以吸引来电者。 qFT8 始终回复以下来电
+                自动模式。</p>
+<h3>标准和过滤器</h3>
+<p>您可以使用“站点”选项卡顶部的三个下拉菜单来微调自动化：</p>
+<ul>
+<li><strong>目标</strong>：定义您正在寻找的“成就”
+                    （<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>, <span translate="no">CQ
+                    Zone</span>, <span translate="no">ITU Zone</span>,
+                    <span translate="no">Grid</span>）。</li>
+<li><strong>间隔</strong>：您愿意联系同一实体的频率
+                    （<span translate="no">Once</span>,
+                    <span translate="no">Always</span>,
+                    <span translate="no">Daily</span>,
+                    <span translate="no">Weekly</span>,
+                    <span translate="no">Monthly</span>）。</li>
+<li><strong>预选赛</strong>：缩小唯一性要求（<span translate="no">Per
+                    callsign</span>, <span translate="no">Per
+                    band</span>, <span translate="no">Until zone/entity
+                    confirmed</span>）。</li>
+</ul>
+<div class="highlight">
+<p><strong>手动覆盖：</strong>您始终可以通过点击<strong><span translate="no">CALL</span></strong>特定按钮
+                    站。这就进入<a href="#call-mode"><span translate="no">CALL
+                        mode</span></a>对于那个特定的<span translate="no">QSO</span>。完成后，qFT8
+                    无缝地落回<span translate="no">AUTO</span>模式。</p>
+</div>
+<h3>重试机制</h3>
+<p>为了防止 qFT8 无限期地呼叫无响应的电台，qFT8 提供了内置的重试和禁止功能
+                系统，默认启用。您可以在“设置”选项卡中配置这些<strong>重试
+                    逻辑</strong>：</p>
+<ul>
+<li><strong>重试限制</strong>：qFT8 将重复传输阶段的最大次数
+                    没有响应的电台。</li>
+<li><strong>重试窗口</strong>：对这些尝试进行计数的时间段。</li>
+<li><strong>重试冷却</strong>：如果达到限制，电台在此期间将被“禁止”。
+                    自动模式将忽略被禁止的站点，直到冷却时间结束或站点回复为止。</li>
+</ul>
+<h3>优化设置示例</h3>
+<p>以下是一些针对共同目标的推荐标准组合：</p>
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>目标</th>
+<th>间隔</th>
+<th>健康）状况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最大化独特的电台</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>最大化每个频段的独特电台</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>最大化独特性<span translate="no">DXCC</span>实体</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>最大化独特性<span translate="no">DXCC</span>每个频段</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>最大化确认<span translate="no">DXCC</span>实体</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>最大化确认<span translate="no">DXCC</span>每个频段</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>收集独特的<span translate="no">Grids</span>每个频段</td>
+<td><span translate="no">Grid</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>在所有区域工作
+                            （<span translate="no">CQ</span>/<span translate="no">ITU</span>）</td>
+<td><span translate="no">I/C/D/G</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>比赛：不同频段的独特电台</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>竞赛：不同日期同一站的积分</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Daily</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+</tbody>
+</table>
+<p>请注意，在所有这些情况下，您可以启用<strong>间谍</strong>和<strong>忙碌的</strong>伸出援手
+                到更多
+                站并进入他们的连环相撞。</p>
+<p><strong>笔记：</strong>如果您的呼号不标准（例如使用“/”分隔的后缀或前缀，
+                长呼号，或其他在罕见位置有数字的呼号），您可能希望将 Target 设置为<strong><span translate="no">Call CQ</span></strong>就像你的呼号一样
+                可能会以散列形式发送出去，并且只有看到您致电 CQ 的电台才能将散列映射到
+                你的呼号。您仍然可以呼叫电台，但他们只会将消息映射到您的呼号，如果他们
+                最近听说你打电话给CQ。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="call-mode">
+<h2>手动操作（CALL）</h2>
+<p>虽然 qFT8 高度自动化，但您可以随时掌控。轻敲<strong>称呼</strong>按钮
+                车站选项卡中任何车站旁边都会立即输入<strong>通话模式</strong>并尝试
+                与该特定电台建立 QSO。</p>
+<p>一旦手动目标的 QSO 完成（成功或失败），qFT8 将自动<strong>回退到自动模式</strong>并恢复您之前的自动化策略（例如，致电 CQ）。</p>
+<h3>手动操作员的计时</h3>
+<p>如果您发现在周期结束时需要更多时间来做出手动决策，您可以获取
+                通过调整自己更多的余量<strong>FT8设置</strong>在“设置”选项卡中：</p>
+<ul>
+<li><strong>减少 ”<span translate="no">Start decoding
+                        time</span>”</strong>：提前开始处理音频。</li>
+<li><strong>增加 ”<span translate="no">Start transmission
+                        time</span>”</strong>：延迟您的回复。</li>
+</ul>
+<div class="highlight">
+<p><strong>警告：</strong>将这些值积极调整到边距可能会使您的
+                    消息对于其他电台来说更难以解码，因为您减少了有效时间
+                    可用于同步窗口内的实际 FT8 信号。</p>
+</div>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="adif-import-export">
+<h2>ADIF 导入/导出</h2>
+<p>
+<span translate="no">qFT8</span>支持标准<span translate="no">ADIF</span>（业余数据交换格式）
+                与其他的互操作性
+                记录
+                软件、云服务以及手动备份。</p>
+<h3>导入 QSO</h3>
+<p>导入功能允许您从其他来源（例如 WSJT-X 或其他来源的备份）导入记录
+                设备）到您的本地 qFT8 日志中。</p>
+<ul>
+<li><strong>过滤选项</strong>：可以选择是否只导入<span translate="no">FT8</span>记录或所有模式，
+                    以及是否限制导入您当前的呼号或包含所有运营商。</li>
+<li><strong>自动重复数据删除</strong>：<span translate="no">qFT8</span>智能合并记录。它可以防止重复
+                    通过匹配<span translate="no">QRZ Log IDs</span>和<span translate="no">QSO</span>时间戳。如果导入的记录有
+                    确认状态或有效<span translate="no">Log ID</span>您的本地记录丢失了，
+                    条目由
+                    用更好的数据更新它。</li>
+</ul>
+<h3>导出 QSO</h3>
+<p>窃听<strong><span translate="no">EXPORT QSOs</span></strong>生成一个<span translate="no">ADIF 3.1.6</span>文件并打开系统共享表，
+                允许您将日志保存到您的设备或通过电子邮件/消息发送。</p>
+<ul>
+<li><strong>时间范围</strong>：您可以导出整个历史记录或使用<span translate="no">UTC</span>日期/时间选择器
+                    隔离特定的激活或竞赛期。</li>
+<li><strong>状态过滤器</strong>：对于领取奖励很有用（导出<strong>”<span translate="no">Confirmed
+                        Only</span>”</strong>）
+                    或手动上传到其他服务（导出<strong>”<span translate="no">Not Uploaded to
+                        QRZ</span>”</strong>避免
+                    重复）。</li>
+<li><strong><span translate="no">SOTA</span>参考</strong>: 详细说明
+                    在<a href="#sota"><span translate="no">SOTA</span>部分</a>,
+                    <span translate="no">qFT8</span>可以
+                    自动将山顶参考注入<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>的领域
+                    每条导出的记录。</li>
+<li><strong><span translate="no">POTA</span>参考</strong>: 详细说明
+                    在<a href="#pota"><span translate="no">POTA</span>部分</a>,
+                    <span translate="no">qFT8</span>可以
+                    自动将公园参考注入<code>&lt;<span translate="no">MY_SIG</span>&gt;</code>,
+                    <code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>， 和<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>的领域
+                    每条导出的记录。</li>
+</ul>
+<div class="highlight">
+<p><strong>笔记：</strong>对于非常大的日志（超过 100KB），qFT8 将显示警告
+                    在您的移动设备上，重复数据删除和排序过程可能需要一些时间才能完成。</p>
+</div>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="qrz-integration">
+<h2>二维码集成</h2>
+<p>
+<span translate="no">qFT8</span>提供深度集成<a href="https://www.qrz.com" target="_blank"><span translate="no">QRZ.com</span></a>保持你的
+                日志自动同步。<strong>请注意，QRZ 集成是一项订阅服务</strong>这需要一个<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span>付费订阅</a>（<span translate="no">XML Logbook Data</span>或更高）。
+                如果您更喜欢免费的替代方案，请考虑使用<a href="#lotw-integration">LoTW 集成</a>，由 ARRL 免费提供。</p>
+<h3>它是如何运作的</h3>
+<p>要启用 QRZ 集成，您需要提供您的<strong>QRZ API 密钥</strong>在设置选项卡中。
+                您可以在以下位置找到您的 API 密钥<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">官方 QRZ 日志 API 页面</a>。
+                一旦进入并<strong><span translate="no">VALIDATED</span></strong>,
+                您可以启用“<span translate="no">Upload QSOs to QRZ</span>”用于自动后台管理。</p>
+<ul>
+<li><strong>自动上传</strong>: 每次<span translate="no">QSO</span>已完成（成功达到<span translate="no">6/6
+                    DONE</span>状态），<span translate="no">qFT8</span>立即尝试上传
+                    给你的<span translate="no">QRZ</span>日志。</li>
+<li><strong>背景可靠性</strong>：如果上传失败（例如，由于没有互联网连接或
+                    服务器超时），qFT8 不会放弃。后台工作人员将<strong>自动重试失败
+                        每 5 分钟上传一次</strong>。这个过程是静默的，并确保您的日志最终到达
+                    连接恢复后即恢复云。</li>
+<li><strong>智能跳过</strong>：<span translate="no">qFT8</span>保护
+                    只需上传您的日志完整性<span translate="no">QSOs</span>那个
+                    匹配您当前配置的呼号和<span translate="no">FT8</span>模式。<span translate="no">Non-FT8</span>条目，<span translate="no">QSOs</span>对于不同的
+                    呼号，或<strong>QSO 导入自<span translate="no">LoTW</span></strong>会自动跳到
+                    防止过多的 API 请求。</li>
+</ul>
+<h3>同步确认</h3>
+<p>集成不仅仅是上传。<span translate="no">qFT8</span>还进行民意调查<span translate="no">QRZ</span>看看你的<span translate="no">QSOs</span>已被证实。</p>
+<ul>
+<li><strong>立即检查</strong>： 30 秒后<span translate="no">QSO</span>已完成并上传，<span translate="no">qFT8</span>将检查
+                    回来与<span translate="no">QRZ</span>看看其他站是否有
+                    还上传了<span translate="no">QSO</span>;如果有，则<span translate="no">QSO</span>会
+                    同步为<strong>确认的</strong>立即地。</li>
+<li><strong>自动同步</strong>： 默认情况下，<span translate="no">qFT8</span>查询<span translate="no">QRZ</span>每 6 小时（可配置）
+                    批量250个<span translate="no">QSOs</span>一次，旋转
+                    通过你的整个未经证实的日志，以确保即使
+                    较老的<span translate="no">QSOs</span>最终检查是否有新的
+                    确认。</li>
+<li><strong>确认星 (<span translate="no">★</span>）</strong>：当
+                    上传到 QRZ 的 QSO 在 QRZ 或 LoTW 上得到确认，并以金星突出显示。你可以
+                    还可以手动确认任何 QSO 以显示此指示器。</li>
+<span translate="no">QRZ</span>报告确认，状态图标
+                你的日志
+                选项卡将自动更改为<span style="color: #FFD700; font-weight: bold;">金子</span>星星。
+<li><strong>手动同步</strong>：更新到最近最少同步的 250 个<span translate="no">QSOs</span>还可以
+                    在设置中手动触发。</li>
+</ul>
+<div class="highlight">
+<p><strong>专业提示：</strong>您可以在“已同步最旧的 QSO 以进行确认”下的设置中查看同步进度。保持最新状态并不紧迫，因为 qFT8 会随着时间的推移来处理它。</p>
+</div>
+<h3 id="log-syncing-strategy">日志同步策略</h3>
+<p>在同步设置中，您可以选择同步方式<span translate="no">qFT8</span>确定是否<span translate="no">QSO</span>是通过“完全上传”的<strong>“上传至以下位置时考虑上传 QSO：”</strong>选项：</p>
+<ul>
+<li><strong>任何一个<span translate="no">LoTW</span>和<span translate="no">QRZ</span></strong>：如果您只配置了其中一项服务，那么这是一个很好的默认值。</li>
+<li><strong>两个都</strong>：选择此项以获得最大安全性，需要<span translate="no">QSO</span>在被视为最终确定并准备好进行检查确认之前成功发送到两个服务。</li>
+<li><strong><span translate="no">QRZ</span>（除进口自<span translate="no">LoTW</span>）</strong>：推荐如果<span translate="no">QRZ</span>是你的主要日志。<em>笔记：<span translate="no">QSOs</span>进口自<span translate="no">LoTW</span>标记为已同步但未上传到<span translate="no">QRZ</span>避免 API 限制（仅允许一对一上传）；这些可以在内部同步<span translate="no">QRZ</span>稍后自己。</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: 如果您考虑的话推荐<span translate="no">LoTW</span>你的主要真相来源。</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="lotw-integration">
+<h2><span translate="no">Logbook of the World (LoTW)</span>一体化</h2>
+<p>
+<span translate="no">qFT8</span>提供了与<a href="https://lotw.arrl.org/" target="_blank"><span translate="no">ARRL Logbook of the World
+                    (LoTW)</span></a>。
+                与集成<span translate="no">LoTW</span>是高度
+                推荐用于确认您的联系人并获得 DXCC 和 WAS 等奖励。</p>
+<h3>设置要求</h3>
+<p>要完全启用 LoTW 功能（包括自动上传和确认检查），您需要在设置选项卡中提供四项具体信息：</p>
+<ul>
+<li><strong>1.LoTW用户名</strong>：用于 LoTW 服务的官方呼号。</li>
+<li><strong>2.LoTW密码</strong>：您用来登录的密码<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">洛特网站</a>。这与证书密码不同。</li>
+<li><strong>3..p12 TQSL证书</strong>：导出的数字签名文件<strong><span translate="no">TQSL</span></strong>应用。
+                    有关如何请求和导出此证书的说明，请参阅<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">LoTW 官方帮助页面</a>。</li>
+<li><strong>4.证书密码</strong>：您从 TQSL 导出 .p12 文件时设置的密码（如果您选择不设置，则该密码可能为空）。</li>
+</ul>
+<p>
+<em><strong>车站定位自动化</strong>: 详细信息如<strong>国际电联专区</strong>, <strong>重庆区</strong>， 和<strong>车站名称</strong>根据您的呼号自动确定。这些字段不需要手动配置。</em>
+</p>
+<h3>特征</h3>
+<ul>
+<li><strong>自动上传</strong>： 什么时候<strong>完成后将 QSO 上传到 LoTW</strong>已启用，<span translate="no">qFT8</span>将自动签署每个新的 QSO 并将其上传到<span translate="no">LoTW</span>记录后立即在后台运行。</li>
+<li><strong>自动检查确认</strong>：启用后，<span translate="no">qFT8</span>将在成功上传后 30 秒内执行一次立即确认检查。这使您几乎可以立即查看您的联系是否已得到确认。</li>
+<li><strong>定期后台同步</strong>：配置<strong>每 __ 小时同步一次确认</strong>以您首选的时间间隔（例如每 6 小时）在后台检查新的确认。这使您的整个日志保持最新，无需手动干预。</li>
+<li><strong>导入日志</strong>： 点击<strong>从 LoTW 导入 QSO</strong>将您的整个 LoTW 历史记录下载到<span translate="no">qFT8</span>。请注意，这些导入的 QSO 不会自动上传到<span translate="no">QRZ</span>以避免 API 速率限制。</li>
+<li><strong>待定指标</strong>: 一个小<strong>黄点</strong>于<strong>日志</strong>按钮表示有QSO等待上传<span translate="no">LoTW</span>。</li>
+</ul>
+<h3 id="lotw-log-syncing-strategy">日志同步策略</h3>
+<p>在同步设置中，您可以选择同步方式<span translate="no">qFT8</span>确定是否<span translate="no">QSO</span>是通过“完全上传”的<strong>“上传至以下位置时考虑上传 QSO：”</strong>选项：</p>
+<ul>
+<li><strong>任何一个<span translate="no">LoTW</span>和<span translate="no">QRZ</span></strong>：如果您只配置了其中一项服务，那么这是一个很好的默认值。</li>
+<li><strong>两个都</strong>：选择此项以获得最大安全性，需要<span translate="no">QSO</span>在被视为最终确定并准备好进行检查确认之前成功发送到两个服务。</li>
+<li><strong><span translate="no">QRZ</span>（除进口自<span translate="no">LoTW</span>）</strong>：推荐如果<span translate="no">QRZ</span>是你的主要日志。<em>笔记：<span translate="no">QSOs</span>进口自<span translate="no">LoTW</span>标记为已同步但未上传到<span translate="no">QRZ</span>避免 API 限制（仅允许一对一上传）；这些可以在内部同步<span translate="no">QRZ</span>稍后自己。</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: 如果您考虑的话推荐<span translate="no">LoTW</span>你的主要真相来源。</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="sota">
+<h2>峰会直播 (SOTA)</h2>
+<p>qFT8 旨在成为 SOTA（空中峰会）激活器的强大工具。以下是步骤
+                配置 qFT8 以成功激活：</p>
+<h3>1. 同步时间</h3>
+<p>确保您的设备时钟准确。这可以在离开之前在家中或使用移动热点完成
+                在外地。</p>
+<h3>2.设置你的CQ修改器</h3>
+<p>前往<strong>设置</strong>选项卡并查找
+                的<strong><span translate="no">CQ modifier</span></strong>选项。设置这个
+                到<code><span translate="no">SOTA</span></code>。从现在开始，每次你
+                打电话<span translate="no">CQ</span>,
+                <span translate="no">qFT8</span>将传送<code><span translate="no">CQ SOTA [Callsign]</span></code>, 提醒追赶者
+                您正在激活峰会。</p>
+<h3>3. 配置自动模式</h3>
+<p>在<strong>车站</strong>选项卡，找到
+                第一个下拉菜单（目标选择器）并将其设置为<strong><span translate="no">Call CQ</span></strong>。然后，参与<strong><span translate="no">AUTO</span></strong>模式。</p>
+<h3>4. 开始激活</h3>
+<p>按<strong><span translate="no">TX</span></strong>按钮在底部
+                栏以启用传输。</p>
+<p>启用后，qFT8 将自动呼叫 CQ 并回复任何呼叫您的电台。自从目标
+                激活是收集 QSO，qFT8 将始终回复呼叫者，即使您已经与他们进行了 QSO
+                在之前记录的会话中。</p>
+<div class="highlight">
+<p><strong>手动覆盖：</strong>多个电台可能会同时到达您。如果你想优先考虑
+                    一个特别有趣的
+                    站同时<span translate="no">CQing</span>，您可以手动点击<strong><span translate="no">CALL</span></strong>该电台的按钮。
+                    曾经
+                    的<span translate="no">QSO</span>已完成，<span translate="no">qFT8</span>将自动回退到呼叫<span translate="no">CQ</span>。</p>
+</div>
+<h3>5. 导出您的 SOTA 日志</h3>
+<p>完成激活后，您可以专门针对 SOTAData 导出有效的 ADIF 日志：</p>
+<ol>
+<li>前往<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li>选择<strong><span translate="no">Selected time range</span></strong>并指定<span translate="no">UTC</span>的开始和结束时间
+                    你的
+                    激活。</li>
+<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
+<li>在<strong><span translate="no">Event</span></strong>选择，
+                    选择<strong><span translate="no">SOTA</span></strong>。</li>
+<li>输入您的峰会参考信息（例如，<code>XX/GG-111</code>）。</li>
+<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这个
+                    生成一个<span translate="no">ADIF</span>文件与必要的<span translate="no">SOTA</span>领域
+                    已预先填写并准备上传。</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="pota">
+<h2>空中公园 (POTA)</h2>
+<p>qFT8 支持 POTA（空中公园）激活器。该过程非常类似于<span translate="no">SOTA</span>激活。步骤如下：</p>
+<h3>1. 同步时间</h3>
+<p>确保您的设备时钟准确。这可以在离开之前在家中或使用移动热点完成
+                在外地。</p>
+<h3>2.设置你的CQ修改器</h3>
+<p>前往<strong>设置</strong>选项卡并设置<strong><span translate="no">CQ modifier</span></strong>到<code><span translate="no">POTA</span></code>。每一个<span translate="no">CQ</span>呼叫现在将传输<code><span translate="no">CQ POTA [Callsign]</span></code>。</p>
+<h3>3. 配置自动模式</h3>
+<p>在<strong>车站</strong>选项卡，将目标选择器设置为<strong><span translate="no">Call CQ</span></strong>并参与<strong><span translate="no">AUTO</span></strong>模式。</p>
+<h3>4. 开始激活</h3>
+<p>按<strong><span translate="no">TX</span></strong>按钮到
+                启用传输。 qFT8会自动调用<span translate="no">CQ</span>并回复任何给您打电话的电台。</p>
+<div class="highlight">
+<p><strong>手动覆盖：</strong>多个电台可能会同时到达您。如果你想优先考虑
+                    一个特别有趣的
+                    站同时<span translate="no">CQing</span>，您可以手动点击<strong><span translate="no">CALL</span></strong>该电台的按钮。
+                    曾经
+                    的<span translate="no">QSO</span>已完成，<span translate="no">qFT8</span>将自动回退到呼叫<span translate="no">CQ</span>。</p>
+</div>
+<h3>5. 导出您的 POTA 日志</h3>
+<p>完成激活后，导出有效的 ADIF 日志<span translate="no">POTA</span>：</p>
+<ol>
+<li>前往<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li>选择<strong><span translate="no">Selected time range</span></strong>并指定<span translate="no">UTC</span>的开始和结束时间
+                    您的激活。</li>
+<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
+<li>在<strong><span translate="no">Event</span></strong>选择，
+                    选择<strong><span translate="no">POTA</span></strong>。</li>
+<li>输入您的公园参考号（例如，<code>K-1234</code>）。</li>
+<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这个
+                    生成一个<span translate="no">ADIF</span>文件包含以下内容
+                    注入到每条记录中的字段：<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>设置为<code>POTA</code>
+</li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>设置
+                            给您的公园参考</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>设置
+                            给您的公园参考</li>
+</ul>
+</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="remote-control">
+<h2>远程控制网络服务器</h2>
+<p>qFT8 包含一个嵌入式 HTTP 服务器，允许您从任何位置监视和控制应用程序
+                网络
+                您网络上的浏览器。这对于远程操作或作为辅助显示器特别有用。</p>
+<p>这是频谱图/电台视图在远程控制 Web 服务器中的样子：</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Stations" height="1596" src="../webserverstations.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>它允许与<strong>汽车</strong>按钮，条件下拉列表，<strong>+</strong>按钮
+                直接添加呼号和电台列表<strong>称呼</strong>手动呼叫按钮
+                他们。</p>
+<p>频谱图/日志视图如下所示：</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Log" height="1596" src="../webserverlog.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>此视图显示最新的日志条目。</p>
+<h3>网络与连接</h3>
+<p>服务器在您的手机上打开特定的 TCP 端口（默认 13497）。要访问它，您的设备必须是
+                能够在网络上“看到”彼此：</p>
+<ul>
+<li><strong>本地网络</strong>：qFT8 手机和您的控制设备（计算机、平板电脑或
+                    另一部手机）必须位于同一 Wi-Fi 网络上。</li>
+<li><strong>路由器设置</strong>：有些路由器有一个功能称为<strong>AP隔离</strong>（或客户端隔离）默认启用。这必须是<strong>残疾人</strong>对于设备
+                    互相沟通。</li>
+<li><strong>移动热点场景</strong>：如果您在外地，您可以在
+                    一部手机（可连接互联网）并将 qFT8 手机连接到该 Wi-Fi 网络。连接后，关闭
+                    并重新打开
+                    qFT8 设置中的网络服务器；然后可以从提供的热点访问显示的 IP 地址
+                    电话。</li>
+<li><strong>互联网接入</strong>：从家外访问服务器（通过互联网）
+                    需要<strong>端口转发</strong>在您的路由器设置中（映射内部IP和端口
+                    到外部）。请注意，由于运营商的原因，这通常不适用于 5G/LTE 连接
+                    NAT 限制。</li>
+</ul>
+<h3>访问级别</h3>
+<p>您可以在设置窗格中配置远程安全级别：</p>
+<ul>
+<li><strong>只读</strong>：允许查看实时频谱图、活动电台和 QSO 日志。
+                    无法执行任何操作。</li>
+<li><strong>读取+停止发送</strong>：主要是安全模式。允许查看所有数据和许可
+                    在紧急情况下撤防发射机（停止 TX），但不允许启动 TX 或
+                    更改设置。</li>
+<li><strong>完全控制</strong>：授予对应用程序的完全权限，使所有
+                    互动功能。</li>
+</ul>
+<div class="highlight">
+<p><strong>安全注意事项：</strong>任何有权访问您的网络、IP 地址和端口的人都将拥有
+                    您配置的控制级别。如果设置为<strong>完全控制</strong>，他们可以
+                    可能会开始使用您的电台进行传输。</p>
+</div>
+<h3>能力</h3>
+<p>在<strong>完全控制</strong>模式下，Web 界面提供了应用程序 UI 的几乎所有功能：</p>
+<ul>
+<li><strong>操作模式</strong>: 之间切换<strong><span translate="no">AUTO</span></strong>和手册<strong><span translate="no">CALL</span></strong>模式。</li>
+<li><strong>战略</strong>: 改变<span translate="no">AUTO</span>标准 （<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>等）并搜索
+                    限制。</li>
+<li><strong>传播</strong>：手动启动/停止<span translate="no">TX</span>，选择具体的<span translate="no">TX</span>消息，并更改<span translate="no">FT8 sequence (0/1)</span>。</li>
+<li><strong>频率和频段</strong>：点击网络频谱图以移动频率偏移或更改
+                    活跃的无线电频段。</li>
+</ul>
+<div class="highlight">
+<p><strong>笔记：</strong>Web UI 的设计旨在即使物理手机的情况下也能保持响应能力
+                    屏幕因射频干扰而变得迟缓，为控制提供了可靠的后备。</p>
+<p><strong>笔记：</strong>如果要运行的设置，Web 服务器将在屏幕关闭时运行
+                    后台启用（默认是在后台运行时<span translate="no">qFT8</span>连接到一个
+                    收发器）。</p>
+</div>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+<section id="troubleshooting">
+<h2>故障排除</h2>
+<h3 id="trouble-not-recognized">Android 设备无法识别<span translate="no">QMX</span>或者它断开连接</h3>
+<p>这几乎总是硬件连接或无线电干扰问题。 USB 连接对振动敏感，
+                电缆质量，以及居住在 USB 端口中的绒毛手机浣熊。</p>
+<p><strong>尝试：</strong></p>
+<ul>
+<li>使用高质量、短<span translate="no">USB cable</span>（使用较短的电缆会有很大帮助），并确保手机上的端口干净且连接牢固。</li>
+<li>如果问题具体发生在传输过程中，则可能是由无线电干扰引起的。在 USB 电缆上添加扼流圈或铁氧体可能会有所帮助。您还可以尝试在不同的频段进行传输，因为某些设备仅对某些频段的干扰敏感。</li>
+</ul>
+<h3>不是从收发器接收信号，<span translate="no">qFT8</span>正在从麦克风获取音频</h3>
+<p>这表明手机正在使用内置麦克风，因为它无法识别
+                收发器作为外部音频源。最常见的原因是：</p>
+<ul>
+<li>这<span translate="no">USB</span>电缆不适合数据传输
+                    （仅充电电缆）。</li>
+<li>这<span translate="no">USB adapter (OTG)</span>有故障或
+                    不兼容。</li>
+<li>电缆插入方向错误（有些电缆是定向的）。</li>
+</ul>
+<p><strong>尝试：</strong>使用不同的<span translate="no">USB cable</span>,
+                使用不同的适配器，或翻转电缆
+                连接。</p>
+<h3>根本收不到任何信号；瀑布漆黑一片</h3>
+<p>如果在连接或断开收发器时瀑布仍然完全黑色，则 qFT8
+                可能缺乏访问音频的必要权限。</p>
+<p>
+<strong>尝试：</strong>前往您的手机<strong>设置 &gt; 应用程序 &gt; qFT8 &gt; 权限</strong>和
+                确保
+                那个<strong>麦克风</strong>使用 qFT8 时允许（或录音）。或者，
+                完全卸载并重新安装 qFT8，并在首次启动时接受所有权限提示。</p>
+<h3>信号可见，但没有消息被解码</h3>
+<p>如果您在瀑布中看到垂直的“波浪线”（FT8 信号），但站点中没有出现任何文字
+                选项卡，也许您的时钟未同步。</p>
+<p>
+<strong>尝试：</strong>检查您的设备时钟。如果信号在红色之间不完全吻合
+                水平序列分隔符，您的设备时钟可能已关闭。确保您可以访问互联网并且
+                重新打开应用程序以触发<span translate="no">NTP sync</span>。</p>
+<p>如果瀑布中根本没有出现摆动条纹，则可能是频带已关闭或您的天线已关闭
+                断开连接/未调谐。</p>
+<p>
+<strong>尝试：</strong>确保您的收音机实际上正在接收来自空中的信号。</p>
+<h3>消息解码太晚</h3>
+<p>电话处理器可能太慢而无法及时解码消息。</p>
+<p>
+<strong>尝试：</strong>确保您切换到<strong><span translate="no">Fast
+                    decode</span></strong>在设置中，感受一下
+                可以自由地提前移动解码时间（例如
+                13000 <span translate="no">ms</span>）为解码创造更多余量，在
+                费用
+                每个周期可能会丢失一些迟到的消息。</p>
+<h3>错误<span translate="no">"No Tx: SWR Protection or too low or high
+                volume"</span>
+</h3>
+<p>如果<span translate="no">qFT8</span>节目
+                0 <span translate="no">W</span>传输时，有两种可能
+                原因：</p>
+<h4>1.<span translate="no">SWR</span>保护</h4>
+<p>如果<span translate="no">QMX</span>
+<span translate="no">LCD</span>显示屏显示
+                一个“<strong><span translate="no">S</span></strong>” 在频率之后，
+                意味着<span translate="no">SWR</span>保护启动了。
+                这意味着您的天线没有针对当前频段进行正确调谐，并且<span translate="no">QMX</span>已停止传输以保护其
+                电路。</p>
+<ul>
+<li><strong>旧版固件</strong>： 在<span translate="no">QMX</span>固件版本早于 1.03.000 时，您必须手动重置
+                    收发器（关闭/打开）或进入和离开<span translate="no">TUNE
+                    menu</span>于<span translate="no">QMX</span>清除错误。</li>
+<li><strong>固件 1.03.000+</strong>：您可以设置“<span translate="no">SWR Protection reset
+                    options</span>“ 到<strong><span translate="no">Timer</span></strong>或者<strong><span translate="no">TX-&gt;RX</span></strong>在<span translate="no">QMX menu</span>。这允许<span translate="no">qFT8</span>在没有您的情况下继续运营
+                    拥有
+                    物理接触收发器。</li>
+</ul>
+<p>
+<strong>笔记：</strong> <span translate="no">qFT8</span>等待 1 秒
+                传输开始后检查之前
+                0 <span translate="no">W</span>以避免误报，同时<span translate="no">QMX</span>加速。
+                如果<span translate="no">QMX</span>恢复并且力量上升到以上
+                1 <span translate="no">W</span>，问题指示器自动清除。</p>
+<h4>2. 音频信号未到达<span translate="no">QMX</span></h4>
+<p>如果<span translate="no">QMX</span>做<strong>不是</strong>显示
+                ”<span translate="no">S</span>” 频率后面的图标，那么很可能
+                收发器根本没有从电话接收到合适的音频信号。体积可能
+                是<strong>太低</strong>（信号不足）或<strong>太高了</strong>（削波/失真
+                导致<span translate="no">QMX</span>拒绝信号）。</p>
+<p>
+<strong>尝试：</strong>检查您的信号指示灯<span translate="no">QMX</span>。一个点表示没有音频，两个点表示
+                有声音，但声音不够大。前往<span translate="no">FT8</span>设置部分并调整
+                ”<span translate="no">Set system volume to [X] when transmitting</span>”
+                设置为不同的值（例如 70%、80%、90%）以找到适合您的设备的级别。</p>
+<h3>qFT8 Android 通知是什么？</h3>
+<p>当您最小化应用程序时，此通知允许 qFT8 继续处理音频并管理 QSO
+                或关闭屏幕。</p>
+<ul>
+<li>默认情况下，插入收发器时会自动触发。</li>
+<li>您可以在以下位置禁用此功能<span translate="no">qFT8</span>设置，但是<span translate="no">qFT8</span>将停止在后台工作。</li>
+<li>您可以按<strong><span translate="no">STOP</span></strong>在
+                    通知完全关闭<span translate="no">qFT8</span>。</li>
+</ul>
+<h3>屏幕关闭时 qFT8 停止工作</h3>
+<p>一些 Android 制造商实施了非常激进的电池优化，可能会杀死后台应用程序
+                即使您授予了初始权限。</p>
+<p>
+<strong>仔细检查您是否授予了权限：</strong>前往您的手机<strong>设置 &gt;
+                    应用 &gt; qFT8 &gt; 电池</strong>并选择<strong>“无限制”</strong>（或“不优化”）。</p>
+<h3>发送期间按钮行为异常或屏幕无响应</h3>
+<p>这是由于<strong>射频干扰 (RFI)</strong>。如果您的天线靠近手机或
+                电缆屏蔽不良，无线电能量会干扰触摸数字转换器。</p>
+<ul>
+<li><strong>提示</strong>：使用屏蔽<span translate="no">USB</span>电缆
+                    或将铁氧体磁珠夹到电缆上。</li>
+</ul>
+<h3><span translate="no">qFT8</span>看起来与本手册中的屏幕截图不同</h3>
+<p>该应用程序的用户界面偶尔会更新，因此自截屏以来，一些较小的视觉元素可能已发生变化。但是，如果 UI 的重要部分完全丢失或颜色看起来发生了很大变化（例如黄色进度条、序列选择器等），则手机的系统深色模式可能会错误地覆盖并弄乱应用程序的调色板。</p>
+<p>
+<strong>尝试：</strong>如果您的系统的深色模式导致问题，您可以尝试暂时禁用它或将 qFT8 添加到其排除列表中以恢复正确的设计。</p>
+<h3>qFT8 说“NO QMX”，尽管<span translate="no">QMX transceiver</span>是
+                已连接</h3>
+<p>问题可能是您没有授予连接权限<span translate="no">qFT8</span>到<span translate="no">QMX
+                transceiver</span>。有时会发生这种情况，因为您点击了某处
+                权限对话框，然后对话框关闭。</p>
+<p>
+<strong>尝试：</strong>断开并重新连接<span translate="no">QMX transceiver</span>，这应该会触发提示
+                再次。对于
+                舒适，标记选项“始终打开<span translate="no">qFT8</span>什么时候<span translate="no">QMX Transceiver</span>已连接”，因此您永远不会碰到
+                又是这个问题。</p>
+<h3>qFT8 显示以英里为单位的距离，我想要以公里为单位（反之亦然）</h3>
+<p>这来自操作系统区域设置（即语言选择）。</p>
+<p>
+<strong>尝试：</strong>将该配置切换到正确的国家/地区（例如英语（美国）
+                对于英里，英语（英国）对于公里）将修复它。</p>
+<h3>qFT8 在 &gt;10W 传输时显示低传输功率（例如 0.1W）</h3>
+<p>这是一个已知的错误<span translate="no">QMX</span>固件（至少高达 1.03.000）。如果您使用 2x4 mods（例如，在<span translate="no">QMX+</span>）并且您的传输功率超过 9.9W，无线电的格式会环绕。例如，收发器将 10.1W 通过辅助 CAT 协议报告给应用程序为 0.1W。</p>
+<p>
+<strong>尝试：</strong>里面没有解决办法<span translate="no">qFT8</span>，因为应用程序直接显示它收到的值。您可以安全地忽略此显示错误或将功率降低到 10W 以下以保持读数准确，直到收发器固件中修复此错误为止。</p>
+<h3>无法导出<span translate="no">ADIF</span>使用日志记录到本地存储<span translate="no">Share</span></h3>
+<p>默认<strong><span translate="no">Share</span></strong>该方法依赖Android原生的共享机制来导出日志。有时，设备的内置文件共享菜单不提供保存到本地文件系统的直接选项。</p>
+<p>
+<strong>尝试：</strong>更改导出<strong><span translate="no">Method</span></strong>到<strong><span translate="no">Local save</span></strong>在设置中。这使用 Android 文件选择器直接将文件保存到本地存储，而不依赖于共享菜单。</p>
+<h3><span translate="no">qFT8</span>无法解码某些消息</h3>
+<p>
+<strong>尝试：</strong>在设置中启用深度解码。深度解码进行递归解码，并且能够在频带繁忙时解码更多消息，但会消耗额外的处理能力。密切关注频谱图：如果您的设备中的深度解码时间太长（例如大于 1 秒）并且应用程序无法按时做出决策，请禁用深度解码。</p>
+<h3>qFT8 挂起或行为异常</h3>
+<p>如果这种情况仅在传输过程中发生，则可能是如上所述的极端 RFI。如果发生的话
+                在其他时候，请滚动到“设置”选项卡的底部并使用“<strong>给我发电子邮件</strong>报告问题和错误”链接。</p>
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+</div>
+<div class="footer">
+<p>版权所有©2026，<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>）除了包含的零件<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>（版权所有 © 2023 BG7YOZ）
+            和<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>(版权所有 © 2018
+            Kārlis Gobas），两者均在 MIT 许可下发布。</p>
+<p><span translate="no">Luis Quesada Torres</span> 与该作品的创作者没有任何关系<span translate="no">FT8</span>数字模式也不与<span translate="no">QRPLabs</span>, 和
+            同样地
+            的创造者都不是<span translate="no">FT8</span>也不<span translate="no">QRPLabs</span>曾参与开发<span translate="no">qFT8</span>，并且不认可它
+            以任何方式。</p>
+<div class="footer-links">
+<a href="../../">主页</a> - <a href="../../privacy/">隐私政策</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">执照</a>
+</div>
+</div>
+</body>
+</html>

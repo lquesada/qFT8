@@ -1,0 +1,1796 @@
+HTML
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manuel d'utilisation du qFT8</title>
+<meta content="qFT8 User Manual" property="og:title"/>
+<meta content="Comprehensive guide for using qFT8 with your Android device and QMX transceiver." property="og:description"/>
+<meta content="https://qft8.com/qft8.png" property="og:image"/>
+<meta content="https://qft8.com/manual/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../../favicon.png" rel="icon" type="image/png"/>
+<style>
+        :root {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #03dac6;
+            --secondary-color: #2c2c2c;
+            --surface-color: #2c2c2c;
+            --link-color: #81d4fa;
+            --danger-color: #ff5252;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .disclaimer-banner {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--danger-color);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 82, 82, 0.2);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 92%;
+            margin: 40px auto;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-toc {
+            display: block;
+            text-align: right;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Phone Mockup CSS */
+        .phone-mockup {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto 30px auto;
+            border: 12px solid #000000;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
+            background-color: #000;
+            display: flex;
+        }
+
+        .phone-mockup img {
+            display: block;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .phone-mockup img.camera {
+            width: 5.4726%;
+        }
+
+        .phone-mockup img.screen {
+            width: 94.5274%;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .toc li,
+        .toc ul ul li {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+
+
+        .footer {
+            background-color: #0f0f0f;
+            width: 100%;
+            padding: 50px 20px;
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            box-sizing: border-box;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 12px;
+                margin: 20px 0;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .phone-mockup {
+                border-width: 8px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .back-link {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto 0 auto;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 600px) {
+            .back-link {
+                margin: 10px 0;
+                padding: 0 15px;
+            }
+        }
+
+        @media print {
+
+            body,
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 10mm !important;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            p,
+            li,
+            a,
+            span,
+            div {
+                color: #000 !important;
+            }
+
+            .back-link,
+            .back-to-toc,
+            .footer-links {
+                display: none !important;
+            }
+
+            .disclaimer-banner {
+                border: 1px solid #000 !important;
+                background: transparent !important;
+            }
+
+            .phone-mockup {
+                border: 2px solid #000 !important;
+                box-shadow: none !important;
+            }
+
+            .toc {
+                background: transparent !important;
+                border: 1px solid #eee !important;
+            }
+        }
+
+        .highlight {
+            background-color: rgba(3, 218, 198, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+<div class="back-link">
+<a href="../../">← Retour sur qFT8.com</a>
+</div>
+<div class="container">
+<div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <a href="../">English</a> / <a href="../es/">Español</a> / <a href="../de/">Deutsch</a> / <strong>Français</strong> / <a href="../it/">Italiano</a> / <a href="../pt/">Português</a> / <a href="../pt-br/">Português (BR)</a> / <a href="../ru/">Русский</a> / <a href="../ja/">日本語</a> / <a href="../zh/">中文</a></div>
+<h1 id="top">Manuel d'utilisation du qFT8</h1>
+<div class="toc">
+<h3>Table des matières</h3>
+<ul>
+<li><a href="#what-is-qft8">Qu’est-ce que qFT8 ?</a>
+<ul>
+<li><a href="#supported-devices">Appareils pris en charge</a></li>
+</ul>
+</li>
+<li><a href="#quick-setup">Configuration rapide</a>
+<ul>
+<li><a href="#initial-permissions">Accorder des autorisations initiales</a></li>
+<li><a href="#mandatory-callsign">Entrez l'indicatif</a></li>
+<li><a href="#usb-permission">Accorder l'autorisation de connexion USB</a></li>
+<li><a href="#audio-check">Vérification audio</a></li>
+<li><a href="#import-qsos">[Facultatif] Importer des QSO</a></li>
+</ul>
+</li>
+<li><a href="#first-qso">Votre premier QSO avec qFT8</a></li>
+<li><a href="#ft8-introduction">Introduction au mode numérique FT8</a></li>
+<li><a href="#user-interface">Interface utilisateur qFT8</a>
+<ul>
+<li><a href="#ui-bottom-bar">La barre inférieure</a></li>
+<li><a href="#ui-spectrogram">Le spectrogramme</a></li>
+<li><a href="#ui-stations-tab">L'onglet Gares</a></li>
+<li><a href="#ui-log-tab">L'onglet Journal</a></li>
+<li><a href="#ui-settings-tab">L'onglet Paramètres</a></li>
+</ul>
+</li>
+<li><a href="#auto-mode">Fonctionnement automatisé
+                        (<span translate="no">AUTO</span>)</a></li>
+<li><a href="#call-mode">Fonctionnement manuel
+                        (<span translate="no">CALL</span>)</a></li>
+<li><a href="#adif-import-export"><span translate="no">ADIF</span> Importer/Exporter</a></li>
+<li><a href="#qrz-integration"><span translate="no">QRZ</span> Intégration</a>
+</li>
+<li><a href="#lotw-integration"><span translate="no">LoTW</span> Intégration</a></li>
+<li><a href="#sota">Sommets en direct (<span translate="no">SOTA</span>)</a>
+</li>
+<li><a href="#pota">Parcs en direct (<span translate="no">POTA</span>)</a>
+</li>
+<li><a href="#remote-control">Serveur Web de contrôle à distance</a></li>
+<li><a href="#troubleshooting">Dépannage</a></li>
+</ul>
+</div>
+<div class="disclaimer-banner">Avis de non-responsabilité : en utilisant qFT8, vous assumez l'entière responsabilité de la conformité légale, de la sécurité et
+            dommages à l'équipement</div>
+<section id="what-is-qft8">
+<h2>Qu’est-ce que qFT8 ?</h2>
+<p>qFT8 est un<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android
+                    téléphone</a>application pour<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamateur</a>qui décode et transmet<a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a>messages de données numériques à l'aide d'un<a href="https://qrp-labs.com/qmx.html" target="_blank">QRPLabs QMX
+                    émetteur-récepteur.</a>
+</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Screenshot" class="screen" height="1080" src="../../screenshot.jpg" width="2280"/>
+</div>
+<p>qFT8 ne prend actuellement pas en charge d'autres émetteurs-récepteurs. Cependant, vous pouvez essayer le qFT8 à proximité du haut-parleur et
+                microphone d'un émetteur-récepteur avec VOX activé, ou connecté avec une prise audio à un émetteur-récepteur
+                entrée/sortie. Vous pouvez également essayer le qFT8 sans émetteur-récepteur : il transmet à l'aide du haut-parleur du téléphone et
+                écoute les signaux à l'aide du microphone du téléphone. Plusieurs téléphones exécutant qFT8 peuvent se contacter via
+                audio lorsqu'ils sont suffisamment proches.</p>
+<p>qFT8 est une application gratuite et ne contient pas de publicités. C'est une source disponible. Le code source peut être trouvé sur<a href="https://github.com/lquesada/qFT8" target="_blank">GitHub</a>.
+            </p>
+<p>
+<a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>
+                (<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>)
+                développé qFT8 en 2026, détient les droits d'auteur et se réserve tous les droits (sauf les parties incluses de<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>, Copyright © 2023 BG7YOZ, et<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>, Copyright © 2018 Kārlis Gobas, tous deux publiés sous licence MIT). <span translate="no">Luis Quesada Torres</span> n'est pas
+                affilié aux créateurs du mode numérique FT8 ni à QRPLabs, et
+                de même, ni les créateurs de FT8 ni QRPLabs n'ont été impliqués dans le développement de qFT8 et ne le font pas.
+                ne l’approuve en aucune façon.</p>
+<h3>Principales fonctionnalités</h3>
+<ul>
+<li>Configuration rapide</li>
+<li>Suivi des indicatifs plutôt que des messages</li>
+<li>Manuel <span translate="no">CALL</span> modes et <span translate="no">AUTO</span> opération</li>
+<li>Automatique <span translate="no">NTP</span> / <span translate="no">GPS</span> synchronisation de l'heure</li>
+<li>Localisation approximative automatique</li>
+<li><span translate="no">ADIF</span> importation et exportation de journaux</li>
+<li><span translate="no">QRZ</span> / <span translate="no">LoTW</span> intégration : uploads, confirmations</li>
+<li>Logique de nouvelle tentative avec limites configurables</li>
+<li><span translate="no">SOTA</span> / <span translate="no">POTA</span>:
+                    <span translate="no">CQ</span> modificateur, référence <span translate="no">ADIF</span> exportations</li>
+<li>Serveur Web pour un fonctionnement entièrement à distance</li>
+<li>Mode économie de batterie : fonctionne avec l'écran éteint</li>
+</ul>
+<h3 id="supported-devices">Appareils pris en charge</h3>
+<ul>
+<li><strong>Laboratoires QRP <span translate="no">QMX</span> ou <span translate="no">QMX+</span></strong>— entièrement pris en charge via le câble</li>
+<li><strong>Laboratoires QRP <span translate="no">QDX</span> ou <span translate="no">QDX-M</span></strong>— entièrement pris en charge via un câble (cet appareil n'a pas <span translate="no">W</span> ou <span translate="no">SWR</span> mètre, cependant)</li>
+<li><strong>Tout émetteur-récepteur avec microphone et haut-parleur</strong>- pris en charge via haut-parleurs/micro mais pas idéal</li>
+<li><strong>Tout autre émetteur-récepteur via câble</strong>- non pris en charge</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="quick-setup">
+<h2>Configuration rapide</h2>
+<p>Veuillez vous assurer que vous utilisez le<strong>bonne alimentation</strong>pour l'émetteur-récepteur
+                (par exemple ≤12V pour un QMX) sinon vous l'endommagerez.</p>
+<p>Veuillez également vous assurer que le câble USB-C que vous utilisez pour connecter le téléphone et l'émetteur-récepteur
+                est<strong>évalué pour le transfert de données</strong>. La plupart des problèmes de connectivité où qFT8 ne voit pas le
+                émetteur-récepteur
+                sont dus à l’utilisation d’un câble ou d’un adaptateur incompatible.</p>
+<h3 id="initial-permissions">Accorder des autorisations initiales</h3>
+<p>Lors de la première ouverture de qFT8, il demandera plusieurs autorisations :</p>
+<ul>
+<li><em>Autoriser qFT8 à enregistrer de l'audio</em>: Cette autorisation est obligatoire. qFT8 en a besoin pour rassembler
+                    signaux provenant de l’émetteur-récepteur. qFT8 ne stocke, ne partage ni ne télécharge aucun enregistrement audio.</li>
+<li><em>Autoriser qFT8 à accéder à l'emplacement approximatif de cet appareil</em>: Facultatif mais recommandé.
+                    qFT8 l'utilise pour obtenir votre <span translate="no">Maidenhead</span> grille
+                    localisateur, qui est partagé pendant <span translate="no">FT8</span> échanges.
+                    qFT8 fait
+                    ne pas accéder ni partager des données de localisation précises.</li>
+<li><em>Autoriser qFT8 à vous envoyer des notifications</em>: Facultatif mais recommandé. qFT8 l'utilise pour
+                    exécuté en tant que service de premier plan, tout en étant réduit ou avec l'écran éteint afin d'économiser la batterie.
+                    Les notifications ne sont actives que lorsqu'elles sont connectées à un émetteur-récepteur.</li>
+<li><em>Laisser l'application toujours s'exécuter en arrière-plan</em>: Facultatif mais recommandé. Requis pour que qFT8
+                    fonctionner de manière cohérente lorsque l’écran est éteint.</li>
+</ul>
+<div class="highlight">
+<p><strong>Principe clé :</strong>qFT8 ne soumet aucune information à un serveur dédié à cela
+                    application.
+                    Tout le traitement des données s'effectue localement sur votre appareil. Vous pouvez explicitement autoriser le partage de l'indicatif,
+                    date et heure, et éventuellement emplacement approximatif si vous entrez un nom valide <span translate="no">QRZ API Key</span>.
+                </p>
+<p>Pour plus de détails, consultez le qFT8<a href="../../privacy/">politique de confidentialité</a>.</p>
+</div>
+<h3 id="mandatory-callsign">Entrez l'indicatif</h3>
+<p>Saisir un<strong>l'indicatif est obligatoire</strong>pour que qFT8 fonctionne. Si vous n'avez pas l'intention de
+                connectez-vous à un émetteur-récepteur réel, n'importe quel indicatif d'appel peut être saisi à des fins de test, par ex. XX1XXX.</p>
+<p>qFT8 vous demandera de saisir votre indicatif et de reconnaître les éléments suivants :</p>
+<ul>
+<li>Vous devez détenir une licence valide pour utiliser ce logiciel lorsque vous êtes connecté à un émetteur-récepteur.</li>
+<li>Vous ne devez pas exécuter le logiciel sans surveillance.</li>
+<li><em>Avis de non-responsabilité</em>: En utilisant qFT8, vous assumez l'entière responsabilité des
+                    conformité, sécurité et dommages matériels.</li>
+</ul>
+<h3 id="usb-permission">Accorder l'autorisation de connexion USB</h3>
+<p>Lorsque l'émetteur-récepteur est branché et que qFT8 est ouvert, une boîte de dialogue système apparaîtra :</p>
+<p><em>"Ouvrez qFT8 pour gérer l'émetteur-récepteur QMX."</em></p>
+<ul>
+<li>Cette autorisation est<strong>obligatoire</strong>pour la communication avec l'émetteur-récepteur.</li>
+<li>S'il n'est pas accordé, qFT8 pourra recevoir des signaux mais ne pourra pas transmettre.</li>
+<li>Vous pouvez sélectionner « Toujours ouvrir qFT8 lorsque l'émetteur-récepteur QMX est connecté » pour plus de commodité.</li>
+</ul>
+<p>Si vous rencontrez des problèmes pour connecter l'appareil Android, vérifiez le<a href="#trouble-not-recognized">L'appareil Android ne reconnaît pas le <span translate="no">QMX</span> ou il se déconnecte</a>section de dépannage.</p>
+<p>
+<span translate="no">qFT8</span> configure automatiquement le <span translate="no">QMX</span> émetteur-récepteur chaque fois qu'il est connecté, donc là
+                il n'est pas nécessaire de configurer aucun des "<span translate="no">VOX
+                off</span>", "<span translate="no">Rise
+                Threshold</span>",
+                "<span translate="no">Fall Threshold</span>", "<span translate="no">Cycle
+                Min</span>", "<span translate="no">Sample Min</span>",
+                "<span translate="no">Discard</span>", "<span translate="no">IQ
+                Mode</span>", "<span translate="no">Sideband
+                Mode</span>", ou "<span translate="no">RIT
+                Status</span>",
+                etc. — ils sont traités automatiquement. Notez que cette configuration est temporaire : le <span translate="no">QMX</span> Le menu des paramètres affichera toujours les valeurs que vous avez conservées et redémarrez le <span translate="no">QMX</span> ramènera tous les paramètres à sa condition de fonctionnement normale.</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="audio-check">Vérification audio</h3>
+<p>Avant de commencer à utiliser, il est important de vérifier que le signal audio entre votre téléphone et le <span translate="no">QMX</span> fonctionne correctement. Appuyez sur le <span translate="no">TX</span> bouton et attendez le <span translate="no">QMX</span> pour commencer à transmettre dans l'un des prochains
+                séquences.</p>
+<h4>Tout fonctionne</h4>
+<p>Si le <span translate="no">TX</span> Le bouton indique la puissance de sortie (par ex.
+                5 <span translate="no">W</span>), tout fonctionne correctement. Sur le <span translate="no">QMX LCD</span>, vous devriez voir un<strong>bar</strong>sous le "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marqueur en haut à gauche de l'écran
+                - cela signifie le <span translate="no">QMX</span> reçoit un bon son
+                signal du téléphone. Vous devez également confirmer qu'il n'y a pas
+                "<span translate="no">S</span>" affiché après la fréquence sur
+                le <span translate="no">LCD</span>, ce qui indiquerait <span translate="no">SWR</span> protection.</p>
+<h4>"<span translate="no">S</span>" affiché après la fréquence</h4>
+<p>Si le <span translate="no">QMX LCD</span> montre un
+                "<strong><span translate="no">S</span></strong>" après la fréquence, il
+                signifie <span translate="no">SWR</span> la protection s’est engagée. Votre antenne
+                n’est pas correctement réglé pour la bande actuelle. Vous pouvez utiliser le <span translate="no">SWR</span> cochez l'option dans le <span translate="no">QMX</span> menu pour mesurer le <span translate="no">SWR</span> et devra régler votre antenne.</p>
+<ul>
+<li><strong>Micrologiciel hérité</strong>(plus de 1.03.000) : Vous devez entrer et sortir du <span translate="no">TUNE</span> menu sur le <span translate="no">QMX</span> ou redémarrez-le pour le réinitialiser <span translate="no">SWR</span> protection.</li>
+<li><strong>Micrologiciel 1.03.000+</strong>: Vous pouvez définir
+                    "<span translate="no">SWR Protection reset options</span>" à<strong><span translate="no">TX-&gt;RX</span></strong>dans le <span translate="no">QMX</span> Menu de protection, donc il se réinitialise
+                    automatiquement.</li>
+</ul>
+<h4>Deux points au lieu d'une barre</h4>
+<p>Si le <span translate="no">QMX</span> montre<strong>deux points</strong>au lieu d'une barre sous le "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marqueur en haut à gauche de l'écran, le
+                le volume audio est soit<strong>trop bas</strong>ou<strong>trop haut</strong>.
+            </p>
+<p>
+<strong>Essayer:</strong>Aller à <span translate="no">qFT8</span> Paramètres, rechercher
+                le "<span translate="no">Set system volume to [X] when transmitting</span>"
+                et essayez différentes valeurs (par exemple 70 %, 80 %, 60 %, 100 %). L'un d'eux devrait faire tourner les deux points
+                dans un bar.</p>
+<p>Sur certains téléphones, cette option peut ne pas fonctionner. Dans ce cas, décochez-la et ajustez manuellement votre téléphone
+                volume à différentes valeurs (100%, 90%, 80%, etc.) jusqu'à ce que la barre apparaisse.</p>
+<h4>Rien sous le "<span translate="no">A</span>"</h4>
+<p>S'il n'y a ni barre ni point sous le "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marqueur en haut à gauche du <span translate="no">QMX LCD</span> l'écran, le téléphone n'est peut-être pas correctement
+                contrôler l’émetteur-récepteur. Cela signifie généralement <span translate="no">USB</span> les autorisations n'ont pas été accordées ou ont été
+                accidentellement rejeté. La réception fonctionnera, mais pas la transmission.</p>
+<p>
+<strong>Essayer:</strong>Débranchez le <span translate="no">QMX</span> de la
+                téléphone et rebranchez-le – la boîte de dialogue d’autorisation devrait réapparaître. Il se peut aussi que le câble
+                ne convient pas aux <span translate="no">QMX</span>; essayez un autre <span translate="no">USB-C</span> câble.</p>
+<p>Une fois que vous voyez une barre sous le "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marqueur en haut à gauche du <span translate="no">QMX LCD</span> écran et puissance de sortie dans le <span translate="no">TX</span> bouton, votre <span translate="no">QMX</span> est correctement configuré et prêt à fonctionner !</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="import-qsos">[Facultatif] Importer des QSO</h3>
+<p>Vous pouvez maintenant importer vos QSO existants ; il existe deux approches. Les deux méthodes nécessitent d'accéder aux paramètres
+                en utilisant le
+                bouton le plus à droite dans la barre inférieure de qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings Button" class="screen" height="1080" src="../settingsbutton.jpg" width="2280"/>
+</div>
+<p><strong>L'approche manuelle</strong>: Allez dans le "<span translate="no">ADIF File
+                Import</span>" section dans les paramètres, cliquez sur le "<span translate="no">IMPORT
+                QSOs</span>" et sélectionnez le fichier .adi à importer.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 ADIF Import" class="screen" height="1080" src="../adif.jpg" width="2280"/>
+</div>
+<p><strong>L’approche automatique QRZ</strong>: Nécessite un actif<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span> abonnement payant</a>. Allez
+                à
+                le "<span translate="no">QRZ Syncing</span>" section dans les paramètres, entrez le <span translate="no">QRZ API Key</span> pour votre indicatif, appuyez sur
+                "<span translate="no">VALIDATE</span>", puis cliquez sur le
+                "<span translate="no">IMPORT QSOs FROM QRZ</span>". Cela permettra
+                configurez également des téléchargements automatiques vers <span translate="no">QRZ</span> et
+                confirmation
+                chèques.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 QRZ Syncing" class="screen" height="1080" src="../qrzsync.jpg" width="2280"/>
+</div>
+<p><strong>L’approche automatique LoTW</strong>: Gratuit. Allez dans le "<span translate="no">LoTW
+                Syncing</span>" section dans les paramètres, entrez votre <span translate="no">Callsign</span> et <span translate="no">LoTW
+                password</span> et activez la synchronisation en arrière-plan si vous le souhaitez. Cela permettra également
+                vous permettre de
+                effectuer l'initiale "<span translate="no">IMPORT QSOs FROM LoTW</span>".
+            </p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="first-qso">
+<h2>Votre premier QSO avec qFT8</h2>
+<p>Remarque : une heure précise est essentielle pour FT8. qFT8 synchronise automatiquement l'heure sur l'application
+                initialisation via NTP (internet) ou GPS (satellites). Si vous travaillez sur le terrain
+                sans accès à Internet, vous pouvez utiliser le<strong>SYNCHRONISATION GPS</strong>bouton dans les paramètres
+                pour synchroniser votre horloge directement à partir des satellites GPS. Cela nécessite des précisions
+                autorisation de localisation et une vue dégagée sur le ciel.</p>
+<p>À ce stade, l'émetteur-récepteur doit être connecté à la bonne alimentation et à l'antenne, et tout
+                les autorisations doivent être accordées.
+                Assurez-vous que l'antenne est réglée sur une bande avec une <span translate="no">SWR</span>(idéalement constamment en dessous de 2)
+                cela ne déclenchera pas <span translate="no">SWR</span> protections.<strong>C'est une mauvaise idée de désactiver <span translate="no">SWR</span> protection
+                    dans le <span translate="no">QMX</span></strong>; cela pourrait endommager le
+                finales ou
+                le tuner d'antenne.</p>
+<p>Vous pouvez maintenant choisir la bande que vous souhaitez utiliser dans la barre inférieure du qFT8 ou dans l'émetteur-récepteur. Le régler
+                dans l’un d’eux le synchronisera avec l’autre.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Band Selector" class="screen" height="1080" src="../bandselector.jpg" width="2280"/>
+</div>
+<p>À ce stade, le spectrogramme affichera les signaux et commencera à décoder les messages, et l'onglet Stations affichera
+                soyez mis à jour avec les stations que vous entendez.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations Button" class="screen" height="1080" src="../stationsbutton.jpg" width="2280"/>
+</div>
+<p>En appuyant sur le <span translate="no">TX</span> bouton (le bouton le plus à gauche dans le
+                en bas) permettra la transmission.</p>
+<p>Si tout est correct, le <span translate="no">TX</span> le bouton
+                finit par s'allumer avec "<span translate="no">TX Transmitting</span>" et
+                montrera le
+                puissance de transmission et <span translate="no">SWR</span>(par exemple, "5,0 W <span translate="no">SWR</span> 1,2").</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 TX Button" class="screen" height="1080" src="../txbutton.jpg" width="2280"/>
+</div>
+<p>Compte tenu du "<span translate="no">AUTO</span>" Le mode est sélectionné par défaut, qFT8
+                commencera à créer des QSO et à les enregistrer dans le journal
+                onglet.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log Button" class="screen" height="1080" src="../logbutton.jpg" width="2280"/>
+</div>
+<p>Vous pouvez appuyer sur le spectrogramme pour modifier le <span translate="no">Tx</span> décalage de fréquence, vous pouvez changer de séquence en appuyant sur le
+                boutons 0 et 1 dans la barre du bas,
+                vous pouvez appuyer sur les différents "<span translate="no">CALL</span>"boutons pour appeler
+                stations spécifiques, ou vous pouvez modifier la barre avec le
+                "<span translate="no">AUTO</span>" dans l'onglet Stations pour décider du
+                stratégie.
+                Plus d’informations sur toutes ces fonctionnalités avancées dans les sections suivantes.</p>
+<p>Notez que qFT8 commencera à appeler les stations ou, si aucune d'entre elles n'est joignable, commencera à appeler CQ.
+                Finalement, si tout est correctement configuré et que la propagation est bonne, qFT8 réalisera des QSO.</p>
+<p>Si qFT8 ne reçoit pas les signaux appropriés et ne décode pas les messages, c'est un signe clair que quelque chose
+                est
+                faux : la propagation dans cette bande peut être fermée, l'antenne peut ne pas être correctement réglée, l'antenne peut
+                n'est pas correctement connecté à l'émetteur-récepteur, l'émetteur-récepteur peut ne pas être correctement connecté au
+                téléphone, ou certains de vos équipements peuvent ne pas fonctionner correctement.
+                Voir le<a href="#troubleshooting">section de dépannage</a>ci-dessous pour les problèmes courants.</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="ft8-introduction">
+<h2>Introduction au mode numérique FT8</h2>
+<p>FT8 est un protocole numérique conçu pour les conditions E sporadiques multi-sauts et autres conditions de signal faible.
+                Il se caractérise par des messages structurés et un timing précis.</p>
+<h3>Cycles et séquences</h3>
+<p>FT8 opère dans<strong>Cycles de 15 secondes</strong>. Chaque cycle de communication est strictement chronométré,
+                commençant exactement à<strong>00, 15, 30 et 45 secondes</strong>de chaque minute.
+                Pour cette raison, l'horloge de votre appareil doit être synchronisée avec précision avec<strong><span translate="no">UTC</span> temps</strong>.
+            </p>
+<p>Il y a deux séquences dans le protocole :</p>
+<ul>
+<li><strong>Séquence 0 (Paire)</strong>: Cycles commençant à<strong>00 et 30</strong>secondes.</li>
+<li><strong>Séquence 1 (impaire)</strong>: Cycles commençant à<strong>15 et 45</strong>secondes.</li>
+</ul>
+<p>Les stations alternent généralement entre l'émission et la réception. Une station émettant dans la séquence 0
+                écoutera une réponse dans la séquence 1, et vice versa.
+                Au cours de chaque cycle de 15 secondes, le message est transmis dans une fenêtre entre environ<strong>+0,5s et +13s</strong>. Cela laisse du temps en fin de cycle pour le décodage et au
+                début
+                pour préparer la prochaine transmission.</p>
+<h3>Caractéristiques des signaux</h3>
+<p>Chaque message FT8 est transmis sous forme d'une séquence de tonalités avec de légères variations de fréquence
+                (parfois décrit comme « ondulation »).
+                Un signal FT8 est très étroit et n'occupe qu'environ<strong>50 Hz de bande passante</strong>.
+                Cette efficacité permet à des dizaines de conversations simultanées de s'insérer dans une seule bande radio de 3 kHz.</p>
+<h3>Les 6 étapes d'un QSO</h3>
+<p>Un contact FT8 standard passe généralement par six étapes. Voici un exemple d'échange entre<strong>HB9IPH</strong>et<strong>XX1XXX</strong>:
+            </p>
+<ol>
+<li><strong><span translate="no">1/6 CQ</span></strong>: Une station recherche
+                    quelqu'un à qui parler.<br/>
+<em>Exemple:<code>CQ HB9IPH JN47</code></em><br/>Note:<code>JN47</code>est un<strong><span translate="no">Maidenhead</span> localisateur de grille</strong>,
+                    qui indique le
+                    la situation géographique approximative de la station.
+                    Il peut également y avoir un<strong><span translate="no">CQ</span> modificateur</strong>, qui est une note pour les autres opérateurs (par exemple,<code>CQ SOTA HB9IPH</code>pour le programme Summits On The Air, ou<code>CQ US HB9IPH</code>quand
+                    essayer de contacter quelqu'un aux États-Unis).
+                    Le modificateur et l'emplacement peuvent ne pas correspondre au même message ; dans de tels cas, l'emplacement est
+                    omis. Si l'indicatif est très long, il est possible que ni l'emplacement ni le
+                    le modificateur s'intégrera dans le <span translate="no">CQ</span>!
+                </li>
+<li><strong><span translate="no">2/6 CALL</span></strong>: Une autre gare
+                    répond à la <span translate="no">CQ</span>.<br/>
+<em>Exemple:<code>HB9IPH XX1XXX JO21</code></em><br/>Remarque : Le répondant partage également sa position (<code>JO21</code>), qui peut être omis si le
+                    les indicatifs sont trop longs pour tout contenir.</li>
+<li><strong><span translate="no">3/6 RPT</span></strong>: La première gare
+                    envoie un rapport de signal.<br/>
+<em>Exemple:<code>XX1XXX HB9IPH -10</code></em><br/>Remarque : Le<strong>rapport de signal</strong>(par exemple,<code>-10</code>) indique la force du signal
+                    par rapport au bruit de fond dans <span translate="no">dB</span>.
+                </li>
+<li><strong><span translate="no">4/6 RRPT</span></strong>: La deuxième gare
+                    prend connaissance du rapport et envoie le sien.<br/>
+<em>Exemple:<code>HB9IPH XX1XXX R-12</code></em><br/>Remarque : Le préfixe « R » confirme que le rapport précédent a été reçu, suivi du<strong>rapport de signal</strong>pour la première station.</li>
+<li><strong><span translate="no">5/6 RR73</span></strong>: La première gare
+                    confirme le tout et envoie un "Roger-Roger 73".<br/>
+<em>Exemple:<code>XX1XXX HB9IPH RR73</code></em>
+</li>
+<li><strong><span translate="no">6/6 73</span></strong>: La deuxième gare
+                    envoie un "73" final pour fermer le contact.<br/>
+<em>Exemple:<code>HB9IPH XX1XXX 73</code></em>
+</li>
+</ol>
+<p>À cause du<a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem" target="_blank">Deux
+                    Problème des généraux%27</a>, il est théoriquement impossible de savoir avec certitude que l'autre station
+                reçu votre dernière communication à moins qu'ils ne le confirment. Cependant, vous devrez alors confirmer leur
+                confirmation, et ils devraient le confirmer, et ainsi de suite.
+                Le mode numérique FT8 atténue cela en ayant des étapes structurées : un QSO peut techniquement être envisagé
+                complet
+                après l'étape <span translate="no">4/6</span>(lorsque les deux rapports de signal ont
+                été échangé).
+                En pratique, pour garantir que les deux stations conviennent que l'échange a eu lieu, un QSO est enregistré lorsqu'une station
+                a reçu un <span translate="no">RR73</span> et a envoyé un 73.
+                En effet, soit transmettre un <span translate="no">RR73</span> ou un 73
+                déclenche la journalisation d'un QSO.</p>
+<p>Notez que les stations peuvent également appeler d'autres stations même si elles n'ont pas transmis de message.<span translate="no">CQ</span> d'abord.
+                Par exemple, des stations situées dans des endroits rares peuvent avoir un « empilement » de nombreuses stations qui les appellent.
+                simultanément ; dans de tels cas, la station rare peut simplement passer d'un QSO au suivant
+                sans avoir besoin d'inviter de nouveaux appelants avec un <span translate="no">CQ</span>.
+            </p>
+<p>Certaines stations peuvent utiliser<strong>€€€</strong>au lieu du RR73 dans l'étape 5.
+                Dans ce cas, le contact nécessite un échange supplémentaire : la deuxième station envoie 73, puis
+                la première station envoie à nouveau 73 pour terminer.</p>
+<p>FT8 prend également en charge<strong>SMS gratuits</strong>(jusqu'à 13 caractères), mais pas qFT8
+                prend actuellement en charge l'envoi de ces messages personnalisés.</p>
+<h3>Limitations et solutions de repli du protocole</h3>
+<p>Les messages FT8 sont hautement compressés en<strong>77 bits</strong>. Des informations parfois complexes
+                (comme les indicatifs longs et non standard) ne rentre pas dans le format de message standard.</p>
+<ul>
+<li><strong>Indicatifs d'appel hachés</strong>: Si un indicatif est trop long, il peut être envoyé sous forme de hachage.
+                    Si la station réceptrice a récemment vu cet indicatif appelant CQ, son logiciel peut mapper le hachage
+                    retour
+                    à l'indicatif d'origine. Sinon, il sera affiché comme<code>&lt;...&gt;</code>. C'est beaucoup
+                    plus difficile de réaliser des QSO lorsque votre indicatif n'est pas standard.</li>
+<li><strong>Texte de secours libre</strong>: Certains messages peuvent être forcés dans le texte libre de 13 caractères
+                    format, moins robuste que les messages structurés standards.</li>
+<li><strong>Indicatifs non standard</strong>: Si deux stations utilisent toutes deux des signaux très longs et non standard
+                    indicatifs d'appel, ils peuvent être fondamentalement incapables de communiquer entre eux en utilisant le numérique FT8
+                    mode.</li>
+<li><strong>Sauter une étape</strong>: Si les indicatifs sont trop longs, le protocole risque de ne pas pouvoir s'adapter
+                    rapports de signaux (<span translate="no">stages 3/6 and 4/6</span>). Dans ces
+                    Dans certains cas, l'échange peut passer directement du
+                    initiale <span translate="no">CALL (2/6)</span> aux confirmations finales
+                    (<span translate="no">5/6 and 6/6</span>).</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="user-interface">
+<h2>Interface utilisateur qFT8</h2>
+<p>L'application qFT8 est divisée en trois parties :</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Overview" class="screen" height="1080" src="../overview.jpg" width="2280"/>
+</div>
+<ol>
+<li><strong>La barre inférieure</strong>: Toujours visible, pour superviser et contrôler la transmission et pour contrôler
+                    qFT8.</li>
+<li><strong>Le spectrogramme</strong>: Toujours visible, pour voir les messages décodés, voir <span translate="no">UTC</span> le temps en direct et
+                    Fréquence accordée et contrôle du décalage de fréquence de transmission.</li>
+<li><strong>La zone des onglets</strong>: Affiche un onglet sur trois
+                    (Gares,
+                    Connectez-vous, et
+                    Paramètres). Quel
+                    celui illustré ici peut être contrôlé avec les boutons situés dans la partie la plus à droite de la barre inférieure.</li>
+</ol>
+<p>Les sections suivantes décrivent tous ces composants en détail.</p>
+<h3 id="ui-bottom-bar">La barre inférieure</h3>
+<p>La barre inférieure affiche des informations importantes : l'état armé/désarmé de la transmission, si qFT8 est
+                transmission, la puissance de transmission, le rapport d'ondes stationnaires
+                (<span translate="no">SWR</span>), le message en cours de transmission, le
+                la séquence actuelle et sélectionnée, le sélecteur de bande et les boutons pour naviguer dans les différents onglets.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Bottom bar" class="screen" height="1080" src="../bottombar.jpg" width="2280"/>
+</div>
+<p>Voici les composants de la barre inférieure en détail :</p>
+<ol>
+<li><strong>La barre de progression du cycle</strong>: Le<span style="color: #ffff00; font-weight: bold;">jaune</span> la barre commence à 0 s dans le cycle
+                    (à l'extrême gauche)
+                    et
+                    se termine à 15 secondes dans le cycle (à l’extrême droite).</li>
+<li><strong>Le marqueur de déclenchement Tx</strong>: Le<span style="color: #ff5252; font-weight: bold;">rouge</span> le point dans la partie gauche de la barre indique
+                    le Tx
+                    temps de déclenchement. Si Tx est activé (voir élément n°4) et que la séquence actuelle est la séquence sélectionnée (voir élément
+                    #6)
+                    la transmission commence à ce stade.</li>
+<li><strong>Le marqueur de temps de décodage</strong>: Le<span style="color: #ffffff; font-weight: bold;">blanc</span> point à droite de la barre
+                    indique le
+                    temps de décodage, c'est-à-dire lorsque les messages sont décodés à partir des signaux reçus puis traités.</li>
+<li><strong>Le bouton TX</strong>: Peut être désarmé
+                    (<span translate="no">OFF</span>) ou armé
+                    (<span translate="no">ON</span>). Il indique également quand la transmission
+                    se passe,
+                    et la puissance d'émission et <span translate="no">SWR</span>.
+                </li>
+<li><strong>Le sélecteur de messages</strong>: Affiche le message sélectionné pour être envoyé ou en cours d'envoi (si
+                    c'est le cas, souligné dans<span style="color: #ff5252; font-weight: bold;">rouge</span>). Dans <span translate="no">AUTO</span> mode, il est géré automatiquement. Dans <span translate="no">CALL</span> c'est le mode
+                    également géré automatiquement par défaut, mais il peut être tapé dessus pour sélectionner le prochain message à envoyer
+                    manuellement.</li>
+<li><strong>Le sélecteur de séquence</strong>: Le<span style="color: #ffff00; font-weight: bold;">jaune</span> La ligne au-dessus des boutons indique le
+                    courant
+                    séquence (0 ou 1). En appuyant sur 0 ou 1, vous sélectionnez cette séquence pour les transmissions sortantes.</li>
+<li><strong>Le sélecteur de bande</strong>: Lorsqu'un émetteur-récepteur est connecté, il change la bande dans le
+                    émetteur-récepteur.</li>
+<li><strong>Le bouton de l'onglet Stations</strong>: Ouvre l'onglet qui répertorie toutes les stations que vous avez entendues ou
+                    peut communiquer avec.</li>
+<li><strong>Le bouton de l'onglet Journal</strong>: Ouvre l'onglet qui répertorie tous les <span translate="no">QSO</span> vous avez fait. Ce bouton sera marqué
+                    avec un point jaune si vous avez des QSO qui ne sont pas téléchargés sur QRZ.</li>
+<li><strong>Le bouton de l'onglet Paramètres</strong>: Ouvre l'onglet pour configurer qFT8.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="ui-spectrogram">Le spectrogramme</h3>
+<p>Le spectrogramme montre une vue de pointe et la cascade avec les signaux et messages entrants, les signaux sortants
+                et messages, marqueurs de changement de séquence annotés avec <span translate="no">UTC</span> temps et heure pour décoder, et le
+                fréquence de décalage sélectionnée pour la transmission.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Spectrogram" class="screen" height="1080" src="../spectrogram.jpg" width="2280"/>
+</div>
+<p>Voici les composants du spectrogramme en détail :</p>
+<ol>
+<li><strong>Vue sur la cascade</strong>: Affiche l'historique récent des signaux reçus au fil du temps.</li>
+<li><strong>Pics en temps réel</strong>: Afficher la force instantanée des signaux sur toute la fréquence
+                    gamme.</li>
+<li><strong>Séparateurs de séquence</strong>: Ces<span style="color: #ff5252; font-weight: bold;">rouge</span> les lignes horizontales agissent comme des séparateurs visuels
+                    de cycles,
+                    et sont annotés avec <span translate="no">UTC</span> le temps et <span translate="no">time</span> passé à décoder.</li>
+<li><strong>Décalage de fréquence sélectionné</strong>: Cette verticale<span style="color: #ffff00; font-weight: bold;">jaune</span> la superposition sur le spectrogramme indique
+                    le décalage de fréquence actuellement sélectionné pour la transmission.</li>
+<li><strong>Messages entrants</strong>, affiché en code couleur :<ul>
+<li><span style="color: #00ff00; font-weight: bold;">Vert</span>: Messages CQ.</li>
+<li><span style="color: #00ffff; font-weight: bold;">Cyan</span>: Messages entre autres
+                            gares.</li>
+<li><span style="color: #ffff00; font-weight: bold;">Jaune</span>: Vos messages transmis.</li>
+<li><span style="color: #ff9800; font-weight: bold;">Orange</span>: Messages entrants dirigés
+                            à toi.</li>
+</ul>
+</li>
+<li><strong>Actuel <span translate="no">UTC</span> le temps et
+                        séquence</strong>: Affiché au sommet de la cascade.</li>
+<li><strong>Fréquence et bande accordées</strong>: Fréquence et bande sur lesquelles l'émetteur-récepteur est actuellement réglé.</li>
+<li><strong>Axe de fréquence</strong>: Affiche l'échelle de fréquence en <span translate="no">Hz</span> dans la bande sélectionnée.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="ui-stations-tab">L'onglet Gares</h3>
+<p>L'onglet Stations est le centre de commande pour surveiller l'activité sur la bande et faire fonctionner qFT8. Il
+                comporte des commandes de filtrage et d’automatisation en haut, suivies d’une liste de stations actives.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations tab" class="screen" height="1080" src="../stations.jpg" width="2280"/>
+</div>
+<p>Voici les composants de l'onglet Stations en détail :</p>
+<ol>
+<li><strong><span translate="no">AUTO</span> bouton de mode d'appel</strong>:
+                    Engageant "<span translate="no">AUTO</span>"Je vais essayer d'appeler le meilleur
+                    gare selon
+                    aux critères sélectionnés par l'utilisateur.</li>
+<li><strong>Manuel <span translate="no">CALL</span> bouton de mode</strong>:
+                    Engageant "<span translate="no">CALL</span>" car une station insistera sur
+                    appeler ça
+                    station jusqu'à atteindre un <span translate="no">QSO</span>, alors tombera
+                    retour à "<span translate="no">AUTO</span>".</li>
+<li><strong>Cible</strong>: Définit les critères pour le mode AUTO :<ul>
+<li><strong><span translate="no">Anyone</span></strong>: N'importe quel indicatif
+                            que tu n'as pas de <span translate="no">QSO</span> pour encore.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Donner la priorité aux nouveaux
+                            pays/entités.</li>
+<li><strong><span translate="no">Grid</span></strong>: Donner la priorité aux nouveaux <span translate="no">Maidenhead</span> carrés de grille.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: Prioriser
+                            nouveau <span translate="no">ITU</span> zones.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: Prioriser
+                            nouveau <span translate="no">CQ</span> zones.</li>
+<li><strong><span translate="no">I/C/D/G</span></strong>: Prioriser
+                            d'abord <span translate="no">ITU</span> zone, alors <span translate="no">CQ</span> zone, alors <span translate="no">DXCC</span>, alors <span translate="no">Grid</span>.
+                        </li>
+<li><strong><span translate="no">Call CQ</span></strong>: Il suffit d'appeler
+                            CQ et répond à toute station qui appelle votre station.</li>
+</ul>Dans tous les cas, les stations répondant aux mêmes critères sont triées par force de signal. Par exemple,<span translate="no">Anyone</span> donnera la priorité aux nouveaux indicatifs en premier,
+                    mais parmi eux, les signaux les plus forts figureront en tête de liste.</li>
+<li><strong>Périodicité</strong>: À quelle fréquence contacter cette cible :<ul>
+<li><strong><span translate="no">once</span></strong>: Dans un
+                            vie.</li>
+<li><strong><span translate="no">daily</span></strong>: Une fois par <span translate="no">UTC</span> date.</li>
+<li><strong><span translate="no">weekly</span></strong>: Une fois tous les 7
+                            fenêtre glissante de jours.</li>
+<li><strong><span translate="no">monthly</span></strong>: Une fois tous les
+                            fenêtre glissante d’un mois.</li>
+<li><strong><span translate="no">yearly</span></strong>: Une fois tous les
+                            fenêtre glissante d’un an.</li>
+</ul>
+</li>
+<li><strong>Qualificatif</strong>: Comment ces contraintes s'appliquent :<ul>
+<li><span translate="no">per callsign or zone</span></li>
+<li><span translate="no">per band</span></li>
+<li><span translate="no">in different bands</span></li>
+<li><span translate="no">until zone confirmed</span></li>
+<li><span translate="no">per band + until zone confirmed</span></li>
+</ul>
+</li>
+<li><strong><span translate="no">Spy</span> mode</strong>: Lorsqu'il est activé, qFT8
+                    essaiera également d'appeler les stations que vous n'avez pas entendues appeler <span translate="no">CQ</span> encore (marqué comme <span translate="no">DIRECT</span>). C'est utile d'avoir plus de stations
+                    à portée de main et rejoignez les carambolages.</li>
+<li><strong><span translate="no">Busy</span> mode</strong>: Lorsqu'il est activé, qFT8
+                    essaiera également d'appeler les stations occupées
+                    dans un <span translate="no">QSO</span> avec quelqu'un d'autre (marqué comme <span translate="no">BUSY</span>). Ceci est utile pour rejoindre un carambolage.</li>
+<li><strong>+ bouton</strong>: Appelez manuellement n’importe quelle station arbitraire en saisissant son indicatif.</li>
+<li><strong>Informations sur la gare</strong>: Affiche l'état détaillé de chaque station décodée.</li>
+</ol>
+<p>Les entrées de station individuelles se composent de quatre lignes riches en informations :</p>
+<p><strong>La première rangée</strong>affiche les détails de la station (de gauche à droite) :</p>
+<ul>
+<li><strong><span translate="no">QSO Status</span></strong>: Indique votre <span translate="no">QSO</span> historique avec cette station (<span style="color: grey;">✗</span> = non <span translate="no">QSO</span>, ✓ = connecté
+                    localement,<span style="color: #FFD700; font-weight: bold;">★</span>= confirmé via QRZ ou LoTW).</li>
+<li><strong>Indicatif</strong>: L'indicatif de la station.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Le pays ou l'entité
+                    auquel appartient l'indicatif de cette station.</li>
+<li><strong>Cellule de grille</strong>: Le <span translate="no">Maidenhead</span> carré de grille que cette station rapporte.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: Le <span translate="no">CQ</span> zone à laquelle appartient l'indicatif de cette station.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: Le <span translate="no">ITU</span> zone à laquelle appartient l'indicatif de cette station.</li>
+<li><strong>Groupe</strong>: La bande sur laquelle la station a été entendue pour la dernière fois.</li>
+</ul>
+<p><strong>La deuxième rangée</strong>affiche l'état de la communication (de gauche à droite) :</p>
+<ul>
+<li><strong>État</strong>: Phase actuelle de communication :<ul>
+<li><span style="color: #cd853f; font-weight: bold;"><span translate="no">DIRECT</span>:
+                            Entendu et apparemment libre
+                            en ce moment,
+                            mais je n'ai jamais appelé <span translate="no">CQ</span>.</li>
+<li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/6
+                                CQ</span>: J'ai entendu un appel <span translate="no">CQ</span> et
+                            apparemment libre en ce moment.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/6
+                                CALL</span>: Je vous ai appelé.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/6
+                                RPT</span>: Vous a envoyé un rapport de signal.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">4/6
+                                RRPT</span>: Vous avez répondu à votre
+                            rapport avec les leurs.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6
+                                RR73</span>: Confirmé votre rapport
+                            avec <span translate="no">RR73</span>.</li>
+<li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6
+                                DONE</span>:
+                            <span translate="no">QSO</span> terminé (73
+                            échangé).</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>:
+                            Pas entendu dans les deux derniers
+                            de cycles.</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO
+                                LONG</span>: Votre indicatif et leur
+                            les indicatifs sont trop longs ensemble pour établir une communication, par <span translate="no">FT8</span> limites du mode numérique.</li>
+</ul>
+</li>
+<li><strong>Force du signal</strong>: Force en <span translate="no">dB</span>(affiche "????" s'il n'a pas été entendu récemment).</li>
+<li><strong>Séquence</strong>: La dernière séquence dans laquelle cette station a été entendue émettre (0 ou 1).</li>
+<li><strong>Temps delta (Δt)</strong>: Décalage de synchronisation horaire en secondes entre leur heure et
+                    le vôtre.</li>
+<li><strong>Distance</strong>: Distance estimée entre leurs cellules de grille et celles de votre station.</li>
+</ul>
+<p><strong>Les troisième et quatrième rangées</strong>afficher les derniers messages transmis et les derniers messages reçus,
+                y compris <span translate="no">UTC</span> le temps, le décalage de fréquence et le
+                texte du message (préfixé par <span translate="no">Rx:</span> ou <span translate="no">Tx:</span>).
+            </p>
+<p>Indicateurs visuels clés à surveiller :</p>
+<ul>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Rouge</span> Indicatif</strong>:
+                    <span translate="no">AUTO</span> le mode a
+                    a dépassé la limite de nouvelles tentatives pour cette station. Ce sera
+                    temporairement ignoré sauf si vous cliquez sur "<span translate="no">CALL</span>" à
+                    réinitialisez-le manuellement.</li>
+<li><strong><span style="color: #aaaaaa; font-weight: bold;">Gris</span> Indicatif</strong>:
+                    L'indicatif correspond à votre paramètre de préfixes exclus séparés par des virgules.<span translate="no">AUTO</span> Le mode ne ciblera jamais cette station.</li>
+<li><strong><span style="color: #e040fb; font-weight: bold;">Violet</span> Zone en surbrillance</strong>:
+                    Cette zone/entité
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">CQ
+                    zone</span>, <span translate="no">ITU zone</span>)
+                    est un
+                    Cible nécessaire compte tenu de vos filtres actuels.</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Rouge</span> Numéro de séquence</strong>: Le
+                    la station est sur la même séquence que vous avez sélectionnée, provoquant
+                    un affrontement. En appuyant sur "<span translate="no">CALL</span>" sera automatiquement
+                    changez votre séquence.</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Rouge</span> Groupe</strong>: La station était
+                    entendu pour la dernière fois sur un autre groupe.</li>
+</ul>
+<p>Les stations sont automatiquement triées par pertinence. Changer vos critères ou contraintes cibles
+                retriez immédiatement la liste.</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="ui-log-tab">L'onglet Journal</h3>
+<p>L'onglet Journal affiche les QSO réalisés.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log tab" class="screen" height="1080" src="../log.jpg" width="2280"/>
+</div>
+<p>Voici les composants de l'onglet Journal en détail :</p>
+<ol>
+<li><strong>Filtre de texte d'indicatif</strong>: Un filtre pour les QSO selon que l'indicatif contient ou non le
+                    texte saisi.</li>
+<li><strong>Filtre d'état</strong>: Un filtre pour les QSO qui montre :<ul>
+<li><span translate="no">All</span>: Affiche tous les QSO enregistrés.</li>
+<li><span translate="no">Confirmed</span>: Affiche uniquement les QSO qui ont
+                            été confirmée.</li>
+<li><span translate="no">Not confirmed</span>: Affiche les QSO qui ne le sont pas
+                            encore confirmé.</li>
+<li><span translate="no">Not uploaded</span>: Affiche les QSO qui ne l'ont pas été
+                            été téléchargé sur QRZ.</li>
+<li><span translate="no">Duplicated</span>: Affiche les QSO que QRZ
+                            reconnaît comme des doublons.</li>
+<li><span translate="no">Rejected</span>: Affiche les QSO qui ont été
+                            rejeté par l'autre station de QRZ.</li>
+<li><span translate="no">Wrong Callsign</span>: Affiche les QSO enregistrés
+                            avec un indicatif différent de celui actuellement configuré.</li>
+<li><span translate="no">Non FT8</span>: Affiche les QSO enregistrés pour un
+                            mode autre que FT8.</li>
+</ul>
+</li>
+<li><strong>Filtre de limite récente</strong>: Un filtre qui affiche uniquement les 100 QSO les plus récents avec le
+                    critères donnés.</li>
+<li><strong>La liste des QSO</strong>: affiche les entrées du journal avec les colonnes suivantes (de gauche à
+                    à droite) :<ul>
+<li><strong><span translate="no">QRZ</span></strong>: Indique
+                            votre historique avec cette station :<ul>
+<li><strong><span style="color: grey;">✗</span></strong>: Non <span translate="no">QSO</span> enregistrements.</li>
+<li><span style="color: grey; font-weight: bold;">✓</span>: Connecté localement / En attente
+                                    télécharger.</li>
+<li><span style="color: #00ff00; font-weight: bold;">✓</span>: Téléchargé sur <span translate="no">QRZ</span>.
+                                </li>
+<li><span style="color: #FFD700; font-weight: bold;">★</span>: Confirmé sur QRZ ou LoTW
+                                    (pour les QSO téléchargés via QRZ).</li>
+<span translate="no">QRZ</span> ou
+                                manuellement.</ul></li>
+<li><span style="color: #00ffff; font-weight: bold;">🛸</span>:
+                            Non-<span translate="no">FT8</span> mode.</li>
+<li><span style="color: #00ff00; font-weight: bold;">♻️</span>: Signalé comme doublon par <span translate="no">QRZ</span>.
+                        </li>
+<li><span style="color: grey; font-weight: bold;">❕</span>: Incompatibilité d'indicatif d'appel de station,
+                            déjà téléchargé.</li>
+<li><span style="color: #ff9800; font-weight: bold;">⚠️</span>: Indicatif de la station
+                            incompatibilité, non téléchargé.</li>
+<li><span style="color: #ff5252; font-weight: bold;">⛔</span>: Statut rejeté.</li>
+</ul>
+</li>
+<li><strong><span translate="no">Callsign</span></strong>: Le
+                    l'indicatif de la station.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Le pays ou
+                    entité à laquelle appartient l'indicatif de cette station.</li>
+<li><strong><span translate="no">Grid cell</span></strong>: Le
+                    Carré de grille de Maidenhead que rapporte cette station.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: La zone CQ
+                    auquel appartient l'indicatif de cette station.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: L'UIT
+                    zone à laquelle appartient l'indicatif de cette station.</li>
+<li><strong><span translate="no">Band</span></strong>: Le groupe sur
+                    laquelle la station a été entendue pour la dernière fois.</li>
+
+
+</ol>
+<p>Indicateurs visuels clés à surveiller :</p>
+<ul>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Jaune</span> note sous l'indicatif</strong>:
+                    Ce QSO est destiné à une station différente de celle
+                    configuré.</li>
+<li><strong><span style="color: #00ffff; font-weight: bold;">Cyan</span> note sous l'indicatif</strong>:
+                    Ce QSO est dans un mode autre que FT8.</li>
+<li><strong><span style="color: #00ff00; font-weight: bold;">Vert</span> Zone en surbrillance</strong>
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>) :
+                    C'était le premier
+                    QSO non confirmé dans votre log pour cette zone.</li>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Jaune</span> Zone en surbrillance</strong>
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>) :
+                    C'était le premier
+                    QSO confirmé dans votre log pour cette zone.</li>
+</ul>
+<p><strong>Modification des QSO</strong>: en appuyant sur n'importe quel <span translate="no">QSO</span> dans la liste ouvrira une invite qui permettra manuellement
+                marquer un <span translate="no">QSO</span> comme confirmé/non confirmé localement dans
+                qFT8, ou en supprimant un <span translate="no">QSO</span> localement dans qFT8.<strong>Notez que ces actions sont uniquement locales et ne sont pas synchronisées avec <span translate="no">QRZ</span>.</strong>Supprimer un <span translate="no">QSO</span> dans le
+                l'application est irréversible, sauf si vous conservez une copie exportée du fichier journal ou s'il a été téléchargé sur <span translate="no">QRZ</span>.
+            </p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+<h3 id="ui-settings-tab">L'onglet Paramètres</h3>
+<p>L'onglet Paramètres permet la configuration de qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings tab" class="screen" height="1080" src="../settings.jpg" width="2280"/>
+</div>
+<p>L'onglet Paramètres est organisé selon les sections suivantes :</p>
+<h4>Paramètres de base</h4>
+<ul>
+<li><strong><span translate="no">Callsign</span></strong>: Votre radioamateur
+                    indicatif. Ceci est obligatoire et doit correspondre à celui de
+                    votre licence et vous devez vous conformer à toutes les réglementations et limitations afin de transmettre.</li>
+<li><strong><span translate="no">CQ modifier</span></strong>: Texte facultatif
+                    qui sera annexé à votre <span translate="no">CQ</span> appelle, souvent
+                    utilisé pour
+                    événements (par exemple, "<span translate="no">SOTA</span>").
+                </li>
+<li><strong>Décalage horaire</strong>: Utilisé pour synchroniser l'horloge de votre appareil avec d'autres stations. qFT8
+                    le synchronise automatiquement au démarrage si une connexion Internet est disponible. Vous pouvez également
+                    déclencher manuellement une synchronisation en appuyant sur la touche<strong><span translate="no">SYNC</span></strong>bouton.</li>
+<li><strong>Emplacement (<span translate="no">Maidenhead</span> grille)</strong>: Un
+                    représentation grossière de l'emplacement de votre station.
+                    Celui-ci peut être automatiquement mis à jour au démarrage à l'aide de celui de votre téléphone.<span translate="no">GPS</span> si le "Mise à jour au démarrage"
+                    la case à cocher est activée. Vous pouvez également mettre à jour manuellement votre position à tout moment en appuyant sur le bouton<strong><span translate="no">GPS</span></strong>bouton.</li>
+</ul>
+<h4>Automatisation de la localisation des stations</h4>
+<p>Des détails tels que<strong>Zone UIT</strong>, <strong>Zone CQ</strong>, et<strong>Nom de la station</strong>sont automatiquement déterminés à partir de votre indicatif. Aucune configuration manuelle n'est requise pour ces champs,
+                en vous assurant que vos téléchargements LoTW correspondent toujours à vos informations de licence.</p>
+<h4>Stratégie de synchronisation des journaux</h4>
+<p>Cette section définit la stratégie utilisée pour déterminer quand un QSO est considéré
+                téléchargé (coche verte<span style="color: #4CAF50;">✓</span>) et quand il le faut
+                afficher une étoile de confirmation (<span style="color: #FFD700;">★</span>).
+            </p>
+<ul>
+<li><strong>N'importe lequel de <span translate="no">LoTW</span> et <span translate="no">QRZ</span></strong>: Une bonne valeur par défaut si vous n'avez configuré qu'un seul des services.</li>
+<li><strong>Les deux</strong>: Sélectionnez ceci pour une sécurité maximale, nécessitant le <span translate="no">QSO</span> être envoyé avec succès aux deux services avant d'être considéré comme finalisé et prêt à être vérifié pour confirmation.</li>
+<li><strong><span translate="no">QRZ</span>(sauf importé de <span translate="no">LoTW</span>)</strong>: Recommandé si <span translate="no">QRZ</span> est votre journal de bord principal.<em>Note:<span translate="no">QSOs</span> importé de <span translate="no">LoTW</span> sont marqués comme synchronisés mais non téléchargés vers <span translate="no">QRZ</span> pour éviter les limites de l'API (qui autorisent uniquement les téléchargements un par un) ; ceux-ci peuvent être synchronisés dans <span translate="no">QRZ</span> lui-même plus tard.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Recommandé si vous considérez <span translate="no">LoTW</span> votre principale source de vérité.</li>
+</ul>
+<h4>Synchronisation QRZ</h4>
+<p>Cette section gère l'intégration avec le <span translate="no">QRZ.com</span> Registre.<strong>Notez que QRZ est un service d'abonnement payant</strong>; si vous préférez une alternative gratuite, consultez le<a href="#lotw-integration">Synchronisation LoTW</a>section ci-dessous.
+                Pour activer l'intégration QRZ, vous devez fournir votre<strong>Clé API QRZ</strong>, que l'on peut trouver
+                sur le<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">page officielle de l'API du journal QRZ</a>.
+                Presse<strong>VALIDER</strong>pour vérifier votre clé et l'état de votre abonnement.</p>
+<ul>
+<li><strong>Bouton Importer</strong>: Option d'importation <span translate="no">QSOs</span> de votre <span translate="no">QRZ</span> registre.</li>
+<li><strong>Comportement automatique</strong>: Configurez si et quand votre <span translate="no">QSOs</span> sont automatiquement téléchargés
+                    à <span translate="no">QRZ</span> et vérifié pour confirmation.</li>
+</ul>
+<h4>Synchronisation LoTW</h4>
+<p>Cette section gère l'intégration avec le <span translate="no">ARRL Logbook of the World
+                (LoTW)</span>. Pour débloquer toutes les fonctionnalités, vous devez fournir quatre conditions spécifiques :
+                votre<strong>Nom d'utilisateur LoTW</strong>, ton<strong>Mot de passe LoTW</strong>(utilisé pour la connexion au site Web),
+                un<strong>.p12 Certificat TQSL</strong>fichier, et le<strong>Mot de passe du certificat</strong>(qui peut être vide).
+                Pour obtenir de l'aide concernant les certificats, reportez-vous au<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">page d'aide officielle de LoTW</a>.
+            </p>
+<ul>
+<li><strong>Bouton Importer</strong>: Option d'importation <span translate="no">QSOs</span> depuis <span translate="no">LoTW</span>.
+                </li>
+<li><strong>Comportement automatique</strong>: Configurez si <span translate="no">qFT8</span> vérifie automatiquement les confirmations sur <span translate="no">LoTW</span>.
+                </li>
+<li><strong>Gestion des certificats</strong>: Chargez votre <span translate="no">.p12</span> Certificat TQSL et entrez son mot de passe
+                    pour permettre<strong>téléchargements automatiques en arrière-plan</strong>. Presse<strong>VALIDER</strong>pour assurer
+                    toutes les informations d'identification et le certificat fonctionnent correctement.</li>
+</ul>
+<h4>Importation de fichiers ADIF</h4>
+<p>Vous permet d'importer des journaux existants à partir de fichiers standard « .adi ».</p>
+<h4>Exportation de fichiers ADIF</h4>
+<p>Vous permet d'exporter votre journal vers un <span translate="no">.adi</span> déposer. Vous
+                peut choisir d'exporter le journal complet ou une heure précise
+                gamme. Les options de filtrage permettent d'exporter tout <span translate="no">QSOs</span>,
+                uniquement ceux confirmés (utiles pour les demandes de récompense), ou
+                seulement ceux qui ne sont pas encore téléchargés sur <span translate="no">QRZ</span>(pour le manuel
+                téléchargement). Vous pouvez également ajouter un<strong>Sommets en direct (<span translate="no">SOTA</span>)</strong>référence ou un<strong>Parcs en direct
+                    (<span translate="no">POTA</span>)</strong>référence à l'exportation pour soumission à <span translate="no">SOTAData</span> ou <span translate="no">POTA</span>.
+            </p>
+<h4>Traqueur de gare</h4>
+<p>Cette section permet de configurer quand nettoyer automatiquement les stations à partir de l'onglet Stations.</p>
+<h4>Mode AUTO</h4>
+<p>Cette section permet de configurer le comportement de la logique d'automatisation, y compris le nombre de nouvelles tentatives.
+                appels avec un seul poste. Vous pouvez également spécifier une liste de préfixes à exclure, séparés par des virgules ;
+                Le mode AUTO ne ciblera jamais les stations dont les indicatifs commencent par ces préfixes.</p>
+<h4><span translate="no">FT8 Settings</span></h4>
+<p>Cette section permet d'affiner l'algorithme de décodage
+                (<span translate="no">Fast</span> contre.<span translate="no">Deep</span>), ajuster le décodage et <span translate="no">Start Tx</span> timing et définir <span translate="no">PTT</span> retards pour assurer votre
+                transitions d'émetteur-récepteur
+                correctement entre la réception et la transmission. Vous pouvez également activer la mise à l'échelle automatique du volume système pour le
+                émetteur-récepteur.</p>
+<h4>Paramètres de bande</h4>
+<p>Cette section permet de configurer la façon dont qFT8 gère les informations de bande. Vous pouvez définir si qFT8 et le
+                L'émetteur-récepteur doit automatiquement échanger les informations sur la bande sélectionnée lors de la connexion. Cette section permet également
+                vous pouvez personnaliser les bandes qui apparaissent dans le sélecteur de la barre inférieure.</p>
+<h4>Serveur Web de contrôle à distance</h4>
+<p>Cette section permet de configurer le serveur Web intégré pour le contrôle à distance. Pour plus de détails, consultez le<a href="#remote-control">Serveur Web de contrôle à distance</a>section ci-dessous.</p>
+<h4>Journaliste PSK</h4>
+<p>Cette section fournit un lien direct vers <span translate="no">PSKReporter</span>, pré-rempli avec votre indicatif, où
+                tu peux voir
+                quelles stations ont reçu vos transmissions au cours des 6 dernières heures.<strong>Note:</strong>qFT8 permet uniquement de visualiser vos propres spots ; ça ne se fait pas automatiquement
+                signaler les spots d'autres stations à <span translate="no">PSK Reporter</span>.
+            </p>
+<h4>Supprimer les QSO</h4>
+<p>Cette section permet de supprimer les QSO de qFT8.<strong>Surtout, cela n'affecte que le journal qFT8 local
+                    et n'a pas d'impact sur les enregistrements déjà téléchargés sur QRZ.com.</strong>
+</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="auto-mode">
+<h2>Fonctionnement automatisé (AUTO)</h2>
+<p>
+<strong><span translate="no">AUTO mode</span></strong>est le principal moyen de
+                utilisez qFT8. Dans ce mode, l'application automatiquement
+                analyse les messages décodés à la fin de chaque cycle et sélectionne la station la plus pertinente à contacter
+                en fonction de vos critères cibles.</p>
+<h3>Comment fonctionne la sélection des cibles</h3>
+<p>Le<strong>Onglet Gares</strong>affiche une liste des stations actives, triées de telle sorte que les plus pertinentes
+                les candidats (en fonction de vos critères) apparaissent en haut. À la fin de chaque cycle de décodage, qFT8 examine
+                cette liste triée et tente d'appeler la première station éligible. Si aucune cible éligible n'est trouvée, il
+                commencera automatiquement à appeler<strong>QC</strong>pour attirer les appelants. qFT8 répond toujours aux appels entrants
+                Mode AUTO.</p>
+<h3>Critères et filtres</h3>
+<p>Vous pouvez affiner l'automatisation à l'aide des trois menus déroulants en haut de l'onglet Stations :</p>
+<ul>
+<li><strong>Cible</strong>: Définit la « réalisation » que vous recherchez
+                    (<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>, <span translate="no">CQ
+                    Zone</span>, <span translate="no">ITU Zone</span>,
+                    <span translate="no">Grid</span>).
+                </li>
+<li><strong>Intervalle</strong>: À quelle fréquence êtes-vous prêt à contacter la même entité
+                    (<span translate="no">Once</span>,
+                    <span translate="no">Always</span>,
+                    <span translate="no">Daily</span>,
+                    <span translate="no">Weekly</span>,
+                    <span translate="no">Monthly</span>).
+                </li>
+<li><strong>Qualificatif</strong>: Affinez l'exigence d'unicité (<span translate="no">Per
+                    callsign</span>, <span translate="no">Per
+                    band</span>, <span translate="no">Until zone/entity
+                    confirmed</span>).</li>
+</ul>
+<div class="highlight">
+<p><strong>Remplacement manuel :</strong>Vous pouvez toujours intervenir manuellement en appuyant sur le<strong><span translate="no">CALL</span></strong>bouton pour un
+                    gare. Ceci entre<a href="#call-mode"><span translate="no">CALL
+                        mode</span></a>pour ce spécifique <span translate="no">QSO</span>. Une fois terminé, qFT8
+                    retombe de manière transparente dans <span translate="no">AUTO</span> mode.</p>
+</div>
+<h3>Mécanisme de nouvelle tentative</h3>
+<p>Pour empêcher qFT8 d'appeler indéfiniment une station qui ne répond pas, qFT8 propose une nouvelle tentative et une interdiction intégrées.
+                système, activé par défaut. Vous pouvez les configurer dans l'onglet Paramètres sous<strong>Réessayer
+                    Logique</strong>:
+            </p>
+<ul>
+<li><strong>Limite de tentatives</strong>: Le nombre maximum de fois où qFT8 répétera une étape de transmission pendant
+                    une station qui ne répond pas.</li>
+<li><strong>Fenêtre Réessayer</strong>: La période de temps pendant laquelle ces tentatives sont comptabilisées.</li>
+<li><strong>Réessayer le temps de recharge</strong>: Si la limite est atteinte, la station est "Bannie" pour cette durée.
+                    Le mode AUTO ignorera les stations interdites jusqu'à ce que le temps de recharge expire ou que la station réponde.</li>
+</ul>
+<h3>Exemples de configurations optimisées</h3>
+<p>Voici quelques combinaisons de critères recommandées pour des objectifs communs :</p>
+<table>
+<thead>
+<tr>
+<th>But</th>
+<th>Cible</th>
+<th>Intervalle</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximiser les stations uniques</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Maximiser les stations uniques par bande</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Maximiser l'unicité <span translate="no">DXCC</span> entités</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Maximiser l'unicité <span translate="no">DXCC</span> par bande</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Maximiser confirmé <span translate="no">DXCC</span> entités</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Maximiser confirmé <span translate="no">DXCC</span> par bande</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Collectionnez des pièces uniques <span translate="no">Grids</span> par bande</td>
+<td><span translate="no">Grid</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Travaillez toutes les zones
+                            (<span translate="no">CQ</span>/<span translate="no">ITU</span>)
+                        </td>
+<td><span translate="no">I/C/D/G</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Concours : Stations uniques sur différentes bandes</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Concours : Points pour la même station à des jours différents</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Daily</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+</tbody>
+</table>
+<p>Notez que dans tous ces cas, vous pouvez activer<strong>Espionner</strong>et<strong>Occupé</strong>tendre la main
+                à plus
+                gares et entrez dans leurs carambolages.</p>
+<p><strong>Note:</strong>Si votre indicatif n'est pas standard (par exemple avec des suffixes ou des préfixes séparés par "/"),
+                indicatifs longs ou autres indicatifs avec des numéros dans des positions rares), vous souhaiterez probablement définir Target sur<strong><span translate="no">Call CQ</span></strong>comme votre indicatif le fera
+                sera probablement envoyé haché et seules les stations qui vous ont vu appeler CQ pourront mapper le hachage vers
+                votre indicatif. Vous pouvez toujours appeler des stations, mais elles mapperont le message à votre indicatif d'appel uniquement si elles
+                récemment entendu vous appeler CQ.</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="call-mode">
+<h2>Fonctionnement manuel (APPEL)</h2>
+<p>Bien que qFT8 soit hautement automatisé, vous pouvez prendre le contrôle à tout moment. En appuyant sur le<strong>APPEL</strong>bouton
+                à côté de n'importe quelle station dans l'onglet Stations entrera immédiatement<strong>Mode APPEL</strong>et tenter de
+                établir un QSO avec cette station spécifique.</p>
+<p>Une fois le QSO pour la cible manuelle terminé (avec succès ou non), qFT8 se lancera automatiquement<strong>retour au mode AUTO</strong>et reprenez votre stratégie automatisée précédente (par exemple, appeler CQ).</p>
+<h3>Calendrier pour les opérateurs manuels</h3>
+<p>Si vous estimez que vous aimeriez avoir plus de temps à la fin du cycle pour prendre des décisions manuelles, vous pouvez obtenir
+                plus de marge en ajustant le<strong>Paramètres FT8</strong>dans l'onglet Paramètres :</p>
+<ul>
+<li><strong>Diminuer "<span translate="no">Start decoding
+                        time</span>"</strong>: Commence le traitement de l'audio plus tôt.</li>
+<li><strong>Augmenter "<span translate="no">Start transmission
+                        time</span>"</strong>: Retarde l’apparition de votre réponse.</li>
+</ul>
+<div class="highlight">
+<p><strong>Avertissement:</strong>Un ajustement agressif de ces valeurs dans les marges peut rendre votre
+                    les messages sont beaucoup plus difficiles à décoder pour les autres stations, car vous réduisez le temps effectif
+                    disponible pour le signal FT8 réel dans la fenêtre de synchronisation.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="adif-import-export">
+<h2>Importation/Exportation ADIF</h2>
+<p>
+<span translate="no">qFT8</span> prend en charge la norme <span translate="no">ADIF</span>(Format d'échange de données amateur) pour
+                interopérabilité avec d'autres
+                journalisation
+                logiciels, services cloud et pour les sauvegardes manuelles.</p>
+<h3>Importer des QSO</h3>
+<p>La fonction d'importation vous permet d'importer des enregistrements provenant d'autres sources (comme WSJT-X ou des sauvegardes d'autres sources).
+                appareils) dans votre journal qFT8 local.</p>
+<ul>
+<li><strong>Options de filtrage</strong>: Vous pouvez choisir d'importer uniquement <span translate="no">FT8</span> enregistrements ou tous les modes,
+                    et s'il faut restreindre l'importation à votre indicatif actuel ou inclure tous les opérateurs.</li>
+<li><strong>Déduplication automatique</strong>: <span translate="no">qFT8</span> fusionne intelligemment les enregistrements. Cela évite les doublons
+                    en faisant correspondre <span translate="no">QRZ Log IDs</span> et <span translate="no">QSO</span> horodatages. Si un enregistrement importé possède un
+                    statut confirmé ou valide <span translate="no">Log ID</span> que votre dossier local est manquant,
+                    entrée par
+                    le mettre à jour avec les meilleures données.</li>
+</ul>
+<h3>Exporter des QSO</h3>
+<p>Tapotement<strong><span translate="no">EXPORT QSOs</span></strong>génère un <span translate="no">ADIF 3.1.6</span> fichier et ouvre la feuille de partage du système,
+                vous permettant d'enregistrer le journal sur votre appareil ou de l'envoyer par e-mail/messagerie.</p>
+<ul>
+<li><strong>Plage de temps</strong>: Vous pouvez exporter l'intégralité de votre historique ou utiliser le <span translate="no">UTC</span> sélecteurs de date/heure pour
+                    isoler une période d'activation ou de concours spécifique.</li>
+<li><strong>Filtres d'état</strong>: Utile pour réclamer des récompenses (exportation<strong>"<span translate="no">Confirmed
+                        Only</span>"</strong>)
+                    ou pour des téléchargements manuels vers d'autres services (exportation<strong>"<span translate="no">Not Uploaded to
+                        QRZ</span>"</strong>éviter
+                    doublons).</li>
+<li><strong><span translate="no">SOTA</span> référence</strong>: Comme détaillé
+                    dans le<a href="#sota"><span translate="no">SOTA</span> section</a>,
+                    <span translate="no">qFT8</span> peut
+                    injecter automatiquement la référence du sommet dans le<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>domaine de
+                    chaque enregistrement exporté.</li>
+<li><strong><span translate="no">POTA</span> référence</strong>: Comme détaillé
+                    dans le<a href="#pota"><span translate="no">POTA</span> section</a>,
+                    <span translate="no">qFT8</span> peut
+                    injecter automatiquement la référence de parc dans le<code>&lt;<span translate="no">MY_SIG</span>&gt;</code>,
+                    <code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>, et<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>domaines de
+                    chaque enregistrement exporté.</li>
+</ul>
+<div class="highlight">
+<p><strong>Note:</strong>Pour les journaux très volumineux (plus de 100 Ko), qFT8 affichera un avertissement comme
+                    Le processus de déduplication et de tri peut prendre quelques instants sur votre appareil mobile.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="qrz-integration">
+<h2>Intégration QRZ</h2>
+<p>
+<span translate="no">qFT8</span> offre une intégration profonde avec<a href="https://www.qrz.com" target="_blank"><span translate="no">QRZ.com</span></a>pour garder ton
+                journal de bord automatiquement synchronisé.<strong>Notez que l'intégration QRZ est un service d'abonnement</strong>cela nécessite un<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span> abonnement payant</a>
+                (<span translate="no">XML Logbook Data</span> ou supérieur).
+                Si vous préférez une alternative gratuite, pensez à utiliser<a href="#lotw-integration">Intégration LoTW</a>, qui est fourni gratuitement par l’ARRL.</p>
+<h3>Comment ça marche</h3>
+<p>Pour activer l'intégration QRZ, vous devez fournir votre<strong>Clé API QRZ</strong>dans l'onglet paramètres.
+                Vous pouvez trouver votre clé API sur le<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">page officielle de l'API du journal QRZ</a>.
+                Une fois entré et<strong><span translate="no">VALIDATED</span></strong>,
+                vous pouvez activer "<span translate="no">Upload QSOs to QRZ</span>" pour la gestion automatique de l'arrière-plan.</p>
+<ul>
+<li><strong>Téléchargements automatiques</strong>: Chaque fois qu'un <span translate="no">QSO</span> est terminé (atteint avec succès le <span translate="no">6/6
+                    DONE</span> État),<span translate="no">qFT8</span> tente immédiatement de le télécharger
+                    à votre <span translate="no">QRZ</span> registre.</li>
+<li><strong>Fiabilité de fond</strong>: Si un téléchargement échoue (par exemple, en raison d'une absence de connexion Internet ou
+                    délais d'attente du serveur), qFT8 n'abandonne pas. Un travailleur de fond<strong>la nouvelle tentative automatique a échoué
+                        téléchargements toutes les 5 minutes</strong>. Ce processus est silencieux et garantit que votre journal parviendra finalement
+                    le cloud une fois la connectivité rétablie.</li>
+<li><strong>Saut intelligent</strong>: <span translate="no">qFT8</span> protège
+                    l'intégrité de votre journal de bord en téléchargeant uniquement <span translate="no">QSOs</span> que
+                    correspondre à votre indicatif configuré actuel et au <span translate="no">FT8</span> mode.<span translate="no">Non-FT8</span> entrées,<span translate="no">QSOs</span> pour différent
+                    les indicatifs d'appel, ou<strong>QSO importés de <span translate="no">LoTW</span></strong>sont automatiquement ignorés
+                    empêcher les requêtes API excessives.</li>
+</ul>
+<h3>Confirmations de synchronisation</h3>
+<p>L'intégration va au-delà du simple téléchargement.<span translate="no">qFT8</span> aussi des sondages <span translate="no">QRZ</span> pour voir si votre <span translate="no">QSOs</span> ont été confirmés.</p>
+<ul>
+<li><strong>Vérification immédiate</strong>: 30 secondes après un <span translate="no">QSO</span> est terminé et téléchargé,<span translate="no">qFT8</span> je vais vérifier
+                    de retour avec <span translate="no">QRZ</span> pour voir si l'autre station a
+                    a également téléchargé le <span translate="no">QSO</span>; s'ils l'ont fait, le <span translate="no">QSO</span> va
+                    être synchronisé comme<strong>confirmé</strong>immédiatement.</li>
+<li><strong>Synchronisation automatique</strong>: Par défaut,<span translate="no">qFT8</span> requêtes <span translate="no">QRZ</span> toutes les 6 heures (configurable) dans
+                    lots de 250 <span translate="no">QSOs</span> à la fois, en tournant
+                    à travers l'intégralité de votre journal non confirmé pour garantir que même
+                    plus âgé <span translate="no">QSOs</span> sont finalement vérifiés pour de nouveaux
+                    confirmations.</li>
+<li><strong>Étoile de confirmation (<span translate="no">★</span>)</strong>: Quand un
+                    Le QSO téléchargé sur QRZ est confirmé sur QRZ ou LoTW, il est mis en évidence par une étoile dorée. Vous pouvez
+                    confirmez également manuellement tout QSO pour afficher cet indicateur.</li>
+<span translate="no">QRZ</span> signale une confirmation, l'icône d'état dans
+                votre journal
+                l'onglet se transformera automatiquement en un<span style="color: #FFD700; font-weight: bold;">or</span> étoile.
+<li><strong>Synchronisation manuelle</strong>: Mises à jour des 250 moins récemment synchronisées <span translate="no">QSOs</span> peut aussi être
+                    déclenché manuellement dans les paramètres.</li>
+</ul>
+<div class="highlight">
+<p><strong>Conseil de pro :</strong>Vous pouvez voir la progression de la synchronisation dans les paramètres sous « Le plus ancien QSO synchronisé pour confirmation ». Il n'y a aucune urgence à maintenir cela à jour, car qFT8 s'en chargera au fil du temps.</p>
+</div>
+<h3 id="log-syncing-strategy">Stratégie de synchronisation des journaux</h3>
+<p>Dans les paramètres de synchronisation, vous pouvez choisir comment <span translate="no">qFT8</span> détermine si un <span translate="no">QSO</span> est "entièrement téléchargé" via le<strong>"Considérez un QSO téléchargé lorsqu'il est téléchargé vers :"</strong>option:</p>
+<ul>
+<li><strong>N'importe lequel de <span translate="no">LoTW</span> et <span translate="no">QRZ</span></strong>: Une bonne valeur par défaut si vous n'avez configuré qu'un seul des services.</li>
+<li><strong>Les deux</strong>: Sélectionnez ceci pour une sécurité maximale, nécessitant le <span translate="no">QSO</span> être envoyé avec succès aux deux services avant d'être considéré comme finalisé et prêt à être vérifié pour confirmation.</li>
+<li><strong><span translate="no">QRZ</span>(sauf importé de <span translate="no">LoTW</span>)</strong>: Recommandé si <span translate="no">QRZ</span> est votre journal de bord principal.<em>Note:<span translate="no">QSOs</span> importé de <span translate="no">LoTW</span> sont marqués comme synchronisés mais non téléchargés vers <span translate="no">QRZ</span> pour éviter les limites de l'API (qui autorisent uniquement les téléchargements un par un) ; ceux-ci peuvent être synchronisés dans <span translate="no">QRZ</span> lui-même plus tard.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Recommandé si vous considérez <span translate="no">LoTW</span> votre principale source de vérité.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="lotw-integration">
+<h2><span translate="no">Logbook of the World (LoTW)</span> Intégration</h2>
+<p>
+<span translate="no">qFT8</span> fournit une intégration robuste avec le<a href="https://lotw.arrl.org/" target="_blank"><span translate="no">ARRL Logbook of the World
+                    (LoTW)</span></a>.
+                Intégration avec <span translate="no">LoTW</span> est hautement
+                recommandé pour confirmer vos contacts et gagner des récompenses comme DXCC et WAS.</p>
+<h3>Exigences de configuration</h3>
+<p>Pour activer pleinement les fonctionnalités de LoTW, y compris les téléchargements automatiques et les vérifications de confirmation, vous devez fournir quatre informations spécifiques dans l'onglet Paramètres :</p>
+<ul>
+<li><strong>1. Nom d'utilisateur LoTW</strong>: Votre indicatif officiel utilisé pour le service LoTW.</li>
+<li><strong>2. Mot de passe LoTW</strong>: Le mot de passe que vous utilisez pour vous connecter au<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">Site Web de LoTW</a>. Ceci est différent du mot de passe du certificat.</li>
+<li><strong>3. .p12 Certificat TQSL</strong>: Un fichier de signature numérique exporté depuis le<strong><span translate="no">TQSL</span></strong>application.
+                    Pour obtenir des instructions sur la façon de demander et d'exporter ce certificat, reportez-vous au<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">page d'aide officielle de LoTW</a>.</li>
+<li><strong>4. Mot de passe du certificat</strong>: Le mot de passe que vous avez défini lors de l'exportation du fichier .p12 depuis TQSL (il peut être vide si vous avez choisi de ne pas en définir).</li>
+</ul>
+<p>
+<em><strong>Automatisation de la localisation des stations</strong>: Détails tels que<strong>Zone UIT</strong>, <strong>Zone CQ</strong>, et<strong>Nom de la station</strong>sont automatiquement déterminés à partir de votre indicatif. Aucune configuration manuelle n'est requise pour ces champs.</em>
+</p>
+<h3>Caractéristiques</h3>
+<ul>
+<li><strong>Téléchargements automatiques</strong>: Quand<strong>Téléchargez les QSO sur LoTW une fois terminés</strong>est activé,<span translate="no">qFT8</span> signera et téléchargera automatiquement chaque nouveau QSO sur <span translate="no">LoTW</span> en arrière-plan dès qu'il est enregistré.</li>
+<li><strong>Confirmation de vérification automatique</strong>: Lorsqu'il est activé,<span translate="no">qFT8</span> effectuera une seule vérification de confirmation immédiate exactement 30 secondes après un téléchargement réussi. Cela vous permet de voir presque instantanément si votre contact a été confirmé.</li>
+<li><strong>Synchronisation périodique en arrière-plan</strong>: Configurer<strong>Confirmations de synchronisation toutes les __ heures</strong>pour vérifier les nouvelles confirmations en arrière-plan à l'intervalle souhaité (par exemple, toutes les 6 heures). Cela maintient l’intégralité de votre journal de bord à jour sans intervention manuelle.</li>
+<li><strong>Importation du journal de bord</strong>: Cliquez<strong>IMPORTER des QSO DEPUIS LoTW</strong>pour télécharger l'intégralité de votre historique LoTW dans <span translate="no">qFT8</span>. Notez que ces QSO importés ne sont pas automatiquement téléchargés sur <span translate="no">QRZ</span> pour éviter les limites de débit de l'API.</li>
+<li><strong>Indicateur en attente</strong>: Un petit<strong>point jaune</strong>sur le<strong>Journaux</strong>Le bouton indique qu'il y a des QSO en attente d'être téléchargés sur <span translate="no">LoTW</span>.</li>
+</ul>
+<h3 id="lotw-log-syncing-strategy">Stratégie de synchronisation des journaux</h3>
+<p>Dans les paramètres de synchronisation, vous pouvez choisir comment <span translate="no">qFT8</span> détermine si un <span translate="no">QSO</span> est "entièrement téléchargé" via le<strong>"Considérez un QSO téléchargé lorsqu'il est téléchargé vers :"</strong>option:</p>
+<ul>
+<li><strong>N'importe lequel de <span translate="no">LoTW</span> et <span translate="no">QRZ</span></strong>: Une bonne valeur par défaut si vous n'avez configuré qu'un seul des services.</li>
+<li><strong>Les deux</strong>: Sélectionnez ceci pour une sécurité maximale, nécessitant le <span translate="no">QSO</span> être envoyé avec succès aux deux services avant d'être considéré comme finalisé et prêt à être vérifié pour confirmation.</li>
+<li><strong><span translate="no">QRZ</span>(sauf importé de <span translate="no">LoTW</span>)</strong>: Recommandé si <span translate="no">QRZ</span> est votre journal de bord principal.<em>Note:<span translate="no">QSOs</span> importé de <span translate="no">LoTW</span> sont marqués comme synchronisés mais non téléchargés vers <span translate="no">QRZ</span> pour éviter les limites de l'API (qui autorisent uniquement les téléchargements un par un) ; ceux-ci peuvent être synchronisés dans <span translate="no">QRZ</span> lui-même plus tard.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Recommandé si vous considérez <span translate="no">LoTW</span> votre principale source de vérité.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="sota">
+<h2>Sommets en direct (SOTA)</h2>
+<p>qFT8 est conçu pour être un outil puissant pour les activateurs SOTA (Summits On The Air). Voici les étapes à suivre
+                configurez qFT8 pour une activation réussie :</p>
+<h3>1. Synchronisez l'heure</h3>
+<p>Assurez-vous que l’horloge de votre appareil est exacte. Cela peut être fait à la maison avant de partir ou en utilisant un point d'accès mobile
+                sur le terrain.</p>
+<h3>2. Définissez votre modificateur CQ</h3>
+<p>Allez au<strong>Paramètres</strong>onglet et trouver
+                le<strong><span translate="no">CQ modifier</span></strong>option. Réglez ceci
+                à<code><span translate="no">SOTA</span></code>. Désormais, chaque fois que tu
+                appeler <span translate="no">CQ</span>,
+                <span translate="no">qFT8</span> transmettra<code><span translate="no">CQ SOTA [Callsign]</span></code>, alertant les chasseurs
+                que vous activez un sommet.</p>
+<h3>3. Configurer le mode AUTO</h3>
+<p>Dans le<strong>Gares</strong>onglet, trouvez le
+                premier menu déroulant (le sélecteur de cible) et réglez-le sur<strong><span translate="no">Call CQ</span></strong>. Ensuite, engagez-vous<strong><span translate="no">AUTO</span></strong>mode.</p>
+<h3>4. Commencez l'activation</h3>
+<p>Appuyez sur le<strong><span translate="no">TX</span></strong>bouton en bas
+                barre pour activer la transmission.</p>
+<p>Une fois activé, qFT8 appellera automatiquement CQ et répondra à toutes les stations qui vous appellent. Depuis le but de
+                une activation consiste à collecter des QSO, qFT8 répondra toujours aux appelants, même si vous avez eu des QSO avec eux
+                dans les sessions précédemment enregistrées.</p>
+<div class="highlight">
+<p><strong>Remplacements manuels :</strong>Plusieurs stations peuvent vous atteindre en même temps. Si vous souhaitez donner la priorité
+                    un particulièrement intéressant
+                    station pendant que <span translate="no">CQing</span>, vous pouvez appuyer manuellement sur le<strong><span translate="no">CALL</span></strong>bouton pour cette station.
+                    Une fois
+                    le <span translate="no">QSO</span> est terminé,<span translate="no">qFT8</span> reviendra automatiquement à l'appel <span translate="no">CQ</span>.
+                </p>
+</div>
+<h3>5. Exportation de votre journal SOTA</h3>
+<p>Une fois votre activation terminée, vous pouvez exporter un journal ADIF valide spécifiquement pour SOTAData :</p>
+<ol>
+<li>Aller à<strong>Paramètres</strong>et appuyez sur<strong><span translate="no">ADIF File Export</span></strong>.
+                </li>
+<li>Choisir<strong><span translate="no">Selected time range</span></strong>et préciser le <span translate="no">UTC</span> heures de début et de fin de
+                    votre
+                    activation.</li>
+<li>Réglez le filtre sur<strong><span translate="no">All QSOs</span></strong>.
+                </li>
+<li>Dans le<strong><span translate="no">Event</span></strong>sélection,
+                    sélectionner<strong><span translate="no">SOTA</span></strong>.</li>
+<li>Saisissez la référence de votre sommet (par exemple,<code>XX/GG-111</code>).</li>
+<li>Presse<strong><span translate="no">EXPORT QSOs</span></strong>. Ceci
+                    génère un <span translate="no">ADIF</span> déposer avec les éléments nécessaires <span translate="no">SOTA</span> champs
+                    pré-rempli et prêt à être téléchargé.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="pota">
+<h2>Parcs en direct (POTA)</h2>
+<p>qFT8 prend en charge les activateurs POTA (Parks On The Air). Le processus est très similaire à <span translate="no">SOTA</span> activations. Voici les étapes :</p>
+<h3>1. Synchronisez l'heure</h3>
+<p>Assurez-vous que l’horloge de votre appareil est exacte. Cela peut être fait à la maison avant de partir ou en utilisant un point d'accès mobile
+                sur le terrain.</p>
+<h3>2. Définissez votre modificateur CQ</h3>
+<p>Allez au<strong>Paramètres</strong>et définissez l'onglet<strong><span translate="no">CQ modifier</span></strong>à<code><span translate="no">POTA</span></code>. Chaque <span translate="no">CQ</span> l'appel va maintenant être transmis<code><span translate="no">CQ POTA [Callsign]</span></code>.
+            </p>
+<h3>3. Configurer le mode AUTO</h3>
+<p>Dans le<strong>Gares</strong>, réglez le sélecteur de cible sur<strong><span translate="no">Call CQ</span></strong>et s'engager<strong><span translate="no">AUTO</span></strong>mode.</p>
+<h3>4. Commencez l'activation</h3>
+<p>Appuyez sur le<strong><span translate="no">TX</span></strong>bouton pour
+                permettre la transmission. qFT8 appellera automatiquement <span translate="no">CQ</span> et répondez à toutes les stations qui vous appellent.</p>
+<div class="highlight">
+<p><strong>Remplacements manuels :</strong>Plusieurs stations peuvent vous atteindre en même temps. Si vous souhaitez donner la priorité
+                    un particulièrement intéressant
+                    station pendant que <span translate="no">CQing</span>, vous pouvez appuyer manuellement sur le<strong><span translate="no">CALL</span></strong>bouton pour cette station.
+                    Une fois
+                    le <span translate="no">QSO</span> est terminé,<span translate="no">qFT8</span> reviendra automatiquement à l'appel <span translate="no">CQ</span>.
+                </p>
+</div>
+<h3>5. Exporter votre journal POTA</h3>
+<p>Une fois votre activation terminée, exportez un journal ADIF valide pour <span translate="no">POTA</span>:
+            </p>
+<ol>
+<li>Aller à<strong>Paramètres</strong>et appuyez sur<strong><span translate="no">ADIF File Export</span></strong>.
+                </li>
+<li>Choisir<strong><span translate="no">Selected time range</span></strong>et préciser le <span translate="no">UTC</span> heures de début et de fin de
+                    votre activation.</li>
+<li>Réglez le filtre sur<strong><span translate="no">All QSOs</span></strong>.
+                </li>
+<li>Dans le<strong><span translate="no">Event</span></strong>sélection,
+                    sélectionner<strong><span translate="no">POTA</span></strong>.</li>
+<li>Saisissez la référence de votre parc (par exemple,<code>K-1234</code>).</li>
+<li>Presse<strong><span translate="no">EXPORT QSOs</span></strong>. Ceci
+                    génère un <span translate="no">ADIF</span> fichier avec ce qui suit
+                    champs injectés dans chaque enregistrement :<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>réglé sur<code>POTA</code>
+</li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>ensemble
+                            à la référence de votre parc</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>ensemble
+                            à la référence de votre parc</li>
+</ul>
+</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="remote-control">
+<h2>Serveur Web de contrôle à distance</h2>
+<p>qFT8 inclut un serveur HTTP intégré qui vous permet de surveiller et de contrôler l'application depuis n'importe quel
+                la toile
+                navigateur sur votre réseau. Ceci est particulièrement utile pour le fonctionnement à distance ou comme affichage secondaire.</p>
+<p>Voici à quoi ressemble la vue Spectrogramme/Stations dans le serveur Web de contrôle à distance :</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Stations" height="1596" src="../webserverstations.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>Il permet de fonctionner avec le<strong>AUTO</strong>bouton, liste déroulante des critères,<strong>+</strong>bouton
+                pour ajouter directement des indicatifs, et la liste des stations avec<strong>APPEL</strong>boutons pour appeler manuellement
+                eux.</p>
+<p>Et voici à quoi ressemble la vue Spectrogramme/Log :</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Log" height="1596" src="../webserverlog.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>Cette vue affiche les entrées de journal les plus récentes.</p>
+<h3>Réseau et connectivité</h3>
+<p>Le serveur ouvre un port TCP spécifique (13497 par défaut) sur votre téléphone. Pour y accéder, vos appareils doivent être
+                capables de se « voir » sur le réseau :</p>
+<ul>
+<li><strong>Réseau local</strong>: Le téléphone qFT8 et votre appareil de contrôle (ordinateur, tablette ou
+                    un autre téléphone) doit être sur le même réseau Wi-Fi.</li>
+<li><strong>Paramètres du routeur</strong>: Certains routeurs ont une fonctionnalité appelée<strong>Isolation AP</strong>(ou Isolation Client) activé par défaut. Cela doit être<strong>désactivé</strong>pour les appareils à
+                    communiquer les uns avec les autres.</li>
+<li><strong>Scénario de point d'accès mobile</strong>: Si vous êtes sur le terrain, vous pouvez ouvrir un hotspot Wi-Fi sur
+                    un téléphone (avec Internet) et connectez le téléphone qFT8 à ce réseau Wi-Fi. Après la connexion, fermez
+                    et rouvrir le
+                    serveur Web dans les paramètres qFT8 ; l'adresse IP affichée sera alors accessible depuis le fournisseur de hotspot
+                    téléphone.</li>
+<li><strong>Accès Internet</strong>: Accéder au serveur depuis l'extérieur de votre domicile (via Internet)
+                    nécessite<strong>Redirection de port</strong>dans les paramètres de votre routeur (mappage de l'adresse IP interne et du port
+                    à un externe). Notez que cela ne fonctionnera généralement pas sur les connexions 5G/LTE en raison de l'opérateur.
+                    Restrictions NAT.</li>
+</ul>
+<h3>Niveaux d'accès</h3>
+<p>Vous pouvez configurer le niveau de sécurité à distance dans le volet des paramètres :</p>
+<ul>
+<li><strong>Lecture seule</strong>: Permet de visualiser le spectrogramme en direct, les stations actives et le journal QSO.
+                    Aucune action ne peut être effectuée.</li>
+<li><strong>Lire + Arrêter TX</strong>: Principalement un mode de sécurité. Permet de visualiser toutes les données et permis
+                    désarmer l'émetteur (arrêt de TX) en cas d'urgence, mais ne permet pas de démarrer TX ou
+                    modifier les paramètres.</li>
+<li><strong>Contrôle total</strong>: Accorde une autorité complète sur l'application, permettant à tous
+                    fonctionnalités interactives.</li>
+</ul>
+<div class="highlight">
+<p><strong>Remarque de sécurité :</strong>Toute personne ayant accès à votre réseau, à votre adresse IP et à votre port aura
+                    le niveau de contrôle que vous avez configuré. Si réglé sur<strong>Contrôle total</strong>, ils pourraient
+                    commencez éventuellement à émettre en utilisant votre station.</p>
+</div>
+<h3>Capacités</h3>
+<p>Dans<strong>Contrôle total</strong>En mode , l'interface Web offre presque tout ce que fait l'interface utilisateur de l'application :</p>
+<ul>
+<li><strong>Modes de fonctionnement</strong>: basculer entre<strong><span translate="no">AUTO</span></strong>et manuel<strong><span translate="no">CALL</span></strong>modes.</li>
+<li><strong>Stratégie</strong>: Changer le <span translate="no">AUTO</span> critères (<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, etc.) et recherchez
+                    contraintes.</li>
+<li><strong>Transmission</strong>: Démarrage/arrêt manuel <span translate="no">TX</span>, choisissez spécifique <span translate="no">TX</span> messages et modifiez le <span translate="no">FT8 sequence (0/1)</span>.
+                </li>
+<li><strong>Fréquence et bande</strong>: Appuyez sur le spectrogramme Web pour déplacer ou modifier votre décalage de fréquence.
+                    la bande radio active.</li>
+</ul>
+<div class="highlight">
+<p><strong>Note:</strong>L'interface utilisateur Web est conçue pour rester réactive même si le téléphone physique
+                    L'écran devient lent en raison des interférences RF, offrant une solution de repli fiable pour le contrôle.</p>
+<p><strong>Note:</strong>Le serveur Web fonctionnera lorsque l'écran est éteint si les paramètres à exécuter dans
+                    l'arrière-plan sont activés (la valeur par défaut est de continuer à s'exécuter en arrière-plan lorsque <span translate="no">qFT8</span> est relié à un
+                    émetteur-récepteur).</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+<section id="troubleshooting">
+<h2>Dépannage</h2>
+<h3 id="trouble-not-recognized">L'appareil Android ne reconnaît pas le <span translate="no">QMX</span> ou il se déconnecte</h3>
+<p>Il s'agit presque toujours d'un problème de connectivité matérielle ou d'interférence radio. Les connexions USB sont sensibles aux vibrations,
+                qualité du câble et ratons laveurs de téléphone pelucheux résidant dans le port USB.</p>
+<p><strong>Essayer:</strong></p>
+<ul>
+<li>Utiliser un court-circuit de haute qualité <span translate="no">USB cable</span>(l'utilisation d'un câble plus court peut considérablement aider) et assurez-vous que le port de votre téléphone est propre et que la connexion est solide.</li>
+<li>Si les problèmes surviennent spécifiquement lors de la transmission, cela pourrait être dû à des interférences radio. L'ajout de selfs ou de ferrites au câble USB pourrait aider. Vous pouvez également essayer de transmettre sur une autre bande, car certains appareils ne sont sensibles aux interférences que dans certaines bandes.</li>
+</ul>
+<h3>Au lieu de recevoir le signal de l'émetteur-récepteur,<span translate="no">qFT8</span> reçoit le son du microphone</h3>
+<p>Cela indique que le téléphone utilise son microphone interne car il ne reconnaît pas le
+                émetteur-récepteur comme source audio externe. Les causes les plus courantes sont :</p>
+<ul>
+<li>Le <span translate="no">USB</span> le câble n'est pas conçu pour les données
+                    (câble de charge uniquement).</li>
+<li>Le <span translate="no">USB adapter (OTG)</span> est défectueux ou
+                    incompatible.</li>
+<li>Le câble est branché dans le mauvais sens (certains câbles sont directionnels).</li>
+</ul>
+<p><strong>Essayer:</strong>Utiliser un autre <span translate="no">USB cable</span>,
+                un autre adaptateur, ou en retournant le câble
+                connexions.</p>
+<h3>Ne recevoir aucun signal du tout ; la cascade est noire</h3>
+<p>Si la cascade reste entièrement noire lorsque l'émetteur-récepteur est connecté ou déconnecté, qFT8
+                il ne dispose probablement pas des autorisations nécessaires pour accéder à l'audio.</p>
+<p>
+<strong>Essayer:</strong>Allez sur votre téléphone<strong>Paramètres &gt; Applications &gt; qFT8 &gt; Autorisations</strong>et
+                assurer
+                que<strong>Microphone</strong>(ou l'enregistrement audio) est autorisé lors de l'utilisation de qFT8. Alternativement,
+                désinstallez et réinstallez complètement qFT8 et acceptez toutes les demandes d’autorisation lors du premier lancement.</p>
+<h3>Les signaux sont visibles, mais aucun message n'est décodé</h3>
+<p>Si vous voyez des « lignes ondulées » verticales dans la cascade (signaux FT8) mais qu'aucun texte n'apparaît dans les stations
+                onglet, peut-être que votre horloge n'est pas synchronisée.</p>
+<p>
+<strong>Essayer:</strong>Vérifiez l'horloge de votre appareil. Si les signaux ne s'intègrent pas parfaitement entre le rouge
+                séparateurs de séquence horizontaux, l'horloge de votre appareil est probablement éteinte. Assurez-vous d'avoir accès à Internet et
+                rouvrez l'application pour déclencher un <span translate="no">NTP sync</span>.
+            </p>
+<p>Si aucune bande ondulée n'apparaît dans la cascade, peut-être que la bande est fermée ou que votre antenne est
+                déconnecté/désaccordé.</p>
+<p>
+<strong>Essayer:</strong>Assurez-vous que votre radio reçoit réellement des signaux aériens.</p>
+<h3>Les messages sont décodés trop tard</h3>
+<p>Le processeur du téléphone est peut-être trop lent pour décoder les messages à temps.</p>
+<p>
+<strong>Essayer:</strong>Assurez-vous de passer à<strong><span translate="no">Fast
+                    decode</span></strong>dans les paramètres, et ressentez
+                libre de déplacer le temps de décodage plus tôt (par exemple pour
+                13000 <span translate="no">ms</span>) pour créer plus de marge pour le décodage, à
+                la dépense
+                de manquer potentiellement des messages tardifs à chaque cycle.</p>
+<h3>Erreur <span translate="no">"No Tx: SWR Protection or too low or high
+                volume"</span>
+</h3>
+<p>Si <span translate="no">qFT8</span> montre
+                0 <span translate="no">W</span> pendant la transmission, il y a probablement deux
+                provoque :</p>
+<h4>1.<span translate="no">SWR</span> Protection</h4>
+<p>Si le <span translate="no">QMX</span>
+<span translate="no">LCD</span> l'affichage montre
+                un "<strong><span translate="no">S</span></strong>" après la fréquence, il
+                signifie <span translate="no">SWR</span> la protection est intervenue.
+                Cela signifie que votre antenne n'est pas correctement réglée sur la bande actuelle et que le <span translate="no">QMX</span> a cessé de transmettre pour protéger son
+                circuits.</p>
+<ul>
+<li><strong>Micrologiciel hérité</strong>: Sur <span translate="no">QMX</span> firmware antérieur à 1.03.000, vous devez réinitialiser manuellement le
+                    émetteur-récepteur (off/on) ou entrez et quittez le <span translate="no">TUNE
+                    menu</span> sur le <span translate="no">QMX</span> pour effacer l'erreur.</li>
+<li><strong>Micrologiciel 1.03.000+</strong>: Vous pouvez définir "<span translate="no">SWR Protection reset
+                    options</span>" à<strong><span translate="no">Timer</span></strong>ou<strong><span translate="no">TX-&gt;RX</span></strong>dans le <span translate="no">QMX menu</span>. Cela permet <span translate="no">qFT8</span> continuer à fonctionner sans toi
+                    avoir
+                    toucher physiquement l’émetteur-récepteur.</li>
+</ul>
+<p>
+<strong>Note:</strong> <span translate="no">qFT8</span> attend 1 seconde
+                après le début de la transmission avant de vérifier
+                0 <span translate="no">W</span> pour éviter les faux positifs pendant que le <span translate="no">QMX</span> s'accélère.
+                Si le <span translate="no">QMX</span> récupère et la puissance monte au-dessus
+                1 <span translate="no">W</span>, l'indicateur de problème s'efface automatiquement.</p>
+<h4>2. Le signal audio n’atteint pas le <span translate="no">QMX</span></h4>
+<p>Si le <span translate="no">QMX</span> fait<strong>pas</strong>montrer le
+                "<span translate="no">S</span>" icône après la fréquence, alors il est probable
+                que l'émetteur-récepteur ne reçoit tout simplement pas un signal audio approprié du téléphone. Le volume peut
+                être<strong>trop bas</strong>(pas assez de signal) ou<strong>trop haut</strong>(écrêtage/distorsion
+                provoque le <span translate="no">QMX</span> pour rejeter le signal).</p>
+<p>
+<strong>Essayer:</strong>Vérifiez l'indicateur de signal sur votre <span translate="no">QMX</span>. Un seul point signifie pas de son, deux points signifient
+                il y a du son mais ce n'est pas assez fort. Allez au <span translate="no">FT8</span> section Paramètres et ajustez le
+                "<span translate="no">Set system volume to [X] when transmitting</span>"
+                réglage sur différentes valeurs (par exemple 70 %, 80 %, 90 %) pour trouver le niveau adapté à votre appareil.</p>
+<h3>Qu'est-ce que la notification Android qFT8 ?</h3>
+<p>Cette notification permet à qFT8 de continuer à traiter l'audio et à gérer les QSO lorsque vous réduisez l'application
+                ou éteignez l'écran.</p>
+<ul>
+<li>Par défaut, il se déclenche automatiquement lorsqu'un émetteur-récepteur est branché.</li>
+<li>Vous pouvez désactiver cela dans <span translate="no">qFT8</span> paramètres, mais <span translate="no">qFT8</span> cessera de fonctionner en arrière-plan.</li>
+<li>Vous pouvez appuyer<strong><span translate="no">STOP</span></strong>dans le
+                    notification de fermeture complète <span translate="no">qFT8</span>.</li>
+</ul>
+<h3>qFT8 cesse de fonctionner lorsque l'écran est éteint</h3>
+<p>Certains fabricants d'Android mettent en œuvre des optimisations de batterie très agressives qui peuvent tuer les applications en arrière-plan.
+                même si vous avez accordé les autorisations initiales.</p>
+<p>
+<strong>Vérifiez à nouveau que vous avez accordé les autorisations :</strong>Allez sur votre téléphone<strong>Paramètres &gt;
+                    Applications &gt; qFT8 &gt; Batterie</strong>et sélectionnez<strong>"Libre"</strong>(ou "Ne pas optimiser").</p>
+<h3>Les boutons agissent bizarrement ou l'écran ne répond pas pendant l'émission</h3>
+<p>Ceci est dû à<strong>Interférence RF (RFI)</strong>. Si votre antenne est proche du téléphone ou du
+                Le câble est mal blindé, l'énergie radio peut interférer avec le numériseur tactile.</p>
+<ul>
+<li><strong>Conseil</strong>: Utilisez un écran <span translate="no">USB</span> câble
+                    ou fixez une perle de ferrite sur le câble.</li>
+</ul>
+<h3><span translate="no">qFT8</span> semble différent des captures d'écran de ce manuel</h3>
+<p>L'interface utilisateur de l'application est occasionnellement mise à jour, de sorte que certains éléments visuels mineurs peuvent avoir changé depuis la prise des captures d'écran. Cependant, si des parties importantes de l'interface utilisateur sont complètement manquantes ou si les couleurs semblent fortement altérées (par exemple, la barre de progression jaune, les sélecteurs de séquence, etc.), le mode sombre du système de votre téléphone peut remplacer de manière incorrecte et gâcher la palette de couleurs de l'application.</p>
+<p>
+<strong>Essayer:</strong>Si le mode sombre de votre système pose des problèmes, vous pouvez essayer de le désactiver temporairement ou d'ajouter qFT8 à sa liste d'exclusion pour restaurer la conception correcte.</p>
+<h3>qFT8 dit "NO QMX" même si <span translate="no">QMX transceiver</span> est
+                connecté</h3>
+<p>Le problème est probablement dû au fait que vous n'avez pas accordé les autorisations de connexion.<span translate="no">qFT8</span> au <span translate="no">QMX
+                transceiver</span>. Parfois, cela se produit parce que vous tapez quelque part en dehors du
+                boîte de dialogue d'autorisation et la boîte de dialogue se ferme.</p>
+<p>
+<strong>Essayer:</strong>Déconnectez et reconnectez le <span translate="no">QMX transceiver</span>, cela devrait déclencher l'invite
+                encore une fois. Pour
+                confort, cochez l'option "Toujours ouvert <span translate="no">qFT8</span> quand <span translate="no">QMX Transceiver</span> est connecté" pour ne jamais frapper
+                à nouveau ce problème.</p>
+<h3>qFT8 affiche la distance en miles et je la veux en kilomètres (ou vice versa)</h3>
+<p>Cela vient des paramètres régionaux du système d'exploitation (c'est-à-dire la sélection de la langue).</p>
+<p>
+<strong>Essayer:</strong>Basculer cette configuration vers le bon pays (par exemple anglais (États-Unis)
+                pour les miles, l'anglais (Royaume-Uni) pour les kilomètres) résoudra le problème.</p>
+<h3>qFT8 affiche une faible puissance de transmission (par exemple 0,1 W) lors d'une transmission à &gt; 10 W</h3>
+<p>Il s'agit d'un bug connu dans le <span translate="no">QMX</span> firmware (jusqu'à au moins 1.03.000). Si vous utilisez les mods 2x4 (par exemple dans un <span translate="no">QMX+</span>) et que votre puissance d'émission dépasse 9,9 W, le formatage de la radio s'effectue automatiquement. Par exemple, 10,1 W est signalé par l'émetteur-récepteur à l'application comme 0,1 W via le protocole CAT secondaire.</p>
+<p>
+<strong>Essayer:</strong>Il n'y a aucune solution de contournement à l'intérieur <span translate="no">qFT8</span>, car l'application affiche directement la valeur qu'elle reçoit. Vous pouvez ignorer cette erreur d'affichage en toute sécurité ou réduire votre puissance en dessous de 10 W pour maintenir les lectures précises jusqu'à ce que ce bug soit corrigé dans le micrologiciel de l'émetteur-récepteur.</p>
+<h3>Impossible d'exporter <span translate="no">ADIF</span> se connecte au stockage local en utilisant <span translate="no">Share</span></h3>
+<p>La valeur par défaut<strong><span translate="no">Share</span></strong>La méthode s'appuie sur le mécanisme de partage natif d'Android pour exporter les journaux. Parfois, le menu de partage de fichiers intégré de votre appareil n'offre pas d'option directe pour enregistrer sur votre système de fichiers local.</p>
+<p>
+<strong>Essayer:</strong>Modifier l'exportation<strong><span translate="no">Method</span></strong>à<strong><span translate="no">Local save</span></strong>dans les paramètres. Cela utilise le sélecteur de fichiers Android pour enregistrer directement le fichier sur votre stockage local sans compter sur le menu de partage.</p>
+<h3><span translate="no">qFT8</span> ne parvient pas à décoder certains messages</h3>
+<p>
+<strong>Essayer:</strong>Activez le décodage profond dans les paramètres. Le décodage profond effectue un décodage récursif et est capable de décoder davantage de messages lorsque la bande est occupée, au détriment d'une puissance de traitement supplémentaire. Gardez un œil sur le spectrogramme : si le temps de décodage profond est trop élevé sur votre appareil (par exemple supérieur à 1 seconde) et que l'application n'est pas en mesure de prendre des décisions à temps, désactivez le décodage profond.</p>
+<h3>qFT8 se bloque ou se comporte étrangement</h3>
+<p>Si cela se produit uniquement pendant la transmission, il s’agit probablement d’une RFI extrême, comme mentionné ci-dessus. Si ça arrive
+                à d'autres moments, veuillez faire défiler vers le bas de l'onglet Paramètres et utiliser le bouton "<strong>Envoyez-moi un email</strong>pour signaler des problèmes et des bugs".</p>
+<a class="back-to-toc" href="#top">↑ Retour à la table des matières</a>
+</section>
+</div>
+<div class="footer">
+<p>Droits d'auteur © 2026,<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>) sauf pièces incluses à partir de<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>(Droits d'auteur © 2023 BG7YOZ)
+            et<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>(Droits d'auteur © 2018
+            Kārlis Gobas), tous deux publiés sous licence MIT.</p>
+<p><span translate="no">Luis Quesada Torres</span> n'est pas affilié aux créateurs du <span translate="no">FT8</span> mode numérique ni avec <span translate="no">QRPLabs</span>, et
+            de même
+            ni les créateurs de <span translate="no">FT8</span> ni <span translate="no">QRPLabs</span> ont participé au développement de <span translate="no">qFT8</span>, et ne l'approuve pas
+            de quelque manière que ce soit.</p>
+<div class="footer-links">
+<a href="../../">Page principale</a> - <a href="../../privacy/">politique de confidentialité</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Licence</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1731 @@
+HTML
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Руководство пользователя qFT8</title>
+<meta content="qFT8 User Manual" property="og:title"/>
+<meta content="Comprehensive guide for using qFT8 with your Android device and QMX transceiver." property="og:description"/>
+<meta content="https://qft8.com/qft8.png" property="og:image"/>
+<meta content="https://qft8.com/manual/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../../favicon.png" rel="icon" type="image/png"/>
+<style>
+        :root {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #03dac6;
+            --secondary-color: #2c2c2c;
+            --surface-color: #2c2c2c;
+            --link-color: #81d4fa;
+            --danger-color: #ff5252;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .disclaimer-banner {
+            background-color: rgba(255, 82, 82, 0.1);
+            color: var(--danger-color);
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 82, 82, 0.2);
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 92%;
+            margin: 40px auto;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-toc {
+            display: block;
+            text-align: right;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Phone Mockup CSS */
+        .phone-mockup {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto 30px auto;
+            border: 12px solid #000000;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
+            background-color: #000;
+            display: flex;
+        }
+
+        .phone-mockup img {
+            display: block;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .phone-mockup img.camera {
+            width: 5.4726%;
+        }
+
+        .phone-mockup img.screen {
+            width: 94.5274%;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .toc li,
+        .toc ul ul li {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+
+
+        .footer {
+            background-color: #0f0f0f;
+            width: 100%;
+            padding: 50px 20px;
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            box-sizing: border-box;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 12px;
+                margin: 20px 0;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .phone-mockup {
+                border-width: 8px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .back-link {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto 0 auto;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 600px) {
+            .back-link {
+                margin: 10px 0;
+                padding: 0 15px;
+            }
+        }
+
+        @media print {
+
+            body,
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 10mm !important;
+                background: #fff !important;
+                color: #000 !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            p,
+            li,
+            a,
+            span,
+            div {
+                color: #000 !important;
+            }
+
+            .back-link,
+            .back-to-toc,
+            .footer-links {
+                display: none !important;
+            }
+
+            .disclaimer-banner {
+                border: 1px solid #000 !important;
+                background: transparent !important;
+            }
+
+            .phone-mockup {
+                border: 2px solid #000 !important;
+                box-shadow: none !important;
+            }
+
+            .toc {
+                background: transparent !important;
+                border: 1px solid #eee !important;
+            }
+        }
+
+        .highlight {
+            background-color: rgba(3, 218, 198, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            margin: 20px 0;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+<div class="back-link">
+<a href="../../">← Вернуться назад на qFT8.com</a>
+</div>
+<div class="container">
+<div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <a href="../">English</a> / <a href="../es/">Español</a> / <a href="../de/">Deutsch</a> / <a href="../fr/">Français</a> / <a href="../it/">Italiano</a> / <a href="../pt/">Português</a> / <a href="../pt-br/">Português (BR)</a> / <strong>Русский</strong> / <a href="../ja/">日本語</a> / <a href="../zh/">中文</a></div>
+<h1 id="top">Руководство пользователя qFT8</h1>
+<div class="toc">
+<h3>Оглавление</h3>
+<ul>
+<li><a href="#what-is-qft8">Что такое qFT8?</a>
+<ul>
+<li><a href="#supported-devices">Поддерживаемые устройства</a></li>
+</ul>
+</li>
+<li><a href="#quick-setup">Быстрая настройка</a>
+<ul>
+<li><a href="#initial-permissions">Предоставить первоначальные разрешения</a></li>
+<li><a href="#mandatory-callsign">Введите позывной</a></li>
+<li><a href="#usb-permission">Предоставить разрешение на подключение USB</a></li>
+<li><a href="#audio-check">Проверка звука</a></li>
+<li><a href="#import-qsos">[Необязательно] Импорт QSO</a></li>
+</ul>
+</li>
+<li><a href="#first-qso">Ваше первое QSO с qFT8</a></li>
+<li><a href="#ft8-introduction">Знакомство с цифровым режимом FT8</a></li>
+<li><a href="#user-interface">Пользовательский интерфейс qFT8</a>
+<ul>
+<li><a href="#ui-bottom-bar">Нижняя панель</a></li>
+<li><a href="#ui-spectrogram">Спектрограмма</a></li>
+<li><a href="#ui-stations-tab">Вкладка «Станции»</a></li>
+<li><a href="#ui-log-tab">Вкладка Журнал</a></li>
+<li><a href="#ui-settings-tab">Вкладка «Настройки»</a></li>
+</ul>
+</li>
+<li><a href="#auto-mode">Автоматизированная работа
+                        (<span translate="no">AUTO</span>)</a></li>
+<li><a href="#call-mode">Ручное управление
+                        (<span translate="no">CALL</span>)</a></li>
+<li><a href="#adif-import-export"><span translate="no">ADIF</span>Импорт/Экспорт</a></li>
+<li><a href="#qrz-integration"><span translate="no">QRZ</span>Интеграция</a>
+</li>
+<li><a href="#lotw-integration"><span translate="no">LoTW</span>Интеграция</a></li>
+<li><a href="#sota">Саммиты в прямом эфире (<span translate="no">SOTA</span>)</a>
+</li>
+<li><a href="#pota">Парки в эфире (<span translate="no">POTA</span>)</a>
+</li>
+<li><a href="#remote-control">Веб-сервер удаленного управления</a></li>
+<li><a href="#troubleshooting">Устранение неполадок</a></li>
+</ul>
+</div>
+<div class="disclaimer-banner">Отказ от ответственности. Используя qFT8, вы принимаете на себя всю ответственность за соблюдение законодательства, безопасность и
+            повреждение оборудования</div>
+<section id="what-is-qft8">
+<h2>Что такое qFT8?</h2>
+<p>qFT8 представляет собой<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Андроид
+                    телефон</a>приложение для<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">любительское радио</a>который декодирует и передает<a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a>сообщения цифровых данных с использованием<a href="https://qrp-labs.com/qmx.html" target="_blank">QRPLabs QMX
+                    трансивер.</a>
+</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Screenshot" class="screen" height="1080" src="../../screenshot.jpg" width="2280"/>
+</div>
+<p>qFT8 в настоящее время не поддерживает другие трансиверы. Однако вы можете попробовать qFT8 ближе к динамику и
+                микрофон трансивера с включенным VOX или подключенный к аудиоразъему трансивера
+                ввод/вывод. Вы также можете попробовать qFT8 без трансивера: он передает через динамик телефона и
+                прослушивает сигналы с помощью микрофона телефона. Несколько телефонов, работающих под управлением qFT8, могут связываться друг с другом через
+                звук, когда они находятся достаточно близко.</p>
+<p>qFT8 — бесплатное приложение, не содержащее рекламы. Это доступный источник. Исходный код можно найти по адресу<a href="https://github.com/lquesada/qFT8" target="_blank">Гитхаб</a>.</p>
+<p>
+<a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>(<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>)
+                разработал qFT8 в 2026 году, владеет авторскими правами и сохраняет за собой все права (кроме частей, включенных в<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>, Copyright © 2023 BG7YOZ и<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>, Copyright © 2018 Kārlis Gobas, оба выпущены под лицензией MIT).<span translate="no">Luis Quesada Torres</span>не
+                связан ни с создателями цифрового режима FT8, ни с QRPLabs, и
+                аналогично ни создатели FT8, ни QRPLabs не участвовали в разработке qFT8 и не
+                ни в коем случае не подтверждать это.</p>
+<h3>Ключевые особенности</h3>
+<ul>
+<li>Быстрая настройка</li>
+<li>Отслеживание позывных, а не сообщений</li>
+<li>Руководство<span translate="no">CALL</span>режим и<span translate="no">AUTO</span>операция</li>
+<li>Автоматический<span translate="no">NTP</span>/<span translate="no">GPS</span>синхронизация времени</li>
+<li>Автоматическое приблизительное местоположение</li>
+<li><span translate="no">ADIF</span>импорт и экспорт бревен</li>
+<li><span translate="no">QRZ</span>/<span translate="no">LoTW</span>интеграция: загрузки, подтверждения</li>
+<li>Логика повторных попыток с настраиваемыми ограничениями</li>
+<li><span translate="no">SOTA</span>/<span translate="no">POTA</span>:<span translate="no">CQ</span>модификатор, ссылка<span translate="no">ADIF</span>экспорт</li>
+<li>Веб-сервер для полностью удаленной работы</li>
+<li>Режим экономии заряда батареи: работает с выключенным экраном</li>
+</ul>
+<h3 id="supported-devices">Поддерживаемые устройства</h3>
+<ul>
+<li><strong>QRP Labs <span translate="no">QMX</span>или<span translate="no">QMX+</span></strong>— полная поддержка через кабель</li>
+<li><strong>QRP Labs <span translate="no">QDX</span>или<span translate="no">QDX-M</span></strong>— полностью поддерживается через кабель (правда, это устройство не имеет счетчика<span translate="no">W</span>или<span translate="no">SWR</span>)</li>
+<li><strong>Любой трансивер с микрофоном и динамиком</strong>— поддерживается через динамики/микрофон, но не идеально</li>
+<li><strong>Любой другой трансивер по кабелю</strong>— не поддерживается</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="quick-setup">
+<h2>Быстрая настройка</h2>
+<p>Убедитесь, что вы используете<strong>правильный источник питания</strong>для трансивера
+                (например, ≤12 В для QMX), иначе вы его повредите.</p>
+<p>Также убедитесь, что кабель USB-C, который вы используете для подключения телефона и трансивера,
+                это<strong>рассчитан на передачу данных</strong>. Большинство проблем с подключением, когда qFT8 не видит
+                трансивер
+                вызваны использованием несовместимого кабеля или адаптера.</p>
+<h3 id="initial-permissions">Предоставить первоначальные разрешения</h3>
+<p>При первом открытии qFT8 он запросит несколько разрешений:</p>
+<ul>
+<li><em>Разрешить qFT8 записывать звук</em>: Это разрешение является обязательным. qFT8 нужно, чтобы он собрался
+                    сигналы от трансивера. qFT8 не хранит, не передает и не загружает аудиозаписи.</li>
+<li><em>Разрешить qFT8 доступ к приблизительному местоположению этого устройства</em>: Необязательно, но рекомендуется.
+                    qFT8 использует его для получения вашего<span translate="no">Maidenhead</span>сетка
+                    локатор, который используется во время<span translate="no">FT8</span>обмены.
+                    qFT8 делает
+                    не получать доступ и не передавать точные данные о местоположении.</li>
+<li><em>Разрешить qFT8 отправлять вам уведомления</em>: Необязательно, но рекомендуется. qFT8 использует его для
+                    запускайте как службу переднего плана, в свернутом виде или с выключенным экраном, чтобы сэкономить заряд батареи.
+                    Уведомления активны только при подключении к трансиверу.</li>
+<li><em>Разрешить приложению всегда работать в фоновом режиме</em>: Необязательно, но рекомендуется. Требуется для qFT8 для
+                    работать стабильно, пока экран выключен.</li>
+</ul>
+<div class="highlight">
+<p><strong>Ключевой принцип:</strong>qFT8 не отправляет никакой информации на выделенный для этого сервер.
+                    приложение.
+                    Вся обработка данных происходит локально на вашем устройстве. Вы можете явно разрешить совместное использование позывного,
+                    дата и время и, при необходимости, приблизительное местоположение, если вы введете действительный адрес.<span translate="no">QRZ API Key</span>.</p>
+<p>Более подробную информацию см. в qFT8<a href="../../privacy/">Политика конфиденциальности</a>.</p>
+</div>
+<h3 id="mandatory-callsign">Введите позывной</h3>
+<p>Ввод<strong>позывной обязателен</strong>для работы qFT8. Если вы не намерены
+                подключитесь к реальному трансиверу, в целях тестирования можно ввести любой позывной, например ХХ1ХХХ.</p>
+<p>qFT8 попросит вас ввести свой позывной и подтвердить следующее:</p>
+<ul>
+<li>У вас должна быть действующая лицензия для использования этого программного обеспечения при подключении к трансиверу.</li>
+<li>Вы не должны запускать программное обеспечение без присмотра.</li>
+<li><em>Отказ от ответственности</em>: Используя qFT8, вы принимаете на себя всю ответственность за юридические
+                    соответствие требованиям, безопасность и повреждение оборудования.</li>
+</ul>
+<h3 id="usb-permission">Предоставить разрешение на подключение USB</h3>
+<p>Когда трансивер подключен и qFT8 открыт, появится системный диалог:</p>
+<p><em>«Откройте qFT8 для работы с трансивером QMX».</em></p>
+<ul>
+<li>Это разрешение<strong>обязательно</strong>для связи с трансивером.</li>
+<li>Если разрешение не предоставлено, qFT8 сможет принимать сигналы, но не сможет передавать.</li>
+<li>Для удобства вы можете выбрать «Всегда открывать qFT8, когда подключен трансивер QMX».</li>
+</ul>
+<p>Если у вас возникли проблемы с подключением устройства Android, проверьте<a href="#trouble-not-recognized">Устройство Android не распознает<span translate="no">QMX</span>или он отключится</a>раздел устранения неполадок.</p>
+<p>
+<span translate="no">qFT8</span>автоматически настраивает<span translate="no">QMX</span>трансивер всякий раз, когда он подключен, поэтому там
+                нет необходимости настраивать какие-либо из "<span translate="no">VOX
+                off</span>", "<span translate="no">Rise
+                Threshold</span>",
+                "<span translate="no">Fall Threshold</span>", "<span translate="no">Cycle
+                Min</span>", "<span translate="no">Sample Min</span>",
+                "<span translate="no">Discard</span>", "<span translate="no">IQ
+                Mode</span>", "<span translate="no">Sideband
+                Mode</span>" или "<span translate="no">RIT
+                Status</span>",
+                и т. д. — они обрабатываются автоматически. Обратите внимание, что эта конфигурация является временной:<span translate="no">QMX</span>меню настроек по-прежнему будет отображать сохраненные вами значения, и перезапустите<span translate="no">QMX</span>вернет все настройки в нормальное рабочее состояние.</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="audio-check">Проверка звука</h3>
+<p>Прежде чем приступить к работе, важно убедиться, что аудиосигнал между телефоном и<span translate="no">QMX</span>работает правильно. Нажмите кнопку<span translate="no">TX</span>кнопку и дождитесь<span translate="no">QMX</span>начать передачу в одном из следующих
+                последовательности.</p>
+<h4>Все работает</h4>
+<p>Если<span translate="no">TX</span>Кнопка показывает выходную мощность (например.
+                5 <span translate="no">W</span>), все работает правильно. На<span translate="no">QMX LCD</span>, вы должны увидеть<strong>бар</strong>под знаком "<span translate="no">A</span>"<span translate="no">VFO</span>маркер в левом верхнем углу экрана
+                — это означает<span translate="no">QMX</span>получает хороший звук
+                сигнал с телефона. Вы также должны подтвердить отсутствие
+                "<span translate="no">S</span>" отображается после частоты на<span translate="no">LCD</span>, что будет указывать<span translate="no">SWR</span>защита.</p>
+<h4>"<span translate="no">S</span>" отображается после частоты</h4>
+<p>Если<span translate="no">QMX LCD</span>показывает
+                "<strong><span translate="no">S</span></strong>" после частоты, это
+                означает<span translate="no">SWR</span>сработала защита. Ваша антенна
+                не настроен должным образом на текущий диапазон. Вы можете использовать<span translate="no">SWR</span>проверьте опцию в<span translate="no">QMX</span>меню для измерения<span translate="no">SWR</span>и вам нужно будет настроить антенну.</p>
+<ul>
+<li><strong>Устаревшая прошивка</strong>(старше 1.03.000): Вы должны войти и выйти из<span translate="no">TUNE</span>меню на<span translate="no">QMX</span>или выключите и включите его для сброса<span translate="no">SWR</span>защита.</li>
+<li><strong>Прошивка 1.03.000+</strong>: Вы можете установить
+                    "<span translate="no">SWR Protection reset options</span>" чтобы<strong><span translate="no">TX-&gt;RX</span></strong>в<span translate="no">QMX</span>Меню защиты, поэтому оно сбрасывается
+                    автоматически.</li>
+</ul>
+<h4>Две точки вместо полосы</h4>
+<p>Если<span translate="no">QMX</span>шоу<strong>две точки</strong>вместо полосы под "<span translate="no">A</span>"<span translate="no">VFO</span>маркер в левом верхнем углу экрана,
+                громкость звука либо<strong>слишком низко</strong>или<strong>слишком высокий</strong>.</p>
+<p>
+<strong>Попробуйте:</strong>Перейти к<span translate="no">qFT8</span>Настройки, найди
+                "<span translate="no">Set system volume to [X] when transmitting</span>"
+                вариант и попробуйте разные значения (например, 70%, 80%, 60%, 100%). Один из них должен превратить две точки
+                в бар.</p>
+<p>На некоторых телефонах эта опция может не работать. В этом случае снимите флажок и настройте телефон вручную.
+                громкость на разные значения (100%, 90%, 80% и т. д.), пока не появится полоска.</p>
+<h4>Ничего под "<span translate="no">A</span>"</h4>
+<p>Если под знаком "<span translate="no">A</span>" нет ни полосы, ни точки.<span translate="no">VFO</span>маркер в левом верхнем углу<span translate="no">QMX LCD</span>экран, телефон может работать неправильно
+                управление трансивером. Обычно это означает<span translate="no">USB</span>разрешения не были предоставлены или были
+                случайно уволили. Прием будет работать, а передача – нет.</p>
+<p>
+<strong>Попробуйте:</strong>Отключите<span translate="no">QMX</span>из
+                телефон и снова подключите его — диалоговое окно разрешения должно появиться снова. Также возможно, что кабель
+                не подходит для<span translate="no">QMX</span>; попробуй другой<span translate="no">USB-C</span>кабель.</p>
+<p>Как только вы увидите полосу под "<span translate="no">A</span>"<span translate="no">VFO</span>маркер в левом верхнем углу<span translate="no">QMX LCD</span>экран и выходная мощность в<span translate="no">TX</span>кнопка, твоя<span translate="no">QMX</span>правильно настроен и готов к работе!</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="import-qsos">[Необязательно] Импорт QSO</h3>
+<p>Теперь вы можете импортировать существующие связи; есть два подхода. Оба способа требуют перехода в настройки
+                используя
+                самая правая кнопка в нижней панели qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings Button" class="screen" height="1080" src="../settingsbutton.jpg" width="2280"/>
+</div>
+<p><strong>Ручной подход</strong>: перейдите в раздел «<span translate="no">ADIF File
+                Import</span>» в настройках, нажмите кнопку «<span translate="no">IMPORT
+                QSOs</span>» и выберите файл .adi для импорта.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 ADIF Import" class="screen" height="1080" src="../adif.jpg" width="2280"/>
+</div>
+<p><strong>Автоматический подход QRZ</strong>: Требуется активный<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span>платная подписка</a>. Иди
+                чтобы
+                в разделе "<span translate="no">QRZ Syncing</span>" в настройках введите<span translate="no">QRZ API Key</span>для вашего позывного нажмите
+                "<span translate="no">VALIDATE</span>", а затем нажмите кнопку
+                Кнопка «<span translate="no">IMPORT QSOs FROM QRZ</span>». Это будет
+                также настройте автоматическую загрузку в<span translate="no">QRZ</span>и
+                подтверждение
+                чеки.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 QRZ Syncing" class="screen" height="1080" src="../qrzsync.jpg" width="2280"/>
+</div>
+<p><strong>Автоматический подход LoTW</strong>: Бесплатно. Зайдите в раздел «<span translate="no">LoTW
+                Syncing</span>» в настройках, введите свой<span translate="no">Callsign</span>и<span translate="no">LoTW
+                password</span>и при необходимости включите фоновую синхронизацию. Это также будет
+                позволю тебе
+                выполнить начальное "<span translate="no">IMPORT QSOs FROM LoTW</span>".</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="first-qso">
+<h2>Ваше первое QSO с qFT8</h2>
+<p>Примечание. Точное время имеет решающее значение для FT8. qFT8 автоматически синхронизирует время с приложением
+                инициализация через NTP (интернет) или GPS (спутники). Если вы работаете в сфере
+                без доступа в Интернет вы можете использовать<strong>GPS-СИНХРОНИЗАЦИЯ</strong>кнопка в настройках
+                вкладка для синхронизации часов напрямую со спутниками GPS. Это требует точного
+                разрешение на местоположение и хороший вид на небо.</p>
+<p>На этом этапе трансивер должен быть подключен к правильному источнику питания и антенне, и все
+                разрешения должны быть предоставлены.
+                Убедитесь, что антенна настроена на диапазон с разумным диапазоном частот.<span translate="no">SWR</span>(в идеале постоянно ниже 2)
+                это не вызовет<span translate="no">SWR</span>защиты.<strong>Отключать<span translate="no">SWR</span>— плохая идея.  защита
+                    в<span translate="no">QMX</span></strong>; это может повредить
+                финал или
+                антенный тюнер.</p>
+<p>Теперь вы можете выбрать диапазон, который хотите использовать, на нижней панели qFT8 или в трансивере. Настройка
+                в одном из них он будет синхронизирован с другим.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Band Selector" class="screen" height="1080" src="../bandselector.jpg" width="2280"/>
+</div>
+<p>В этот момент на спектрограмме появятся сигналы и начнется расшифровка сообщений, а на вкладке Станции появится
+                обновляйте информацию о станциях, которые вы слышите.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations Button" class="screen" height="1080" src="../stationsbutton.jpg" width="2280"/>
+</div>
+<p>Нажатие кнопки<span translate="no">TX</span>кнопку (самая левая кнопка в
+                внизу) включит передачу.</p>
+<p>Если все верно, то<span translate="no">TX</span>кнопка будет
+                в конце концов загорится надписью "<span translate="no">TX Transmitting</span>" и
+                покажет
+                мощность передачи и<span translate="no">SWR</span>(например, «5,0 Вт<span translate="no">SWR</span> 1,2").</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 TX Button" class="screen" height="1080" src="../txbutton.jpg" width="2280"/>
+</div>
+<p>Поскольку по умолчанию выбран режим «<span translate="no">AUTO</span>», qFT8
+                начнет проводить связи и фиксировать их в журнале
+                вкладка.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log Button" class="screen" height="1080" src="../logbutton.jpg" width="2280"/>
+</div>
+<p>Вы можете нажать на спектрограмму, чтобы изменить<span translate="no">Tx</span>смещение частоты, вы можете изменить последовательность, нажав кнопку
+                Кнопки 0 и 1 в нижней панели,
+                вы можете нажимать различные кнопки "<span translate="no">CALL</span>", чтобы позвонить
+                конкретных станций или вы можете настроить панель с помощью
+                «<span translate="no">AUTO</span>» на вкладке «Станции», чтобы выбрать
+                стратегия.
+                Подробнее обо всех этих расширенных функциях читайте в следующих разделах.</p>
+<p>Обратите внимание, что qFT8 начнет вызывать станции или, если ни одна из них не доступна, начнет вызывать CQ.
+                В конце концов, если все настроено правильно и распространение хорошее, qFT8 сможет провести QSO.</p>
+<p>Если qFT8 не получает правильные сигналы и не декодирует сообщения, это явный признак того, что что-то произошло.
+                есть
+                неверно: возможно, распространение в этом диапазоне закрыто, антенна может быть неправильно настроена, антенна может
+                неправильно подключен к трансиверу, трансивер может быть неправильно подключен к
+                телефон или какое-то оборудование может работать неправильно.
+                См.<a href="#troubleshooting">раздел устранения неполадок</a>ниже для решения распространенных проблем.</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="ft8-introduction">
+<h2>Знакомство с цифровым режимом FT8</h2>
+<p>FT8 — это цифровой протокол, разработанный для многоскачковых спорадических E и других условий слабого сигнала.
+                Для него характерны структурированные сообщения и точное время.</p>
+<h3>Циклы и последовательности</h3>
+<p>FT8 работает в<strong>15-секундные циклы</strong>. Каждый цикл общения строго рассчитан по времени,
+                начиная ровно с<strong>00, 15, 30 и 45 секунд</strong>каждой минуты.
+                По этой причине часы вашего устройства должны быть точно синхронизированы с<strong><span translate="no">UTC</span>время</strong>.</p>
+<p>В протоколе есть две последовательности:</p>
+<ul>
+<li><strong>Последовательность 0 (четная)</strong>: Циклы, начинающиеся с<strong>00 и 30</strong>секунды.</li>
+<li><strong>Последовательность 1 (нечетная)</strong>: Циклы, начинающиеся с<strong>15 и 45</strong>секунды.</li>
+</ul>
+<p>Станции обычно поочередно передают и принимают. Станция, передающая в последовательности 0
+                будет ждать ответа в последовательности 1, и наоборот.
+                В течение каждого 15-секундного цикла сообщение передается в окне примерно между<strong>+0,5 с и +13 с</strong>. Это оставляет время в конце цикла для декодирования и в конце цикла.
+                начало
+                для подготовки следующей передачи.</p>
+<h3>Характеристики сигнала</h3>
+<p>Каждое сообщение FT8 передается в виде последовательности тонов с небольшими изменениями частоты.
+                (иногда описываемый как «колеблемость»).
+                Сигнал FT8 очень узкий, занимающий всего около<strong>Полоса пропускания 50 Гц</strong>.
+                Такая эффективность позволяет десяткам одновременных разговоров уместиться в одном радиодиапазоне 3 кГц.</p>
+<h3>6 стадий QSO</h3>
+<p>Стандартный контакт FT8 обычно проходит шесть этапов. Вот пример обмена между<strong>HB9IPH</strong>и<strong>XX1XXX</strong>:</p>
+<ol>
+<li><strong><span translate="no">1/6 CQ</span></strong>: Станция ищет
+                    с кем поговорить.<br/>
+<em>Пример:<code>CQ HB9IPH JN47</code></em><br/>Примечание:<code>JN47</code>это<strong><span translate="no">Maidenhead</span>локатор сетки</strong>,
+                    что указывает на
+                    примерное географическое положение станции.
+                    Также может быть<strong><span translate="no">CQ</span>модификатор</strong>, что является примечанием для других операторов (например,<code>CQ SOTA HB9IPH</code>для программы Summits On The Air или<code>CQ US HB9IPH</code>когда
+                    пытаюсь связаться с кем-то в США).
+                    И модификатор, и местоположение могут не помещаться в одном сообщении; в таких случаях это место
+                    опущен. Если позывной очень длинный, возможно, ни местоположение, ни
+                    модификатор поместится в<span translate="no">CQ</span>!</li>
+<li><strong><span translate="no">2/6 CALL</span></strong>: Другая станция
+                    отвечает на<span translate="no">CQ</span>.<br/>
+<em>Пример:<code>HB9IPH XX1XXX JO21</code></em><br/>Примечание. Отвечающий также сообщает свое местоположение (<code>JO21</code>), которое можно опустить, если
+                    позывные слишком длинные, чтобы вместить все.</li>
+<li><strong><span translate="no">3/6 RPT</span></strong>: Первая станция
+                    отправляет отчет о сигнале.<br/>
+<em>Пример:<code>XX1XXX HB9IPH -10</code></em><br/>Примечание.<strong>отчет о сигнале</strong>(например,<code>-10</code>) указывает уровень сигнала
+                    относительно уровня шума в<span translate="no">dB</span>.</li>
+<li><strong><span translate="no">4/6 RRPT</span></strong>: Вторая станция
+                    подтверждает отчет и отправляет свой собственный.<br/>
+<em>Пример:<code>HB9IPH XX1XXX R-12</code></em><br/>Примечание. Префикс «R» подтверждает получение предыдущего отчета, за которым следует<strong>отчет о сигнале</strong>для первой станции.</li>
+<li><strong><span translate="no">5/6 RR73</span></strong>: Первая станция
+                    все подтверждает и отправляет «Роджер-Роджер 73».<br/>
+<em>Пример:<code>XX1XXX HB9IPH RR73</code></em>
+</li>
+<li><strong><span translate="no">6/6 73</span></strong>: Вторая станция
+                    отправляет финальное «73», чтобы закрыть контакт.<br/>
+<em>Пример:<code>HB9IPH XX1XXX 73</code></em>
+</li>
+</ol>
+<p>Из-за<a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem" target="_blank">Два
+                    Генералы%27 Проблема</a>, теоретически невозможно знать наверняка, что другая станция
+                получили ваше последнее сообщение, если они это не подтвердят. Однако тогда вам нужно будет подтвердить их
+                подтверждение, и им нужно будет это подтвердить, и так далее.
+                Цифровой режим FT8 смягчает это за счет структурированных стадий: технически можно рассматривать QSO.
+                полный
+                после этапа<span translate="no">4/6</span>(когда оба отчета о сигналах имеют
+                был обменян).
+                На практике, чтобы гарантировать, что обе станции согласны с тем, что обмен произошел, QSO протоколируется, когда станция
+                получил<span translate="no">RR73</span>и отправил 73.
+                По сути, либо передача<span translate="no">RR73</span>или 73
+                запускает регистрацию QSO.</p>
+<p>Обратите внимание, что станции могут также вызывать другие станции, даже если они не передавали сообщение.<span translate="no">CQ</span>первый.
+                Например, станции в редких местах могут иметь «скопление» множества станций, вызывающих их.
+                одновременно; в таких случаях редкая станция может просто перейти от одного QSO к следующему.
+                без необходимости приглашать новых абонентов с помощью<span translate="no">CQ</span>.</p>
+<p>Некоторые станции могут использовать<strong>$$$</strong>вместо RR73 на этапе 5.
+                В этом случае контакт требует дополнительного обмена: вторая станция отправляет 73, а затем
+                первая станция снова отправляет 73 для завершения.</p>
+<p>FT8 также поддерживает<strong>бесплатные текстовые сообщения</strong>(до 13 символов), но qFT8 этого не делает.
+                в настоящее время поддерживают отправку этих пользовательских сообщений.</p>
+<h3>Ограничения протокола и резервные варианты</h3>
+<p>Сообщения FT8 сильно сжимаются в<strong>77 бит</strong>. Иногда сложная информация
+                (например, длинные нестандартные позывные) не вписывается в стандартный формат сообщения.</p>
+<ul>
+<li><strong>Хешированные позывные</strong>: Если позывной слишком длинный, он может быть отправлен в виде хеша.
+                    Если принимающая станция недавно увидела этот позывной, вызывающий CQ, ее программное обеспечение может сопоставить хэш
+                    назад
+                    к исходному позывному. В противном случае оно будет отображаться как<code>&lt;...&gt;</code>. Это очень
+                    труднее проводить связи, если ваш позывной нестандартный.</li>
+<li><strong>Свободный резервный текст</strong>: Некоторые сообщения могут быть принудительно записаны в 13-значный произвольный текст.
+                    формат, который менее надежен, чем стандартные структурированные сообщения.</li>
+<li><strong>Нестандартные позывные</strong>: Если две станции используют очень длинные, нестандартные
+                    позывные, они могут быть принципиально неспособны общаться друг с другом с помощью цифрового радио FT8.
+                    режим.</li>
+<li><strong>Пропуск этапа</strong>: Если позывные слишком длинные, протокол может не соответствовать
+                    отчеты о сигналах (<span translate="no">stages 3/6 and 4/6</span>). В этих
+                    случаях обмен может пропустить непосредственно из
+                    начальный<span translate="no">CALL (2/6)</span>до окончательного подтверждения
+                    (<span translate="no">5/6 and 6/6</span>).</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="user-interface">
+<h2>Пользовательский интерфейс qFT8</h2>
+<p>Приложение qFT8 разделено на три части:</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Overview" class="screen" height="1080" src="../overview.jpg" width="2280"/>
+</div>
+<ol>
+<li><strong>Нижняя панель</strong>: Всегда на виду для наблюдения и управления передачей, а также для контроля
+                    qFT8.</li>
+<li><strong>Спектрограмма</strong>: Всегда виден. Чтобы просмотреть декодированные сообщения, см.<span translate="no">UTC</span>время жить и
+                    настроенная частота и управление смещением частоты передачи.</li>
+<li><strong>Область вкладок</strong>: показывает одну из трех вкладок.
+                    (станции,
+                    Журнал и
+                    Настройки). Какой
+                    одним из показанных здесь можно управлять с помощью кнопок в самой правой части нижней панели.</li>
+</ol>
+<p>В следующих разделах подробно описаны все эти компоненты.</p>
+<h3 id="ui-bottom-bar">Нижняя панель</h3>
+<p>Нижняя полоса отображает важную информацию: состояние постановки/снятия передачи, включен ли qFT8.
+                передача, мощность передачи, коэффициент стоячей волны
+                (<span translate="no">SWR</span>), передаваемое сообщение,
+                текущая и выбранная последовательность, селектор диапазонов и кнопки для навигации по различным вкладкам.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Bottom bar" class="screen" height="1080" src="../bottombar.jpg" width="2280"/>
+</div>
+<p>Подробно о компонентах нижней панели:</p>
+<ol>
+<li><strong>Индикатор выполнения цикла</strong>:<span style="color: #ffff00; font-weight: bold;">желтый</span>бар начинается с 0 секунд внутри цикла
+                    (самый левый)
+                    и
+                    заканчивается на 15-й секунде цикла (крайний правый).</li>
+<li><strong>Маркер триггера Tx</strong>:<span style="color: #ff5252; font-weight: bold;">красный</span>точка в левой части полосы указывает
+                    Техас
+                    время триггера. Если Tx включен (см. пункт №4) и текущая последовательность является выбранной последовательностью (см. пункт
+                    №6)
+                    передача начинается с этого момента.</li>
+<li><strong>Маркер времени декодирования</strong>:<span style="color: #ffffff; font-weight: bold;">белый</span>точка в правой части полосы
+                    указывает на
+                    время декодирования, то есть время, когда сообщения декодируются из полученных сигналов и впоследствии обрабатываются.</li>
+<li><strong>Кнопка передачи</strong>: Можно снять с охраны
+                    (<span translate="no">OFF</span>) или вооруженный
+                    (<span translate="no">ON</span>). Он также показывает, когда передача
+                    происходит,
+                    и мощность передачи и<span translate="no">SWR</span>.</li>
+<li><strong>Селектор сообщений</strong>: Показывает сообщение, выбранное для отправки или отправляемое (если
+                    это тот случай, подчеркнутый в<span style="color: #ff5252; font-weight: bold;">красный</span>). В<span translate="no">AUTO</span>режиме, он управляется автоматически. В<span translate="no">CALL</span>режим это
+                    также управляется автоматически по умолчанию, но его можно нажать, чтобы выбрать следующее сообщение для отправки
+                    вручную.</li>
+<li><strong>Селектор последовательности</strong>:<span style="color: #ffff00; font-weight: bold;">желтый</span>линия над кнопками показывает
+                    текущий
+                    последовательность (0 или 1). Нажатие на 0 или 1 выбирает эту последовательность для исходящих передач.</li>
+<li><strong>Селектор диапазонов</strong>: Когда трансивер подключен, он меняет диапазон в
+                    трансивер.</li>
+<li><strong>Кнопка вкладки «Станции»</strong>: открывает вкладку, в которой перечислены все станции, которые вы слышали или
+                    можно общаться.</li>
+<li><strong>Кнопка вкладки «Журнал»</strong>: открывает вкладку, в которой перечислены все<span translate="no">QSO</span>ты сделал. Эта кнопка будет отмечена
+                    с желтой точкой, если у вас есть связи, которые не загружены в QRZ.</li>
+<li><strong>Кнопка вкладки «Настройки»</strong>: открывает вкладку для настройки qFT8.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="ui-spectrogram">Спектрограмма</h3>
+<p>Спектрограмма показывает вид пика и водопада с входящими сигналами и сообщениями, исходящими сигналами.
+                и сообщения, маркеры изменения последовательности, аннотированные<span translate="no">UTC</span>время и время для декодирования, а также
+                выбранная частота смещения для передачи.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Spectrogram" class="screen" height="1080" src="../spectrogram.jpg" width="2280"/>
+</div>
+<p>Вот компоненты спектрограммы в деталях:</p>
+<ol>
+<li><strong>Вид на водопад</strong>: Отображает недавнюю историю полученных сигналов с течением времени.</li>
+<li><strong>Пики в реальном времени</strong>: отображение мгновенной силы сигналов на каждой частоте.
+                    диапазон.</li>
+<li><strong>Разделители последовательностей</strong>: Эти<span style="color: #ff5252; font-weight: bold;">красный</span>горизонтальные линии действуют как визуальные разделители
+                    циклов,
+                    и помечены<span translate="no">UTC</span>время и<span translate="no">time</span>провел декодирование.</li>
+<li><strong>Выбранное смещение частоты</strong>: Эта вертикаль<span style="color: #ffff00; font-weight: bold;">желтый</span>наложение на спектрограмму указывает
+                    текущий выбранный сдвиг частоты для передачи.</li>
+<li><strong>Входящие сообщения</strong>, показано цветовой маркировкой:<ul>
+<li><span style="color: #00ff00; font-weight: bold;">Зеленый</span>: сообщения CQ.</li>
+<li><span style="color: #00ffff; font-weight: bold;">Голубой</span>: Сообщения между другими
+                            станции.</li>
+<li><span style="color: #ffff00; font-weight: bold;">Желтый</span>: Ваши переданные сообщения.</li>
+<li><span style="color: #ff9800; font-weight: bold;">Оранжевый</span>: Входящие сообщения направлены
+                            тебе.</li>
+</ul>
+</li>
+<li><strong>Текущий<span translate="no">UTC</span>время и
+                        последовательность</strong>: отображается на вершине водопада.</li>
+<li><strong>Настроенная частота и диапазон</strong>: Частота и диапазон, на который в данный момент настроен трансивер.</li>
+<li><strong>Ось частоты</strong>: Показывает шкалу частот в<span translate="no">Hz</span>внутри выбранного диапазона.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="ui-stations-tab">Вкладка «Станции»</h3>
+<p>Вкладка «Станции» — это командный центр для мониторинга активности в диапазоне и управления qFT8. Это
+                вверху расположены элементы управления фильтрацией и автоматизацией, за которыми следует список активных станций.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations tab" class="screen" height="1080" src="../stations.jpg" width="2280"/>
+</div>
+<p>Подробное описание компонентов вкладки «Станции»:</p>
+<ol>
+<li><strong><span translate="no">AUTO</span>кнопка режима вызова</strong>:
+                    Привлечение "<span translate="no">AUTO</span>" постарается вызвать лучших
+                    станция согласно
+                    по критериям, выбранным пользователем.</li>
+<li><strong>Руководство<span translate="no">CALL</span>кнопка режима</strong>:
+                    Привлечение "<span translate="no">CALL</span>" для станции будет настаивать на
+                    называя это
+                    станции до достижения<span translate="no">QSO</span>, то упадет
+                    вернуться к "<span translate="no">AUTO</span>".</li>
+<li><strong>Цель</strong>: Устанавливает критерии для режима АВТО:<ul>
+<li><strong><span translate="no">Anyone</span></strong>: Любой позывной
+                            что у тебя нет<span translate="no">QSO</span>пока что.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Отдавайте приоритет новому
+                            страны/субъекты.</li>
+<li><strong><span translate="no">Grid</span></strong>: Отдавайте приоритет новому<span translate="no">Maidenhead</span>квадраты сетки.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: Расставить приоритеты
+                            новый<span translate="no">ITU</span>зоны.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: Расставить приоритеты
+                            новый<span translate="no">CQ</span>зоны.</li>
+<li><strong><span translate="no">I/C/D/G</span></strong>: Расставить приоритеты
+                            первый<span translate="no">ITU</span>зона, тогда<span translate="no">CQ</span>зона, тогда<span translate="no">DXCC</span>, тогда<span translate="no">Grid</span>.</li>
+<li><strong><span translate="no">Call CQ</span></strong>: Просто звонит
+                            CQ и ответы на любую станцию, которая звонит на вашу станцию.</li>
+</ul>Во всех случаях станции, соответствующие одинаковым критериям, сортируются по уровню сигнала. Например,<span translate="no">Anyone</span>сначала расставит приоритеты для новых позывных,
+                    но среди них самые сильные сигналы будут находиться вверху списка.</li>
+<li><strong>Периодичность</strong>: Как часто связываться с этой целью:<ul>
+<li><strong><span translate="no">once</span></strong>: В
+                            жизнь.</li>
+<li><strong><span translate="no">daily</span></strong>: Один раз в<span translate="no">UTC</span>дата.</li>
+<li><strong><span translate="no">weekly</span></strong>: Раз в 7
+                            скользящее окно дней.</li>
+<li><strong><span translate="no">monthly</span></strong>: Один раз в
+                            скользящее окно месяца.</li>
+<li><strong><span translate="no">yearly</span></strong>: Один раз в
+                            скользящее окно года.</li>
+</ul>
+</li>
+<li><strong>Квалификатор</strong>: Как применяются эти ограничения:<ul>
+<li><span translate="no">per callsign or zone</span></li>
+<li><span translate="no">per band</span></li>
+<li><span translate="no">in different bands</span></li>
+<li><span translate="no">until zone confirmed</span></li>
+<li><span translate="no">per band + until zone confirmed</span></li>
+</ul>
+</li>
+<li><strong><span translate="no">Spy</span>режим</strong>: Когда включено, qFT8
+                    также попытается позвонить на станции, вызов которых вы не слышали<span translate="no">CQ</span>пока (отмечено как<span translate="no">DIRECT</span>). Это полезно, чтобы иметь больше станций
+                    на расстоянии и присоединяйтесь к скоплениям.</li>
+<li><strong><span translate="no">Busy</span>режим</strong>: Когда включено, qFT8
+                    также попытаюсь позвонить на занятые станции
+                    в<span translate="no">QSO</span>с кем-то еще (отмечено как<span translate="no">BUSY</span>). Это полезно для объединения в кучу.</li>
+<li><strong>+ кнопка</strong>: вручную вызвать любую произвольную станцию, введя ее позывной.</li>
+<li><strong>Информация о станции</strong>: Отображает подробный статус каждой декодированной станции.</li>
+</ol>
+<p>Отдельные записи станций состоят из четырех информативных строк:</p>
+<p><strong>Первая строка</strong>показывает подробную информацию о станции (слева направо):</p>
+<ul>
+<li><strong><span translate="no">QSO Status</span></strong>: Указывает ваш<span translate="no">QSO</span>история с этой станцией (<span style="color: grey;">✗</span> = нет<span translate="no">QSO</span>, ✓ = зарегистрировано
+                    локально,<span style="color: #FFD700; font-weight: bold;">★</span>= подтверждено через QRZ или LoTW).</li>
+<li><strong>Позывной</strong>: Позывной станции.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Страна или организация
+                    принадлежит позывной этой станции.</li>
+<li><strong>Ячейка сетки</strong>:<span translate="no">Maidenhead</span>квадрат сетки, о котором сообщает эта станция.</li>
+<li><strong><span translate="no">CQ zone</span></strong>:<span translate="no">CQ</span>зона, которой принадлежит позывной этой станции.</li>
+<li><strong><span translate="no">ITU zone</span></strong>:<span translate="no">ITU</span>зона, которой принадлежит позывной этой станции.</li>
+<li><strong>Группа</strong>: Группа, на которой радиостанция прослушивалась в последний раз.</li>
+</ul>
+<p><strong>Вторая строка</strong>показывает состояние связи (слева направо):</p>
+<ul>
+<li><strong>Государство</strong>: Текущая фаза общения:<ul>
+<li><span style="color: #cd853f; font-weight: bold;"><span translate="no">DIRECT</span>:
+                            Услышан и, казалось бы, свободен
+                            прямо сейчас,
+                            но никогда не звонил<span translate="no">CQ</span>.</li>
+<li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/6
+                                CQ</span>: Услышал звонок<span translate="no">CQ</span>и
+                            вроде бесплатно сейчас.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/6
+                                CALL</span>: Позвонил тебе.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/6
+                                RPT</span>: Отправил вам отчет о сигнале.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">4/6
+                                RRPT</span>: Ответил на ваш
+                            отчет со своими.</li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6
+                                RR73</span>: Подтвердил ваш отчет
+                            с<span translate="no">RR73</span>.</li>
+<li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6
+                                DONE</span>:<span translate="no">QSO</span>завершено (73
+                            обменялись).</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>:
+                            Не слышно за последние пару
+                            циклов.</li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO
+                                LONG</span>: Ваш позывной и их
+                            позывные слишком длинные, чтобы установить связь, согласно<span translate="no">FT8</span>ограничения цифрового режима.</li>
+</ul>
+</li>
+<li><strong>Уровень сигнала</strong>: Сила в<span translate="no">dB</span>(показывает "????", если его недавно не слышали).</li>
+<li><strong>Последовательность</strong>: Последняя последовательность передач, в которой была слышна передача этой станции (0 или 1).</li>
+<li><strong>Дельта времени (Δt)</strong>: Смещение синхронизации времени в секундах между их временем и
+                    твой.</li>
+<li><strong>Расстояние</strong>: расчетное расстояние между ячейками сетки своей и вашей станции.</li>
+</ul>
+<p><strong>Третья и четвёртая строки</strong>показать последние отправленные и последние полученные сообщения,
+                в том числе<span translate="no">UTC</span>время, сдвиг частоты и
+                текст сообщения (с префиксом<span translate="no">Rx:</span>или<span translate="no">Tx:</span>).</p>
+<p>Ключевые визуальные индикаторы, на которые следует обратить внимание:</p>
+<ul>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Красный</span>Позывной</strong>:<span translate="no">AUTO</span>режим имеет
+                    превышен лимит повторов для этой станции. Это будет
+                    временно игнорируется, если вы не нажмете "<span translate="no">CALL</span>", чтобы
+                    сбросьте его вручную.</li>
+<li><strong><span style="color: #aaaaaa; font-weight: bold;">Серый</span>Позывной</strong>:
+                    Позывной соответствует настройке исключенных префиксов, разделенных запятыми.<span translate="no">AUTO</span>режим никогда не будет нацелен на эту станцию.</li>
+<li><strong><span style="color: #e040fb; font-weight: bold;">Фиолетовый</span>Выделенная зона</strong>:
+                    Эта зона/объект
+                    (<span translate="no">DXCC</span>,<span translate="no">Grid</span>,<span translate="no">CQ
+                    zone</span>,<span translate="no">ITU zone</span>)
+                    это
+                    Нужна цель с учетом ваших текущих фильтров.</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Красный</span>Порядковый номер</strong>:
+                    станция находится в той же последовательности, которую вы выбрали, что приводит к
+                    столкновение. Нажатие «<span translate="no">CALL</span>» автоматически
+                    переключите последовательность.</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Красный</span>Группа</strong>: Станция была
+                    последний раз слышал на другой группе.</li>
+</ul>
+<p>Станции автоматически сортируются по релевантности. Изменение целевых критериев или ограничений приведет к
+                немедленно пересортировать список.</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="ui-log-tab">Вкладка Журнал</h3>
+<p>Вкладка журнала показывает достигнутые связи.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log tab" class="screen" height="1080" src="../log.jpg" width="2280"/>
+</div>
+<p>Подробное описание компонентов вкладки «Журнал»:</p>
+<ol>
+<li><strong>Текстовый фильтр позывных</strong>: Фильтр для QSO, основанный на том, содержит ли позывной
+                    введенный текст.</li>
+<li><strong>Фильтр состояния</strong>: Фильтр для QSO, который показывает:<ul>
+<li><span translate="no">All</span>: Показывает все записанные QSO.</li>
+<li><span translate="no">Confirmed</span>: Показывает только QSO, у которых есть
+                            было подтверждено.</li>
+<li><span translate="no">Not confirmed</span>: Показывает связи, которых нет
+                            еще подтверждено.</li>
+<li><span translate="no">Not uploaded</span>: Показывает связи, которых нет
+                            было загружено в QRZ.</li>
+<li><span translate="no">Duplicated</span>: Показывает QSO, которые QRZ
+                            распознает как дубликаты.</li>
+<li><span translate="no">Rejected</span>: Показывает связи, которые были
+                            отклонен другой станцией в QRZ.</li>
+<li><span translate="no">Wrong Callsign</span>: Показывает записанные связи.
+                            с позывным, отличным от настроенного в данный момент.</li>
+<li><span translate="no">Non FT8</span>: Показывает QSO, записанные для
+                            режим, отличный от FT8.</li>
+</ul>
+</li>
+<li><strong>Недавний фильтр ограничений</strong>: фильтр, показывающий только 100 последних QSO с
+                    заданные критерии.</li>
+<li><strong>Список проведенных связей</strong>: отображает записи журнала в следующих столбцах (слева на
+                    правильно):<ul>
+<li><strong><span translate="no">QRZ</span></strong>: Указывает
+                            Ваша история с этой станцией:<ul>
+<li><strong><span style="color: grey;">✗</span></strong>: Нет<span translate="no">QSO</span>записи.</li>
+<li><span style="color: grey; font-weight: bold;">✓</span>: Записано локально / Ожидается
+                                    загрузить.</li>
+<li><span style="color: #00ff00; font-weight: bold;">✓</span>: Загружено в<span translate="no">QRZ</span>.</li>
+<li><span style="color: #FFD700; font-weight: bold;">★</span>: Подтверждено по QRZ или LoTW.
+                                    (для QSO, загруженных через QRZ).</li>
+<span translate="no">QRZ</span>или
+                                вручную.</ul></li>
+<li><span style="color: #00ffff; font-weight: bold;">🛸</span>:
+                            Не<span translate="no">FT8</span>режим.</li>
+<li><span style="color: #00ff00; font-weight: bold;">♻️</span>: Сообщается как дубликат<span translate="no">QRZ</span>.</li>
+<li><span style="color: grey; font-weight: bold;">❕</span>: Несоответствие позывного станции,
+                            уже загружено.</li>
+<li><span style="color: #ff9800; font-weight: bold;">⚠️</span>: Позывной станции
+                            несоответствие, не загружено.</li>
+<li><span style="color: #ff5252; font-weight: bold;">⛔</span>: Статус отклонения.</li>
+</ul>
+</li>
+<li><strong><span translate="no">Callsign</span></strong>:
+                    позывной станции.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Страна или
+                    организация, которой принадлежит позывной этой станции.</li>
+<li><strong><span translate="no">Grid cell</span></strong>:
+                    Площадь сетки Мейденхед, о которой сообщает эта станция.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: зона CQ
+                    принадлежит позывной этой станции.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: МСЭ
+                    зона, которой принадлежит позывной этой станции.</li>
+<li><strong><span translate="no">Band</span></strong>: Группа на
+                    которую радиостанцию слышали в последний раз.</li>
+
+
+</ol>
+<p>Ключевые визуальные индикаторы, на которые следует обратить внимание:</p>
+<ul>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Желтый</span>обратите внимание на позывной</strong>:
+                    Это QSO для станции, отличной от той,
+                    настроен.</li>
+<li><strong><span style="color: #00ffff; font-weight: bold;">Голубой</span>обратите внимание на позывной</strong>:
+                    Это QSO проводится в режиме, отличном от FT8.</li>
+<li><strong><span style="color: #00ff00; font-weight: bold;">Зеленый</span>Выделенная зона</strong>(<span translate="no">DXCC</span>,<span translate="no">Grid</span>,<span translate="no">ITU
+                    Zone</span>,<span translate="no">CQ Zone</span>):
+                    Это был первый
+                    неподтвержденные связи в вашем журнале для этой зоны.</li>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Желтый</span>Выделенная зона</strong>(<span translate="no">DXCC</span>,<span translate="no">Grid</span>,<span translate="no">ITU
+                    Zone</span>,<span translate="no">CQ Zone</span>):
+                    Это был первый
+                    подтвержденное QSO в вашем журнале для этой зоны.</li>
+</ul>
+<p><strong>Редактирование QSO</strong>: Нажатие на любой<span translate="no">QSO</span>в списке откроется подсказка, позволяющая вручную
+                маркировка<span translate="no">QSO</span>как подтверждено/неподтверждено локально в
+                qFT8 или удаление<span translate="no">QSO</span>локально в qFT8.<strong>Обратите внимание, что эти действия являются только локальными и не синхронизируются с<span translate="no">QRZ</span>.</strong>Удаление<span translate="no">QSO</span>в
+                приложение является необратимым, если только вы не сохраните экспортированную копию файла журнала или он не будет загружен в<span translate="no">QRZ</span>.</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+<h3 id="ui-settings-tab">Вкладка «Настройки»</h3>
+<p>Вкладка настроек позволяет настроить qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings tab" class="screen" height="1080" src="../settings.jpg" width="2280"/>
+</div>
+<p>Вкладка настроек разделена на следующие разделы:</p>
+<h4>Основные настройки</h4>
+<ul>
+<li><strong><span translate="no">Callsign</span></strong>: Ваше любительское радио
+                    позывной. Это обязательное значение и должно совпадать с указанным в
+                    ваша лицензия, и вы должны соблюдать все правила и ограничения для передачи.</li>
+<li><strong><span translate="no">CQ modifier</span></strong>: Дополнительный текст
+                    который будет добавлен к вашему<span translate="no">CQ</span>звонки, часто
+                    используется для
+                    события (например, "<span translate="no">SOTA</span>").</li>
+<li><strong>Смещение времени</strong>: используется для синхронизации часов вашего устройства с другими станциями. qFT8
+                    автоматически синхронизирует это при запуске, если доступно подключение к Интернету. Вы также можете
+                    вручную запустить синхронизацию, нажав кнопку<strong><span translate="no">SYNC</span></strong>кнопка.</li>
+<li><strong>Местоположение (<span translate="no">Maidenhead</span>сетка)</strong>: А
+                    уточненное представление местоположения вашей станции.
+                    Это может быть автоматически обновлено при запуске с помощью вашего телефона.<span translate="no">GPS</span>если "Обновление при запуске"
+                    флажок включен. Вы также можете вручную обновить свое местоположение в любое время, нажав кнопку<strong><span translate="no">GPS</span></strong>кнопка.</li>
+</ul>
+<h4>Автоматизация местоположения станции</h4>
+<p>Такие детали, как<strong>Зона МСЭ</strong>,<strong>Зона CQ</strong>и<strong>Название станции</strong>автоматически определяются по вашему позывному. Для этих полей не требуется ручная настройка.
+                обеспечение того, чтобы ваши загрузки LoTW всегда соответствовали информации о вашей лицензии.</p>
+<h4>Стратегия синхронизации журналов</h4>
+<p>В этом разделе определяется стратегия, используемая для определения того, когда QSO рассматривается.
+                загружено (зеленая галочка<span style="color: #4CAF50;">✓</span>) и когда оно должно быть загружено
+                отобразить звездочку подтверждения (<span style="color: #FFD700;">★</span>).</p>
+<ul>
+<li><strong>Любой из<span translate="no">LoTW</span>и<span translate="no">QRZ</span></strong>: хороший вариант по умолчанию, если у вас настроена только одна служба.</li>
+<li><strong>Оба</strong>: выберите это для максимальной безопасности, требуя<span translate="no">QSO</span>быть успешно отправлен в обе службы, прежде чем считаться завершенным и готовым к проверке на подтверждение.</li>
+<li><strong><span translate="no">QRZ</span>(кроме импорта из<span translate="no">LoTW</span>)</strong>: Рекомендуется, если<span translate="no">QRZ</span>ваш основной бортовой журнал.<em>Примечание:<span translate="no">QSOs</span>импортировано из<span translate="no">LoTW</span>помечены как синхронизированные, но не загружены в<span translate="no">QRZ</span>чтобы избежать ограничений API (которые разрешают загрузку только по одному); их можно синхронизировать внутри<span translate="no">QRZ</span>сама позже.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Рекомендуется, если вы считаете<span translate="no">LoTW</span>ваш основной источник истины.</li>
+</ul>
+<h4>Синхронизация QRZ</h4>
+<p>В этом разделе рассматривается интеграция с<span translate="no">QRZ.com</span>Бортжурнал.<strong>Обратите внимание, что QRZ — это услуга платной подписки</strong>; если вы предпочитаете бесплатную альтернативу, см.<a href="#lotw-integration">Синхронизация LoTW</a>раздел ниже.
+                Чтобы включить интеграцию QRZ, вы должны предоставить свой<strong>QRZ API-ключ</strong>, который можно найти
+                на<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">официальная страница API журнала QRZ</a>.
+                Нажимать<strong>ПРОВЕРИТЬ</strong>чтобы проверить ваш ключ и статус подписки.</p>
+<ul>
+<li><strong>Кнопка импорта</strong>: Возможность импорта<span translate="no">QSOs</span>от твоего<span translate="no">QRZ</span>бортовой журнал.</li>
+<li><strong>Автоматическое поведение</strong>: Настройте, будет ли и когда ваш<span translate="no">QSOs</span>автоматически загружаются<span translate="no">QRZ</span>и проверил подтверждение.</li>
+</ul>
+<h4>Синхронизация LoTW</h4>
+<p>В этом разделе рассматривается интеграция с<span translate="no">ARRL Logbook of the World
+                (LoTW)</span>. Чтобы разблокировать все функции, вы должны выполнить четыре конкретных требования:
+                ваш<strong>Имя пользователя LoTW</strong>, ваш<strong>Пароль LoTW</strong>(используется для входа на сайт),<strong>.p12 Сертификат TQSL</strong>файл, а<strong>Пароль сертификата</strong>(который может быть пустым).
+                Информацию о сертификатах см. в разделе<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">официальная страница помощи LoTW</a>.</p>
+<ul>
+<li><strong>Кнопка импорта</strong>: Возможность импорта<span translate="no">QSOs</span>из<span translate="no">LoTW</span>.</li>
+<li><strong>Автоматическое поведение</strong>: Настройте, будет ли<span translate="no">qFT8</span>автоматически проверяет наличие подтверждений<span translate="no">LoTW</span>.</li>
+<li><strong>Управление сертификатами</strong>: Загрузите свой<span translate="no">.p12</span>Сертификат TQSL и введите его пароль.
+                    чтобы включить<strong>автоматическая фоновая загрузка</strong>. Нажмите<strong>ПРОВЕРИТЬ</strong>чтобы обеспечить
+                    все учетные данные и сертификат работают правильно.</li>
+</ul>
+<h4>Импорт файла ADIF</h4>
+<p>Позволяет импортировать существующие журналы из стандартных файлов `.adi`.</p>
+<h4>Экспорт файла ADIF</h4>
+<p>Позволяет экспортировать журнал в<span translate="no">.adi</span>файл. ты
+                можно экспортировать весь журнал или определенное время
+                диапазон. Параметры фильтрации позволяют экспортировать все<span translate="no">QSOs</span>,
+                только подтвержденные (полезно для претензий на вознаграждение) или
+                только те, которые еще не загружены в<span translate="no">QRZ</span>(для ручного
+                загрузка). Вы также можете добавить<strong>Саммиты в прямом эфире (<span translate="no">SOTA</span>)</strong>ссылка или<strong>Парки в эфире
+                    (<span translate="no">POTA</span>)</strong>ссылка на экспорт для отправки в<span translate="no">SOTAData</span>или<span translate="no">POTA</span>.</p>
+<h4>Трекер станции</h4>
+<p>В этом разделе можно настроить время автоматической очистки станций на вкладке «Станции».</p>
+<h4>АВТОМАТИЧЕСКИЙ режим</h4>
+<p>В этом разделе можно настроить поведение логики автоматизации, в том числе количество повторных попыток.
+                звонки с одной станции. Вы также можете указать список исключенных префиксов, разделенных запятыми;
+                Режим АВТО никогда не будет нацелен на станции, позывные которых начинаются с этих префиксов.</p>
+<h4><span translate="no">FT8 Settings</span></h4>
+<p>В этом разделе осуществляется тонкая настройка алгоритма декодирования.
+                (<span translate="no">Fast</span>против.<span translate="no">Deep</span>), настроить декодирование и<span translate="no">Start Tx</span>время и установите<span translate="no">PTT</span>задержки, чтобы гарантировать ваше
+                переходы трансивера
+                правильно между приемом и передачей. Вы также можете включить автоматическое масштабирование системного тома для
+                трансивер.</p>
+<h4>Настройки группы</h4>
+<p>Этот раздел позволяет настроить, как qFT8 обрабатывает информацию о полосе. Вы можете установить, будут ли qFT8 и
+                Трансивер должен автоматически обмениваться информацией о выбранном диапазоне при подключении. Этот раздел также позволяет
+                вы можете настроить, какие полосы будут отображаться в нижней панели выбора.</p>
+<h4>Веб-сервер удаленного управления</h4>
+<p>Этот раздел позволяет настроить встроенный веб-сервер для удаленного управления. Более подробную информацию см.<a href="#remote-control">Веб-сервер удаленного управления</a>раздел ниже.</p>
+<h4>Репортер ПСК</h4>
+<p>В этом разделе есть прямая ссылка на<span translate="no">PSKReporter</span>, предварительно заполненный вашим позывным, где
+                ты можешь видеть
+                какие станции принимали ваши передачи за последние 6 часов.<strong>Примечание:</strong>qFT8 позволяет просматривать только ваши собственные ролики; это не происходит автоматически
+                сообщать о местах других станций<span translate="no">PSK Reporter</span>.</p>
+<h4>Удаление связей</h4>
+<p>Этот раздел позволяет удалить QSO из qFT8.<strong>Важно отметить, что это влияет только на локальный журнал qFT8.
+                    и не влияет на записи, которые уже были загружены на QRZ.com.</strong>
+</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="auto-mode">
+<h2>Автоматизированный режим работы (АВТО)</h2>
+<p>
+<strong><span translate="no">AUTO mode</span></strong>является основным способом
+                используйте qFT8. В этом режиме приложение автоматически
+                анализирует декодированные сообщения в конце каждого цикла и выбирает наиболее подходящую станцию для связи
+                на основе ваших целевых критериев.</p>
+<h3>Как работает выбор цели</h3>
+<p>
+                The <strong>Вкладка «Станции»</strong>отображает список активных станций, отсортированный таким образом, чтобы наиболее подходящие
+                кандидаты (на основе ваших критериев) появляются вверху. В конце каждого цикла декодирования qFT8 просматривает
+                этот отсортированный список и пытается дозвониться до первой подходящей станции. Если подходящая цель не найдена, она
+                автоматически начнет звонить<strong>КК</strong>для привлечения звонящих. qFT8 всегда отвечает на входящие звонки
+                АВТО режим.</p>
+<h3>Критерии и фильтры</h3>
+<p>Вы можете настроить автоматизацию с помощью трех раскрывающихся меню вверху вкладки «Станции»:</p>
+<ul>
+<li><strong>Цель</strong>: определяет, какое «достижение» вы ищете.
+                    (<span translate="no">Anyone</span>,<span translate="no">DXCC</span>,<span translate="no">CQ
+                    Zone</span>,<span translate="no">ITU Zone</span>,<span translate="no">Grid</span>).</li>
+<li><strong>Интервал</strong>: Как часто вы готовы связываться с одним и тем же лицом.
+                    (<span translate="no">Once</span>,<span translate="no">Always</span>,<span translate="no">Daily</span>,<span translate="no">Weekly</span>,<span translate="no">Monthly</span>).</li>
+<li><strong>Квалификатор</strong>: сузить требование уникальности (<span translate="no">Per
+                    callsign</span>,<span translate="no">Per
+                    band</span>,<span translate="no">Until zone/entity
+                    confirmed</span>).</li>
+</ul>
+<div class="highlight">
+<p><strong>Ручное управление:</strong>Вы всегда можете вмешаться вручную, нажав кнопку<strong><span translate="no">CALL</span></strong>кнопка для конкретного
+                    станция. Это входит<a href="#call-mode"><span translate="no">CALL
+                        mode</span></a>для этого конкретного<span translate="no">QSO</span>. После завершения qFT8
+                    плавно возвращается в<span translate="no">AUTO</span>режим.</p>
+</div>
+<h3>Механизм повтора</h3>
+<p>Чтобы предотвратить бесконечный вызов qFT8 не отвечающей станции, qFT8 предлагает встроенную функцию повторной попытки и запрета.
+                система, включена по умолчанию. Вы можете настроить их на вкладке «Настройки» в разделе<strong>Повторить попытку
+                    Логика</strong>:</p>
+<ul>
+<li><strong>Предел повторных попыток</strong>: Максимальное количество раз, когда qFT8 будет повторять этап передачи для
+                    станция, которая не отвечает.</li>
+<li><strong>Окно повтора</strong>: период времени, в течение которого подсчитываются эти попытки.</li>
+<li><strong>Повторить перезарядку</strong>: Если лимит достигнут, станция «Забанена» на это время.
+                    Режим АВТО будет игнорировать запрещенные станции до тех пор, пока не истечет время восстановления или пока станция не ответит.</li>
+</ul>
+<h3>Пример оптимизированных настроек</h3>
+<p>Вот некоторые рекомендуемые комбинации критериев для достижения общих целей:</p>
+<table>
+<thead>
+<tr>
+<th>Цель</th>
+<th>Цель</th>
+<th>Интервал</th>
+<th>Состояние</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Максимизируйте количество уникальных станций</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Максимальное количество уникальных станций в каждом диапазоне</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Максимизируйте уникальность<span translate="no">DXCC</span>сущности</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Максимизируйте уникальность<span translate="no">DXCC</span>на полосу</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Максимизировать подтверждено<span translate="no">DXCC</span>сущности</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Максимизировать подтверждено<span translate="no">DXCC</span>на полосу</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Собирайте уникальные<span translate="no">Grids</span>на полосу</td>
+<td><span translate="no">Grid</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Работайте со всеми зонами
+                            (<span translate="no">CQ</span>/<span translate="no">ITU</span>)</td>
+<td><span translate="no">I/C/D/G</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Конкурс: Уникальные станции на разных диапазонах</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Конкурс: баллы за одну и ту же станцию ​​в разные дни</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Daily</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание, что во всех этих случаях вы можете включить<strong>Шпион</strong>и<strong>Занятый</strong>протянуть руку
+                больше
+                станции и войти в их скопления.</p>
+<p><strong>Примечание:</strong>Если ваш позывной нестандартный (например, с суффиксами или префиксами, разделенными «/»,
+                длинные позывные или другие позывные с номерами в редких позициях), вы, вероятно, захотите установить Target на<strong><span translate="no">Call CQ</span></strong>как будет ваш позывной
+                скорее всего, будет отправлен в хешированном виде, и только станции, которые видели, как вы звоните CQ, смогут сопоставить хеш-код с
+                ваш позывной. Вы по-прежнему можете вызывать станции, но они сопоставят сообщение с вашим позывным только в том случае, если они
+                недавно слышал, что ты позвонил в CQ.</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="call-mode">
+<h2>Ручное управление (CALL)</h2>
+<p>Хотя qFT8 высокоавтоматизирован, вы можете взять управление на себя в любое время. Нажатие на<strong>ЗВОНИТЕ</strong>кнопка
+                рядом с любой станцией на вкладке «Станции» сразу появится<strong>Режим вызова</strong>и попытаться
+                установить QSO с этой конкретной станцией.</p>
+<p>Как только QSO для ручной цели будет завершено (успешно или нет), qFT8 автоматически<strong>возврат в режим АВТО</strong>и возобновите свою предыдущую автоматизированную стратегию (например, вызов CQ).</p>
+<h3>Время для ручных операторов</h3>
+<p>Если в конце цикла вы обнаружите, что вам нужно больше времени для принятия решений вручную, вы можете получить
+                получите больше прибыли, отрегулировав<strong>Настройки FT8</strong>во вкладке Настройки:</p>
+<ul>
+<li><strong>Уменьшить "<span translate="no">Start decoding
+                        time</span>"</strong>: Обработка звука начинается раньше.</li>
+<li><strong>Увеличить "<span translate="no">Start transmission
+                        time</span>"</strong>: Задерживает начало вашего ответа.</li>
+</ul>
+<div class="highlight">
+<p><strong>Предупреждение:</strong>Агрессивная корректировка этих значений в пределах границ может
+                    сообщения гораздо сложнее декодировать другим станциям, поскольку вы сокращаете эффективное время
+                    доступен для фактического сигнала FT8 в окне синхронизации.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="adif-import-export">
+<h2>Импорт/экспорт ADIF</h2>
+<p>
+<span translate="no">qFT8</span>поддерживает стандарт<span translate="no">ADIF</span>(Любительский формат обмена данными) для
+                совместимость с другими
+                регистрация
+                программное обеспечение, облачные сервисы и резервное копирование вручную.</p>
+<h3>Импорт связей</h3>
+<p>Функция импорта позволяет вам переносить записи из других источников (например, WSJT-X или резервные копии из других источников).
+                устройства) в локальный журнал qFT8.</p>
+<ul>
+<li><strong>Параметры фильтрации</strong>: Вы можете выбрать, импортировать ли только<span translate="no">FT8</span>записи или все режимы,
+                    и следует ли ограничить импорт вашим текущим позывным или включить всех операторов.</li>
+<li><strong>Автоматическая дедупликация</strong>:<span translate="no">qFT8</span>разумно объединяет записи. Это предотвращает дублирование
+                    путем сопоставления<span translate="no">QRZ Log IDs</span>и<span translate="no">QSO</span>временные метки. Если импортированная запись имеет
+                    подтвержденный статус или действительный<span translate="no">Log ID</span>что ваша локальная запись отсутствует,
+                    вход по
+                    обновляя его лучшими данными.</li>
+</ul>
+<h3>Экспорт связей</h3>
+<p>Постукивание<strong><span translate="no">EXPORT QSOs</span></strong>генерирует<span translate="no">ADIF 3.1.6</span>файл и открывает системный лист общего доступа,
+                позволяя вам сохранить журнал на свое устройство или отправить его по электронной почте/сообщению.</p>
+<ul>
+<li><strong>Временной диапазон</strong>: Вы можете экспортировать всю свою историю или использовать<span translate="no">UTC</span>средства выбора даты/времени для
+                    изолировать конкретный период активации или конкурса.</li>
+<li><strong>Фильтры статуса</strong>: Полезно для получения наград (экспорт<strong>"<span translate="no">Confirmed
+                        Only</span>"</strong>)
+                    или для ручной загрузки в другие сервисы (экспортируйте<strong>"<span translate="no">Not Uploaded to
+                        QRZ</span>"</strong>, чтобы избежать
+                    дубликаты).</li>
+<li><strong><span translate="no">SOTA</span>ссылка</strong>: Как подробно
+                    в<a href="#sota"><span translate="no">SOTA</span>раздел</a>,<span translate="no">qFT8</span>может
+                    автоматически вставить ссылку на вершину в<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>поле
+                    каждую экспортированную запись.</li>
+<li><strong><span translate="no">POTA</span>ссылка</strong>: Как подробно
+                    в<a href="#pota"><span translate="no">POTA</span>раздел</a>,<span translate="no">qFT8</span>может
+                    автоматически вставить ссылку на парковку в<code>&lt;<span translate="no">MY_SIG</span>&gt;</code>,<code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>и<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>поля
+                    каждую экспортированную запись.</li>
+</ul>
+<div class="highlight">
+<p><strong>Примечание:</strong>Для очень больших журналов (более 100 КБ) qFT8 отображает предупреждение в виде
+                    Процесс дедупликации и сортировки на вашем мобильном устройстве может занять несколько минут.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="qrz-integration">
+<h2>Интеграция QRZ</h2>
+<p>
+<span translate="no">qFT8</span>предлагает глубокую интеграцию с<a href="https://www.qrz.com" target="_blank"><span translate="no">QRZ.com</span></a>чтобы сохранить свой
+                журнал автоматически синхронизируется.<strong>Обратите внимание, что интеграция QRZ — это услуга по подписке</strong>это требует<a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span>платная подписка</a>(<span translate="no">XML Logbook Data</span>или выше).
+                Если вы предпочитаете бесплатную альтернативу, рассмотрите возможность использования<a href="#lotw-integration">Интеграция LoTW</a>, который предоставляется ARRL бесплатно.</p>
+<h3>Как это работает</h3>
+<p>Чтобы включить интеграцию QRZ, вам необходимо указать свой<strong>QRZ API-ключ</strong>во вкладке настроек.
+                Вы можете найти свой ключ API на<a href="https://www.qrz.com/docs/logbook30/api" target="_blank">официальная страница API журнала QRZ</a>.
+                После входа и<strong><span translate="no">VALIDATED</span></strong>,
+                вы можете включить "<span translate="no">Upload QSOs to QRZ</span>" для автоматического фонового управления.</p>
+<ul>
+<li><strong>Автоматические загрузки</strong>: Каждый раз, когда<span translate="no">QSO</span>завершено (успешно достигнув<span translate="no">6/6
+                    DONE</span>государство),<span translate="no">qFT8</span>сразу пытается загрузить его
+                    вашему<span translate="no">QRZ</span>бортовой журнал.</li>
+<li><strong>Фоновая надежность</strong>: Если загрузка не удалась (например, из-за отсутствия подключения к Интернету или
+                    таймауты сервера), qFT8 не сдается. Фоновый работник будет<strong>автоматическая повторная попытка не удалась
+                        загружается каждые 5 минут</strong>. Этот процесс происходит бесшумно и гарантирует, что ваш журнал в конечном итоге достигнет
+                    облако после восстановления подключения.</li>
+<li><strong>Умный пропуск</strong>:<span translate="no">qFT8</span>защищает
+                    целостность вашего бортового журнала, загружая только<span translate="no">QSOs</span>что
+                    соответствовать вашему текущему настроенному позывному и<span translate="no">FT8</span>режим.<span translate="no">Non-FT8</span>записи,<span translate="no">QSOs</span>для разных
+                    позывные, или<strong>QSO, импортированные из<span translate="no">LoTW</span></strong>автоматически пропускаются в
+                    предотвратить чрезмерные запросы API.</li>
+</ul>
+<h3>Синхронизация подтверждений</h3>
+<p>Интеграция выходит за рамки простой загрузки.<span translate="no">qFT8</span>также опросы<span translate="no">QRZ</span>чтобы узнать, есть ли у тебя<span translate="no">QSOs</span>были подтверждены.</p>
+<ul>
+<li><strong>Немедленная проверка</strong>: через 30 секунд после<span translate="no">QSO</span>завершено и загружено,<span translate="no">qFT8</span>проверю
+                    вернулся с<span translate="no">QRZ</span>чтобы узнать, есть ли на другой станции
+                    также загрузил<span translate="no">QSO</span>; если они есть, то<span translate="no">QSO</span>будет
+                    синхронизироваться как<strong>подтверждено</strong>немедленно.</li>
+<li><strong>Автоматическая синхронизация</strong>: По умолчанию<span translate="no">qFT8</span>запросы<span translate="no">QRZ</span>каждые 6 часов (настраивается) в
+                    партии по 250 <span translate="no">QSOs</span>за раз, вращаясь
+                    просмотреть весь ваш неподтвержденный журнал, чтобы гарантировать, что даже
+                    старше<span translate="no">QSOs</span>в конечном итоге проверяются на наличие новых
+                    подтверждения.</li>
+<li><strong>Звезда подтверждения (<span translate="no">★</span>)</strong>: Когда
+                    QSO, загруженное в QRZ, подтверждается либо на QRZ, либо на LoTW, оно выделяется золотой звездочкой. Вы можете
+                    также вручную подтвердите любое QSO, чтобы отобразился этот индикатор.</li>
+<span translate="no">QRZ</span>сообщает о подтверждении, значок статуса в
+                ваш журнал
+                вкладка автоматически изменится на<span style="color: #FFD700; font-weight: bold;">золото</span>звезда.
+<li><strong>Ручная синхронизация</strong>: Обновления для 250 последних синхронизированных<span translate="no">QSOs</span>также может быть
+                    включается вручную в настройках.</li>
+</ul>
+<div class="highlight">
+<p><strong>Совет для профессионалов:</strong>Ход синхронизации можно увидеть в настройках в разделе «Самое старое QSO, синхронизированное для подтверждения». Нет необходимости срочно поддерживать это в актуальном состоянии, поскольку qFT8 позаботится об этом со временем.</p>
+</div>
+<h3 id="log-syncing-strategy">Стратегия синхронизации журналов</h3>
+<p>В настройках синхронизации вы можете выбрать способ<span translate="no">qFT8</span>определяет, есть ли<span translate="no">QSO</span>«полностью загружен» через<strong>"Считайте QSO загруженным, если оно загружено на:"</strong>вариант:</p>
+<ul>
+<li><strong>Любой из<span translate="no">LoTW</span>и<span translate="no">QRZ</span></strong>: хороший вариант по умолчанию, если у вас настроена только одна служба.</li>
+<li><strong>Оба</strong>: выберите это для максимальной безопасности, требуя<span translate="no">QSO</span>быть успешно отправлен в обе службы, прежде чем считаться завершенным и готовым к проверке на подтверждение.</li>
+<li><strong><span translate="no">QRZ</span>(кроме импорта из<span translate="no">LoTW</span>)</strong>: Рекомендуется, если<span translate="no">QRZ</span>ваш основной бортовой журнал.<em>Примечание:<span translate="no">QSOs</span>импортировано из<span translate="no">LoTW</span>помечены как синхронизированные, но не загружены в<span translate="no">QRZ</span>чтобы избежать ограничений API (которые разрешают загрузку только по одному); их можно синхронизировать внутри<span translate="no">QRZ</span>сама позже.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Рекомендуется, если вы считаете<span translate="no">LoTW</span>ваш основной источник истины.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="lotw-integration">
+<h2><span translate="no">Logbook of the World (LoTW)</span>Интеграция</h2>
+<p>
+<span translate="no">qFT8</span>обеспечивает надежную интеграцию с<a href="https://lotw.arrl.org/" target="_blank"><span translate="no">ARRL Logbook of the World
+                    (LoTW)</span></a>.
+                Интеграция с<span translate="no">LoTW</span>очень
+                рекомендуется для подтверждения ваших контактов и получения таких наград, как DXCC и WAS.</p>
+<h3>Требования к установке</h3>
+<p>Чтобы полностью включить функции LoTW, включая автоматическую загрузку и проверку подтверждений, вам необходимо предоставить четыре конкретных элемента информации на вкладке настроек:</p>
+<ul>
+<li><strong>1. Имя пользователя LoTW</strong>: ваш официальный позывной, используемый для службы LoTW.</li>
+<li><strong>2. Пароль LoTW</strong>: пароль, который вы используете для входа в систему<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">Веб-сайт LoTW</a>. Он отличается от пароля сертификата.</li>
+<li><strong>3. .p12 Сертификат TQSL</strong>: файл цифровой подписи, экспортированный из<strong><span translate="no">TQSL</span></strong>приложение.
+                    Инструкции о том, как запросить и экспортировать этот сертификат, см.<a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">официальная страница помощи LoTW</a>.</li>
+<li><strong>4. Пароль сертификата</strong>: пароль, который вы установили при экспорте файла .p12 из TQSL (он может быть пустым, если вы решили его не задавать).</li>
+</ul>
+<p>
+<em><strong>Автоматизация местоположения станции</strong>: такие детали, как<strong>Зона МСЭ</strong>,<strong>Зона CQ</strong>и<strong>Название станции</strong>автоматически определяются по вашему позывному. Для этих полей не требуется ручная настройка.</em>
+</p>
+<h3>Особенности</h3>
+<ul>
+<li><strong>Автоматические загрузки</strong>: Когда<strong>Загружать QSO в LoTW при их достижении</strong>включен,<span translate="no">qFT8</span>будет автоматически подписывать и загружать каждое новое QSO на<span translate="no">LoTW</span>в фоновом режиме, как только он будет зарегистрирован.</li>
+<li><strong>Подтверждение автоматической проверки</strong>: Когда включено,<span translate="no">qFT8</span>выполнит единственную немедленную проверку подтверждения ровно через 30 секунд после успешной загрузки. Это позволяет вам практически мгновенно увидеть, подтвержден ли ваш контакт.</li>
+<li><strong>Периодическая фоновая синхронизация</strong>: Настроить<strong>Подтверждения синхронизации каждые __ часов</strong>для проверки новых подтверждений в фоновом режиме через выбранный вами интервал (например, каждые 6 часов). Это позволяет поддерживать актуальность всего вашего журнала без ручного вмешательства.</li>
+<li><strong>Импорт журнала</strong>: Нажмите<strong>ИМПОРТ QSO ИЗ LoTW</strong>чтобы загрузить всю вашу историю LoTW в<span translate="no">qFT8</span>. Обратите внимание, что эти импортированные QSO не загружаются автоматически в<span translate="no">QRZ</span>чтобы избежать ограничений скорости API.</li>
+<li><strong>Ожидаемый индикатор</strong>: Маленький<strong>желтая точка</strong>на<strong>Журналы</strong>Кнопка указывает на то, что есть связи, ожидающие загрузки в<span translate="no">LoTW</span>.</li>
+</ul>
+<h3 id="lotw-log-syncing-strategy">Стратегия синхронизации журналов</h3>
+<p>В настройках синхронизации вы можете выбрать способ<span translate="no">qFT8</span>определяет, есть ли<span translate="no">QSO</span>«полностью загружен» через<strong>"Считайте QSO загруженным, если оно загружено на:"</strong>вариант:</p>
+<ul>
+<li><strong>Любой из<span translate="no">LoTW</span>и<span translate="no">QRZ</span></strong>: хороший вариант по умолчанию, если у вас настроена только одна служба.</li>
+<li><strong>Оба</strong>: выберите это для максимальной безопасности, требуя<span translate="no">QSO</span>быть успешно отправлен в обе службы, прежде чем считаться завершенным и готовым к проверке на подтверждение.</li>
+<li><strong><span translate="no">QRZ</span>(кроме импорта из<span translate="no">LoTW</span>)</strong>: Рекомендуется, если<span translate="no">QRZ</span>ваш основной бортовой журнал.<em>Примечание:<span translate="no">QSOs</span>импортировано из<span translate="no">LoTW</span>помечены как синхронизированные, но не загружены в<span translate="no">QRZ</span>чтобы избежать ограничений API (которые разрешают загрузку только по одному); их можно синхронизировать внутри<span translate="no">QRZ</span>сама позже.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Рекомендуется, если вы считаете<span translate="no">LoTW</span>ваш основной источник истины.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="sota">
+<h2>Саммиты в прямом эфире (SOTA)</h2>
+<p>qFT8 создан как мощный инструмент для активаторов SOTA (Summits On The Air). Вот шаги, чтобы
+                настройте qFT8 для успешной активации:</p>
+<h3>1. Синхронизировать время</h3>
+<p>Убедитесь, что часы вашего устройства точны. Это можно сделать дома перед выходом или использовать мобильную точку доступа.
+                в поле.</p>
+<h3>2. Установите модификатор CQ</h3>
+<p>Перейти к<strong>Настройки</strong>вкладка и найди<strong><span translate="no">CQ modifier</span></strong>вариант. Установить это
+                чтобы<code><span translate="no">SOTA</span></code>. С этого момента каждый раз, когда ты
+                позвонить<span translate="no">CQ</span>,<span translate="no">qFT8</span>передаст<code><span translate="no">CQ SOTA [Callsign]</span></code>, предупреждая преследователей
+                что вы активируете саммит.</p>
+<h3>3. Настройте автоматический режим</h3>
+<p>В<strong>Станции</strong>вкладку, найдите
+                первое раскрывающееся меню (селектор цели) и установите для него значение<strong><span translate="no">Call CQ</span></strong>. Затем займитесь<strong><span translate="no">AUTO</span></strong>режим.</p>
+<h3>4. Начните активацию</h3>
+<p>Нажмите кнопку<strong><span translate="no">TX</span></strong>кнопка внизу
+                бар, чтобы включить передачу.</p>
+<p>После включения qFT8 будет автоматически вызывать CQ и отвечать всем станциям, которые вам звонят. Поскольку цель
+                активация заключается в сборе связей, qFT8 всегда будет отвечать абонентам, даже если у вас были с ними связи
+                в ранее зарегистрированных сеансах.</p>
+<div class="highlight">
+<p><strong>Ручное переопределение:</strong>Несколько станций могут доехать до вас одновременно. Если вы хотите расставить приоритеты
+                    особенно интересный
+                    станция, пока<span translate="no">CQing</span>, вы можете вручную коснуться значка<strong><span translate="no">CALL</span></strong>кнопку для этой станции.
+                    Однажды
+                    тот<span translate="no">QSO</span>завершено,<span translate="no">qFT8</span>автоматически вернется к вызову<span translate="no">CQ</span>.</p>
+</div>
+<h3>5. Экспорт журнала SOTA</h3>
+<p>Завершив активацию, вы можете экспортировать действительный журнал ADIF специально для SOTAData:</p>
+<ol>
+<li>Перейти к<strong>Настройки</strong>и коснитесь<strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Выберите<strong><span translate="no">Selected time range</span></strong>и укажите<span translate="no">UTC</span>время начала и окончания
+                    твой
+                    активация.</li>
+<li>Установите фильтр<strong><span translate="no">All QSOs</span></strong>.</li>
+<li>В<strong><span translate="no">Event</span></strong>выбор,
+                    выбрать<strong><span translate="no">SOTA</span></strong>.</li>
+<li>Введите ссылку на вершину (например,<code>XX/GG-111</code>).</li>
+<li>Нажмите<strong><span translate="no">EXPORT QSOs</span></strong>. Это
+                    генерирует<span translate="no">ADIF</span>файл с необходимым<span translate="no">SOTA</span>поля
+                    предварительно заполнено и готово к загрузке.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="pota">
+<h2>Парки в эфире (POTA)</h2>
+<p>qFT8 поддерживает активаторы POTA (Parks On The Air). Процесс очень похож на<span translate="no">SOTA</span>активации. Вот шаги:</p>
+<h3>1. Синхронизировать время</h3>
+<p>Убедитесь, что часы вашего устройства точны. Это можно сделать дома перед выходом или использовать мобильную точку доступа.
+                в поле.</p>
+<h3>2. Установите модификатор CQ.</h3>
+<p>Перейти к<strong>Настройки</strong>вкладку и установите<strong><span translate="no">CQ modifier</span></strong>чтобы<code><span translate="no">POTA</span></code>. Каждый<span translate="no">CQ</span>вызов сейчас будет передан<code><span translate="no">CQ POTA [Callsign]</span></code>.</p>
+<h3>3. Настройте автоматический режим</h3>
+<p>В<strong>Станции</strong>вкладку, установите целевой селектор на<strong><span translate="no">Call CQ</span></strong>и заниматься<strong><span translate="no">AUTO</span></strong>режим.</p>
+<h3>4. Начните активацию</h3>
+<p>Нажмите кнопку<strong><span translate="no">TX</span></strong>кнопка, чтобы
+                включить передачу. qFT8 автоматически позвонит<span translate="no">CQ</span>и отвечать на любые станции, которые вам звонят.</p>
+<div class="highlight">
+<p><strong>Ручное переопределение:</strong>Несколько станций могут доехать до вас одновременно. Если вы хотите расставить приоритеты
+                    особенно интересный
+                    станция, пока<span translate="no">CQing</span>, вы можете вручную коснуться значка<strong><span translate="no">CALL</span></strong>кнопку для этой станции.
+                    Однажды<span translate="no">QSO</span>завершено,<span translate="no">qFT8</span>автоматически вернется к вызову<span translate="no">CQ</span>.</p>
+</div>
+<h3>5. Экспорт журнала POTA</h3>
+<p>Завершив активацию, экспортируйте действительный журнал ADIF для<span translate="no">POTA</span>:</p>
+<ol>
+<li>Перейти к<strong>Настройки</strong>и коснитесь<strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Выберите<strong><span translate="no">Selected time range</span></strong>и укажите<span translate="no">UTC</span>время начала и окончания
+                    ваша активация.</li>
+<li>Установите фильтр<strong><span translate="no">All QSOs</span></strong>.</li>
+<li>В<strong><span translate="no">Event</span></strong>выбор,
+                    выбрать<strong><span translate="no">POTA</span></strong>.</li>
+<li>Введите ссылку на парк (например,<code>K-1234</code>).</li>
+<li>Нажмите<strong><span translate="no">EXPORT QSOs</span></strong>. Это
+                    генерирует<span translate="no">ADIF</span>файл со следующим
+                    поля, вставленные в каждую запись:<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>установлен на<code>POTA</code>
+</li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>набор
+                            к ссылке на ваш парк</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>набор
+                            к ссылке на ваш парк</li>
+</ul>
+</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="remote-control">
+<h2>Веб-сервер удаленного управления</h2>
+<p>qFT8 включает встроенный HTTP-сервер, который позволяет отслеживать и контролировать приложение из любого места.
+                сеть
+                браузер в вашей сети. Это особенно полезно для удаленного управления или в качестве дополнительного дисплея.</p>
+<p>Вот как выглядит представление Спектрограмма/Станции на веб-сервере удаленного управления:</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Stations" height="1596" src="../webserverstations.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>Позволяет работать с оператором<strong>АВТО</strong>кнопка, раскрывающийся список критериев,<strong>+</strong>кнопка
+                для непосредственного добавления позывных и списка станций с помощью<strong>ЗВОНИТЕ</strong>кнопки для ручного вызова
+                их.</p>
+<p>Вот как выглядит представление спектрограммы/журнала:</p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Log" height="1596" src="../webserverlog.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>В этом представлении показаны самые последние записи журнала.</p>
+<h3>Сеть и подключение</h3>
+<p>Сервер открывает на вашем телефоне определенный TCP-порт (по умолчанию 13497). Для доступа к нему ваши устройства должны быть
+                умеют «видеть» друг друга в сети:</p>
+<ul>
+<li><strong>Локальная сеть</strong>: Телефон qFT8 и устройство управления (компьютер, планшет или
+                    другой телефон) должен находиться в той же сети Wi-Fi.</li>
+<li><strong>Настройки маршрутизатора</strong>: Некоторые маршрутизаторы имеют функцию<strong>Изоляция точек доступа</strong>(или изоляция клиента) включена по умолчанию. Это должно быть<strong>отключен</strong>для устройств,
+                    общаться друг с другом.</li>
+<li><strong>Сценарий мобильной точки доступа</strong>: Если вы находитесь в поле, вы можете открыть точку доступа Wi-Fi на
+                    один телефон (с доступом в Интернет) и подключите телефон qFT8 к этой сети Wi-Fi. После подключения закройте
+                    и снова открыть
+                    веб-сервер в настройках qFT8; показанный IP-адрес будет доступен из точки доступа, предоставляющей
+                    телефон.</li>
+<li><strong>Доступ в Интернет</strong>: Доступ к серверу вне дома (через Интернет).
+                    требуется<strong>Переадресация портов</strong>в настройках вашего роутера (сопоставление внутреннего IP и порта
+                    на внешний). Обратите внимание, что это обычно не работает в соединениях 5G/LTE из-за особенностей оператора связи.
+                    Ограничения NAT.</li>
+</ul>
+<h3>Уровни доступа</h3>
+<p>Вы можете настроить уровень удаленной безопасности на панели настроек:</p>
+<ul>
+<li><strong>Только чтение</strong>: Позволяет просматривать спектрограмму в реальном времени, активные станции и журнал QSO.
+                    Никакие действия не могут быть выполнены.</li>
+<li><strong>Чтение + остановка передачи</strong>: В первую очередь безопасный режим. Позволяет просматривать все данные и разрешения
+                    снятие передатчика с охраны (остановка передачи) в случае аварийной ситуации, но не позволяет запустить передачу или
+                    изменение настроек.</li>
+<li><strong>Полный контроль</strong>: Предоставляет полный доступ к приложению, позволяя всем
+                    интерактивные функции.</li>
+</ul>
+<div class="highlight">
+<p><strong>Примечание по безопасности:</strong>Любой, у кого есть доступ к вашей сети, IP-адресу и порту, будет иметь
+                    уровень контроля, который вы настроили. Если установлено<strong>Полный контроль</strong>, они могли бы
+                    потенциально начать передачу с использованием вашей станции.</p>
+</div>
+<h3>Возможности</h3>
+<p>В<strong>Полный контроль</strong>режиме веб-интерфейс предлагает почти все, что делает пользовательский интерфейс приложения:</p>
+<ul>
+<li><strong>Режимы работы</strong>: Переключение между<strong><span translate="no">AUTO</span></strong>и руководство<strong><span translate="no">CALL</span></strong>режимы.</li>
+<li><strong>Стратегия</strong>: Измените<span translate="no">AUTO</span>критерии (<span translate="no">Anyone</span>,<span translate="no">DXCC</span>,<span translate="no">Grid</span>и т. д.) и найдите
+                    ограничения.</li>
+<li><strong>Трансмиссия</strong>: Ручной запуск/остановка<span translate="no">TX</span>, выберите конкретный<span translate="no">TX</span>сообщения и изменить<span translate="no">FT8 sequence (0/1)</span>.</li>
+<li><strong>Частота и диапазон</strong>: коснитесь веб-спектрограммы, чтобы переместить или изменить смещение частоты.
+                    активный радиодиапазон.</li>
+</ul>
+<div class="highlight">
+<p><strong>Примечание:</strong>Веб-интерфейс спроектирован так, чтобы оставаться отзывчивым, даже если физический телефон
+                    Экран становится медленным из-за радиочастотных помех, обеспечивая надежный резерв для управления.</p>
+<p><strong>Примечание:</strong>Веб-сервер будет работать при выключенном экране, если настройки запустить в
+                    фоновый режим включен (по умолчанию работает в фоновом режиме, когда<span translate="no">qFT8</span>подключен к
+                    трансивер).</p>
+</div>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+<section id="troubleshooting">
+<h2>Устранение неполадок</h2>
+<h3 id="trouble-not-recognized">Устройство Android не распознает<span translate="no">QMX</span>или он отключится</h3>
+<p>Почти всегда это проблема аппаратного подключения или радиопомех. USB-соединения чувствительны к вибрации,
+                качество кабеля и пух телефонных енотов, обитающих в USB-порту.</p>
+<p><strong>Пытаться:</strong></p>
+<ul>
+<li>Использование высококачественного короткого<span translate="no">USB cable</span>(может существенно помочь использование более короткого кабеля) и убедитесь, что порт на телефоне чистый и соединение надежное.</li>
+<li>Если проблемы возникают именно во время передачи, это может быть вызвано радиопомехами. Добавление дросселей или ферритов в USB-кабель может помочь. Вы также можете попробовать передать сигнал в другом диапазоне, поскольку некоторые устройства чувствительны к помехам только в определенных диапазонах.</li>
+</ul>
+<h3>Вместо получения сигнала от трансивера,<span translate="no">qFT8</span>получает звук с микрофона</h3>
+<p>Это означает, что телефон использует свой внутренний микрофон, поскольку он не распознает
+                трансивер в качестве внешнего источника звука. Наиболее распространенными причинами являются:</p>
+<ul>
+<li>The <span translate="no">USB</span>кабель не рассчитан на передачу данных
+                    (кабель только для зарядки).</li>
+<li>The <span translate="no">USB adapter (OTG)</span>неисправен или
+                    несовместимо.</li>
+<li>Кабель подключен неправильной стороной (некоторые кабели являются направленными).</li>
+</ul>
+<p><strong>Попробуйте:</strong>Использование другого<span translate="no">USB cable</span>,
+                другой адаптер или переключение кабеля
+                связи.</p>
+<h3>Не получает никакого сигнала вообще; водопад черный как смоль</h3>
+<p>Если водопад остается полностью черным как при подключении, так и при отключении трансивера, qFT8
+                вероятно, не имеет необходимых разрешений для доступа к аудио.</p>
+<p>
+<strong>Попробуйте:</strong>Зайдите в телефон<strong>Настройки &gt; Приложения &gt; qFT8 &gt; Разрешения</strong>и
+                обеспечить
+                что<strong>Микрофон</strong>(или запись звука) разрешена при использовании qFT8. Альтернативно,
+                полностью удалите и переустановите qFT8 и примите все запросы разрешений при первом запуске.</p>
+<h3>Сигналы видны, но сообщения не декодируются</h3>
+<p>Если вы видите вертикальные «волнистые линии» на водопаде (сигналы FT8), но на станциях не появляется текст
+                вкладке, возможно, у вас часы не синхронизированы.</p>
+<p>
+<strong>Попробуйте:</strong>Проверьте часы вашего устройства. Если сигналы не совпадают идеально между красными
+                горизонтальные разделители последовательности, вероятно, часы вашего устройства выключены. Убедитесь, что у вас есть доступ в Интернет и
+                повторно откройте приложение, чтобы вызвать<span translate="no">NTP sync</span>.</p>
+<p>Если на водопаде вообще не появляются волнистые полосы, возможно, полоса закрыта или ваша антенна неисправна.
+                отключен/не настроен.</p>
+<p>
+<strong>Попробуйте:</strong>Убедитесь, что ваше радио действительно принимает сигналы с воздуха.</p>
+<h3>Сообщения декодируются слишком поздно</h3>
+<p>Процессор телефона может быть слишком медленным, чтобы вовремя декодировать сообщения.</p>
+<p>
+<strong>Попробуйте:</strong>Обязательно переключитесь на<strong><span translate="no">Fast
+                    decode</span></strong>в настройках и почувствуй
+                свободно перемещать время декодирования раньше (например, на
+                13000 <span translate="no">ms</span>), чтобы создать больше возможностей для декодирования, при
+                расход
+                потенциально пропускать некоторые поздние сообщения в каждом цикле.</p>
+<h3>Ошибка<span translate="no">"No Tx: SWR Protection or too low or high
+                volume"</span>
+</h3>
+<p>Если<span translate="no">qFT8</span>шоу
+                0 <span translate="no">W</span>при передаче есть два вероятных
+                причины:</p>
+<h4>1.<span translate="no">SWR</span>Защита</h4>
+<p>Если<span translate="no">QMX</span>
+<span translate="no">LCD</span>дисплей показывает
+                "<strong><span translate="no">S</span></strong>" после частоты, это
+                означает<span translate="no">SWR</span>сработала защита.
+                Это означает, что ваша антенна неправильно настроена на текущий диапазон, и<span translate="no">QMX</span>прекратил передачу, чтобы защитить свое
+                схема.</p>
+<ul>
+<li><strong>Устаревшая прошивка</strong>: Включено<span translate="no">QMX</span>прошивка старше 1.03.000, необходимо вручную сбросить настройки
+                    трансивер (выкл./вкл.) или введите и выйдите из<span translate="no">TUNE
+                    menu</span>на<span translate="no">QMX</span>чтобы сбросить ошибку.</li>
+<li><strong>Прошивка 1.03.000+</strong>: Вы можете установить "<span translate="no">SWR Protection reset
+                    options</span>" на<strong><span translate="no">Timer</span></strong>или<strong><span translate="no">TX-&gt;RX</span></strong>в<span translate="no">QMX menu</span>. Это позволяет<span translate="no">qFT8</span>продолжать работать без тебя
+                    имея
+                    физически прикасаться к трансиверу.</li>
+</ul>
+<p>
+<strong>Примечание:</strong> <span translate="no">qFT8</span>ждет 1 секунду
+                после начала передачи перед проверкой
+                0 <span translate="no">W</span>чтобы избежать ложных срабатываний, пока<span translate="no">QMX</span>набирает обороты.
+                Если<span translate="no">QMX</span>восстанавливается и мощность поднимается выше
+                1 <span translate="no">W</span>, индикатор проблемы автоматически исчезнет.</p>
+<h4>2. Аудиосигнал не достигает<span translate="no">QMX</span></h4>
+<p>Если<span translate="no">QMX</span>делает<strong>не</strong>показать
+                Значок "<span translate="no">S</span>" после частоты, то, скорее всего, это
+                что трансивер просто не принимает подходящий аудиосигнал от телефона. Объем может
+                быть<strong>слишком низко</strong>(недостаточно сигнала) или<strong>слишком высокий</strong>(обрезка/искажение
+                вызывает<span translate="no">QMX</span>отклонить сигнал).</p>
+<p>
+<strong>Попробуйте:</strong>Проверьте индикатор сигнала на вашем<span translate="no">QMX</span>. Одна точка означает отсутствие звука, две точки означают
+                Звук есть, но он недостаточно громкий. Перейти к<span translate="no">FT8</span>раздел «Настройки» и настройте
+                "<span translate="no">Set system volume to [X] when transmitting</span>"
+                установите разные значения (например, 70%, 80%, 90%), чтобы найти правильный уровень для вашего устройства.</p>
+<h3>Что такое уведомление qFT8 Android?</h3>
+<p>Это уведомление позволяет qFT8 продолжать обработку звука и управление QSO, когда вы сворачиваете приложение.
+                или выключите экран.</p>
+<ul>
+<li>По умолчанию он срабатывает автоматически при подключении трансивера.</li>
+<li>Вы можете отключить это в<span translate="no">qFT8</span>настройки, но<span translate="no">qFT8</span>перестанет работать в фоновом режиме.</li>
+<li>Вы можете нажать<strong><span translate="no">STOP</span></strong>в
+                    уведомление о полном закрытии<span translate="no">qFT8</span>.</li>
+</ul>
+<h3>qFT8 перестает работать при выключенном экране</h3>
+<p>Некоторые производители Android реализуют очень агрессивную оптимизацию батареи, которая может привести к отключению фоновых приложений.
+                даже если вы предоставили первоначальные разрешения.</p>
+<p>
+<strong>Дважды проверьте, предоставили ли вы разрешения:</strong>Зайдите в телефон<strong>Настройки &gt;
+                    Приложения &gt; qFT8 &gt; Аккумулятор</strong>и выберите<strong>«Неограниченный»</strong>(или «Не оптимизировать»).</p>
+<h3>Кнопки ведут себя странно или экран не отвечает во время передачи</h3>
+<p>Это вызвано<strong>Радиочастотные помехи (RFI)</strong>. Если ваша антенна находится близко к телефону или
+                кабель плохо экранирован, радиоэнергия может мешать работе сенсорного дигитайзера.</p>
+<ul>
+<li><strong>Совет</strong>: Используйте экранированный<span translate="no">USB</span>кабель
+                    или закрепите на кабеле ферритовый шарик.</li>
+</ul>
+<h3><span translate="no">qFT8</span>выглядит иначе, чем на скриншотах в этом руководстве</h3>
+<p>Пользовательский интерфейс приложения время от времени обновляется, поэтому некоторые незначительные визуальные элементы могли измениться с момента создания снимков экрана. Однако если значительные части пользовательского интерфейса полностью отсутствуют или цвета выглядят сильно измененными (например, желтый индикатор выполнения, переключатели последовательности и т. д.), темный режим системы вашего телефона может неправильно переопределять и искажать цветовую палитру приложения.</p>
+<p>
+<strong>Попробуйте:</strong>Если темный режим вашей системы вызывает проблемы, вы можете попробовать временно отключить его или добавить qFT8 в список исключений, чтобы восстановить правильный дизайн.</p>
+<h3>qFT8 говорит «НЕТ QMX», хотя<span translate="no">QMX transceiver</span>есть
+                подключен</h3>
+<p>Вероятно, проблема в том, что вы не предоставили разрешения на подключение.<span translate="no">qFT8</span>к<span translate="no">QMX
+                transceiver</span>. Иногда это происходит из-за того, что вы нажимаете где-то за пределами экрана.
+                диалоговое окно разрешения, и диалоговое окно закроется.</p>
+<p>
+<strong>Попробуйте:</strong>Отключите и снова подключите<span translate="no">QMX transceiver</span>, это должно вызвать приглашение
+                снова. Для
+                комфорта отметьте опцию «Всегда открывать<span translate="no">qFT8</span>при<span translate="no">QMX Transceiver</span>подключен», поэтому вы никогда не нажмете
+                эта проблема снова.</p>
+<h3>qFT8 показывает расстояние в милях, а я хочу в километрах (или наоборот)</h3>
+<p>Это зависит от локали операционной системы (т. е. выбора языка).</p>
+<p>
+<strong>Попробуйте:</strong>Переключение этой конфигурации на нужную страну (например, английский (США)
+                для миль, английский (Великобритания) для километров) это исправит.</p>
+<h3>qFT8 показывает низкую мощность передачи (например, 0,1 Вт) при передаче со скоростью &gt; 10 Вт</h3>
+<p>Это известная ошибка в<span translate="no">QMX</span>прошивка (минимум до 1.03.000). Если вы используете моды 2x4 (например, в<span translate="no">QMX+</span>) и ваша мощность передачи превышает 9,9 Вт, форматирование радио переносится. Например, трансивер сообщает приложению о 10,1 Вт как 0,1 Вт по вторичному протоколу CAT.</p>
+<p>
+<strong>Попробуйте:</strong>Внутри нет обходного пути<span translate="no">qFT8</span>, поскольку приложение напрямую отображает полученное значение. Вы можете спокойно игнорировать эту ошибку дисплея или уменьшить мощность ниже 10 Вт, чтобы показания были точными, пока эта ошибка не будет исправлена ​​в прошивке трансивера.</p>
+<h3>Невозможно экспортировать<span translate="no">ADIF</span>регистрируется в локальном хранилище, используя<span translate="no">Share</span></h3>
+<p>По умолчанию<strong><span translate="no">Share</span></strong>Метод основан на собственном механизме общего доступа Android для экспорта журналов. Иногда встроенное меню общего доступа к файлам вашего устройства не предлагает прямой возможности сохранения в локальной файловой системе.</p>
+<p>
+<strong>Попробуйте:</strong>Изменить экспорт<strong><span translate="no">Method</span></strong> to <strong><span translate="no">Local save</span></strong>в настройках. При этом используется средство выбора файлов Android для непосредственного сохранения файла в локальном хранилище, не полагаясь на меню общего доступа.</p>
+<h3><span translate="no">qFT8</span>не удается декодировать некоторые сообщения</h3>
+<p>
+<strong>Попробуйте:</strong>Включите глубокое декодирование в настройках. Глубокое декодирование выполняет рекурсивное декодирование и может декодировать больше сообщений, когда полоса занята, за счет дополнительной вычислительной мощности. Следите за спектрограммой: если время глубокого декодирования на вашем устройстве слишком велико (например, более 1 секунды) и приложение не может вовремя принимать решения, отключите глубокое декодирование.</p>
+<h3>qFT8 зависает или ведет себя странно</h3>
+<p>Если это происходит только во время передачи, скорее всего, это экстремальные радиочастотные помехи, как упоминалось выше. Если это произойдет
+                в других случаях прокрутите вкладку «Настройки» до конца и воспользуйтесь кнопкой «<strong>Напишите мне</strong>для сообщения о проблемах и ошибках».</p>
+<a class="back-to-toc" href="#top">↑ Вернуться к оглавлению</a>
+</section>
+</div>
+<div class="footer">
+<p>Copyright © 2026,<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a>(<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>), за исключением деталей, включенных в<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>(Авторское право © 2023 BG7YOZ)
+            и<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>(Авторское право © 2018)
+            Карлис Гобас), оба выпущены по лицензии MIT.</p>
+<p>
+<span translate="no">Luis Quesada Torres</span>не связан с создателями<span translate="no">FT8</span>цифровой режим, ни с<span translate="no">QRPLabs</span>и
+            аналогично
+            ни создатели<span translate="no">FT8</span>ни<span translate="no">QRPLabs</span>принимали участие в разработке<span translate="no">qFT8</span>и не одобряйте это
+            никаким образом.</p>
+<div class="footer-links">
+<a href="../../">Главная страница</a>-<a href="../../privacy/">Политика конфиденциальности</a>-<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Лицензия</a>
+</div>
+</div>
+</body>
+</html>
