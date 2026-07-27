@@ -7,7 +7,7 @@
     <title>qFT8 User Manual</title>
     <meta property="og:title" content="qFT8 User Manual">
     <meta property="og:description"
-        content="Comprehensive guide for using qFT8 with your Android device and QMX transceiver.">
+        content="Comprehensive guide for using qFT8 with your Android device and transceiver.">
     <meta property="og:image" content="https://qft8.com/qft8.png">
     <meta property="og:url" content="https://qft8.com/manual/">
     <meta name="twitter:card" content="summary_large_image">
@@ -308,7 +308,7 @@
     </div>
 
     <div class="container">
-        <div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <strong>English</strong> / <a href="es/">Español</a> / <a href="de/">Deutsch</a> / <a href="fr/">Français</a> / <a href="it/">Italiano</a> / <a href="pt/">Português</a> / <a href="pt-br/">Português (BR)</a> / <a href="ru/">Русский</a> / <a href="ja/">日本語</a> / <a href="zh/">中文</a></div>
+        <div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <strong>English</strong> / <a href="es/">Español</a> / <a href="de/">Deutsch</a> / <a href="fr/">Français</a> / <a href="it/">Italiano</a> / <a href="pt/">Português</a> / <a href="ru/">Русский</a> / <a href="ja/">日本語</a> / <a href="zh/">中文</a></div>
         <h1 id="top">qFT8 User Manual</h1>
 
         <div class="toc">
@@ -319,7 +319,7 @@
                         <li><a href="#supported-devices">Supported Devices</a></li>
                     </ul>
                 </li>
-                <li><a href="#quick-setup">Quick Setup</a>
+                <li><a href="#quick-setup">Quick Setup for QMX devices</a>
                     <ul>
                         <li><a href="#initial-permissions">Grant Initial Permissions</a></li>
                         <li><a href="#mandatory-callsign">Enter Callsign</a></li>
@@ -370,9 +370,7 @@
                 qFT8 is an <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android
                     phone</a>
                 app for <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amateur radio</a>
-                that decodes and transmits <a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a>
-                digital data messages using a <a href="https://qrp-labs.com/qmx.html" target="_blank">QRPLabs QMX
-                    transceiver.</a>
+                that decodes and transmits <a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a> or <a href="https://physics.princeton.edu/pulsar/k1jt/FT4_Protocol.pdf" target="_blank">FT4</a> digital data messages using a transceiver.
             </p>
 
             <div class="phone-mockup">
@@ -381,11 +379,7 @@
             </div>
 
             <p>
-                qFT8 does not currently support other transceivers. However, you may try qFT8 close to the speaker and
-                microphone of a transceiver with VOX enabled, or connected with an audio jack to a transceiver
-                input/output. You may also just try qFT8 without a transceiver: it transmits using the phone speaker and
-                listens to signals using the phone microphone. Several phones running qFT8 can contact each other via
-                audio when they are close enough.
+                Although qFT8 features out-of-the-box (plug-and-play) support for the QMX and ICOM 7300, you may also use it with any transceiver by placing the phone close to the speaker and microphone with VOX enabled, or using an audio link cable. You may also just try qFT8 without a transceiver: it transmits using the phone speaker and listens to signals using the phone microphone. Several phones running qFT8 can contact each other via audio when they are close enough.
             </p>
 
             <p>
@@ -396,15 +390,15 @@
                 <a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>
                 (<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>)
                 developed qFT8 in 2026, owns the copyright, and reserves all rights (except parts included from <a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>, Copyright © 2023 BG7YOZ, and <a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>, Copyright © 2018 Kārlis Gobas, both released under MIT license). <span translate="no">Luis Quesada Torres</span> is not
-                affiliated with the creators of the FT8 digital mode nor with QRPLabs, and
-                similarly neither the creators of FT8 nor QRPLabs have been involved in the development of qFT8, and do
+                affiliated with the creators of the FT8 digital mode, and
+                similarly the creators of FT8 have not been involved in the development of qFT8, and do
                 not endorse it in any way.
             </p>
 
             <h3>Key Features</h3>
             <ul>
                 <li>Quick setup</li>
-                <li>Tracking callsigns rather than messages</li>
+                <li>Supports 40+ radios</li>
                 <li>Manual <span translate="no">CALL</span> mode and
                     <span translate="no">AUTO</span> operation
                 </li>
@@ -421,18 +415,65 @@
                 <li>Battery saving mode: runs with screen off</li>
             </ul>
             <h3 id="supported-devices">Supported Devices</h3>
+            <p>qFT8 supports three main ways of connecting your transceiver:</p>
+
+            <h4>Direct CAT/Audio Transceivers (USB Cable Control)</h4>
+            <p>These transceivers are directly supported via a USB cable, which handles both CAT control (for frequency tuning and PTT keying) and high-quality USB audio transmission:</p>
             <ul>
-                <li><strong>QRP Labs <span translate="no">QMX</span> or <span translate="no">QMX+</span></strong> &mdash; fully supported via cable</li>
-                <li><strong>QRP Labs <span translate="no">QDX</span> or <span translate="no">QDX-M</span></strong> &mdash; fully supported via cable (this device does not have <span translate="no">W</span> or <span translate="no">SWR</span> meter, though)</li>
-                <li><strong>Any transceiver with microphone and speaker</strong> &mdash; supported via speakers/mic but not ideal</li>
-                <li><strong>Any other transceiver via cable</strong> &mdash; not supported</li>
+                <li><strong>QRPLabs <span translate="no">QMX</span> or <span translate="no">QMX+</span></strong></li>
+                <li><strong>QRPLabs <span translate="no">QDX</span> or <span translate="no">QDX-M</span></strong> (this device does not have <span translate="no">W</span> or <span translate="no">SWR</span> meter, though)</li>
+                <li><strong>ICOM IC-7300</strong> and <strong>ICOM IC-7300 MK2</strong></li>
+                <li><strong>ICOM IC-705</strong></li>
+                <li><strong>ICOM IC-7610</strong></li>
+                <li><strong>ICOM IC-7851</strong></li>
+                <li><strong>ICOM IC-7100</strong></li>
+                <li><strong>ICOM IC-7200</strong></li>
+                <li><strong>ICOM IC-9700</strong></li>
+                <li><strong>ICOM IC-7600</strong></li>
+                <li><strong>ICOM IC-7410</strong></li>
+                <li><strong>ICOM IC-9100</strong></li>
+                <li><strong>ICOM IC-7000</strong></li>
+                <li><strong>ICOM IC-706MKIIG</strong></li>
+                <li><strong>ICOM IC-746 / IC-746PRO</strong></li>
+                <li><strong>ICOM IC-756PRO / PRO2 / PRO3</strong></li>
+                <li><strong>ICOM IC-7700</strong></li>
+                <li><strong>ICOM IC-7800 / IC-7850</strong></li>
+                <li><strong>Yaesu FT-891</strong></li>
+                <li><strong>Yaesu FT-710</strong></li>
+                <li><strong>Yaesu FTX-1</strong></li>
+                <li><strong>Yaesu FT-991 / FT-991A</strong></li>
+                <li><strong>Yaesu FT-DX10</strong></li>
+                <li><strong>Yaesu FTDX101</strong></li>
+                <li><strong>Elecraft K4 / K4D / K4HD</strong></li>
+                <li><strong>Elecraft K3 / K3S</strong></li>
+                <li><strong>Elecraft KX3</strong></li>
+                <li><strong>Elecraft KX2</strong></li>
+                <li><strong>Elecraft KH1</strong></li>
+                <li><strong>Elecraft K2 (requires KIO2 module)</strong></li>
+                <li><strong>Xiegu X6100</strong></li>
+                <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Devices compatible with Kenwood TS-480</strong></li>
+                <li><strong>QuantumSDR</strong></li>
+                <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
+            </ul>
+
+            <p>More devices are supported via VOX, which is a partial audio-only integration.</p>
+
+            <p style="color: #ff5252; font-weight: bold;">Note: For safety reasons, qFT8 does not allow changing the Tx power of the transceiver. Adjust power manually in your transceiver.</p>
+
+            <h4>Other transceivers</h4>
+            <ul>
+                <li>Supported via speakers/mic but not ideal</li>
+                <li>Supported via generic audio connection</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
         </section>
 
         <section id="quick-setup">
-            <h2>Quick Setup</h2>
+            <h2>Quick Setup for QMX devices</h2>
+
+            <p><em>Note: While this guide focuses on QMX devices, setup for other supported transceivers (such as the ICOM 7300 or VOX-based setups) is designed to be just as simple and follows the same general steps.</em></p>
 
             <p>
                 Please ensure that you are using the <strong>right power supply</strong> for the transceiver
@@ -497,7 +538,7 @@
             </ul>
 
             <p>
-                If you have issues connecting the Android device, check the <a href="#trouble-not-recognized">Android device doesn't recognize the <span translate="no">QMX</span> or it gets disconnected</a> troubleshooting section.
+                If you have issues connecting the Android device, check the <a href="#trouble-not-recognized">Android device doesn't recognize the transceiver or it gets disconnected</a> troubleshooting section.
             </p>
 
             <p>
@@ -556,18 +597,10 @@
                 <span translate="no">QMX</span> menu to measure the
                 <span translate="no">SWR</span> and will need to tune your antenna.
             </p>
-            <ul>
-                <li><strong>Legacy firmware</strong> (older than 1.03.000): You must enter and leave the
-                    <span translate="no">TUNE</span> menu on the
-                    <span translate="no">QMX</span> or power cycle it to reset
-                    <span translate="no">SWR</span> protection.
-                </li>
-                <li><strong>Firmware 1.03.000+</strong>: You can set
-                    "<span translate="no">SWR Protection reset options</span>" to
-                    <strong><span translate="no">TX->RX</span></strong> in the
-                    <span translate="no">QMX</span> Protection menu, so it resets
-                    automatically.
-                </li>
+                                    <ul>
+                <li><strong>Firmware 1_04_004+</strong>: <span translate="no">qFT8</span> automatically resets <span translate="no">SWR</span> protection at the end of the cycle.</li>
+                <li><strong>Firmware 1_03_000+</strong>: You can set &quot;<span translate="no">SWR Protection reset options</span>&quot; to <strong><span translate="no">TX-&gt;RX</span></strong> in the <span translate="no">QMX</span> Protection menu, so it resets automatically.</li>
+                <li><strong>Legacy firmware</strong> (older than 1_03_000): You must enter and leave the <span translate="no">TUNE</span> menu on the <span translate="no">QMX</span> or power cycle it to reset <span translate="no">SWR</span> protection.</li>
             </ul>
 
             <h4>Two dots instead of a bar</h4>
@@ -733,8 +766,7 @@
             </div>
 
             <p>
-                You may tap in the spectrogram to change the <span translate="no">Tx</span>
-                frequency offset, you may change sequence by tapping the
+                You may tap in the spectrogram to change the <span translate="no">Tx</span> frequency offset (additionally, tapping on the top part of the spectrogram, where the peak indicators are, allows you to input a frequency manually), you may change sequence by tapping the
                 0 and 1 buttons in the bottom bar,
                 you may tap the different "<span translate="no">CALL</span>" buttons to call
                 specific stations, or you may tweak the bar with the
@@ -762,6 +794,10 @@
 
         <section id="ft8-introduction">
             <h2>Intro to the FT8 digital mode</h2>
+
+            <p>
+                qFT8 also supports FT4, which is a digital protocol exactly like FT8 but designed to be twice as fast (operating in 7.5-second cycles instead of 15-second cycles).
+            </p>
 
             <p>
                 FT8 is a digital protocol designed for multi-hop sporadic-E and other weak-signal conditions.
@@ -986,6 +1022,7 @@
                         style="color: #ffff00; font-weight: bold;">yellow</span> line on top of the buttons show the
                     current
                     sequence (0 or 1). Tapping on 0 or 1 selects that sequence for outgoing transmissions.</li>
+                <li><strong>The mode selector</strong>: It changes the transmission mode used (e.g. <span translate="no">FT8</span> or <span translate="no">FT4</span>).</li>
                 <li><strong>The band selector</strong>: When a transceiver is connected, it changes the band in the
                     transceiver.</li>
                 <li><strong>The Stations tab button</strong>: Opens the tab that lists all the stations you've heard or
@@ -1013,9 +1050,9 @@
             <p>These are the components of the spectrogram in detail:</p>
 
             <ol>
-                <li><strong>Waterfall view</strong>: Displays the recent history of received signals over time.</li>
+                <li><strong>Waterfall view</strong>: Displays the recent history of received signals over time. Tapping in that view will change the selected frequency offset.</li>
                 <li><strong>Real-time peaks</strong>: Show the instantaneous strength of signals across the frequency
-                    range.</li>
+                    range. Tapping in that view will open a dialog to input the precise selected frequency offset.</li>
                 <li><strong>Sequence separators</strong>: These <span
                         style="color: #ff5252; font-weight: bold;">red</span> horizontal lines act as visual separators
                     of cycles,
@@ -1275,8 +1312,8 @@
                             rejected by the other station in QRZ.</li>
                         <li><span translate="no">Wrong Callsign</span>: Shows QSOs recorded
                             with a callsign different from the one currently configured.</li>
-                        <li><span translate="no">Non FT8</span>: Shows QSOs recorded for a
-                            mode other than FT8.</li>
+                        <li><span translate="no">Non FT8/FT4</span>: Shows QSOs recorded for a
+                            mode other than FT8 or FT4.</li>
                     </ul>
                 </li>
                 <li><strong>Recent limit filter</strong>: A filter that shows only the most recent 100 QSOs with the
@@ -1295,12 +1332,7 @@
                                     <span translate="no">QRZ</span>.
                                 </li>
                                 <li><span style="color: #FFD700; font-weight: bold;">★</span>: Confirmed on QRZ or LoTW
-                                    (for QRZ-uploaded QSOs).</li>
-                                <span translate="no">QRZ</span> or
-                                manually.
-                        </li>
-                        <li><span style="color: #00ffff; font-weight: bold;">🛸</span>:
-                            Non-<span translate="no">FT8</span> mode.</li>
+                                    (for QRZ-uploaded QSOs) or manually.</li>
                         <li><span style="color: #00ff00; font-weight: bold;">♻️</span>: Reported as duplicate by
                             <span translate="no">QRZ</span>.
                         </li>
@@ -1332,8 +1364,6 @@
                 <li><strong><span style="color: #ffff00; font-weight: bold;">Yellow</span> note below callsign</strong>:
                     This QSO is for a station different than the one
                     configured.</li>
-                <li><strong><span style="color: #00ffff; font-weight: bold;">Cyan</span> note below callsign</strong>:
-                    This QSO is in a mode other than FT8.</li>
                 <li><strong><span style="color: #00ff00; font-weight: bold;">Green</span> Highlighted Zone</strong>
                     (<span translate="no">DXCC</span>,
                     <span translate="no">Grid</span>, <span translate="no">ITU
@@ -1362,182 +1392,34 @@
             </p>
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
 
-            <h3 id="ui-settings-tab">The Settings tab</h3>
+                        <h3 id="ui-settings-tab">The Settings tab</h3>
             <p>The settings tab allows configuration of qFT8.</p>
             <div class="phone-mockup">
                 <img src="../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
                 <img src="settings.jpg" alt="qFT8 Settings tab" class="screen" width="2280" height="1080">
             </div>
 
-            <p>The settings tab is organized into the following sections:</p>
+            <p>The settings tab is organized as follows:</p>
 
-            <h4>Basic settings</h4>
             <ul>
-                <li><strong><span translate="no">Callsign</span></strong>: Your amateur radio
-                    callsign. This is mandatory and must match the one in
-                    your license and you must comply with all regulations and limitations in order to transmit.</li>
-                <li><strong><span translate="no">CQ modifier</span></strong>: Optional text
-                    that will be appended to your <span translate="no">CQ</span> calls, often
-                    used for
-                    events (e.g., "<span translate="no">SOTA</span>").
-                </li>
-                <li><strong>Time offset</strong>: Used to synchronize your device's clock with other stations. qFT8
-                    automatically synchronizes this on startup if an internet connection is available. You can also
-                    manually trigger a synchronization by pressing the
-                    <strong><span translate="no">SYNC</span></strong> button.
-                </li>
-                <li><strong>Location (<span translate="no">Maidenhead</span> grid)</strong>: A
-                    coarsened representation of your station's location.
-                    This can be automatically updated on startup using your phone's
-                    <span translate="no">GPS</span> if the "Update on startup"
-                    checkbox is enabled. You can also manually update your location at any time by pressing the
-                    <strong><span translate="no">GPS</span></strong> button.
-                </li>
+                <li><strong><span translate="no">Callsign</span></strong>: Your amateur radio callsign (mandatory to transmit). Must comply with your license.</li>
+                <li><strong><span translate="no">CQ modifier</span></strong>: Optional text appended to your <span translate="no">CQ</span> calls (e.g., "<span translate="no">SOTA</span>").</li>
+                <li><strong>Device</strong>: Used to configure and select your radio transceiver device (e.g., QMX, QDX, Kenwood TS-480, or VOX/Audio-only) and connection parameters.</li>
             </ul>
 
-            <h4>Station Location Automation</h4>
-            <p>
-                Details such as <strong>ITU Zone</strong>, <strong>CQ Zone</strong>, and <strong>Station Name</strong>
-                are automatically determined from your callsign. No manual configuration is required for these fields,
-                ensuring your LoTW uploads always match your license information.
-            </p>
-
-            <h4>Log Syncing Strategy</h4>
-            <p>
-                This section defines the strategy used to determine when a QSO is considered
-                uploaded (green checkmark <span style="color: #4CAF50;">&#x2713;</span>) and when it should
-                display a confirmation star (<span style="color: #FFD700;">&#x2605;</span>).
-            </p>
+            <h4>Submenus and Options</h4>
             <ul>
-                <li><strong>Any of <span translate="no">LoTW</span> and <span translate="no">QRZ</span></strong>: A good default if you only have one of the services configured.</li>
-                <li><strong>Both</strong>: Select this for maximum safety, requiring the <span translate="no">QSO</span>
-                    to be successfully sent to both services before being considered finalized and ready to be checked for confirmation.
-                </li>
-                <li><strong><span translate="no">QRZ</span> (except imported from <span translate="no">LoTW</span>)</strong>: Recommended if <span translate="no">QRZ</span> is your primary logbook.
-                    <em>Note: <span translate="no">QSOs</span> imported from <span translate="no">LoTW</span>
-                    are marked as synced but not uploaded to <span translate="no">QRZ</span> to avoid API limits (which only allow one-by-one uploads); these can be synced within <span translate="no">QRZ</span> itself later.</em>
-                </li>
-                <li><strong><span translate="no">LoTW</span></strong>: Recommended if you consider <span translate="no">LoTW</span> your primary source of truth.</li>
+                <li><strong>AUDIO SETTINGS</strong>: Configure transmission volume, VOX thresholds, and other audio settings.</li>
+                <li><strong>IMPORT/EXPORT LOGS</strong>: Import or export your QSO logbook using standard ADIF (<span translate="no">.adi</span>) files.</li>
+                <li><strong>QSO SYNCING</strong>: Set up integration with <span translate="no">QRZ</span> and <span translate="no">LoTW</span> for log synchronization and verification.</li>
+                <li><strong>APPLICATION SETTINGS</strong>: General settings including user interface language.</li>
+                <li><strong>TIME AND LOCATION</strong>: Configure time offset synchronization (NTP or GPS) and your Maidenhead grid locator.</li>
+                <li><strong>AUTO MODE SETTINGS</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
+                <li><strong>MODE SETTINGS</strong>: Fine-tune FT8 decoding algorithms, start/PTT delays, and other decoding options.</li>
+                <li><strong>BAND SELECTION</strong>: Customize active bands and band switching behavior.</li>
+                <li><strong>REMOTE CONTROL WEB SERVER</strong>: Enable and configure the built-in web server for remote control.</li>
+                <li><strong>CLEAN UP</strong>: Clear local QSOs (this action only affects the local app log).</li>
             </ul>
-
-            <h4>QRZ Syncing</h4>
-            <p>
-                This section handles integration with the <span translate="no">QRZ.com</span>
-                Logbook. <strong>Note that QRZ is a paid subscription service</strong>; if you prefer a free alternative, see the
-                <a href="#lotw-integration">LoTW Syncing</a> section below.
-                To enable QRZ integration, you must provide your <strong>QRZ API Key</strong>, which can be found
-                on the <a href="https://www.qrz.com/docs/logbook30/api" target="_blank">official QRZ Logbook API page</a>.
-                Press <strong>VALIDATE</strong> to verify your key and subscription status.
-            </p>
-            <ul>
-                <li><strong>Import button</strong>: Option to import <span translate="no">QSOs</span> from your
-                    <span translate="no">QRZ</span> logbook.
-                </li>
-                <li><strong>Automatic behavior</strong>: Configure whether and when your
-                    <span translate="no">QSOs</span> are automatically uploaded
-                    to <span translate="no">QRZ</span> and checked for confirmation.
-                </li>
-            </ul>
-
-            <h4>LoTW Syncing</h4>
-            <p>
-                This section handles integration with the <span translate="no">ARRL Logbook of the World
-                (LoTW)</span>. To unlock all features, you must provide four specific requirements:
-                your <strong>LoTW Username</strong>, your <strong>LoTW Password</strong> (used for the website login),
-                a <strong>.p12 TQSL Certificate</strong> file, and the <strong>Certificate Password</strong> (which may be empty).
-                For help with certificates, refer to the <a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">official LoTW help page</a>.
-            </p>
-            <ul>
-                <li><strong>Import button</strong>: Option to import
-                    <span translate="no">QSOs</span> from
-                    <span translate="no">LoTW</span>.
-                </li>
-                <li><strong>Automatic behavior</strong>: Configure whether
-                    <span translate="no">qFT8</span> automatically checks for confirmations on
-                    <span translate="no">LoTW</span>.
-                </li>
-                <li><strong>Certificate management</strong>: Load your
-                    <span translate="no">.p12</span> TQSL certificate and enter its password
-                    to enable <strong>automatic background uploads</strong>. Press <strong>VALIDATE</strong> to ensure
-                    all credentials and the certificate are working correctly.
-                </li>
-            </ul>
-
-            <h4>ADIF File Import</h4>
-            <p>Allows you to import existing logs from standard `.adi` files.</p>
-
-            <h4>ADIF File Export</h4>
-            <p>
-                Allows you to export your log to a <span translate="no">.adi</span> file. You
-                can choose to export the full log or a specific time
-                range. Filtering options allow exporting all <span translate="no">QSOs</span>,
-                only confirmed ones (useful for award claims), or
-                only those not yet uploaded to <span translate="no">QRZ</span> (for manual
-                uploading). You can also add a
-                <strong>Summits On The Air (<span translate="no">SOTA</span>)</strong>
-                reference or a <strong>Parks On The Air
-                    (<span translate="no">POTA</span>)</strong>
-                reference to the export for submission to
-                <span translate="no">SOTAData</span> or
-                <span translate="no">POTA</span>.
-            </p>
-
-            <h4>Station Tracker</h4>
-            <p>
-                This section allows configuring when to automatically clean up stations from the Stations tab.
-            </p>
-
-            <h4>AUTO Mode</h4>
-            <p>
-                This section enables configuring the behavior of the automation logic, including how many times to retry
-                calls with a single station. You can also specify a comma-separated list of prefixes to exclude;
-                AUTO mode will never target stations whose callsigns start with these prefixes.
-            </p>
-
-            <h4><span translate="no">FT8 Settings</span></h4>
-            <p>
-                This section enables fine-tuning the decoding algorithm
-                (<span translate="no">Fast</span> vs.
-                <span translate="no">Deep</span>), adjust decoding and
-                <span translate="no">Start Tx</span>
-                timing, and set <span translate="no">PTT</span> delays to ensure your
-                transceiver transitions
-                correctly between receive and transmit.
-            </p>
-
-            <h4>Audio settings</h4>
-            <p>
-                This section enables configuring the transmission volume, both from the phone side (system volume when transmitting) and the transceiver side (fall and rise thresholds), ensuring that the transceiver can properly receive the audio signal from the phone.
-            </p>
-
-            <h4>Band Settings</h4>
-            <p>
-                This section enables configuring how qFT8 handles band information. You can set whether qFT8 and the
-                transceiver should automatically exchange selected band info on connection. This section also allows
-                you to customize which bands appear in the bottom bar selector.
-            </p>
-
-            <h4>Remote control web server</h4>
-            <p>
-                This section enables configuring the embedded web server for remote control. For more details, see the
-                <a href="#remote-control">Remote Control Web Server</a> section below.
-            </p>
-
-            <h4>PSK Reporter</h4>
-            <p>
-                This section provides a direct link to
-                <span translate="no">PSKReporter</span>, pre-filled with your callsign, where
-                you can see
-                which stations have received your transmissions in the last 6 hours.
-                <strong>Note:</strong> qFT8 only allows viewing your own spots; it does not automatically
-                report spots of other stations to <span translate="no">PSK Reporter</span>.
-            </p>
-
-            <h4>Delete QSOs</h4>
-            <p>
-                This section enables removing QSOs from qFT8. <strong>Crucially, this only affects the local qFT8 log
-                    and does not impact records that were already uploaded to QRZ.com.</strong>
-            </p>
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
         </section>
 
@@ -1877,11 +1759,8 @@
                 </li>
                 <li><strong>Confirmation Star (<span translate="no">★</span>)</strong>: When a
                     QSO uploaded to QRZ is confirmed on either QRZ or LoTW, it is highlighted with a gold star. You can
-                    also manually confirm any QSO to show this indicator.</li>
-                <span translate="no">QRZ</span> reports a confirmation, the status icon in
-                your Log
-                tab will automatically change to a <span style="color: #FFD700; font-weight: bold;">gold</span>
-                star.
+                    also manually confirm any QSO to show this indicator. When QRZ reports a confirmation, the status icon in
+                    your Log tab will automatically change to a <span style="color: #FFD700; font-weight: bold;">gold</span> star.
                 </li>
                 <li><strong>Manual Sync</strong>: Updates to the 250 least recently synchronized
                     <span translate="no">QSOs</span> can also be
@@ -2248,7 +2127,7 @@
         <section id="troubleshooting">
             <h2>Troubleshooting</h2>
 
-            <h3 id="trouble-not-recognized">Android device doesn't recognize the <span translate="no">QMX</span> or it gets disconnected</h3>
+            <h3 id="trouble-not-recognized">Android device doesn't recognize the transceiver or it gets disconnected</h3>
             <p>
                 This is almost always a hardware connectivity or radio interference issue. USB connections are sensitive to vibration,
                 cable quality, and fluff phone raccoons dwelling in the USB port.
@@ -2295,17 +2174,18 @@
                 tab, perhaps your clock is not synchronized.
             </p>
             <p>
-                <strong>Try:</strong> Check your device clock. If the signals don't fit perfectly between the red
-                horizontal sequence separators, your device clock is likely off. Ensure you have internet access and
-                reopen the app to trigger an <span translate="no">NTP sync</span>.
+                <strong>Try:</strong>
             </p>
+            <ul>
+                <li>Ensure you have internet access and reopen the app to trigger an <span translate="no">NTP sync</span>.</li>
+                <li>If no internet is available, try a GPS sync.</li>
+                <li>If that also doesn't work but message tones are visible in the spectrogram, trigger an emergency time sync from the messages, from the time and location settings menu.</li>
+                <li>Ensure your radio is actually receiving signals from the air.</li>
+            </ul>
 
             <p>
                 If no wiggly stripes appear at all in the waterfall, perhaps the band is closed or your antenna is
                 disconnected/untuned.
-            </p>
-            <p>
-                <strong>Try:</strong> Ensure your radio is actually receiving signals from the air.
             </p>
 
             <h3>Messages are decoded too late</h3>
@@ -2323,8 +2203,7 @@
 
 
 
-            <h3>Error <span translate="no">"No Tx: SWR Protection or too low or high
-                volume"</span>
+            <h3>Error <span translate="no">"SWR exceeded threshold — transmission stopped"</span> in the <span translate="no">QMX</span> transceiver
             </h3>
             <p>
                 If <span translate="no">qFT8</span> shows
@@ -2343,21 +2222,13 @@
                 <span translate="no">QMX</span> has stopped transmitting to protect its
                 circuitry.
             </p>
-            <ul>
-                <li><strong>Legacy Firmware</strong>: On <span translate="no">QMX</span>
-                    firmware older than 1.03.000, you must manually reset the
-                    transceiver (off/on) or enter and leave the <span translate="no">TUNE
-                    menu</span> on the <span translate="no">QMX</span>
-                    to clear the error.</li>
-                <li><strong>Firmware 1.03.000+</strong>: You can set "<span translate="no">SWR Protection reset
-                    options</span>" to
-                    <strong><span translate="no">Timer</span></strong>
-                    or <strong><span translate="no">TX->RX</span></strong> in the
-                    <span translate="no">QMX menu</span>. This allows
-                    <span translate="no">qFT8</span> to continue operating without you
-                    having
-                    to touch the transceiver physically.
-                </li>
+            <p>
+                Additionally, <span translate="no">qFT8</span> has its own configurable SWR threshold setting in the app settings. When measured SWR exceeds this threshold, <span translate="no">qFT8</span> will automatically stop transmission to protect your equipment.
+            </p>
+                        <ul>
+                <li><strong>Firmware 1_04_004+</strong>: <span translate="no">qFT8</span> automatically resets <span translate="no">SWR</span> protection at the end of the cycle.</li>
+                <li><strong>Firmware 1_03_000+</strong>: You can set &quot;<span translate="no">SWR Protection reset options</span>&quot; to <strong><span translate="no">Timer</span></strong> or <strong><span translate="no">TX-&gt;RX</span></strong> in the <span translate="no">QMX menu</span>. This allows <span translate="no">qFT8</span> to continue operating without you having to touch the transceiver physically.</li>
+                <li><strong>Legacy Firmware</strong>: On <span translate="no">QMX</span> firmware older than 1_03_000, you must manually reset the transceiver (off/on) or enter and leave the <span translate="no">TUNE menu</span> on the <span translate="no">QMX</span> to clear the error.</li>
             </ul>
             <p>
                 <strong>Note:</strong> <span translate="no">qFT8</span> waits 1 second
@@ -2443,20 +2314,19 @@
                 <strong>Try:</strong> If your system's dark mode is causing issues, you can try temporarily disabling it or adding qFT8 to its exclusion list to restore the correct design.
             </p>
 
-            <h3>qFT8 says "NO QMX" even though <span translate="no">QMX transceiver</span> is
+            <h3>qFT8 says "NO RADIO" even though transceiver is
                 connected</h3>
             <p>
                 The issue is likely that you didn't grant the permissions to connect
-                <span translate="no">qFT8</span> to the <span translate="no">QMX
-                transceiver</span>. Sometimes this happens because you tap somewhere out of the
+                <span translate="no">qFT8</span> to the transceiver. Sometimes this happens because you tap somewhere out of the
                 permission dialog and the dialog closes.
             </p>
             <p>
                 <strong>Try:</strong> Disconnect and reconnect the
-                <span translate="no">QMX transceiver</span>, this should trigger the prompt
+                transceiver, this should trigger the prompt
                 again. For
                 comfort, mark the option "Always open <span translate="no">qFT8</span> when
-                <span translate="no">QMX Transceiver</span> is connected" so you never hit
+                transceiver is connected" so you never hit
                 this issue again.
             </p>
 
@@ -2469,7 +2339,7 @@
                 for miles, English (United Kingdom) for kilometers) will fix it.
             </p>
 
-            <h3>qFT8 shows low transmission power (e.g. 0.1W) when transmitting at &gt;10W</h3>
+            <h3>qFT8 shows low transmission power (e.g. 0.1W) when transmitting at &gt;10W in <span translate="no">QMX</span></h3>
             <p>
                 This is a known bug in the <span translate="no">QMX</span> firmware (up to at least 1.03.000). If you are using the 2x4 mods (e.g. in a <span translate="no">QMX+</span>) and your transmission power exceeds 9.9W, the radio's formatting wraps around. For example, 10.1W is reported by the transceiver to the app as 0.1W over the secondary CAT protocol.
             </p>
@@ -2511,11 +2381,9 @@
         </p>
         <p>
             <span translate="no">Luis Quesada Torres</span> is not affiliated with the creators of the
-            <span translate="no">FT8</span> digital mode nor with
-            <span translate="no">QRPLabs</span>, and
+            <span translate="no">FT8</span> digital mode, and
             similarly
-            neither the creators of <span translate="no">FT8</span> nor
-            <span translate="no">QRPLabs</span> have been involved in the development of
+            neither the creators of <span translate="no">FT8</span> have been involved in the development of
             <span translate="no">qFT8</span>, and do not endorse it
             in any way.
         </p>
