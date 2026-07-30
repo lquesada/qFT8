@@ -12,9 +12,9 @@ const langData = {
     "BTN_THE_AUTHOR": "Egilea",
     "FEATURES_TITLE": "Ezaugarriak",
     "FEAT_QUICK_SETUP": "Konfigurazio azkarra",
-    "FEAT_TRACK_CALL": "40 irrati baino gehiago onartzen ditu",
+    "FEAT_TRACK_CALL": "50 irrati baino gehiago onartzen ditu",
     "FEAT_SUPPORT_FT8_FT4": "FT8 eta FT4 moduentzako euskarria",
-    "FEAT_SUPPORT_LANGS": "20 hizkuntza baino gehiago onartzen dira",
+    "FEAT_SUPPORT_LANGS": "30 hizkuntza baino gehiago onartzen dira",
     "FEAT_MANUAL_AUTO: ": "Eskuzko eta auto deitzeko moduak", // wait, trailing space in key, let's fix it
     "FEAT_MANUAL_AUTO": "Eskuzko eta auto deitzeko moduak",
     "FEAT_NTP_SYNC": "NTP bidezko ordu sinkronizazio automatikoa",
