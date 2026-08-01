@@ -876,6 +876,14 @@ html
 <li><strong>Ziel</strong>: Legt die Kriterien für den AUTO-Modus fest:<ul>
 <li><strong><span translate="no">Anyone</span></strong>: Beliebiges Rufzeichen
                             dass du keins hast <span translate="no">QSO</span> für noch.</li>
+<li><strong><span translate="no">Nearby</span></strong>: Nächstgelegene Stationen basierend auf der <span translate="no">Maidenhead</span>-Gitterdistanz priorisieren.</li>
+<li><strong><span translate="no">Far</span></strong>: Am weitesten entfernte Stationen basierend auf der <span translate="no">Maidenhead</span>-Gitterdistanz priorisieren.</li>
+<li><strong><span translate="no">Signal strength</span></strong>: Stationen mit dem stärksten Signal (<span translate="no">SNR</span>) priorisieren.</li>
+<li><strong><span translate="no">Call CQ</span></strong>: Nur Anrufe
+                            CQ und antwortet jeder Station, die Ihre Station anruft.</li>
+<li><strong><span translate="no">POTA hunter</span></strong>: <span translate="no">Parks on the Air</span>-Stationen priorisieren.</li>
+<li><strong><span translate="no">SOTA hunter</span></strong>: <span translate="no">Summits on the Air</span>-Stationen priorisieren.</li>
+<li><strong><span translate="no">POTA + SOTA hunter</span></strong>: Sowohl <span translate="no">Parks on the Air</span>- als auch <span translate="no">Summits on the Air</span>-Stationen priorisieren, dann alle anderen Stationen, sortiert nach <span translate="no">SNR</span>.</li>
 <li><strong><span translate="no">DXCC</span></strong>: Neues priorisieren
                             Länder/Entitäten.</li>
 <li><strong><span translate="no">Grid</span></strong>: Neues priorisieren <span translate="no">Maidenhead</span> Gitterquadrate.</li>
@@ -886,8 +894,6 @@ html
 <li><strong><span translate="no">I/C/D/G</span></strong>: Priorisieren
                             zuerst <span translate="no">ITU</span> Zone also <span translate="no">CQ</span> Zone also <span translate="no">DXCC</span>, Dann <span translate="no">Grid</span>.
                         </li>
-<li><strong><span translate="no">Call CQ</span></strong>: Nur Anrufe
-                            CQ und antwortet jeder Station, die Ihre Station anruft.</li>
 </ul>In allen Fällen werden Sender, die dieselben Kriterien erfüllen, nach Signalstärke sortiert. Zum Beispiel,<span translate="no">Anyone</span> wird neue Rufzeichen zuerst priorisieren,
                     aber unter ihnen werden die stärksten Signale ganz oben auf der Liste stehen.</li>
 <li><strong>Periodizität</strong>: Wie oft soll dieses Ziel kontaktiert werden:<ul>
@@ -903,11 +909,14 @@ html
 </ul>
 </li>
 <li><strong>Qualifikant</strong>: Wie diese Einschränkungen gelten:<ul>
-<li><span translate="no">per callsign or zone</span></li>
-<li><span translate="no">per band</span></li>
+<li><span translate="no">per callsign</span></li>
 <li><span translate="no">in different bands</span></li>
+<li><span translate="no">in different modes</span></li>
 <li><span translate="no">until zone confirmed</span></li>
-<li><span translate="no">per band + until zone confirmed</span></li>
+<li><span translate="no">per band+until zone</span></li>
+<li><span translate="no">per mode+until zone</span></li>
+<li><span translate="no">in different bands or modes</span></li>
+<li><span translate="no">per band/mode+until zone</span></li>
 </ul>
 </li>
 <li><strong><span translate="no">Spy</span> Modus</strong>: Wenn aktiviert, qFT8
@@ -1430,91 +1439,6 @@ html
 </ul>
 <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
 </section>
-<section id="sota">
-<h2>Summits On The Air (SOTA)</h2>
-<p>qFT8 ist als leistungsstarkes Tool für SOTA-Aktivatoren (Summits On The Air) konzipiert. Hier sind die Schritte dazu
-                Konfigurieren Sie qFT8 für eine erfolgreiche Aktivierung:</p>
-<h3>1. Zeit synchronisieren</h3>
-<p>Stellen Sie sicher, dass die Uhr Ihres Geräts korrekt ist. Dies kann zu Hause vor der Abreise oder über einen mobilen Hotspot erfolgen
-                im Feld.</p>
-<h3>2. Stellen Sie Ihren CQ-Modifikator ein</h3>
-<p>Gehe zum<strong>Einstellungen</strong>Tab und finden
-                die<strong><span translate="no">CQ modifier</span></strong>Option. Stellen Sie dies ein
-                zu<code><span translate="no">SOTA</span></code>. Von nun an, jedes Mal, wenn Sie
-                anrufen <span translate="no">CQ</span>,
-                <span translate="no">qFT8</span> wird übermitteln<code><span translate="no">CQ SOTA [Callsign]</span></code>, alarmiert Verfolger
-                dass Sie einen Gipfel aktivieren.</p>
-<h3>3. Konfigurieren Sie den AUTO-Modus</h3>
-<p>Im<strong>Stationen</strong>Tab, finden Sie die
-                erstes Dropdown-Menü (die Zielauswahl) und stellen Sie es auf ein<strong><span translate="no">Call CQ</span></strong>. Dann engagieren Sie sich<strong><span translate="no">AUTO</span></strong>Modus.</p>
-<h3>4. Beginnen Sie mit der Aktivierung</h3>
-<p>Drücken Sie die Taste<strong><span translate="no">TX</span></strong>Knopf unten
-                Leiste, um die Übertragung zu ermöglichen.</p>
-<p>Nach der Aktivierung ruft qFT8 automatisch CQ an und antwortet allen Stationen, die Sie anrufen. Da das Ziel von
-                Eine Aktivierung besteht darin, QSOs zu sammeln. qFT8 antwortet immer auf Anrufer, auch wenn Sie QSOs mit ihnen hatten
-                in zuvor protokollierten Sitzungen.</p>
-<div class="highlight">
-<p><strong>Manuelle Überschreibungen:</strong>Möglicherweise erreichen Sie mehrere Stationen gleichzeitig. Wenn Sie Prioritäten setzen möchten
-                    ein besonders interessantes
-                    Station während <span translate="no">CQing</span>, können Sie manuell auf tippen<strong><span translate="no">CALL</span></strong>Taste für diesen Sender.
-                    Einmal
-                    die <span translate="no">QSO</span> abgeschlossen ist,<span translate="no">qFT8</span> wird automatisch auf den Anruf zurückgreifen <span translate="no">CQ</span>.
-                </p>
-</div>
-<h3>5. Exportieren Sie Ihr SOTA-Protokoll</h3>
-<p>Wenn Sie Ihre Aktivierung abschließen, können Sie ein gültiges ADIF-Protokoll speziell für SOTAData exportieren:</p>
-<ol>
-<li>Gehe zu<strong>Einstellungen</strong>und tippen Sie auf<strong><span translate="no">ADIF File Export</span></strong>.
-                </li>
-<li>Wählen<strong><span translate="no">Selected time range</span></strong>und spezifizieren Sie die <span translate="no">UTC</span> Start- und Endzeiten von
-                    dein
-                    Aktivierung.</li>
-<li>Stellen Sie den Filter auf<strong><span translate="no">All QSOs</span></strong>.
-                </li>
-<li>Im<strong><span translate="no">Event</span></strong>Auswahl,
-                    auswählen<strong><span translate="no">SOTA</span></strong>.</li>
-<li>Geben Sie Ihre Gipfelreferenz ein (z. B.<code>XX/GG-111</code>).</li>
-<li>Drücken<strong><span translate="no">EXPORT QSOs</span></strong>. Dies
-                    erzeugt eine <span translate="no">ADIF</span> Datei mit dem Notwendigen <span translate="no">SOTA</span> Felder
-                    vorgefüllt und bereit zum Hochladen.</li>
-</ol>
-<a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
-</section>
-<section id="pota">
-<h2>Parks On The Air (POTA)</h2>
-<p>qFT8 unterstützt POTA-Aktivatoren (Parks On The Air). Der Prozess ist sehr ähnlich <span translate="no">SOTA</span> Aktivierungen. Hier sind die Schritte:</p>
-<h3>1. Zeit synchronisieren</h3>
-<p>Stellen Sie sicher, dass die Uhr Ihres Geräts korrekt ist. Dies kann zu Hause vor der Abreise oder über einen mobilen Hotspot erfolgen
-                im Feld.</p>
-<h3>2. Stellen Sie Ihren CQ-Modifikator ein</h3>
-<p>Gehe zum<strong>Einstellungen</strong>Registerkarte und stellen Sie die ein<strong><span translate="no">CQ modifier</span></strong>Zu<code><span translate="no">POTA</span></code>. Jeder <span translate="no">CQ</span> Der Anruf wird nun weitergeleitet<code><span translate="no">CQ POTA [Callsign]</span></code>.
-            </p>
-<h3>3. Konfigurieren Sie den AUTO-Modus</h3>
-<p>Im<strong>Stationen</strong>Stellen Sie auf der Registerkarte „Target Selector“ den Zielselektor auf ein<strong><span translate="no">Call CQ</span></strong>und engagieren<strong><span translate="no">AUTO</span></strong>Modus.</p>
-<h3>4. Beginnen Sie mit der Aktivierung</h3>
-<p>Drücken Sie die Taste<strong><span translate="no">TX</span></strong>Taste, um
-                Übertragung ermöglichen. qFT8 ruft automatisch auf <span translate="no">CQ</span> und antworten Sie auf alle Sender, die Sie anrufen.</p>
-<div class="highlight">
-<p><strong>Manuelle Überschreibungen:</strong>Möglicherweise erreichen Sie mehrere Stationen gleichzeitig. Wenn Sie Prioritäten setzen möchten
-                    ein besonders interessantes
-                    Station während <span translate="no">CQing</span>, können Sie manuell auf tippen<strong><span translate="no">CALL</span></strong>Taste für diesen Sender.
-                    Einmal
-                    die <span translate="no">QSO</span> abgeschlossen ist,<span translate="no">qFT8</span> wird automatisch auf den Anruf zurückgreifen <span translate="no">CQ</span>.
-                </p>
-</div>
-<h3>5. Exportieren Ihres POTA-Protokolls</h3>
-<p>Wenn Sie Ihre Aktivierung abschließen, exportieren Sie ein gültiges ADIF-Protokoll für <span translate="no">POTA</span>:
-            </p>
-<ol>
-<li>Gehe zu<strong>Einstellungen</strong>und tippen Sie auf<strong><span translate="no">ADIF File Export</span></strong>.
-                </li>
-<li>Wählen<strong><span translate="no">Selected time range</span></strong>und spezifizieren Sie die <span translate="no">UTC</span> Start- und Endzeiten von
-                    Ihre Aktivierung.</li>
-<li>Stellen Sie den Filter auf<strong><span translate="no">All QSOs</span></strong>.
-                </li>
-<li>Im<strong><span translate="no">Event</span></strong>Auswahl,
-                    auswählen<strong><span translate="no">POTA</span></strong>.</li>
-<li>Geben Sie Ihre Parkreferenz ein (z. B.<code>K-1234</code>).</li>
 <li>Drücken<strong><span translate="no">EXPORT QSOs</span></strong>. Dies
                     erzeugt eine <span translate="no">ADIF</span> Datei mit Folgendem
                     In jeden Datensatz eingefügte Felder:<ul>

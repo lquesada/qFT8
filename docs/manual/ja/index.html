@@ -841,6 +841,14 @@ html
                     「<span translate="no">AUTO</span>」に戻ります。</li>
 <li><strong>ターゲット</strong>: AUTO モードの基準を設定します。<ul>
 <li><strong><span translate="no">Anyone</span></strong>: 任意のコールサイン<span translate="no">QSO</span>がないこと  まだ。</li>
+<li><strong><span translate="no">Nearby</span></strong>: <span translate="no">Maidenhead</span>グリッド距離に基づいて最も近い局を優先します。</li>
+<li><strong><span translate="no">Far</span></strong>: <span translate="no">Maidenhead</span>グリッド距離に基づいて最も遠い局を優先します。</li>
+<li><strong><span translate="no">Signal strength</span></strong>: 信号強度（<span translate="no">SNR</span>）が最も強い局を優先します。</li>
+<li><strong><span translate="no">Call CQ</span></strong>：ただ電話するだけ
+                            自局を呼び出したすべての局に CQ を送信して応答します。</li>
+<li><strong><span translate="no">POTA hunter</span></strong>: <span translate="no">Parks on the Air</span>局を優先します。</li>
+<li><strong><span translate="no">SOTA hunter</span></strong>: <span translate="no">Summits on the Air</span>局を優先します。</li>
+<li><strong><span translate="no">POTA + SOTA hunter</span></strong>: <span translate="no">Parks on the Air</span>と<span translate="no">Summits on the Air</span>の両方の局を優先し、次にその他の局を<span translate="no">SNR</span>順に並べます。</li>
 <li><strong><span translate="no">DXCC</span></strong>：新規を優先
                             国/団体。</li>
 <li><strong><span translate="no">Grid</span></strong>：新規を優先<span translate="no">Maidenhead</span>グリッド正方形。</li>
@@ -850,8 +858,6 @@ html
                             新しい<span translate="no">CQ</span>ゾーン。</li>
 <li><strong><span translate="no">I/C/D/G</span></strong>: 優先順位を付ける
                             最初<span translate="no">ITU</span>ゾーン、その後<span translate="no">CQ</span>ゾーン、その後<span translate="no">DXCC</span>、その後<span translate="no">Grid</span>。</li>
-<li><strong><span translate="no">Call CQ</span></strong>：ただ電話するだけ
-                            自局を呼び出したすべての局に CQ を送信して応答します。</li>
 </ul>すべての場合において、同じ基準を満たすステーションは信号強度によって並べ替えられます。例えば、<span translate="no">Anyone</span>新しいコールサインを最初に優先します。
                     ただし、その中で最も強い信号がリストの先頭に表示されます。</li>
 <li><strong>周期性</strong>: そのターゲットに連絡する頻度:<ul>
@@ -867,11 +873,14 @@ html
 </ul>
 </li>
 <li><strong>予選</strong>: これらの制約がどのように適用されるか:<ul>
-<li><span translate="no">per callsign or zone</span></li>
-<li><span translate="no">per band</span></li>
+<li><span translate="no">per callsign</span></li>
 <li><span translate="no">in different bands</span></li>
+<li><span translate="no">in different modes</span></li>
 <li><span translate="no">until zone confirmed</span></li>
-<li><span translate="no">per band + until zone confirmed</span></li>
+<li><span translate="no">per band+until zone</span></li>
+<li><span translate="no">per mode+until zone</span></li>
+<li><span translate="no">in different bands or modes</span></li>
+<li><span translate="no">per band/mode+until zone</span></li>
 </ul>
 </li>
 <li><strong><span translate="no">Spy</span>モード</strong>: 有効にすると、qFT8
@@ -1367,91 +1376,78 @@ html
 <a class="back-to-toc" href="#top">↑ 目次に戻る</a>
 </section>
 <section id="sota">
-<h2>サミット・オン・ジ・エア (SOTA)</h2>
-<p>qFT8 は、SOTA (Summits On The Air) アクティベーターにとって強力なツールとなるように設計されています。手順は次のとおりです
-                アクティベーションが成功するように qFT8 を設定します。</p>
-<h3>1.時間を同期する</h3>
-<p>デバイスの時計が正確であることを確認してください。これは、外出前またはモバイルホットスポットを使用する前に自宅で行うことができます
-                フィールドで。</p>
-<h3>2. CQ モディファイアを設定します</h3>
-<p>に行きます<strong>設定</strong>タブを押して検索します
-                の<strong><span translate="no">CQ modifier</span></strong>オプション。これを設定します
-                に<code><span translate="no">SOTA</span></code>。これからは、あなたがするたびに、
-                電話する<span translate="no">CQ</span>、<span translate="no">qFT8</span>送信します<code><span translate="no">CQ SOTA [Callsign]</span></code>、追跡者に警告します
-                サミットを活性化しているということ。</p>
-<h3>3. AUTO モードの設定</h3>
-<p>で<strong>駅</strong>タブで、
-                最初のドロップダウン メニュー (ターゲット セレクター) を次のように設定します。<strong><span translate="no">Call CQ</span></strong>。次に、エンゲージします<strong><span translate="no">AUTO</span></strong>モード。</p>
-<h3>4. アクティベーションを開始する</h3>
-<p>を押します。<strong><span translate="no">TX</span></strong>一番下のボタン
-                バーを押して送信を可能にします。</p>
-<p>有効にすると、qFT8 は自動的に CQ を呼び出し、電話をかけてきたステーションに応答します。という目標を掲げて以来、
-                アクティベーションは QSO を収集することです。qFT8 は、発信者と QSO を行っていたとしても、常に発信者に応答します。
-                以前にログに記録されたセッションで。</p>
-<div class="highlight">
-<p><strong>手動オーバーライド:</strong>複数の駅が同時に到着する場合があります。優先したい場合は
-                    特に興味深い
-                    駅の間<span translate="no">CQing</span>を手動でタップすると、<strong><span translate="no">CALL</span></strong>その駅のボタンを押します。
-                    一度
-                    の<span translate="no">QSO</span>完成し、<span translate="no">qFT8</span>自動的に通話にフォールバックします<span translate="no">CQ</span>。</p>
-</div>
-<h3>5. SOTA ログのエクスポート</h3>
-<p>アクティベーションを完了すると、SOTAData 専用の有効な ADIF ログをエクスポートできます。</p>
+<h2>サミッツ・オン・ジ・エア（SOTA）</h2>
+<p>qFT8はSOTA（Summits On The Air）の<strong>ハンター（Hunters/Chasers）</strong>と<strong>アクティベーター</strong>の両方に対応したツールを内蔵しています。</p>
+<h3>SOTAハンター／チェイサーとして運用する</h3>
+<p>サミットをアクティベートしている局を追跡するには：</p>
 <ol>
-<li>Go to <strong>に移動します設定</strong>そしてタップしてください<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>Choose <strong><span translate="no">Selected time range</span></strong>を選択してください<span translate="no">UTC</span>を指定します。  の開始時間と終了時間
-                    あなたの
-                    活性化。</li>
-<li>フィルターを<strong><span translate="no">All QSOs</span></strong>に設定します。 。</li>
-<li>In the <strong><span translate="no">Event</span></strong>で  選択、<strong><span translate="no">SOTA</span></strong>を選択してください。</li>
-<li>サミットへの参照を入力します (例:<code>XX/GG-111</code>)。</li>
-<li>Press <strong><span translate="no">EXPORT QSOs</span></strong>を押します。 。これ<span translate="no">ADIF</span>を生成します  必要なファイルを<span translate="no">SOTA</span>フィールド
-                    事前に入力されており、アップロードの準備ができています。</li>
+<li><strong>ステーション</strong>タブで、ターゲット優先度ドロップダウンを<strong><span translate="no">SOTA</span></strong>に設定します。</li>
+<li><strong><span translate="no">AUTO</span></strong>モードを有効にします。</li>
+<li>qFT8は自動的にアクティブなSOTA局（<code><span translate="no">CQ SOTA</span></code>の呼び出しや<code>W6/CA-001</code>などのサミット参照から）を検出し、行2に紫色の<strong><span translate="no">SOTA</span></strong>バッジでタグ付けします。</li>
+<li>AUTOモードでは、qFT8は通常のCQ局よりもアクティブなSOTA局を優先し、信号強度（<span translate="no">SNR</span>）の高い順に並べます。</li>
 </ol>
-<a class="back-to-toc" href="#top">↑ 目次に戻る</a>
+<h3>SOTAアクティベーターとして運用する</h3>
+<p>サミットからSOTAアクティベーションを行うには：</p>
+<ol>
+<li><strong>時刻を同期する</strong>：フィールドに出る前にデバイスの時計が正確であることを確認してください。</li>
+<li><strong>CQモディファイアを設定する</strong>：<strong>設定</strong>タブで、<strong><span translate="no">CQ modifier</span></strong>を<code><span translate="no">SOTA</span></code>に設定します。各CQ呼び出しは<code><span translate="no">CQ SOTA [コールサイン]</span></code>を送信します。</li>
+<li><strong>AUTOモードを設定する</strong>：<strong>ステーション</strong>タブで、ターゲット優先度を<strong><span translate="no">Call CQ</span></strong>に設定し、<strong><span translate="no">AUTO</span></strong>モードを有効にします。</li>
+<li><strong>アクティベーションを開始する</strong>：<strong><span translate="no">TX</span></strong>を有効にします。qFT8は自動的にCQを呼び出し、あなたの局を呼ぶすべてのハンターに応答します。</li>
+</ol>
+<div class="highlight">
+<p><strong>手動コントロール：</strong>複数のハンターが同時に呼んできて特定の局を選択したい場合は、その局の<strong><span translate="no">CALL</span></strong>をタップします。完了後、qFT8は自動的に<span translate="no">CQ</span>の呼び出しに戻ります。</p>
+</div>
+<h3>SOTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
+<p>サミットアクティベーション終了後、SOTAData用のADIFログをエクスポートします：</p>
+<ol>
+<li><strong>設定</strong>に移動し、<strong><span translate="no">ADIF File Export</span></strong>をタップします。</li>
+<li><strong><span translate="no">Selected time range</span></strong>を選択し、UTC開始・終了時刻を指定します。</li>
+<li>フィルターを<strong><span translate="no">All QSOs</span></strong>に設定します。</li>
+<li><strong><span translate="no">Event</span></strong>の選択で<strong><span translate="no">SOTA</span></strong>を選択します。</li>
+<li>サミット参照を入力します（アクティベーター向け、例：<code>XX/GG-111</code>）。</li>
+<li><strong><span translate="no">EXPORT QSOs</span></strong>を押してSOTAフィールドが事前入力されたADIFファイルを生成します。</li>
+</ol>
+<a href="#top" class="back-to-toc">↑ 目次に戻る</a>
 </section>
 <section id="pota">
-<h2>パークス オン ザ エア (POTA)</h2>
-<p>qFT8 は POTA (Parks On The Air) アクティベータをサポートしています。プロセスは次と非常によく似ています<span translate="no">SOTA</span>アクティベーション。手順は次のとおりです。</p>
-<h3>1. 時刻を同期する</h3>
-<p>デバイスの時計が正確であることを確認してください。これは、外出前またはモバイルホットスポットを使用する前に自宅で行うことができます
-                フィールドで。</p>
-<h3>2. CQ モディファイアを設定します</h3>
-<p>に行きます<strong>設定</strong>タブをクリックして設定します<strong><span translate="no">CQ modifier</span></strong>に<code><span translate="no">POTA</span></code>。毎<span translate="no">CQ</span>通話が送信されます<code><span translate="no">CQ POTA [Callsign]</span></code>。</p>
-<h3>3. AUTO モードの設定</h3>
-<p>で<strong>駅</strong>タブで、ターゲット セレクターを次のように設定します。<strong><span translate="no">Call CQ</span></strong>そして関与する<strong><span translate="no">AUTO</span></strong>モード。</p>
-<h3>4. アクティベーションを開始する</h3>
-<p>を押します。<strong><span translate="no">TX</span></strong>ボタンを押す
-                送信を有効にします。 qFT8 が自動的に呼び出します<span translate="no">CQ</span>電話をかけてきたステーションに応答します。</p>
-<div class="highlight">
-<p><strong>手動オーバーライド:</strong>複数の駅が同時に到着する場合があります。優先したい場合は
-                    特に興味深い
-                    駅の間<span translate="no">CQing</span>を手動でタップすると、<strong><span translate="no">CALL</span></strong>その駅のボタンを押します。
-                    一度
-                    の<span translate="no">QSO</span>完成し、<span translate="no">qFT8</span>自動的に通話にフォールバックします<span translate="no">CQ</span>。</p>
-</div>
-<h3>5. POTA ログのエクスポート</h3>
-<p>アクティベーションを終了したら、有効な ADIF ログをエクスポートします。<span translate="no">POTA</span>:
-            </p>
+<h2>パークス・オン・ジ・エア（POTA）</h2>
+<p>qFT8はPOTA（Parks On The Air）の<strong>ハンター</strong>と<strong>アクティベーター</strong>の両方に完全対応しています。</p>
+<h3>POTAハンター／ハンターとして運用する</h3>
+<p>パークをアクティベートしている局を追跡するには：</p>
 <ol>
-<li>に行く<strong>設定</strong>そしてタップしてください<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>Choose <strong><span translate="no">Selected time range</span></strong>を選択してください<span translate="no">UTC</span>を指定します。  の開始時間と終了時間
-                    あなたのアクティベーション。</li>
-<li>フィルターを<strong><span translate="no">All QSOs</span></strong>に設定します。 。</li>
-<li>In the <strong><span translate="no">Event</span></strong>で  選択、<strong><span translate="no">POTA</span></strong>を選択してください。</li>
-<li>公園の参照を入力します (例:<code>K-1234</code>)。</li>
-<li>Press <strong><span translate="no">EXPORT QSOs</span></strong>を押します。 。これ<span translate="no">ADIF</span>を生成します  以下のファイル
-                    すべてのレコードにフィールドが挿入されます。<ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>に設定<code>POTA</code>
-</li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>セット
-                            あなたの公園へのリファレンス</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>セット
-                            あなたの公園へのリファレンス</li>
+<li><strong>ステーション</strong>タブで、ターゲット優先度ドロップダウンを<strong><span translate="no">POTA</span></strong>に設定します。</li>
+<li><strong><span translate="no">AUTO</span></strong>モードを有効にします。</li>
+<li>qFT8は自動的にPOTAアクティベーター（<code><span translate="no">CQ POTA</span></code>の呼び出しや<code>K-1234</code>などのパーク指定子から）を識別し、行2に紫色の<strong><span translate="no">POTA</span></strong>バッジでハイライトします。</li>
+<li>AUTOモードでは、qFT8はアクティブなPOTA局を優先し、信号強度（<span translate="no">SNR</span>）が最も高い局を優先します。</li>
+</ol>
+<h3>POTAアクティベーターとして運用する</h3>
+<p>パークをアクティベートするには：</p>
+<ol>
+<li><strong>時刻を同期する</strong>：運用前にデバイスの時計精度を確認してください。</li>
+<li><strong>CQモディファイアを設定する</strong>：<strong>設定</strong>タブで、<strong><span translate="no">CQ modifier</span></strong>を<code><span translate="no">POTA</span></code>に設定し、<code><span translate="no">CQ POTA [コールサイン]</span></code>を送信します。</li>
+<li><strong>AUTOモードを設定する</strong>：<strong>ステーション</strong>タブで、ターゲット優先度を<strong><span translate="no">Call CQ</span></strong>に設定し、<strong><span translate="no">AUTO</span></strong>モードを有効にします。</li>
+<li><strong>アクティベーションを開始する</strong>：<strong><span translate="no">TX</span></strong>を有効にします。qFT8は継続的にCQを呼び出し、入ってくるハンターとのコンタクトを自動的に処理します。</li>
+</ol>
+<div class="highlight">
+<p><strong>手動コントロール：</strong>キューに入っている局の<strong><span translate="no">CALL</span></strong>をタップすると、AUTO CQモードに戻る前にそのQSOを優先します。</p>
+</div>
+<h3>POTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
+<p>パークアクティベーション終了後、POTA用の有効なADIFログをエクスポートします：</p>
+<ol>
+<li><strong>設定</strong>に移動し、<strong><span translate="no">ADIF File Export</span></strong>をタップします。</li>
+<li><strong><span translate="no">Selected time range</span></strong>を選択し、UTC開始・終了時刻を指定します。</li>
+<li>フィルターを<strong><span translate="no">All QSOs</span></strong>に設定します。</li>
+<li><strong><span translate="no">Event</span></strong>の選択で<strong><span translate="no">POTA</span></strong>を選択します。</li>
+<li>パーク参照を入力します（アクティベーター向け、例：<code>K-1234</code>）。</li>
+<li><strong><span translate="no">EXPORT QSOs</span></strong>を押します。これにより、各レコードに以下のフィールドが入力されたADIFファイルが生成されます：
+<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>を<code>POTA</code>に設定</li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>をパーク参照に設定</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>をパーク参照に設定</li>
 </ul>
 </li>
 </ol>
-<a class="back-to-toc" href="#top">↑ 目次に戻る</a>
+<a href="#top" class="back-to-toc">↑ 目次に戻る</a>
 </section>
 <section id="remote-control">
 <h2>リモート コントロール Web サーバー</h2>

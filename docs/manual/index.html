@@ -1112,6 +1112,23 @@
                         <li><strong><span translate="no">Anyone</span></strong>: Any callsign
                             that you don't have a <span translate="no">QSO</span> for yet.
                         </li>
+                        <li><strong><span translate="no">Nearby</span></strong>: Prioritize nearest
+                            stations based on <span translate="no">Maidenhead</span> grid distance.
+                        </li>
+                        <li><strong><span translate="no">Far</span></strong>: Prioritize farthest
+                            stations based on <span translate="no">Maidenhead</span> grid distance.
+                        </li>
+                        <li><strong><span translate="no">Signal strength</span></strong>: Prioritize stations
+                            with the strongest signal (<span translate="no">SNR</span>).
+                        </li>
+                        <li><strong><span translate="no">Call CQ</span></strong>: Just calls
+                            CQ and replies to any station that calls your station.</li>
+                        <li><strong><span translate="no">POTA hunter</span></strong>: Prioritize
+                            <span translate="no">Parks on the Air</span> stations.</li>
+                        <li><strong><span translate="no">SOTA hunter</span></strong>: Prioritize
+                            <span translate="no">Summits on the Air</span> stations.</li>
+                        <li><strong><span translate="no">POTA + SOTA hunter</span></strong>: Prioritize both
+                            <span translate="no">Parks on the Air</span> and <span translate="no">Summits on the Air</span> stations, then stations that are neither, ordered by <span translate="no">SNR</span>.</li>
                         <li><strong><span translate="no">DXCC</span></strong>: Prioritize new
                             countries/entities.</li>
                         <li><strong><span translate="no">Grid</span></strong>: Prioritize new
@@ -1127,8 +1144,6 @@
                             <span translate="no">DXCC</span>, then
                             <span translate="no">Grid</span>.
                         </li>
-                        <li><strong><span translate="no">Call CQ</span></strong>: Just calls
-                            CQ and replies to any station that calls your station.</li>
                     </ul>
                     In all cases, stations that meet the same criteria are sorted by signal strength. For example,
                     <span translate="no">Anyone</span> will prioritize new callsigns first,
@@ -1151,11 +1166,14 @@
                 </li>
                 <li><strong>Qualifier</strong>: How those constraints apply:
                     <ul>
-                        <li><span translate="no">per callsign or zone</span></li>
-                        <li><span translate="no">per band</span></li>
+                        <li><span translate="no">per callsign</span></li>
                         <li><span translate="no">in different bands</span></li>
+                        <li><span translate="no">in different modes</span></li>
                         <li><span translate="no">until zone confirmed</span></li>
-                        <li><span translate="no">per band + until zone confirmed</span></li>
+                        <li><span translate="no">per band+until zone</span></li>
+                        <li><span translate="no">per mode+until zone</span></li>
+                        <li><span translate="no">in different bands or modes</span></li>
+                        <li><span translate="no">per band/mode+until zone</span></li>
                     </ul>
                 </li>
                 <li><strong><span translate="no">Spy</span> mode</strong>: When enabled, qFT8
@@ -1855,81 +1873,46 @@
         <section id="sota">
             <h2>Summits On The Air (SOTA)</h2>
             <p>
-                qFT8 is designed to be a powerful tool for SOTA (Summits On The Air) activators. Here are the steps to
-                configure qFT8 for a successful activation:
+                qFT8 provides built-in tools for both SOTA (Summits On The Air) <strong>Chasers (Hunters)</strong> and <strong>Activators</strong>.
             </p>
 
-            <h3>1. Synchronize time</h3>
+            <h3>Operating as a SOTA Chaser / Hunter</h3>
             <p>
-                Ensure your device clock is accurate. This can be done at home before leaving or using a mobile hotspot
-                in the field.
-            </p>
-
-            <h3>2. Set your CQ Modifier</h3>
-            <p>
-                Go to the <strong>Settings</strong> tab and find
-                the <strong><span translate="no">CQ modifier</span></strong> option. Set this
-                to
-                <code><span translate="no">SOTA</span></code>. From now on, every time you
-                call <span translate="no">CQ</span>,
-                <span translate="no">qFT8</span> will transmit
-                <code><span translate="no">CQ SOTA [Callsign]</span></code>, alerting chasers
-                that you are activating a summit.
-            </p>
-
-            <h3>3. Configure AUTO Mode</h3>
-            <p>
-                In the <strong>Stations</strong> tab, find the
-                first dropdown menu (the target selector) and set it to
-                <strong><span translate="no">Call CQ</span></strong>. Then, engage
-                <strong><span translate="no">AUTO</span></strong> mode.
-            </p>
-
-            <h3>4. Start Activating</h3>
-            <p>
-                Press the <strong><span translate="no">TX</span></strong> button in the bottom
-                bar to enable transmission.
-            </p>
-            <p>
-                Once enabled, qFT8 will automatically call CQ and reply to any stations that call you. Since the goal of
-                an activation is to gather QSOs, qFT8 will always reply to callers, even if you have had QSOs with them
-                in previously logged sessions.
-            </p>
-
-            <div class="highlight">
-                <p><strong>Manual Overrides:</strong> Several stations may reach you at once. If you want to prioritize
-                    a specifically interesting
-                    station while <span translate="no">CQing</span>, you can manually tap the
-                    <strong><span translate="no">CALL</span></strong> button for that station.
-                    Once
-                    the <span translate="no">QSO</span> is completed,
-                    <span translate="no">qFT8</span> will automatically fallback to calling
-                    <span translate="no">CQ</span>.
-                </p>
-            </div>
-
-            <h3>5. Exporting your SOTA Log</h3>
-            <p>
-                When you wrap up your activation, you can export a valid ADIF log specifically for SOTAData:
+                To hunt stations activating summits:
             </p>
             <ol>
-                <li>Go to <strong>Settings</strong> and tap
-                    <strong><span translate="no">ADIF File Export</span></strong>.
-                </li>
-                <li>Choose <strong><span translate="no">Selected time range</span></strong>
-                    and specify the <span translate="no">UTC</span> start and end times of
-                    your
-                    activation.</li>
-                <li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.
-                </li>
-                <li>In the <strong><span translate="no">Event</span></strong> selection,
-                    select <strong><span translate="no">SOTA</span></strong>.</li>
-                <li>Input your summit reference (e.g., <code>XX/GG-111</code>).</li>
-                <li>Press <strong><span translate="no">EXPORT QSOs</span></strong>. This
-                    generates an <span translate="no">ADIF</span> file with the necessary
-                    <span translate="no">SOTA</span> fields
-                    pre-filled and ready for upload.
-                </li>
+                <li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">SOTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
+                <li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+                <li>qFT8 will automatically detect active SOTA stations (from <code><span translate="no">CQ SOTA</span></code> calls or summit references like <code>W6/CA-001</code>) and tag them with a purple <strong><span translate="no">SOTA</span></strong> badge in Row 2.</li>
+                <li>In AUTO mode, qFT8 prioritizes calling active SOTA stations over regular CQers, ordering them by strongest signal strength (<span translate="no">SNR</span>).</li>
+            </ol>
+
+            <h3>Operating as a SOTA Activator</h3>
+            <p>
+                To run a SOTA activation from a summit:
+            </p>
+            <ol>
+                <li><strong>Synchronize time</strong>: Ensure your device clock is accurate before heading into the field.</li>
+                <li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">SOTA</span></code>. Every CQ call will transmit <code><span translate="no">CQ SOTA [Callsign]</span></code>.</li>
+                <li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+                <li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will automatically call CQ and reply to any chasers that call your station.</li>
+            </ol>
+
+            <div class="highlight">
+                <p><strong>Manual Overrides:</strong> If several chasers reach you at once and you want to pick a specific station, tap <strong><span translate="no">CALL</span></strong> for that station. Once completed, qFT8 automatically falls back to calling <span translate="no">CQ</span>.</p>
+            </div>
+
+            <h3>Exporting your SOTA Activation Log (Activators)</h3>
+            <p>
+                When wrapping up a summit activation, export an ADIF log for SOTAData:
+            </p>
+            <ol>
+                <li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
+                <li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
+                <li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
+                <li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">SOTA</span></strong>.</li>
+                <li>Input your summit reference (for activators, e.g., <code>XX/GG-111</code>).</li>
+                <li>Press <strong><span translate="no">EXPORT QSOs</span></strong> to generate the ADIF file with SOTA fields pre-filled.</li>
             </ol>
 
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
@@ -1938,79 +1921,50 @@
         <section id="pota">
             <h2>Parks On The Air (POTA)</h2>
             <p>
-                qFT8 supports POTA (Parks On The Air) activators. The process is very similar to
-                <span translate="no">SOTA</span> activations. Here are the steps:
+                qFT8 offers full support for POTA (Parks On The Air) <strong>Hunters</strong> and <strong>Activators</strong>.
             </p>
 
-            <h3>1. Synchronize time</h3>
+            <h3>Operating as a POTA Hunter</h3>
             <p>
-                Ensure your device clock is accurate. This can be done at home before leaving or using a mobile hotspot
-                in the field.
-            </p>
-
-            <h3>2. Set your CQ Modifier</h3>
-            <p>
-                Go to the <strong>Settings</strong> tab and set the
-                <strong><span translate="no">CQ modifier</span></strong> to
-                <code><span translate="no">POTA</span></code>. Every
-                <span translate="no">CQ</span> call will now transmit
-                <code><span translate="no">CQ POTA [Callsign]</span></code>.
-            </p>
-
-            <h3>3. Configure AUTO Mode</h3>
-            <p>
-                In the <strong>Stations</strong> tab, set the target selector to
-                <strong><span translate="no">Call CQ</span></strong> and engage
-                <strong><span translate="no">AUTO</span></strong> mode.
-            </p>
-
-            <h3>4. Start Activating</h3>
-            <p>
-                Press the <strong><span translate="no">TX</span></strong> button to
-                enable transmission. qFT8 will automatically call
-                <span translate="no">CQ</span> and reply to any stations that call you.
-            </p>
-
-            <div class="highlight">
-                <p><strong>Manual Overrides:</strong> Several stations may reach you at once. If you want to prioritize
-                    a specifically interesting
-                    station while <span translate="no">CQing</span>, you can manually tap the
-                    <strong><span translate="no">CALL</span></strong> button for that station.
-                    Once
-                    the <span translate="no">QSO</span> is completed,
-                    <span translate="no">qFT8</span> will automatically fallback to calling
-                    <span translate="no">CQ</span>.
-                </p>
-            </div>
-
-            <h3>5. Exporting your POTA Log</h3>
-            <p>
-                When you wrap up your activation, export a valid ADIF log for
-                <span translate="no">POTA</span>:
+                To hunt stations activating parks:
             </p>
             <ol>
-                <li>Go to <strong>Settings</strong> and tap
-                    <strong><span translate="no">ADIF File Export</span></strong>.
-                </li>
-                <li>Choose <strong><span translate="no">Selected time range</span></strong>
-                    and specify the <span translate="no">UTC</span> start and end times of
-                    your activation.</li>
-                <li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.
-                </li>
-                <li>In the <strong><span translate="no">Event</span></strong> selection,
-                    select <strong><span translate="no">POTA</span></strong>.</li>
-                <li>Input your park reference (e.g., <code>K-1234</code>).</li>
-                <li>Press <strong><span translate="no">EXPORT QSOs</span></strong>. This
-                    generates an <span translate="no">ADIF</span> file with the following
-                    fields injected into every record:
+                <li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">POTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
+                <li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+                <li>qFT8 automatically identifies POTA activators (from <code><span translate="no">CQ POTA</span></code> calls or park designators like <code>K-1234</code>) and highlights them with a purple <strong><span translate="no">POTA</span></strong> badge in Row 2.</li>
+                <li>In AUTO mode, qFT8 prioritizes calling active POTA stations, favoring those with the strongest signal strength (<span translate="no">SNR</span>).</li>
+            </ol>
+
+            <h3>Operating as a POTA Activator</h3>
+            <p>
+                To activate a park:
+            </p>
+            <ol>
+                <li><strong>Synchronize time</strong>: Ensure device clock accuracy before operating.</li>
+                <li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">POTA</span></code> to transmit <code><span translate="no">CQ POTA [Callsign]</span></code>.</li>
+                <li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+                <li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will continuously call CQ and process contacts with incoming hunters automatically.</li>
+            </ol>
+
+            <div class="highlight">
+                <p><strong>Manual Overrides:</strong> Tapping <strong><span translate="no">CALL</span></strong> on any queued station prioritizes that QSO before returning to AUTO CQ mode.</p>
+            </div>
+
+            <h3>Exporting your POTA Activation Log (Activators)</h3>
+            <p>
+                When wrapping up a park activation, export a valid ADIF log for POTA:
+            </p>
+            <ol>
+                <li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
+                <li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
+                <li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
+                <li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">POTA</span></strong>.</li>
+                <li>Input your park reference (for activators, e.g., <code>K-1234</code>).</li>
+                <li>Press <strong><span translate="no">EXPORT QSOs</span></strong>. This generates an ADIF file with the following fields populated for every record:
                     <ul>
-                        <li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> set to
-                            <code>POTA</code>
-                        </li>
-                        <li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> set
-                            to your park reference</li>
-                        <li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> set
-                            to your park reference</li>
+                        <li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> set to <code>POTA</code></li>
+                        <li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> set to your park reference</li>
+                        <li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> set to your park reference</li>
                     </ul>
                 </li>
             </ol>

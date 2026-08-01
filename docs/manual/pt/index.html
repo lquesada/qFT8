@@ -848,6 +848,14 @@ html
 <li><strong>Alvo</strong>: Define os critérios para o modo AUTO:<ul>
 <li><strong><span translate="no">Anyone</span></strong>: Qualquer indicativo
                             que você não tem um <span translate="no">QSO</span> por enquanto.</li>
+<li><strong><span translate="no">Nearby</span></strong>: Priorize as estações mais próximas com base na distância da grade <span translate="no">Maidenhead</span>.</li>
+<li><strong><span translate="no">Far</span></strong>: Priorize as estações mais distantes com base na distância da grade <span translate="no">Maidenhead</span>.</li>
+<li><strong><span translate="no">Signal strength</span></strong>: Priorize as estações com o sinal mais forte (<span translate="no">SNR</span>).</li>
+<li><strong><span translate="no">Call CQ</span></strong>: Apenas chamadas
+                            CQ e responde a qualquer estação que ligue para sua estação.</li>
+<li><strong><span translate="no">POTA hunter</span></strong>: Priorize estações de <span translate="no">Parks on the Air</span>.</li>
+<li><strong><span translate="no">SOTA hunter</span></strong>: Priorize estações de <span translate="no">Summits on the Air</span>.</li>
+<li><strong><span translate="no">POTA + SOTA hunter</span></strong>: Priorize tanto estações de <span translate="no">Parks on the Air</span> quanto de <span translate="no">Summits on the Air</span>, depois as demais estações, ordenadas por <span translate="no">SNR</span>.</li>
 <li><strong><span translate="no">DXCC</span></strong>: Priorize novos
                             países/entidades.</li>
 <li><strong><span translate="no">Grid</span></strong>: Priorize novos <span translate="no">Maidenhead</span> quadrados da grade.</li>
@@ -857,8 +865,6 @@ html
                             novo <span translate="no">CQ</span> zonas.</li>
 <li><strong><span translate="no">I/C/D/G</span></strong>: Priorizar
                             primeiro <span translate="no">ITU</span> zona, então <span translate="no">CQ</span> zona, então <span translate="no">DXCC</span>, então <span translate="no">Grid</span>.</li>
-<li><strong><span translate="no">Call CQ</span></strong>: Apenas chamadas
-                            CQ e responde a qualquer estação que ligue para sua estação.</li>
 </ul>Em todos os casos, as estações que atendem aos mesmos critérios são classificadas pela intensidade do sinal. Por exemplo,<span translate="no">Anyone</span> priorizará novos indicativos primeiro,
                     mas entre eles os sinais mais fortes estarão no topo da lista.</li>
 <li><strong>Periodicidade</strong>: Com que frequência entrar em contato com esse alvo:<ul>
@@ -874,11 +880,14 @@ html
 </ul>
 </li>
 <li><strong>Qualificatória</strong>: Como essas restrições se aplicam:<ul>
-<li><span translate="no">per callsign or zone</span></li>
-<li><span translate="no">per band</span></li>
+<li><span translate="no">per callsign</span></li>
 <li><span translate="no">in different bands</span></li>
+<li><span translate="no">in different modes</span></li>
 <li><span translate="no">until zone confirmed</span></li>
-<li><span translate="no">per band + until zone confirmed</span></li>
+<li><span translate="no">per band+until zone</span></li>
+<li><span translate="no">per mode+until zone</span></li>
+<li><span translate="no">in different bands or modes</span></li>
+<li><span translate="no">per band/mode+until zone</span></li>
 </ul>
 </li>
 <li><strong><span translate="no">Spy</span> modo</strong>: Quando ativado, qFT8
@@ -1377,94 +1386,78 @@ html
 <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
 </section>
 <section id="sota">
-<h2>Cúpulas no Ar (SOTA)</h2>
-<p>qFT8 foi projetado para ser uma ferramenta poderosa para ativadores SOTA (Summits On The Air). Aqui estão as etapas para
-                configure qFT8 para uma ativação bem-sucedida:</p>
-<h3>1. Sincronize a hora</h3>
-<p>Certifique-se de que o relógio do seu dispositivo esteja correto. Isso pode ser feito em casa antes de sair ou usando um hotspot móvel
-                no campo.</p>
-<h3>2. Defina seu modificador CQ</h3>
-<p>Vá para<strong>Configurações</strong>aba e encontre
-                o<strong><span translate="no">CQ modifier</span></strong>opção. Defina isso
-                para<code><span translate="no">SOTA</span></code>. De agora em diante, toda vez que você
-                ligar <span translate="no">CQ</span>,<span translate="no">qFT8</span> transmitirá<code><span translate="no">CQ SOTA [Callsign]</span></code>, alertando os caçadores
-                que você está ativando uma conferência.</p>
-<h3>3. Configure o modo AUTO</h3>
-<p>No<strong>Estações</strong>aba, encontre o
-                primeiro menu suspenso (o seletor de destino) e defina-o como<strong><span translate="no">Call CQ</span></strong>. Então, envolva-se<strong><span translate="no">AUTO</span></strong>modo.</p>
-<h3>4. Comece a ativar</h3>
-<p>Pressione o botão<strong><span translate="no">TX</span></strong>botão na parte inferior
-                barra para permitir a transmissão.</p>
-<p>Uma vez ativado, o qFT8 ligará automaticamente para CQ e responderá a qualquer estação que ligar para você. Já que o objetivo
-                uma ativação é para coletar QSOs, o qFT8 sempre responderá aos chamadores, mesmo se você tiver feito QSOs com eles
-                em sessões registradas anteriormente.</p>
-<div class="highlight">
-<p><strong>Substituições manuais:</strong>Várias estações podem chegar até você ao mesmo tempo. Se você quiser priorizar
-                    um especificamente interessante
-                    estação enquanto <span translate="no">CQing</span>, você pode tocar manualmente no<strong><span translate="no">CALL</span></strong>botão para essa estação.
-                    Uma vez
-                    o <span translate="no">QSO</span> está concluído,<span translate="no">qFT8</span> retornará automaticamente para a chamada <span translate="no">CQ</span>.</p>
-</div>
-<h3>5. Exportando seu log SOTA</h3>
-<p>Ao finalizar sua ativação, você pode exportar um log ADIF válido especificamente para SOTAData:</p>
+<h2>Summits On The Air (SOTA)</h2>
+<p>O qFT8 oferece ferramentas integradas tanto para <strong>Caçadores (Hunters/Chasers)</strong> quanto para <strong>Ativadores</strong> de SOTA (Summits On The Air).</p>
+<h3>Operar como Caçador / Chaser SOTA</h3>
+<p>Para caçar estações que estão ativando cumes:</p>
 <ol>
-<li>Vá para<strong>Configurações</strong>e toque<strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Escolha<strong><span translate="no">Selected time range</span></strong>e especifique o <span translate="no">UTC</span> horários de início e término de
-                    seu
-                    ativação.</li>
-<li>Defina o filtro como<strong><span translate="no">All QSOs</span></strong>.</li>
-<li>No<strong><span translate="no">Event</span></strong>seleção,
-                    selecione<strong><span translate="no">SOTA</span></strong>.</li>
-<li>Insira a referência do seu encontro (por exemplo,<code>XX/GG-111</code>).</li>
-<li>Pressione<strong><span translate="no">EXPORT QSOs</span></strong>. Isto
-                    gera um <span translate="no">ADIF</span> arquivo com o necessário <span translate="no">SOTA</span> campos
-                    pré-preenchido e pronto para upload.</li>
+<li>Na aba <strong>Estações</strong>, defina o menu suspenso de prioridade alvo para <strong><span translate="no">SOTA</span></strong>.</li>
+<li>Ative o modo <strong><span translate="no">AUTO</span></strong>.</li>
+<li>O qFT8 detecta automaticamente estações SOTA ativas (a partir de chamadas <code><span translate="no">CQ SOTA</span></code> ou referências de cumes como <code>W6/CA-001</code>) e as marca com um emblema roxo <strong><span translate="no">SOTA</span></strong> na Linha 2.</li>
+<li>No modo AUTO, o qFT8 prioriza chamar estações SOTA ativas em detrimento de CQers normais, ordenando-as pela força de sinal mais alta (<span translate="no">SNR</span>).</li>
 </ol>
-<a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+<h3>Operar como Ativador SOTA</h3>
+<p>Para realizar uma ativação SOTA de um cume:</p>
+<ol>
+<li><strong>Sincronize o horário</strong>: Certifique-se de que o relógio do dispositivo está preciso antes de sair a campo.</li>
+<li><strong>Configure o Modificador de CQ</strong>: Na aba <strong>Configurações</strong>, defina o <strong><span translate="no">CQ modifier</span></strong> para <code><span translate="no">SOTA</span></code>. Cada chamada CQ transmitirá <code><span translate="no">CQ SOTA [Indicativo]</span></code>.</li>
+<li><strong>Configure o modo AUTO</strong>: Na aba <strong>Estações</strong>, defina a prioridade alvo para <strong><span translate="no">Call CQ</span></strong> e ative o modo <strong><span translate="no">AUTO</span></strong>.</li>
+<li><strong>Inicie a ativação</strong>: Habilite o <strong><span translate="no">TX</span></strong>. O qFT8 chamará CQ automaticamente e responderá a qualquer caçador que chamar sua estação.</li>
+</ol>
+<div class="highlight">
+<p><strong>Controles Manuais:</strong> Se vários caçadores chamarem ao mesmo tempo e você quiser selecionar uma estação específica, toque em <strong><span translate="no">CALL</span></strong> para essa estação. Após concluído, o qFT8 retorna automaticamente a chamar <span translate="no">CQ</span>.</p>
+</div>
+<h3>Exportar seu Log de Ativação SOTA (Ativadores)</h3>
+<p>Ao concluir uma ativação de cume, exporte um log ADIF para o SOTAData:</p>
+<ol>
+<li>Vá em <strong>Configurações</strong> e toque em <strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Selecione <strong><span translate="no">Selected time range</span></strong> e especifique os horários UTC de início e fim.</li>
+<li>Defina o filtro para <strong><span translate="no">All QSOs</span></strong>.</li>
+<li>Na seleção de <strong><span translate="no">Event</span></strong>, selecione <strong><span translate="no">SOTA</span></strong>.</li>
+<li>Insira sua referência de cume (para ativadores, ex.: <code>XX/GG-111</code>).</li>
+<li>Pressione <strong><span translate="no">EXPORT QSOs</span></strong> para gerar o arquivo ADIF com os campos SOTA preenchidos.</li>
+</ol>
+<a href="#top" class="back-to-toc">↑ Voltar ao Índice</a>
 </section>
 <section id="pota">
-<h2>Parques ao Ar (POTA)</h2>
-<p>qFT8 suporta ativadores POTA (Parks On The Air). O processo é muito semelhante ao <span translate="no">SOTA</span> ativações. Aqui estão as etapas:</p>
-<h3>1. Sincronize a hora</h3>
-<p>Certifique-se de que o relógio do seu dispositivo esteja correto. Isso pode ser feito em casa antes de sair ou usando um hotspot móvel
-                no campo.</p>
-<h3>2. Defina seu modificador CQ</h3>
-<p>Vá para<strong>Configurações</strong>guia e defina o<strong><span translate="no">CQ modifier</span></strong>para<code><span translate="no">POTA</span></code>. Cada <span translate="no">CQ</span> a chamada agora será transmitida<code><span translate="no">CQ POTA [Callsign]</span></code>.</p>
-<h3>3. Configure o modo AUTO</h3>
-<p>No<strong>Estações</strong>guia, defina o seletor de destino para<strong><span translate="no">Call CQ</span></strong>e se envolver<strong><span translate="no">AUTO</span></strong>modo.</p>
-<h3>4. Comece a ativar</h3>
-<p>Pressione o botão<strong><span translate="no">TX</span></strong>botão para
-                ativar a transmissão. qFT8 ligará automaticamente <span translate="no">CQ</span> e responda a qualquer estação que ligar para você.</p>
-<div class="highlight">
-<p><strong>Substituições manuais:</strong>Várias estações podem chegar até você ao mesmo tempo. Se você quiser priorizar
-                    um especificamente interessante
-                    estação enquanto <span translate="no">CQing</span>, você pode tocar manualmente no<strong><span translate="no">CALL</span></strong>botão para essa estação.
-                    Uma vez
-                    o <span translate="no">QSO</span> está concluído,<span translate="no">qFT8</span> retornará automaticamente para a chamada <span translate="no">CQ</span>.</p>
-</div>
-<h3>5. Exportando seu log POTA</h3>
-<p>Ao finalizar sua ativação, exporte um log ADIF válido para <span translate="no">POTA</span>:</p>
+<h2>Parks On The Air (POTA)</h2>
+<p>O qFT8 oferece suporte completo para <strong>Caçadores</strong> e <strong>Ativadores</strong> de POTA (Parks On The Air).</p>
+<h3>Operar como Caçador / Hunter POTA</h3>
+<p>Para caçar estações que estão ativando parques:</p>
 <ol>
-<li>Vá para<strong>Configurações</strong>e toque<strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Escolher<strong><span translate="no">Selected time range</span></strong>e especifique o <span translate="no">UTC</span> horários de início e término de
-                    sua ativação.</li>
-<li>Defina o filtro como<strong><span translate="no">All QSOs</span></strong>.</li>
-<li>No<strong><span translate="no">Event</span></strong>seleção,
-                    selecione<strong><span translate="no">POTA</span></strong>.</li>
-<li>Insira a referência do seu parque (por exemplo,<code>K-1234</code>).</li>
-<li>Pressione<strong><span translate="no">EXPORT QSOs</span></strong>. Isto
-                    gera um <span translate="no">ADIF</span> arquivo com o seguinte
-                    campos injetados em cada registro:<ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>definido como<code>POTA</code>
-</li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>definir
-                            para a referência do seu parque</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>definir
-                            para a referência do seu parque</li>
+<li>Na aba <strong>Estações</strong>, defina o menu suspenso de prioridade alvo para <strong><span translate="no">POTA</span></strong>.</li>
+<li>Ative o modo <strong><span translate="no">AUTO</span></strong>.</li>
+<li>O qFT8 identifica automaticamente ativadores POTA (a partir de chamadas <code><span translate="no">CQ POTA</span></code> ou designadores de parques como <code>K-1234</code>) e os destaca com um emblema roxo <strong><span translate="no">POTA</span></strong> na Linha 2.</li>
+<li>No modo AUTO, o qFT8 prioriza chamar estações POTA ativas, favorecendo aquelas com maior força de sinal (<span translate="no">SNR</span>).</li>
+</ol>
+<h3>Operar como Ativador POTA</h3>
+<p>Para ativar um parque:</p>
+<ol>
+<li><strong>Sincronize o horário</strong>: Certifique-se da precisão do relógio do dispositivo antes de operar.</li>
+<li><strong>Configure o Modificador de CQ</strong>: Na aba <strong>Configurações</strong>, defina o <strong><span translate="no">CQ modifier</span></strong> para <code><span translate="no">POTA</span></code> para transmitir <code><span translate="no">CQ POTA [Indicativo]</span></code>.</li>
+<li><strong>Configure o modo AUTO</strong>: Na aba <strong>Estações</strong>, defina a prioridade alvo para <strong><span translate="no">Call CQ</span></strong> e ative o modo <strong><span translate="no">AUTO</span></strong>.</li>
+<li><strong>Inicie a ativação</strong>: Habilite o <strong><span translate="no">TX</span></strong>. O qFT8 chamará CQ continuamente e processará contatos com caçadores entrantes automaticamente.</li>
+</ol>
+<div class="highlight">
+<p><strong>Controles Manuais:</strong> Tocar em <strong><span translate="no">CALL</span></strong> para qualquer estação na fila prioriza esse QSO antes de retornar ao modo AUTO CQ.</p>
+</div>
+<h3>Exportar seu Log de Ativação POTA (Ativadores)</h3>
+<p>Ao concluir uma ativação de parque, exporte um log ADIF válido para POTA:</p>
+<ol>
+<li>Vá em <strong>Configurações</strong> e toque em <strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Selecione <strong><span translate="no">Selected time range</span></strong> e especifique os horários UTC de início e fim.</li>
+<li>Defina o filtro para <strong><span translate="no">All QSOs</span></strong>.</li>
+<li>Na seleção de <strong><span translate="no">Event</span></strong>, selecione <strong><span translate="no">POTA</span></strong>.</li>
+<li>Insira sua referência de parque (para ativadores, ex.: <code>K-1234</code>).</li>
+<li>Pressione <strong><span translate="no">EXPORT QSOs</span></strong>. Isso gera um arquivo ADIF com os seguintes campos preenchidos para cada registro:
+<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> definido como <code>POTA</code></li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> definido como sua referência de parque</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> definido como sua referência de parque</li>
 </ul>
 </li>
 </ol>
-<a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+<a href="#top" class="back-to-toc">↑ Voltar ao Índice</a>
 </section>
 <section id="remote-control">
 <h2>Servidor Web de controle remoto</h2>

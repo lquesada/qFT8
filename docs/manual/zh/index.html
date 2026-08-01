@@ -838,6 +838,14 @@ html
 <li><strong>目标</strong>：设置自动模式的标准：<ul>
 <li><strong><span translate="no">Anyone</span></strong>：任何呼号
                             你没有<span translate="no">QSO</span>暂时还没有。</li>
+<li><strong><span translate="no">Nearby</span></strong>：优先根据 <span translate="no">Maidenhead</span> 网格距离选择最近的电台。</li>
+<li><strong><span translate="no">Far</span></strong>：优先根据 <span translate="no">Maidenhead</span> 网格距离选择最远的电台。</li>
+<li><strong><span translate="no">Signal strength</span></strong>：优先选择信号最强（<span translate="no">SNR</span>）的电台。</li>
+<li><strong><span translate="no">Call CQ</span></strong>: 只是打电话
+                            CQ 并回复任何呼叫您电台的电台。</li>
+<li><strong><span translate="no">POTA hunter</span></strong>：优先选择 <span translate="no">Parks on the Air</span> 电台。</li>
+<li><strong><span translate="no">SOTA hunter</span></strong>：优先选择 <span translate="no">Summits on the Air</span> 电台。</li>
+<li><strong><span translate="no">POTA + SOTA hunter</span></strong>：同时优先选择 <span translate="no">Parks on the Air</span> 和 <span translate="no">Summits on the Air</span> 电台，然后是其他电台，按 <span translate="no">SNR</span> 排序。</li>
 <li><strong><span translate="no">DXCC</span></strong>: 优先考虑新的
                             国家/实体。</li>
 <li><strong><span translate="no">Grid</span></strong>: 优先考虑新的<span translate="no">Maidenhead</span>网格正方形。</li>
@@ -847,8 +855,6 @@ html
                             新的<span translate="no">CQ</span>区。</li>
 <li><strong><span translate="no">I/C/D/G</span></strong>：优先
                             第一<span translate="no">ITU</span>区，那么<span translate="no">CQ</span>区，那么<span translate="no">DXCC</span>， 然后<span translate="no">Grid</span>。</li>
-<li><strong><span translate="no">Call CQ</span></strong>: 只是打电话
-                            CQ 并回复任何呼叫您电台的电台。</li>
 </ul>在所有情况下，满足相同标准的电台均按信号强度排序。例如，<span translate="no">Anyone</span>将首先优先考虑新呼号，
                     但其中最强烈的信号将位于列表的顶部。</li>
 <li><strong>周期性</strong>：联系该目标的频率：<ul>
@@ -864,11 +870,14 @@ html
 </ul>
 </li>
 <li><strong>预选赛</strong>：这些限制如何适用：<ul>
-<li><span translate="no">per callsign or zone</span></li>
-<li><span translate="no">per band</span></li>
+<li><span translate="no">per callsign</span></li>
 <li><span translate="no">in different bands</span></li>
+<li><span translate="no">in different modes</span></li>
 <li><span translate="no">until zone confirmed</span></li>
-<li><span translate="no">per band + until zone confirmed</span></li>
+<li><span translate="no">per band+until zone</span></li>
+<li><span translate="no">per mode+until zone</span></li>
+<li><span translate="no">in different bands or modes</span></li>
+<li><span translate="no">per band/mode+until zone</span></li>
 </ul>
 </li>
 <li><strong><span translate="no">Spy</span>模式</strong>：启用后，qFT8
@@ -1379,95 +1388,78 @@ html
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
 </section>
 <section id="sota">
-<h2>峰会直播 (SOTA)</h2>
-<p>qFT8 旨在成为 SOTA（空中峰会）激活器的强大工具。以下是步骤
-                配置 qFT8 以成功激活：</p>
-<h3>1. 同步时间</h3>
-<p>确保您的设备时钟准确。这可以在离开之前在家中或使用移动热点完成
-                在外地。</p>
-<h3>2.设置你的CQ修改器</h3>
-<p>前往<strong>设置</strong>选项卡并查找
-                的<strong><span translate="no">CQ modifier</span></strong>选项。设置这个
-                到<code><span translate="no">SOTA</span></code>。从现在开始，每次你
-                打电话<span translate="no">CQ</span>,
-                <span translate="no">qFT8</span>将传送<code><span translate="no">CQ SOTA [Callsign]</span></code>, 提醒追赶者
-                您正在激活峰会。</p>
-<h3>3. 配置自动模式</h3>
-<p>在<strong>车站</strong>选项卡，找到
-                第一个下拉菜单（目标选择器）并将其设置为<strong><span translate="no">Call CQ</span></strong>。然后，参与<strong><span translate="no">AUTO</span></strong>模式。</p>
-<h3>4. 开始激活</h3>
-<p>按<strong><span translate="no">TX</span></strong>按钮在底部
-                栏以启用传输。</p>
-<p>启用后，qFT8 将自动呼叫 CQ 并回复任何呼叫您的电台。自从目标
-                激活是收集 QSO，qFT8 将始终回复呼叫者，即使您已经与他们进行了 QSO
-                在之前记录的会话中。</p>
-<div class="highlight">
-<p><strong>手动覆盖：</strong>多个电台可能会同时到达您。如果你想优先考虑
-                    一个特别有趣的
-                    站同时<span translate="no">CQing</span>，您可以手动点击<strong><span translate="no">CALL</span></strong>该电台的按钮。
-                    曾经
-                    的<span translate="no">QSO</span>已完成，<span translate="no">qFT8</span>将自动回退到呼叫<span translate="no">CQ</span>。</p>
-</div>
-<h3>5. 导出您的 SOTA 日志</h3>
-<p>完成激活后，您可以专门针对 SOTAData 导出有效的 ADIF 日志：</p>
+<h2>山峰空中（SOTA）</h2>
+<p>qFT8 为SOTA（Summits On The Air）的<strong>猎人（Hunters/Chasers）</strong>和<strong>激活者（Activators）</strong>提供内置工具。</p>
+<h3>作为SOTA猎人/追逐者操作</h3>
+<p>追寻正在激活山峰的电台：</p>
 <ol>
-<li>前往<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>选择<strong><span translate="no">Selected time range</span></strong>并指定<span translate="no">UTC</span>的开始和结束时间
-                    你的
-                    激活。</li>
-<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
-<li>在<strong><span translate="no">Event</span></strong>选择，
-                    选择<strong><span translate="no">SOTA</span></strong>。</li>
-<li>输入您的峰会参考信息（例如，<code>XX/GG-111</code>）。</li>
-<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这个
-                    生成一个<span translate="no">ADIF</span>文件与必要的<span translate="no">SOTA</span>领域
-                    已预先填写并准备上传。</li>
+<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为<strong><span translate="no">SOTA</span></strong>。</li>
+<li>启用<strong><span translate="no">AUTO</span></strong>模式。</li>
+<li>qFT8 自动检测活跃的SOTA电台（来自<code><span translate="no">CQ SOTA</span></code>呼叫或山峰参考如<code>W6/CA-001</code>），并在第2行用紫色<strong><span translate="no">SOTA</span></strong>徽章标记它们。</li>
+<li>在AUTO模式下，qFT8 优先呼叫活跃的SOTA电台而非普通CQ电台，按信号强度（<span translate="no">SNR</span>）从高到低排序。</li>
 </ol>
-<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<h3>作为SOTA激活者操作</h3>
+<p>从山峰进行SOTA激活：</p>
+<ol>
+<li><strong>同步时间</strong>：在出发前确保设备时钟准确。</li>
+<li><strong>设置CQ修饰符</strong>：在<strong>设置</strong>标签页中，将<strong><span translate="no">CQ modifier</span></strong>设置为<code><span translate="no">SOTA</span></code>。每次CQ呼叫将发送<code><span translate="no">CQ SOTA [呼号]</span></code>。</li>
+<li><strong>配置AUTO模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为<strong><span translate="no">Call CQ</span></strong>，并启用<strong><span translate="no">AUTO</span></strong>模式。</li>
+<li><strong>开始激活</strong>：启用<strong><span translate="no">TX</span></strong>。qFT8 将自动呼叫CQ并回复所有呼叫您电台的猎人。</li>
+</ol>
+<div class="highlight">
+<p><strong>手动控制：</strong>如果多个猎人同时呼叫您，您想选择特定电台，请点击该电台的<strong><span translate="no">CALL</span></strong>。完成后，qFT8 自动返回呼叫<span translate="no">CQ</span>。</p>
+</div>
+<h3>导出您的SOTA激活日志（激活者）</h3>
+<p>完成山峰激活后，为SOTAData导出ADIF日志：</p>
+<ol>
+<li>进入<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li>选择<strong><span translate="no">Selected time range</span></strong>并指定UTC开始和结束时间。</li>
+<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
+<li>在<strong><span translate="no">Event</span></strong>选择中，选择<strong><span translate="no">SOTA</span></strong>。</li>
+<li>输入您的山峰参考（激活者，例如：<code>XX/GG-111</code>）。</li>
+<li>按<strong><span translate="no">EXPORT QSOs</span></strong>生成预填SOTA字段的ADIF文件。</li>
+</ol>
+<a href="#top" class="back-to-toc">↑ 返回目录</a>
 </section>
 <section id="pota">
-<h2>空中公园 (POTA)</h2>
-<p>qFT8 支持 POTA（空中公园）激活器。该过程非常类似于<span translate="no">SOTA</span>激活。步骤如下：</p>
-<h3>1. 同步时间</h3>
-<p>确保您的设备时钟准确。这可以在离开之前在家中或使用移动热点完成
-                在外地。</p>
-<h3>2.设置你的CQ修改器</h3>
-<p>前往<strong>设置</strong>选项卡并设置<strong><span translate="no">CQ modifier</span></strong>到<code><span translate="no">POTA</span></code>。每一个<span translate="no">CQ</span>呼叫现在将传输<code><span translate="no">CQ POTA [Callsign]</span></code>。</p>
-<h3>3. 配置自动模式</h3>
-<p>在<strong>车站</strong>选项卡，将目标选择器设置为<strong><span translate="no">Call CQ</span></strong>并参与<strong><span translate="no">AUTO</span></strong>模式。</p>
-<h3>4. 开始激活</h3>
-<p>按<strong><span translate="no">TX</span></strong>按钮到
-                启用传输。 qFT8会自动调用<span translate="no">CQ</span>并回复任何给您打电话的电台。</p>
-<div class="highlight">
-<p><strong>手动覆盖：</strong>多个电台可能会同时到达您。如果你想优先考虑
-                    一个特别有趣的
-                    站同时<span translate="no">CQing</span>，您可以手动点击<strong><span translate="no">CALL</span></strong>该电台的按钮。
-                    曾经
-                    的<span translate="no">QSO</span>已完成，<span translate="no">qFT8</span>将自动回退到呼叫<span translate="no">CQ</span>。</p>
-</div>
-<h3>5. 导出您的 POTA 日志</h3>
-<p>完成激活后，导出有效的 ADIF 日志<span translate="no">POTA</span>：</p>
+<h2>公园空中（POTA）</h2>
+<p>qFT8 为POTA（Parks On The Air）的<strong>猎人</strong>和<strong>激活者</strong>提供全面支持。</p>
+<h3>作为POTA猎人/追逐者操作</h3>
+<p>追寻正在激活公园的电台：</p>
 <ol>
-<li>前往<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>选择<strong><span translate="no">Selected time range</span></strong>并指定<span translate="no">UTC</span>的开始和结束时间
-                    您的激活。</li>
+<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为<strong><span translate="no">POTA</span></strong>。</li>
+<li>启用<strong><span translate="no">AUTO</span></strong>模式。</li>
+<li>qFT8 自动识别POTA激活者（来自<code><span translate="no">CQ POTA</span></code>呼叫或公园标识符如<code>K-1234</code>），并在第2行用紫色<strong><span translate="no">POTA</span></strong>徽章突出显示它们。</li>
+<li>在AUTO模式下，qFT8 优先呼叫活跃的POTA电台，优先考虑信号强度（<span translate="no">SNR</span>）最高的电台。</li>
+</ol>
+<h3>作为POTA激活者操作</h3>
+<p>激活公园：</p>
+<ol>
+<li><strong>同步时间</strong>：操作前确保设备时钟精度。</li>
+<li><strong>设置CQ修饰符</strong>：在<strong>设置</strong>标签页中，将<strong><span translate="no">CQ modifier</span></strong>设置为<code><span translate="no">POTA</span></code>以发送<code><span translate="no">CQ POTA [呼号]</span></code>。</li>
+<li><strong>配置AUTO模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为<strong><span translate="no">Call CQ</span></strong>，并启用<strong><span translate="no">AUTO</span></strong>模式。</li>
+<li><strong>开始激活</strong>：启用<strong><span translate="no">TX</span></strong>。qFT8 将持续呼叫CQ并自动处理与进来的猎人的联系。</li>
+</ol>
+<div class="highlight">
+<p><strong>手动控制：</strong>点击任何排队电台的<strong><span translate="no">CALL</span></strong>，将在返回AUTO CQ模式之前优先处理该QSO。</p>
+</div>
+<h3>导出您的POTA激活日志（激活者）</h3>
+<p>完成公园激活后，为POTA导出有效的ADIF日志：</p>
+<ol>
+<li>进入<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li>选择<strong><span translate="no">Selected time range</span></strong>并指定UTC开始和结束时间。</li>
 <li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
-<li>在<strong><span translate="no">Event</span></strong>选择，
-                    选择<strong><span translate="no">POTA</span></strong>。</li>
-<li>输入您的公园参考号（例如，<code>K-1234</code>）。</li>
-<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这个
-                    生成一个<span translate="no">ADIF</span>文件包含以下内容
-                    注入到每条记录中的字段：<ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>设置为<code>POTA</code>
-</li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>设置
-                            给您的公园参考</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>设置
-                            给您的公园参考</li>
+<li>在<strong><span translate="no">Event</span></strong>选择中，选择<strong><span translate="no">POTA</span></strong>。</li>
+<li>输入您的公园参考（激活者，例如：<code>K-1234</code>）。</li>
+<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这将生成每条记录包含以下字段的ADIF文件：
+<ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>设置为<code>POTA</code></li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>设置为您的公园参考</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>设置为您的公园参考</li>
 </ul>
 </li>
 </ol>
-<a class="back-to-toc" href="#top">↑ 返回目录</a>
+<a href="#top" class="back-to-toc">↑ 返回目录</a>
 </section>
 <section id="remote-control">
 <h2>远程控制网络服务器</h2>
