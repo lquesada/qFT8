@@ -1,9 +1,9 @@
 // Translations for ko
 const langData = {
-    "META_TITLE": "qFT8 — 안드로이드용 휴대용 FT8/FT4",
-    "META_DESC": "안드로이드용 휴대용 FT8/FT4.",
+    "META_TITLE": "qFT8 — 안드로이드용 휴대용 FT8, FT4, FT2 및 JS8",
+    "META_DESC": "안드로이드용 휴대용 FT8, FT4, FT2 및 JS8.",
     "LOGO_ALT": "qFT8 로고",
-    "MAIN_TITLE": "안드로이드용 휴대용 FT8/FT4",
+    "MAIN_TITLE": "안드로이드용 휴대용 FT8, FT4, FT2 및 JS8",
     "BTN_GOOGLE_PLAY_ALT": "Google Play에서 다운로드",
     "BTN_DOWNLOAD_APK": ".apk 다운로드",
     "BTN_USER_MANUAL": "사용자 설명서",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "주요 기능",
     "FEAT_QUICK_SETUP": "빠른 설정",
     "FEAT_TRACK_CALL": "50개 이상의 무전기 지원",
-    "FEAT_SUPPORT_FT8_FT4": "FT8 및 FT4 모드 지원",
+    "FEAT_SUPPORT_FT8_FT4": "FT8, FT4, FT2 및 JS8 모드 지원",
     "FEAT_SUPPORT_LANGS": "30개 이상의 언어 지원",
     "FEAT_MANUAL_AUTO": "수동 CALL 모드 및 자동(AUTO) 작동",
     "FEAT_NTP_SYNC": "자동 NTP 시간 동기화",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "크기:",
     "DOWNLOAD_BEFORE": "다운로드 ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "버전 2.00+는 현재 실험용입니다. 문제가 발생하는 경우 QRPLabs QMX 트랜시버 및 FT8 전용으로 작동하며 기능은 제한적이지만 철저히 테스트된 이전 안정 버전 1.39를 시도해 보세요",
-    "DOWNLOAD_OLD_BEFORE": "이전 버전 다운로드 ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "제 음악 프로젝트인 <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>를 감상하여 저를 지원해 주세요.",
     "WINDLEREYE_ALT": "Windlereye 음악 프로젝트",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) 제외: 포함된 부분 <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) 및 <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas), 두 라이선스 모두 MIT 라이선스 하에 배포됩니다.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres는 FT8 디지털 모드의 개발자들과 관련이 없으며, 마찬가지로 FT8 개발자들 또한 qFT8 개발에 관여하지 않았고 이를 지지하지 않습니다."
 };

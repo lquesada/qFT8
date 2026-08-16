@@ -1,9 +1,9 @@
 // Translations for eu
 const langData = {
-    "META_TITLE": "qFT8 — FT8/FT4 funtzionamendu eramangarria Androiderako",
-    "META_DESC": "FT8/FT4 funtzionamendu eramangarria Androiderako.",
+    "META_TITLE": "qFT8 — FT8, FT4, FT2 eta JS8 funtzionamendu eramangarria Androiderako",
+    "META_DESC": "FT8, FT4, FT2 eta JS8 funtzionamendu eramangarria Androiderako.",
     "LOGO_ALT": "qFT8 Logoa",
-    "MAIN_TITLE": "FT8/FT4 funtzionamendu eramangarria Androiderako",
+    "MAIN_TITLE": "FT8, FT4, FT2 eta JS8 funtzionamendu eramangarria Androiderako",
     "BTN_GOOGLE_PLAY_ALT": "Eskuratu Google Play-n",
     "BTN_DOWNLOAD_APK": "Deskargatu .apk",
     "BTN_USER_MANUAL": "Erabiltzailearen eskuliburua",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "Ezaugarriak",
     "FEAT_QUICK_SETUP": "Konfigurazio azkarra",
     "FEAT_TRACK_CALL": "50 irrati baino gehiago onartzen ditu",
-    "FEAT_SUPPORT_FT8_FT4": "FT8 eta FT4 moduentzako euskarria",
+    "FEAT_SUPPORT_FT8_FT4": "FT8, FT4, FT2 eta JS8 moduentzako euskarria",
     "FEAT_SUPPORT_LANGS": "30 hizkuntza baino gehiago onartzen dira",
     "FEAT_MANUAL_AUTO: ": "Eskuzko eta auto deitzeko moduak", // wait, trailing space in key, let's fix it
     "FEAT_MANUAL_AUTO": "Eskuzko eta auto deitzeko moduak",
@@ -34,11 +34,7 @@ const langData = {
     "DOWNLOAD_SIZE": "Tamaina:",
     "DOWNLOAD_BEFORE": "Deskargatu ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "2.00+ bertsioa esperimentala da gaur egun. Arazoak badituzu, saiatu 1.39 bertsio egonkor zaharragoarekin, QRPLabs QMX hargailu-igorleentzat eta FT8rako bakarrik balio duena eta funtzio mugatuak dituena baina ondo probatuta dagoena",
-    "DOWNLOAD_OLD_BEFORE": "Deskargatu bertsio zaharra ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "Lagundu niri nire musika proiektua entzunez: <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "Windlereye musika proiektua",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) salbu eta <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) eta <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas) proiektuetatik hartutako zatiak, biak MIT lizentziapean argitaratuak.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres-ek ez du inolako harremanik FT8 modu digitalaren garatzaileekin; era berean, FT8ren garatzaileek ez dute qFT8 aplikazioaren garapenean parte hartu, eta ez dute babesten inolaz ere."
 };

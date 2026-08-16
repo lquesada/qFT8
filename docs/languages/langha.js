@@ -1,9 +1,9 @@
 // Translations for ha
 const langData = {
-    "META_TITLE": "qFT8 — Hanyar FT8/FT4 don Android",
-    "META_DESC": "Hanyar FT8/FT4 don Android.",
+    "META_TITLE": "qFT8 — Hanyar FT8, FT4, FT2 da JS8 don Android",
+    "META_DESC": "Hanyar FT8, FT4, FT2 da JS8 don Android.",
     "LOGO_ALT": "Alamomin qFT8",
-    "MAIN_TITLE": "Hanyar FT8/FT4 don Android",
+    "MAIN_TITLE": "Hanyar FT8, FT4, FT2 da JS8 don Android",
     "BTN_GOOGLE_PLAY_ALT": "Sami shi akan Google Play",
     "BTN_DOWNLOAD_APK": "Zazzage .apk",
     "BTN_USER_MANUAL": "Jagoran mai amfani",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "Ayyuka",
     "FEAT_QUICK_SETUP": "Saitin sauri",
     "FEAT_TRACK_CALL": "Taimaka wa rediyo 50+",
-    "FEAT_SUPPORT_FT8_FT4": "Goyan bayan hanyoyin FT8 da FT4",
+    "FEAT_SUPPORT_FT8_FT4": "Goyan bayan hanyoyin FT8, FT4, FT2 da JS8",
     "FEAT_SUPPORT_LANGS": "Goyan bayan harsuna sama da 30",
     "FEAT_MANUAL_AUTO": "Zaɓin CALL na hannu da atomatik (AUTO)",
     "FEAT_NTP_SYNC": "Daidaita lokaci ta atomatik ta hanyar NTP",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "Girma:",
     "DOWNLOAD_BEFORE": "Zazzage ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "Sigar 2.00+ na gwaji ne a halin yanzu. Idan kuna fuskantar matsala, gwada tsohuwar sigar 1.39 mai karko, wacce ke aiki kawai ga transceivers na QRPLabs QMX da FT8 kuma tana da iyakantattun fasali amma an gwada ta sosai",
-    "DOWNLOAD_OLD_BEFORE": "Zazzage tsohuwar sigar ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "Taimake ni ta hanyar sauraron aikin kiɗa na <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "Aikin kiɗa na Windlereye",
     "FOOTER_COPYRIGHT": "Hakkin mallaka &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) sai dai sassa da aka haɗa daga ayyukan <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) da <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas), duka an ba da lasisi ƙarƙashin lasisin MIT.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres ba shi da alaƙa da masu ƙirƙirar tsarin dijital na FT8, kuma masu ƙirƙirar FT8 ba su shiga cikin samar da qFT8 ba kuma ba sa ba da shawararsa ko goyon bayansa ta kowace hanya."
 };

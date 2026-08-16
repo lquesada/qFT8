@@ -1,9 +1,9 @@
 // Translations for bn
 const langData = {
-    "META_TITLE": "qFT8 — অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8/FT4",
-    "META_DESC": "অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8/FT4।",
+    "META_TITLE": "qFT8 — অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8, FT4, FT2 এবং JS8",
+    "META_DESC": "অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8, FT4, FT2 এবং JS8।",
     "LOGO_ALT": "qFT8 লোগো",
-    "MAIN_TITLE": "অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8/FT4",
+    "MAIN_TITLE": "অ্যান্ড্রয়েডের জন্য পোর্টেবল FT8, FT4, FT2 এবং JS8",
     "BTN_GOOGLE_PLAY_ALT": "গুগল প্লে থেকে ডাউনলোড করুন",
     "BTN_DOWNLOAD_APK": ".apk ডাউনলোড করুন",
     "BTN_USER_MANUAL": "ব্যবহারকারী নির্দেশিকা",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "বৈশিষ্ট্য সমূহ",
     "FEAT_QUICK_SETUP": "দ্রুত সেটআপ",
     "FEAT_TRACK_CALL": "50টিরও বেশি রেডিও সমর্থন করে",
-    "FEAT_SUPPORT_FT8_FT4": "FT8 এবং FT4 মোড সমর্থন করে",
+    "FEAT_SUPPORT_FT8_FT4": "FT8, FT4, FT2 এবং JS8 মোড সমর্থন করে",
     "FEAT_SUPPORT_LANGS": "৩০টিরও বেশি ভাষা সমর্থন করে",
     "FEAT_MANUAL_AUTO": "ম্যানুয়াল CALL মোড এবং স্বয়ংক্রিয় (AUTO) অপারেশন",
     "FEAT_NTP_SYNC": "স্বয়ংক্রিয় NTP সময় সিঙ্ক",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "আকার:",
     "DOWNLOAD_BEFORE": "ডাউনলোড করুন ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "সংস্করণ 2.00+ বর্তমানে পরীক্ষামূলক। আপনার সমস্যা হলে, পুরোনো স্থিতিশীল সংস্করণ 1.39 চেষ্টা করুন, যা কেবল QRPLabs QMX ট্রানসিভার এবং FT8 এর জন্য কাজ করে এবং সীমিত বৈশিষ্ট্য রয়েছে তবে পুঙ্খানুপুঙ্খভাবে পরীক্ষিত",
-    "DOWNLOAD_OLD_BEFORE": "পুরোনো সংস্করণ ডাউনলোড করুন ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "আমার সঙ্গীত প্রকল্প <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a> শুনে আমাকে সমর্থন করুন",
     "WINDLEREYE_ALT": "উইন্ডলারআই সঙ্গীত প্রকল্প",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) ব্যতীত অন্তর্ভুক্ত অংশ <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) এবং <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas), উভয়ই এমআইটি লাইসেন্সের অধীনে লাইসেন্সপ্রাপ্ত।",
-    "FOOTER_DISCLAIMER": "লুইস কেসাদা টোরেস FT8 ডিজিটাল মোডের নির্মাতাদের সাথে অনুমোদিত নন, এবং একইভাবে FT8 নির্মাতারা qFT8 এর উন্নয়নের সাথে জড়িত ছিলেন না এবং এটিকে কোনোভাবেই সমর্থন করেন না।"
 };

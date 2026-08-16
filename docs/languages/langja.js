@@ -1,9 +1,9 @@
 // Translations for ja
 const langData = {
-    "META_TITLE": "qFT8 — Android用ポータブルFT8/FT4アプリ",
-    "META_DESC": "Android用ポータブルFT8/FT4アプリ。",
+    "META_TITLE": "qFT8 — Android用ポータブルFT8、FT4、FT2 および JS8アプリ",
+    "META_DESC": "Android用ポータブルFT8、FT4、FT2 および JS8アプリ。",
     "LOGO_ALT": "qFT8 ロゴ",
-    "MAIN_TITLE": "Android用ポータブルFT8/FT4アプリ",
+    "MAIN_TITLE": "Android用ポータブルFT8、FT4、FT2 および JS8アプリ",
     "BTN_GOOGLE_PLAY_ALT": "Google Play で手に入れよう",
     "BTN_DOWNLOAD_APK": ".apk をダウンロード",
     "BTN_USER_MANUAL": "ユーザーマニュアル",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "主な特徴",
     "FEAT_QUICK_SETUP": "クイックセットアップ",
     "FEAT_TRACK_CALL": "50以上の無線機に対応",
-    "FEAT_SUPPORT_FT8_FT4": "FT8 および FT4 モードをサポート",
+    "FEAT_SUPPORT_FT8_FT4": "FT8、FT4、FT2 および JS8 モードをサポート",
     "FEAT_SUPPORT_LANGS": "30以上の言語に対応",
     "FEAT_MANUAL_AUTO": "手動 CALL モードおよび AUTO（自動運転）機能",
     "FEAT_NTP_SYNC": "自動 NTP 時刻同期",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "サイズ：",
     "DOWNLOAD_BEFORE": "ダウンロード ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "バージョン2.00+は現在実験的です。問題が発生した場合は、QRPLabs QMXトランシーバーとFT8のみで動作し、機能は制限されていますが十分にテストされている旧安定バージョンの1.39をお試しください",
-    "DOWNLOAD_OLD_BEFORE": "旧バージョンをダウンロード ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "私の音楽プロジェクトを聴いてサポートしてください： <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "Windlereye 音楽プロジェクト",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>)。ただし、MITライセンスの下で公開されている <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) および <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas) 由来の部分を除きます。",
-    "FOOTER_DISCLAIMER": "開発者の Luis Quesada Torres は FT8 デジタル モードの作成者とは一切関係がありません。同様に、FT8 の作成者も qFT8 の開発には関与しておらず、これを推奨または承認するものでもありません。"
 };

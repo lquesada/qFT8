@@ -1,9 +1,9 @@
 // Translations for th
 const langData = {
-    "META_TITLE": "qFT8 — พกพา FT8/FT4 สำหรับ Android",
-    "META_DESC": "พกพา FT8/FT4 สำหรับ Android.",
+    "META_TITLE": "qFT8 — พกพา FT8, FT4, FT2 และ JS8 สำหรับ Android",
+    "META_DESC": "พกพา FT8, FT4, FT2 และ JS8 สำหรับ Android.",
     "LOGO_ALT": "โลโก้ qFT8",
-    "MAIN_TITLE": "พกพา FT8/FT4 สำหรับ Android",
+    "MAIN_TITLE": "พกพา FT8, FT4, FT2 และ JS8 สำหรับ Android",
     "BTN_GOOGLE_PLAY_ALT": "ดาวน์โหลดได้ที่ Google Play",
     "BTN_DOWNLOAD_APK": "ดาวน์โหลด .apk",
     "BTN_USER_MANUAL": "คู่มือการใช้งาน",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "คุณสมบัติ",
     "FEAT_QUICK_SETUP": "การตั้งค่าที่รวดเร็ว",
     "FEAT_TRACK_CALL": "รองรับวิทยุ 50+ รุ่น",
-    "FEAT_SUPPORT_FT8_FT4": "รองรับโหมด FT8 และ FT4",
+    "FEAT_SUPPORT_FT8_FT4": "รองรับโหมด FT8, FT4, FT2 และ JS8",
     "FEAT_SUPPORT_LANGS": "รองรับ 30+ ภาษา",
     "FEAT_MANUAL_AUTO": "โหมดเรียกด้วยตนเองและทำงานอัตโนมัติ (AUTO)",
     "FEAT_NTP_SYNC": "การซิงค์เวลา NTP อัตโนมัติ",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "ขนาด:",
     "DOWNLOAD_BEFORE": "ดาวน์โหลด ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "เวอร์ชัน 2.00+ อยู่ในขั้นทดลอง หากพบปัญหา โปรดลองใช้เวอร์ชันเสถียรเก่า 1.39 ซึ่งทำงานเฉพาะกับวิทยุรับส่ง QRPLabs QMX และ FT8 และมีคุณสมบัติจำกัดแต่ผ่านการทดสอบอย่างถี่ถ้วนแล้ว",
-    "DOWNLOAD_OLD_BEFORE": "ดาวน์โหลดเวอร์ชันเก่า ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "สนับสนุนฉันโดยการฟังโครงการดนตรีของฉัน <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "โครงการดนตรี Windlereye",
     "FOOTER_COPYRIGHT": "ลิขสิทธิ์ &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) ยกเว้นบางส่วนที่รวมจากโครงการ <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (ลิขสิทธิ์ © 2023 BG7YOZ) และ <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (ลิขสิทธิ์ © 2018 Kārlis Gobas) ซึ่งทั้งคู่เผยแพร่ภายใต้ใบอนุญาต MIT",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres ไม่มีความเกี่ยวข้องกับผู้สร้างโหมดดิจิทัล FT8 และในทำนองเดียวกันผู้สร้าง FT8 ไม่ได้มีส่วนร่วมในการพัฒนา qFT8 และไม่ได้รับรองแอปนี้แต่อย่างใด"
 };

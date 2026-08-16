@@ -319,17 +319,17 @@
                         <li><a href="#supported-devices">Dispositivos Soportados</a></li>
                     </ul>
                 </li>
-                <li><a href="#quick-setup">Configuración Rápida para dispositivos QMX</a>
+                <li><a href="#quick-setup">Configuración Rápida</a>
                     <ul>
                         <li><a href="#initial-permissions">Conceder Permisos Iniciales</a></li>
                         <li><a href="#mandatory-callsign">Introducir Indicativo (Callsign)</a></li>
                         <li><a href="#usb-permission">Conceder Permiso de Conexión USB</a></li>
-                        <li><a href="#audio-check">Verificación de Audio</a></li>
+                        <li><a href="#audio-check">[Solo QMX] Verificación de Audio</a></li>
                         <li><a href="#import-qsos">[Opcional] Importar QSOs</a></li>
                     </ul>
                 </li>
                 <li><a href="#first-qso">Tu Primer QSO con qFT8</a></li>
-                <li><a href="#ft8-introduction">Introducción al modo digital FT8</a></li>
+                <li><a href="#ft8-introduction">Introducción a los modos digitales FT</a></li>
                 <li><a href="#user-interface">Interfaz de Usuario de qFT8</a>
                     <ul>
                         <li><a href="#ui-bottom-bar">La barra inferior</a></li>
@@ -354,6 +354,8 @@
                 </li>
                 <li><a href="#pota">Parks On The Air (<span translate="no">POTA</span>)</a>
                 </li>
+                <li><a href="#js8-chat">Chat <span translate="no">JS8</span></a>
+                </li>
                 <li><a href="#remote-control">Servidor Web de Control Remoto</a></li>
                 <li><a href="#troubleshooting">Solución de Problemas</a></li>
             </ul>
@@ -371,7 +373,7 @@
                 qFT8 es una aplicación para <a href="https://es.wikipedia.org/wiki/Android_(sistema_operativo)"
                     target="_blank">teléfonos Android</a>
                 de <a href="https://es.wikipedia.org/wiki/Radioafici%C3%B3n" target="_blank">radioafición</a>
-                que decodifica y transmite mensajes de datos digitales <a href="https://es.wikipedia.org/wiki/FT8" target="_blank">FT8</a> o <a href="https://physics.princeton.edu/pulsar/k1jt/FT4_Protocol.pdf" target="_blank">FT4</a>
+                que decodifica y transmite mensajes de datos digitales FT8, FT4, FT2 o JS8
                 utilizando un transceptor.
             </p>
 
@@ -398,11 +400,7 @@
                 partes incluidas de <a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>,
                 Copyright © 2023 BG7YOZ, e <a
                     href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>, Copyright © 2018
-                Kārlis Gobas, ambas publicadas bajo licencia MIT). <span translate="no">Luis Quesada Torres</span> no está
-                afiliado con los creadores del modo digital FT8, y
-                del mismo modo, los creadores de FT8 no han estado involucrados en el desarrollo de qFT8, ni
-                lo respaldan de ninguna manera.
-            </p>
+                Kārlis Gobas, ambas publicadas bajo licencia MIT).</p>
 
             <h3>Características Principales</h3>
             <ul>
@@ -485,8 +483,7 @@
         </section>
 
         <section id="quick-setup">
-            <h2>Configuración Rápida para dispositivos QMX</h2>
-            <p><em>Nota: Aunque este manual se centra en los dispositivos QMX, la configuración con otros dispositivos compatibles (como el ICOM 7300 o configuraciones basadas en VOX) debería ser igual de sencilla y sigue los mismos pasos generales.</em></p>
+            <h2>Configuración Rápida</h2>
 
             <p>
                 Por favor, asegúrese de utilizar la <strong>fuente de alimentación adecuada</strong> para el transceptor
@@ -494,8 +491,8 @@
             </p>
 
             <p>
-                Asegúrese también de que el cable USB-C que está utilizando para conectar el teléfono y el transceptor
-                sea <strong>apto para transferencia de datos</strong>. La mayoría de los problemas de conectividad donde
+                Asegúrese también de que el cable USB y adaptador que está utilizando para conectar el teléfono y el transceptor
+                sea <strong>apto para transferencia de datos</strong>. Tenga en cuenta que para dispositivos que utilizan conectores distintos de USB-C, a menudo se requiere un cable OTG (on-the-go) específico. La mayoría de los problemas de conectividad donde
                 qFT8 no detecta el transceptor se deben al uso de un cable o adaptador incompatible.
             </p>
 
@@ -549,11 +546,11 @@
 
             <h3 id="usb-permission">Conceder Permiso de Conexión USB</h3>
             <p>Cuando el transceptor esté enchufado y qFT8 esté abierta, aparecerá un cuadro de diálogo del sistema:</p>
-            <p><em>"¿Abrir qFT8 para gestionar QMX Transceiver?"</em></p>
+            <p><em>"¿Abrir qFT8 para gestionar Transceiver?"</em></p>
             <ul>
                 <li>Este permiso es <strong>obligatorio</strong> para la comunicación con el transceptor.</li>
                 <li>Si no se concede, qFT8 podrá recibir señales pero no podrá transmitir.</li>
-                <li>Puede seleccionar "Abrir siempre qFT8 cuando QMX Transceiver esté conectado" para mayor comodidad.
+                <li>Puede seleccionar "Abrir siempre qFT8 cuando Transceiver esté conectado" para mayor comodidad.
                 </li>
             </ul>
 
@@ -562,29 +559,14 @@
             </p>
 
             <p>
-                <span translate="no">qFT8</span> configura automáticamente el transceptor
-                <span translate="no">QMX</span> siempre que se conecta, por lo que no hay
-                necesidad de configurar ninguna de las opciones como "<span translate="no">VOX
-                off</span>",
-                "<span translate="no">Rise
-                Threshold</span>", "<span translate="no">Fall Threshold</span>",
-                "<span translate="no">Cycle Min</span>", "<span translate="no">Sample Min</span>",
-                "<span translate="no">Discard</span>", "<span translate="no">IQ
-                Mode</span>",
-                "<span translate="no">Sideband Mode</span>" y "<span translate="no">RIT
-                Status</span>", etc. — se manejan de manera automática. Note que esta
-                configuración
-                es temporal: el menú de ajustes del <span translate="no">QMX</span> seguirá
-                mostrando los valores que haya guardado, y reiniciar el
-                <span translate="no">QMX</span>
-                revertirá todos los ajustes a su estado normal de funcionamiento.
+                <span translate="no">qFT8</span> configura automáticamente el transceptor siempre que se conecta.
             </p>
 
 
 
             <a href="#top" class="back-to-toc">&uarr; Volver a la Tabla de Contenidos</a>
 
-            <h3 id="audio-check">Verificación de Audio</h3>
+            <h3 id="audio-check">[Solo QMX] Verificación de Audio</h3>
             <p>
                 Antes de comenzar a operar, es importante verificar que la señal de audio entre su teléfono y el
                 <span translate="no">QMX</span> funcione correctamente. Pulse el botón
@@ -823,10 +805,10 @@
         </section>
 
         <section id="ft8-introduction">
-            <h2>Introducción al modo digital FT8</h2>
+            <h2>Introducción a los modos digitales FT</h2>
 
             <p>
-                qFT8 también es compatible con FT4, que es un protocolo digital exactamente igual a FT8 pero diseñado para ser el doble de rápido (funciona en ciclos de 7.5 segundos en lugar de 15 segundos).
+                qFT8 es compatible con los modos digitales FT8, FT4, FT2 y JS8. FT4 es un protocolo digital exactamente igual a FT8 pero diseñado para ser el doble de rápido (operando en ciclos de 7.5 segundos en lugar de ciclos de 15 segundos). La implementación compatible de FT2 (original) es exactamente igual a FT4 pero diseñada para ser el doble de rápida. JS8 utiliza la misma codificación que FT8, con diferentes velocidades y ancho de banda, con una capa diferente para la división de mensajes.
             </p>
 
             <p>
@@ -1044,7 +1026,7 @@
                     secuencia
                     actual (0 o 1). Pulsar sobre el 0 o el 1 selecciona esa secuencia para las transmisiones salientes.
                 </li>
-                <li><strong>El selector de modo</strong>: Cambia el modo de transmisión utilizado (por ejemplo, <span translate="no">FT8</span> o <span translate="no">FT4</span>).</li>
+                <li><strong>El selector de modo</strong>: Cambia el modo de transmisión utilizado (por ejemplo, <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span> o <span translate="no">JS8</span>).</li>
                 <li><strong>El selector de banda</strong>: Cuando hay un transceptor conectado, cambia la banda en el
                     transceptor.</li>
                 <li><strong>El botón de la pestaña Estaciones</strong>: Abre la pestaña que enumera todas las estaciones
@@ -2096,6 +2078,60 @@
             <a href="#top" class="back-to-toc">&uarr; Volver a la Tabla de Contenidos</a>
         </section>
 
+        <section id="js8-chat">
+            <h2>Chat <span translate="no">JS8</span></h2>
+            <p>
+                Al operar en modo <strong><span translate="no">JS8</span></strong>, qFT8 proporciona una interfaz de chat de texto libre para conversaciones directas junto con las operaciones habituales de QSO en FT8/FT4. JS8 permite una mensajería robusta teclado a teclado con señales débiles a múltiples velocidades configurables (ranuras de tiempo <strong><span translate="no">Slow</span></strong> 30s, <strong><span translate="no">Normal</span></strong> 15s, <strong><span translate="no">Fast</span></strong> 10s y <strong><span translate="no">Turbo</span></strong> 6s).
+            </p>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../js8chat.jpg" alt="qFT8 Chat JS8" class="screen" width="2280" height="1080">
+            </div>
+
+            <h3>Tipos de canales y enrutamiento</h3>
+            <p>
+                El panel de chat en el lado derecho organiza el tráfico entrante y saliente en pestañas de canales independientes:
+            </p>
+            <ul>
+                <li><strong>Canal principal <code>[GLOBAL]</code></strong>: Muestra todas las transmisiones JS8 decodificadas en todo el ancho de banda de audio, así como todas sus propias transmisiones. Proporciona una visión completa en tiempo real de toda la actividad de la banda en un solo lugar.</li>
+                <li><strong>Canales de grupos de difusión (<code>@CQ</code>, <code>@ALLCALL</code>)</strong>: Se utilizan para llamadas generales y anuncios a todas las estaciones a la escucha. Los mensajes enviados a <code>@CQ</code> o <code>@ALLCALL</code> serán visibles para cualquiera sintonizado en la frecuencia.</li>
+                <li><strong>Canales de grupos personalizados (<code>@NOMBREGRUPO</code>)</strong>: qFT8 admite grupos dirigidos personalizados (p. ej., <code>@EMERGENCY</code>, <code>@SOTA</code>, <code>@NET</code>). Cuando se envía o recibe un mensaje con una etiqueta <code>@GRUPO</code>, se organiza automáticamente en su pestaña de canal correspondiente.</li>
+                <li><strong>Canales directos de estación (Pestañas de indicativo)</strong>: Al seleccionar una estación específica de la lista de canales o de la tabla de estaciones, se abre un hilo de conversación dedicado con ese indicativo.</li>
+            </ul>
+
+            <div class="highlight">
+                <p><strong>Transmisión por radio (No es privada):</strong> Todos los mensajes JS8 se transmiten en abierto como señales digitales estándar de radioaficionados. Los chats directos con estaciones organizan el historial en una pestaña dedicada para su comodidad, pero <strong>no están cifrados ni son privados</strong> y cualquier estación que monitorice la frecuencia puede recibirlos.</p>
+            </div>
+
+            <h3>Componer y enviar mensajes</h3>
+            <ol>
+                <li><strong>Seleccionar un destino</strong>: En el panel derecho, toque una pestaña de canal (<code>[GLOBAL]</code>, <code>@CQ</code>, <code>@ALLCALL</code>, un grupo o el indicativo de una estación específica).</li>
+                <li><strong>Escribir mensaje</strong>: Escriba su texto en el cuadro de entrada inferior (admite texto ASCII estándar de hasta 100 caracteres).</li>
+                <li><strong>Enviar</strong>: Toque el botón <strong>Enviar</strong>.</li>
+            </ol>
+
+            <h3>Tocar mensajes (Chat rápido y detalles)</h3>
+            <p>Al tocar cualquier mensaje en el registro de chat se abre un cuadro de diálogo de detalles con la marca de tiempo UTC completa, frecuencia de audio, SNR, cuadrícula Maidenhead y contenido del mensaje:</p>
+            <ul>
+                <li><strong>Mensajes recibidos (RX)</strong>: Toque <strong><span translate="no">CHAT</span></strong> para abrir inmediatamente una pestaña de chat directo con la estación emisora, o <strong><span translate="no">GROUP CHAT</span></strong> si el mensaje estaba dirigido a un grupo.</li>
+                <li><strong>Mensajes transmitidos (TX)</strong>: Toque <strong><span translate="no">RESEND</span></strong> para rellenar automáticamente el cuadro de entrada de texto y el canal de destino para reenviar el mensaje fácilmente.</li>
+            </ul>
+
+            <h3>Transmisión de mensajes en múltiples fragmentos (Multi-Chunk)</h3>
+            <p>
+                Si su mensaje es más largo de lo que cabe en una sola trama de transmisión JS8:
+            </p>
+            <ul>
+                <li>qFT8 divide automáticamente el mensaje en tramas consecutivas de <strong>múltiples fragmentos (multi-chunk)</strong>.</li>
+                <li>La aplicación transmite automáticamente cada fragmento en ranuras de tiempo secuenciales hasta que el mensaje completo se haya entregado.</li>
+                <li>Un indicador de progreso visual muestra el estado de la transmisión en curso (p. ej., <code>TX (1/3)</code>).</li>
+                <li>Si necesita detener el envío antes de que finalicen todos los fragmentos, al tocar el botón <strong>Enviar/Detener</strong> se abre un aviso que le permite cancelar el resto de la cola de transmisión.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Volver a la Tabla de Contenidos</a>
+        </section>
+
         <section id="remote-control">
             <h2>Servidor web de control remoto</h2>
             <p>
@@ -2490,12 +2526,6 @@
                 href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a> (Copyright © 2023 BG7YOZ) y
             <a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a> (Copyright © 2018 Kārlis
             Gobas), ámbas liberadas bajo licencia MIT.
-        </p>
-        <p>
-            <span translate="no">Luis Quesada Torres</span> no está afiliado a los creadores del modo digital
-            <span translate="no">FT8</span>, e igualmente ni los creadores de
-            <span translate="no">FT8</span> han participado en el desarrollo de
-            <span translate="no">qFT8</span>, ni lo avalan de ninguna manera.
         </p>
         <div class="footer-links">
             <a href="../../">Página Principal</a> - <a href="../../privacy/">Política de Privacidad</a>

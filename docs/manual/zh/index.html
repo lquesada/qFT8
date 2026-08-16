@@ -313,17 +313,17 @@ html
 <li><a href="#supported-devices">支持的设备</a></li>
 </ul>
 </li>
-<li><a href="#quick-setup">QMX 设备的快速设置</a>
+<li><a href="#quick-setup">快速设置</a>
 <ul>
 <li><a href="#initial-permissions">授予初始权限</a></li>
 <li><a href="#mandatory-callsign">输入呼号</a></li>
 <li><a href="#usb-permission">授予 USB 连接权限</a></li>
-<li><a href="#audio-check">音频检查</a></li>
+<li><a href="#audio-check">[仅限 QMX] 音频检查</a></li>
 <li><a href="#import-qsos">[可选] 导入 QSO</a></li>
 </ul>
 </li>
 <li><a href="#first-qso">您的第一个 QSO 与 qFT8</a></li>
-<li><a href="#ft8-introduction">FT8 数字模式简介</a></li>
+<li><a href="#ft8-introduction">FT 数字模式简介</a></li>
 <li><a href="#user-interface">qFT8 用户界面</a>
 <ul>
 <li><a href="#ui-bottom-bar">底部栏</a></li>
@@ -345,6 +345,8 @@ html
 </li>
 <li><a href="#pota">空中公园 (<span translate="no">POTA</span>）</a>
 </li>
+<li><a href="#js8-chat"><span translate="no">JS8</span> 聊天</a>
+</li>
 <li><a href="#remote-control">远程控制网络服务器</a></li>
 <li><a href="#troubleshooting">故障排除</a></li>
 </ul>
@@ -354,7 +356,7 @@ html
 <section id="what-is-qft8">
 <h2>qFT8是什么？</h2>
 <p>qFT8 是一个<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">安卓
-                    电话</a>应用程序用于<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">业余无线电</a>解码和传输<a href="https://en.wikipedia.org/wiki/FT8" target="_blank">FT8</a>使用数字数据消息收发器。
+                    电话</a>应用程序用于<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">业余无线电</a>解码和传输FT8使用数字数据消息收发器。
 </p>
 <div class="phone-mockup">
 <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
@@ -364,7 +366,7 @@ html
 <p>qFT8 是一款免费应用程序，不包含广告。它是可用的源。源代码可以在以下位置找到<a href="https://github.com/lquesada/qFT8" target="_blank">GitHub</a>。</p>
 <p>
 <a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>）
-                于2026年开发了qFT8，拥有版权，并保留所有权利（包含的部分除外）<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>，版权所有 © 2023 BG7YOZ，以及<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>，版权所有 © 2018 Kārlis Gobas，均根据 MIT 许可发布）。<span translate="no">Luis Quesada Torres</span>与 FT8 数字模式的创作者没有任何关系，并且同样地，FT8 的创作者也没有参与 qFT8 的开发，并且不以任何方式认可它。</p>
+                于2026年开发了qFT8，拥有版权，并保留所有权利（包含的部分除外）<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>，版权所有 © 2023 BG7YOZ，以及<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>，版权所有 © 2018 Kārlis Gobas，均根据 MIT 许可发布）。</p>
 <h3>主要特点</h3>
 <ul>
 <li>快速设置</li>
@@ -424,14 +426,10 @@ html
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
 </section>
 <section id="quick-setup">
-<h2>QMX 设备的快速设置</h2>
-<p><em>注意：虽然本手册侧重于 QMX 设备，但与其他受支持设备（例如 ICOM 7300 或基于 VOX 的设置）的设置同样简单，并遵循相同的常规步骤。</em></p>
+<h2>快速设置</h2>
 <p>请确保您正在使用<strong>正确的电源</strong>对于收发器
                 （例如 QMX ≤12V），否则会损坏它。</p>
-<p>另请确保您用于连接手机和收发器的 USB-C 电缆
-                是<strong>额定数据传输</strong>。 qFT8 无法发现的大多数连接问题
-                收发器
-                这是由于使用了不兼容的电缆或适配器造成的。</p>
+<p>另请确保您用于连接手机和收发器的 USB 电缆和适配器支持数据传输。请注意，对于使用 USB-C 以外连接器的设备，通常需要特定的 OTG（On-The-Go）转接线。qFT8 无法发现收发器的大多数连接问题都是由于使用了不兼容的电缆或适配器造成的。</p>
 <h3 id="initial-permissions">授予初始权限</h3>
 <p>第一次打开qFT8时，会请求几个权限：</p>
 <ul>
@@ -467,27 +465,17 @@ html
 </ul>
 <h3 id="usb-permission">授予 USB 连接权限</h3>
 <p>当插入收发器并打开 qFT8 时，将出现一个系统对话框：</p>
-<p><em>“打开 qFT8 来处理 QMX 收发器。”</em></p>
+<p><em>“打开 qFT8 来处理收发器。”</em></p>
 <ul>
 <li>这个权限是<strong>强制的</strong>用于与收发器通信。</li>
 <li>如果未获得许可，qFT8 将能够接收信号但无法发送信号。</li>
-<li>为了方便起见，您可以选择“连接 QMX 收发器时始终打开 qFT8”。</li>
+<li>为了方便起见，您可以选择“连接收发器时始终打开 qFT8”。</li>
 </ul>
 <p>如果您在连接 Android 设备时遇到问题，请检查故障排除部分中的 <a href="#trouble-not-recognized">Android 设备无法识别收发器或者它断开连接</a>。</p>
 <p>
-<span translate="no">qFT8</span>自动配置<span translate="no">QMX</span>无论何时连接收发器，因此
-                不需要配置任何“<span translate="no">VOX
-                off</span>“，”<span translate="no">Rise
-                Threshold</span>“，
-                ”<span translate="no">Fall Threshold</span>“，”<span translate="no">Cycle
-                Min</span>“，”<span translate="no">Sample Min</span>“，
-                ”<span translate="no">Discard</span>“，”<span translate="no">IQ
-                Mode</span>“，”<span translate="no">Sideband
-                Mode</span>“， 或者 ”<span translate="no">RIT
-                Status</span>“，
-                等等——它们是自动处理的。请注意，此配置是临时的：<span translate="no">QMX</span>设置菜单仍将显示您保留的值，并重新启动<span translate="no">QMX</span>会将所有设置恢复到正常操作状态。</p>
+<span translate="no">qFT8</span> 在连接收发器时会自动进行配置。</p>
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
-<h3 id="audio-check">音频检查</h3>
+<h3 id="audio-check">[仅限 QMX] 音频检查</h3>
 <p>在开始操作之前，请务必验证手机和设备之间的音频信号是否正常。<span translate="no">QMX</span>工作正常。按<span translate="no">TX</span>按钮并等待<span translate="no">QMX</span>开始在下一个传输
                 序列。</p>
 <h4>一切正常</h4>
@@ -620,10 +608,10 @@ html
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
 </section>
 <section id="ft8-introduction">
-<h2>FT8 数字模式简介</h2>
+<h2>FT 数字模式简介</h2>
 
             <p>
-                qFT8 也支持 FT4，这是一种与 FT8 完全相同但速度快一倍的数字协议（运行周期为 7.5 秒，而非 15 秒）。
+                qFT8 支持 FT8、FT4、FT2 与 JS8 数字模式。FT4 是一种完全类似于 FT8 的数字协议，但旨在提升一倍的速度（在 7.5 秒周期内运行，而非 15 秒周期）。支持的 FT2 实现（original）完全类似于 FT4，但旨在提升一倍的速度。JS8 使用与 FT8 相同的编码，但具有不同的速度和带宽，以及不同的消息切片层。
             </p>
 <p>FT8 是一种数字协议，专为多跳零星 E 和其他弱信号条件而设计。
                 它的特点是结构化的消息和精确的计时。</p>
@@ -680,7 +668,7 @@ html
 </li>
 </ol>
 <p>因为<a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem" target="_blank">两个
-                    将军%27问题</a>，理论上不可能确切知道对方站
+                    将军'问题</a>，理论上不可能确切知道对方站
                 已收到您的最后一次通信，除非他们确认如此。但是，那么您需要确认他们的
                 确认，他们需要确认，等等。
                 FT8 数字模式通过结构化阶段缓解了这一问题：技术上可以考虑 QSO
@@ -774,7 +762,7 @@ html
 <li><strong>序列选择器</strong>： 这<span style="color: #ffff00; font-weight: bold;">黄色的</span>按钮顶部的线条显示
                     当前
                     序列（0 或 1）。点击 0 或 1 选择传出传输的顺序。</li>
-<li><strong>模式选择器</strong>：更改使用的传输模式（例如 <span translate="no">FT8</span> 或 <span translate="no">FT4</span>）。</li>
+<li><strong>模式选择器</strong>：更改使用的传输模式（例如 <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span> 或 <span translate="no">JS8</span>）。</li>
 <li><strong>频段选择器</strong>：当连接收发器时，它会更改收发器中的频段
                     收发器。</li>
 <li><strong>站点选项卡按钮</strong>：打开列出您听过的所有电台或
@@ -1461,6 +1449,55 @@ html
 </ol>
 <a href="#top" class="back-to-toc">↑ 返回目录</a>
 </section>
+
+<section id="js8-chat">
+<h2><span translate="no">JS8</span> 聊天</h2>
+<p>在 <strong><span translate="no">JS8</span></strong> 模式下，qFT8 提供了一个自由格式的文本聊天界面，用于在传统 FT8/FT4 QSO 操作之外进行实时直接对话。JS8 允许在弱信号条件下以多种可配置的速度进行可靠的键盘对键盘消息传输（<strong><span translate="no">Slow</span></strong> 30秒、<strong><span translate="no">Normal</span></strong> 15秒、<strong><span translate="no">Fast</span></strong> 10秒以及 <strong><span translate="no">Turbo</span></strong> 6秒时隙）。</p>
+
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 JS8 聊天" class="screen" height="1080" src="../js8chat.jpg" width="2280"/>
+</div>
+
+<h3>频道类型与消息路由</h3>
+<p>右侧的聊天面板将收发流量组织到独立的频道标签页中：</p>
+<ul>
+<li><strong><code>[GLOBAL]</code> 主频道</strong>：显示在整个音频通带中解码的所有 JS8 传输，以及您自己的所有发射。在一个位置提供整个频段活动的完整实时概览。</li>
+<li><strong>广播群组频道（<code>@CQ</code>、<code>@ALLCALL</code>）</strong>：用于向所有正在收听的电台发起通用呼叫和公告。发送至 <code>@CQ</code> 或 <code>@ALLCALL</code> 的消息对调谐到该频率的任何人都是可见的。</li>
+<li><strong>自定义群组频道（<code>@群组名称</code>）</strong>：qFT8 支持自定义定向群组（例如 <code>@EMERGENCY</code>、<code>@SOTA</code>、<code>@NET</code>）。当发送或接收带有 <code>@群组</code> 标签的消息时，会自动归类到其专用频道标签页中。</li>
+<li><strong>电台直接频道（呼号标签页）</strong>：从频道列表或电台表格中选择特定电台将打开与该呼号的专属对话记录。</li>
+</ul>
+
+<div class="highlight">
+<p><strong>空中明文广播（非私密通信）：</strong> 所有 JS8 消息均作为标准业余无线电数字信号在空中公开传输。电台直接聊天仅出于界面组织方便将其分类到独立标签页中，但<strong>未经加密且不具备私密性</strong>，任何监听该频率的电台均可接收。</p>
+</div>
+
+<h3>撰写与发送消息</h3>
+<ol>
+<li><strong>选择目标</strong>：在右侧面板中，点击一个频道标签页（<code>[GLOBAL]</code>、<code>@CQ</code>、<code>@ALLCALL</code>、群组或特定电台呼号）。</li>
+<li><strong>输入消息</strong>：在底部输入框中键入文本（支持最多100个字符的标准ASCII文本）。</li>
+<li><strong>发送</strong>：点击<strong>发送</strong>按钮。</li>
+</ol>
+
+<h3>点击消息（快速聊天与详情）</h3>
+<p>点击聊天记录中的任何消息将打开详情对话框，显示完整的UTC时间戳、音频频率、SNR、Maidenhead 网格以及消息文本内容：</p>
+<ul>
+<li><strong>接收到的消息 (RX)</strong>：点击 <strong><span translate="no">CHAT</span></strong> 立即打开与发送电台的直接聊天标签页；若消息定向至群组，则点击 <strong><span translate="no">GROUP CHAT</span></strong>。</li>
+<li><strong>发射的消息 (TX)</strong>：点击 <strong><span translate="no">RESEND</span></strong> 自动将文本和目标频道填入输入框，以便轻松重新发送。</li>
+</ul>
+
+<h3>多分块流式传输（Multi-Chunk）</h3>
+<p>如果您的消息长度超过单个 JS8 传输帧的容量：</p>
+<ul>
+<li>qFT8 会自动将消息拆分为连续的<strong>多分块（Multi-Chunk）</strong>传输帧。</li>
+<li>应用程序会在连续的时隙中自动依次发送每个分块，直至整条消息完整发送完毕。</li>
+<li>视觉进度指示器会显示正在进行的传输状态（例如 <code>TX (1/3)</code>）。</li>
+<li>如果需要在所有分块发送完成前中止传输，点击<strong>发送/停止</strong>按钮将弹出提示，允许您取消剩余的传输队列。</li>
+</ul>
+
+<a href="#top" class="back-to-toc">↑ 返回目录</a>
+</section>
+
 <section id="remote-control">
 <h2>远程控制网络服务器</h2>
 <p>qFT8 包含一个嵌入式 HTTP 服务器，允许您从任何位置监视和控制应用程序
@@ -1694,7 +1731,6 @@ html
 <p>版权所有©2026，<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>）除了包含的零件<a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a>（版权所有 © 2023 BG7YOZ）
             和<a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a>(版权所有 © 2018
             Kārlis Gobas），两者均在 MIT 许可下发布。</p>
-<p><span translate="no">Luis Quesada Torres</span> 与 FT8 数字模式的创作者没有任何关系，并且同样地，FT8 的创作者也没有参与开发 <span translate="no">qFT8</span>，并且不以任何方式认可它。</p>
 <div class="footer-links">
 <a href="../../">主页</a> - <a href="../../privacy/">隐私政策</a>
 </div>

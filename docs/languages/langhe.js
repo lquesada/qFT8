@@ -1,9 +1,9 @@
 // Translations for he
 const langData = {
-    "META_TITLE": "qFT8 — נייד FT8/FT4 עבור Android",
-    "META_DESC": "נייד FT8/FT4 עבור Android.",
+    "META_TITLE": "qFT8 — נייד FT8, FT4, FT2 ו-JS8 עבור Android",
+    "META_DESC": "נייד FT8, FT4, FT2 ו-JS8 עבור Android.",
     "LOGO_ALT": "לוגו qFT8",
-    "MAIN_TITLE": "נייד FT8/FT4 עבור Android",
+    "MAIN_TITLE": "נייד FT8, FT4, FT2 ו-JS8 עבור Android",
     "BTN_GOOGLE_PLAY_ALT": "הורד ב-Google Play",
     "BTN_DOWNLOAD_APK": "הורד .apk",
     "BTN_USER_MANUAL": "מדריך למשתמש",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "תכונות",
     "FEAT_QUICK_SETUP": "הגדרה מהירה",
     "FEAT_TRACK_CALL": "תומך ב- 50+ מכשירי רדיו",
-    "FEAT_SUPPORT_FT8_FT4": "תומך במצבי FT8 ו-FT4",
+    "FEAT_SUPPORT_FT8_FT4": "תומך במצבי FT8, FT4, FT2 ו-JS8",
     "FEAT_SUPPORT_LANGS": "תומך ב- 30+ שפות",
     "FEAT_MANUAL_AUTO": "מצב קריאה ידני ותפעול אוטומטי (AUTO)",
     "FEAT_NTP_SYNC": "סנכרון זמן אוטומטי NTP",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "גודל:",
     "DOWNLOAD_BEFORE": "הורד ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "גרסה 2.00+ היא כעת ניסיונית. אם אתה נתקל בבעיות, נסה את הגרסה היציבה הישנה 1.39, הפועלת רק עבור מקלטי-משדרים QRPLabs QMX ו-FT8 וכוללת תכונות מוגבלות אך נבדקה ביסודיות",
-    "DOWNLOAD_OLD_BEFORE": "הורד את הגרסה הישנה ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "תמוך בי על ידי האזנה לפרויקט המוזיקה שלי <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "פרויקט המוזיקה Windlereye",
     "FOOTER_COPYRIGHT": "זכויות יוצרים &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) למעט חלקים שנלקחו מ-<a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (זכויות יוצרים © 2023 BG7YOZ) ו-<a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (זכויות יוצרים © 2018 Kārlis Gobas), שניהם תחת רישיון MIT.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres אינו קשור ליוצרי מצב FT8 הדיגיטלי, ובאופן דומה יוצרי FT8 לא היו מעורבים בפיתוח qFT8 ואינם תומכים בו בשום צורה."
 };

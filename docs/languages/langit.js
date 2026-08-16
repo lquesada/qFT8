@@ -1,9 +1,9 @@
 // Translations for it
 const langData = {
-    "META_TITLE": "qFT8 — FT8/FT4 portatile per Android",
-    "META_DESC": "FT8/FT4 portatile per Android.",
+    "META_TITLE": "qFT8 — FT8, FT4, FT2 e JS8 portatile per Android",
+    "META_DESC": "FT8, FT4, FT2 e JS8 portatile per Android.",
     "LOGO_ALT": "Logo di qFT8",
-    "MAIN_TITLE": "FT8/FT4 portatile per Android",
+    "MAIN_TITLE": "FT8, FT4, FT2 e JS8 portatile per Android",
     "BTN_GOOGLE_PLAY_ALT": "Disponibile su Google Play",
     "BTN_DOWNLOAD_APK": "Scarica .apk",
     "BTN_USER_MANUAL": "Manuale utente",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "Caratteristiche",
     "FEAT_QUICK_SETUP": "Configurazione rapida",
     "FEAT_TRACK_CALL": "Supporta oltre 50 radio",
-    "FEAT_SUPPORT_FT8_FT4": "Supporta le modalità FT8 e FT4",
+    "FEAT_SUPPORT_FT8_FT4": "Supporta le modalità FT8, FT4, FT2 e JS8",
     "FEAT_SUPPORT_LANGS": "Supporta oltre 30 lingue",
     "FEAT_MANUAL_AUTO": "Modalità operativa manuale (CALL) e automatica (AUTO)",
     "FEAT_NTP_SYNC": "Sincronizzazione automatica dell'ora NTP",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "Dimensione:",
     "DOWNLOAD_BEFORE": "Scarica ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "La versione 2.00+ è attualmente sperimentale. In caso di problemi, provare la versione stabile precedente 1.39, che funziona solo per i ricetrasmettitori QRPLabs QMX e FT8 e ha funzionalità limitate ma è ampiamente testata",
-    "DOWNLOAD_OLD_BEFORE": "Scarica la vecchia versione ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "Sostienimi ascoltando il mio progetto musicale <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "Progetto musicale Windlereye",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>) ad eccezione delle parti incluse di <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) e <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas), entrambi rilasciati sotto licenza MIT.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres non è affiliato con i creatori della modalità digitale FT8, e allo stesso modo né i creatori di FT8 sono stati coinvolti nello sviluppo di qFT8, né lo approvano in alcun modo."
 };

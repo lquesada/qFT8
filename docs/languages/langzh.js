@@ -1,9 +1,9 @@
 // Translations for zh
 const langData = {
-    "META_TITLE": "qFT8 — 适用于 Android 的便携式 FT8/FT4 工具",
-    "META_DESC": "适用于 Android 的便携式 FT8/FT4 工具。",
+    "META_TITLE": "qFT8 — 适用于 Android 的便携式 FT8、FT4、FT2 与 JS8 工具",
+    "META_DESC": "适用于 Android 的便携式 FT8、FT4、FT2 与 JS8 工具。",
     "LOGO_ALT": "qFT8 标志",
-    "MAIN_TITLE": "适用于 Android 的便携式 FT8/FT4 工具",
+    "MAIN_TITLE": "适用于 Android 的便携式 FT8、FT4、FT2 与 JS8 工具",
     "BTN_GOOGLE_PLAY_ALT": "Google Play 下载",
     "BTN_DOWNLOAD_APK": "下载 .apk",
     "BTN_USER_MANUAL": "用户手册",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "功能特色",
     "FEAT_QUICK_SETUP": "快速设置",
     "FEAT_TRACK_CALL": "支持 50 多种电台",
-    "FEAT_SUPPORT_FT8_FT4": "支持 FT8 与 FT4 模式",
+    "FEAT_SUPPORT_FT8_FT4": "支持 FT8、FT4、FT2 与 JS8 模式",
     "FEAT_SUPPORT_LANGS": "支持 30 多种语言",
     "FEAT_MANUAL_AUTO": "手动 CALL 模式与 AUTO 自动运行",
     "FEAT_NTP_SYNC": "自动 NTP 时间同步",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "大小：",
     "DOWNLOAD_BEFORE": "下载 ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "版本 2.00+ 目前处于实验阶段。如果您遇到问题，请尝试较旧的稳定版本 1.39，该版本仅适用于 QRPLabs QMX 收发器和 FT8，功能有限但经过充分测试",
-    "DOWNLOAD_OLD_BEFORE": "下载旧版本 ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "收听我的音乐项目以支持我： <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a>",
     "WINDLEREYE_ALT": "Windlereye 音乐项目",
     "FOOTER_COPYRIGHT": "版权所有 &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>)，除了包含来自 <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) 和 <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas) 的部分外，两者均基于 MIT 许可发布。",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres 并不隶属于 FT8 数字模式的发明者，同样地，FT8 的创造者也未参与 qFT8 的开发，且不以任何方式为本软件背书。"
 };

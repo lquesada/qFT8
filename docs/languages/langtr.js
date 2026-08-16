@@ -1,9 +1,9 @@
 // Translations for tr
 const langData = {
-    "META_TITLE": "qFT8 — Android için Taşınabilir FT8/FT4",
-    "META_DESC": "Android için Taşınabilir FT8/FT4.",
+    "META_TITLE": "qFT8 — Android için Taşınabilir FT8, FT4, FT2 ve JS8",
+    "META_DESC": "Android için Taşınabilir FT8, FT4, FT2 ve JS8.",
     "LOGO_ALT": "qFT8 Logosu",
-    "MAIN_TITLE": "Android için Taşınabilir FT8/FT4",
+    "MAIN_TITLE": "Android için Taşınabilir FT8, FT4, FT2 ve JS8",
     "BTN_GOOGLE_PLAY_ALT": "Google Play'den edinin",
     "BTN_DOWNLOAD_APK": ".apk indir",
     "BTN_USER_MANUAL": "Kullanım Kılavuzu",
@@ -13,7 +13,7 @@ const langData = {
     "FEATURES_TITLE": "Özellikler",
     "FEAT_QUICK_SETUP": "Hızlı kurulum",
     "FEAT_TRACK_CALL": "50+'tan fazla telsizi destekler",
-    "FEAT_SUPPORT_FT8_FT4": "FT8 ve FT4 modlarını destekler",
+    "FEAT_SUPPORT_FT8_FT4": "FT8, FT4, FT2 ve JS8 modlarını destekler",
     "FEAT_SUPPORT_LANGS": "30'den fazla dili destekler",
     "FEAT_MANUAL_AUTO": "Manuel CALL modu ve AUTO çalışma",
     "FEAT_NTP_SYNC": "Otomatik NTP zaman senkronizasyonu",
@@ -33,11 +33,7 @@ const langData = {
     "DOWNLOAD_SIZE": "Boyut:",
     "DOWNLOAD_BEFORE": "İndir ",
     "DOWNLOAD_AFTER": "",
-    "DOWNLOAD_EXPERIMENTAL_NOTE": "Sürüm 2.00+ şu anda deneyseldir. Sorun yaşıyorsanız, yalnızca QRPLabs QMX telsizleri ve FT8 için çalışan ve sınırlı özelliklere sahip ancak kapsamlı bir şekilde test edilmiş olan eski kararlı sürüm 1.39'u deneyin",
-    "DOWNLOAD_OLD_BEFORE": "Eski sürümü indirin ",
-    "DOWNLOAD_OLD_AFTER": "",
     "WINDLEREYE_SUPPORT": "Müzik projemi <a href=\"https://www.windlereye.com\" target=\"_blank\">Windlereye</a> dinleyerek beni destekleyin",
     "WINDLEREYE_ALT": "Windlereye Müzik Projesi",
     "FOOTER_COPYRIGHT": "Telif Hakkı &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>), <a href=\"https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md\">FT8CN</a> (Copyright © 2023 BG7YOZ) ve <a href=\"https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md\">ft8_lib</a> (Copyright © 2018 Kārlis Gobas) kısımları hariç, her ikisi de MIT lisansı altındadır.",
-    "FOOTER_DISCLAIMER": "Luis Quesada Torres, FT8 dijital modunun yaratıcıları ile ilişkili değildir ve benzer şekilde ne FT8'in yaratıcıları qFT8'in geliştirilmesine dahil edilmiştir ne de onu herhangi bir şekilde onaylamaktadır."
 };
