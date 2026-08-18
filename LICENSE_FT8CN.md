@@ -1,4 +1,4 @@
-This software uses parts of [FT8CN](https://github.com/N0BOY/FT8CN/)
+This software uses parts of [FT8CN](https://github.com/N0BOY/FT8CN/), which have been heavily modified from the originals by Luis Quesada Torres. The source files included in this repository are not the identical original versions.
 
 FT8CN (that repository) was released under the following license:
 

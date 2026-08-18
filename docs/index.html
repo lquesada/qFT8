@@ -6,7 +6,7 @@
         // Latest release configuration - edit these values once when releasing a new version
         const LATEST_VERSION = "2.38";
         const LATEST_DATE = "2026-08-18";
-        const LATEST_SIZE = "6.01MB";
+        const LATEST_SIZE = "6.06MB";
 
         document.addEventListener('DOMContentLoaded', () => {
             const versionEl = document.getElementById('latest-version');
@@ -23,6 +23,14 @@
 
             const filenameEl = document.getElementById('latest-download-filename');
             if (filenameEl) filenameEl.textContent = `qFT8-v${LATEST_VERSION}.apk`;
+
+            const currentYear = new Date().getFullYear();
+            const yearStr = (currentYear > 2026) ? `2026-${currentYear}` : '2026';
+            document.querySelectorAll('.footer p, [data-i18n="FOOTER_COPYRIGHT"]').forEach(p => {
+                if (p.innerHTML.includes('Luis Quesada Torres')) {
+                    p.innerHTML = p.innerHTML.replace(/(Copyright\s+(?:&copy;|©)\s*)2026(-\d+)?/gi, `$1${yearStr}`);
+                }
+            });
         });
     </script>
     <meta charset="UTF-8">
@@ -89,48 +97,246 @@
             line-height: 1.2;
         }
 
-        /* Phone Mockup CSS - Landscape */
-        .phone-mockup {
-            position: relative;
-            max-width: 900px;
+        /* ─── Volumetric 3D Phone Chassis & Sunken Display ─── */
+        .phone-wrapper {
+            perspective: 1500px;
+            perspective-origin: 50% 50%;
             width: 100%;
-            margin: 0 auto 60px auto;
-            border: 14px solid #000000;
-            border-radius: 30px;
+            max-width: 920px;
+            margin: 23px auto 63px auto;
+            display: block;
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .phone-chassis {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            cursor: default;
+            /* Curved outer phone body with physical dark titanium rim */
+            background: linear-gradient(140deg, #32343a 0%, #1e1f24 25%, #141518 60%, #25262c 100%);
+            border-radius: 44px;
+            padding: 13px 15px;
+            transform-style: preserve-3d;
+            will-change: transform, box-shadow;
+            
+            /* Heavy physical 3D side-wall extrusion and deep ground ambient shadows */
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.2), /* crisp top chamfer highlight */
+                0 1px 0 1px #40424a,
+                0 2px 0 1px #363840,
+                0 3px 0 1px #2e3036,
+                0 4px 0 1px #27282e,
+                0 5px 0 1px #202126,
+                0 6px 0 1px #1a1b1f,
+                0 7px 0 1px #151619,
+                0 8px 0 1px #101113,
+                0 9px 0 1px #0c0c0e,
+                0 10px 1px 1px #080809,
+                0 11px 2px 1px #040405, /* 11px physical 3D slab thickness */
+                0 22px 40px -6px rgba(0, 0, 0, 0.75), /* immediate drop shadow */
+                0 45px 85px -12px rgba(0, 0, 0, 0.65); /* deep ambient ground shadow */
+
+            animation: phoneFloatVolumetric 8s ease-in-out infinite;
+        }
+
+        /* Top speaker slit & ambient sensor */
+        .phone-chassis::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 54px;
+            height: 3.5px;
+            background: #050506;
+            border-radius: 3px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        /* Physical side buttons on the chassis rim */
+        .phone-chassis::after {
+            content: '';
+            position: absolute;
+            top: 38px;
+            right: -3px;
+            width: 3px;
+            height: 34px;
+            background: #2a2b30;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+            z-index: 1;
+        }
+
+        /* Sunken Screen Bezel & Recess */
+        .phone-screen-recess {
+            position: relative;
+            background: #020202;
+            border-radius: 32px;
+            padding: 3px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            /* Pronounced physical sunken screen bevel: deep inner shadow */
+            box-shadow: 
+                inset 0 4px 8px rgba(0, 0, 0, 1),
+                inset 0 2px 3px rgba(0, 0, 0, 1),
+                inset 0 -3px 6px rgba(0, 0, 0, 0.95),
+                inset 4px 0 7px rgba(0, 0, 0, 0.85),
+                inset -4px 0 7px rgba(0, 0, 0, 0.85),
+                0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .phone-screen-content {
+            position: relative;
             display: flex;
-            box-sizing: border-box;
+            border-radius: 29px;
+            overflow: hidden;
             background-color: #000;
         }
 
-        .phone-mockup img {
+        .phone-screen-content img {
             display: block;
             height: auto;
             margin: 0;
             padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
         }
 
-        .phone-mockup img.camera {
+        .phone-screen-content img.camera {
             width: 5.4726%;
         }
 
-        .phone-mockup img.screen {
+        .phone-screen-content img.screen {
             width: 94.5274%;
         }
 
-        /* Simple side buttons for the "phone" */
-        .phone-mockup::before {
-            content: '';
+        /* Subtle, localized glass edge glint (faint and dark screen) */
+        .screen-glare {
             position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20%;
-            height: 14px;
-            background: #1a1a1a;
-            border-radius: 0 0 10px 10px;
-            z-index: 10;
+            inset: 0;
+            pointer-events: none;
+            border-radius: 29px;
+            z-index: 5;
+            background: linear-gradient(
+                130deg, 
+                rgba(255, 255, 255, 0.14) 0%, 
+                rgba(255, 255, 255, 0.03) 14%, 
+                transparent 28%
+            );
+            mix-blend-mode: screen;
+            opacity: 0.35;
+            animation: glareGlint 8s ease-in-out infinite;
+        }
+
+        /* Volumetric 3D Floating Animation (faster & larger wiggle angles with dynamic 3D rim shadows) */
+        @keyframes phoneFloatVolumetric {
+            0% {
+                transform: translateY(0px) rotateX(2.0deg) rotateY(-4.5deg) rotateZ(-0.35deg);
+                box-shadow: 
+                    0 0 0 1px rgba(255, 255, 255, 0.2),
+                    1px 1px 0 1px #40424a,
+                    2px 2px 0 1px #363840,
+                    3px 3px 0 1px #2e3036,
+                    4px 4px 0 1px #27282e,
+                    5px 5px 0 1px #202126,
+                    6px 6px 0 1px #1a1b1f,
+                    7px 7px 0 1px #151619,
+                    8px 8px 0 1px #101113,
+                    9px 9px 0 1px #0c0c0e,
+                    10px 10px 1px 1px #080809,
+                    11px 11px 2px 1px #040405,
+                    12px 24px 45px -6px rgba(0, 0, 0, 0.75),
+                    20px 45px 85px -12px rgba(0, 0, 0, 0.65);
+            }
+            25% {
+                transform: translateY(-5px) rotateX(3.5deg) rotateY(-1.2deg) rotateZ(0.2deg);
+                box-shadow: 
+                    0 0 0 1px rgba(255, 255, 255, 0.22),
+                    0px 1px 0 1px #40424a,
+                    1px 2px 0 1px #363840,
+                    1px 3px 0 1px #2e3036,
+                    2px 4px 0 1px #27282e,
+                    2px 5px 0 1px #202126,
+                    3px 6px 0 1px #1a1b1f,
+                    3px 7px 0 1px #151619,
+                    4px 8px 0 1px #101113,
+                    4px 9px 0 1px #0c0c0e,
+                    5px 10px 1px 1px #080809,
+                    5px 11px 2px 1px #040405,
+                    5px 28px 50px -6px rgba(0, 0, 0, 0.78),
+                    10px 52px 92px -12px rgba(0, 0, 0, 0.68);
+            }
+            50% {
+                transform: translateY(3px) rotateX(1.2deg) rotateY(4.5deg) rotateZ(0.4deg);
+                box-shadow: 
+                    0 0 0 1px rgba(255, 255, 255, 0.2),
+                    -1px 1px 0 1px #40424a,
+                    -2px 2px 0 1px #363840,
+                    -3px 3px 0 1px #2e3036,
+                    -4px 4px 0 1px #27282e,
+                    -5px 5px 0 1px #202126,
+                    -6px 6px 0 1px #1a1b1f,
+                    -7px 7px 0 1px #151619,
+                    -8px 8px 0 1px #101113,
+                    -9px 9px 0 1px #0c0c0e,
+                    -10px 10px 1px 1px #080809,
+                    -11px 11px 2px 1px #040405,
+                    -12px 22px 42px -6px rgba(0, 0, 0, 0.75),
+                    -20px 42px 80px -12px rgba(0, 0, 0, 0.65);
+            }
+            75% {
+                transform: translateY(-3px) rotateX(3.0deg) rotateY(1.5deg) rotateZ(-0.2deg);
+                box-shadow: 
+                    0 0 0 1px rgba(255, 255, 255, 0.22),
+                    0px 1px 0 1px #40424a,
+                    -1px 2px 0 1px #363840,
+                    -1px 3px 0 1px #2e3036,
+                    -2px 4px 0 1px #27282e,
+                    -2px 5px 0 1px #202126,
+                    -3px 6px 0 1px #1a1b1f,
+                    -3px 7px 0 1px #151619,
+                    -4px 8px 0 1px #101113,
+                    -4px 9px 0 1px #0c0c0e,
+                    -5px 10px 1px 1px #080809,
+                    -5px 11px 2px 1px #040405,
+                    -5px 26px 48px -6px rgba(0, 0, 0, 0.78),
+                    -10px 48px 88px -12px rgba(0, 0, 0, 0.68);
+            }
+            100% {
+                transform: translateY(0px) rotateX(2.0deg) rotateY(-4.5deg) rotateZ(-0.35deg);
+                box-shadow: 
+                    0 0 0 1px rgba(255, 255, 255, 0.2),
+                    1px 1px 0 1px #40424a,
+                    2px 2px 0 1px #363840,
+                    3px 3px 0 1px #2e3036,
+                    4px 4px 0 1px #27282e,
+                    5px 5px 0 1px #202126,
+                    6px 6px 0 1px #1a1b1f,
+                    7px 7px 0 1px #151619,
+                    8px 8px 0 1px #101113,
+                    9px 9px 0 1px #0c0c0e,
+                    10px 10px 1px 1px #080809,
+                    11px 11px 2px 1px #040405,
+                    12px 24px 45px -6px rgba(0, 0, 0, 0.75),
+                    20px 45px 85px -12px rgba(0, 0, 0, 0.65);
+            }
+        }
+
+        @keyframes glareGlint {
+            0% {
+                opacity: 0.50;
+            }
+            50% {
+                opacity: 0.10;
+            }
+            100% {
+                opacity: 0.50;
+            }
         }
 
         .features {
@@ -402,6 +608,18 @@
 
         <p class="main-title" data-i18n="MAIN_TITLE">Portable FT8, FT4, FT2, and JS8 for Android</p>
 
+        <div class="phone-wrapper" id="phoneWrapper">
+            <div class="phone-chassis" id="phoneMockup">
+                <div class="phone-screen-recess">
+                    <div class="phone-screen-content">
+                        <img src="phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                        <img src="screenshot.jpg" alt="qFT8 Screenshot" class="screen" width="2280" height="1080">
+                        <div class="screen-glare"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="buttons">
             <div class="google-play-wrapper">
                 <a href="https://play.google.com/store/apps/details?id=com.ft8.app">
@@ -411,11 +629,6 @@
             </div>
             <a href="#download" class="btn btn-secondary" data-i18n="BTN_DOWNLOAD_APK">Download .apk</a>
             <a href="manual/" id="manual-link" class="btn btn-secondary" data-i18n="BTN_USER_MANUAL">User Manual</a>
-        </div>
-
-        <div class="phone-mockup">
-            <img src="phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-            <img src="screenshot.jpg" alt="qFT8 Screenshot" class="screen" width="2280" height="1080">
         </div>
 
         <div class="features">
@@ -475,7 +688,7 @@
             Copyright &copy; 2026, <a href="https://www.luisquesada.com">Luis Quesada Torres</a> (<a
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.</p>
         <p data-i18n="FOOTER_ATTRIBUTION">
-            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/FT8CNLICENSE.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LIB_FT8LICENSE.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/KISSFFTLICENSE.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), and <a href="https://github.com/lquesada/qFT8/blob/main/USBSERIALLICENSE.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause). None of these third-party authors or projects endorse or are affiliated with qFT8.</p>
+            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause). None of these third-party authors or projects endorse or are affiliated with qFT8.</p>
         <div class="footer-links">
             <a href="manual/" id="manual-link-footer" data-i18n="BTN_USER_MANUAL">User Manual</a> - <a href="privacy/">Privacy Policy</a>
         </div>

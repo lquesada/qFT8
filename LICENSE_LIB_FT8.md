@@ -1,4 +1,4 @@
-This software uses parts of [lib\_ft8](https://github.com/kgoba/ft8_lib)
+This software uses parts of [lib\_ft8](https://github.com/kgoba/ft8_lib), which have been heavily modified from the originals by Luis Quesada Torres. The source files included in this repository are not the identical original versions.
 
 lib\_ft8 (that repository) was released under the following license:
 

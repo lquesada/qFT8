@@ -36,6 +36,11 @@ function loadLanguage(lang) {
     document.head.appendChild(script);
 }
 
+function getCopyrightYear() {
+    const currentYear = (typeof window !== 'undefined' && window.FORCED_YEAR !== undefined) ? window.FORCED_YEAR : new Date().getFullYear();
+    return (currentYear > 2026) ? `2026-${currentYear}` : '2026';
+}
+
 function applyTranslations(lang) {
     if (typeof langData !== 'undefined') {
         // Update Title
@@ -62,11 +67,15 @@ function applyTranslations(lang) {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (langData[key] !== undefined) {
+                let content = langData[key];
+                if (key === 'FOOTER_COPYRIGHT') {
+                    content = content.replace(/(Copyright\s+(?:&copy;|©)\s*)2026(-\d+)?/gi, `$1${getCopyrightYear()}`);
+                }
                 // If it's an image, replace the alt text instead of inner HTML
                 if (el.tagName === 'IMG') {
-                    el.alt = langData[key];
+                    el.alt = content;
                 } else {
-                    el.innerHTML = langData[key];
+                    el.innerHTML = content;
                 }
             }
         });
