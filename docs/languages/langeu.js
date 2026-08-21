@@ -11,11 +11,12 @@ const langData = {
     "BTN_REPORT_ISSUES": "Salatu arazoak",
     "BTN_THE_AUTHOR": "Egilea",
     "FEATURES_TITLE": "Ezaugarriak",
+    "FEAT_FREE_NO_ADS": "Doan eta publizitaterik gabe",
+    "FEAT_PLUG_AND_PLAY": "Plug and Play",
     "FEAT_QUICK_SETUP": "Konfigurazio azkarra",
-    "FEAT_TRACK_CALL": "50 irrati baino gehiago onartzen ditu",
+    "FEAT_TRACK_CALL": "75 irrati baino gehiago onartzen ditu",
     "FEAT_SUPPORT_FT8_FT4": "FT8, FT4, FT2 eta JS8 moduentzako euskarria",
     "FEAT_SUPPORT_LANGS": "30 hizkuntza baino gehiago onartzen dira",
-    "FEAT_MANUAL_AUTO: ": "Eskuzko eta auto deitzeko moduak", // wait, trailing space in key, let's fix it
     "FEAT_MANUAL_AUTO": "Eskuzko eta auto deitzeko moduak",
     "FEAT_NTP_SYNC": "NTP bidezko ordu sinkronizazio automatikoa",
     "FEAT_APPROX_LOC": "Kokapen hurbildu automatikoa",
@@ -38,4 +39,8 @@ const langData = {
     "WINDLEREYE_ALT": "Windlereye musika proiektua",
     "FOOTER_COPYRIGHT": "Copyright &copy; 2026, <a href=\"https://www.luisquesada.com\">Luis Quesada Torres</a> (<a href=\"https://www.qrz.com/db/HB9IPH\">HB9IPH</a>). All rights reserved.",
     "FOOTER_ATTRIBUTION": "Includes parts from <a href=\"https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md\">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href=\"https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md\">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href=\"https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md\">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), and <a href=\"https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md\">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause). None of these third-party authors or projects endorse or are affiliated with qFT8.",
+    "CONTRIBUTORS_TITLE": "Esker bereziak eta kolaboratzaile nagusiak",
+    "CONTRIBUTOR_EA3ISA": "<strong>Roger Ribes González (<a href=\"https://www.qrz.com/db/EA3ISA\" target=\"_blank\">EA3ISA</a>)</strong> &mdash; Orientazio ezin baliotsuagoa, lankidetza estua eta eremuko beta proba zabalak qFT8-ren hasierako garapen-faseetatik, SOTA eta POTA funtzioak zehazten nabarmen lagunduz.",
+    "CONTRIBUTOR_UR4LBR": "<strong>Andriy Dinets (<a href=\"https://www.qrz.com/db/UR4LBR\" target=\"_blank\">UR4LBR</a>)</strong> &mdash; Beta proba zabalak eta ezinbesteko laguntza espektrogramaren errendatzearen, seinale digitalen prozesamenduaren, SNR zehaztasunaren eta SOTA/POTA ahalmenen inguruko arazo konplexuak ebazten.",
+    "CONTRIBUTOR_GW8RDI": "<strong>Rob Colclough (<a href=\"https://www.qrz.com/db/GW8RDI\" target=\"_blank\">GW8RDI</a>)</strong> &mdash; <a href=\"https://quantumsdr.com\" target=\"_blank\">QuantumSDR</a> proiektuaren sortzailea eta garatzailea. Funtsezkoa qFT8-k hainbat transzeptore eta Android gailu desberdin onar ditzan, aholkularitza tekniko sakona eta proba dedikatuak eskainiz.",
 };

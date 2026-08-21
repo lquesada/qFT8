@@ -1,1265 +1,1898 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qFT8 ユーザーマニュアル</title>
-    <meta property="og:title" content="qFT8 ユーザーマニュアル">
-    <meta property="og:description"
-        content="AndroidデバイスとトランシーバーでqFT8を使用するための包括的なガイド。">
-    <meta property="og:image" content="https://qft8.com/qft8.png">
-    <meta property="og:url" content="https://qft8.com/manual/ja/">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/png" href="../../favicon.png">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentYear = new Date().getFullYear();
-            const yearStr = (currentYear > 2026) ? `2026-${currentYear}` : '2026';
-            document.querySelectorAll('.footer p').forEach(p => {
-                if (p.innerHTML.includes('Luis Quesada Torres')) {
-                    p.innerHTML = p.innerHTML.replace(/(Copyright\s+(?:&copy;|©)\s*)2026(-\d+)?/gi, `$1${yearStr}`);
-                }
-            });
-        });
-    </script>
-    <style>
-        :root {
-            --bg-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --accent-color: #03dac6;
-            --secondary-color: #2c2c2c;
-            --surface-color: #2c2c2c;
-            --link-color: #81d4fa;
-            --danger-color: #ff5252;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .disclaimer-banner {
-            background-color: rgba(255, 82, 82, 0.1);
-            color: var(--danger-color);
-            padding: 15px;
-            text-align: center;
-            font-weight: 600;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 82, 82, 0.2);
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 92%;
-            margin: 40px auto;
-            background: var(--surface-color);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        h1,
-        h2,
-        h3 {
-            color: #ffffff;
-            margin-top: 0;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .toc {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-        }
-
-        .toc h3 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ffffff;
-        }
-
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .toc ul ul {
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-
-        .toc li {
-            margin-bottom: 10px;
-        }
-
-        .back-to-toc {
-            display: block;
-            text-align: right;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Phone Mockup CSS */
-        .phone-mockup {
-            position: relative;
-            max-width: 800px;
-            width: 100%;
-            margin: 20px auto 30px auto;
-            border: 12px solid #000000;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.4);
-            background-color: #000;
-            display: flex;
-        }
-
-        .phone-mockup img {
-            display: block;
-            height: auto;
-            margin: 0;
-            padding: 0;
-        }
-
-        .phone-mockup img.camera {
-            width: 5.4726%;
-        }
-
-        .phone-mockup img.screen {
-            width: 94.5274%;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .toc li,
-        .toc ul ul li {
-            list-style: none;
-            margin-bottom: 8px;
-        }
-
-        .footer {
-            background-color: #0f0f0f;
-            width: 100%;
-            padding: 50px 20px;
-            margin-top: 50px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
-            box-sizing: border-box;
-        }
-
-        .footer a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer p {
-            margin: 10px 0;
-        }
-
-        .footer-links {
-            margin-top: 20px;
-        }
-
-        .footer-links a {
-            margin: 0 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-
-        th {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 12px;
-                margin: 20px 0;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .phone-mockup {
-                border-width: 8px;
-                border-radius: 16px;
-                margin-bottom: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            }
-        }
-
-        .back-link {
-            width: 100%;
-            max-width: 900px;
-            margin: 20px auto 0 auto;
-            text-align: left;
-            padding: 0 20px;
-        }
-
-        @media (max-width: 600px) {
-            .back-link {
-                margin: 10px 0;
-                padding: 0 15px;
-            }
-        }
-
-        @media print {
-            body,
-            .container {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 10mm !important;
-                background: #fff !important;
-                color: #000 !important;
-                box-shadow: none !important;
-                border: none !important;
-                border-radius: 0 !important;
-            }
-
-            h1,
-            h2,
-            h3,
-            p,
-            li,
-            a,
-            span,
-            div {
-                color: #000 !important;
-            }
-
-            .back-link,
-            .back-to-toc,
-            .footer-links {
-                display: none !important;
-            }
-
-            .disclaimer-banner {
-                border: 1px solid #000 !important;
-                background: transparent !important;
-            }
-
-            .phone-mockup {
-                border: 2px solid #000 !important;
-                box-shadow: none !important;
-            }
-
-            .toc {
-                background: transparent !important;
-                border: 1px solid #eee !important;
-            }
-        }
-
-        .highlight {
-            background-color: rgba(3, 218, 198, 0.1);
-            padding: 15px;
-            border-left: 4px solid var(--accent-color);
-            border-radius: 8px;
-            margin: 20px 0;
-            color: var(--text-color);
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>qFT8 ユーザーマニュアル — Android向けポータブルFT8、FT4、FT2、JS8</title>
+<meta content="qFT8 User Manual" property="og:title"/>
+<meta content="Comprehensive guide for using qFT8 with your Android device and transceiver." property="og:description"/>
+<meta content="https://qft8.com/qft8.png" property="og:image"/>
+<meta content="https://qft8.com/manual/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../../favicon.png" rel="icon" type="image/png"/>
+<script src="../../data.js"></script>
+<!-- Shared Stylesheet -->
+<link href="../../style.css" rel="stylesheet"/>
+<link href="../../manual.css" rel="stylesheet"/>
 </head>
-
 <body>
-
-    <div class="back-link">
-        <a href="../../">&larr; qFT8.com に戻る</a>
-    </div>
-
-    <div class="container">
-        <div style="text-align: right; margin-bottom: 20px; font-size: 0.9em;">🌐 <a href="../">English</a> / <a href="../es/">Español</a> / <a href="../de/">Deutsch</a> / <a href="../fr/">Français</a> / <a href="../it/">Italiano</a> / <a href="../pt/">Português</a> / <a href="../ru/">Русский</a> / <strong>日本語</strong> / <a href="../zh/">中文</a></div>
-        <h1 id="top">qFT8 ユーザーマニュアル</h1>
-
-        <div class="toc">
-            <h3>目次</h3>
-            <ul>
-                <li><a href="#what-is-qft8">qFT8とは？</a>
+<div class="manual-top-bar">
+<div class="back-link">
+<a href="../../ja/">&larr; qFT8.com トップへ戻る</a>
+</div>
+<div class="lang-selector-wrapper">
+<span class="lang-icon">🌐</span>
+<select aria-label="Select Manual Language" class="lang-dropdown" id="manual-lang-select" onchange="window.location.href=this.value">
+<option value="../">English</option>
+<option value="../es/">Español</option>
+<option value="../pt/">Português</option>
+<option value="../fr/">Français</option>
+<option value="../it/">Italiano</option>
+<option value="../de/">Deutsch</option>
+<option value="../ru/">Русский</option>
+<option value="../zh/">中文</option>
+<option selected value="../ja/">日本語</option>
+</select>
+</div>
+</div>
+<div class="container doc-page">
+<h1 id="top">qFT8 ユーザーマニュアル</h1>
+<div class="toc">
+<h3>目次</h3>
+<ul>
+<li><a href="#what-is-qft8">What is qFT8? / qFT8とは？</a>
+<ul>
+<li><a href="#supported-devices">Supported Devices / 対応デバイス・無線機</a></li>
+</ul>
+</li>
+<li><a href="#quick-setup">Quick Setup / クイックセットアップ</a>
+<ul>
+<li><a href="#initial-permissions">Grant Initial Permissions / 初期権限の許可</a></li>
+<li><a href="#mandatory-callsign">Enter Callsign / コールサインの入力</a></li>
+<li><a href="#usb-permission">Grant USB Connection Permission / USB接続権限の許可</a></li>
+<li><a href="#audio-check">[QMX Only] Audio Check / [QMX専用] オーディオ確認</a></li>
+<li><a href="#import-qsos">[Optional] Import QSOs / [オプション] QSOログのインポート</a></li>
+</ul>
+</li>
+<li><a href="#first-qso">Your First QSO With qFT8 / qFT8での最初のQSO（交信）</a></li>
+<li><a href="#ft8-introduction">Intro to the FT digital modes / FTデジタルモードの概要</a></li>
+<li><a href="#user-interface">qFT8 User Interface / qFT8 ユーザーインターフェース</a>
+<ul>
+<li><a href="#ui-bottom-bar">The Bottom bar / ボトムバー（下部操作バー）</a></li>
+<li><a href="#ui-spectrogram">The Spectrogram / スペクトログラム（ウォーターフォール）</a></li>
+<li><a href="#ui-stations-tab">The Stations tab / Stations（ステーション）タブ</a></li>
+<li><a href="#ui-log-tab">The Log tab / Log（ログ）タブ</a></li>
+<li><a href="#ui-settings-tab">The Settings tab / Settings（設定）タブ</a></li>
+</ul>
+</li>
+<li><a href="#auto-mode">自動運用（AUTOモード）</a></li>
+<li><a href="#call-mode">手動運用（CALLモード）</a></li>
+<li><a href="#adif-import-export">ADIFログのインポート・エクスポート</a></li>
+<li><a href="#qrz-integration">QRZ連携</a>
+</li>
+<li><a href="#lotw-integration"><span translate="no">LoTW</span>
+                        Integration</a></li>
+<li><a href="#sota">Summits On The Air (SOTA) / Summits On The Air（SOTA）</a>
+</li>
+<li><a href="#pota">Parks On The Air (POTA) / Parks On The Air（POTA）</a>
+</li>
+<li><a href="#js8-chat">JS8Chat / JS8チャット</a>
+</li>
+<li><a href="#remote-control">Remote Control Web Server / リモートコントロール Webサーバー</a></li>
+<li><a href="#troubleshooting">Troubleshooting / トラブルシューティング</a></li>
+</ul>
+</div>
+<div class="disclaimer-banner">免責事項：qFT8を使用することにより、法規制の遵守、安全管理、機器の損害に関するすべての責任をご自身が負うことに同意したものとみなされます。</div>
+<section id="what-is-qft8">
+<h2>What is qFT8? / qFT8とは？</h2>
+<p>
+                qFT8 is an <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android
+                    phone</a>
+                app for <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amateur radio</a>
+                that decodes and transmits FT8, FT4, FT2, or JS8 digital data messages using a transceiver.
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Screenshot" class="screen" height="1080" src="../../screenshot.jpg" width="2280"/>
+</div>
+<p>
+                Although qFT8 features out-of-the-box (plug-and-play) support for the QMX and ICOM 7300, you may also use it with any transceiver by placing the phone close to the speaker and microphone with VOX enabled, or using an audio link cable. You may also just try qFT8 without a transceiver: it transmits using the phone speaker and listens to signals using the phone microphone. Several phones running qFT8 can contact each other via audio when they are close enough.
+            </p>
+<p>
+                qFT8 is a free app and does not contain ads. It is source available. The source code can be found at <a href="https://github.com/lquesada/qFT8" target="_blank">GitHub</a>.
+            </p>
+<p>
+<a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>
+                (<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>)
+                developed qFT8 in 2026, owns the copyright, and reserves all rights.
+            </p>
+<p>
+                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright © 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright © 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright © 2003-2010 Mark Borgerding, BSD-3-Clause), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright © 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause). これらのサードパーティ著者およびプロジェクトは、qFT8を推奨または提携するものではありません。
+            </p>
+<h3>Key Features / 主な機能</h3>
+<ul>
+<li>Quick setup</li>
+<li>Supports 50+ radios</li>
+<li>Manual <span translate="no">CALL</span> mode and
+                    <span translate="no">AUTO</span> operation
+                </li>
+<li>Automatic <span translate="no">NTP</span> / <span translate="no">GPS</span> time synchronization</li>
+<li>Automatic approximate location</li>
+<li><span translate="no">ADIF</span> logs import and export</li>
+<li><span translate="no">QRZ</span> / <span translate="no">LoTW</span> integration: uploads, confirmations</li>
+<li>Retry logic with configurable limits</li>
+<li><span translate="no">SOTA</span> / <span translate="no">POTA</span>:
+                    <span translate="no">CQ</span> modifier, reference
+                    <span translate="no">ADIF</span> exports
+                </li>
+<li>Web server for fully-remote operation</li>
+<li>Battery saving mode: runs with screen off</li>
+</ul>
+<h3 id="supported-devices">Supported Devices / 対応デバイス・無線機</h3>
+<p>qFT8 supports three main ways of connecting your transceiver:</p>
+<h4>Direct CAT/Audio Transceivers (USB Cable Control)</h4>
+<p>These transceivers are directly supported via a USB cable, which handles both CAT control (for frequency tuning and PTT keying) and high-quality USB audio transmission:</p>
+<ul>
+<li><strong>QRPLabs <span translate="no">QMX</span> or <span translate="no">QMX+</span></strong></li>
+<li><strong>QRPLabs <span translate="no">QDX</span> or <span translate="no">QDX-M</span></strong> (this device does not have <span translate="no">W</span> or <span translate="no">SWR</span> meter, though)</li>
+<li><strong>ICOM IC-7300</strong> and <strong>ICOM IC-7300 MK2</strong></li>
+<li><strong>ICOM IC-705</strong></li>
+<li><strong>ICOM IC-7610</strong></li>
+<li><strong>ICOM IC-7851</strong></li>
+<li><strong>ICOM IC-7100</strong></li>
+<li><strong>ICOM IC-7200</strong></li>
+<li><strong>ICOM IC-9700</strong></li>
+<li><strong>ICOM IC-7600</strong></li>
+<li><strong>ICOM IC-7410</strong></li>
+<li><strong>ICOM IC-9100</strong></li>
+<li><strong>ICOM IC-7000</strong></li>
+<li><strong>ICOM IC-706MKIIG</strong></li>
+<li><strong>ICOM IC-746 / IC-746PRO</strong></li>
+<li><strong>ICOM IC-756PRO / PRO2 / PRO3</strong></li>
+<li><strong>ICOM IC-7700</strong></li>
+<li><strong>ICOM IC-7800 / IC-7850</strong></li>
+<li><strong>Yaesu FT-891</strong></li>
+<li><strong>Yaesu FT-710</strong></li>
+<li><strong>Yaesu FTX-1</strong></li>
+<li><strong>Yaesu FT-991 / FT-991A</strong></li>
+<li><strong>Yaesu FT-DX10</strong></li>
+<li><strong>Yaesu FTDX101</strong></li>
+<li><strong>Elecraft K4 / K4D / K4HD</strong></li>
+<li><strong>Elecraft K3 / K3S</strong></li>
+<li><strong>Elecraft KX3</strong></li>
+<li><strong>Elecraft KX2</strong></li>
+<li><strong>Elecraft KH1</strong></li>
+<li><strong>Elecraft K2 (requires KIO2 module)</strong></li>
+<li><strong>Xiegu X6100</strong></li>
+<li><strong>Xiegu X6200</strong></li>
+<li><strong>Kenwood TS-480 / TS-590 / TS-2000 series</strong></li>
+<li><strong>FX-4CR</strong></li>
+<li><strong>QuantumSDR</strong></li>
+<li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
+</ul>
+<p><strong>Note on External Interfaces (Digirig, generic USB-serial cables):</strong> Auto-detection (<code>AUTO</code>) is designed for transceivers with native USB controllers or model-branded cables. When using a generic external interface (like Digirig), auto-detection only sees the generic interface chip and defaults to VOX mode. To use CAT control with radios connected via external interfaces (e.g., Lab599 TX-500), please manually select your transceiver model in the <strong>Transceiver Settings</strong> menu.</p>
+<p>More devices are supported via VOX, which is a partial audio-only integration.</p>
+<p style="color: #ff5252; font-weight: bold;">Note: For safety reasons, qFT8 does not allow changing the Tx power of the transceiver. Adjust power manually in your transceiver.</p>
+<h4>Other transceivers</h4>
+<ul>
+<li>Supported via speakers/mic but not ideal</li>
+<li>Supported via generic audio connection</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="quick-setup">
+<h2>Quick Setup / クイックセットアップ</h2>
+<p>
+                Please ensure that you are using the <strong>right power supply</strong> for the transceiver
+                (e.g. ≤12V for a QMX) or you will damage it.
+            </p>
+<p>
+                Please also ensure that the USB cable and adapter you are using to connect the phone and the transceiver
+                is <strong>rated for data transfer</strong>. Note that for devices that use connectors other than USB-C, a specific OTG (on-the-go) cable is often required. Most connectivity issues where qFT8 doesn't see the
+                transceiver
+                are due to using an incompatible cable or adapter.
+            </p>
+<h3 id="initial-permissions">Grant Initial Permissions / 初期権限の許可</h3>
+<p>When opening qFT8 for the first time, it will request several permissions:</p>
+<ul>
+<li><em>Allow qFT8 to record audio</em>: This permission is mandatory. qFT8 needs it to gather
+                    signals from the transceiver. qFT8 does not store, share, or upload any audio recordings.</li>
+<li><em>Allow qFT8 to access this device's approximate location</em>: Optional but recommended.
+                    qFT8 uses it to obtain your <span translate="no">Maidenhead</span> grid
+                    locator, which is shared during <span translate="no">FT8</span> exchanges.
+                    qFT8 does
+                    not access nor share precise location data.</li>
+<li><em>Allow qFT8 to send you notifications</em>: Optional but recommended. qFT8 uses it to
+                    run as a foreground service, while minimized or with the screen off in order to save battery.
+                    Notifications are only active when connected to a transceiver.</li>
+<li><em>Let app always run in background</em>: Optional but recommended. Required for qFT8 to
+                    function consistently while the screen is off.</li>
+</ul>
+<div class="highlight">
+<p><strong>Key Principle:</strong> qFT8 does not submit any information to a server dedicated to this
+                    app.
+                    All data processing happens locally on your device. You may explicitly authorize sharing callsign,
+                    date and time, and optionally approximate location if you enter a valid
+                    <span translate="no">QRZ API Key</span>.
+                </p>
+<p>For more details, see the qFT8 <a href="../privacy/">Privacy Policy</a>.</p>
+</div>
+<h3 id="mandatory-callsign">Enter Callsign / コールサインの入力</h3>
+<p>
+                Inputting a <strong>callsign is mandatory</strong> for qFT8 to function. If you do not intend to
+                connect to an actual transceiver, any callsign can be input for testing purposes, e.g. XX1XXX.
+            </p>
+<p>qFT8 will ask you to input your callsign and acknowledge the following:</p>
+<ul>
+<li>You must hold a valid license to use this software while connected to a transceiver.</li>
+<li>You must not run the software unattended.</li>
+<li><em>Disclaimer of Liability</em>: By using qFT8, you assume all responsibility for legal
+                    compliance, safety, and equipment damage.</li>
+</ul>
+<h3 id="usb-permission">Grant USB Connection Permission / USB接続権限の許可</h3>
+<p>When the transceiver is plugged in and qFT8 is open, a system dialog will appear:</p>
+<p><em>"Open qFT8 to handle Transceiver."</em></p>
+<ul>
+<li>This permission is <strong>mandatory</strong> for communication with the transceiver.</li>
+<li>If not granted, qFT8 will be able to receive signals but will not be able to transmit.</li>
+<li>You may select "Always open qFT8 when Transceiver is connected" for convenience.</li>
+</ul>
+<p>
+                If you have issues connecting the Android device, check the <a href="#trouble-not-recognized">Android device doesn't recognize the transceiver or it gets disconnected / Android端末がトランシーバーを認識しない、または切断される</a> troubleshooting section.
+            </p>
+<p>
+<span translate="no">qFT8</span> automatically configures the transceiver whenever it is connected.
+            </p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="audio-check">[QMX Only] Audio Check / [QMX専用] オーディオ確認</h3>
+<p>
+                Before you start operating, it is important to verify that the audio signal between your phone and the
+                <span translate="no">QMX</span> is working correctly. Press the
+                <span translate="no">TX</span> button and wait for the
+                <span translate="no">QMX</span> to start transmitting in one of the next
+                sequences.
+            </p>
+<h4>Everything is working</h4>
+<p>
+                If the <span translate="no">TX</span> button shows power output (e.g.
+                5<span translate="no">W</span>), everything is working correctly. On the
+                <span translate="no">QMX LCD</span>, you should see a <strong>bar</strong>
+                under the "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marker at the top-left of the screen
+                — this means the <span translate="no">QMX</span> is receiving a good audio
+                signal from the phone. You should also confirm that there is no
+                "<span translate="no">S</span>" shown after the frequency on
+                the <span translate="no">LCD</span>, which would indicate
+                <span translate="no">SWR</span> protection.
+            </p>
+<h4>"<span translate="no">S</span>" shown after the frequency</h4>
+<p>
+                If the <span translate="no">QMX LCD</span> shows an
+                "<strong><span translate="no">S</span></strong>" after the frequency, it
+                means <span translate="no">SWR</span> protection has engaged. Your antenna
+                is not properly tuned for the current band. You can use the
+                <span translate="no">SWR</span> check option in the
+                <span translate="no">QMX</span> menu to measure the
+                <span translate="no">SWR</span> and will need to tune your antenna.
+            </p>
+<ul>
+<li><strong>Firmware 1_04_004+</strong>: <span translate="no">qFT8</span> automatically resets <span translate="no">SWR</span> protection at the end of the cycle.</li>
+<li><strong>Firmware 1_03_000+</strong>: You can set "<span translate="no">SWR Protection reset options</span>" to <strong><span translate="no">TX-&gt;RX</span></strong> in the <span translate="no">QMX</span> Protection menu, so it resets automatically.</li>
+<li><strong>Legacy firmware</strong> (older than 1_03_000): You must enter and leave the <span translate="no">TUNE</span> menu on the <span translate="no">QMX</span> or power cycle it to reset <span translate="no">SWR</span> protection.</li>
+</ul>
+<h4>Two dots instead of a bar</h4>
+<p>
+                If the <span translate="no">QMX</span> shows <strong>two dots</strong>
+                instead of a bar under the "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marker at the top-left of the screen, the
+                audio volume is either <strong>too low</strong> or <strong>too high</strong>.
+            </p>
+<p>
+<strong>Try:</strong> Go to <span translate="no">qFT8</span> Settings, find
+                the "<span translate="no">Set system volume to [X] when transmitting</span>"
+                option, and try different values (e.g. 70%, 80%, 60%, 100%). One of these should turn the two dots
+                into a bar.
+            </p>
+<p>
+                On some phones, this option may not work. In that case, uncheck it and manually adjust your phone
+                volume to different values (100%, 90%, 80%, etc.) until the bar appears.
+            </p>
+<p>
+                Also, common-mode current may be impacting the <span translate="no">QMX</span> behavior, and adding a common-mode choke to the antenna may help with audio issues as well.
+            </p>
+<h4>Nothing under the "<span translate="no">A</span>"</h4>
+<p>
+                If there is no bar and no dots under the "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marker at the top-left of the
+                <span translate="no">QMX LCD</span> screen, the phone may not be properly
+                controlling the transceiver. This usually means
+                <span translate="no">USB</span> permissions were not granted or were
+                accidentally dismissed. Receiving will work, but transmitting will not.
+            </p>
+<p>
+<strong>Try:</strong> Unplug the <span translate="no">QMX</span> from the
+                phone and plug it back in — the permission dialog should appear again. It may also be that the cable
+                is not suitable for the <span translate="no">QMX</span>; try a different
+                <span translate="no">USB-C</span> cable.
+            </p>
+<p>
+                Once you see a bar under the "<span translate="no">A</span>"
+                <span translate="no">VFO</span> marker at the top-left of the
+                <span translate="no">QMX LCD</span> screen and power output in the
+                <span translate="no">TX</span> button, your
+                <span translate="no">QMX</span> is properly set up and ready to operate!
+            </p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="import-qsos">[Optional] Import QSOs / [オプション] QSOログのインポート</h3>
+<p>You may now import your existing QSOs; there are two approaches. Both ways require going to settings
+                using the
+                right-most button in the bottom bar of qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings Button" class="screen" height="1080" src="../settingsbutton.jpg" width="2280"/>
+</div>
+<p><strong>The manual approach</strong>: Go to the "<span translate="no">ADIF File
+                Import</span>" section in settings, click the "<span translate="no">IMPORT
+                QSOs</span>" button, and select the .adi file to import.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 ADIF Import" class="screen" height="1080" src="../adif.jpg" width="2280"/>
+</div>
+<p><strong>The QRZ automatic approach</strong>: Requires an active <a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span> paid subscription</a>. Go
+                to
+                the "<span translate="no">QRZ Syncing</span>" section in settings, enter the
+                <span translate="no">QRZ API Key</span> for your callsign, press
+                "<span translate="no">VALIDATE</span>", and then click the
+                "<span translate="no">IMPORT QSOs FROM QRZ</span>" button. This will
+                also set up automated uploads to <span translate="no">QRZ</span> and
+                confirmation
+                checks.
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 QRZ Syncing" class="screen" height="1080" src="../qrzsync.jpg" width="2280"/>
+</div>
+<p><strong>The LoTW automatic approach</strong>: Free of charge. Go to the "<span translate="no">LoTW
+                Syncing</span>" section in settings, enter your
+                <span translate="no">Callsign</span> and <span translate="no">LoTW
+                password</span>, and enable background synchronization if desired. This will also
+                allow you to
+                perform the initial "<span translate="no">IMPORT QSOs FROM LoTW</span>".
+            </p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="first-qso">
+<h2>Your First QSO With qFT8 / qFT8での最初のQSO（交信）</h2>
+<p>
+                Note: Accurate time is critical for FT8. qFT8 automatically synchronizes time upon app
+                initialization via NTP (internet) or GPS (satellites). If you are operating in the field
+                without internet access, you can use the <strong>GPS SYNC</strong> button in the Settings
+                tab to synchronize your clock directly from GPS satellites. This requires precise
+                location permission and a clear view of the sky.
+            </p>
+<p>
+                At this point, the transceiver should be connected to the right power supply and the antenna, and all
+                permissions should be granted.
+                Make sure that the antenna is tuned to a band with a reasonable
+                <span translate="no">SWR</span> (ideally consistently below 2)
+                that will not trigger <span translate="no">SWR</span> protections.
+                <strong>It is a bad idea to disable <span translate="no">SWR</span> protection
+                    in the <span translate="no">QMX</span></strong>; it could damage the
+                finals or
+                the antenna tuner.
+            </p>
+<p>You may now choose the band you want to use in the bottom bar of qFT8 or in the transceiver. Setting it
+                in one of them will sync it to the other.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Band Selector" class="screen" height="1080" src="../bandselector.jpg" width="2280"/>
+</div>
+<p>
+                At this point, the spectrogram will show signals and start decoding messages, and the Stations tab will
+                be updating with the stations you're hearing.
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations Button" class="screen" height="1080" src="../stationsbutton.jpg" width="2280"/>
+</div>
+<p>
+                Pressing the <span translate="no">TX</span> button (left-most button in the
+                bottom) will enable transmission.
+            </p>
+<p>If everything is correct, the <span translate="no">TX</span> button will
+                eventually light up with "<span translate="no">TX Transmitting</span>" and
+                will show the
+                transmission power and <span translate="no">SWR</span> (e.g., "5.0W
+                <span translate="no">SWR</span> 1.2").
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 TX Button" class="screen" height="1080" src="../txbutton.jpg" width="2280"/>
+</div>
+<p>
+                Given the "<span translate="no">AUTO</span>" mode is selected by default, qFT8
+                will start making QSOs and logging them in the Log
+                tab.
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log Button" class="screen" height="1080" src="../logbutton.jpg" width="2280"/>
+</div>
+<p>
+                You may tap in the spectrogram to change the <span translate="no">Tx</span> frequency offset (additionally, tapping on the top part of the spectrogram, where the peak indicators are, allows you to input a frequency manually), you may change sequence by tapping the
+                0 and 1 buttons in the bottom bar,
+                you may tap the different "<span translate="no">CALL</span>" buttons to call
+                specific stations, or you may tweak the bar with the
+                "<span translate="no">AUTO</span>" button in the Stations tab to decide on the
+                strategy.
+                More on all of these advanced features in the following sections.
+            </p>
+<p>
+                Note that qFT8 will start calling stations or, if none of them are reachable, will start calling CQ.
+                Eventually, if everything is properly set up and the propagation is good, qFT8 will achieve QSOs.
+            </p>
+<p>
+                If qFT8 is not receiving proper signals and not decoding messages, that is a clear sign that something
+                is
+                wrong: propagation in that band may be closed, the antenna may not be properly tuned, the antenna may
+                not be properly connected to the transceiver, the transceiver may not be properly connected to the
+                phone, or some of your equipment may not be functioning correctly.
+                See the <a href="#troubleshooting">troubleshooting section</a> below for common issues.
+            </p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="ft8-introduction">
+<h2>Intro to the FT digital modes / FTデジタルモードの概要</h2>
+<p>
+                qFT8 supports FT8, FT4, FT2, and JS8 digital modes. FT4 is a digital protocol exactly like FT8 but designed to be twice as fast (operating in 7.5-second cycles instead of 15-second cycles). The supported FT2 implementation (original) is exactly like FT4 but designed to be twice as fast. JS8 uses the same encoding as FT8, with different speeds and bandwidth, with a different layer for message slicing.
+            </p>
+<p>
+                FT8 is a digital protocol designed for multi-hop sporadic-E and other weak-signal conditions.
+                It is characterized by structured messages and precise timing.
+            </p>
+<h3>Cycles and Sequences / サイクルとシーケンス</h3>
+<p>
+                FT8 operates in <strong>15-second cycles</strong>. Every communication cycle is strictly timed,
+                starting exactly at <strong>00, 15, 30, and 45 seconds</strong> of every minute.
+                For this reason, your device's clock must be accurately synchronized to
+                <strong><span translate="no">UTC</span> time</strong>.
+            </p>
+<p>
+                There are two sequences within the protocol:
+            </p>
+<ul>
+<li><strong>Sequence 0 (Even)</strong>: Cycles starting at <strong>00 and 30</strong> seconds.</li>
+<li><strong>Sequence 1 (Odd)</strong>: Cycles starting at <strong>15 and 45</strong> seconds.</li>
+</ul>
+<p>
+                Stations generally alternate between transmitting and receiving. A station transmitting in Sequence 0
+                will listen for a response in Sequence 1, and vice versa.
+                Within each 15-second cycle, the message is transmitted in a window between approximately
+                <strong>+0.5s and +13s</strong>. This leaves time at the end of the cycle for decoding and at the
+                beginning
+                for preparing the next transmission.
+            </p>
+<h3>Signal Characteristics / 信号特性</h3>
+<p>
+                Each FT8 message is transmitted as a sequence of tones with slight frequency variations
+                (sometimes described as "wiggliness").
+                An FT8 signal is very narrow, occupying only about <strong>50Hz of bandwidth</strong>.
+                This efficiency allows dozens of simultaneous conversations to fit within a single 3kHz radio band.
+            </p>
+<h3>The 6 Stages of a QSO / QSOの6つのステージ</h3>
+<p>
+                A standard FT8 contact typically moves through six stages. Here is an example of an exchange between
+                <strong>HB9IPH</strong> and <strong>XX1XXX</strong>:
+            </p>
+<ol>
+<li><strong><span translate="no">1/6 CQ</span></strong>: A station looks for
+                    anyone to talk to.<br/>
+<em>Example: <code>CQ HB9IPH JN47</code></em><br/>
+                    Note: <code>JN47</code> is a
+                    <strong><span translate="no">Maidenhead</span> grid locator</strong>,
+                    which indicates the
+                    station's approximate geographic location.
+                    There may also be a <strong><span translate="no">CQ</span>
+                        modifier</strong>, which is a note for other operators (e.g.,
+                    <code>CQ SOTA HB9IPH</code> for the Summits On The Air program, or <code>CQ US HB9IPH</code> when
+                    trying to contact someone in the US).
+                    Both the modifier and location might not fit in the same message; in such cases, the location is
+                    omitted. If the callsign is very long, it is possible that neither the location nor the
+                    modifier will fit in the <span translate="no">CQ</span>!
+                </li>
+<li><strong><span translate="no">2/6 CALL</span></strong>: Another station
+                    responds to the <span translate="no">CQ</span>.<br/>
+<em>Example: <code>HB9IPH XX1XXX JO21</code></em><br/>
+                    Note: The responder also shares their location (<code>JO21</code>), which may be omitted if the
+                    callsigns are too long to fit everything.
+                </li>
+<li><strong><span translate="no">3/6 RPT</span></strong>: The first station
+                    sends a signal report.<br/>
+<em>Example: <code>XX1XXX HB9IPH -10</code></em><br/>
+                    Note: The <strong>signal report</strong> (e.g., <code>-10</code>) indicates the signal strength
+                    relative to the noise floor in <span translate="no">dB</span>.
+                </li>
+<li><strong><span translate="no">4/6 RRPT</span></strong>: The second station
+                    acknowledges the report and sends their own.<br/>
+<em>Example: <code>HB9IPH XX1XXX R-12</code></em><br/>
+                    Note: The "R" prefix confirms the previous report was received, followed by the
+                    <strong>signal report</strong> for the first station.
+                </li>
+<li><strong><span translate="no">5/6 RR73</span></strong>: The first station
+                    confirms everything and sends a "Roger-Roger 73".<br/>
+<em>Example: <code>XX1XXX HB9IPH RR73</code></em>
+</li>
+<li><strong><span translate="no">6/6 73</span></strong>: The second station
+                    sends a final "73" to close the contact.<br/>
+<em>Example: <code>HB9IPH XX1XXX 73</code></em>
+</li>
+</ol>
+<p>
+                Because of the <a href="https://en.wikipedia.org/wiki/Two_Generals%27_Problem" target="_blank">Two
+                    Generals' Problem</a>, it is theoretically impossible to know for certain that the other station
+                received your last communication unless they confirm so. However, then you would need to confirm their
+                confirmation, and they would need to confirm that, and so on.
+                The FT8 digital mode mitigates this by having structured stages: a QSO can technically be considered
+                complete
+                after stage <span translate="no">4/6</span> (when both signal reports have
+                been exchanged).
+                In practice, to ensure both stations agree that the exchange happened, a QSO is logged when a station
+                has received an <span translate="no">RR73</span> and has sent out a 73.
+                Effectively, either transmitting an <span translate="no">RR73</span> or a 73
+                triggers the logging of a QSO.
+            </p>
+<p>
+                Note that stations may also call other stations even if they haven't transmitted a
+                <span translate="no">CQ</span> first.
+                For example, stations in rare locations may have a "pile-up" of many stations calling them
+                simultaneously; in such cases, the rare station may simply move from one QSO to the next
+                without needing to invite new callers with a <span translate="no">CQ</span>.
+            </p>
+<p>
+                Some stations may use <strong>RRR</strong> instead of RR73 in stage 5.
+                In that case, the contact requires an extra exchange: the second station sends 73, and then
+                the first station sends 73 again to finish.
+            </p>
+<p>
+                FT8 also supports <strong>free text messages</strong> (up to 13 characters), but qFT8 does not
+                currently support sending these custom messages.
+            </p>
+<h3>Protocol Limitations and Fallbacks / プロトコルの制限とフォールバック</h3>
+<p>
+                FT8 messages are highly compressed into <strong>77 bits</strong>. Sometimes, complex information
+                (like long, non-standard callsigns) does not fit in the standard message format.
+            </p>
+<ul>
+<li><strong>Hashed Callsigns</strong>: If a callsign is too long, it may be sent as a hash.
+                    If the receiving station has seen that callsign calling CQ recently, their software can map the hash
+                    back
+                    to the original callsign. Otherwise, it will be displayed as <code>&lt;...&gt;</code>. It is much
+                    harder to achieve QSOs when your callsign is not standard.</li>
+<li><strong>Free Text Fallback</strong>: Some messages may be forced into the 13-character free text
+                    format, which is less robust than the standard structured messages.</li>
+<li><strong>Non-standard Callsigns</strong>: If two stations both use very long, non-standard
+                    callsigns, they may be fundamentally unable to communicate with each other using the FT8 digital
+                    mode.
+                </li>
+<li><strong>Stage Skipping</strong>: If callsigns are too long, the protocol may not be able to fit
+                    signal reports (<span translate="no">stages 3/6 and 4/6</span>). In these
+                    cases, the exchange may skip directly from the
+                    initial <span translate="no">CALL (2/6)</span> to the final confirmations
+                    (<span translate="no">5/6 and 6/6</span>).</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="user-interface">
+<h2>qFT8 User Interface / qFT8 ユーザーインターフェース</h2>
+<p>The qFT8 app is split in three parts:</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Overview" class="screen" height="1080" src="../overview.jpg" width="2280"/>
+</div>
+<ol>
+<li><strong>The bottom bar</strong>: Always visible, to oversee and control transmission and to control
+                    qFT8.</li>
+<li><strong>The spectrogram</strong>: Always visible, to see decoded messages, see
+                    <span translate="no">UTC</span> time live and
+                    tuned frequency, and control transmission frequency offset.
+                </li>
+<li><strong>The tab area</strong>: Shows one out of three tabs
+                    (Stations,
+                    Log, and
+                    Settings). Which
+                    one is shown here can be controlled with the buttons at the right-most part of the bottom bar.
+                </li>
+</ol>
+<p>The following sections describe all these components in detail.</p>
+<h3 id="ui-bottom-bar">The Bottom bar / ボトムバー（下部操作バー）</h3>
+<p>The bottom bar shows important information: the transmission armed/disarmed state, whether qFT8 is
+                transmitting, the transmission power, the Standing Wave Ratio
+                (<span translate="no">SWR</span>), the message being transmitted, the
+                current and selected sequence, the band selector, and the buttons to navigate the different tabs.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Bottom bar" class="screen" height="1080" src="../bottombar.jpg" width="2280"/>
+</div>
+<p>These are the components of the bottom bar in detail:</p>
+<ol>
+<li><strong>The cycle progress bar</strong>: The <span style="color: #ffff00; font-weight: bold;">yellow</span> bar starts at 0s within the cycle
+                    (left-most)
+                    and
+                    ends at 15s within the cycle (right-most).</li>
+<li><strong>The Tx trigger marker</strong>: The <span style="color: #ff5252; font-weight: bold;">red</span> dot at the left part of the bar indicates
+                    the Tx
+                    trigger time. If Tx is ON (see item #4) and the current sequence is the selected sequence (see item
+                    #6)
+                    transmission starts at this point.</li>
+<li><strong>The decoding time marker</strong>: The <span style="color: #ffffff; font-weight: bold;">white</span> dot at the right part of the bar
+                    indicates the
+                    decoding time, that is, when messages are decoded from signals received and subsequently processed.
+                </li>
+<li><strong>The TX button</strong>: Can be disarmed
+                    (<span translate="no">OFF</span>) or armed
+                    (<span translate="no">ON</span>). It also shows when transmission
+                    is happening,
+                    and the transmit power and <span translate="no">SWR</span>. In <span translate="no">QMX</span> firmwares above 1_04, this button will show "HOLD: TUNE". Holding the button will enable tuning mode and report on <span translate="no">SWR</span> live.
+                </li>
+<li><strong>The message selector</strong>: It shows the message selected to be sent or being sent (if
+                    that is the case, highlighted in <span style="color: #ffff00; font-weight: bold;">yellow</span>). In
+                    <span translate="no">AUTO</span>
+                    mode, it is managed automatically. In <span translate="no">CALL</span>
+                    mode it is
+                    also managed automatically by default, but it can be tapped on to select the next message to send
+                    manually.
+                </li>
+<li><strong>The sequence selector</strong>: The <span style="color: #ffff00; font-weight: bold;">yellow</span> line on top of the buttons show the
+                    current
+                    sequence (0 or 1). Tapping on 0 or 1 selects that sequence for outgoing transmissions.</li>
+<li><strong>The mode selector</strong>: It changes the transmission mode used (e.g. <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, or <span translate="no">JS8</span>).</li>
+<li><strong>The band selector</strong>: When a transceiver is connected, it changes the band in the
+                    transceiver.</li>
+<li><strong>The Stations tab button</strong>: Opens the tab that lists all the stations you've heard or
+                    can communicate with.</li>
+<li><strong>The Log tab button</strong>: Opens the tab that lists all the
+                    <span translate="no">QSO</span> you've made. This button will be marked
+                    with a yellow dot if you have QSOs that aren't uploaded to QRZ.
+                </li>
+<li><strong>The Settings tab button</strong>: Opens the tab to configure qFT8.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="ui-spectrogram">The Spectrogram / スペクトログラム（ウォーターフォール）</h3>
+<p>The spectrogram shows a peak view, and the waterfall with incoming signals and messages, outgoing signals
+                and messages, markers for the change of sequence annotated with
+                <span translate="no">UTC</span> time and time to decode, and the
+                selected offset frequency for transmission.
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Spectrogram" class="screen" height="1080" src="../spectrogram.jpg" width="2280"/>
+</div>
+<p>These are the components of the spectrogram in detail:</p>
+<ol>
+<li><strong>Waterfall view</strong>: Displays the recent history of received signals over time. Tapping in that view will change the selected frequency offset.</li>
+<li><strong>Real-time peaks</strong>: Show the instantaneous strength of signals across the frequency
+                    range. Tapping in that view will open a dialog to input the precise selected frequency offset.</li>
+<li><strong>Sequence separators</strong>: These <span style="color: #ff5252; font-weight: bold;">red</span> horizontal lines act as visual separators
+                    of cycles,
+                    and are annotated with <span translate="no">UTC</span> time and
+                    <span translate="no">time</span> spent decoding.
+                </li>
+<li><strong>Selected frequency offset</strong>: This vertical <span style="color: #ffff00; font-weight: bold;">yellow</span> overlay on the spectrogram indicates
+                    the currently selected frequency offset for transmission.</li>
+<li><strong>Incoming messages</strong>, shown color-coded:
                     <ul>
-                        <li><a href="#supported-devices">対応デバイス・無線機</a></li>
-                    </ul>
+<li><span style="color: #00ff00; font-weight: bold;">Green</span>: CQ messages.</li>
+<li><span style="color: #00ffff; font-weight: bold;">Cyan</span>: Messages between other
+                            stations.</li>
+<li><span style="color: #ffff00; font-weight: bold;">Yellow</span>: Your transmitted messages.
+                        </li>
+<li><span style="color: #ff9800; font-weight: bold;">Orange</span>: Incoming messages directed
+                            to you.</li>
+</ul>
+</li>
+<li><strong>Current <span translate="no">UTC</span> time and
+                        sequence</strong>: Displayed at the top of the waterfall.</li>
+<li><strong>Tuned frequency and band</strong>: Frequency and band the transceiver is currently tuned to.
                 </li>
-                <li><a href="#quick-setup">クイックセットアップ</a>
+<li><strong>Frequency axis</strong>: Shows the frequency scale in
+                    <span translate="no">Hz</span> within the selected band.
+                </li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="ui-stations-tab">The Stations tab / Stations（ステーション）タブ</h3>
+<p>The Stations tab is the command center for monitoring activity on the band and operating qFT8. It
+                features filtering and automation controls at the top, followed by a list of active stations.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Stations tab" class="screen" height="1080" src="../stations.jpg" width="2280"/>
+</div>
+<p>These are the components of the Stations tab in detail:</p>
+<ol>
+<li><strong><span translate="no">AUTO</span> call mode button</strong>:
+                    Engaging "<span translate="no">AUTO</span>" will try to call the best
+                    station according
+                    to the criteria selected by the user.</li>
+<li><strong>Manual <span translate="no">CALL</span> mode button</strong>:
+                    Engaging "<span translate="no">CALL</span>" for a station will insist on
+                    calling that
+                    station until achieving a <span translate="no">QSO</span>, then will fall
+                    back to "<span translate="no">AUTO</span>".</li>
+<li><strong>Target</strong>: Sets the criteria for the AUTO mode:
                     <ul>
-                        <li><a href="#initial-permissions">初期権限の許可</a></li>
-                        <li><a href="#mandatory-callsign">コールサインの入力</a></li>
-                        <li><a href="#usb-permission">USB接続権限の許可</a></li>
-                        <li><a href="#audio-check">[QMX専用] オーディオ確認</a></li>
-                        <li><a href="#import-qsos">[オプション] QSOログのインポート</a></li>
-                    </ul>
+<li><strong><span translate="no">Anyone</span></strong>: Any callsign
+                            that you don't have a <span translate="no">QSO</span> for yet.
+                        </li>
+<li><strong><span translate="no">Nearby</span></strong>: Prioritize nearest
+                            stations based on <span translate="no">Maidenhead</span> grid distance.
+                        </li>
+<li><strong><span translate="no">Far</span></strong>: Prioritize farthest
+                            stations based on <span translate="no">Maidenhead</span> grid distance.
+                        </li>
+<li><strong><span translate="no">Signal strength</span></strong>: Prioritize stations
+                            with the strongest signal (<span translate="no">SNR</span>).
+                        </li>
+<li><strong><span translate="no">Call CQ</span></strong>: Just calls
+                            CQ and replies to any station that calls your station.</li>
+<li><strong><span translate="no">POTA hunter</span></strong>: Prioritize
+                            <span translate="no">Parks on the Air</span> stations.</li>
+<li><strong><span translate="no">SOTA hunter</span></strong>: Prioritize
+                            <span translate="no">Summits on the Air</span> stations.</li>
+<li><strong><span translate="no">POTA + SOTA hunter</span></strong>: Prioritize both
+                            <span translate="no">Parks on the Air</span> and <span translate="no">Summits on the Air</span> stations, then stations that are neither, ordered by <span translate="no">SNR</span>.</li>
+<li><strong><span translate="no">DXCC</span></strong>: Prioritize new
+                            countries/entities.</li>
+<li><strong><span translate="no">Grid</span></strong>: Prioritize new
+                            <span translate="no">Maidenhead</span> grid squares.
+                        </li>
+<li><strong><span translate="no">ITU zone</span></strong>: Prioritize
+                            new <span translate="no">ITU</span> zones.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: Prioritize
+                            new <span translate="no">CQ</span> zones.</li>
+<li><strong><span translate="no">I/C/D/G</span></strong>: Prioritize
+                            first <span translate="no">ITU</span> zone, then
+                            <span translate="no">CQ</span> zone, then
+                            <span translate="no">DXCC</span>, then
+                            <span translate="no">Grid</span>.
+                        </li>
+</ul>
+                    In all cases, stations that meet the same criteria are sorted by signal strength. For example,
+                    <span translate="no">Anyone</span> will prioritize new callsigns first,
+                    but among them the strongest signals will be at the top of the list.
                 </li>
-                <li><a href="#first-qso">qFT8での最初のQSO（交信）</a></li>
-                <li><a href="#ft8-introduction">FTデジタルモードの概要</a></li>
-                <li><a href="#user-interface">qFT8 ユーザーインターフェース</a>
+<li><strong>Periodicity</strong>: How often to contact that target:
                     <ul>
-                        <li><a href="#ui-bottom-bar">ボトムバー（下部操作バー）</a></li>
-                        <li><a href="#ui-spectrogram">スペクトログラム（ウォーターフォール）</a></li>
-                        <li><a href="#ui-stations-tab">Stations（ステーション）タブ</a></li>
-                        <li><a href="#ui-log-tab">Log（ログ）タブ</a></li>
-                        <li><a href="#ui-settings-tab">Settings（設定）タブ</a></li>
-                    </ul>
-                </li>
-                <li><a href="#auto-mode">自動運用（<span translate="no">AUTO</span>モード）</a></li>
-                <li><a href="#call-mode">手動運用（<span translate="no">CALL</span>モード）</a></li>
-                <li><a href="#adif-import-export"><span translate="no">ADIF</span>ログのインポート・エクスポート</a></li>
-                <li><a href="#qrz-integration"><span translate="no">QRZ</span>連携</a></li>
-                <li><a href="#lotw-integration"><span translate="no">LoTW</span>（Logbook of The World）連携</a></li>
-                <li><a href="#sota">Summits On The Air（<span translate="no">SOTA</span>）</a></li>
-                <li><a href="#pota">Parks On The Air（<span translate="no">POTA</span>）</a></li>
-                <li><a href="#js8-chat"><span translate="no">JS8</span> チャット</a></li>
-                <li><a href="#remote-control">リモートコントロール Webサーバー</a></li>
-                <li><a href="#troubleshooting">トラブルシューティング</a></li>
-            </ul>
-        </div>
-
-        <div class="disclaimer-banner">
-            免責事項：qFT8を使用することにより、法令遵守、安全性、機器の損傷に関するすべての責任はお客様自身が負うものとします。
-        </div>
-
-        <section id="what-is-qft8">
-            <h2>qFT8とは？</h2>
-
-            <p>
-                qFT8は、トランシーバーと接続してFT8、FT4、FT2、またはJS8のデジタルデータメッセージを送受信・デコードする<a href="https://ja.wikipedia.org/wiki/アマチュア無線" target="_blank">アマチュア無線</a>用の<a href="https://ja.wikipedia.org/wiki/Android" target="_blank">Androidスマートフォン</a>アプリです。
-            </p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../screenshot.jpg" alt="qFT8 Screenshot" class="screen" width="2280" height="1080">
-            </div>
-
-            <p>
-                qFT8はQMXやICOM IC-7300などのプラグアンドプレイ対応無線機を箱から出してすぐに直接サポートしていますが、VOXを有効にしてスマートフォンのスピーカーとマイクを無線機に近づけたり、オーディオケーブルで接続したりすることで、あらゆるトランシーバーと組み合わせて運用することも可能です。また、トランシーバーを使わずにアプリ単体で試すこともできます。スマートフォンのスピーカーから音声を送信し、内蔵マイクで信号を受信するため、qFT8を実行している複数のスマートフォン同士を近づければ音響経由で直接交信テストを行うことができます。
-            </p>
-
-            <p>
-                qFT8は完全無料で広告もありません。オープンソースとしてソースコードが公開されており、<a href="https://github.com/lquesada/qFT8" target="_blank">GitHub</a>で確認できます。
-            </p>
-
-            <p>
-                <a href="https://www.luisquesada.com" target="_blank"><span translate="no">Luis Quesada Torres</span></a>
-                （<a href="https://www.qrz.com/db/HB9IPH" target="_blank">HB9IPH</a>）が2026年にqFT8を開発し、著作権を保有して全権利を留保しています。
-            </p>
-
-            <p>
-                qFT8には、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（Copyright &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（Copyright &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、および <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）のコードの一部が含まれています。これらのサードパーティの作者やプロジェクトは、qFT8を推奨または提携していません。
-            </p>
-
-            <h3>主な機能</h3>
-            <ul>
-                <li>クイックセットアップ</li>
-                <li>50機種以上の無線機を直接サポート</li>
-                <li>手動<span translate="no">CALL</span>モードおよび<span translate="no">AUTO</span>（完全自動）運用</li>
-                <li><span translate="no">NTP</span>（インターネット）および<span translate="no">GPS</span>による自動時刻同期</li>
-                <li>おおよその位置情報（グリッドロケーター）の自動取得</li>
-                <li><span translate="no">ADIF</span>ログのインポートおよびエクスポート</li>
-                <li><span translate="no">QRZ</span>および<span translate="no">LoTW</span>連携：自動アップロード、QSO確認（CFM）チェック</li>
-                <li>上限設定可能な自動再試行（リトライ）・一時除外ロジック</li>
-                <li><span translate="no">SOTA</span> / <span translate="no">POTA</span>対応：<span translate="no">CQ</span>修飾子、アワード用参照タグ付き<span translate="no">ADIF</span>エクスポート</li>
-                <li>完全遠隔操作用内蔵Webサーバー</li>
-                <li>バッテリー節電モード：画面消灯（スリープ）状態でもバックグラウンド動作</li>
-            </ul>
-            <h3 id="supported-devices">対応デバイス・無線機</h3>
-            <p>qFT8はトランシーバーとの接続方法として主に3つの形態をサポートしています：</p>
-
-            <h4>直接CAT/オーディオ接続対応トランシーバー（USBケーブル1本で制御）</h4>
-            <p>以下のトランシーバーはUSBケーブルを介して直接サポートされており、CAT制御（周波数制御およびPTT送受信切替）と高音質なUSBオーディオ通信を同時に行えます：</p>
-            <ul>
-                <li><strong>QRPLabs <span translate="no">QMX</span> / <span translate="no">QMX+</span></strong></li>
-                <li><strong>QRPLabs <span translate="no">QDX</span> / <span translate="no">QDX-M</span></strong>（※この機種にはパワー計および<span translate="no">SWR</span>計機能はありません）</li>
-                <li><strong>ICOM IC-7300</strong> および <strong>ICOM IC-7300 MK2</strong></li>
-                <li><strong>ICOM IC-705</strong></li>
-                <li><strong>ICOM IC-7610</strong></li>
-                <li><strong>ICOM IC-7851</strong></li>
-                <li><strong>ICOM IC-7100</strong></li>
-                <li><strong>ICOM IC-7200</strong></li>
-                <li><strong>ICOM IC-9700</strong></li>
-                <li><strong>ICOM IC-7600</strong></li>
-                <li><strong>ICOM IC-7410</strong></li>
-                <li><strong>ICOM IC-9100</strong></li>
-                <li><strong>ICOM IC-7000</strong></li>
-                <li><strong>ICOM IC-706MKIIG</strong></li>
-                <li><strong>ICOM IC-746 / IC-746PRO</strong></li>
-                <li><strong>ICOM IC-756PRO / PRO2 / PRO3</strong></li>
-                <li><strong>ICOM IC-7700</strong></li>
-                <li><strong>ICOM IC-7800 / IC-7850</strong></li>
-                <li><strong>Yaesu FT-891</strong></li>
-                <li><strong>Yaesu FT-710</strong></li>
-                <li><strong>Yaesu FTX-1</strong></li>
-                <li><strong>Yaesu FT-991 / FT-991A</strong></li>
-                <li><strong>Yaesu FT-DX10</strong></li>
-                <li><strong>Yaesu FTDX101</strong></li>
-                <li><strong>Elecraft K4 / K4D / K4HD</strong></li>
-                <li><strong>Elecraft K3 / K3S</strong></li>
-                <li><strong>Elecraft KX3</strong></li>
-                <li><strong>Elecraft KX2</strong></li>
-                <li><strong>Elecraft KH1</strong></li>
-                <li><strong>Elecraft K2 (KIO2モジュールが必要)</strong></li>
-                <li><strong>Xiegu X6100</strong></li>
-                <li><strong>Xiegu X6200</strong></li>
-                <li><strong>Kenwood TS-480 / TS-590 / TS-2000 シリーズ</strong></li>
-                <li><strong>FX-4CR</strong></li>
-                <li><strong>QuantumSDR</strong></li>
-                <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
-            </ul>
-
-            <p><strong>外部インターフェース（Digirig、汎用USB-シリアルケーブル等）に関する注意：</strong> 自動検出（<code>AUTO</code>）はネイティブUSBコントローラーまたは専用ケーブルを持つ無線機向けに設計されています。Digirigなどの汎用外部インターフェースを使用する場合、自動検出は汎用インターフェースチップのみを認識し、デフォルトでVOXモードになります。外部インターフェース経由で接続された無線機（Lab599 TX-500など）でCAT制御を使用するには、<strong>設定タブのトランシーバー設定</strong>メニューで無線機のモデルを手動で選択してください。</p>
-
-            <p>さらに多くの機器がVOX（オーディオのみの部分統合）経由でサポートされています。</p>
-
-            <p style="color: #ff5252; font-weight: bold;">注意：安全上の理由から、qFT8アプリからトランシーバーの送信電力を変更することはできません。送信電力の調整は無線機本体で行ってください。</p>
-
-            <h4>その他のトランシーバー</h4>
-            <ul>
-                <li>スピーカー/マイクの音響結合による運用（簡易的）</li>
-                <li>汎用オーディオインターフェースケーブルによる運用</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="quick-setup">
-            <h2>クイックセットアップ</h2>
-
-            <p>
-                トランシーバーの破損を防ぐため、<strong>適切な電源電圧</strong>（例: QMXの場合は &le;12V）を使用していることを必ず確認してください。
-            </p>
-
-            <p>
-                また、スマートフォンとトランシーバーを接続するUSBケーブルおよびアダプターが<strong>データ転送対応</strong>であることを確認してください。USB-C以外の端子を使用するデバイスの場合、OTG（On-The-Go）対応ケーブルが必要になることが一般的です。qFT8が無線機を認識しない問題のほとんどは、非対応の充電専用ケーブルやアダプターが原因です。
-            </p>
-
-            <h3 id="initial-permissions">初期権限の許可</h3>
-            <p>qFT8を初めて起動すると、いくつかのシステム権限が要求されます：</p>
-            <ul>
-                <li><em>音声の録音を許可</em>: <strong>必須</strong>です。トランシーバーからの受信信号を取得するために必要です。qFT8は音声録音データを保存・共有・アップロードすることは一切ありません。</li>
-                <li><em>この端末のおおよその位置情報へのアクセスを許可</em>: 任意（推奨）。FT8交信で相手と交換する<span translate="no">Maidenhead</span>グリッドロケーター（4桁）を自動算出するために使用します。正確な位置情報の取得や共有は行いません。</li>
-                <li><em>通知の送信を許可</em>: 任意（推奨）。バッテリーを節約するためにアプリを最小化したり画面を消灯した状態でフォアグラウンドサービスとして実行するために使用します。通知はトランシーバー接続中のみ有効になります。</li>
-                <li><em>アプリのバックグラウンド実行を常に許可</em>: 任意（推奨）。画面消灯時でもqFT8が途切れずに安定して動作し続けるために必要です。</li>
-            </ul>
-
-            <div class="highlight">
-                <p><strong>重要事項：</strong> qFT8はアプリ専用サーバーにいかなる個人情報や通信データも送信しません。すべての信号処理・デコードは端末内で完全にローカルに実行されます。コールサイン、日時、グリッドロケーターの外部送信は、有効な<span translate="no">QRZ APIキー</span>や<span translate="no">LoTW</span>連携を設定した場合にのみ、公式サービスに対して明示的に行われます。</p>
-                <p>詳細はqFT8 <a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
-            </div>
-
-            <h3 id="mandatory-callsign">コールサインの入力</h3>
-            <p>
-                qFT8を機能させるには<strong>コールサインの入力が必須</strong>です。実際の無線機に接続せずテスト目的で使用する場合は、仮のコールサイン（例: XX1XXX）を入力することもできます。
-            </p>
-            <p>qFT8はコールサインの入力時に以下の確認を求めます：</p>
-            <ul>
-                <li>トランシーバーに接続して本ソフトウェアを使用するには、有効なアマチュア無線局免許を保持している必要があります。</li>
-                <li>無人での運用（放置運用）は行わないでください。</li>
-                <li><em>免責事項</em>: qFT8を使用することにより、法令遵守、運用上の安全性、機器の損傷に関するすべての責任はユーザー自身が負うことに同意したものとみなされます。</li>
-            </ul>
-
-            <h3 id="usb-permission">USB接続権限の許可</h3>
-            <p>トランシーバーを接続した状態でqFT8を開くと、システムダイアログが表示されます：</p>
-            <p><em>「Transceiver が接続されたときに qFT8 を開きますか？」</em></p>
-            <ul>
-                <li>この権限はトランシーバーとのCAT制御・通信に<strong>必須</strong>です。</li>
-                <li>許可しない場合、受信・デコードはできても送信はできません。</li>
-                <li>毎回確認されないよう、「常に許可」にチェックを入れると便利です。</li>
-            </ul>
-
-            <p>
-                Android端末が無線機を認識しない場合は、後述の<a href="#trouble-not-recognized">Android端末がトランシーバーを認識しない、または切断される</a>のトラブルシューティング項目をご確認ください。
-            </p>
-
-            <p>
-                <span translate="no">qFT8</span>はトランシーバーが接続されると自動的に適切な設定を行います。
-            </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="audio-check">[QMX専用] オーディオ確認</h3>
-            <p>
-                運用を開始する前に、スマートフォンと<span translate="no">QMX</span>間のオーディオ信号が正しく流れているか確認することが重要です。<span translate="no">TX</span>ボタンを押し、次の送信シーケンスで<span translate="no">QMX</span>が送信を開始するのを待ちます。
-            </p>
-
-            <h4>正常に動作している場合</h4>
-            <p>
-                <span translate="no">TX</span>ボタンに出力電力（例: 5<span translate="no">W</span>）が表示されれば正常に動作しています。<span translate="no">QMX LCD</span>の画面左上にある「<span translate="no">A</span>」<span translate="no">VFO</span>マーカーの下に<strong>バー（横線）</strong>が表示されます。これはQMXがスマートフォンから適切なオーディオ信号を受信していることを意味します。また、LCDの周波数表示の後に<span translate="no">SWR</span>保護を示す「<span translate="no">S</span>」が表示されていないことを確認してください。
-            </p>
-
-            <h4>周波数の後ろに「<span translate="no">S</span>」が表示される場合</h4>
-            <p>
-                <span translate="no">QMX LCD</span>の周波数の後に「<strong><span translate="no">S</span></strong>」が表示される場合、<span translate="no">SWR</span>保護が作動しています。現在のバンドに対してアンテナが適切に同調していません。<span translate="no">QMX</span>メニューのSWRチェック機能でSWRを測定し、アンテナを調整してください。
-            </p>
-            <ul>
-                <li><strong>ファームウェア 1_04_004以降</strong>: <span translate="no">qFT8</span>がサイクル終了時に自動でSWR保護をリセットします。</li>
-                <li><strong>ファームウェア 1_03_000以降</strong>: QMXの保護メニューで「SWR Protection reset options」を<strong><span translate="no">TX-&gt;RX</span></strong>に設定すると自動解除されます。</li>
-                <li><strong>古いファームウェア</strong>（1_03_000未満）: QMXのTUNEメニューに入るか、電源を入れ直してリセットする必要があります。</li>
-            </ul>
-
-            <h4>バーの代わりに2つのドット（点）が表示される場合</h4>
-            <p>
-                <span translate="no">QMX</span>画面左上の「<span translate="no">A</span>」の下にバーではなく<strong>2つのドット</strong>が表示されている場合、オーディオ音量が<strong>小さすぎる</strong>か<strong>大きすぎる（歪み）</strong>状態です。
-            </p>
-            <p>
-                <strong>対処法：</strong> <span translate="no">qFT8</span>の設定を開き、「送信時のシステム音量を [X] に設定」オプションで異なる値（70%、80%、60%、100%など）を試してください。適切な音量になると2つのドットが1本のバーに変わります。
-            </p>
-            <p>
-                一部の機種でこの音量連動が機能しない場合は、チェックを外し、バーが表示されるまで手動で端末のメディア音量を調整してください。
-            </p>
-            <p>
-                また、コモンモード電流がQMXの動作に悪影響を及ぼしている場合があるため、アンテナ同軸にコモンモードチョークを追加することも有効です。
-            </p>
-
-            <h4>「<span translate="no">A</span>」の下に何も表示されない場合</h4>
-            <p>
-                <span translate="no">QMX LCD</span>画面の「<span translate="no">A</span>」の下にバーもドットも表示されない場合、スマートフォンが無線機を正常に制御できていません。多くの場合、USB権限が拒否されたか閉じられたことが原因です。この状態では受信はできても送信はできません。
-            </p>
-            <p>
-                <strong>対処法：</strong> QMXのUSBケーブルを一度抜き、再度差し込んで権限ダイアログを再表示させてください。またはケーブル自体の不良が考えられるため、別のUSB-Cケーブルを試してください。
-            </p>
-
-            <p>
-                QMX画面の「<span translate="no">A</span>」の下にバーが表示され、<span translate="no">TX</span>ボタンに出力電力が表示されれば準備完了です！
-            </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="import-qsos">[オプション] QSOログのインポート</h3>
-            <p>既存の交信ログをインポートするには、手動インポートとQRZ/LoTWによる自動同期の2つの方法があります。どちらもボトムバーの一番右にある設定ボタンから行います。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../settingsbutton.jpg" alt="qFT8 Settings Button" class="screen" width="2280" height="1080">
-            </div>
-
-            <p><strong>手動インポート方式</strong>: 設定の「<span translate="no">ADIF File Import</span>」セクションに移動し、「<span translate="no">IMPORT QSOs</span>」ボタンをタップしてインポートする <code>.adi</code> ファイルを選択します。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../adif.jpg" alt="qFT8 ADIF Import" class="screen" width="2280" height="1080">
-            </div>
-
-            <p><strong>QRZ 自動同期方式</strong>: 有効な<a href="https://www.qrz.com/page/subscriptions.html" target="_blank">QRZ有料サブスクリプション</a>（XML Logbook Data以上）が必要です。設定の「<span translate="no">QRZ Syncing</span>」セクションでQRZ APIキーを入力して「<span translate="no">VALIDATE</span>」を押し、「<span translate="no">IMPORT QSOs FROM QRZ</span>」ボタンをタップします。これによりQRZへの自動アップロードと確認チェックも有効になります。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../qrzsync.jpg" alt="qFT8 QRZ Syncing" class="screen" width="2280" height="1080">
-            </div>
-
-            <p><strong>LoTW 自動同期方式</strong>: 完全無料です。設定の「<span translate="no">LoTW Syncing</span>」セクションでコールサインとLoTWパスワード、TQSL証明書（.p12）を設定します。「<span translate="no">IMPORT QSOs FROM LoTW</span>」でこれまでのLoTW全ログを取得できます。</p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="first-qso">
-            <h2>qFT8での最初のQSO（交信）</h2>
-            <p>
-                注意：FT8では正確な時刻同期が極めて重要です。qFT8はアプリ起動時にNTP（インターネット）またはGPS（衛星）経由で時計を自動同期します。インターネットのない屋外運用時は、設定タブの「<strong>GPS SYNC</strong>」ボタンを使ってGPS衛星から直接時計を合わせることができます（正確な位置情報権限と天空の見通しが必要です）。
-            </p>
-
-            <p>
-                トランシーバーを適切な電源とアンテナに接続し、全権限を許可した状態にします。アンテナが適切なSWR（理想的には2.0未満）に同調していることを確認してください。<strong>QMXのSWR保護機能を無効化することは機器破損の原因となるため絶対に避けてください。</strong>
-            </p>
-
-            <p>qFT8のボトムバーまたは無線機本体で運用したいバンドを選択します。どちらかで変更するともう一方も同期します。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../bandselector.jpg" alt="qFT8 Band Selector" class="screen" width="2280" height="1080">
-            </div>
-
-            <p>
-                スペクトログラムに受信信号が表示され、メッセージのデコードが始まります。「Stations」タブには受信したステーションがリアルタイムでリストアップされます。
-            </p>
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../stationsbutton.jpg" alt="qFT8 Stations Button" class="screen" width="2280" height="1080">
-            </div>
-
-            <p>
-                画面下部左端の <span translate="no">TX</span> ボタンをタップすると送信が有効（アーム状態）になります。
-            </p>
-
-            <p>すべてが正常であれば、送信タイミングになると <span translate="no">TX</span> ボタンが「<span translate="no">TX Transmitting</span>」と点灯し、送信電力とSWR（例: 「5.0W SWR 1.2」）が表示されます。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../txbutton.jpg" alt="qFT8 TX Button" class="screen" width="2280" height="1080">
-            </div>
-
-            <p>
-                デフォルトで「<span translate="no">AUTO</span>」モードが選択されているため、qFT8は自動的に最適な局を呼び出してQSOを進行し、完了した交信をLogタブに自動記録します。
-            </p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../logbutton.jpg" alt="qFT8 Log Button" class="screen" width="2280" height="1080">
-            </div>
-
-            <p>
-                スペクトログラムをタップして送信周波数オフセットを変更できます（ピークインジケーターのある上部をタップすると数値を直接入力できます）。また、ボトムバーの「0」「1」ボタンで送信シーケンスを変更したり、Stationsタブで特定の相手の「<span translate="no">CALL</span>」ボタンを押して手動呼び出ししたり、「<span translate="no">AUTO</span>」条件を変更してターゲット戦略をカスタマイズできます。
-            </p>
-
-            <p>
-                qFT8は条件に合致するステーションを呼び出しますが、呼べる局がいない場合は自動的に自局のCQ送信を開始します。セッティングが正しくコンディションが良ければすぐに交信が成立します。
-            </p>
-
-            <p>
-                信号を受信できずメッセージもデコードされない場合は、バンドのコンディションが落ちている、アンテナの不調、ケーブル接続不良、または設定の問題が考えられます。後述の<a href="#troubleshooting">トラブルシューティング</a>を参照してください。
-            </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="ft8-introduction">
-            <h2>FTデジタルモードの概要</h2>
-
-            <p>
-                qFT8はFT8、FT4、FT2、およびJS8デジタルモードに対応しています。FT4はFT8と同じ構造ですが2倍高速（15秒ではなく7.5秒サイクル）に設計されたプロトコルです。FT2はFT4のさらに2倍高速なモードです。JS8はFT8と同じFSK変調を使用しながら、可変速度とメッセージ分割層を備えた自由文チャットモードです。
-            </p>
-
-            <p>
-                FT8はスポラディックE層や極微弱信号環境での通信向けに開発された高感度デジタルプロトコルであり、構造化されたメッセージと厳密な時間同期が特徴です。
-            </p>
-
-            <h3>サイクルとシーケンス</h3>
-            <p>
-                FT8は<strong>15秒サイクル</strong>で動作します。すべての通信サイクルは毎分の<strong>00秒、15秒、30秒、45秒</strong>に正確に開始されます。そのため、端末の時計が<strong><span translate="no">UTC</span>時刻</strong>に正確に合っている必要があります。
-            </p>
-
-            <p>プロトコルには2つのシーケンスがあります：</p>
-            <ul>
-                <li><strong>シーケンス 0（偶数/Even）</strong>: 毎分 <strong>00秒および30秒</strong> から始まるサイクル。</li>
-                <li><strong>シーケンス 1（奇数/Odd）</strong>: 毎分 <strong>15秒および45秒</strong> から始まるサイクル。</li>
-            </ul>
-
-            <p>
-                各局は通常、送信と受信を交互に行います。シーケンス0で送信した局はシーケンス1で相手の応答を受信します。各15秒サイクル内で、メッセージは概ね<strong>+0.5秒〜+13秒</strong>の間で送信され、残りの約2秒間で信号のデコードと次サイクルの送信準備が行われます。
-            </p>
-
-            <h3>信号特性</h3>
-            <p>
-                FT8メッセージは周波数がわずかに変化する8トーンの連続信号として送信されます。帯域幅はわずか<strong>約50Hz</strong>と極めて狭く、3kHzの無線音声帯域内に数十組の交信が同時に共存できます。
-            </p>
-
-            <h3>QSOの6つのステージ</h3>
-            <p>
-                標準的なFT8交信は6つの段階を経て成立します。以下は<strong>HB9IPH</strong>と<strong>XX1XXX</strong>の交信例です：
-            </p>
-
-            <ol>
-                <li><strong><span translate="no">1/6 CQ</span></strong>: 相手局を広く募集します。<br>
-                    <em>例: <code>CQ HB9IPH JN47</code></em><br>
-                    ※ <code>JN47</code> はおおよその地理的位置を示す<strong><span translate="no">Maidenhead</span>グリッドロケーター</strong>です。特定の相手を指定する<strong><span translate="no">CQ修飾子</span></strong>（例: SOTA運用の <code>CQ SOTA HB9IPH</code> や特定地域向けの <code>CQ JA HB9IPH</code>）が付加されることもあります。
-                </li>
-                <li><strong><span translate="no">2/6 CALL</span></strong>: 応答局がCQ局を呼び出します。<br>
-                    <em>例: <code>HB9IPH XX1XXX JO21</code></em>
-                </li>
-                <li><strong><span translate="no">3/6 RPT</span></strong>: 最初の局が相手へのシグナルレポートを送ります。<br>
-                    <em>例: <code>XX1XXX HB9IPH -10</code></em><br>
-                    ※ <code>-10</code> はノイズフロアに対する信号強度（<span translate="no">dB</span>）です。
-                </li>
-                <li><strong><span translate="no">4/6 RRPT</span></strong>: 応答局がレポートの了解（R）を返し、自局からのレポートを送ります。<br>
-                    <em>例: <code>HB9IPH XX1XXX R-12</code></em>
-                </li>
-                <li><strong><span translate="no">5/6 RR73</span></strong>: 最初の局がすべてを確認し、完了（Roger-Roger 73）を送ります。<br>
-                    <em>例: <code>XX1XXX HB9IPH RR73</code></em>
-                </li>
-                <li><strong><span translate="no">6/6 73</span></strong>: 応答局が最後の「73」を送信して交信を終了します。<br>
-                    <em>例: <code>HB9IPH XX1XXX 73</code></em>
-                </li>
-            </ol>
-
-            <p>
-                理論上の通信問題（二人の将軍問題）により、相手が自局の最後のメッセージを受信したかを完全には確認できませんが、FT8ではステージ4/6（双方のレポート交換完了）以降で実質的にQSO成立とみなされます。qFT8では、RR73または73を送信/受信した時点でログに自動記録されます。
-            </p>
-
-            <p>
-                一部の局はステージ5でRR73の代わりに<strong>RRR</strong>を使用する場合があります。その場合、双方が73を送り合う追加の1サイクルが発生します。
-            </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="user-interface">
-            <h2>qFT8 ユーザーインターフェース</h2>
-            <p>qFT8の画面は3つの主要領域で構成されています：</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../overview.jpg" alt="qFT8 Overview" class="screen" width="2280" height="1080">
-            </div>
-
-            <ol>
-                <li><strong>ボトムバー（下部操作バー）</strong>: 常時表示され、送信の制御、バンド選択、タブ切り替えを行います。</li>
-                <li><strong>スペクトログラム（ウォーターフォール）</strong>: 常時表示され、リアルタイムの信号強度、デコードメッセージ、UTC時刻、送信オフセット周波数を表示します。</li>
-                <li><strong>タブエリア</strong>: 3つのタブ（Stations、Log、Settings）のいずれかを表示します。</li>
-            </ol>
-
-            <h3 id="ui-bottom-bar">ボトムバー（下部操作バー）</h3>
-            <p>ボトムバーには送信状態、出力電力、SWR、送信メッセージ、現在のシーケンス、バンド選択などの重要情報が集約されています。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../bottombar.jpg" alt="qFT8 Bottom bar" class="screen" width="2280" height="1080">
-            </div>
-
-            <ol>
-                <li><strong>サイクル進捗バー</strong>: <span style="color: #ffff00; font-weight: bold;">黄色</span>のバーが0秒（左端）から15秒（右端）に向かって進みます。</li>
-                <li><strong>TX開始マーカー</strong>: バー左側の<span style="color: #ff5252; font-weight: bold;">赤色</span>のドット。TXがONで選択シーケンスと一致する場合、ここで送信が開始されます。</li>
-                <li><strong>デコード時刻マーカー</strong>: バー右側の<span style="color: #ffffff; font-weight: bold;">白色</span>のドット。受信信号がデコード・処理されるタイミングです。</li>
-                <li><strong>TXボタン</strong>: 送信の待機（<span translate="no">OFF</span>）と有効化（<span translate="no">ON</span>）を切り替えます。送信中は電力とSWRが表示されます（QMX 1.04以降では長押しでTUNEモード起動）。</li>
-                <li><strong>メッセージセレクター</strong>: 次に送信予定または送信中のメッセージを表示します。AUTOモードでは自動選択されますが、タップして手動選択も可能です。</li>
-                <li><strong>シーケンスセレクター</strong>: ボタン上部の<span style="color: #ffff00; font-weight: bold;">黄色</span>のラインが現在のシーケンスを示します。「0」または「1」をタップして送信シーケンスを切り替えます。</li>
-                <li><strong>モードセレクター</strong>: 運用モード（<span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">JS8</span>）を切り替えます。</li>
-                <li><strong>バンドセレクター</strong>: トランシーバーのバンドを変更します。</li>
-                <li><strong>Stationsタブボタン</strong>: 受信局一覧画面を開きます。</li>
-                <li><strong>Logタブボタン</strong>: QSOログ一覧を開きます（未アップロードのQSOがある場合は黄色いドットが表示されます）。</li>
-                <li><strong>Settingsタブボタン</strong>: 各種設定画面を開きます。</li>
-            </ol>
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="ui-spectrogram">スペクトログラム（ウォーターフォール）</h3>
-            <p>スペクトログラムにはピークメーター、信号ウォーターフォール、デコードされたメッセージ、UTC時刻、送信オフセット周波数が表示されます。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../spectrogram.jpg" alt="qFT8 Spectrogram" class="screen" width="2280" height="1080">
-            </div>
-
-            <ol>
-                <li><strong>ウォーターフォール表示</strong>: 受信信号の履歴を時間軸で表示します。タップすると送信周波数オフセットがその位置に移動します。</li>
-                <li><strong>リアルタイムピーク表示</strong>: 各周波数の瞬時強度を表示します。タップすると周波数オフセット数値を直接入力できます。</li>
-                <li><strong>シーケンス区切り線</strong>: サイクルの境界を示す<span style="color: #ff5252; font-weight: bold;">赤色</span>の水平線。UTC時刻とデコード所要時間が注記されます。</li>
-                <li><strong>選択送信周波数オフセット</strong>: 送信用に選択されている周波数帯を示す<span style="color: #ffff00; font-weight: bold;">黄色</span>の垂直帯。</li>
-                <li><strong>受信メッセージ（色分け表示）</strong>:
+<li><strong><span translate="no">once</span></strong>: In a
+                            lifetime.</li>
+<li><strong><span translate="no">daily</span></strong>: Once per
+                            <span translate="no">UTC</span> date.
+                        </li>
+<li><strong><span translate="no">weekly</span></strong>: Once every 7
+                            days rolling window.</li>
+<li><strong><span translate="no">monthly</span></strong>: Once every
+                            month rolling window.</li>
+<li><strong><span translate="no">yearly</span></strong>: Once every
+                            year rolling window.</li>
+</ul>
+</li>
+<li><strong>Qualifier</strong>: How those constraints apply:
                     <ul>
-                        <li><span style="color: #00ff00; font-weight: bold;">緑色</span>: CQメッセージ</li>
-                        <li><span style="color: #00ffff; font-weight: bold;">水色</span>: 他局同士の通信</li>
-                        <li><span style="color: #ffff00; font-weight: bold;">黄色</span>: 自局が送信したメッセージ</li>
-                        <li><span style="color: #ff9800; font-weight: bold;">オレンジ色</span>: 自局宛ての受信メッセージ</li>
-                    </ul>
+<li><span translate="no">per callsign</span></li>
+<li><span translate="no">in different bands</span></li>
+<li><span translate="no">in different modes</span></li>
+<li><span translate="no">until zone confirmed</span></li>
+<li><span translate="no">per band+until zone</span></li>
+<li><span translate="no">per mode+until zone</span></li>
+<li><span translate="no">in different bands or modes</span></li>
+<li><span translate="no">per band/mode+until zone</span></li>
+</ul>
+</li>
+<li><strong><span translate="no">Spy</span> mode</strong>: When enabled, qFT8
+                    will also try to call stations you haven't heard call
+                    <span translate="no">CQ</span> yet (marked as
+                    <span translate="no">DIRECT</span>). This is useful to have more stations
+                    at reach and join pile-ups.
                 </li>
-                <li><strong>現在の<span translate="no">UTC</span>時刻とシーケンス</strong>: ウォーターフォール上部に表示されます。</li>
-                <li><strong>設定周波数とバンド</strong>: 現在無線機が同調しているダイヤル周波数を表示します。</li>
-                <li><strong>周波数軸</strong>: オーディオ通過帯域内のオフセット（<span translate="no">Hz</span>）を示します。</li>
-            </ol>
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="ui-stations-tab">Stations（ステーション）タブ</h3>
-            <p>Stationsタブはバンド上のアクティビティを監視し、交信戦略を設定する司令塔です。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../stations.jpg" alt="qFT8 Stations tab" class="screen" width="2280" height="1080">
-            </div>
-
-            <ol>
-                <li><strong><span translate="no">AUTO</span>モードボタン</strong>: 設定条件に従って最適な局を自動選択して呼び出します。</li>
-                <li><strong>個別<span translate="no">CALL</span>ボタン</strong>: 特定の局を集中的に呼び出し、交信完了後に自動でAUTOに戻ります。</li>
-                <li><strong>ターゲット条件</strong>:
+<li><strong><span translate="no">Busy</span> mode</strong>: When enabled, qFT8
+                    will also try to call stations engaged
+                    in a <span translate="no">QSO</span> with someone else (marked as
+                    <span translate="no">BUSY</span>). This is useful to join a pile-up.
+                </li>
+<li><strong>+ button</strong>: Manually call any arbitrary station by inputting their callsign.</li>
+<li><strong>Station information</strong>: Displays detailed status for each decoded station.</li>
+</ol>
+<p>Individual station entries consist of four information-rich rows:</p>
+<p><strong>The first row</strong> shows station details (left to right):</p>
+<ul>
+<li><strong><span translate="no">QSO Status</span></strong>: Indicates your
+                    <span translate="no">QSO</span> history with this station (<span style="color: grey;">✗</span> = no
+                    <span translate="no">QSO</span>, ✓ = logged
+                    locally, <span style="color: #FFD700; font-weight: bold;">★</span> = confirmed via QRZ or LoTW).
+                </li>
+<li><strong>Callsign</strong>: The station's callsign.</li>
+<li><strong><span translate="no">DXCC</span></strong>: The country or entity
+                    this station's callsign belongs to.</li>
+<li><strong>Grid cell</strong>: The <span translate="no">Maidenhead</span>
+                    grid square this station is reporting.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: The
+                    <span translate="no">CQ</span> zone this station's callsign belongs to.
+                </li>
+<li><strong><span translate="no">ITU zone</span></strong>: The
+                    <span translate="no">ITU</span> zone this station's callsign belongs to.
+                </li>
+<li><strong>Band</strong>: The band on which the station was last heard.</li>
+</ul>
+<p><strong>The second row</strong> shows communication status (left to right):</p>
+<ul>
+<li><strong>State</strong>: Current phase of communication:
                     <ul>
-                        <li><strong><span translate="no">Anyone</span>（未交信局）</strong>: まだ交信していない任意のコールサインを優先。</li>
-                        <li><strong><span translate="no">Nearby</span>（近距離）</strong>: グリッド距離が最も近い局を優先。</li>
-                        <li><strong><span translate="no">Far</span>（遠距離）</strong>: グリッド距離が最も遠い局を優先。</li>
-                        <li><strong><span translate="no">Signal strength</span>（信号強度）</strong>: 最も信号が強い（SNRが高い）局を優先。</li>
-                        <li><strong><span translate="no">Call CQ</span>（自局CQ）</strong>: 自局からCQを出し、呼んできた局に応答。</li>
-                        <li><strong><span translate="no">POTA hunter</span></strong>: Parks on the Air運用局を最優先。</li>
-                        <li><strong><span translate="no">SOTA hunter</span></strong>: Summits on the Air運用局を最優先。</li>
-                        <li><strong><span translate="no">POTA + SOTA hunter</span></strong>: POTAおよびSOTA運用局を最優先。</li>
-                        <li><strong><span translate="no">DXCC</span></strong>: 未交信の新しい国・地域（DXCCエンティティ）を最優先。</li>
-                        <li><strong><span translate="no">Grid</span></strong>: 未交信の新しいグリッドスクエアを最優先。</li>
-                        <li><strong><span translate="no">ITU zone</span> / <span translate="no">CQ zone</span></strong>: 新しいゾーンを最優先。</li>
-                        <li><strong><span translate="no">I/C/D/G</span></strong>: ITUゾーン &gt; CQゾーン &gt; DXCC &gt; Grid の優先順位で探索。</li>
-                    </ul>
+<li><span style="color: #cd853f; font-weight: bold;"><span translate="no">DIRECT</span>:
+                            Heard and seemingly free
+                            right now,
+                            but never called <span translate="no">CQ</span>.</span></li>
+<li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/6
+                                CQ</span>: Heard calling
+                            <span translate="no">CQ</span> and
+                            seemingly free right now.
+                        </span></li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/6
+                                CALL</span>: Called you.</span></li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/6
+                                RPT</span>: Sent you a signal report.
+                        </span></li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">4/6
+                                RRPT</span>: Replyed back to your
+                            report with their own.</span></li>
+<li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6
+                                RR73</span>: Confirmed your report
+                            with <span translate="no">RR73</span>.</span></li>
+<li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6
+                                DONE</span>:
+                            <span translate="no">QSO</span> completed (73
+                            exchanged).
+                        </span></li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>:
+                            Not heard in the last couple
+                            of cycles.
+                        </span></li>
+<li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO
+                                LONG</span>: Your callsign and their
+                            callsigns are too long together to establish a communication, per
+                            <span translate="no">FT8</span> digital mode limits.
+                        </span></li>
+</ul>
+</li>
+<li><strong>Signal strength</strong>: Strength in
+                    <span translate="no">dB</span> (shows "????" if not heard recently).
                 </li>
-                <li><strong>期間（周期）条件</strong>: 対象エンティティとの再交信間隔（<span translate="no">once</span>: 永久に1回のみ、<span translate="no">daily</span>: 日別、<span translate="no">weekly</span>: 週別、<span translate="no">monthly</span>: 月別、<span translate="no">yearly</span>: 年別）。</li>
-                <li><strong>修飾条件</strong>: 制約の適用範囲（<span translate="no">per callsign</span>、<span translate="no">in different bands</span>、<span translate="no">until zone confirmed</span> など）。</li>
-                <li><strong><span translate="no">Spy</span>（スパイ）モード</strong>: 自らCQを出していない局（交信終了直後の局など）もターゲットに含めます。</li>
-                <li><strong><span translate="no">Busy</span>（ビジー）モード</strong>: 他局と交信中の局のパイルアップに参加します。</li>
-                <li><strong>+ ボタン</strong>: 任意のコールサインを入力して直接呼び出します。</li>
-            </ol>
-
-            <p>ステーション一覧の各項目には4行の詳細情報が表示されます：</p>
-            <ul>
-                <li><strong>第1行</strong>: 交信ステータス（<span style="color: grey;">✗</span>: 未交信、✓: ローカル記録済、<span style="color: #FFD700; font-weight: bold;">★</span>: QRZ/LoTW確認済）、コールサイン、DXCC名、グリッド、CQ/ITUゾーン、バンド。</li>
-                <li><strong>第2行</strong>: 状態（<span style="color: #00ff00; font-weight: bold;">1/6 CQ</span>、<span style="color: #00ffff; font-weight: bold;">2/6 CALL</span>、<span style="color: #0088ff; font-weight: bold;">6/6 DONE</span>、<span style="color: #cd853f; font-weight: bold;">DIRECT</span>、<span style="color: #555555; font-weight: bold;">GONE</span> など）、信号強度（dB）、シーケンス（0/1）、時間差（Δt）、距離。</li>
-                <li><strong>第3行・第4行</strong>: 最後に受信（Rx:）および送信（Tx:）したメッセージ内容と時刻。</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="ui-log-tab">Log（ログ）タブ</h3>
-            <p>Logタブにはこれまでに成立したQSOの一覧が表示されます。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../log.jpg" alt="qFT8 Log tab" class="screen" width="2280" height="1080">
-            </div>
-
-            <ol>
-                <li><strong>コールサイン検索フィルター</strong>: 入力した文字を含むコールサインを絞り込み。</li>
-                <li><strong>ステータスフィルター</strong>: すべて（All）、確認済（Confirmed）、未確認（Not confirmed）、未アップロード（Not uploaded）などで抽出。</li>
-                <li><strong>件数制限フィルター</strong>: 最新100件のみ表示。</li>
-                <li><strong>QSOリスト</strong>: QRZ/LoTWステータスアイコン、コールサイン、DXCC、グリッド、ゾーン、バンドを表示。タップすると手動で確認済みに設定したり削除することができます。</li>
-            </ol>
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-
-            <h3 id="ui-settings-tab">Settings（設定）タブ</h3>
-            <p>SettingsタブではqFT8の動作を細かくカスタマイズできます。</p>
-
-            <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
-                <img src="../settings.jpg" alt="qFT8 Settings tab" class="screen" width="2280" height="1080">
-            </div>
-
-            <ul>
-                <li><strong><span translate="no">Callsign</span></strong>: 自局のコールサイン（送信に必須）。</li>
-                <li><strong><span translate="no">CQ modifier</span></strong>: CQ送信時に付加するテキスト（例: 「<span translate="no">SOTA</span>」）。</li>
-                <li><strong>Device</strong>: 接続する無線機機種（QMX、IC-7300、Kenwood、VOX等）および接続パラメーターの設定。</li>
-            </ul>
-
-            <h4>サブメニュー項目</h4>
-            <ul>
-                <li><strong>AUDIO SETTINGS</strong>: 送信音量、VOX感度、オーディオループバック設定。</li>
-                <li><strong>IMPORT/EXPORT LOGS</strong>: ADIF（.adi）ログのインポート・エクスポート。</li>
-                <li><strong>QSO SYNCING</strong>: QRZ.com および LoTW との自動同期設定。</li>
-                <li><strong>APPLICATION SETTINGS</strong>: 表示言語やUI設定。</li>
-                <li><strong>TIME AND LOCATION</strong>: NTP/GPS時刻同期およびグリッドロケーター設定。</li>
-                <li><strong>AUTO MODE SETTINGS</strong>: 自動化の優先順位、再試行上限、除外プレフィックス設定。</li>
-                <li><strong>MODE SETTINGS</strong>: FT8デコード詳細設定、PTT遅延設定。</li>
-                <li><strong>BAND SELECTION</strong>: 使用バンドの有効化/無効化設定。</li>
-                <li><strong>REMOTE CONTROL WEB SERVER</strong>: 遠隔操作用Webサーバーの有効化と設定。</li>
-                <li><strong>CLEAN UP</strong>: ローカルログの消去。</li>
-            </ul>
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="auto-mode">
-            <h2>自動運用（AUTOモード）</h2>
-            <p>
-                <strong><span translate="no">AUTOモード</span></strong>はqFT8の最も基本的な運用方法です。毎サイクルのデコード終了時に、設定したターゲット条件に基づいて最も優先度の高いステーションを自動選択し、交信を開始します。
+<li><strong>Sequence</strong>: The last sequence this station was heard transmitting in (0 or 1).</li>
+<li><strong>Delta time (Δt)</strong>: Time synchronization offset in seconds between their time and
+                    yours.</li>
+<li><strong>Distance</strong>: Estimated distance between their and your station Grid cells.</li>
+</ul>
+<p><strong>The third and fourth rows</strong> show the last transmitted and last received messages,
+                including <span translate="no">UTC</span> time, frequency offset, and the
+                message text (prefixed with <span translate="no">Rx:</span> or
+                <span translate="no">Tx:</span>).
             </p>
-
-            <h3>ターゲット選択の仕組み</h3>
-            <p>
-                Stationsタブの一覧は設定条件に従ってリアルタイムに並べ替えられており、最上位に表示された局を自動で呼び出します。条件に合致する呼び出し対象が見つからない場合は、自動的に自局からの<strong>CQ</strong>送信を開始して応答を待ちます。自局宛ての呼び出しがあった場合は常に最優先で応答します。
+<p>Key visual indicators to watch for:</p>
+<ul>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Red</span> Callsign</strong>:
+                    <span translate="no">AUTO</span> mode has
+                    surpassed the retry limit for this station. It will be
+                    temporarily ignored unless you click "<span translate="no">CALL</span>" to
+                    reset it manually.
+                </li>
+<li><strong><span style="color: #e040fb; font-weight: bold;">Purple</span> Callsign</strong>:
+                    This callsign is a target given your current criteria.
+                </li>
+<li><strong><span style="color: #aaaaaa; font-weight: bold;">Grey</span> Callsign</strong>:
+                    The callsign matches your comma-separated excluded prefixes setting.
+                    <span translate="no">AUTO</span> mode will never target this station.
+                </li>
+<li><strong><span style="color: #e040fb; font-weight: bold;">Purple</span> Highlighted Zone</strong>:
+                    This zone/entity
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">CQ
+                    zone</span>, <span translate="no">ITU zone</span>)
+                    is a
+                    target given your current criteria.
+                </li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Red</span> Sequence number</strong>: The
+                    station is on the same sequence you have selected, causing
+                    a clash. Pressing "<span translate="no">CALL</span>" will automatically
+                    switch your sequence.</li>
+<li><strong><span style="color: #ff5252; font-weight: bold;">Red</span> Band</strong>: The station was
+                    last heard on a different band.</li>
+</ul>
+<p>Stations are automatically sorted by relevance. Changing your target criteria or constraints will
+                immediately re-sort the list.</p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="ui-log-tab">The Log tab / Log（ログ）タブ</h3>
+<p>The log tab shows achieved QSOs.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Log tab" class="screen" height="1080" src="../log.jpg" width="2280"/>
+</div>
+<p>These are the components of the Log tab in detail:</p>
+<ol>
+<li><strong>Callsign text filter</strong>: A filter for QSOs based on whether the callsign contains the
+                    text inputted.</li>
+<li><strong>Status filter</strong>: A filter for QSOs that shows:
+                    <ul>
+<li><span translate="no">All</span>: Shows all recorded QSOs.</li>
+<li><span translate="no">Confirmed</span>: Shows only QSOs that have
+                            been confirmed.</li>
+<li><span translate="no">Not confirmed</span>: Shows QSOs that are not
+                            yet confirmed.</li>
+<li><span translate="no">Not uploaded</span>: Shows QSOs that haven't
+                            been uploaded to QRZ.</li>
+<li><span translate="no">Duplicated</span>: Shows QSOs that QRZ
+                            recognizes as duplicates.</li>
+<li><span translate="no">Rejected</span>: Shows QSOs that were
+                            rejected by the other station in QRZ.</li>
+<li><span translate="no">Wrong Callsign</span>: Shows QSOs recorded
+                            with a callsign different from the one currently configured.</li>
+<li><span translate="no">Non FT8/FT4</span>: Shows QSOs recorded for a
+                            mode other than FT8 or FT4.</li>
+</ul>
+</li>
+<li><strong>Recent limit filter</strong>: A filter that shows only the most recent 100 QSOs with the
+                    given criteria.</li>
+<li><strong>The list of QSOs</strong>: Displays the log entries with the following columns (from left to
+                    right):
+                    <ul>
+<li><strong><span translate="no">QRZ</span></strong>: Indicates
+                            your history with this station:
+                            <ul>
+<li><strong><span style="color: grey;">✗</span></strong>: No <span translate="no">QSO</span>
+                                    records.</li>
+<li><span style="color: grey; font-weight: bold;">✓</span>: Logged locally / Pending
+                                    upload.</li>
+<li><span style="color: #00ff00; font-weight: bold;">✓</span>: Uploaded to
+                                    <span translate="no">QRZ</span>.
+                                </li>
+<li><span style="color: #FFD700; font-weight: bold;">★</span>: Confirmed on QRZ or LoTW
+                                    (for QRZ-uploaded QSOs) or manually.</li>
+<li><span style="color: #00ff00; font-weight: bold;">♻️</span>: Reported as duplicate by
+                            <span translate="no">QRZ</span>.
+                        </li>
+<li><span style="color: grey; font-weight: bold;">❕</span>: Station callsign mismatch,
+                            already uploaded.</li>
+<li><span style="color: #ff9800; font-weight: bold;">⚠️</span>: Station callsign
+                            mismatch, not uploaded.</li>
+<li><span style="color: #ff5252; font-weight: bold;">⛔</span>: Rejected status.</li>
+</ul>
+</li>
+<li><strong><span translate="no">Callsign</span></strong>: The
+                    station's callsign.</li>
+<li><strong><span translate="no">DXCC</span></strong>: The country or
+                    entity this station's callsign belongs to.</li>
+<li><strong><span translate="no">Grid cell</span></strong>: The
+                    Maidenhead grid square this station is reporting.</li>
+<li><strong><span translate="no">CQ zone</span></strong>: The CQ zone
+                    this station's callsign belongs to.</li>
+<li><strong><span translate="no">ITU zone</span></strong>: The ITU
+                    zone this station's callsign belongs to.</li>
+<li><strong><span translate="no">Band</span></strong>: The band on
+                    which the station was last heard.</li>
+</ul>
+</li>
+</ol>
+<p>Key visual indicators to watch for:</p>
+<ul>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Yellow</span> note below callsign</strong>:
+                    This QSO is for a station different than the one
+                    configured.</li>
+<li><strong><span style="color: #00ff00; font-weight: bold;">Green</span> Highlighted Zone</strong>
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>):
+                    This was the first
+                    unconfirmed QSO in your log for this zone.
+                </li>
+<li><strong><span style="color: #ffff00; font-weight: bold;">Yellow</span> Highlighted Zone</strong>
+                    (<span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, <span translate="no">ITU
+                    Zone</span>, <span translate="no">CQ Zone</span>):
+                    This was the first
+                    confirmed QSO in your log for this zone.
+                </li>
+</ul>
+<p><strong>Editing QSOs</strong>: Tapping on any <span translate="no">QSO</span>
+                in the list will open a prompt that allows manually
+                marking a <span translate="no">QSO</span> as confirmed/unconfirmed locally in
+                qFT8, or deleting a <span translate="no">QSO</span> locally in qFT8.
+                <strong>Note that these actions are only local and are not synced to
+                    <span translate="no">QRZ</span>.</strong> Deleting a
+                <span translate="no">QSO</span> in the
+                app is irreversible, unless you keep an exported copy of the log file or it was uploaded to
+                <span translate="no">QRZ</span>.
             </p>
-
-            <h3>再試行（リトライ）制限と一時除外</h3>
-            <p>
-                応答のない相手局を無限に呼び続けるのを防ぐため、自動再試行制限機能が備わっています（設定タブで変更可能）：
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+<h3 id="ui-settings-tab">The Settings tab / Settings（設定）タブ</h3>
+<p>The settings tab allows configuration of qFT8.</p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 Settings tab" class="screen" height="1080" src="../settings.jpg" width="2280"/>
+</div>
+<p>The settings tab is organized as follows:</p>
+<ul>
+<li><strong><span translate="no">Callsign</span></strong>: Your amateur radio callsign (mandatory to transmit). Must comply with your license.</li>
+<li><strong><span translate="no">CQ modifier</span></strong>: Optional text appended to your <span translate="no">CQ</span> calls (e.g., "<span translate="no">SOTA</span>").</li>
+<li><strong>Device</strong>: Used to configure and select your radio transceiver device (e.g., QMX, QDX, Kenwood TS-480 / TS-590 / TS-2000 series, or VOX/Audio-only) and connection parameters.</li>
+</ul>
+<h4>Submenus and Options</h4>
+<ul>
+<li><strong>AUDIO SETTINGS</strong>: Configure transmission volume, VOX thresholds, and other audio settings.</li>
+<li><strong>IMPORT/EXPORT LOGS</strong>: Import or export your QSO logbook using standard ADIF (<span translate="no">.adi</span>) files.</li>
+<li><strong>QSO SYNCING</strong>: Set up integration with <span translate="no">QRZ</span> and <span translate="no">LoTW</span> for log synchronization and verification.</li>
+<li><strong>APPLICATION SETTINGS</strong>: General settings including user interface language.</li>
+<li><strong>TIME AND LOCATION</strong>: Configure time offset synchronization (NTP or GPS) and your Maidenhead grid locator.</li>
+<li><strong>AUTO MODE SETTINGS</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
+<li><strong>MODE SETTINGS</strong>: Fine-tune FT8 decoding algorithms, start/PTT delays, and other decoding options.</li>
+<li><strong>BAND SELECTION</strong>: Customize active bands and band switching behavior.</li>
+<li><strong>REMOTE CONTROL WEB SERVER</strong>: Enable and configure the built-in web server for remote control.</li>
+<li><strong>CLEAN UP</strong>: Clear local QSOs (this action only affects the local app log).</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="auto-mode">
+<h2>Automated operation (AUTO) / 自動運用（AUTOモード）</h2>
+<p>
+<strong><span translate="no">AUTO mode</span></strong> is the primary way to
+                use qFT8. In this mode, the application automatically
+                analyzes the decoded messages at the end of every cycle and selects the most relevant station to contact
+                based on your target criteria.
             </p>
-            <ul>
-                <li><strong>リトライ上限</strong>: 相手が無応答の場合に同一ステージを繰り返す最大回数。</li>
-                <li><strong>除外期間（クールダウン）</strong>: 上限に達した局は一時的に除外対象となり、一定時間AUTOモードから無視されます（手動でCALLボタンを押すと即座にリセットされます）。</li>
-            </ul>
-
-            <h3>おすすめの設定例</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>目標</th>
-                        <th>ターゲット</th>
-                        <th>期間</th>
-                        <th>条件</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>未交信局を最大化</td>
-                        <td><span translate="no">Anyone</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">Per callsign</span></td>
-                    </tr>
-                    <tr>
-                        <td>バンド別に未交信局を最大化</td>
-                        <td><span translate="no">Anyone</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">In different bands</span></td>
-                    </tr>
-                    <tr>
-                        <td>新しいDXCCエンティティを収集</td>
-                        <td><span translate="no">DXCC</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">Per callsign</span></td>
-                    </tr>
-                    <tr>
-                        <td>バンド別に未交信DXCCを収集</td>
-                        <td><span translate="no">DXCC</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">In different bands</span></td>
-                    </tr>
-                    <tr>
-                        <td>未CFMのDXCCを収集（コンファーム重視）</td>
-                        <td><span translate="no">DXCC</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">Until zone confirmed</span></td>
-                    </tr>
-                    <tr>
-                        <td>バンド別に新しいグリッドを収集</td>
-                        <td><span translate="no">Grid</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">Per band + Until zone</span></td>
-                    </tr>
-                    <tr>
-                        <td>全ゾーン制覇（WAZ/ITU）</td>
-                        <td><span translate="no">I/C/D/G</span></td>
-                        <td><span translate="no">Once</span></td>
-                        <td><span translate="no">Until zone confirmed</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="call-mode">
-            <h2>手動運用（CALLモード）</h2>
-            <p>
-                Stationsタブで任意のステーションの横にある <strong>CALL</strong> ボタンをタップすると、即座に <strong>CALLモード</strong> に入り、その局を集中的に呼び出します。
+<h3>How Target Selection Works / ターゲット選択の仕組み</h3>
+<p>
+                The <strong>Stations tab</strong> displays a list of active stations, sorted such that the most relevant
+                candidates (based on your criteria) appear at the top. At the end of each decode cycle, qFT8 looks at
+                this sorted list and attempts to call the first eligible station. If no eligible target is found, it
+                will automatically start calling <strong>CQ</strong> to attract callers. qFT8 always replies to calls in
+                AUTO mode.
             </p>
-            <p>
-                その局との交信が終了すると（成功・不成功にかかわらず）、qFT8は自動的に <strong>AUTOモードに復帰</strong> し、通常の自動運用を再開します。
+<h3>Criteria and Filters / 基準とフィルター</h3>
+<p>
+                You can fine-tune the automation using the three dropdown menus at the top of the Stations tab:
             </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="adif-import-export">
-            <h2>ADIFログのインポート・エクスポート</h2>
-            <p>
-                <span translate="no">qFT8</span>はアマチュア無線標準の <span translate="no">ADIF</span>（Amateur Data Interchange Format）フォーマットに完全対応しており、他のログソフトやオンラインサービスとの間でログを自由に入出力できます。
+<ul>
+<li><strong>Target</strong>: Defines what "achievement" you are looking for
+                    (<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>, <span translate="no">CQ
+                    Zone</span>, <span translate="no">ITU Zone</span>,
+                    <span translate="no">Grid</span>).
+                </li>
+<li><strong>Interval</strong>: How often you are willing to contact the same entity
+                    (<span translate="no">Once</span>,
+                    <span translate="no">Always</span>,
+                    <span translate="no">Daily</span>,
+                    <span translate="no">Weekly</span>,
+                    <span translate="no">Monthly</span>).
+                </li>
+<li><strong>Qualifier</strong>: Narrow down the uniqueness requirement (<span translate="no">Per
+                    callsign</span>, <span translate="no">Per
+                    band</span>, <span translate="no">Until zone/entity
+                    confirmed</span>).</li>
+</ul>
+<div class="highlight">
+<p><strong>Manual Override:</strong> You can always manually intervene by tapping the
+                    <strong><span translate="no">CALL</span></strong> button for a specific
+                    station. This enters <a href="#call-mode"><span translate="no">CALL
+                        mode</span></a>
+                    for that specific <span translate="no">QSO</span>. Once finished, qFT8
+                    seamlessly drops back into <span translate="no">AUTO</span> mode.
+                </p>
+</div>
+<h3>Retry Mechanism / 再試行（リトライ）制限と一時除外</h3>
+<p>
+                To prevent qFT8 from calling a non-responsive station indefinitely, qFT8 offers a built-in retry and ban
+                system, enabled by default. You can configure these in the Settings tab under <strong>Retry
+                    Logic</strong>:
             </p>
-
-            <h3>QSOのインポート</h3>
-            <ul>
-                <li><strong>フィルタリング</strong>: FT8のみまたは全モード、特定コールサインのみ等の条件を指定して取り込めます。</li>
-                <li><strong>自動重複排除・更新</strong>: 既存のログと突き合わせ、QRZ Log IDや交信時刻をもとに重複を防ぎながら、確認済みステータスなどの新しい情報を既存レコードにマージします。</li>
-            </ul>
-
-            <h3>QSOのエクスポート</h3>
-            <p>
-                「<span translate="no">EXPORT QSOs</span>」をタップすると、<span translate="no">ADIF 3.1.6</span> ファイルが生成され、Androidの共有シートを通じてファイル保存やメール送信ができます。
+<ul>
+<li><strong>Retry Limit</strong>: The maximum number of times qFT8 will repeat a transmission stage for
+                    a station that isn't responding.</li>
+<li><strong>Retry Window</strong>: The time period during which these attempts are counted.</li>
+<li><strong>Retry Cooldown</strong>: If the limit is reached, the station is "Banned" for this duration.
+                    AUTO mode will ignore banned stations until the cooldown expires or the station replies.</li>
+</ul>
+<h3>Example Optimized Setups / おすすめの設定例</h3>
+<p>Here are some recommended combinations of criteria for common goals:</p>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Target</th>
+<th>Interval</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximize unique stations</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Maximize unique stations per band</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Maximize unique <span translate="no">DXCC</span> entities</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per callsign or zone</span></td>
+</tr>
+<tr>
+<td>Maximize unique <span translate="no">DXCC</span> per band</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Maximize confirmed <span translate="no">DXCC</span> entities</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Maximize confirmed <span translate="no">DXCC</span> per band</td>
+<td><span translate="no">DXCC</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Collect unique <span translate="no">Grids</span> per band</td>
+<td><span translate="no">Grid</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Per band + Until zone</span></td>
+</tr>
+<tr>
+<td>Work all Zones
+                            (<span translate="no">CQ</span>/<span translate="no">ITU</span>)
+                        </td>
+<td><span translate="no">I/C/D/G</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">Until zone confirmed</span></td>
+</tr>
+<tr>
+<td>Contest: Unique stations on different bands</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Once</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+<tr>
+<td>Contest: Points for same station on different days</td>
+<td><span translate="no">Anyone</span></td>
+<td><span translate="no">Daily</span></td>
+<td><span translate="no">In different bands</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that in all these cases, you may enable <strong>Spy</strong> and <strong>Busy</strong> to reach out
+                to more
+                stations and enter their pile-ups.</p>
+<p><strong>Note:</strong> If your callsign is not standard (e.g. with "/"-separated suffixes or prefixes,
+                long callsigns, or other callsigns with numbers in rare positions), you probably want to set Target to
+                <strong><span translate="no">Call CQ</span></strong> as your callsign will
+                likely be sent out hashed and only stations who have seen you call CQ will be able to map the hash to
+                your callsign. You may still call stations but they will only map the message to your callsign if they
+                recently heard you call CQ.
             </p>
-            <ul>
-                <li><strong>期間指定</strong>: 特定の運用日・時間帯だけを切り出して出力可能。</li>
-                <li><strong>SOTA / POTAフィールド自動付加</strong>: 移動運用時のサミット参照コードやパーク参照コードを各レコードに自動挿入して出力できます。</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="qrz-integration">
-            <h2>QRZ連携</h2>
-            <p>
-                <span translate="no">qFT8</span>は <a href="https://www.qrz.com" target="_blank"><span translate="no">QRZ.com</span></a> とのシームレスなログ同期に対応しています。<strong>QRZ連携にはQRZの有料サブスクリプション（XML Logbook Data以上）が必要です。</strong> 無料でログ照合を行いたい場合は、後述の <a href="#lotw-integration">LoTW連携</a> をご利用ください。
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="call-mode">
+<h2>Manual operation (CALL) / 手動運用（CALLモード）</h2>
+<p>
+                While qFT8 is highly automated, you can take control at any time. Tapping the <strong>CALL</strong>
+                button
+                next to any station in the Stations tab will immediately enter <strong>CALL mode</strong> and attempt to
+                establish a QSO with that specific station.
             </p>
-
-            <h3>機能の特徴</h3>
-            <ul>
-                <li><strong>自動即時アップロード</strong>: 交信が成立（6/6 DONE）するたびに、バックグラウンドで即座にQRZログブックへアップロードされます。</li>
-                <li><strong>未送信分の自動再試行</strong>: オフライン時などに失敗したアップロードは、ネットワーク復帰時に5分おきに自動再試行されます。</li>
-                <li><strong>QSO確認（CFM）の自動取得</strong>: 交信完了の30秒後に相手局のアップロード状況を自動照会し、合致すれば即座に「確認済み（ゴールドスター ★）」に更新されます。定期バックグラウンド同期（例: 6時間ごと）も実行されます。</li>
-            </ul>
-
-            <h3 id="log-syncing-strategy">ログ同期戦略</h3>
-            <p>
-                同期設定では、<strong>「QSOをアップロード済みとみなす条件（Consider a QSO uploaded when uploaded to）」</strong>オプションで、QSOがいつ「アップロード完了」と判断されるかを設定できます：
+<p>
+                Once the QSO for the manual target is completed (successfully or not), qFT8 will automatically
+                <strong>fallback to AUTO mode</strong> and resume your previous automated strategy (e.g., calling CQ).
             </p>
-            <ul>
-                <li><strong><span translate="no">LoTW</span> または <span translate="no">QRZ</span> のいずれか</strong>: どちらか一方のサービスのみを使用している場合の標準設定。</li>
-                <li><strong>両方（Both）</strong>: 最大限の安全性を確保するため、両方のサービスへの送信が完了するまで確定とみなさず、照合チェックを行いません。</li>
-                <li><strong><span translate="no">QRZ</span>（<span translate="no">LoTW</span>からのインポートを除く）</strong>: QRZをメインログとして使用する場合に推奨されます。<em>※LoTWからインポートしたQSOはAPI制限を避けるためQRZへ自動送信されません。</em></li>
-                <li><strong><span translate="no">LoTW</span></strong>: LoTWを唯一の公式ログとして運用する場合に推奨されます。</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="lotw-integration">
-            <h2>Logbook of the World（LoTW）連携</h2>
-            <p>
-                <span translate="no">qFT8</span>はARRLが提供する <a href="https://lotw.arrl.org/" target="_blank"><span translate="no">Logbook of the World (LoTW)</span></a> との直接連携に対応しています。DXCCやWASなどのアワード申請用として、完全無料で利用できます。
+<h3>Timing for Manual Operators / 手動オペレーター向けのタイミング</h3>
+<p>
+                If you find that you'd like more time at the end of the cycle to make manual decisions, you can get
+                yourself more margin by adjusting the <strong>FT8 Settings</strong> in the Settings tab:
             </p>
-
-            <h3>必要な設定</h3>
-            <ul>
-                <li><strong>1. LoTW ユーザー名</strong>: 自局のコールサイン。</li>
-                <li><strong>2. LoTW パスワード</strong>: LoTW Webサイトログイン用パスワード。</li>
-                <li><strong>3. .p12 TQSL 証明書</strong>: PCの <span translate="no">TQSL</span> アプリからエクスポートした電子署名ファイル。</li>
-                <li><strong>4. 証明書パスワード</strong>: .p12 エクスポート時に設定したパスワード。</li>
-            </ul>
-
-            <h3>主な機能</h3>
-            <ul>
-                <li><strong>自動署名・アップロード</strong>: 交信完了時に端末内で自動署名し、LoTWへ直接送信。</li>
-                <li><strong>確認状況の自動照合</strong>: アップロード30秒後の即時チェックおよび定期バックグラウンド同期。</li>
-                <li><strong>LoTW全ログのインポート</strong>: これまでの全LoTW交信履歴をワンタップで取得可能。</li>
-            </ul>
-
-            <h3 id="lotw-log-syncing-strategy">LoTW ログ同期戦略</h3>
-            <p>
-                同期設定の<strong>「QSOをアップロード済みとみなす条件」</strong>で、LoTWやQRZへのアップロード完了基準を柔軟に指定できます。
+<ul>
+<li><strong>Decrease "<span translate="no">Start decoding
+                        time</span>"</strong>: Starts processing the audio earlier.</li>
+<li><strong>Increase "<span translate="no">Start transmission
+                        time</span>"</strong>: Delays the onset of your reply.</li>
+</ul>
+<div class="highlight">
+<p><strong>Warning:</strong> Adjusting these values aggressively into the margins may make your
+                    messages much more difficult for other stations to decode, as you are reducing the effective time
+                    available for the actual FT8 signal within the sync window.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="adif-import-export">
+<h2>ADIF Import/Export / ADIFログのインポート・エクスポート</h2>
+<p>
+<span translate="no">qFT8</span> supports the standard
+                <span translate="no">ADIF</span> (Amateur Data Interchange Format) for
+                interoperability with other
+                logging
+                software, cloud services, and for manual backups.
             </p>
-            <ul>
-                <li><strong><span translate="no">LoTW</span> または <span translate="no">QRZ</span> のいずれか</strong>: 片方のみ設定している場合。</li>
-                <li><strong>両方（Both）</strong>: 両方に送信完了するまで待機。</li>
-                <li><strong><span translate="no">LoTW</span></strong>: LoTWを基準とする場合。</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="sota">
-            <h2>Summits On The Air（SOTA）</h2>
-            <p>
-                qFT8はSOTA（山岳移動運用アワード）の<strong>チェイサー（ハンター）</strong>および<strong>アクティベーター（山頂運用局）</strong>向けに特化した支援機能を備えています。
+<h3>Importing QSOs / QSOのインポート</h3>
+<p>
+                The import feature allows you to bring records from other sources (like WSJT-X or backups from other
+                devices) into your local qFT8 log.
             </p>
-
-            <h3>チェイサー（ハンター）としての運用</h3>
-            <ol>
-                <li>Stationsタブのターゲット優先度を <strong><span translate="no">SOTA hunter</span></strong> に設定。</li>
-                <li><strong><span translate="no">AUTO</span></strong> モードを有効化。</li>
-                <li>qFT8が <code>CQ SOTA</code> や山頂コード（例: <code>JA/NN-001</code>）を自動認識し、紫色バッジを表示して最優先で呼び出します。</li>
-            </ol>
-
-            <h3>アクティベーター（山頂側）としての運用</h3>
-            <ol>
-                <li>設定タブで <strong><span translate="no">CQ modifier</span></strong> を <code><span translate="no">SOTA</span></code> に設定。</li>
-                <li>Stationsタブのターゲットを <strong><span translate="no">Call CQ</span></strong> に設定して <strong><span translate="no">AUTO</span></strong> を有効化。</li>
-                <li><strong><span translate="no">TX</span></strong> をONにすると、自動で <code>CQ SOTA [自局コール]</code> を送信し、呼んできたチェイサーと順次交信します。</li>
-                <li>運用終了後、ADIFエクスポートメニューでSOTA山頂コードを指定して出力すれば、SOTAdataへそのまま提出できるログが完成します。</li>
-            </ol>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="pota">
-            <h2>Parks On The Air（POTA）</h2>
-            <p>
-                qFT8はPOTA（公園移動運用アワード）の<strong>ハンター</strong>および<strong>アクティベーター</strong>を完全にサポートしています。
+<ul>
+<li><strong>Filtering Options</strong>: You can choose whether to import only
+                    <span translate="no">FT8</span> records or all modes,
+                    and whether to restrict the import to your current callsign or include all operators.
+                </li>
+<li><strong>Automatic Deduplication</strong>: <span translate="no">qFT8</span>
+                    intelligently merges records. It prevents duplicates
+                    by matching <span translate="no">QRZ Log IDs</span> and
+                    <span translate="no">QSO</span> timestamps. If an imported record has a
+                    confirmed status or a valid
+                    <span translate="no">Log ID</span> that your local record is missing,
+                    entry by
+                    updating it with the better data.
+                </li>
+</ul>
+<h3>Exporting QSOs / QSOのエクスポート</h3>
+<p>
+                Tapping <strong><span translate="no">EXPORT QSOs</span></strong> generates an
+                <span translate="no">ADIF 3.1.6</span> file and opens the system Share sheet,
+                allowing you to save the log to your device or send it via email/messaging.
             </p>
-
-            <h3>ハンターとしての運用</h3>
-            <ol>
-                <li>Stationsタブのターゲット優先度を <strong><span translate="no">POTA hunter</span></strong> に設定。</li>
-                <li><strong><span translate="no">AUTO</span></strong> モードを有効化。</li>
-                <li>アクティベーター局（<code>CQ POTA</code> や <code>JA-0001</code> 等）が検出されると、紫色のPOTAバッジが付き、優先して呼び出します。</li>
-            </ol>
-
-            <h3>アクティベーターとしての運用</h3>
-            <ol>
-                <li>設定タブで <strong><span translate="no">CQ modifier</span></strong> を <code><span translate="no">POTA</span></code> に設定。</li>
-                <li>ターゲットを <strong><span translate="no">Call CQ</span></strong> に設定し、<strong><span translate="no">AUTO</span></strong> と <strong><span translate="no">TX</span></strong> を有効化。</li>
-                <li>自動で <code>CQ POTA [自局コール]</code> を送信し、多数のハンターとテンポよくQSOをこなせます。</li>
-                <li>運用終了後、ADIFエクスポートで公園番号（例: <code>JA-0001</code>）を入力して出力すれば、POTA公式サイト提出用のADIF（MY_SIG, MY_SIG_INFO, MY_POTA_REF入力済）が作成されます。</li>
-            </ol>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="js8-chat">
-            <h2><span translate="no">JS8</span> チャット</h2>
-            <p>
-                <strong><span translate="no">JS8</span></strong> モードで運用する場合、qFT8 は従来の FT8/FT4 QSO 運用に加えて、フリーテキストによるリアルタイムなチャットインターフェースを提供します。JS8 は微弱信号環境でも堅牢なキーボード・ツー・キーボード通信を可能にし、複数の通信速度（<strong><span translate="no">Slow</span></strong> 30秒、<strong><span translate="no">Normal</span></strong> 15秒、<strong><span translate="no">Fast</span></strong> 10秒、<strong><span translate="no">Turbo</span></strong> 6秒スロット）を設定できます。
+<ul>
+<li><strong>Time Range</strong>: You can export your entire history or use the
+                    <span translate="no">UTC</span> date/time pickers to
+                    isolate a specific activation or contest period.
+                </li>
+<li><strong>Status Filters</strong>: Useful for claiming awards (export
+                    <strong>"<span translate="no">Confirmed
+                        Only</span>"</strong>)
+                    or for manual uploads to other services (export <strong>"<span translate="no">Not Uploaded to
+                        QRZ</span>"</strong> to avoid
+                    duplicates).
+                </li>
+<li><strong><span translate="no">SOTA</span> reference</strong>: As detailed
+                    in the <a href="#sota"><span translate="no">SOTA</span> section</a>,
+                    <span translate="no">qFT8</span> can
+                    automatically inject the summit reference into the
+                    <code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code> field of
+                    every exported record.
+                </li>
+<li><strong><span translate="no">POTA</span> reference</strong>: As detailed
+                    in the <a href="#pota"><span translate="no">POTA</span> section</a>,
+                    <span translate="no">qFT8</span> can
+                    automatically inject the park reference into the
+                    <code>&lt;<span translate="no">MY_SIG</span>&gt;</code>,
+                    <code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>, and
+                    <code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> fields of
+                    every exported record.
+                </li>
+</ul>
+<div class="highlight">
+<p><strong>Note:</strong> For very large logs (over 100KB), qFT8 will display a warning as the
+                    deduplication and sorting process may take a few moments to complete on your mobile device.</p>
+</div>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="qrz-integration">
+<h2>QRZ Integration / QRZ連携</h2>
+<p>
+<span translate="no">qFT8</span> offers deep integration with <a href="https://www.qrz.com" target="_blank"><span translate="no">QRZ.com</span></a> to keep your
+                logbook automatically synchronized. <strong>Note that QRZ integration is a subscription service</strong> that requires a
+                <a href="https://www.qrz.com/page/subscriptions.html" target="_blank"><span translate="no">QRZ</span> paid subscription</a>
+                (<span translate="no">XML Logbook Data</span> or higher).
+                If you prefer a free alternative, consider using <a href="#lotw-integration">LoTW integration</a>, which is provided at no charge by the ARRL.
             </p>
-
-            <div class="phone-mockup">
-                <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132" />
-                <img alt="qFT8 JS8 チャット" class="screen" height="1080" src="../js8chat.jpg" width="2280" />
-            </div>
-
-            <h3>チャンネルタイプとルーティング</h3>
-            <p>
-                画面右側のチャットパネルは、送受信トラフィックを個別のチャンネルタブに整理して表示します：
+<h3>How it Works / 機能の特徴</h3>
+<p>
+                To enable QRZ integration, you need to provide your <strong>QRZ API Key</strong> in the settings tab.
+                You can find your API Key on the <a href="https://www.qrz.com/docs/logbook30/api" target="_blank">official QRZ Logbook API page</a>.
+                Once entered and <strong><span translate="no">VALIDATED</span></strong>,
+                you can enable "<span translate="no">Upload QSOs to QRZ</span>" for automatic background management.
             </p>
-            <ul>
-                <li><strong><code>[GLOBAL]</code> マスターチャンネル</strong>: 音声通過帯域全体でデコードされたすべての JS8 送信と、自身のすべての送信を表示します。バンド全体の通信状況を1か所で把握できます。</li>
-                <li><strong>ブロードキャスト・グループチャンネル (<code>@CQ</code>、<code>@ALLCALL</code>)</strong>: 受信中の全ステーションに向けた一般的な呼び出しやアナウンスに使用されます。<code>@CQ</code> や <code>@ALLCALL</code> 宛てに送信されたメッセージは、その周波数を受信している全員に表示されます。</li>
-                <li><strong>カスタム・グループチャンネル (<code>@グループ名</code>)</strong>: qFT8 はカスタム指向グループ（例: <code>@EMERGENCY</code>、<code>@SOTA</code>、<code>@NET</code>）をサポートしています。<code>@グループ名</code> タグ付きで送受信されたメッセージは、自動的に専用のチャンネルタブに分類されます。</li>
-                <li><strong>ステーション個別チャンネル（コールサインタブ）</strong>: チャンネルリストまたはステーション一覧から特定のステーションを選択すると、そのコールサインとの専用メッセージスレッドが開きます。</li>
-            </ul>
-
-            <div class="highlight">
-                <p><strong>電波による公開送信（非プライベート）:</strong> すべての JS8 メッセージは、標準のアマチュア無線デジタル信号として暗号化されずに送信されます。ステーションごとの個別チャットは表示の利便性のためにタブ分けされていますが、<strong>暗号化やプライベート性はなく</strong>、周波数を受信している誰でも傍受・受信できます。</p>
-            </div>
-
-            <h3>メッセージの作成と送信</h3>
-            <ol>
-                <li><strong>送信先を選択</strong>: 右側パネルでチャンネルタブ（<code>[GLOBAL]</code>、<code>@CQ</code>、<code>@ALLCALL</code>、グループ、または特定のステーションコールサイン）をタップします。</li>
-                <li><strong>メッセージを入力</strong>: 下部の入力ボックスにテキストを入力します（最大100文字までの標準ASCII文字をサポート）。</li>
-                <li><strong>送信</strong>: <strong>送信</strong> ボタンをタップします。</li>
-            </ol>
-
-            <h3>メッセージのタップ操作（個別チャット・詳細）</h3>
-            <p>チャットログ内のメッセージをタップすると詳細ダイアログが開き、UTC日時、周波数、SNR、グリッド等の情報が表示されます：</p>
-            <ul>
-                <li><strong>受信メッセージ（RX）</strong>: 「<strong><span translate="no">CHAT</span></strong>」をタップするとその送信局との個別チャットタブが開き、「<strong><span translate="no">GROUP CHAT</span></strong>」をタップするとグループ宛てチャットタブが開きます。</li>
-                <li><strong>送信メッセージ（TX）</strong>: 「<strong><span translate="no">RESEND</span></strong>」をタップすると入力欄にそのテキストが自動入力され、簡単に再送信できます。</li>
-            </ul>
-
-            <h3>長文メッセージのマルチチャンク分割送信</h3>
-            <p>1フレームに入り切らない長いメッセージは、自動的に複数の連続フレーム（チャンク）に分割され、スロットごとに順次送信されます（進行状況は <code>TX (1/3)</code> のように表示されます）。中断したい場合は送信ボタンをタップして途中でキャンセルできます。</p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="remote-control">
-            <h2>リモートコントロール Webサーバー</h2>
-            <p>
-                qFT8にはHTTPサーバーが内蔵されており、同一ネットワーク内のPCやタブレットのブラウザーからアプリを遠隔監視・操作できます。
+<ul>
+<li><strong>Automatic Uploads</strong>: Every time a
+                    <span translate="no">QSO</span> is completed (successfully reaching the
+                    <span translate="no">6/6
+                    DONE</span>
+                    state), <span translate="no">qFT8</span> immediately attempts to upload it
+                    to your <span translate="no">QRZ</span> logbook.
+                </li>
+<li><strong>Background Reliability</strong>: If an upload fails (e.g., due to no internet connection or
+                    server timeouts), qFT8 doesn't give up. A background worker will <strong>automatically retry failed
+                        uploads every 5 minutes</strong>. This process is silent and ensures your log eventually reaches
+                    the cloud once connectivity is restored.</li>
+<li><strong>Smart Skipping</strong>: <span translate="no">qFT8</span> protects
+                    your logbook integrity by only uploading <span translate="no">QSOs</span>
+                    that
+                    match your current configured callsign and the
+                    <span translate="no">FT8</span> mode.
+                    <span translate="no">Non-FT8</span> entries,
+                    <span translate="no">QSOs</span> for different
+                    callsigns, or <strong>QSOs imported from
+                        <span translate="no">LoTW</span></strong> are skipped automatically to
+                    prevent excessive API requests.
+                </li>
+</ul>
+<h3>Syncing Confirmations / コンファーム（交信確認）の同期</h3>
+<p>
+                The integration goes beyond just uploading. <span translate="no">qFT8</span>
+                also polls <span translate="no">QRZ</span> to see if your
+                <span translate="no">QSOs</span> have been confirmed.
             </p>
-
-            <div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
-                <img src="../webserverstations.jpg" alt="Remote Control Web Server Stations" style="width: 100%;" width="1013" height="1596">
-            </div>
-
-            <div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
-                <img src="../webserverlog.jpg" alt="Remote Control Web Server Log" style="width: 100%;" width="1013" height="1596">
-            </div>
-
-            <h3>ネットワーク接続について</h3>
-            <p>サーバーは端末上で指定TCPポート（デフォルト 13497）を開きます：</p>
-            <ul>
-                <li><strong>ローカルネットワーク</strong>: qFT8端末と操作用PCが同じWi-Fiに接続されている必要があります。</li>
-                <li><strong>ルーター設定</strong>: ルーターの「プライバシーセパレーター（AP分離機能）」が有効になっていると機器間通信が遮断されるため、<strong>無効</strong>にしてください。</li>
-                <li><strong>アクセス権限レベル</strong>: 「閲覧のみ（Read only）」、「閲覧＋緊急送信停止（Read + Stop TX）」、「完全制御（Full control）」から選択できます。</li>
-            </ul>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-
-        <section id="troubleshooting">
-            <h2>トラブルシューティング</h2>
-
-            <h3 id="trouble-not-recognized">Android端末がトランシーバーを認識しない、または切断される</h3>
-            <p>
-                ハードウェアの接続不良または回り込み（高周波干渉）が原因です。
+<ul>
+<li><strong>Immediate check</strong>: 30 seconds after a
+                    <span translate="no">QSO</span> is completed and uploaded,
+                    <span translate="no">qFT8</span> will check
+                    back with <span translate="no">QRZ</span> to see if the other station has
+                    also uploaded the <span translate="no">QSO</span>; if they have, the
+                    <span translate="no">QSO</span> will
+                    be synchronized as <strong>confirmed</strong> immediately.
+                </li>
+<li><strong>Automatic Sync</strong>: By default,
+                    <span translate="no">qFT8</span> queries
+                    <span translate="no">QRZ</span> every 6 hours (configurable) in
+                    batches of 250 <span translate="no">QSOs</span> at a time, rotating
+                    through your entire unconfirmed log to ensure that even
+                    older <span translate="no">QSOs</span> are eventually checked for new
+                    confirmations.
+                </li>
+<li><strong>Confirmation Star (<span translate="no">★</span>)</strong>: When a
+                    QSO uploaded to QRZ is confirmed on either QRZ or LoTW, it is highlighted with a gold star. You can
+                    also manually confirm any QSO to show this indicator. When QRZ reports a confirmation, the status icon in
+                    your Log tab will automatically change to a <span style="color: #FFD700; font-weight: bold;">gold</span> star.
+                </li>
+<li><strong>Manual Sync</strong>: Updates to the 250 least recently synchronized
+                    <span translate="no">QSOs</span> can also be
+                    triggered manually in the settings.
+                </li>
+</ul>
+<div class="highlight">
+<p><strong>Pro Tip:</strong> You can see the sync progress in settings under "Oldest QSO synced for confirmation". There's no urgency in keeping this up to date, as qFT8 will take care of it over time.</p>
+</div>
+<h3 id="log-syncing-strategy">Log Syncing Strategy / ログ同期戦略</h3>
+<p>
+                In the synchronization settings, you can choose how <span translate="no">qFT8</span>
+                determines if a <span translate="no">QSO</span> is "fully uploaded" via the
+                <strong>"Consider a QSO uploaded when uploaded to:"</strong> option:
             </p>
-            <p><strong>対処法：</strong></p>
-            <ul>
-                <li>高品質で短いUSBデータ転送ケーブルを使用し、端末のUSB端子のゴミを取り除いてしっかりと接続してください。</li>
-                <li>送信時にのみ切断が発生する場合は回り込みです。USBケーブルにフェライトコア（パッチンコア）を取り付けるか、アンテナのコモンモード対策を行ってください。</li>
-            </ul>
-
-            <h3>無線機の信号ではなく端末内蔵マイクの音声を拾ってしまう</h3>
-            <p>
-                端末が無線機を外部オーディオデバイスとして認識していません。
+<ul>
+<li><strong>Any of <span translate="no">LoTW</span> and <span translate="no">QRZ</span></strong>: A good default if you only have one of the services configured.</li>
+<li><strong>Both</strong>: Select this for maximum safety, requiring the <span translate="no">QSO</span>
+                    to be successfully sent to both services before being considered finalized and ready to be checked for confirmation.
+                </li>
+<li><strong><span translate="no">QRZ</span> (except imported from <span translate="no">LoTW</span>)</strong>: Recommended if <span translate="no">QRZ</span> is your primary logbook.
+                    <em>Note: <span translate="no">QSOs</span> imported from <span translate="no">LoTW</span>
+                    are marked as synced but not uploaded to <span translate="no">QRZ</span> to avoid API limits (which only allow one-by-one uploads); these can be synced within <span translate="no">QRZ</span> itself later.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Recommended if you consider <span translate="no">LoTW</span> your primary source of truth.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="lotw-integration">
+<h2>Logbook of the World（LoTW）連携</h2>
+<p>
+<span translate="no">qFT8</span> provides a robust integration with the
+                <a href="https://lotw.arrl.org/" target="_blank"><span translate="no">ARRL Logbook of the World
+                    (LoTW)</span></a>.
+                Integrating with <span translate="no">LoTW</span> is highly
+                recommended for confirming your contacts and earning awards like DXCC and WAS.
             </p>
-            <ul>
-                <li>USBケーブルが充電専用でないか確認してください。</li>
-                <li>OTGアダプターの不良や相性を確認してください。</li>
-            </ul>
-
-            <h3>信号が全く受信できずウォーターフォールが真っ黒</h3>
-            <p>
-                マイク（音声録音）権限が許可されていません。端末の設定 &gt; アプリ &gt; qFT8 &gt; 権限 でマイクアクセスを許可してください。
+<h3>Setup Requirements / 必要な設定</h3>
+<p>
+                To fully enable LoTW features, including automatic uploads and confirmation checks, you need to provide four specific pieces of information in the settings tab:
             </p>
-
-            <h3>信号の線は見えているのにメッセージがデコードされない</h3>
-            <p>
-                端末の時計がずれています。インターネットに接続してNTP同期を行うか、GPS同期、または設定メニューから「緊急時刻同期」を実行してください。
+<ul>
+<li><strong>1. LoTW Username</strong>: Your official callsign used for the LoTW service.</li>
+<li><strong>2. LoTW Password</strong>: The password you use to log into the <a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">LoTW website</a>. This is different from the certificate password.</li>
+<li><strong>3. .p12 TQSL Certificate</strong>: A digital signature file exported from the <strong><span translate="no">TQSL</span></strong> application.
+                    For instructions on how to request and export this certificate, refer to the <a href="https://lotw.arrl.org/lotw-help/certreq/?lang=en" target="_blank">official LoTW help page</a>.</li>
+<li><strong>4. Certificate Password</strong>: The password you set when exporting the .p12 file from TQSL (this may be empty if you chose not to set one).</li>
+</ul>
+<p>
+<em><strong>Station Location Automation</strong>: Details such as <strong>ITU Zone</strong>, <strong>CQ Zone</strong>, and <strong>Station Name</strong> are automatically determined from your callsign. No manual configuration is required for these fields.</em>
+</p>
+<h3>Features / 主な機能</h3>
+<ul>
+<li><strong>Automatic Uploads</strong>: When <strong>Upload QSOs to LoTW when achieved</strong> is enabled, <span translate="no">qFT8</span> will automatically sign and upload every new QSO to <span translate="no">LoTW</span> in the background as soon as it is logged.</li>
+<li><strong>Auto-Check Confirmation</strong>: When enabled, <span translate="no">qFT8</span> will perform a single, immediate confirmation check exactly 30 seconds after a successful upload. This allows you to see if your contact has been confirmed almost instantly.</li>
+<li><strong>Periodic Background Sync</strong>: Configure <strong>Sync confirmations every __ hours</strong> to check for new confirmations in the background at your preferred interval (e.g., every 6 hours). This keeps your entire logbook up to date without manual intervention.</li>
+<li><strong>Importing Logbook</strong>: Click <strong>IMPORT QSOs FROM LoTW</strong> to download your entire LoTW history into <span translate="no">qFT8</span>. Note that these imported QSOs are not automatically uploaded to <span translate="no">QRZ</span> to avoid API rate limits.</li>
+<li><strong>Pending Indicator</strong>: A small <strong>yellow dot</strong> on the <strong>Logs</strong> button indicates that there are QSOs waiting to be uploaded to <span translate="no">LoTW</span>.</li>
+</ul>
+<h3 id="lotw-log-syncing-strategy">Log Syncing Strategy / ログ同期戦略</h3>
+<p>
+                In the synchronization settings, you can choose how <span translate="no">qFT8</span>
+                determines if a <span translate="no">QSO</span> is "fully uploaded" via the
+                <strong>"Consider a QSO uploaded when uploaded to:"</strong> option:
             </p>
-
-            <h3>QMXで「SWR exceeded threshold — transmission stopped」エラーが出る</h3>
-            <p>
-                アンテナの同調が取れておらず、SWR保護が働いて送信が停止しています。アンテナの調整を行ってください。
+<ul>
+<li><strong>Any of <span translate="no">LoTW</span> and <span translate="no">QRZ</span></strong>: A good default if you only have one of the services configured.</li>
+<li><strong>Both</strong>: Select this for maximum safety, requiring the <span translate="no">QSO</span>
+                    to be successfully sent to both services before being considered finalized and ready to be checked for confirmation.
+                </li>
+<li><strong><span translate="no">QRZ</span> (except imported from <span translate="no">LoTW</span>)</strong>: Recommended if <span translate="no">QRZ</span> is your primary logbook.
+                    <em>Note: <span translate="no">QSOs</span> imported from <span translate="no">LoTW</span>
+                    are marked as synced but not uploaded to <span translate="no">QRZ</span> to avoid API limits (which only allow one-by-one uploads); these can be synced within <span translate="no">QRZ</span> itself later.</em>
+</li>
+<li><strong><span translate="no">LoTW</span></strong>: Recommended if you consider <span translate="no">LoTW</span> your primary source of truth.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="sota">
+<h2>Summits On The Air (SOTA) / Summits On The Air（SOTA）</h2>
+<p>
+                qFT8 provides built-in tools for both SOTA (Summits On The Air) <strong>Chasers (Hunters)</strong> and <strong>Activators</strong>.
             </p>
-
-            <h3>画面消灯時に動作が停止する</h3>
-            <p>
-                Androidのバッテリー最適化機能がアプリを停止させています。端末の設定 &gt; アプリ &gt; qFT8 &gt; バッテリー で「制限なし」に設定してください。
+<h3>Operating as a SOTA Chaser / Hunter / チェイサー（ハンター）としての運用</h3>
+<p>
+                To hunt stations activating summits:
             </p>
-
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
-        </section>
-    </div>
-
-    <div class="footer">
-        <p>
-            Copyright &copy; 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a
-                href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
+<ol>
+<li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">SOTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
+<li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+<li>qFT8 will automatically detect active SOTA stations (from <code><span translate="no">CQ SOTA</span></code> calls or summit references like <code>W6/CA-001</code>) and tag them with a purple <strong><span translate="no">SOTA</span></strong> badge in Row 2.</li>
+<li>In AUTO mode, qFT8 prioritizes calling active SOTA stations over regular CQers, ordering them by strongest signal strength (<span translate="no">SNR</span>).</li>
+</ol>
+<h3>Operating as a SOTA Activator / アクティベーター（山頂側）としての運用</h3>
+<p>
+                To run a SOTA activation from a summit:
+            </p>
+<ol>
+<li><strong>Synchronize time</strong>: Ensure your device clock is accurate before heading into the field.</li>
+<li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">SOTA</span></code>. Every CQ call will transmit <code><span translate="no">CQ SOTA [Callsign]</span></code>.</li>
+<li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+<li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will automatically call CQ and reply to any chasers that call your station.</li>
+</ol>
+<div class="highlight">
+<p><strong>Manual Overrides:</strong> If several chasers reach you at once and you want to pick a specific station, tap <strong><span translate="no">CALL</span></strong> for that station. Once completed, qFT8 automatically falls back to calling <span translate="no">CQ</span>.</p>
+</div>
+<h3>Exporting your SOTA Activation Log (Activators) / SOTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
+<p>
+                When wrapping up a summit activation, export an ADIF log for SOTAData:
+            </p>
+<ol>
+<li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
+<li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
+<li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">SOTA</span></strong>.</li>
+<li>Input your summit reference (for activators, e.g., <code>XX/GG-111</code>).</li>
+<li>Press <strong><span translate="no">EXPORT QSOs</span></strong> to generate the ADIF file with SOTA fields pre-filled.</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="pota">
+<h2>Parks On The Air (POTA) / Parks On The Air（POTA）</h2>
+<p>
+                qFT8 offers full support for POTA (Parks On The Air) <strong>Hunters</strong> and <strong>Activators</strong>.
+            </p>
+<h3>Operating as a POTA Hunter / ハンターとしての運用</h3>
+<p>
+                To hunt stations activating parks:
+            </p>
+<ol>
+<li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">POTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
+<li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+<li>qFT8 automatically identifies POTA activators (from <code><span translate="no">CQ POTA</span></code> calls or park designators like <code>K-1234</code>) and highlights them with a purple <strong><span translate="no">POTA</span></strong> badge in Row 2.</li>
+<li>In AUTO mode, qFT8 prioritizes calling active POTA stations, favoring those with the strongest signal strength (<span translate="no">SNR</span>).</li>
+</ol>
+<h3>Operating as a POTA Activator / アクティベーターとしての運用</h3>
+<p>
+                To activate a park:
+            </p>
+<ol>
+<li><strong>Synchronize time</strong>: Ensure device clock accuracy before operating.</li>
+<li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">POTA</span></code> to transmit <code><span translate="no">CQ POTA [Callsign]</span></code>.</li>
+<li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
+<li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will continuously call CQ and process contacts with incoming hunters automatically.</li>
+</ol>
+<div class="highlight">
+<p><strong>Manual Overrides:</strong> Tapping <strong><span translate="no">CALL</span></strong> on any queued station prioritizes that QSO before returning to AUTO CQ mode.</p>
+</div>
+<h3>Exporting your POTA Activation Log (Activators) / POTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
+<p>
+                When wrapping up a park activation, export a valid ADIF log for POTA:
+            </p>
+<ol>
+<li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
+<li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
+<li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
+<li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">POTA</span></strong>.</li>
+<li>Input your park reference (for activators, e.g., <code>K-1234</code>).</li>
+<li>Press <strong><span translate="no">EXPORT QSOs</span></strong>. This generates an ADIF file with the following fields populated for every record:
+                    <ul>
+<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> set to <code>POTA</code></li>
+<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> set to your park reference</li>
+<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> set to your park reference</li>
+</ul>
+</li>
+</ol>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="js8-chat">
+<h2>JS8Chat / JS8チャット</h2>
+<p>
+                When operating in <strong><span translate="no">JS8</span></strong> mode, qFT8 provides a conversational free-text chat interface alongside traditional FT8/FT4 QSO operations. JS8 enables robust, weak-signal keyboard-to-keyboard messaging at multiple configurable speeds (<strong><span translate="no">Slow</span></strong> 30s, <strong><span translate="no">Normal</span></strong> 15s, <strong><span translate="no">Fast</span></strong> 10s, and <strong><span translate="no">Turbo</span></strong> 6s slots).
+            </p>
+<div class="phone-mockup">
+<img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+<img alt="qFT8 JS8 Chat" class="screen" height="1080" src="../js8chat.jpg" width="2280"/>
+</div>
+<h3>Channel Types &amp; Routing / チャンネルタイプとルーティング</h3>
+<p>
+                The chat panel on the right-hand side organizes incoming and outgoing traffic into separate channel tabs:
+            </p>
+<ul>
+<li><strong><code>[GLOBAL]</code> Master Channel</strong>: Displays every decoded JS8 transmission across the entire audio passband, as well as all of your own transmissions. This gives you a complete live overview of all band activity in one place.</li>
+<li><strong>Broadcast Group Channels (<code>@CQ</code>, <code>@ALLCALL</code>)</strong>: Used for general calls and announcements to all listening stations. Messages sent to <code>@CQ</code> or <code>@ALLCALL</code> will be seen by anyone tuned to the frequency.</li>
+<li><strong>Custom Group Channels (<code>@GROUPNAME</code>)</strong>: qFT8 supports custom directed groups (e.g. <code>@EMERGENCY</code>, <code>@SOTA</code>, <code>@NET</code>). When a message is sent or received with a <code>@GROUP</code> tag, it is automatically organized into its dedicated channel tab.</li>
+<li><strong>Direct Station Channels (Callsign Tabs)</strong>: Selecting a specific station from the channel list or the stations table opens a dedicated conversation thread with that callsign.</li>
+</ul>
+<div class="highlight">
+<p><strong>Over-the-Air Transmission (Not Private):</strong> All JS8 messages are transmitted in the clear as standard amateur radio digital signals. Direct station chats route conversation history into a dedicated tab for convenience, but they are <strong>not encrypted or private</strong> and can be received by any station monitoring the frequency.</p>
+</div>
+<h3>Composing &amp; Sending Messages / メッセージの作成と送信</h3>
+<ol>
+<li><strong>Select a Target</strong>: In the right-hand panel, tap a channel tab (<code>[GLOBAL]</code>, <code>@CQ</code>, <code>@ALLCALL</code>, a group, or a specific station callsign).</li>
+<li><strong>Enter Message</strong>: Type your text in the input box at the bottom (supports full standard ASCII text up to 100 characters).</li>
+<li><strong>Send</strong>: Tap the <strong>Send</strong> button.</li>
+</ol>
+<h3>Tapping on Messages (Quick Chat &amp; Details) / メッセージのタップ操作（個別チャット・詳細）</h3>
+<p>
+                Tapping on any message in the chat log opens a detail dialog showing the full UTC timestamp, audio frequency, SNR, Maidenhead grid, and message content:
+            </p>
+<ul>
+<li><strong>Received Messages (RX)</strong>: Tap <strong><span translate="no">CHAT</span></strong> to immediately open a direct chat tab with the transmitting station, or <strong><span translate="no">GROUP CHAT</span></strong> if the message was addressed to a group.</li>
+<li><strong>Transmitted Messages (TX)</strong>: Tap <strong><span translate="no">RESEND</span></strong> to automatically re-populate the text input box and target channel to easily resend the message.</li>
+</ul>
+<h3>Multi-Chunk Message Streaming / 長文メッセージのマルチチャンク分割送信</h3>
+<p>
+                If your message is longer than what can fit inside a single JS8 transmission frame:
+            </p>
+<ul>
+<li>qFT8 automatically splits the message into consecutive <strong>multi-chunk</strong> frames.</li>
+<li>The app automatically transmits each chunk in sequential time slots until the entire message has been delivered.</li>
+<li>A visual progress indicator displays the ongoing multi-slot transmission status (e.g. <code>TX (1/3)</code>).</li>
+<li>If you need to stop sending before all chunks finish, tapping the <strong>Send/Stop</strong> button opens a prompt allowing you to cancel the remaining queued transmission.</li>
+</ul>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="remote-control">
+<h2>Remote Control Web Server / リモートコントロール Webサーバー</h2>
+<p>
+                qFT8 includes an embedded HTTP server that allows you to monitor and control the application from any
+                web
+                browser on your network. This is particularly useful for remote operation or as a secondary display.
+            </p>
+<p>
+                This is how the Spectrogram/Stations view looks like in the remote control web server:
+            </p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Stations" height="1596" src="../webserverstations.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>
+                It allows operating with the <strong>AUTO</strong> button, criteria dropdown, <strong>+</strong> button
+                to directly add callsigns, and the list of stations with <strong>CALL</strong> buttons to manually call
+                them.
+            </p>
+<p>
+                And this is how the Spectrogram/Log view looks like:
+            </p>
+<div class="phone-mockup" style="max-width: 600px; margin: 20px auto 30px auto; border-width: 12px; border-radius: 25px;">
+<img alt="Remote Control Web Server Log" height="1596" src="../webserverlog.jpg" style="width: 100%;" width="1013"/>
+</div>
+<p>
+                This view shows the most recent log entries.
+            </p>
+<h3>Network &amp; Connectivity / ネットワーク接続について</h3>
+<p>
+                The server opens a specific TCP port (default 13497) on your phone. To access it, your devices must be
+                able to "see" each other on the network:
+            </p>
+<ul>
+<li><strong>Local Network</strong>: Both the qFT8 phone and your control device (computer, tablet, or
+                    another phone) must be on the same Wi-Fi network.</li>
+<li><strong>Router Settings</strong>: Some routers have a feature called <strong>AP Isolation</strong>
+                    (or Client Isolation) enabled by default. This must be <strong>disabled</strong> for devices to
+                    communicate with each other.</li>
+<li><strong>Mobile Hotspot Scenario</strong>: If you are in the field, you can open a Wi-Fi hotspot on
+                    one phone (with internet) and connect the qFT8 phone to that Wi-Fi network. After connecting, close
+                    and reopen the
+                    web server in qFT8 settings; the IP address shown will then be accessible from the hotspot-providing
+                    phone.</li>
+<li><strong>Internet Access</strong>: Accessing the server from outside your home (over the internet)
+                    requires <strong>Port Forwarding</strong> in your router settings (mapping the internal IP and port
+                    to an external one). Note that this generally will not work over 5G/LTE connections due to carrier
+                    NAT restrictions.</li>
+</ul>
+<h3>Access Levels / アクセスレベル（セキュリティ権限）</h3>
+<p>You can configure the remote security level in the settings pane:</p>
+<ul>
+<li><strong>Read only</strong>: Allows viewing the live spectrogram, active stations, and the QSO log.
+                    No actions can be performed.</li>
+<li><strong>Read + Stop TX</strong>: Primarily a safety mode. Allows viewing all data and permits
+                    disarming the transmitter (stopping TX) in case of an emergency, but does not allow starting TX or
+                    changing settings.</li>
+<li><strong>Full control</strong>: Grants complete authority over the application, enabling all
+                    interactive features.</li>
+</ul>
+<div class="highlight">
+<p><strong>Security Note:</strong> Anyone with access to your network, IP address, and port will have
+                    the level of control you have configured. If set to <strong>Full control</strong>, they could
+                    potentially start transmitting using your station.</p>
+</div>
+<h3>Capabilities / 機能と操作性</h3>
+<p>
+                In <strong>Full control</strong> mode, the web interface offers nearly everything the app UI does:
+            </p>
+<ul>
+<li><strong>Operation Modes</strong>: Toggle between
+                    <strong><span translate="no">AUTO</span></strong> and manual
+                    <strong><span translate="no">CALL</span></strong> modes.
+                </li>
+<li><strong>Strategy</strong>: Change the <span translate="no">AUTO</span>
+                    criteria (<span translate="no">Anyone</span>,
+                    <span translate="no">DXCC</span>,
+                    <span translate="no">Grid</span>, etc.) and search
+                    constraints.
+                </li>
+<li><strong>Transmission</strong>: Manually start/stop
+                    <span translate="no">TX</span>, choose specific
+                    <span translate="no">TX</span> messages, and change the
+                    <span translate="no">FT8 sequence (0/1)</span>.
+                </li>
+<li><strong>Frequency &amp; Band</strong>: Tap the web spectrogram to move your frequency offset or change
+                    the active radio band.</li>
+</ul>
+<div class="highlight">
+<p><strong>Note:</strong> The web UI is designed to remain responsive even if the physical phone's
+                    screen becomes sluggish due to RF interference, providing a reliable fallback for control.</p>
+<p><strong>Note:</strong> The web server will function when the screen is off if the settings to run in
+                    background are enabled (the default is to keep running in the background when
+                    <span translate="no">qFT8</span> is connected to a
+                    transceiver).
+                </p>
+</div>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting / トラブルシューティング</h2>
+<h3 id="trouble-not-recognized">Android device doesn't recognize the transceiver or it gets disconnected / Android端末がトランシーバーを認識しない、または切断される</h3>
+<p>
+                This is almost always a hardware connectivity or radio interference issue. USB connections are sensitive to vibration,
+                cable quality, and fluff phone raccoons dwelling in the USB port.
+            </p>
+<p><strong>Try:</strong></p>
+<ul>
+<li>Using a high-quality, short <span translate="no">USB cable</span> (using a shorter cable can significantly help), and ensure the port on your phone is clean and the connection is tight.</li>
+<li>If the issues occur specifically while transmitting, it could be caused by radio interference. Adding chokes or ferrites to the USB cable could help. You can also try transmitting in a different band, as some devices are only sensitive to interference in certain bands.</li>
+</ul>
+<h3>Instead of receiving signal from the transceiver, qFT8 is getting audio from the microphone / 無線機の信号ではなく端末内蔵マイクの音声を拾ってしまう</h3>
+<p>
+                This indicates that the phone is using its internal microphone because it doesn't recognize the
+                transceiver as an external audio source. The most common causes are:
+            </p>
+<ul>
+<li>The <span translate="no">USB</span> cable is not rated for data
+                    (charge-only cable).</li>
+<li>The <span translate="no">USB adapter (OTG)</span> is faulty or
+                    incompatible.</li>
+<li>The cable is plugged in the wrong direction (some cables are directional).</li>
+</ul>
+<p><strong>Try:</strong> Using a different <span translate="no">USB cable</span>,
+                a different adapter, or flipping the cable
+                connections.</p>
+<h3>Not receiving any signal at all; the waterfall is pitch black / 信号が全く受信できずウォーターフォールが真っ黒</h3>
+<p>
+                If the waterfall remains entirely black both when the transceiver is connected or disconnected, qFT8
+                likely lacks the necessary permissions to access audio.
+            </p>
+<p>
+<strong>Try:</strong> Go to your phone's <strong>Settings &gt; Apps &gt; qFT8 &gt; Permissions</strong> and
+                ensure
+                that <strong>Microphone</strong> (or Audio recording) is allowed while using qFT8. Alternatively,
+                fully uninstall and reinstall qFT8 and accept all permission prompts on the first launch.
+            </p>
+<h3>Signals are visible, but no messages are decoded / 信号の線は見えているのにメッセージがデコードされない</h3>
+<p>
+                If you see vertical "wiggly lines" in the waterfall (FT8 signals) but no text appears in the Stations
+                tab, perhaps your clock is not synchronized.
+            </p>
+<p>
+<strong>Try:</strong>
+</p>
+<ul>
+<li>Ensure you have internet access and reopen the app to trigger an <span translate="no">NTP sync</span>.</li>
+<li>If no internet is available, try a GPS sync.</li>
+<li>If that also doesn't work but message tones are visible in the spectrogram, trigger an emergency time sync from the messages, from the time and location settings menu.</li>
+<li>Ensure your radio is actually receiving signals from the air.</li>
+</ul>
+<p>
+                If no wiggly stripes appear at all in the waterfall, perhaps the band is closed or your antenna is
+                disconnected/untuned.
+            </p>
+<h3>Messages are decoded too late / メッセージのデコードが遅すぎる（タイミングのずれ）</h3>
+<p>
+                The phone processor may be too slow to decode messages on time.
+            </p>
+<p>
+<strong>Try:</strong> Make sure you switch to <strong><span translate="no">Fast
+                    decode</span></strong> in the settings, and feel
+                free to move decoding time earlier (e.g. to
+                13000<span translate="no">ms</span>) to create more margin for decoding, at
+                the expense
+                of potentially missing some late messages every cycle.
+            </p>
+<h3>Error "SWR exceeded threshold — transmission stopped" in the QMX transceiver / QMXで「SWR exceeded threshold — transmission stopped」エラーが出る</h3>
+<p>
+                If <span translate="no">qFT8</span> shows
+                0<span translate="no">W</span> while transmitting, there are several likely
+                causes:
+            </p>
+<h4>1. <span translate="no">SWR</span> Protection</h4>
+<p>
+                If the <span translate="no">QMX</span>
+<span translate="no">LCD</span> display shows
+                an "<strong><span translate="no">S</span></strong>" after the frequency, it
+                means
+                <span translate="no">SWR</span> protection kicked in.
+                This means your antenna is not properly tuned for the current band, and the
+                <span translate="no">QMX</span> has stopped transmitting to protect its
+                circuitry.
+            </p>
+<p>
+                Additionally, <span translate="no">qFT8</span> has its own configurable SWR threshold setting in the app settings. When measured SWR exceeds this threshold, <span translate="no">qFT8</span> will automatically stop transmission to protect your equipment.
+            </p>
+<ul>
+<li><strong>Firmware 1_04_004+</strong>: <span translate="no">qFT8</span> automatically resets <span translate="no">SWR</span> protection at the end of the cycle.</li>
+<li><strong>Firmware 1_03_000+</strong>: You can set "<span translate="no">SWR Protection reset options</span>" to <strong><span translate="no">Timer</span></strong> or <strong><span translate="no">TX-&gt;RX</span></strong> in the <span translate="no">QMX menu</span>. This allows <span translate="no">qFT8</span> to continue operating without you having to touch the transceiver physically.</li>
+<li><strong>Legacy Firmware</strong>: On <span translate="no">QMX</span> firmware older than 1_03_000, you must manually reset the transceiver (off/on) or enter and leave the <span translate="no">TUNE menu</span> on the <span translate="no">QMX</span> to clear the error.</li>
+</ul>
+<p>
+<strong>Note:</strong> <span translate="no">qFT8</span> waits 1 second
+                after the start of transmission before checking for
+                0<span translate="no">W</span>
+                to avoid false positives while the <span translate="no">QMX</span> ramps up.
+                If the <span translate="no">QMX</span> recovers and power rises above
+                1<span translate="no">W</span>, the problem indicator clears automatically.
+            </p>
+<h4>2. Firmware doesn't support power measurement</h4>
+<p>
+                If the <span translate="no">QMX</span> does not show that <span translate="no">SWR</span> protection is engaged, and it shows that transmission is happening properly, it may be that the firmware is old and does not support power measurement. Devices like the <span translate="no">QDX</span> also do not support power measurement. <span translate="no">qFT8</span> does not know how to interpret 0<span translate="no">W</span> and it gets confused.
+            </p>
+<p>
+<strong>Try:</strong> If your <span translate="no">QMX</span> firmware is old, update it. If you are using a <span translate="no">QDX</span>, there is no way around this.
+            </p>
+<h4>3. Audio signal not reaching the <span translate="no">QMX</span></h4>
+<p>
+                If the <span translate="no">QMX</span> does <strong>not</strong> show the
+                "<span translate="no">S</span>" icon after the frequency, then it is likely
+                that the transceiver is simply not receiving a suitable audio signal from the phone. The volume may
+                be <strong>too low</strong> (not enough signal) or <strong>too high</strong> (clipping/distortion
+                causes the <span translate="no">QMX</span> to reject the signal).
+            </p>
+<p>
+<strong>Try:</strong> Check the signal indicator on your
+                <span translate="no">QMX</span>. A single dot means no audio, two dots mean
+                there's audio but it's not loud enough. Go to the
+                <span translate="no">FT8</span> Settings section and adjust the
+                "<span translate="no">Set system volume to [X] when transmitting</span>"
+                setting to different values (e.g. 70%, 80%, 90%) to find the right level for your device.
+            </p>
+<h4>4. SWR is low during tuner but SWR protection kicks in</h4>
+<p>
+                This seems like SWR is spiking or peaking at high power for some instants during actual transmission, which triggers SWR protection. This is an indicator of a finnicky antenna (e.g. magloops), a bad cable, a bad connection, or an issue in the setup.
+            </p>
+<p>
+<strong>Try:</strong> adding common-mode current chokes (such as ferrite beads) should decrease common-mode current.
+            </p>
+<h3>What is the qFT8 Android notification? / qFT8のAndroid通知とは何ですか？</h3>
+<p>
+                This notification allows qFT8 to continue processing audio and managing QSOs when you minimize the app
+                or turn off the screen.
+            </p>
+<ul>
+<li>By default, it triggers automatically when a transceiver is plugged in.</li>
+<li>You can disable this in <span translate="no">qFT8</span> settings, but
+                    <span translate="no">qFT8</span> will stop working in the background.
+                </li>
+<li>You can press <strong><span translate="no">STOP</span></strong> in the
+                    notification to fully close <span translate="no">qFT8</span>.</li>
+</ul>
+<h3>qFT8 stops working when the screen is off / 画面消灯時に動作が停止する</h3>
+<p>
+                Some Android manufacturers implement very aggressive battery optimizations that may kill background apps
+                even if you granted the initial permissions.
+            </p>
+<p>
+<strong>Double check that you granted the permissions:</strong> Go to your phone's <strong>Settings &gt;
+                    Apps &gt; qFT8 &gt; Battery</strong> and select <strong>"Unrestricted"</strong> (or "Don't optimize").
+            </p>
+<h3>Buttons act weird or the screen is unresponsive during TX / 送信（TX）中にボタンの反応がおかしくなる、または画面がフリーズする</h3>
+<p>
+                This is caused by <strong>RF Interference (RFI)</strong>. If your antenna is close to the phone or the
+                cable is poorly shielded, the radio energy can interfere with the touch digitizer.
+            </p>
+<ul>
+<li><strong>Tip</strong>: Use a shielded <span translate="no">USB</span> cable
+                    or clip a ferrite bead onto the cable.</li>
+</ul>
+<h3>qFT8 looks different than the screenshots in this manual / qFT8の画面がこのマニュアルのスクリーンショットと異なって見える</h3>
+<p>
+                The app's user interface is occasionally updated, so some minor visual elements may have changed since the screenshots were taken. However, if significant parts of the UI are completely missing or the colors look heavily altered (e.g. the yellow progress bar, the sequence selectors, etc.), your phone's system dark mode may be incorrectly overriding and messing up the application's color palette.
+            </p>
+<p>
+<strong>Try:</strong> If your system's dark mode is causing issues, you can try temporarily disabling it or adding qFT8 to its exclusion list to restore the correct design.
+            </p>
+<h3>qFT8 says "NO RADIO" even though transceiver is
+                connected</h3>
+<p>
+                The issue is likely that you didn't grant the permissions to connect
+                <span translate="no">qFT8</span> to the transceiver. Sometimes this happens because you tap somewhere out of the
+                permission dialog and the dialog closes.
+            </p>
+<p>
+<strong>Try:</strong> Disconnect and reconnect the
+                transceiver, this should trigger the prompt
+                again. For
+                comfort, mark the option "Always open <span translate="no">qFT8</span> when
+                transceiver is connected" so you never hit
+                this issue again.
+            </p>
+<h3>qFT8 shows distance in miles and I want it in kilometers (or vice versa) / 距離の表示をマイルからキロメートル（またはその逆）に変更したい</h3>
+<p>
+                This comes from the operating system locale (i.e. language selection).
+            </p>
+<p>
+<strong>Try:</strong> Switching that configuration to the right country (e.g. English (United States)
+                for miles, English (United Kingdom) for kilometers) will fix it.
+            </p>
+<h3>qFT8 shows low transmission power (e.g. 0.1W) when transmitting at &gt;10W in <span translate="no">QMX</span></h3>
+<p>
+                This is a known bug in the <span translate="no">QMX</span> firmware (up to at least 1.03.000). If you are using the 2x4 mods (e.g. in a <span translate="no">QMX+</span>) and your transmission power exceeds 9.9W, the radio's formatting wraps around. For example, 10.1W is reported by the transceiver to the app as 0.1W over the secondary CAT protocol.
+            </p>
+<p>
+<strong>Try:</strong> There is no workaround inside <span translate="no">qFT8</span>, as the app is directly displaying the value it receives. You can safely ignore this display error or reduce your power below 10W to keep the readings accurate until this bug is patched in the transceiver firmware.
+            </p>
+<h3>Cannot export ADIF logs to the local storage using Share / 「共有」機能でADIFログを端末のローカルストレージにエクスポートできない</h3>
+<p>
+                The default <strong><span translate="no">Share</span></strong> method relies on the native Android share mechanism to export logs. Sometimes, your device's built-in file sharing menu does not offer a direct option to save to your local filesystem.
+            </p>
+<p>
+<strong>Try:</strong> Change the export <strong><span translate="no">Method</span></strong> to <strong><span translate="no">Local save</span></strong> in the settings. This uses the Android file picker to directly save the file to your local storage without relying on the sharing menu.
+            </p>
+<h3>qFT8 fails to decode some messages / 一部のメッセージがデコードされない</h3>
+<p>
+<strong>Try:</strong> Enable deep decode in the settings. Deep decode does recursive decoding and is able to decode more messages when the band is busy, at the expense of extra processing power. Keep an eye on the spectrogram: if deep decode time is too high in your device (e.g. greater than 1 second) and the app is not able to make decisions on time, disable deep decode.
+            </p>
+<h3>qFT8 hangs or behaves strangely / qFT8がフリーズする、または予期せぬ動作をする</h3>
+<p>
+                If this happens only during transmission, it is likely extreme RFI as mentioned above. If it happens
+                at other times, please scroll to the bottom of the Settings tab and use the "<strong>Email me</strong>
+                to report issues and bugs" link.
+            </p>
+<a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+</section>
+</div>
+<div class="footer">
+<p>
+            Copyright © 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). 全著作権所有。
         </p>
-        <p>
-            <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（Copyright &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（Copyright &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、および <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）のコードの一部を含んでいます。これらのサードパーティの作者やプロジェクトは、qFT8を推奨または提携していません。
+<p>
+            qFT8には以下のサードパーティライブラリが含まれています： <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright © 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright © 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright © 2003-2010 Mark Borgerding, BSD-3-Clause), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright © 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause). これらのサードパーティ著者およびプロジェクトは、qFT8を推奨または提携するものではありません。
         </p>
-        <div class="footer-links">
-            <a href="../../">メインページ</a> - <a href="../../privacy/">プライバシーポリシー</a>
-        </div>
-    </div>
-
+<div class="footer-links"><a href="../../">トップページ</a> - <a href="../../privacy/">プライバシーポリシー</a></div>
+</div>
 </body>
-
 </html>
