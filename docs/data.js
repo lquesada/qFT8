@@ -1,5 +1,5 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "2.43";
+const LATEST_VERSION = "2.44";
 const LATEST_DATE = "2026-08-23";
 const LATEST_SIZE = "6.17MB";
 
