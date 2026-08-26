@@ -42,5 +42,5 @@ const langData = {
     "CONTRIBUTORS_TITLE": "특별한 감사 및 주요 기여자",
     "CONTRIBUTOR_EA3ISA": "<strong>Roger Ribes González (<a href=\"https://www.qrz.com/db/EA3ISA\" target=\"_blank\">EA3ISA</a>)</strong> &mdash; qFT8의 초기 개발 단계부터 아낌없는 지도와 긴밀한 협력, 광범위한 현장 베타 테스트를 통해 SOTA 및 POTA 기능을 구체화하는 데 크게 기여했습니다.",
     "CONTRIBUTOR_UR4LBR": "<strong>Andriy Dinets (<a href=\"https://www.qrz.com/db/UR4LBR\" target=\"_blank\">UR4LBR</a>)</strong> &mdash; 광범위한 베타 테스트와 스펙트로그램 렌더링, 디지털 신호 처리, SNR 정확도 및 SOTA/POTA 기능 향상과 관련된 복잡한 문제 해결에 결정적인 도움을 제공했습니다.",
-    "CONTRIBUTOR_GW8RDI": "<strong>Rob Colclough (<a href=\"https://www.qrz.com/db/GW8RDI\" target=\"_blank\">GW8RDI</a>)</strong> &mdash; <a href=\"https://quantumsdr.com\" target=\"_blank\">QuantumSDR</a> 및 <a href=\"https://www.facebook.com/groups/219627530721541\" target=\"_blank\">tr(uSDX) Open</a> 프로젝트의 창립자이자 개발자입니다. 심도 있는 기술 자문과 헌신적인 테스트를 통해 qFT8이 여러 트랜시버와 다양한 Android 기기를 지원하는 데 중추적인 역할을 했습니다.",
+    "CONTRIBUTOR_GW8RDI": "<strong>Rob Colclough (<a href=\"https://www.qrz.com/db/GW8RDI\" target=\"_blank\">GW8RDI</a>)</strong> &mdash; <a href=\"https://quantumsdr.com\" target=\"_blank\">QuantumSDR</a> 및 <a href=\"https://www.facebook.com/groups/219627530721541\" target=\"_blank\">uSDX Open</a> 프로젝트의 창립자이자 개발자입니다. 심도 있는 기술 자문과 헌신적인 테스트를 통해 qFT8이 여러 트랜시버와 다양한 Android 기기를 지원하는 데 중추적인 역할을 했습니다.",
 };
