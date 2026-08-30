@@ -66,6 +66,7 @@ html
 <li><a href="#ui-spectrogram">Das Spektrogramm</a></li>
 <li><a href="#ui-stations-tab">Die Registerkarte „Stationen“.</a></li>
 <li><a href="#ui-log-tab">Die Registerkarte „Protokoll“.</a></li>
+<li><a href="#ui-world-map-tab">Die Registerkarte „Weltkarte“</a></li>
 <li><a href="#ui-settings-tab">Die Registerkarte „Einstellungen“.</a></li>
 </ul>
 </li>
@@ -487,10 +488,7 @@ html
                     qFT8.</li>
 <li><strong>Das Spektrogramm</strong>: Immer sichtbar, um entschlüsselte Nachrichten anzuzeigen, siehe <span translate="no">UTC</span> Zeit leben und
                     abgestimmte Frequenz und Steuerübertragungsfrequenz-Offset.</li>
-<li><strong>Der Tab-Bereich</strong>: Zeigt eine von drei Registerkarten an
-                    (Stationen,
-                    Protokollieren und
-                    Einstellungen). Welches
+<li><strong>Der Tab-Bereich</strong>: Zeigt eine von vier Registerkarten an (Stationen, Protokoll, Weltkarte und Einstellungen). Welches
                     Eine davon ist hier abgebildet und kann mit den Schaltflächen ganz rechts in der unteren Leiste gesteuert werden.</li>
 </ol>
 <p>In den folgenden Abschnitten werden alle diese Komponenten im Detail beschrieben.</p>
@@ -537,6 +535,7 @@ html
                     mit denen man kommunizieren kann.</li>
 <li><strong>Die Schaltfläche der Registerkarte „Protokoll“.</strong>: Öffnet die Registerkarte, die alle auflistet <span translate="no">QSO</span> du hast gemacht. Diese Schaltfläche wird markiert
                     mit einem gelben Punkt, wenn Sie QSOs haben, die nicht auf QRZ hochgeladen wurden.</li>
+<li><strong>Die Schaltfläche der Registerkarte „Weltkarte“</strong>: Öffnet die interaktive Weltkarte.</li>
 <li><strong>Die Schaltfläche „Einstellungen“ auf der Registerkarte</strong>: Öffnet die Registerkarte zum Konfigurieren von qFT8.</li>
 </ol>
 <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
@@ -820,6 +819,56 @@ html
                 app ist irreversibel, es sei denn, Sie behalten eine exportierte Kopie der Protokolldatei oder sie wurde hochgeladen <span translate="no">QRZ</span>.
             </p>
 <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
+            <h3 id="ui-world-map-tab">Die Registerkarte „Weltkarte“</h3>
+            <p>Die Registerkarte „Weltkarte“ zeigt eine globale, interaktive Echtzeitkarte mit Stationsstandorten, decodiertem Funkverkehr, Ihren QSO-Erfolgen und solaren Ausbreitungsbedingungen.</p>
+
+            <div class="phone-mockup">
+                <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+                <img alt="qFT8-Weltkarten-Registerkarte" class="screen" height="1080" src="../worldmap.jpg" width="2280"/>
+            </div>
+
+            <p>Hier sind die Komponenten und Funktionen der Registerkarte „Weltkarte“ im Detail:</p>
+
+            <ol>
+                <li><strong>Interaktive Karte &amp; Steuerung</strong>:
+                    <ul>
+                        <li><strong>Navigation</strong>: Durch Ziehen sanft über den Globus bewegen, mit nahtlosem horizontalem Umbruch über den Antimeridian. Mit zwei Fingern zusammenziehen oder auseinanderziehen, um zu zoomen.</li>
+                        <li><strong>Kartendesigns</strong>: Wechseln Sie in der oberen Symbolleiste zwischen vier visuellen Stilen (<em>Strahlende Zukunft</em>, <em>Konsole</em>, <em>Erde</em> und <em>Mitternachtsblau</em>).</li>
+                        <li><strong>HUD-Koordinaten</strong>: Zeigt geografische Echtzeitkoordinaten (Breitengrad, Längengrad) und den Maidenhead-Grid-Locator unter Ihrer Berührungsposition an.</li>
+                    </ul>
+                </li>
+                <li><strong>Linke Symbolleiste (Info- und Overlay-Umschalter)</strong>:
+                    <ul>
+                        <li><strong><span translate="no">INFO</span></strong>: Schaltet die Info-Einblendungskarten ein/aus (Uhrzeit, Solarterminator, Subsolarposition und Fadenkreuzkoordinaten).</li>
+                        <li><strong><span translate="no">MSGs</span></strong>: Schaltet Direktnachrichten-Markierungen ein/aus, die direkt an Ihre Station gesendet wurden (<span style="color: #f43f5e; font-weight: bold;">Rosa</span>).</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: Schaltet Kontaktmarkierungen Ihrer aktuellen Sitzung ein/aus (<span style="color: #f59e0b; font-weight: bold;">Bernstein</span> für geloggt, <span style="color: #10b981; font-weight: bold;">Smaragd</span> für bestätigt).</li>
+                        <li><strong><span translate="no">Spot</span></strong>: Schaltet live decodierte Signale auf dem Band (<span style="color: #00ff00; font-weight: bold;">Grün</span> für CQ, <span style="color: #00ffff; font-weight: bold;">Cyan</span> für RX, <span style="color: #ff5252; font-weight: bold;">Rot</span> für TX) und PSKReporter-Rückwärtsempfänger (<span style="color: #f59e0b; font-weight: bold;">Orangefarbene Rauten</span>) ein/aus.</li>
+                        <li><strong><span translate="no">SOTA</span></strong>: Schaltet Summits On The Air-Gipfelreferenzen und aktive Gipfel-Aktivatoren (⛰️) ein/aus.</li>
+                        <li><strong><span translate="no">POTA</span></strong>: Schaltet Parks On The Air-Parkreferenzen und aktive Park-Aktivatoren (🌲) ein/aus.</li>
+                        <li><strong><span translate="no">STATS</span></strong>: Schaltet das Statistikfeld ein/aus, das die Gesamtzahl der geloggten und bestätigten Einträge für die aktive Grenzschicht anzeigt.</li>
+                    </ul>
+                </li>
+                <li><strong>Rechte Symbolleiste (Erfolge &amp; Grenzschichten)</strong>:
+                    <ul>
+                        <li><strong><span translate="no">DXCC</span></strong>: Zeigt Länder- und Gebietsgrenzen farbcodiert nach Ihrem Log-Status an (<span style="color: #00ff00; font-weight: bold;">Grün</span> für geloggt/unbestätigt, <span style="color: #ffff00; font-weight: bold;">Gelb</span> für bestätigt). Kleine Inseln und Mikro-Entitäten erscheinen als sichtbare Markierungen.</li>
+                        <li><strong><span translate="no">GRID</span></strong>: Globales Maidenhead-Gitter (Großfelder und 4-stellige Planquadrate) mit Erfolgsfüllung.</li>
+                        <li><strong><span translate="no">ITU</span></strong>: Überlagert die 90 ITU-Funkzonen mit Erfolgsfüllung.</li>
+                        <li><strong><span translate="no">CQ</span></strong>: Überlagert die 40 WAZ-Zonen des CQ-Magazins mit Erfolgsfüllung.</li>
+                    </ul>
+                </li>
+                <li><strong>Detailkarte &amp; Schnellaktion CALL</strong>:
+                    <p>Durch Tippen auf eine Station, einen Spot, einen Park oder einen Gipfel wird eine informative Detailkarte geöffnet mit:</p>
+                    <ul>
+                        <li>Rufzeichen oder Referenzname, DXCC-Einheit und Park-/Gipfeltitel.</li>
+                        <li>Decodierter Nachrichtentext, Frequenz, Band und Betriebsart.</li>
+                        <li>Signalstärke (<span translate="no">SNR</span>) oder Signalbericht (<span translate="no">RST</span>).</li>
+                        <li>Grid-Locator, Entfernung (km / mi), Peilung (°) und verstrichene Zeit.</li>
+                        <li><strong><span translate="no">CALL</span>-Taste</strong>: Startet sofort den Anruf an die Station (schaltet bei Bedarf automatisch Band und Betriebsart um).</li>
+                    </ul>
+                </li>
+            </ol>
+            <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
+
             <h3 id="ui-settings-tab">Die Registerkarte „Einstellungen“.</h3>
             <p>Die Registerkarte „Einstellungen“ ermöglicht die Konfiguration von qFT8.</p>
             <div class="phone-mockup">
@@ -1038,9 +1087,10 @@ html
                     Isolieren Sie einen bestimmten Aktivierungs- oder Wettbewerbszeitraum.</li>
 <li><strong>Statusfilter</strong>: Nützlich für die Beantragung von Prämien (Export<strong>"<span translate="no">Confirmed
                         Only</span>"</strong>)
-                    oder für manuelle Uploads zu anderen Diensten (Export).<strong>"<span translate="no">Not Uploaded to
-                        QRZ</span>"</strong>zu vermeiden
+                    oder für manuelle Uploads zu anderen Diensten (Export <strong>"<span translate="no">Not Uploaded to
+                        QRZ</span>"</strong> zu vermeiden
                     Duplikate).</li>
+<li><strong>Hunter-Kriterien</strong>: Filtern Sie Ihr Protokoll nach <strong>"<span translate="no">All logs</span>"</strong>, <strong>"<span translate="no">Only POTA contacts (parks)</span>"</strong> oder <strong>"<span translate="no">Only SOTA contacts (summits)</span>"</strong>, um gezielte Diplom-Einreichungsdateien mit ausgefüllten Kontaktreferenzen (<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>) zu erstellen.</li>
 <li><strong><span translate="no">SOTA</span> Referenz</strong>: Wie detailliert
                     im<a href="#sota"><span translate="no">SOTA</span> Abschnitt</a>,
                     <span translate="no">qFT8</span> kann
@@ -1161,16 +1211,38 @@ html
 
 <section id="sota">
 <h2>Summits On The Air (<span translate="no">SOTA</span>)</h2>
-<p>qFT8 bietet integrierte Werkzeuge sowohl für SOTA (Summits On The Air) <strong>Chaser (Jäger)</strong> als auch für <strong>Aktivatoren</strong>.</p>
+<p>qFT8 bietet umfassende, integrierte Werkzeuge sowohl für SOTA (Summits On The Air) <strong>Chaser (Jäger)</strong> als auch für <strong>Aktivatoren</strong>, komplett mit automatischem Spot-Abruf, Echtzeit-Referenzverfolgung, Diplom-Hervorhebungen und dedizierten ADIF-Exportfiltern.</p>
+
+<h3>Automatischer Live-Gipfelspot-Abruf</h3>
+<p>Wenn eine Internetverbindung besteht, verbindet sich qFT8 im Hintergrund automatisch mit der offiziellen SOTA-API (Aktualisierung alle 90 Sekunden), um weltweite Gipfelaktivierungen abzurufen.</p>
+<ul>
+<li><strong>Weltkarten-Anzeige</strong>: Aktive Gipfelaktivatoren werden auf der Weltkarte mit Bergsymbolen (⛰️), Rufzeichen, Gipfelnamen, Höhenangaben und Frequenzen dargestellt.</li>
+<li><strong>Automatische Referenzzuordnung</strong>: Wenn Sie einen Aktivator auf dem Band empfangen, gleicht qFT8 das Rufzeichen mit der Live-Spot-Datenbank ab, um die genaue Gipfelreferenz zu ermitteln (z. B. <code>HB/BE-001</code>, <code>OE/TI-001</code>, <code>DL/EW-001</code>).</li>
+<li><strong>Automatisches Nachpflegen (Backfill)</strong>: Wenn Sie ein QSO mit einer Station abschließen, die <code><span translate="no">CQ SOTA</span></code> gerufen hat, bevor deren Spot geladen oder eine Referenz empfangen wurde, überwacht qFT8 neue Spots und pflegt die Gipfelreferenz automatisch in kürzlich geloggte QSOs (innerhalb von 1 Stunde) ein.</li>
+</ul>
 
 <h3>Betrieb als SOTA-Chaser / Jäger</h3>
 <p>So jagen Sie Stationen, die Berggipfel aktivieren:</p>
 <ol>
 <li>Stellen Sie auf der Registerkarte <strong>Stations</strong> das Dropdown-Menü für die Zielpriorität auf <strong><span translate="no">SOTA hunter</span></strong> (oder <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
-<li>Aktivieren Sie den <strong><span translate="no">AUTO</span></strong>-Modus.</li>
-<li>qFT8 erkennt aktive SOTA-Stationen automatisch (anhand von <code><span translate="no">CQ SOTA</span></code>-Rufen oder Gipfelreferenzen wie <code>OE/TI-001</code>) und kennzeichnet sie mit einem lila <strong><span translate="no">SOTA</span></strong>-Badge in Zeile 2.</li>
-<li>Im AUTO-Modus priorisiert qFT8 Anrufe an aktive SOTA-Stationen gegenüber regulären CQ-Rufern, geordnet nach der höchsten Signalstärke (<span translate="no">SNR</span>).</li>
+<li><strong>Visuelle Badges & Referenzspalte</strong>: Aktive SOTA-Stationen (online gemeldet oder mit <code><span translate="no">CQ SOTA</span></code> sendend) werden in Zeile 2 mit einem <strong><span translate="no">SOTA</span></strong>-Badge gekennzeichnet. Zudem wechselt die DXCC-Spaltenüberschrift zu <strong><span translate="no">SOTA Reference</span></strong> und zeigt den Gipfelcode direkt an.</li>
+<li><strong>Hervorhebung gearbeiteter vs. noch benötigter Gipfel</strong>:
+<ul>
+<li><strong>Noch nicht gearbeiteter Gipfel</strong>: Gekennzeichnet mit einem leuchtend lila <strong><span translate="no">SOTA</span></strong>-Badge und lila Referenztext – signalisiert einen neuen Gipfel für Ihr Log.</li>
+<li><strong>Bereits gearbeiteter Gipfel</strong>: Dargestellt in einem dezenten grauen Badge, sodass Sie neue Gipfel sofort von bereits geloggten unterscheiden können.</li>
+</ul>
+</li>
+<li><strong>AUTO-Jagd</strong>: Im <strong><span translate="no">AUTO</span></strong>-Modus priorisiert qFT8 Anrufe an noch nicht gearbeitete SOTA-Aktivatoren gegenüber regulären CQ-Rufern, geordnet nach höchster Signalstärke (<span translate="no">SNR</span>).</li>
 </ol>
+
+<h3>Verwalten & Bearbeiten von SOTA-Referenzen im Protokoll</h3>
+<p>qFT8 bietet spezielle Werkzeuge zur Überprüfung und Pflege Ihrer SOTA-Historie:</p>
+<ul>
+<li><strong>SOTA-Hunter-Ansicht im QSOs-Tab</strong>: Wählen Sie in der Registerkarte <strong>QSOs</strong> die <strong><span translate="no">SOTA Hunter</span></strong>-Ansicht, um Gipfelreferenzen einzusehen. Erstbestätigte Gipfelkontakte werden in Gold hervorgehoben, unbestätigte Erstkontakte in Gelb.</li>
+<li><strong>Gipfelreferenzen bearbeiten</strong>: Tippen Sie auf ein beliebiges QSO im Protokoll, um den Detaildialog zu öffnen, und wählen Sie <strong><span translate="no">Edit SOTA reference</span></strong>, um einen Gipfelcode hinzuzufügen, zu bearbeiten oder zu korrigieren (z. B. <code>OE/TI-001</code>).</li>
+<li><strong>Automatische QRZ-Logbuch-Synchronisation (<span translate="no">ACTION=REPLACE</span>)</strong>: Wenn das QSO bereits zu QRZ hochgeladen war, wird der Eintrag bei einer Bearbeitung automatisch markiert und bei QRZ direkt aktualisiert, ohne Duplikate zu erzeugen.</li>
+<li><strong>LoTW-Hinweis</strong>: Beachten Sie, dass LoTW (<span translate="no">Logbook of The World</span>) bei Referenzänderungen nicht automatisch aktualisiert wird, da LoTW das nachträgliche Ändern bereits hochgeladener QSOs nicht unterstützt.</li>
+</ul>
 
 <h3>Betrieb als SOTA-Aktivator</h3>
 <p>So führen Sie eine SOTA-Aktivierung von einem Gipfel durch:</p>
@@ -1185,15 +1257,23 @@ html
 <p><strong>Manuelle Eingriffe:</strong> Wenn mehrere Chaser Sie gleichzeitig anrufen und Sie eine bestimmte Station auswählen möchten, tippen Sie auf <strong><span translate="no">CALL</span></strong> bei dieser Station. Nach Abschluss kehrt qFT8 automatisch zum CQ-Rufen zurück.</p>
 </div>
 
-<h3>Exportieren Ihres SOTA-Aktivierungsprotokolls (Aktivatoren)</h3>
-<p>Wenn Sie eine Gipfelaktivierung abschließen, exportieren Sie ein ADIF-Protokoll für SOTAData:</p>
+<h3>Exportieren Ihrer SOTA-Protokolle (Chaser & Aktivatoren)</h3>
+<p>qFT8 ermöglicht maßgeschneiderte ADIF-Exporte für Diplom-Einreichungen und Aktivator-Logs:</p>
 <ol>
 <li>Gehen Sie zu den <strong>Einstellungen</strong> und tippen Sie auf <strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Wählen Sie <strong><span translate="no">Selected time range</span></strong> und geben Sie Start- und Endzeit in UTC an.</li>
-<li>Setzen Sie den Filter auf <strong><span translate="no">All QSOs</span></strong>.</li>
-<li>Wählen Sie bei <strong><span translate="no">Event</span></strong> den Eintrag <strong><span translate="no">SOTA</span></strong> aus.</li>
-<li>Geben Sie Ihre Gipfelreferenz ein (für Aktivatoren, z. B. <code>DL/EW-001</code>).</li>
-<li>Drücken Sie <strong><span translate="no">EXPORT QSOs</span></strong>, um die ADIF-Datei mit vorab ausgefüllten SOTA-Feldern zu erstellen.</li>
+<li><strong>Für Chaser / Jäger</strong>:
+<ul>
+<li>Setzen Sie <strong><span translate="no">Hunter criteria</span></strong> auf <strong><span translate="no">Only SOTA contacts (summits)</span></strong>, um ausschließlich QSOs mit kontaktierter Gipfelreferenz (mit <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>) zu exportieren.</li>
+</ul>
+</li>
+<li><strong>Für Aktivatoren</strong>:
+<ul>
+<li>Wählen Sie <strong><span translate="no">Selected time range</span></strong> für Ihr Aktivierungszeitfenster.</li>
+<li>Wählen Sie bei <strong><span translate="no">Event</span></strong> den Eintrag <strong><span translate="no">SOTA</span></strong> aus und geben Sie Ihre aktivierte Gipfelreferenz ein (z. B. <code>OE/TI-001</code>). qFT8 fügt <code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code> automatisch in alle Datensätze ein.</li>
+</ul>
+</li>
+<li><strong>Summit-to-Summit (S2S)</strong>: Wenn Sie während einer Aktivierung einen anderen Gipfel-Aktivator gearbeitet haben, enthält die Datei sowohl Ihren Aktivator-Gipfel (<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>) als auch den kontaktierten Gipfel (<code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>).</li>
+<li>Drücken Sie <strong><span translate="no">EXPORT QSOs</span></strong>, um die standardisierte ADIF-Datei zu teilen oder zu speichern.</li>
 </ol>
 
 <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
@@ -1201,16 +1281,38 @@ html
 
 <section id="pota">
 <h2>Parks On The Air (<span translate="no">POTA</span>)</h2>
-<p>qFT8 bietet vollständige Unterstützung für POTA (Parks On The Air) <strong>Jäger (Hunter)</strong> und <strong>Aktivatoren</strong>.</p>
+<p>qFT8 bietet eine vollständige, native Integration mit dem POTA-Programm (Parks On The Air) für <strong>Jäger (Hunter)</strong> und <strong>Aktivatoren</strong> mit automatischem Spot-Abruf, Nachverfolgung gearbeiteter Parks, Referenzbearbeitung und flexiblen Exportoptionen.</p>
+
+<h3>Automatischer Live-Parkspot-Abruf</h3>
+<p>Bei bestehender Internetverbindung ruft qFT8 im Hintergrund automatisch (alle 90 Sekunden) die offizielle POTA-API ab, um alle aktiven weltweiten Parkaktivierungen zu laden.</p>
+<ul>
+<li><strong>Weltkarten-Anzeige</strong>: Aktive Parkaktivatoren werden auf der Weltkarte mit Parksymbolen (🏞️), Rufzeichen, Parknamen und Betriebsfrequenzen visualisiert.</li>
+<li><strong>Automatische Referenzauflösung</strong>: Beim Empfang von Signalen einer Parkstation gleicht qFT8 das Rufzeichen mit aktiven Spots ab, um die Parkreferenz automatisch zu ermitteln (z. B. <code>DE-0001</code>, <code>K-1234</code>, <code>OE-0001</code>).</li>
+<li><strong>Automatisches Nachpflegen (Backfill)</strong>: Wenn Sie ein QSO mit einer Station loggen, die <code><span translate="no">CQ POTA</span></code> gerufen hat, bevor deren Parkreferenz empfangen oder geladen wurde, überwacht qFT8 neue Spots und pflegt den Parkcode automatisch in kürzlich geloggte QSOs (innerhalb von 1 Stunde) ein.</li>
+</ul>
 
 <h3>Betrieb als POTA-Jäger (Hunter)</h3>
 <p>So jagen Sie Stationen, die Parks aktivieren:</p>
 <ol>
 <li>Stellen Sie auf der Registerkarte <strong>Stations</strong> das Dropdown-Menü für die Zielpriorität auf <strong><span translate="no">POTA hunter</span></strong> (oder <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
-<li>Aktivieren Sie den <strong><span translate="no">AUTO</span></strong>-Modus.</li>
-<li>qFT8 identifiziert POTA-Aktivatoren automatisch (anhand von <code><span translate="no">CQ POTA</span></code>-Rufen oder Park-Kennungen wie <code>DE-0001</code>) und hebt sie mit einem lila <strong><span translate="no">POTA</span></strong>-Badge in Zeile 2 hervor.</li>
-<li>Im AUTO-Modus priorisiert qFT8 Anrufe an aktive POTA-Stationen, bevorzugt nach der höchsten Signalstärke (<span translate="no">SNR</span>).</li>
+<li><strong>Visuelle Badges & Referenzspalte</strong>: Aktive POTA-Stationen werden in Zeile 2 mit einem <strong><span translate="no">POTA</span></strong>-Badge gekennzeichnet, und die DXCC-Überschrift wechselt zu <strong><span translate="no">POTA Reference</span></strong>, um den Parkcode anzuzeigen.</li>
+<li><strong>Hervorhebung gearbeiteter vs. noch benötigter Parks</strong>:
+<ul>
+<li><strong>Noch nicht gearbeiteter Park</strong>: Gekennzeichnet mit einem leuchtend lila <strong><span translate="no">POTA</span></strong>-Badge und lila Referenztext – signalisiert einen neuen Park für Ihre Sammlung.</li>
+<li><strong>Bereits gearbeiteter Park</strong>: Dargestellt in einem dezenten grauen Badge für einfache Priorisierung bei dicht belegten Bändern.</li>
+</ul>
+</li>
+<li><strong>AUTO-Jagd</strong>: Im <strong><span translate="no">AUTO</span></strong>-Modus priorisiert qFT8 noch nicht gearbeitete POTA-Aktivatoren gegenüber regulären Stationen, sortiert nach Signalstärke (<span translate="no">SNR</span>).</li>
 </ol>
+
+<h3>Verwalten & Bearbeiten von POTA-Referenzen im Protokoll</h3>
+<p>Überprüfen und pflegen Sie Ihr Park-Jäger-Logbuch direkt in der App:</p>
+<ul>
+<li><strong>POTA-Hunter-Ansicht im QSOs-Tab</strong>: Wechseln Sie die Ansicht der Registerkarte <strong>QSOs</strong> auf <strong><span translate="no">POTA Hunter</span></strong>, um Parkreferenzen anzuzeigen. Erstbestätigte Parkkontakte werden in Gold hervorgehoben, unbestätigte Erstkontakte in Gelb.</li>
+<li><strong>Parkreferenzen bearbeiten</strong>: Tippen Sie auf ein beliebiges QSO im Protokoll und wählen Sie <strong><span translate="no">Edit POTA reference</span></strong>, um einen Parkcode hinzuzufügen, zu bearbeiten oder zu entfernen (z. B. <code>DE-0001</code>).</li>
+<li><strong>Automatische QRZ-Logbuch-Synchronisation (<span translate="no">ACTION=REPLACE</span>)</strong>: Bei einer Änderung der Parkreferenz aktualisiert qFT8 den bestehenden Eintrag bei QRZ Logbook automatisch direkt vor Ort ohne Duplikate.</li>
+<li><strong>LoTW-Hinweis</strong>: Beachten Sie, dass LoTW (<span translate="no">Logbook of The World</span>) bei Referenzänderungen nicht automatisch aktualisiert wird, da LoTW das nachträgliche Modifizieren bereits hochgeladener QSOs nicht unterstützt.</li>
+</ul>
 
 <h3>Betrieb als POTA-Aktivator</h3>
 <p>So aktivieren Sie einen Park:</p>
@@ -1225,21 +1327,23 @@ html
 <p><strong>Manuelle Eingriffe:</strong> Durch Antippen von <strong><span translate="no">CALL</span></strong> bei einer Station in der Warteschlange wird dieses QSO bevorzugt, bevor zum automatischen CQ-Modus zurückgekehrt wird.</p>
 </div>
 
-<h3>Exportieren Ihres POTA-Aktivierungsprotokolls (Aktivatoren)</h3>
-<p>Wenn Sie eine Parkaktivierung abschließen, exportieren Sie ein gültiges ADIF-Protokoll für POTA:</p>
+<h3>Exportieren Ihrer POTA-Protokolle (Jäger & Aktivatoren)</h3>
+<p>Erstellen Sie standardisierte ADIF-Dateien, die direkt für pota.app bereit sind:</p>
 <ol>
 <li>Gehen Sie zu den <strong>Einstellungen</strong> und tippen Sie auf <strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Wählen Sie <strong><span translate="no">Selected time range</span></strong> und geben Sie Start- und Endzeit in UTC an.</li>
-<li>Setzen Sie den Filter auf <strong><span translate="no">All QSOs</span></strong>.</li>
-<li>Wählen Sie bei <strong><span translate="no">Event</span></strong> den Eintrag <strong><span translate="no">POTA</span></strong> aus.</li>
-<li>Geben Sie Ihre Parkreferenz ein (für Aktivatoren, z. B. <code>DE-0001</code>).</li>
-<li>Drücken Sie <strong><span translate="no">EXPORT QSOs</span></strong>. Dies erzeugt eine ADIF-Datei mit folgenden ausgefüllten Feldern für jeden Datensatz:
+<li><strong>Für Jäger (Hunter)</strong>:
 <ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> gesetzt auf <code>POTA</code></li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> gesetzt auf Ihre Parkreferenz</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> gesetzt auf Ihre Parkreferenz</li>
+<li>Setzen Sie <strong><span translate="no">Hunter criteria</span></strong> auf <strong><span translate="no">Only POTA contacts (parks)</span></strong>, um ausschließlich QSOs zu exportieren, bei denen ein Park gejagt wurde (mit <code>&lt;<span translate="no">POTA_REF</span>&gt;</code>).</li>
 </ul>
 </li>
+<li><strong>Für Aktivatoren</strong>:
+<ul>
+<li>Wählen Sie <strong><span translate="no">Selected time range</span></strong> für Ihr Aktivierungsfenster.</li>
+<li>Wählen Sie bei <strong><span translate="no">Event</span></strong> den Eintrag <strong><span translate="no">POTA</span></strong> und geben Sie Ihre Parkreferenz ein (z. B. <code>DE-0001</code>). qFT8 füllt automatisch <code>&lt;<span translate="no">MY_SIG</span>&gt;POTA</code>, <code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> und <code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> in allen Datensätzen aus.</li>
+</ul>
+</li>
+<li><strong>Park-to-Park (P2P) & Park-to-Summit (P2S)</strong>: Beim Arbeiten anderer Parks oder Gipfel während Ihrer Aktivierung werden sowohl Ihr Aktivator-Park (<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>) als auch die Gegenstellen-Referenz (<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>) gleichzeitig exportiert.</li>
+<li>Drücken Sie <strong><span translate="no">EXPORT QSOs</span></strong>, um Ihre Protokolldatei zu speichern oder zu teilen.</li>
 </ol>
 
 <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>

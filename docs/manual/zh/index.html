@@ -66,6 +66,7 @@ html
 <li><a href="#ui-spectrogram">频谱图</a></li>
 <li><a href="#ui-stations-tab">车站选项卡</a></li>
 <li><a href="#ui-log-tab">日志选项卡</a></li>
+<li><a href="#ui-world-map-tab">世界地图选项卡</a></li>
 <li><a href="#ui-settings-tab">设置选项卡</a></li>
 </ul>
 </li>
@@ -463,10 +464,7 @@ html
                     qFT8。</li>
 <li><strong>频谱图</strong>：始终可见，要查看解码的消息，请参阅<span translate="no">UTC</span>生活时间和
                     调谐频率，并控制传输频率偏移。</li>
-<li><strong>选项卡区域</strong>：显示三个选项卡之一
-                    （车站、
-                    日志，和
-                    设置）。哪个
+<li><strong>选项卡区域</strong>：显示四个选项卡之一（电台、日志、世界地图和设置）。哪个
                     此处显示的一个可以通过底部栏最右侧的按钮进行控制。</li>
 </ol>
 <p>以下部分详细描述了所有这些组件。</p>
@@ -510,6 +508,7 @@ html
                     可以交流。</li>
 <li><strong>日志选项卡按钮</strong>：打开列出所有<span translate="no">QSO</span>你已经做到了。该按钮将被标记
                     如果您有未上传到 QRZ 的 QSO，则带有黄点。</li>
+<li><strong>世界地图选项卡按钮</strong>：打开交互式全球世界地图。</li>
 <li><strong>设置选项卡按钮</strong>：打开选项卡以配置 qFT8。</li>
 </ol>
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
@@ -784,6 +783,56 @@ html
                 qFT8，或删除<span translate="no">QSO</span>本地在 qFT8 中。<strong>请注意，这些操作仅是本地的，不会同步到<span translate="no">QRZ</span>。</strong>删除一个<span translate="no">QSO</span>在
                 应用程序是不可逆的，除非您保留日志文件的导出副本或将其上传到<span translate="no">QRZ</span>。</p>
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
+            <h3 id="ui-world-map-tab">世界地图选项卡</h3>
+            <p>世界地图选项卡实时呈现交互式全球地图，展示电台地理分布、解码通信流量、QSO成就以及太阳传播条件。</p>
+
+            <div class="phone-mockup">
+                <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+                <img alt="qFT8 世界地图选项卡" class="screen" height="1080" src="../worldmap.jpg" width="2280"/>
+            </div>
+
+            <p>以下是世界地图选项卡的详细组成部分与功能：</p>
+
+            <ol>
+                <li><strong>交互式地图画布与控制</strong>:
+                    <ul>
+                        <li><strong>导航</strong>: 单指拖动平滑平移地球，支持对向子午线无缝横向环绕。双指捏合进行放大和缩小。</li>
+                        <li><strong>地图主题</strong>: 在顶部工具栏中切换四种视觉风格（<em>光明未来</em>、<em>控制台</em>、<em>地球</em>和<em>午夜蓝</em>）。</li>
+                        <li><strong>HUD坐标</strong>: 实时显示触摸位置对应的地理坐标（纬度、经度）以及Maidenhead网格定位器。</li>
+                    </ul>
+                </li>
+                <li><strong>左侧工具栏（信息与图层开关）</strong>:
+                    <ul>
+                        <li><strong><span translate="no">INFO</span></strong>: 开关屏幕上的信息浮层卡片（时间、太阳晨昏线、日下点位置和十字准星坐标）。</li>
+                        <li><strong><span translate="no">MSGs</span></strong>: 开关专门发送给您电台的定向消息标记（<span style="color: #f43f5e; font-weight: bold;">玫瑰红</span>）。</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: 开关当前会话的通联记录标记（<span style="color: #f59e0b; font-weight: bold;">琥珀色</span>为已记录，<span style="color: #10b981; font-weight: bold;">翡翠绿</span>为已确认）。</li>
+                        <li><strong><span translate="no">Spot</span></strong>: 开关波段上实时解码的通信信号（<span style="color: #00ff00; font-weight: bold;">绿色</span>为CQ，<span style="color: #00ffff; font-weight: bold;">青色</span>为RX接收，<span style="color: #ff5252; font-weight: bold;">红色</span>为TX发射）以及PSKReporter反向接收点（<span style="color: #f59e0b; font-weight: bold;">橙色菱形</span>）。</li>
+                        <li><strong><span translate="no">SOTA</span></strong>: 开关“山峰在空中”（Summits On The Air）山峰参考点及活跃激活者（⛰️）。</li>
+                        <li><strong><span translate="no">POTA</span></strong>: 开关“公园在空中”（Parks On The Air）公园参考点及活跃激活者（🌲）。</li>
+                        <li><strong><span translate="no">STATS</span></strong>: 开关统计面板，显示当前边界图层已记录和已确认的总计数据。</li>
+                    </ul>
+                </li>
+                <li><strong>右侧工具栏（成就与边界图层）</strong>:
+                    <ul>
+                        <li><strong><span translate="no">DXCC</span></strong>: 显示国家和地区实体边界，根据日志状态着色（<span style="color: #00ff00; font-weight: bold;">绿色</span>为已记录/未确认，<span style="color: #ffff00; font-weight: bold;">黄色</span>为已确认）。小型岛屿和微型实体显示为清晰的圆点。</li>
+                        <li><strong><span translate="no">GRID</span></strong>: 全球Maidenhead网格（大区及4字符网格）并带有成就填充。</li>
+                        <li><strong><span translate="no">ITU</span></strong>: 叠加90个国际电联（ITU）无线电分区并带有成就填充。</li>
+                        <li><strong><span translate="no">CQ</span></strong>: 叠加40个CQ杂志WAZ分区并带有成就填充。</li>
+                    </ul>
+                </li>
+                <li><strong>实体详情卡片与快速CALL呼叫</strong>:
+                    <p>点击任何电台、信号点、公园或山峰均会打开详细信息卡片：</p>
+                    <ul>
+                        <li>呼号或参考名称、DXCC实体以及公园/山峰名称。</li>
+                        <li>解码消息文本、频率、波段和工作模式。</li>
+                        <li>信号强度（<span translate="no">SNR</span>）或信号报告（<span translate="no">RST</span>）。</li>
+                        <li>网格定位器、距离（公里/英里）、方位角（°）以及已过时间。</li>
+                        <li><strong><span translate="no">CALL</span>按钮</strong>: 立即向该电台发起通联呼叫（如需要会自动切换波段和工作模式）。</li>
+                    </ul>
+                </li>
+            </ol>
+            <a class="back-to-toc" href="#top">↑ 返回目录</a>
+
             <h3 id="ui-settings-tab">设置选项卡</h3>
             <p>设置选项卡允许配置 qFT8。</p>
             <div class="phone-mockup">
@@ -996,11 +1045,12 @@ html
 <ul>
 <li><strong>时间范围</strong>：您可以导出整个历史记录或使用<span translate="no">UTC</span>日期/时间选择器
                     隔离特定的激活或竞赛期。</li>
-<li><strong>状态过滤器</strong>：对于领取奖励很有用（导出<strong>”<span translate="no">Confirmed
-                        Only</span>”</strong>）
-                    或手动上传到其他服务（导出<strong>”<span translate="no">Not Uploaded to
-                        QRZ</span>”</strong>避免
+<li><strong>状态过滤器</strong>：对于领取奖励很有用（导出<strong>"<span translate="no">Confirmed
+                        Only</span>"</strong>）
+                    或手动上传到其他服务（导出<strong>"<span translate="no">Not Uploaded to
+                        QRZ</span>"</strong>以避免
                     重复）。</li>
+<li><strong>猎人过滤标准（Hunter criteria）</strong>：可将日志筛选为 <strong>"<span translate="no">All logs</span>"</strong>、<strong>"<span translate="no">Only POTA contacts (parks)</span>"</strong> 或 <strong>"<span translate="no">Only SOTA contacts (summits)</span>"</strong>，以生成带有完整对方参考代码（<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）的针对性证书申请文件。</li>
 <li><strong><span translate="no">SOTA</span>参考</strong>: 详细说明
                     在<a href="#sota"><span translate="no">SOTA</span>部分</a>,
                     <span translate="no">qFT8</span>可以
@@ -1118,78 +1168,143 @@ html
 <a class="back-to-toc" href="#top">↑ 返回目录</a>
 </section>
 <section id="sota">
-<h2>山峰空中（SOTA）</h2>
-<p>qFT8 为SOTA（Summits On The Air）的<strong>猎人（Hunters/Chasers）</strong>和<strong>激活者（Activators）</strong>提供内置工具。</p>
-<h3>作为SOTA猎人/追逐者操作</h3>
-<p>追寻正在激活山峰的电台：</p>
-<ol>
-<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为<strong><span translate="no">SOTA</span></strong>。</li>
-<li>启用<strong><span translate="no">AUTO</span></strong>模式。</li>
-<li>qFT8 自动检测活跃的SOTA电台（来自<code><span translate="no">CQ SOTA</span></code>呼叫或山峰参考如<code>W6/CA-001</code>），并在第2行用紫色<strong><span translate="no">SOTA</span></strong>徽章标记它们。</li>
-<li>在AUTO模式下，qFT8 优先呼叫活跃的SOTA电台而非普通CQ电台，按信号强度（<span translate="no">SNR</span>）从高到低排序。</li>
-</ol>
-<h3>作为SOTA激活者操作</h3>
-<p>从山峰进行SOTA激活：</p>
-<ol>
-<li><strong>同步时间</strong>：在出发前确保设备时钟准确。</li>
-<li><strong>设置CQ修饰符</strong>：在<strong>设置</strong>标签页中，将<strong><span translate="no">CQ modifier</span></strong>设置为<code><span translate="no">SOTA</span></code>。每次CQ呼叫将发送<code><span translate="no">CQ SOTA [呼号]</span></code>。</li>
-<li><strong>配置AUTO模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为<strong><span translate="no">Call CQ</span></strong>，并启用<strong><span translate="no">AUTO</span></strong>模式。</li>
-<li><strong>开始激活</strong>：启用<strong><span translate="no">TX</span></strong>。qFT8 将自动呼叫CQ并回复所有呼叫您电台的猎人。</li>
-</ol>
-<div class="highlight">
-<p><strong>手动控制：</strong>如果多个猎人同时呼叫您，您想选择特定电台，请点击该电台的<strong><span translate="no">CALL</span></strong>。完成后，qFT8 自动返回呼叫<span translate="no">CQ</span>。</p>
-</div>
-<h3>导出您的SOTA激活日志（激活者）</h3>
-<p>完成山峰激活后，为SOTAData导出ADIF日志：</p>
-<ol>
-<li>进入<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>选择<strong><span translate="no">Selected time range</span></strong>并指定UTC开始和结束时间。</li>
-<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
-<li>在<strong><span translate="no">Event</span></strong>选择中，选择<strong><span translate="no">SOTA</span></strong>。</li>
-<li>输入您的山峰参考（激活者，例如：<code>XX/GG-111</code>）。</li>
-<li>按<strong><span translate="no">EXPORT QSOs</span></strong>生成预填SOTA字段的ADIF文件。</li>
-</ol>
-<a href="#top" class="back-to-toc">↑ 返回目录</a>
-</section>
-<section id="pota">
-<h2>公园空中（POTA）</h2>
-<p>qFT8 为POTA（Parks On The Air）的<strong>猎人</strong>和<strong>激活者</strong>提供全面支持。</p>
-<h3>作为POTA猎人/追逐者操作</h3>
-<p>追寻正在激活公园的电台：</p>
-<ol>
-<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为<strong><span translate="no">POTA</span></strong>。</li>
-<li>启用<strong><span translate="no">AUTO</span></strong>模式。</li>
-<li>qFT8 自动识别POTA激活者（来自<code><span translate="no">CQ POTA</span></code>呼叫或公园标识符如<code>K-1234</code>），并在第2行用紫色<strong><span translate="no">POTA</span></strong>徽章突出显示它们。</li>
-<li>在AUTO模式下，qFT8 优先呼叫活跃的POTA电台，优先考虑信号强度（<span translate="no">SNR</span>）最高的电台。</li>
-</ol>
-<h3>作为POTA激活者操作</h3>
-<p>激活公园：</p>
-<ol>
-<li><strong>同步时间</strong>：操作前确保设备时钟精度。</li>
-<li><strong>设置CQ修饰符</strong>：在<strong>设置</strong>标签页中，将<strong><span translate="no">CQ modifier</span></strong>设置为<code><span translate="no">POTA</span></code>以发送<code><span translate="no">CQ POTA [呼号]</span></code>。</li>
-<li><strong>配置AUTO模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为<strong><span translate="no">Call CQ</span></strong>，并启用<strong><span translate="no">AUTO</span></strong>模式。</li>
-<li><strong>开始激活</strong>：启用<strong><span translate="no">TX</span></strong>。qFT8 将持续呼叫CQ并自动处理与进来的猎人的联系。</li>
-</ol>
-<div class="highlight">
-<p><strong>手动控制：</strong>点击任何排队电台的<strong><span translate="no">CALL</span></strong>，将在返回AUTO CQ模式之前优先处理该QSO。</p>
-</div>
-<h3>导出您的POTA激活日志（激活者）</h3>
-<p>完成公园激活后，为POTA导出有效的ADIF日志：</p>
-<ol>
-<li>进入<strong>设置</strong>并点击<strong><span translate="no">ADIF File Export</span></strong>。</li>
-<li>选择<strong><span translate="no">Selected time range</span></strong>并指定UTC开始和结束时间。</li>
-<li>将过滤器设置为<strong><span translate="no">All QSOs</span></strong>。</li>
-<li>在<strong><span translate="no">Event</span></strong>选择中，选择<strong><span translate="no">POTA</span></strong>。</li>
-<li>输入您的公园参考（激活者，例如：<code>K-1234</code>）。</li>
-<li>按<strong><span translate="no">EXPORT QSOs</span></strong>。这将生成每条记录包含以下字段的ADIF文件：
+<h2>山峰空中活动 (<span translate="no">SOTA</span>)</h2>
+<p>qFT8 为 SOTA（Summits On The Air）的<strong>猎人/追逐者（Hunters/Chasers）</strong>与<strong>激活者（Activators）</strong>提供全面集成的工具支持，具备实时自动获取在线 Spot、参考点追踪、通联成就高亮显示以及专属 ADIF 导出过滤器等功能。</p>
+
+<h3>实时山峰激活 Spot 自动获取</h3>
+<p>在连接到互联网时，qFT8 会在后台自动连接 SOTA 官方 API（每90秒刷新一次），获取全球范围内所有正在进行的山峰激活信息。</p>
 <ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code>设置为<code>POTA</code></li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>设置为您的公园参考</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>设置为您的公园参考</li>
+<li><strong>世界地图实时显示</strong>：活跃的山峰激活者将在世界地图上以山峰标记（⛰️）呈现，并附带呼号、山峰名称、海拔高度以及操作频率。</li>
+<li><strong>自动匹配参考代码</strong>：在空中接收到激活者信号时，qFT8 会将其呼号与实时 Spot 数据库比对，自动获取精准的山峰参考代码（例如 <code>BY/BJ-001</code>、<code>HB/BE-001</code>、<code>W6/NC-001</code>）。</li>
+<li><strong>自动回填历史记录（Backfill）</strong>：如果您在 Spot 下载完成或接收到参考代码前就完成了与发送 <code><span translate="no">CQ SOTA</span></code> 电台的 QSO，qFT8 将在接收到新 Spot 时自动为最近（1小时以内）记录的 QSO 补充山峰参考代码。</li>
+</ul>
+
+<h3>作为 SOTA 猎人/追逐者操作</h3>
+<p>追寻并通联正在山峰上激活的电台：</p>
+<ol>
+<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为 <strong><span translate="no">SOTA hunter</span></strong>（或 <strong><span translate="no">POTA + SOTA hunter</span></strong>）。</li>
+<li><strong>视觉徽章与参考点列</strong>：活跃的 SOTA 电台（在线 Spot 或正在发射 <code><span translate="no">CQ SOTA</span></code>）将在第2行显示 <strong><span translate="no">SOTA</span></strong> 徽章。同时，DXCC 列标题将切换为 <strong><span translate="no">SOTA Reference</span></strong>，直接显示山峰代码。</li>
+<li><strong>未通联 vs 已通联山峰高亮区别</strong>：
+<ul>
+<li><strong>全新未通联山峰</strong>：显示为亮紫色 <strong><span translate="no">SOTA</span></strong> 徽章与紫色参考点文本，标明该山峰为尚未通联的新目标。</li>
+<li><strong>已通联过的山峰</strong>：显示为低调的灰色徽章，方便您在密集的通联列表中瞬间识别出尚未通联过的新山峰。</li>
 </ul>
 </li>
+<li><strong>AUTO 自动猎人模式</strong>：在 <strong><span translate="no">AUTO</span></strong> 模式下，qFT8 会优先呼叫尚未通联过的 SOTA 激活者而非普通 CQ 电台，并按信号强度（<span translate="no">SNR</span>）由强到弱排序。</li>
 </ol>
-<a href="#top" class="back-to-toc">↑ 返回目录</a>
+
+<h3>日志中 SOTA 参考代码的管理与编辑</h3>
+<p>qFT8 提供了专用的日志检查与编辑功能：</p>
+<ul>
+<li><strong>QSOs 标签页中的 SOTA Hunter 视图</strong>：在 <strong>QSOs</strong> 标签页中选择 <strong><span translate="no">SOTA Hunter</span></strong> 视图以查看山峰参考代码。山峰首通确认记录将以金色高亮显示，未确认首通记录则以黄色高亮显示。</li>
+<li><strong>编辑山峰参考代码</strong>：点击日志中的任意一条 QSO 打开详情对话框，点击 <strong><span translate="no">Edit SOTA reference</span></strong> 即可添加、修改或修正山峰代码（例如 <code>BY/BJ-001</code>）。</li>
+<li><strong>自动同步至 QRZ Logbook（<span translate="no">ACTION=REPLACE</span>）</strong>：如果该 QSO 已上传至 QRZ，编辑参考代码会自动就地更新 QRZ 中的现有记录，绝不会生成重复日志。</li>
+<li><strong>关于 LoTW 的说明</strong>：请注意，编辑参考代码时 LoTW（<span translate="no">Logbook of The World</span>）不会自动同步更新，因为 LoTW 的系统架构不支持对已上传的 QSO 进行修改。</li>
+</ul>
+
+<h3>作为 SOTA 激活者操作</h3>
+<p>从山峰开展 SOTA 激活通联：</p>
+<ol>
+<li><strong>同步时间</strong>：在前往野外前，确保设备的系统时钟精准同步。</li>
+<li><strong>设置 CQ 修饰符</strong>：在<strong>设置</strong>标签页中，将 <strong><span translate="no">CQ modifier</span></strong> 设置为 <code><span translate="no">SOTA</span></code>。每次呼叫 CQ 将发射 <code><span translate="no">CQ SOTA [您的呼号]</span></code>。</li>
+<li><strong>配置 AUTO 模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为 <strong><span translate="no">Call CQ</span></strong>，并启用 <strong><span translate="no">AUTO</span></strong> 模式。</li>
+<li><strong>开始激活</strong>：启用 <strong><span translate="no">TX</span></strong> 发射。qFT8 将自动呼叫 CQ 并按顺序回复所有呼叫您电台的猎人。</li>
+</ol>
+
+<div class="highlight">
+<p><strong>手动优先控制：</strong>如果多个猎人同时呼叫您且您想指定通联某台，只需点击该电台的 <strong><span translate="no">CALL</span></strong>。通联完成后，qFT8 将自动恢复呼叫 <span translate="no">CQ</span>。</p>
+</div>
+
+<h3>导出 SOTA 日志（猎人与激活者）</h3>
+<p>qFT8 支持生成符合规范的 ADIF 导出文件，用于申请奖励证书或提交激活报告：</p>
+<ol>
+<li>进入<strong>设置</strong>并点击 <strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li><strong>对于猎人（Chaser）</strong>：
+<ul>
+<li>将 <strong><span translate="no">Hunter criteria</span></strong> 设置为 <strong><span translate="no">Only SOTA contacts (summits)</span></strong>，仅导出通联过山峰的 QSO（包含完整的 <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code> 字段）。</li>
+</ul>
+</li>
+<li><strong>对于激活者</strong>：
+<ul>
+<li>选择 <strong><span translate="no">Selected time range</span></strong> 指定激活的时间窗口（UTC）。</li>
+<li>在 <strong><span translate="no">Event</span></strong> 中选择 <strong><span translate="no">SOTA</span></strong> 并输入您所激活的山峰代码（例如 <code>BY/BJ-001</code>）。qFT8 将在所有记录中自动写入 <code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code> 字段。</li>
+</ul>
+</li>
+<li><strong>山峰对山峰（S2S）</strong>：如果在激活期间通联了另一位山峰激活者，导出的日志将同时包含您自己的激活山峰（<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>）与对方的山峰代码（<code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）。</li>
+<li>点击 <strong><span translate="no">EXPORT QSOs</span></strong> 保存或分享标准化的 ADIF 文件。</li>
+</ol>
+
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
+</section>
+
+<section id="pota">
+<h2>公园空中活动 (<span translate="no">POTA</span>)</h2>
+<p>qFT8 为 POTA（Parks On The Air）的<strong>猎人</strong>与<strong>激活者</strong>提供原生且全面的集成支持，包括实时 Spot 自动抓取、已通联公园跟踪、参考代码编辑以及灵活的 ADIF 导出选项。</p>
+
+<h3>实时公园激活 Spot 自动获取</h3>
+<p>连接到互联网时，qFT8 会在后台自动请求 POTA 官方 API（每90秒刷新一次），获取全球当前所有的活跃公园激活信息。</p>
+<ul>
+<li><strong>世界地图实时显示</strong>：活跃的公园激活者将在世界地图上以公园标记（🏞️）呈现，标明呼号、公园名称及操作频率。</li>
+<li><strong>自动解析公园代码</strong>：接收到公园电台的信号时，qFT8 将其呼号与活跃 Spot 比对，自动识别出公园代码（例如 <code>CN-0001</code>、<code>K-1234</code>、<code>US-0001</code>）。</li>
+<li><strong>自动回填历史记录（Backfill）</strong>：如果您记录了一条发送 <code><span translate="no">CQ POTA</span></code> 电台的通联，但当时尚未收到或下载其参考代码，qFT8 将在收到新 Spot 时自动补充更新最近（1小时以内）的 QSO。</li>
+</ul>
+
+<h3>作为 POTA 猎人操作</h3>
+<p>追寻并通联正在公园激活的电台：</p>
+<ol>
+<li>在<strong>电台</strong>标签页中，将目标优先级下拉菜单设置为 <strong><span translate="no">POTA hunter</span></strong>（或 <strong><span translate="no">POTA + SOTA hunter</span></strong>）。</li>
+<li><strong>视觉徽章与参考点列</strong>：活跃的 POTA 电台将在第2行显示 <strong><span translate="no">POTA</span></strong> 徽章，DXCC 标题也会切换为 <strong><span translate="no">POTA Reference</span></strong> 显示公园代码。</li>
+<li><strong>未通联 vs 已通联公园高亮区别</strong>：
+<ul>
+<li><strong>全新未通联公园</strong>：显示为亮紫色 <strong><span translate="no">POTA</span></strong> 徽章与紫色参考点文本，标明为尚未通联过的新公园。</li>
+<li><strong>已通联过的公园</strong>：显示为低调的灰色徽章，便于在波段繁忙时优先挑选新公园。</li>
+</ul>
+</li>
+<li><strong>AUTO 自动猎人模式</strong>：在 <strong><span translate="no">AUTO</span></strong> 模式下，qFT8 自动优先呼叫未通联过的 POTA 激活者，并按信号强度（<span translate="no">SNR</span>）排序。</li>
+</ol>
+
+<h3>日志中 POTA 参考代码的管理与编辑</h3>
+<p>在应用内直接查看和维护您的公园猎人日志：</p>
+<ul>
+<li><strong>QSOs 标签页中的 POTA Hunter 视图</strong>：将 <strong>QSOs</strong> 标签页切换至 <strong><span translate="no">POTA Hunter</span></strong> 视图以展示公园代码。已确认的首通公园以金色高亮显示，未确认首通则以黄色高亮显示。</li>
+<li><strong>编辑公园参考代码</strong>：点击日志中的任意一条 QSO 并选择 <strong><span translate="no">Edit POTA reference</span></strong>，即可添加、更改或删除公园代码（例如 <code>CN-0001</code>、<code>K-1234</code>）。</li>
+<li><strong>自动同步至 QRZ Logbook（<span translate="no">ACTION=REPLACE</span>）</strong>：当更新 QSO 中的公园代码时，qFT8 会自动在 QRZ Logbook 中就地更新对应记录，绝不会产生重复。</li>
+<li><strong>关于 LoTW 的说明</strong>：请注意，编辑参考代码时 LoTW（<span translate="no">Logbook of The World</span>）不会自动同步更新，因为 LoTW 无法对已提交的记录进行修改。</li>
+</ul>
+
+<h3>作为 POTA 激活者操作</h3>
+<p>开展公园激活通联：</p>
+<ol>
+<li><strong>同步时间</strong>：开始激活前确保设备时间准确无误。</li>
+<li><strong>设置 CQ 修饰符</strong>：在<strong>设置</strong>标签页中，将 <strong><span translate="no">CQ modifier</span></strong> 设置为 <code><span translate="no">POTA</span></code>，以便发送 <code><span translate="no">CQ POTA [您的呼号]</span></code>。</li>
+<li><strong>配置 AUTO 模式</strong>：在<strong>电台</strong>标签页中，将目标优先级设置为 <strong><span translate="no">Call CQ</span></strong>，并启用 <strong><span translate="no">AUTO</span></strong> 模式。</li>
+<li><strong>开始激活</strong>：启用 <strong><span translate="no">TX</span></strong>。qFT8 将持续呼叫 CQ 并自动处理呼入的猎人通联。</li>
+</ol>
+
+<div class="highlight">
+<p><strong>手动优先控制：</strong>点击排队列表中的任意电台 <strong><span translate="no">CALL</span></strong> 将优先完成该 QSO，随后恢复 AUTO CQ 模式。</p>
+</div>
+
+<h3>导出 POTA 日志（猎人与激活者）</h3>
+<p>生成可直接上传至 pota.app 的标准化 ADIF 日志文件：</p>
+<ol>
+<li>进入<strong>设置</strong>并点击 <strong><span translate="no">ADIF File Export</span></strong>。</li>
+<li><strong>对于猎人</strong>：
+<ul>
+<li>将 <strong><span translate="no">Hunter criteria</span></strong> 设置为 <strong><span translate="no">Only POTA contacts (parks)</span></strong>，仅导出包含公园通联的 QSO（包含完整的 <code>&lt;<span translate="no">POTA_REF</span>&gt;</code> 字段）。</li>
+</ul>
+</li>
+<li><strong>对于激活者</strong>：
+<ul>
+<li>选择 <strong><span translate="no">Selected time range</span></strong> 指定激活的时间段。</li>
+<li>在 <strong><span translate="no">Event</span></strong> 中选择 <strong><span translate="no">POTA</span></strong> 并输入您的公园代码（例如 <code>CN-0001</code>、<code>K-1234</code>）。qFT8 会在所有导出记录中自动填入 <code>&lt;<span translate="no">MY_SIG</span>&gt;POTA</code>、<code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> 和 <code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> 字段。</li>
+</ul>
+</li>
+<li><strong>公园对公园（P2P）与公园对山峰（P2S）</strong>：在激活期间如果通联了其他公园或山峰，您自己的激活公园代码（<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>）与对方的参考代码（<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）将同时导出。</li>
+<li>点击 <strong><span translate="no">EXPORT QSOs</span></strong> 保存或分享日志文件。</li>
+</ol>
+
+<a class="back-to-toc" href="#top">↑ 返回目录</a>
 </section>
 
 <section id="js8-chat">

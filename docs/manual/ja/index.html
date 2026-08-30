@@ -62,6 +62,7 @@
 <li><a href="#ui-spectrogram">The Spectrogram / スペクトログラム（ウォーターフォール）</a></li>
 <li><a href="#ui-stations-tab">The Stations tab / Stations（ステーション）タブ</a></li>
 <li><a href="#ui-log-tab">The Log tab / Log（ログ）タブ</a></li>
+<li><a href="#ui-world-map-tab">The World Map tab / World Map（世界地図）タブ</a></li>
 <li><a href="#ui-settings-tab">The Settings tab / Settings（設定）タブ</a></li>
 </ul>
 </li>
@@ -596,10 +597,7 @@
                     <span translate="no">UTC</span> time live and
                     tuned frequency, and control transmission frequency offset.
                 </li>
-<li><strong>The tab area</strong>: Shows one out of three tabs
-                    (Stations,
-                    Log, and
-                    Settings). Which
+<li><strong>The tab area</strong>: Shows one out of four tabs (Stations, Log, World Map, and Settings) / 4つのタブ（Stations、Log、World Map、Settings）のいずれかを表示します. Which
                     one is shown here can be controlled with the buttons at the right-most part of the bottom bar.
                 </li>
 </ol>
@@ -654,6 +652,7 @@
                     <span translate="no">QSO</span> you've made. This button will be marked
                     with a yellow dot if you have QSOs that aren't uploaded to QRZ.
                 </li>
+<li><strong>The World Map tab button</strong>: Opens the tab that displays the interactive global world map.</li>
 <li><strong>The Settings tab button</strong>: Opens the tab to configure qFT8.</li>
 </ol>
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
@@ -1010,7 +1009,57 @@
                 <span translate="no">QRZ</span>.
             </p>
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
-<h3 id="ui-settings-tab">The Settings tab / Settings（設定）タブ</h3>
+<h3 id="ui-world-map-tab">The World Map tab / World Map（世界地図）タブ</h3>
+            <p>World Map（世界地図）タブは、局の地理的位置、受信トラフィック、交信実績（QSOアチーブメント）、太陽伝搬状態をリアルタイムで表示するインタラクティブな世界地図です。</p>
+
+            <div class="phone-mockup">
+                <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
+                <img alt="qFT8 World Map tab" class="screen" height="1080" src="../worldmap.jpg" width="2280"/>
+            </div>
+
+            <p>World Mapタブの各コンポーネントと機能の詳細は以下のとおりです：</p>
+
+            <ol>
+                <li><strong>インタラクティブ地図と操作</strong>:
+                    <ul>
+                        <li><strong>ナビゲーション</strong>: ドラッグして地球上をスムーズに移動できます（対向子午線を越えた横スクロールにも完全対応）。2本指のピンチ操作で拡大・縮小が可能です。</li>
+                        <li><strong>地図テーマ</strong>: 上部ツールバーから4つのビジュアルスタイル（<em>Bright Future</em>、<em>Console</em>、<em>Earth</em>、<em>Midnight Navy</em>）を切り替えられます。</li>
+                        <li><strong>HUD座標</strong>: タップした位置の地理座標（緯度・経度）およびMaidenheadグリッドロケーターをリアルタイム表示します。</li>
+                    </ul>
+                </li>
+                <li><strong>左側ツールバー（情報およびオーバーレイの切替）</strong>:
+                    <ul>
+                        <li><strong><span translate="no">INFO</span></strong>: 画面上の情報オーバーレイカード（時刻、太陽明暗境界線、太陽直下点位置、十字線座標）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">MSGs</span></strong>: 自局宛に直接送信されたダイレクトメッセージマーカー（<span style="color: #f43f5e; font-weight: bold;">ローズ</span>）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: 現在のセッションの交信マーカー（<span style="color: #f59e0b; font-weight: bold;">アンバー</span>はログ記録済、<span style="color: #10b981; font-weight: bold;">エメラルド</span>はQSL確認済）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">Spot</span></strong>: バンド上でデコードされたリアルタイム通信スポット（<span style="color: #00ff00; font-weight: bold;">緑</span>はCQ、<span style="color: #00ffff; font-weight: bold;">シアン</span>はRX受信、<span style="color: #ff5252; font-weight: bold;">赤</span>はTX送信）およびPSKReporterのリバーススポッター（<span style="color: #f59e0b; font-weight: bold;">オレンジのひし形</span>）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">SOTA</span></strong>: Summits On The Air（山岳運用）の山頂参照点およびアクティブ運用局（⛰️）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">POTA</span></strong>: Parks On The Air（公園運用）の公園参照点およびアクティブ運用局（🌲）の表示を切り替えます。</li>
+                        <li><strong><span translate="no">STATS</span></strong>: 選択中の境界レイヤーにおける交信・確認数の統計サマリーパネルの表示を切り替えます。</li>
+                    </ul>
+                </li>
+                <li><strong>右側ツールバー（実績および境界レイヤー）</strong>:
+                    <ul>
+                        <li><strong><span translate="no">DXCC</span></strong>: ログ状況に応じて色分けされた国・地域の境界線を表示します（<span style="color: #00ff00; font-weight: bold;">緑</span>はログ記録済/未確認、<span style="color: #ffff00; font-weight: bold;">黄</span>は確認済）。小島や微小地域は視認性の高いドットで表示されます。</li>
+                        <li><strong><span translate="no">GRID</span></strong>: グローバルなMaidenheadグリッド（フィールドおよび4桁グリッドスクエア）と交信実績の塗りつぶしを表示します。</li>
+                        <li><strong><span translate="no">ITU</span></strong>: 90のITU無線ゾーンと交信実績を表示します。</li>
+                        <li><strong><span translate="no">CQ</span></strong>: CQマガジンの40のWAZゾーンと交信実績を表示します。</li>
+                    </ul>
+                </li>
+                <li><strong>詳細カードと迅速なCALL操作</strong>:
+                    <p>局マーカー、スポット、公園、山頂をタップすると、詳細情報カードが表示されます：</p>
+                    <ul>
+                        <li>コールサインまたは参照名、DXCCエンティティ、公園/山頂の名称。</li>
+                        <li>デコードされたメッセージ本文、周波数、バンド、運用モード。</li>
+                        <li>信号強度（<span translate="no">SNR</span>）またはシグナルレポート（<span translate="no">RST</span>）。</li>
+                        <li>グリッドロケーター、距離（km / mi）、方位角（°）、経過時間。</li>
+                        <li><strong><span translate="no">CALL</span>ボタン</strong>: 選択した局への呼び出しを瞬時に開始します（必要に応じてバンドや運用モードを自動的に切り替えます）。</li>
+                    </ul>
+                </li>
+            </ol>
+            <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+
+            <h3 id="ui-settings-tab">The Settings tab / Settings（設定）タブ</h3>
 <p>The settings tab allows configuration of qFT8.</p>
 <div class="phone-mockup">
 <img alt="qFT8 Camera" class="camera" height="1080" src="../../phonecamera.jpg" width="132"/>
@@ -1263,6 +1312,8 @@
                         QRZ</span>"</strong> to avoid
                     duplicates).
                 </li>
+<li><strong>Hunter Criteria / ハンター基準</strong>: ログを <strong>"<span translate="no">All logs</span>"</strong>、<strong>"<span translate="no">Only POTA contacts (parks)</span>"</strong>、または <strong>"<span translate="no">Only SOTA contacts (summits)</span>"</strong> でフィルタリングし、相手局の参照コード（<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）を含む的確なアワード申請用ファイルを生成できます。
+                </li>
 <li><strong><span translate="no">SOTA</span> reference</strong>: As detailed
                     in the <a href="#sota"><span translate="no">SOTA</span> section</a>,
                     <span translate="no">qFT8</span> can
@@ -1432,93 +1483,166 @@
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
 </section>
 <section id="sota">
-<h2>Summits On The Air (SOTA) / Summits On The Air（SOTA）</h2>
+<h2>Summits On The Air (SOTA) / 山岳移動運用（SOTA）</h2>
 <p>
-                qFT8 provides built-in tools for both SOTA (Summits On The Air) <strong>Chasers (Hunters)</strong> and <strong>Activators</strong>.
-            </p>
-<h3>Operating as a SOTA Chaser / Hunter / チェイサー（ハンター）としての運用</h3>
+    qFT8は、SOTA（Summits On The Air）の<strong>チェイサー（ハンター）</strong>および<strong>アクティベーター</strong>向けに、リアルタイムの自動スポット取得、参照点トラッキング、アワード達成ハイライト、専用ADIFエクスポートフィルターなど充実したツールを統合提供しています。
+</p>
+
+<h3>リアルタイムSOTAスポットの自動取得</h3>
 <p>
-                To hunt stations activating summits:
-            </p>
+    インターネット接続時、qFT8はバックグラウンドで公式SOTA APIに自動アクセス（90秒ごとに更新）し、世界中のアクティブな山岳運用スポットを取得します。
+</p>
+<ul>
+    <li><strong>世界地図での表示</strong>: アクティブなアクティベーターが山岳マーカー（⛰️）、コールサイン、山名、標高、運用周波数とともに世界地図上に表示されます。</li>
+    <li><strong>自動参照点照合</strong>: アクティベーターを受信すると、qFT8はライブスポットデータベースとコールサインを照合し、正確な山頂コード（例: <code>JA/TK-001</code>, <code>HB/BE-001</code>, <code>W6/NC-001</code>）を自動取得します。</li>
+    <li><strong>自動バックフィル（事後補完）</strong>: 参照点の受信前やスポット取得前に <code><span translate="no">CQ SOTA</span></code> を送信する局とQSOを完了した場合でも、qFT8は新たに届いたスポットを参照して、直近（1時間以内）にログされたQSOへ山頂コードを自動補完します。</li>
+</ul>
+
+<h3>チェイサー（ハンター）としての運用</h3>
+<p>
+    山頂から運用中の局をハントする手順:
+</p>
 <ol>
-<li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">SOTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
-<li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
-<li>qFT8 will automatically detect active SOTA stations (from <code><span translate="no">CQ SOTA</span></code> calls or summit references like <code>W6/CA-001</code>) and tag them with a purple <strong><span translate="no">SOTA</span></strong> badge in Row 2.</li>
-<li>In AUTO mode, qFT8 prioritizes calling active SOTA stations over regular CQers, ordering them by strongest signal strength (<span translate="no">SNR</span>).</li>
+    <li><strong>Stations</strong>タブで、ターゲット優先度ドロップダウンを <strong><span translate="no">SOTA hunter</span></strong>（または <strong><span translate="no">POTA + SOTA hunter</span></strong>）に設定します。</li>
+    <li><strong>視覚バッジと参照点カラム</strong>: アクティブなSOTA局（オンラインでスポットされた局または <code><span translate="no">CQ SOTA</span></code> 送信局）は2行目に <strong><span translate="no">SOTA</span></strong> バッジが表示されます。また、DXCC列ヘッダーが <strong><span translate="no">SOTA Reference</span></strong> に切り替わり、山頂コードが直接表示されます。</li>
+    <li><strong>未交信 vs 交信済み山頂のハイライト</strong>:
+        <ul>
+            <li><strong>未交信の山頂</strong>: 鮮やかな紫色の <strong><span translate="no">SOTA</span></strong> バッジと紫色の参照点テキストで強調され、新規ハント対象であることが一目で分かります。</li>
+            <li><strong>交信済みの山頂</strong>: 落ち着いたグレーのバッジで表示され、ログ内の交信済み山頂と新規山頂を即座に区別できます。</li>
+        </ul>
+    </li>
+    <li><strong>AUTOハント</strong>: <strong><span translate="no">AUTO</span></strong> モード時、qFT8は未交信のSOTAアクティベーターを通常のCQ局より優先し、信号強度（<span translate="no">SNR</span>）順に自動呼出します。</li>
 </ol>
-<h3>Operating as a SOTA Activator / アクティベーター（山頂側）としての運用</h3>
+
+<h3>ログ内のSOTA参照点の管理と編集</h3>
 <p>
-                To run a SOTA activation from a summit:
-            </p>
+    qFT8はSOTA交信履歴の確認・修正機能を備えています:
+</p>
+<ul>
+    <li><strong>QSOsタブのSOTA Hunterビュー</strong>: <strong>QSOs</strong>タブで <strong><span translate="no">SOTA Hunter</span></strong> ビューを選択すると、山頂参照点を確認できます。初回コンファーム済みの山頂はゴールド、未コンファーム初回達成はイエローでハイライトされます。</li>
+    <li><strong>山頂参照点の編集</strong>: ログ内のQSOをタップして詳細ダイアログを開き、<strong><span translate="no">Edit SOTA reference</span></strong> をタップして山頂コード（例: <code>JA/TK-001</code>）を追加・修正・削除できます。</li>
+    <li><strong>QRZ Logbookの自動同期（<span translate="no">ACTION=REPLACE</span>）</strong>: すでにQRZへアップロード済みのQSOの参照点を編集した場合、qFT8は自動的に重複を作成せずその場でQRZの既存レコードを更新します。</li>
+    <li><strong>LoTWに関する注意</strong>: LoTW（<span translate="no">Logbook of The World</span>）はアップロード済みQSOの修正をサポートしていないため、参照点の編集時はLoTWへ自動同期されません。</li>
+</ul>
+
+<h3>アクティベーター（山頂側）としての運用</h3>
+<p>
+    山頂からSOTA運用を行う手順:
+</p>
 <ol>
-<li><strong>Synchronize time</strong>: Ensure your device clock is accurate before heading into the field.</li>
-<li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">SOTA</span></code>. Every CQ call will transmit <code><span translate="no">CQ SOTA [Callsign]</span></code>.</li>
-<li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
-<li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will automatically call CQ and reply to any chasers that call your station.</li>
+    <li><strong>時刻同期</strong>: 現地運用前にデバイスの時計が正確に同期されていることを確認します。</li>
+    <li><strong>CQ修飾子の設定</strong>: <strong>Settings</strong>タブで <strong><span translate="no">CQ modifier</span></strong> を <code><span translate="no">SOTA</span></code> に設定します。CQ送信時に <code><span translate="no">CQ SOTA [コールサイン]</span></code> が送信されます。</li>
+    <li><strong>AUTOモードの設定</strong>: <strong>Stations</strong>タブでターゲット優先度を <strong><span translate="no">Call CQ</span></strong> に設定し、<strong><span translate="no">AUTO</span></strong> モードを有効にします。</li>
+    <li><strong>アクティベーション開始</strong>: <strong><span translate="no">TX</span></strong> を有効にします。qFT8が自動でCQを出し、応答してきたチェイサーと順次交信します。</li>
 </ol>
+
 <div class="highlight">
-<p><strong>Manual Overrides:</strong> If several chasers reach you at once and you want to pick a specific station, tap <strong><span translate="no">CALL</span></strong> for that station. Once completed, qFT8 automatically falls back to calling <span translate="no">CQ</span>.</p>
+    <p><strong>手動介入:</strong> 複数のチェイサーから同時に呼ばれて特定の局を選択したい場合は、その局の <strong><span translate="no">CALL</span></strong> をタップしてください。交信完了後、自動的にCQ送信へ復帰します。</p>
 </div>
-<h3>Exporting your SOTA Activation Log (Activators) / SOTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
+
+<h3>SOTAログのエクスポート（チェイサーおよびアクティベーター向け）</h3>
 <p>
-                When wrapping up a summit activation, export an ADIF log for SOTAData:
-            </p>
+    アワード申請用ログやアクティベーター用ログとして適切なADIFファイルを生成できます:
+</p>
 <ol>
-<li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
-<li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
-<li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">SOTA</span></strong>.</li>
-<li>Input your summit reference (for activators, e.g., <code>XX/GG-111</code>).</li>
-<li>Press <strong><span translate="no">EXPORT QSOs</span></strong> to generate the ADIF file with SOTA fields pre-filled.</li>
+    <li><strong>Settings</strong>タブで <strong><span translate="no">ADIF File Export</span></strong> をタップします。</li>
+    <li><strong>チェイサー（ハンター）の場合</strong>:
+        <ul>
+            <li><strong><span translate="no">Hunter criteria</span></strong> を <strong><span translate="no">Only SOTA contacts (summits)</span></strong> に設定すると、山頂参照点と交信したQSOのみ（<code>&lt;<span translate="no">SOTA_REF</span>&gt;</code> 含有）が出力されます。</li>
+        </ul>
+    </li>
+    <li><strong>アクティベーターの場合</strong>:
+        <ul>
+            <li><strong><span translate="no">Selected time range</span></strong> で運用時間帯（UTC）を指定します。</li>
+            <li><strong><span translate="no">Event</span></strong> で <strong><span translate="no">SOTA</span></strong> を選択し、運用した山頂コード（例: <code>JA/TK-001</code>）を入力します。全レコードに <code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code> が自動付加されます。</li>
+        </ul>
+    </li>
+    <li><strong>Summit-to-Summit（S2S）</strong>: 山頂運用中に他の山頂アクティベーターと交信した場合、自局の山頂コード（<code>&lt;<span translate="no">MY_SOTA_REF</span>&gt;</code>）と相手局の山頂コード（<code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）が同時に出力されます。</li>
+    <li><strong><span translate="no">EXPORT QSOs</span></strong> を押してADIFファイルを保存または共有します。</li>
 </ol>
+
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
 </section>
+
 <section id="pota">
-<h2>Parks On The Air (POTA) / Parks On The Air（POTA）</h2>
+<h2>Parks On The Air (POTA) / 公園移動運用（POTA）</h2>
 <p>
-                qFT8 offers full support for POTA (Parks On The Air) <strong>Hunters</strong> and <strong>Activators</strong>.
-            </p>
-<h3>Operating as a POTA Hunter / ハンターとしての運用</h3>
+    qFT8は、POTA（Parks On The Air）の<strong>ハンター</strong>および<strong>アクティベーター</strong>向けに、リアルタイムの自動スポット取得、公園コードの追跡、参照点の編集、柔軟なADIFエクスポート機能を完全に統合しています。
+</p>
+
+<h3>リアルタイムPOTAスポットの自動取得</h3>
 <p>
-                To hunt stations activating parks:
-            </p>
-<ol>
-<li>In the <strong>Stations</strong> tab, set the target priority dropdown to <strong><span translate="no">POTA hunter</span></strong> (or <strong><span translate="no">POTA + SOTA hunter</span></strong>).</li>
-<li>Engage <strong><span translate="no">AUTO</span></strong> mode.</li>
-<li>qFT8 automatically identifies POTA activators (from <code><span translate="no">CQ POTA</span></code> calls or park designators like <code>K-1234</code>) and highlights them with a purple <strong><span translate="no">POTA</span></strong> badge in Row 2.</li>
-<li>In AUTO mode, qFT8 prioritizes calling active POTA stations, favoring those with the strongest signal strength (<span translate="no">SNR</span>).</li>
-</ol>
-<h3>Operating as a POTA Activator / アクティベーターとしての運用</h3>
-<p>
-                To activate a park:
-            </p>
-<ol>
-<li><strong>Synchronize time</strong>: Ensure device clock accuracy before operating.</li>
-<li><strong>Set your CQ Modifier</strong>: In the <strong>Settings</strong> tab, set <strong><span translate="no">CQ modifier</span></strong> to <code><span translate="no">POTA</span></code> to transmit <code><span translate="no">CQ POTA [Callsign]</span></code>.</li>
-<li><strong>Configure AUTO Mode</strong>: In the <strong>Stations</strong> tab, set the target priority to <strong><span translate="no">Call CQ</span></strong> and engage <strong><span translate="no">AUTO</span></strong> mode.</li>
-<li><strong>Start Activating</strong>: Enable <strong><span translate="no">TX</span></strong>. qFT8 will continuously call CQ and process contacts with incoming hunters automatically.</li>
-</ol>
-<div class="highlight">
-<p><strong>Manual Overrides:</strong> Tapping <strong><span translate="no">CALL</span></strong> on any queued station prioritizes that QSO before returning to AUTO CQ mode.</p>
-</div>
-<h3>Exporting your POTA Activation Log (Activators) / POTAアクティベーションログのエクスポート（アクティベーター向け）</h3>
-<p>
-                When wrapping up a park activation, export a valid ADIF log for POTA:
-            </p>
-<ol>
-<li>Go to <strong>Settings</strong> and tap <strong><span translate="no">ADIF File Export</span></strong>.</li>
-<li>Select <strong><span translate="no">Selected time range</span></strong> and specify the UTC start and end times.</li>
-<li>Set the filter to <strong><span translate="no">All QSOs</span></strong>.</li>
-<li>In the <strong><span translate="no">Event</span></strong> selection, select <strong><span translate="no">POTA</span></strong>.</li>
-<li>Input your park reference (for activators, e.g., <code>K-1234</code>).</li>
-<li>Press <strong><span translate="no">EXPORT QSOs</span></strong>. This generates an ADIF file with the following fields populated for every record:
-                    <ul>
-<li><code>&lt;<span translate="no">MY_SIG</span>&gt;</code> set to <code>POTA</code></li>
-<li><code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code> set to your park reference</li>
-<li><code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> set to your park reference</li>
+    インターネット接続時、qFT8はバックグラウンドで公式POTA APIに自動アクセス（90秒ごとに更新）し、世界中のアクティブな公園運用スポットを取得します。
+</p>
+<ul>
+    <li><strong>世界地図での表示</strong>: アクティブな公園アクティベーターが公園マーカー（🏞️）、コールサイン、公園名、運用周波数とともに世界地図上に表示されます。</li>
+    <li><strong>自動参照点照合</strong>: 公園運用局からの電波を受信すると、qFT8はアクティブスポットと照合して公園コード（例: <code>JA-0001</code>, <code>K-1234</code>, <code>US-0001</code>）を自動認識します。</li>
+    <li><strong>自動バックフィル（事後補完）</strong>: 参照点の受信前やスポット取得前に <code><span translate="no">CQ POTA</span></code> を送信する局とQSOを完了した場合でも、qFT8は新着スポットを監視して直近（1時間以内）のQSOへ公園コードを自動補完します。</li>
 </ul>
-</li>
+
+<h3>ハンターとしての運用</h3>
+<p>
+    公園から運用中の局をハントする手順:
+</p>
+<ol>
+    <li><strong>Stations</strong>タブで、ターゲット優先度ドロップダウンを <strong><span translate="no">POTA hunter</span></strong>（または <strong><span translate="no">POTA + SOTA hunter</span></strong>）に設定します。</li>
+    <li><strong>視覚バッジと参照点カラム</strong>: アクティブなPOTA局は2行目に <strong><span translate="no">POTA</span></strong> バッジが表示され、DXCCヘッダーが <strong><span translate="no">POTA Reference</span></strong> に切り替わって公園コードが表示されます。</li>
+    <li><strong>未交信 vs 交信済み公園のハイライト</strong>:
+        <ul>
+            <li><strong>未交信の公園</strong>: 鮮やかな紫色の <strong><span translate="no">POTA</span></strong> バッジと紫色の参照点テキストで強調され、未交信の新規公園であることが一目で分かります。</li>
+            <li><strong>交信済みの公園</strong>: 落ち着いたグレーのバッジで表示され、混雑時でも未交信公園を容易に優先できます。</li>
+        </ul>
+    </li>
+    <li><strong>AUTOハント</strong>: <strong><span translate="no">AUTO</span></strong> モード時、qFT8は未交信のPOTA局を一般局より優先し、信号強度（<span translate="no">SNR</span>）順に自動呼出します。</li>
 </ol>
+
+<h3>ログ内のPOTA参照点の管理と編集</h3>
+<p>
+    アプリ内で直接POTAハンターログの確認・修正が可能です:
+</p>
+<ul>
+    <li><strong>QSOsタブのPOTA Hunterビュー</strong>: <strong>QSOs</strong>タブのビューを <strong><span translate="no">POTA Hunter</span></strong> に切り替えると、公園参照点が表示されます。初回コンファーム済みの公園はゴールド、未コンファーム初回達成はイエローでハイライトされます。</li>
+    <li><strong>公園参照点の編集</strong>: ログ内のQSOをタップして <strong><span translate="no">Edit POTA reference</span></strong> を選択し、公園コード（例: <code>JA-0001</code>, <code>K-1234</code>）を追加・変更・削除できます。</li>
+    <li><strong>QRZ Logbookの自動同期（<span translate="no">ACTION=REPLACE</span>）</strong>: QSOの公園参照点を更新すると、qFT8は重複を作らずその場でQRZの既存レコードを自動更新します。</li>
+    <li><strong>LoTWに関する注意</strong>: LoTW（<span translate="no">Logbook of The World</span>）はアップロード済みQSOの修正をサポートしていないため、参照点の編集時はLoTWへ自動同期されません。</li>
+</ul>
+
+<h3>アクティベーターとしての運用</h3>
+<p>
+    公園からPOTAアクティベーションを行う手順:
+</p>
+<ol>
+    <li><strong>時刻同期</strong>: 運用開始前にデバイスの時計が正確であることを確認します。</li>
+    <li><strong>CQ修飾子の設定</strong>: <strong>Settings</strong>タブで <strong><span translate="no">CQ modifier</span></strong> を <code><span translate="no">POTA</span></code> に設定し、<code><span translate="no">CQ POTA [コールサイン]</span></code> を送信するようにします。</li>
+    <li><strong>AUTOモードの設定</strong>: <strong>Stations</strong>タブでターゲット優先度を <strong><span translate="no">Call CQ</span></strong> に設定し、<strong><span translate="no">AUTO</span></strong> モードを有効にします。</li>
+    <li><strong>アクティベーション開始</strong>: <strong><span translate="no">TX</span></strong> を有効にします。qFT8が自動でCQを出し、応答するハンターと順次交信します。</li>
+</ol>
+
+<div class="highlight">
+    <p><strong>手動介入:</strong> 待機中の任意の局の <strong><span translate="no">CALL</span></strong> をタップすると、そのQSOを優先処理した後にAUTO CQへ戻ります。</p>
+</div>
+
+<h3>POTAログのエクスポート（ハンターおよびアクティベーター向け）</h3>
+<p>
+    pota.appへ直接アップロード可能な標準ADIFファイルを生成できます:
+</p>
+<ol>
+    <li><strong>Settings</strong>タブで <strong><span translate="no">ADIF File Export</span></strong> をタップします。</li>
+    <li><strong>ハンターの場合</strong>:
+        <ul>
+            <li><strong><span translate="no">Hunter criteria</span></strong> を <strong><span translate="no">Only POTA contacts (parks)</span></strong> に設定すると、公園と交信したQSOのみ（<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> 含有）が出力されます。</li>
+        </ul>
+    </li>
+    <li><strong>アクティベーターの場合</strong>:
+        <ul>
+            <li><strong><span translate="no">Selected time range</span></strong> で運用時間帯を指定します。</li>
+            <li><strong><span translate="no">Event</span></strong> で <strong><span translate="no">POTA</span></strong> を選択し、運用した公園コード（例: <code>JA-0001</code>, <code>K-1234</code>）を入力します。全レコードに <code>&lt;<span translate="no">MY_SIG</span>&gt;POTA</code>, <code>&lt;<span translate="no">MY_SIG_INFO</span>&gt;</code>, <code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code> が自動付加されます。</li>
+        </ul>
+    </li>
+    <li><strong>Park-to-Park（P2P）および Park-to-Summit（P2S）</strong>: 運用中に他の公園や山頂と交信した場合、自局の公園コード（<code>&lt;<span translate="no">MY_POTA_REF</span>&gt;</code>）と相手局の参照点（<code>&lt;<span translate="no">POTA_REF</span>&gt;</code> / <code>&lt;<span translate="no">SOTA_REF</span>&gt;</code>）が同時に出力されます。</li>
+    <li><strong><span translate="no">EXPORT QSOs</span></strong> を押してログファイルを保存または共有します。</li>
+</ol>
+
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
 </section>
 <section id="js8-chat">
