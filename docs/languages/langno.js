@@ -1,9 +1,9 @@
 // Translations for no
 const langData = {
-    "META_TITLE": "qFT8 — Bærbar FT8, FT4, FT2, JS8 og WSPR for Android",
-    "META_DESC": "Bærbar FT8, FT4, FT2, JS8 og WSPR for Android.",
+    "META_TITLE": "qFT8 — Bærbar flermodus amatørradio for Android",
+    "META_DESC": "Bærbar flermodus amatørradio for Android.",
     "LOGO_ALT": "qFT8-logo",
-    "MAIN_TITLE": "Bærbar FT8, FT4, FT2, JS8 og WSPR for Android",
+    "MAIN_TITLE": "Bærbar flermodus amatørradio for Android",
     "BTN_GOOGLE_PLAY_ALT": "Last ned på Google Play",
     "BTN_DOWNLOAD_APK": "Last ned .apk",
     "BTN_USER_MANUAL": "Brukermanual",
@@ -15,7 +15,7 @@ const langData = {
     "FEAT_PLUG_AND_PLAY": "Plug and Play",
     "FEAT_QUICK_SETUP": "Raskt oppsett",
     "FEAT_TRACK_CALL": "Støtter 75+ radioer",
-    "FEAT_SUPPORT_FT8_FT4": "Støtter FT8-, FT4-, FT2- og JS8-moduser",
+    "FEAT_SUPPORT_FT8_FT4": "Støtter FT8-, FT4-, FT2-, JS8- og WSPR-moduser",
     "FEAT_SUPPORT_LANGS": "Støtter 30+ språk",
     "FEAT_MANUAL_AUTO": "Manuell CALL-modus og AUTO-drift",
     "FEAT_NTP_SYNC": "Automatisk NTP-tidssynkronisering",

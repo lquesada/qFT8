@@ -1,9 +1,9 @@
 // Translations for vi
 const langData = {
-    "META_TITLE": "qFT8 — FT8, FT4, FT2, JS8 và WSPR Di động cho Android",
-    "META_DESC": "FT8, FT4, FT2, JS8 và WSPR Di động cho Android.",
+    "META_TITLE": "qFT8 — Vô tuyến nghiệp dư đa chế độ di động cho Android",
+    "META_DESC": "Vô tuyến nghiệp dư đa chế độ di động cho Android.",
     "LOGO_ALT": "Biểu trưng qFT8",
-    "MAIN_TITLE": "FT8, FT4, FT2, JS8 và WSPR Di động cho Android",
+    "MAIN_TITLE": "Vô tuyến nghiệp dư đa chế độ di động cho Android",
     "BTN_GOOGLE_PLAY_ALT": "Tải trên Google Play",
     "BTN_DOWNLOAD_APK": "Tải xuống .apk",
     "BTN_USER_MANUAL": "Hướng dẫn sử dụng",

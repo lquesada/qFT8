@@ -1,9 +1,9 @@
 // Translations for ca
 const langData = {
-    "META_TITLE": "qFT8 — Funcionament de FT8, FT4, FT2, JS8 i WSPR portàtil per a Android",
-    "META_DESC": "Funcionament de FT8, FT4, FT2, JS8 i WSPR portàtil per a Android.",
+    "META_TITLE": "qFT8 — Radioafició multimode portàtil per a Android",
+    "META_DESC": "Radioafició multimode portàtil per a Android.",
     "LOGO_ALT": "Logo de qFT8",
-    "MAIN_TITLE": "Funcionament de FT8, FT4, FT2, JS8 i WSPR portàtil per a Android",
+    "MAIN_TITLE": "Radioafició multimode portàtil per a Android",
     "BTN_GOOGLE_PLAY_ALT": "Aconsegueix-ho a Google Play",
     "BTN_DOWNLOAD_APK": "Descarrega .apk",
     "BTN_USER_MANUAL": "Manual d'usuari",

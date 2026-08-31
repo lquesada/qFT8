@@ -1,9 +1,9 @@
 // Translations for ja
 const langData = {
-    "META_TITLE": "qFT8 — Android用ポータブルFT8、FT4、FT2、JS8 および WSPRアプリ",
-    "META_DESC": "Android用ポータブルFT8、FT4、FT2、JS8 および WSPRアプリ。",
+    "META_TITLE": "qFT8 — Android用ポータブルマルチモードアマチュア無線",
+    "META_DESC": "Android用ポータブルマルチモードアマチュア無線。",
     "LOGO_ALT": "qFT8 ロゴ",
-    "MAIN_TITLE": "Android用ポータブルFT8、FT4、FT2、JS8 および WSPRアプリ",
+    "MAIN_TITLE": "Android用ポータブルマルチモードアマチュア無線",
     "BTN_GOOGLE_PLAY_ALT": "Google Play で手に入れよう",
     "BTN_DOWNLOAD_APK": ".apk をダウンロード",
     "BTN_USER_MANUAL": "ユーザーマニュアル",

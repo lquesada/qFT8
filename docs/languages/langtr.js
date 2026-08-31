@@ -1,9 +1,9 @@
 // Translations for tr
 const langData = {
-    "META_TITLE": "qFT8 — Android için Taşınabilir FT8, FT4, FT2, JS8 ve WSPR",
-    "META_DESC": "Android için Taşınabilir FT8, FT4, FT2, JS8 ve WSPR.",
+    "META_TITLE": "qFT8 — Android için Taşınabilir Çok Modlu Amatör Telsiz",
+    "META_DESC": "Android için Taşınabilir Çok Modlu Amatör Telsiz.",
     "LOGO_ALT": "qFT8 Logosu",
-    "MAIN_TITLE": "Android için Taşınabilir FT8, FT4, FT2, JS8 ve WSPR",
+    "MAIN_TITLE": "Android için Taşınabilir Çok Modlu Amatör Telsiz",
     "BTN_GOOGLE_PLAY_ALT": "Google Play'den edinin",
     "BTN_DOWNLOAD_APK": ".apk indir",
     "BTN_USER_MANUAL": "Kullanım Kılavuzu",

@@ -1,9 +1,9 @@
 // Translations for th
 const langData = {
-    "META_TITLE": "qFT8 — พกพา FT8, FT4, FT2, JS8 และ WSPR สำหรับ Android",
-    "META_DESC": "พกพา FT8, FT4, FT2, JS8 และ WSPR สำหรับ Android.",
+    "META_TITLE": "qFT8 — วิทยุสมัครเล่นหลายโหมดแบบพกพาสำหรับ Android",
+    "META_DESC": "วิทยุสมัครเล่นหลายโหมดแบบพกพาสำหรับ Android.",
     "LOGO_ALT": "โลโก้ qFT8",
-    "MAIN_TITLE": "พกพา FT8, FT4, FT2, JS8 และ WSPR สำหรับ Android",
+    "MAIN_TITLE": "วิทยุสมัครเล่นหลายโหมดแบบพกพาสำหรับ Android",
     "BTN_GOOGLE_PLAY_ALT": "ดาวน์โหลดได้ที่ Google Play",
     "BTN_DOWNLOAD_APK": "ดาวน์โหลด .apk",
     "BTN_USER_MANUAL": "คู่มือการใช้งาน",

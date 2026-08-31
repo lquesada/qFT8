@@ -1,9 +1,9 @@
 // Translations for ro
 const langData = {
-    "META_TITLE": "qFT8 — FT8, FT4, FT2, JS8 și WSPR portabil pentru Android",
-    "META_DESC": "FT8, FT4, FT2, JS8 și WSPR portabil pentru Android.",
+    "META_TITLE": "qFT8 — Radioamatorism multimode portabil pentru Android",
+    "META_DESC": "Radioamatorism multimode portabil pentru Android.",
     "LOGO_ALT": "Logo qFT8",
-    "MAIN_TITLE": "FT8, FT4, FT2, JS8 și WSPR portabil pentru Android",
+    "MAIN_TITLE": "Radioamatorism multimode portabil pentru Android",
     "BTN_GOOGLE_PLAY_ALT": "Descărcați de pe Google Play",
     "BTN_DOWNLOAD_APK": "Descărcare .apk",
     "BTN_USER_MANUAL": "Manual de utilizare",

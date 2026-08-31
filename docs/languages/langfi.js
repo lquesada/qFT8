@@ -1,9 +1,9 @@
 // Translations for fi
 const langData = {
-    "META_TITLE": "qFT8 — Kannettava FT8, FT4, FT2, JS8 ja WSPR Androidille",
-    "META_DESC": "Kannettava FT8, FT4, FT2, JS8 ja WSPR Androidille.",
+    "META_TITLE": "qFT8 — Kannettava monitilainen amatööriradio Androidille",
+    "META_DESC": "Kannettava monitilainen amatööriradio Androidille.",
     "LOGO_ALT": "qFT8-logo",
-    "MAIN_TITLE": "Kannettava FT8, FT4, FT2, JS8 ja WSPR Androidille",
+    "MAIN_TITLE": "Kannettava monitilainen amatööriradio Androidille",
     "BTN_GOOGLE_PLAY_ALT": "Lataa Google Playsta",
     "BTN_DOWNLOAD_APK": "Lataa .apk",
     "BTN_USER_MANUAL": "Käyttöohje",
@@ -15,7 +15,7 @@ const langData = {
     "FEAT_PLUG_AND_PLAY": "Plug and Play",
     "FEAT_QUICK_SETUP": "Nopea käyttöönotto",
     "FEAT_TRACK_CALL": "Tukee yli 75 radiota",
-    "FEAT_SUPPORT_FT8_FT4": "FT8-, FT4-, FT2- ja JS8-tilojen tuki",
+    "FEAT_SUPPORT_FT8_FT4": "FT8-, FT4-, FT2-, JS8- ja WSPR-tilojen tuki",
     "FEAT_SUPPORT_LANGS": "Tuki yli 30 kielelle",
     "FEAT_MANUAL_AUTO": "Manuaalinen CALL-valinta ja automaattitila (AUTO)",
     "FEAT_NTP_SYNC": "Automaattinen ajansynkronointi NTP:n kautta",

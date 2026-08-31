@@ -1,9 +1,9 @@
 // Translations for uk
 const langData = {
-    "META_TITLE": "qFT8 — Портативний FT8, FT4, FT2, JS8 та WSPR для Android",
-    "META_DESC": "Портативний FT8, FT4, FT2, JS8 та WSPR для Android.",
+    "META_TITLE": "qFT8 — Портативний багаторежимний аматорський радіозв'язок для Android",
+    "META_DESC": "Портативний багаторежимний аматорський радіозв'язок для Android.",
     "LOGO_ALT": "Логотип qFT8",
-    "MAIN_TITLE": "Портативний FT8, FT4, FT2, JS8 та WSPR для Android",
+    "MAIN_TITLE": "Портативний багаторежимний аматорський радіозв'язок для Android",
     "BTN_GOOGLE_PLAY_ALT": "Завантажити з Google Play",
     "BTN_DOWNLOAD_APK": "Завантажити .apk",
     "BTN_USER_MANUAL": "Посібник користувача",

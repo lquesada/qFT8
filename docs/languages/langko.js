@@ -1,9 +1,9 @@
 // Translations for ko
 const langData = {
-    "META_TITLE": "qFT8 — 안드로이드용 휴대용 FT8, FT4, FT2, JS8 및 WSPR",
-    "META_DESC": "안드로이드용 휴대용 FT8, FT4, FT2, JS8 및 WSPR.",
+    "META_TITLE": "qFT8 — 안드로이드용 휴대용 다중 모드 아마추어 무선",
+    "META_DESC": "안드로이드용 휴대용 다중 모드 아마추어 무선.",
     "LOGO_ALT": "qFT8 로고",
-    "MAIN_TITLE": "안드로이드용 휴대용 FT8, FT4, FT2, JS8 및 WSPR",
+    "MAIN_TITLE": "안드로이드용 휴대용 다중 모드 아마추어 무선",
     "BTN_GOOGLE_PLAY_ALT": "Google Play에서 다운로드",
     "BTN_DOWNLOAD_APK": ".apk 다운로드",
     "BTN_USER_MANUAL": "사용자 설명서",

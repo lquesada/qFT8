@@ -1,9 +1,9 @@
 // Translations for en
 const langData = {
-    "META_TITLE": "qFT8 — Portable FT8, FT4, FT2, JS8, and WSPR for Android",
-    "META_DESC": "Portable FT8, FT4, FT2, JS8, and WSPR for Android.",
+    "META_TITLE": "qFT8 — Portable multi-mode amateur radio for Android",
+    "META_DESC": "Portable multi-mode amateur radio for Android.",
     "LOGO_ALT": "qFT8 Logo",
-    "MAIN_TITLE": "Portable FT8, FT4, FT2, JS8, and WSPR for Android",
+    "MAIN_TITLE": "Portable multi-mode amateur radio for Android",
     "BTN_GOOGLE_PLAY_ALT": "Get it on Google Play",
     "BTN_DOWNLOAD_APK": "Download .apk",
     "BTN_USER_MANUAL": "User Manual",
@@ -15,7 +15,7 @@ const langData = {
     "FEAT_PLUG_AND_PLAY": "Plug and Play",
     "FEAT_QUICK_SETUP": "Quick setup",
     "FEAT_TRACK_CALL": "Supports 75+ radios",
-    "FEAT_SUPPORT_FT8_FT4": "Supports FT8, FT4, FT2, JS8 and WSPR modes",
+    "FEAT_SUPPORT_FT8_FT4": "Supports FT8, FT4, FT2, JS8, WSPR",
     "FEAT_SUPPORT_LANGS": "Supports 30+ languages",
     "FEAT_MANUAL_AUTO": "Manual CALL mode and AUTO operation",
     "FEAT_NTP_SYNC": "Automatic NTP time synchronization",

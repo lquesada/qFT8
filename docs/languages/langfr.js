@@ -1,9 +1,9 @@
 // Translations for fr
 const langData = {
-    "META_TITLE": "qFT8 — FT8, FT4, FT2, JS8 et WSPR portable pour Android",
-    "META_DESC": "FT8, FT4, FT2, JS8 et WSPR portable pour Android.",
+    "META_TITLE": "qFT8 — Radioamateur multimode portable pour Android",
+    "META_DESC": "Radioamateur multimode portable pour Android.",
     "LOGO_ALT": "Logo de qFT8",
-    "MAIN_TITLE": "FT8, FT4, FT2, JS8 et WSPR portable pour Android",
+    "MAIN_TITLE": "Radioamateur multimode portable pour Android",
     "BTN_GOOGLE_PLAY_ALT": "Disponible sur Google Play",
     "BTN_DOWNLOAD_APK": "Télécharger .apk",
     "BTN_USER_MANUAL": "Manuel d'utilisation",

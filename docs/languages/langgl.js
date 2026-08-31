@@ -1,9 +1,9 @@
 // Translations for gl
 const langData = {
-    "META_TITLE": "qFT8 — Funcionamento portátil de FT8, FT4, FT2, JS8 e WSPR para Android",
-    "META_DESC": "Funcionamento portátil de FT8, FT4, FT2, JS8 e WSPR para Android.",
+    "META_TITLE": "qFT8 — Radioafección multimodo portátil para Android",
+    "META_DESC": "Radioafección multimodo portátil para Android.",
     "LOGO_ALT": "Logo de qFT8",
-    "MAIN_TITLE": "Funcionamento portátil de FT8, FT4, FT2, JS8 e WSPR para Android",
+    "MAIN_TITLE": "Radioafección multimodo portátil para Android",
     "BTN_GOOGLE_PLAY_ALT": "Consígueo en Google Play",
     "BTN_DOWNLOAD_APK": "Descargar .apk",
     "BTN_USER_MANUAL": "Manual de usuario",

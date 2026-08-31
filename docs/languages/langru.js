@@ -1,9 +1,9 @@
 // Translations for ru
 const langData = {
-    "META_TITLE": "qFT8 — Портативный FT8, FT4, FT2, JS8 и WSPR для Android",
-    "META_DESC": "Портативный FT8, FT4, FT2, JS8 и WSPR для Android.",
+    "META_TITLE": "qFT8 — Портативная мультимодовая любительская радиосвязь для Android",
+    "META_DESC": "Портативная мультимодовая любительская радиосвязь для Android.",
     "LOGO_ALT": "Логотип qFT8",
-    "MAIN_TITLE": "Портативный FT8, FT4, FT2, JS8 и WSPR для Android",
+    "MAIN_TITLE": "Портативная мультимодовая любительская радиосвязь для Android",
     "BTN_GOOGLE_PLAY_ALT": "Доступно в Google Play",
     "BTN_DOWNLOAD_APK": "Скачать .apk",
     "BTN_USER_MANUAL": "Руководство пользователя",

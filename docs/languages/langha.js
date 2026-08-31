@@ -1,9 +1,9 @@
 // Translations for ha
 const langData = {
-    "META_TITLE": "qFT8 — Hanyar FT8, FT4, FT2, JS8 da WSPR don Android",
-    "META_DESC": "Hanyar FT8, FT4, FT2, JS8 da WSPR don Android.",
+    "META_TITLE": "qFT8 — Rediyon son rai mai hanyoyi da yawa mai ɗaukuwa don Android",
+    "META_DESC": "Rediyon son rai mai hanyoyi da yawa mai ɗaukuwa don Android.",
     "LOGO_ALT": "Alamomin qFT8",
-    "MAIN_TITLE": "Hanyar FT8, FT4, FT2, JS8 da WSPR don Android",
+    "MAIN_TITLE": "Rediyon son rai mai hanyoyi da yawa mai ɗaukuwa don Android",
     "BTN_GOOGLE_PLAY_ALT": "Sami shi akan Google Play",
     "BTN_DOWNLOAD_APK": "Zazzage .apk",
     "BTN_USER_MANUAL": "Jagoran mai amfani",

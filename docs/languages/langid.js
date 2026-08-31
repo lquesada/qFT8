@@ -1,9 +1,9 @@
 // Translations for id
 const langData = {
-    "META_TITLE": "qFT8 — FT8, FT4, FT2, JS8, dan WSPR Portabel untuk Android",
-    "META_DESC": "FT8, FT4, FT2, JS8, dan WSPR Portabel untuk Android.",
+    "META_TITLE": "qFT8 — Radio amatir multi-mode portabel untuk Android",
+    "META_DESC": "Radio amatir multi-mode portabel untuk Android.",
     "LOGO_ALT": "Logo qFT8",
-    "MAIN_TITLE": "FT8, FT4, FT2, JS8, dan WSPR Portabel untuk Android",
+    "MAIN_TITLE": "Radio amatir multi-mode portabel untuk Android",
     "BTN_GOOGLE_PLAY_ALT": "Dapatkan di Google Play",
     "BTN_DOWNLOAD_APK": "Unduh .apk",
     "BTN_USER_MANUAL": "Panduan Pengguna",

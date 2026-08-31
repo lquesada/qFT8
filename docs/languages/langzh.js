@@ -1,9 +1,9 @@
 // Translations for zh
 const langData = {
-    "META_TITLE": "qFT8 — 适用于 Android 的便携式 FT8、FT4、FT2、JS8 与 WSPR 工具",
-    "META_DESC": "适用于 Android 的便携式 FT8、FT4、FT2、JS8 与 WSPR 工具。",
+    "META_TITLE": "qFT8 — 适用于 Android 的便携式多模式业余无线电",
+    "META_DESC": "适用于 Android 的便携式多模式业余无线电。",
     "LOGO_ALT": "qFT8 标志",
-    "MAIN_TITLE": "适用于 Android 的便携式 FT8、FT4、FT2、JS8 与 WSPR 工具",
+    "MAIN_TITLE": "适用于 Android 的便携式多模式业余无线电",
     "BTN_GOOGLE_PLAY_ALT": "Google Play 下载",
     "BTN_DOWNLOAD_APK": "下载 .apk",
     "BTN_USER_MANUAL": "用户手册",

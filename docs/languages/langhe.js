@@ -1,9 +1,9 @@
 // Translations for he
 const langData = {
-    "META_TITLE": "qFT8 — נייד FT8, FT4, FT2, JS8 ו-WSPR עבור Android",
-    "META_DESC": "נייד FT8, FT4, FT2, JS8 ו-WSPR עבור Android.",
+    "META_TITLE": "qFT8 — רדיו חובבים נייד מרובה מצבים עבור Android",
+    "META_DESC": "רדיו חובבים נייד מרובה מצבים עבור Android.",
     "LOGO_ALT": "לוגו qFT8",
-    "MAIN_TITLE": "נייד FT8, FT4, FT2, JS8 ו-WSPR עבור Android",
+    "MAIN_TITLE": "רדיו חובבים נייד מרובה מצבים עבור Android",
     "BTN_GOOGLE_PLAY_ALT": "הורד ב-Google Play",
     "BTN_DOWNLOAD_APK": "הורד .apk",
     "BTN_USER_MANUAL": "מדריך למשתמש",

@@ -1,9 +1,9 @@
 // Translations for sk
 const langData = {
-    "META_TITLE": "qFT8 — Prenosné FT8, FT4, FT2, JS8 a WSPR pre Android",
-    "META_DESC": "Prenosné FT8, FT4, FT2, JS8 a WSPR pre Android.",
+    "META_TITLE": "qFT8 — Prenosné viacmódové rádioamatérske vysielanie pre Android",
+    "META_DESC": "Prenosné viacmódové rádioamatérske vysielanie pre Android.",
     "LOGO_ALT": "qFT8 Logo",
-    "MAIN_TITLE": "Prenosné FT8, FT4, FT2, JS8 a WSPR pre Android",
+    "MAIN_TITLE": "Prenosné viacmódové rádioamatérske vysielanie pre Android",
     "BTN_GOOGLE_PLAY_ALT": "Získať na Google Play",
     "BTN_DOWNLOAD_APK": "Stiahnuť .apk",
     "BTN_USER_MANUAL": "Používateľská príručka",

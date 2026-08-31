@@ -1,9 +1,9 @@
 // Translations for eo
 const langData = {
-    "META_TITLE": "qFT8 — Portebla FT8, FT4, FT2, JS8 kaj WSPR por Android",
-    "META_DESC": "Portebla FT8, FT4, FT2, JS8 kaj WSPR por Android.",
+    "META_TITLE": "qFT8 — Portebla plurmoda amatora radio por Android",
+    "META_DESC": "Portebla plurmoda amatora radio por Android.",
     "LOGO_ALT": "Logo de qFT8",
-    "MAIN_TITLE": "Portebla FT8, FT4, FT2, JS8 kaj WSPR por Android",
+    "MAIN_TITLE": "Portebla plurmoda amatora radio por Android",
     "BTN_GOOGLE_PLAY_ALT": "Elŝutu ĝin el Google Play",
     "BTN_DOWNLOAD_APK": "Elŝuti .apk",
     "BTN_USER_MANUAL": "Uzanto-manlibro",

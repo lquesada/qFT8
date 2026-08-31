@@ -1,9 +1,9 @@
 // Translations for ar
 const langData = {
-    "META_TITLE": "qFT8 — تشغيل FT8 و FT4 و FT2 و JS8 و WSPR بشكل محمول للأندرويد",
-    "META_DESC": "تشغيل FT8 و FT4 و FT2 و JS8 و WSPR بشكل محمول للأندرويد.",
+    "META_TITLE": "qFT8 — راديو الهواة المحمول متعدد الأوضاع للأندرويد",
+    "META_DESC": "راديو الهواة المحمول متعدد الأوضاع للأندرويد.",
     "LOGO_ALT": "شعار qFT8",
-    "MAIN_TITLE": "تشغيل FT8 و FT4 و FT2 و JS8 و WSPR بشكل محمول للأندرويد",
+    "MAIN_TITLE": "راديو الهواة المحمول متعدد الأوضاع للأندرويد",
     "BTN_GOOGLE_PLAY_ALT": "احصل عليه من Google Play",
     "BTN_DOWNLOAD_APK": "تحميل ملف .apk",
     "BTN_USER_MANUAL": "دليل المستخدم",

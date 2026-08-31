@@ -1,9 +1,9 @@
 // Translations for hu
 const langData = {
-    "META_TITLE": "qFT8 — Hordozható FT8, FT4, FT2, JS8 és WSPR Androidra",
-    "META_DESC": "Hordozható FT8, FT4, FT2, JS8 és WSPR Androidra.",
+    "META_TITLE": "qFT8 — Hordozható több üzemmódú amatőrrádió Androidra",
+    "META_DESC": "Hordozható több üzemmódú amatőrrádió Androidra.",
     "LOGO_ALT": "qFT8 logó",
-    "MAIN_TITLE": "Hordozható FT8, FT4, FT2, JS8 és WSPR Androidra",
+    "MAIN_TITLE": "Hordozható több üzemmódú amatőrrádió Androidra",
     "BTN_GOOGLE_PLAY_ALT": "Szerezze be a Google Play-en",
     "BTN_DOWNLOAD_APK": ".apk letöltése",
     "BTN_USER_MANUAL": "Felhasználói kézikönyv",

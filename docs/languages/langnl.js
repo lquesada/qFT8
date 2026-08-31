@@ -1,9 +1,9 @@
 // Translations for nl
 const langData = {
-    "META_TITLE": "qFT8 — Draagbare FT8, FT4, FT2, JS8 en WSPR voor Android",
-    "META_DESC": "Draagbare FT8, FT4, FT2, JS8 en WSPR voor Android.",
+    "META_TITLE": "qFT8 — Draagbare multi-mode amateurradio voor Android",
+    "META_DESC": "Draagbare multi-mode amateurradio voor Android.",
     "LOGO_ALT": "qFT8-logo",
-    "MAIN_TITLE": "Draagbare FT8, FT4, FT2, JS8 en WSPR voor Android",
+    "MAIN_TITLE": "Draagbare multi-mode amateurradio voor Android",
     "BTN_GOOGLE_PLAY_ALT": "Ontdek het op Google Play",
     "BTN_DOWNLOAD_APK": "Download .apk",
     "BTN_USER_MANUAL": "Handleiding",

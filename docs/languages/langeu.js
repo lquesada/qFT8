@@ -1,9 +1,9 @@
 // Translations for eu
 const langData = {
-    "META_TITLE": "qFT8 — FT8, FT4, FT2, JS8 eta WSPR funtzionamendu eramangarria Androiderako",
-    "META_DESC": "FT8, FT4, FT2, JS8 eta WSPR funtzionamendu eramangarria Androiderako.",
+    "META_TITLE": "qFT8 — Modu anitzeko irrati-zaletasun eramangarria Androiderako",
+    "META_DESC": "Modu anitzeko irrati-zaletasun eramangarria Androiderako.",
     "LOGO_ALT": "qFT8 Logoa",
-    "MAIN_TITLE": "FT8, FT4, FT2, JS8 eta WSPR funtzionamendu eramangarria Androiderako",
+    "MAIN_TITLE": "Modu anitzeko irrati-zaletasun eramangarria Androiderako",
     "BTN_GOOGLE_PLAY_ALT": "Eskuratu Google Play-n",
     "BTN_DOWNLOAD_APK": "Deskargatu .apk",
     "BTN_USER_MANUAL": "Erabiltzailearen eskuliburua",

@@ -1,9 +1,9 @@
 // Translations for ur
 const langData = {
-    "META_TITLE": "qFT8 — اینڈرائیڈ کے لیے پورٹیبل FT8, FT4, FT2, JS8 اور WSPR",
-    "META_DESC": "اینڈرائیڈ کے لیے پورٹیبل FT8, FT4, FT2, JS8 اور WSPR۔",
+    "META_TITLE": "qFT8 — اینڈرائیڈ کے لیے پورٹیبل ملٹی موڈ ایمیچور ریڈیو",
+    "META_DESC": "اینڈرائیڈ کے لیے پورٹیبل ملٹی موڈ ایمیچور ریڈیو۔",
     "LOGO_ALT": "qFT8 لوگو",
-    "MAIN_TITLE": "اینڈرائیڈ کے لیے پورٹیبل FT8, FT4, FT2, JS8 اور WSPR",
+    "MAIN_TITLE": "اینڈرائیڈ کے لیے پورٹیبل ملٹی موڈ ایمیچور ریڈیو",
     "BTN_GOOGLE_PLAY_ALT": "اسے گوگل پلے پر حاصل کریں",
     "BTN_DOWNLOAD_APK": ".apk ڈاؤن لوڈ کریں",
     "BTN_USER_MANUAL": "صارف نامہ",

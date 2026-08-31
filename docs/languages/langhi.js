@@ -1,9 +1,9 @@
 // Translations for hi
 const langData = {
-    "META_TITLE": "qFT8 — Android के लिए पोर्टेबल FT8, FT4, FT2, JS8 और WSPR",
-    "META_DESC": "Android के लिए पोर्टेबल FT8, FT4, FT2, JS8 और WSPR।",
+    "META_TITLE": "qFT8 — Android के लिए पोर्टेबल मल्टी-मोड एमेच्योर रेडियो",
+    "META_DESC": "Android के लिए पोर्टेबल मल्टी-मोड एमेच्योर रेडियो।",
     "LOGO_ALT": "qFT8 लोगो",
-    "MAIN_TITLE": "Android के लिए पोर्टेबल FT8, FT4, FT2, JS8 और WSPR",
+    "MAIN_TITLE": "Android के लिए पोर्टेबल मल्टी-मोड एमेच्योर रेडियो",
     "BTN_GOOGLE_PLAY_ALT": "Google Play पर इसे प्राप्त करें",
     "BTN_DOWNLOAD_APK": ".apk डाउनलोड करें",
     "BTN_USER_MANUAL": "उपयोगकर्ता पुस्तिका",
