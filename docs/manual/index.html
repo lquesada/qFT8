@@ -90,6 +90,7 @@
                 </li>
                 <li><a href="#js8-chat"><span translate="no">JS8</span> Chat</a>
                 </li>
+                <li><a href="#wspr-mode"><span translate="no">WSPR</span> Mode</a></li>
                 <li><a href="#remote-control">Remote Control Web Server</a></li>
                 <li><a href="#troubleshooting">Troubleshooting</a></li>
             </ul>
@@ -130,7 +131,7 @@
             </p>
 
             <p>
-                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
             </p>
 
             <h3>Key Features</h3>
@@ -1890,6 +1891,56 @@
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
+                <section id="wspr-mode">
+            <h2><span translate="no">WSPR</span> Mode</h2>
+            <p>
+                <strong><span translate="no">WSPR</span> (Weak Signal Propagation Reporter)</strong> is a specialized digital protocol designed for probing radio propagation paths using very low power transmissions. WSPR signals use narrow 4-FSK modulation with robust convolutional coding and sequential Fano decoding, capable of decoding signals well below the noise floor down to &minus;28 dB SNR.
+            </p>
+
+            <h3>2-Minute Cycles & Timing</h3>
+            <p>
+                WSPR transmissions take place in synchronized <strong>2-minute UTC slots</strong> (transmitting for 110.6 seconds with 162 tone symbols). Transmissions always start exactly one second into even UTC minutes (<code>:00, :02, :04, :06...</code>). The spectrogram vertical scrolling automatically adapts to a smooth, slow scroll rate matching the 120-second cycle length.
+            </p>
+
+            <h3>Single-Pane Activity View</h3>
+            <p>
+                Because WSPR is a beaconing and propagation reporting protocol rather than a two-way conversational mode, qFT8 provides a streamlined, full-width single-pane activity log without QSO log splits:
+            </p>
+            <ul>
+                <li><strong>Callsign</strong>: Station callsign.</li>
+                <li><strong>DXCC Entity</strong>: Automatically resolved country / DXCC entity name (with flexible width).</li>
+                <li><strong>Grid Locator</strong>: 4-character Maidenhead locator (e.g. <code>JN45</code>).</li>
+                <li><strong>SNR</strong>: Received signal-to-noise ratio in dB.</li>
+                <li><strong>Power Level</strong>: Transmit power reported by the station in dBm (e.g. <code>37 dBm</code>).</li>
+                <li><strong>Date & UTC Time</strong>: Timestamp of the transmission slot in UTC formatted as <code>yyMMdd HH:mm</code>.</li>
+            </ul>
+
+            <h3>Automated Beaconing & Tx Percentage</h3>
+            <p>
+                In the top header of the WSPR Activity screen:
+            </p>
+            <ul>
+                <li><strong><span translate="no">BEACON</span> Toggle</strong>: Arm or disarm automated beacon transmissions. When armed (highlighted in bright green), qFT8 automatically schedules beacon transmissions at deterministic intervals based on your configured Tx Percentage.</li>
+                <li><strong><span translate="no">Tx %</span> Selector</strong>: Configure the deterministic transmission duty cycle based on time elapsed since your last transmission (<code>0% [Rx Only]</code>, <code>10%</code>, <code>20%</code>, <code>25%</code>, <code>33%</code>, <code>50%</code>, or <code>100% Continuous</code>). For example, <code>20%</code> transmits deterministically every 10 minutes from your last transmission (<code>50%</code> = every 4 min, <code>33%</code> = every 6 min, <code>25%</code> = every 8 min, <code>10%</code> = every 20 min, <code>100%</code> = every 2-minute cycle continuously).</li>
+                <li><strong><span translate="no">Send</span> Button</strong>: Queue an immediate manual transmission for the upcoming 2-minute cycle boundary. After transmitting, automated deterministic beacon scheduling continues from that cycle.</li>
+            </ul>
+
+            <h3>WSPRnet & PSKReporter Spot Uploads</h3>
+            <p>
+                qFT8 can automatically upload received spots to the global <strong><a href="http://wsprnet.org" target="_blank">WSPRnet</a></strong> database and <strong>PSKReporter</strong>:
+            </p>
+            <ul>
+                <li><strong>Download spots from WSPRnet</strong>: Enabled by default, pulls real-time spots for your callsign and band to display on the World Map.</li>
+                <li><strong>Upload reports to WSPRnet</strong>: When enabled under <em>Settings &rarr; WSPRnet</em>, received spots are batched and uploaded to WSPRnet with 15-minute deduplication and rate limiting.</li>
+                <li><strong>Open WSPRnet in Browser</strong>: Directly opens the WSPRnet database filtered for your station's callsign.</li>
+            </ul>
+
+            <h3>Standalone ADIF Export</h3>
+            <p>
+                Tap the <strong><span translate="no">EXPORT</span></strong> button at the top right of the WSPR activity panel to export all spots recorded during the current session into standard ADIF format (<code>.adi</code>) for propagation study and record keeping.
+            </p>
+        
+            <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
         </section>
 
         <section id="remote-control">
@@ -2252,7 +2303,7 @@
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
         </p>
         <p>
-            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
         </p>
         <div class="footer-links">
             <a href="../">Main Page</a> - <a href="../privacy/">Privacy Policy</a>

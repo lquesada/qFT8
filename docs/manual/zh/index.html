@@ -84,6 +84,7 @@ html
 </li>
 <li><a href="#js8-chat"><span translate="no">JS8</span> 聊天</a>
 </li>
+                <li><a href="#wspr-mode"><span translate="no">WSPR</span> 模式</a></li>
 <li><a href="#remote-control">远程控制网络服务器</a></li>
 <li><a href="#troubleshooting">故障排除</a></li>
 </ul>
@@ -107,7 +108,7 @@ html
             </p>
 
             <p>
-                qFT8 包含来自 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（版权所有 &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（版权所有 &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（版权所有 &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a>（版权所有 &copy; 2015 Google / The Roboto Project Authors, Apache-2.0）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a>（Public Domain）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a>（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT）以及 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a>（版权所有 &copy; Jim Reisert AD1C）的部分代码。这些第三方作者或项目均未认可或附属于 qFT8。
+                qFT8 包含来自 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（版权所有 &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（版权所有 &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（版权所有 &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a>（版权所有 &copy; 2015 Google / The Roboto Project Authors, Apache-2.0）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a>（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a>（Public Domain）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a>（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT）以及 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a>（版权所有 &copy; Jim Reisert AD1C）的部分代码。这些第三方作者或项目均未认可或附属于 qFT8。
             </p>
 <h3>主要特点</h3>
 <ul>
@@ -1383,9 +1384,59 @@ html
 </ul>
 
 <a href="#top" class="back-to-toc">↑ 返回目录</a>
-</section>
+        <section id="wspr-mode">
+            <h2><span translate="no">WSPR</span> 模式</h2>
+            <p>
+                <strong><span translate="no">WSPR</span>（微弱信号传播监测器）</strong>是一种专为使用极低发射功率探测和评估无线电传播路径而设计的数字协议。WSPR 信号采用窄带 4-FSK 调制、强抗干扰的卷积编码与顺序 Fano 解码，能够在低至 &minus;28 dB SNR 的极弱信号电平下稳定解码。
+            </p>
 
-<section id="remote-control">
+            <h3>2分钟周期与精确时序</h3>
+            <p>
+                WSPR 在严格同步的 <strong>UTC 2分钟时隙</strong>（162个音频符号，持续发射110.6秒）内运行。发射总是在偶数 UTC 分钟的第1秒开始（<code>:00, :02, :04, :06...</code>）。频谱瀑布图垂直滚动速度会自动降低，与120秒的长周期完美匹配。
+            </p>
+
+            <h3>单面板活动监测视图</h3>
+            <p>
+                鉴于 WSPR 是一种信标监测与传播报告协议而非双向对话 QSO 模式，qFT8 提供了简洁高效的全宽单面板活动记录：
+            </p>
+            <ul>
+                <li><strong>呼号 (Callsign)</strong>: 电台呼号。</li>
+                <li><strong>DXCC 实体</strong>: 自动解析的国家 / DXCC 实体名称（自适应宽度）。</li>
+                <li><strong>网格定位 (Grid)</strong>: 4 字符 Maidenhead 网格（例如 <code>JN45</code>）。</li>
+                <li><strong>信噪比 (SNR)</strong>: 接收到的信噪比（dB）。</li>
+                <li><strong>功率等级 (Power)</strong>: 电台报告的发射功率（dBm，例如 <code>37 dBm</code>）。</li>
+                <li><strong>日期与 UTC 时间</strong>: UTC 发射时段的时间戳，格式为 <code>yyMMdd HH:mm</code>。</li>
+            </ul>
+
+            <h3>自动信标发射与发射占比（Tx %）</h3>
+            <p>
+                在 WSPR 顶部控制栏中：
+            </p>
+            <ul>
+                <li><strong><span translate="no">BEACON</span> 开关</strong>: 启用或停用自动信标发射。启用时（亮绿色高亮显示），qFT8 将根据配置的发射百分比以确定的时间间隔自动安排信标发射。</li>
+                <li><strong><span translate="no">Tx %</span> 选择器</strong>: 根据距离上次发射经过的时间配置确定性的发射占空比（<code>0% [仅接收]</code>、<code>10%</code>、<code>20%</code>、<code>25%</code>、<code>33%</code>、<code>50%</code> 或 <code>100% 连续</code>）。例如，<code>20%</code> 表示从上次发射起每 10 分钟确定发射一次（<code>50%</code> = 每 4 分钟，<code>33%</code> = 每 6 分钟，<code>25%</code> = 每 8 分钟，<code>10%</code> = 每 20 分钟，<code>100%</code> = 每个 2 分钟周期连续发射）。</li>
+                <li><strong><span translate="no">Send</span> 按钮</strong>: 为下一个即将到来的 2 分钟周期排队一次即时手动发射。发射后，自动确定性信标调度将从该周期继续。</li>
+            </ul>
+
+            <h3>WSPRnet 与 PSKReporter 自动上传</h3>
+            <p>
+                qFT8 可以自动将接收到的传播报告上传至全球 <strong><a href="http://wsprnet.org" target="_blank">WSPRnet</a></strong> 数据库与 <strong>PSKReporter</strong>：
+            </p>
+            <ul>
+                <li><strong>从 WSPRnet 下载报告</strong>: 默认开启，实时拉取本台呼号与当前波段的全球监测点，并在世界地图上直观呈现。</li>
+                <li><strong>上传报告至 WSPRnet</strong>: 在<em>设置 &rarr; WSPRnet</em>中启用后，接收报告将经过15分钟智能去重和频次控制后批量上传。</li>
+                <li><strong>在浏览器中打开 WSPRnet</strong>: 快速在浏览器中查询并打开您呼号的 WSPRnet 监测页面。</li>
+            </ul>
+
+            <h3>独立 ADIF 导出</h3>
+            <p>
+                点击 WSPR 面板右上角的 <strong><span translate="no">EXPORT</span></strong> 按钮，即可将当前会话记录的所有监测点直接导出为标准 ADIF 格式（<code>.adi</code>）文件。
+            </p>
+        
+            <a href="#top" class="back-to-toc">&uarr; 返回目录</a>
+        </section>
+
+        <section id="remote-control">
 <h2>远程控制网络服务器</h2>
 <p>qFT8 包含一个嵌入式 HTTP 服务器，允许您从任何位置监视和控制应用程序
                 网络
@@ -1616,7 +1667,7 @@ html
 </div>
 <div class="footer">
 <p>版权所有 &copy; 2026，<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>）。保留所有权利。</p>
-<p>包含来自 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（版权所有 &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（版权所有 &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（版权所有 &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a>（版权所有 &copy; 2015 Google / The Roboto Project Authors, Apache-2.0）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a>（Public Domain）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a>（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT）以及 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a>（版权所有 &copy; Jim Reisert AD1C）的部分代码。这些第三方作者或项目均未认可或附属于 qFT8。</p>
+<p>包含来自 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a>（版权所有 &copy; 2023 BG7YOZ, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a>（版权所有 &copy; 2018 Kārlis Gobas, MIT）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a>（版权所有 &copy; 2003-2010 Mark Borgerding, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a>（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a>（版权所有 &copy; 2015 Google / The Roboto Project Authors, Apache-2.0）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a>（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a>（Public Domain）、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a>（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT）以及 <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a>（版权所有 &copy; Jim Reisert AD1C）的部分代码。这些第三方作者或项目均未认可或附属于 qFT8。</p>
 <div class="footer-links">
             <a href="../../zh/">主页</a> - <a href="../../privacy/">隐私政策</a>
         </div>
