@@ -63,7 +63,16 @@
                     </ul>
                 </li>
                 <li><a href="#first-qso">Your First QSO With qFT8</a></li>
-                <li><a href="#ft8-introduction">Intro to the FT digital modes</a></li>
+                <li><a href="#ft8-introduction">Intro to digital modes</a>
+                    <ul>
+                        <li><a href="#mode-ft8">FT8</a></li>
+                        <li><a href="#mode-ft4">FT4</a></li>
+                        <li><a href="#mode-ft2">FT2</a></li>
+                        <li><a href="#mode-js8"><span translate="no">JS8</span></a></li>
+                        <li><a href="#mode-wspr"><span translate="no">WSPR</span></a></li>
+                        <li><a href="#mode-lq8"><span translate="no">LQ8</span></a></li>
+                    </ul>
+                </li>
                 <li><a href="#user-interface">qFT8 User Interface</a>
                     <ul>
                         <li><a href="#ui-bottom-bar">The Bottom bar</a></li>
@@ -108,7 +117,7 @@
                 qFT8 is an <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android
                     phone</a>
                 app for <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amateur radio</a>
-                that decodes and transmits FT8, FT4, FT2, or JS8 digital data messages using a transceiver.
+                that decodes and transmits FT8, FT4, FT2, LQ8, JS8, or WSPR digital data messages using a transceiver.
             </p>
 
             <div class="phone-mockup">
@@ -131,7 +140,11 @@
             </p>
 
             <p>
-                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            </p>
+
+            <p>
+                Also using <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LQ_LIB.md">lq_lib</a> (Copyright &copy; 2026 Luis Quesada HB9IPH, MIT license).
             </p>
 
             <h3>Key Features</h3>
@@ -515,18 +528,19 @@
         </section>
 
         <section id="ft8-introduction">
-            <h2>Intro to the FT digital modes</h2>
+            <h2>Intro to digital modes</h2>
 
             <p>
-                qFT8 supports FT8, FT4, FT2, and JS8 digital modes. FT4 is a digital protocol exactly like FT8 but designed to be twice as fast (operating in 7.5-second cycles instead of 15-second cycles). The supported FT2 implementation (original) is exactly like FT4 but designed to be twice as fast. JS8 uses the same encoding as FT8, with different speeds and bandwidth, with a different layer for message slicing.
+                Amateur radio digital modes encode text and data into audio frequency-shift keying (FSK) tones transmitted over single-sideband (SSB) radio. Combining narrow bandwidths, advanced forward error correction (FEC), and strict time synchronization, digital modes enable reliable worldwide communication even when signals are buried deep below the audible noise floor. qFT8 supports the leading modern digital modes—FT8, FT4, FT2, JS8, WSPR, and LQ8—each engineered for distinct operational goals ranging from ultra-weak-signal propagation beaconing to rapid contesting and conversational keyboard-to-keyboard messaging.
             </p>
+
+            <h3 id="mode-ft8">FT8</h3>
 
             <p>
-                FT8 is a digital protocol designed for multi-hop sporadic-E and other weak-signal conditions.
-                It is characterized by structured messages and precise timing.
+                FT8 (Franke-Taylor design, 8-GFSK) is the world's most widely used weak-signal digital protocol, engineered for challenging HF/VHF conditions, multi-hop sporadic-E, and crowded bands. It operates with structured messages, precise 15-second time synchronization, and robust error correction.
             </p>
 
-            <h3>Cycles and Sequences</h3>
+<h4>Cycles and Sequences</h4>
             <p>
                 FT8 operates in <strong>15-second cycles</strong>. Every communication cycle is strictly timed,
                 starting exactly at <strong>00, 15, 30, and 45 seconds</strong> of every minute.
@@ -551,7 +565,7 @@
                 for preparing the next transmission.
             </p>
 
-            <h3>Signal Characteristics</h3>
+            <h4>Signal Characteristics</h4>
             <p>
                 Each FT8 message is transmitted as a sequence of tones with slight frequency variations
                 (sometimes described as "wiggliness").
@@ -559,7 +573,7 @@
                 This efficiency allows dozens of simultaneous conversations to fit within a single 3kHz radio band.
             </p>
 
-            <h3>The 6 Stages of a QSO</h3>
+            <h4>The 6 Stages of a QSO</h4>
             <p>
                 A standard FT8 contact typically moves through six stages. Here is an example of an exchange between
                 <strong>HB9IPH</strong> and <strong>XX1XXX</strong>:
@@ -643,7 +657,7 @@
                 currently support sending these custom messages.
             </p>
 
-            <h3>Protocol Limitations and Fallbacks</h3>
+            <h4>Protocol Limitations and Fallbacks</h4>
             <p>
                 FT8 messages are highly compressed into <strong>77 bits</strong>. Sometimes, complex information
                 (like long, non-standard callsigns) does not fit in the standard message format.
@@ -666,6 +680,70 @@
                     initial <span translate="no">CALL (2/6)</span> to the final confirmations
                     (<span translate="no">5/6 and 6/6</span>).</li>
             </ul>
+
+            <h3 id="mode-ft4">FT4</h3>
+            <p>
+                FT4 is a streamlined digital mode designed specifically for amateur radio contesting, where rapid contact turnover is vital:
+            </p>
+            <ul>
+                <li><strong>Double Speed</strong>: Operates in <strong>7.5-second cycles</strong> (twice as fast as FT8), transmitting for approximately 4.48 seconds with four transmission intervals per minute.</li>
+                <li><strong>Double Bandwidth</strong>: Occupies approximately <strong>90 Hz</strong> of RF bandwidth (about twice the ~50 Hz bandwidth of FT8).</li>
+                <li><strong>Sensitivity Loss</strong>: In exchange for doubled throughput, FT4 has a decode sensitivity threshold of approximately <strong>-16.4 dB to -17.5 dB SNR</strong> (a sensitivity loss of about 3.5 to 4 dB compared to FT8).</li>
+                <li><strong>Operational Use</strong>: Uses 4-GFSK modulation and the standard 77-bit structured message payload, allowing operators to complete standard contest exchanges in half the time when propagation permits.</li>
+            </ul>
+
+            <h3 id="mode-ft2">FT2</h3>
+            <p>
+                FT2 is designed for ultra-high-speed exchanges under favorable signal conditions, VHF/UHF meteor scatter bursts, and high-rate contesting:
+            </p>
+            <ul>
+                <li><strong>Double Speed of FT4 (4x FT8)</strong>: Operates in <strong>3.75-second cycles</strong> with approximately 2.24 seconds of transmission time, permitting up to 16 cycles per minute.</li>
+                <li><strong>Double Bandwidth of FT4 (4x FT8)</strong>: Occupies approximately <strong>180 Hz</strong> of RF bandwidth (twice that of FT4 and nearly four times that of FT8).</li>
+                <li><strong>Additional Sensitivity Loss</strong>: Has a decode threshold of approximately <strong>-13 dB to -14 dB SNR</strong> (an additional ~3 dB sensitivity loss compared to FT4, or ~6 to 7 dB less sensitive than FT8).</li>
+                <li><strong>Operational Use</strong>: Ideal for rapid-fire contacts during high-signal openings and burst propagation modes where contact windows are momentary and signals are comfortably above the noise floor.</li>
+            </ul>
+
+            <h3 id="mode-js8">JS8</h3>
+            <p>
+                JS8 (Jordan Sherer design, 8-GFSK) is created for <strong>conversational ragchewing, keyboard-to-keyboard chat, and ad-hoc networking</strong> rather than structured contest exchanges:
+            </p>
+            <ul>
+                <li><strong>Message Slicing and Framing</strong>: Utilizes the same fundamental 8-GFSK modulation and 77-bit frames as FT8, but introduces an upper-layer transport protocol for message fragmentation and reassembly. This allows free-form text messages of arbitrary length to flow seamlessly across consecutive cycles.</li>
+                <li><strong>Multiple Speed Modes</strong>: Offers four selectable speed profiles to match band conditions:
+                    <ul>
+                        <li><em>Slow</em>: 30-second cycles, ~25 Hz bandwidth, decodes down to <strong>-25 dB SNR</strong>.</li>
+                        <li><em>Normal</em>: 15-second cycles, ~50 Hz bandwidth, decodes down to <strong>-21 dB SNR</strong>.</li>
+                        <li><em>Fast</em>: 10-second cycles, ~80 Hz bandwidth, decodes down to <strong>-18 dB SNR</strong>.</li>
+                        <li><em>Turbo</em>: 6-second cycles, ~160 Hz bandwidth, decodes down to <strong>-15 dB SNR</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>Networking Capabilities</strong>: Supports directed messaging, automatic message relaying across intermediate stations, heartbeat presence monitoring, and asynchronous store-and-forward mailbox networking.</li>
+            </ul>
+
+            <h3 id="mode-wspr">WSPR</h3>
+            <p>
+                WSPR (<em>Weak Signal Propagation Reporter</em>) is designed exclusively for probing radio propagation paths and automated beaconing rather than two-way conversational QSOs:
+            </p>
+            <ul>
+                <li><strong>Two-Minute Cycles</strong>: Operates in strictly synchronized <strong>2-minute (120-second) cycles</strong>, transmitting a 162-symbol 4-FSK tone sequence over 110.6 seconds.</li>
+                <li><strong>Ultra-Narrow Bandwidth</strong>: Occupies only about <strong>6 Hz</strong> of RF bandwidth, concentrating radiated power into an exceptionally compact spectrum slice.</li>
+                <li><strong>Extreme Weak-Signal Sensitivity</strong>: Capable of decoding signals as faint as <strong>-28 dB to -31 dB SNR</strong> in a standard 2.5 kHz reference bandwidth, enabling milliwatt-level (QRPp) transmitters to span global distances.</li>
+                <li><strong>Automated Propagation Reporting</strong>: Transmits the station callsign, Maidenhead grid locator (4 or 6 digits), and transmitter power in dBm. Decoded spots are automatically forwarded to the worldwide WSPRnet database to map ionospheric propagation in real time.</li>
+            </ul>
+
+            <h3 id="mode-lq8">LQ8</h3>
+            <p>
+                LQ8 is an advanced weak-signal digital mode developed by <strong>Luis Quesada (HB9IPH)</strong>, the author and creator of qFT8:
+            </p>
+            <ul>
+                <li><strong>Closes QSOs Faster Without Penalty</strong>: LQ8 completes two-way QSOs significantly faster than FT8 <strong>without any sensitivity penalty</strong>. It preserves the full weak-signal decoding threshold of <strong>-21 dB SNR</strong> (matching FT8) while finishing valid contacts in substantially fewer transmission rounds through an optimized protocol design.</li>
+                <li><strong>Compound Messages</strong>: Supports aggregated transmissions such as combined report and confirmation (<code>REPORT+RR73</code>) and parallel multi-station responses (<code>MULTI_CALL</code>), cutting the standard QSO duration from 4–6 cycles down to just 2–3 cycles.</li>
+                <li><strong>Modern Architecture</strong>: Operates in standard 15-second cycles with 8-GFSK modulation across 79 symbols (~65 Hz bandwidth), 77-bit payloads compressed with optimized Huffman encoding, 14-bit CRC error detection, and structured emergency dispatch signaling.</li>
+            </ul>
+
+            <p>
+                For more information, specifications, and tools, visit <a href="https://lq8.org" target="_blank">https://lq8.org</a>, the portal for the LQ modes.
+            </p>
 
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
         </section>
@@ -745,7 +823,7 @@
                         style="color: #ffff00; font-weight: bold;">yellow</span> line on top of the buttons show the
                     current
                     sequence (0 or 1). Tapping on 0 or 1 selects that sequence for outgoing transmissions.</li>
-                <li><strong>The mode selector</strong>: It changes the transmission mode used (e.g. <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, or <span translate="no">JS8</span>).</li>
+                <li><strong>The mode selector</strong>: It changes the transmission mode used (e.g. <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, <span translate="no">LQ8</span>, <span translate="no">JS8</span>, or <span translate="no">WSPR</span>).</li>
                 <li><strong>The band selector</strong>: When a transceiver is connected, it changes the band in the
                     transceiver.</li>
                 <li><strong>The Stations tab button</strong>: Opens the tab that lists all the stations you've heard or
@@ -2303,7 +2381,10 @@
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
         </p>
         <p>
-            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_FT8CN.md">FT8CN</a> (Copyright &copy; 2023 BG7YOZ, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LIB_FT8.md">ft8_lib</a> (Copyright &copy; 2018 Kārlis Gobas, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_KISSFFT.md">KISS FFT</a> (Copyright &copy; 2003-2010 Mark Borgerding, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+        </p>
+        <p>
+            Also using <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_LQ_LIB.md">lq_lib</a> (Copyright &copy; 2026 Luis Quesada HB9IPH, MIT license).
         </p>
         <div class="footer-links">
             <a href="../">Main Page</a> - <a href="../privacy/">Privacy Policy</a>
