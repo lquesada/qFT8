@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "未知",
     "EG_POTA_REF": "例如 K-1234",
     "EG_SOTA_REF": "例如 W6/NC-001",
+    "TELEGRAM_TITLE": "Telegram 群组",
+    "TELEGRAM_DESC": "加入活跃的 Telegram 群组，参与实时讨论、获取新功能发布通知及直接技术支持。",
+    "TELEGRAM_BTN": "加入 Telegram",
 };

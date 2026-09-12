@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Desconegut",
     "EG_POTA_REF": "p. ex. K-1234",
     "EG_SOTA_REF": "p. ex. W6/NC-001",
+    "TELEGRAM_TITLE": "Grup de Telegram",
+    "TELEGRAM_DESC": "Uneix-te al grup en viu de Telegram per a debats en temps real, anuncis de noves funcions i suport directe.",
+    "TELEGRAM_BTN": "Unir-se a Telegram",
 };

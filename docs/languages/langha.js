@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Ba a sani ba",
     "EG_POTA_REF": "misali, K-1234",
     "EG_SOTA_REF": "misali, W6/NC-001",
+    "TELEGRAM_TITLE": "Rukunin Telegram",
+    "TELEGRAM_DESC": "Shiga rukunin Telegram kai tsaye don tattaunawa a kan kari, sanarwar sabbin fasaloli, da taimako na kai tsaye.",
+    "TELEGRAM_BTN": "Shiga Telegram",
 };

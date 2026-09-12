@@ -29,7 +29,7 @@ const langData = {
     "FEAT_SOTA_POTA": "Exportações ADIF para SOTA e POTA",
     "FEAT_REMOTE": "Servidor web para operação totalmente remota",
     "FEAT_BATTERY": "Modo de economia de bateria: funciona com a tela desligada",
-    "DOWNLOAD_TITLE": "Download",
+    "DOWNLOAD_TITLE": "Baixar",
     "DOWNLOAD_TEXT_1": "É preferível <a href=\"https://play.google.com/store/apps/details?id=com.ft8.app\">obter o aplicativo na Google Play Store</a>.",
     "DOWNLOAD_TEXT_2": "Você também pode baixar o arquivo .apk abaixo e instalá-lo manualmente. Isso pode exigir ajustes adicionais no Android (permitir a instalação de aplicativos de fontes desconhecidas, ativar opções de desenvolvedor, etc.)",
     "DOWNLOAD_VERSION": "Versão:",
@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Desconhecido",
     "EG_POTA_REF": "ex. K-1234",
     "EG_SOTA_REF": "ex. W6/NC-001",
+    "TELEGRAM_TITLE": "Grupo do Telegram",
+    "TELEGRAM_DESC": "Junte-se ao grupo ao vivo do Telegram para discussões em tempo real, anúncios de novos recursos e suporte direto.",
+    "TELEGRAM_BTN": "Entrar no Telegram",
 };

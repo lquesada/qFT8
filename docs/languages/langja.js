@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "不明",
     "EG_POTA_REF": "例 K-1234",
     "EG_SOTA_REF": "例 W6/NC-001",
+    "TELEGRAM_TITLE": "Telegram グループ",
+    "TELEGRAM_DESC": "リアルタイムでの意見交換、新機能のお知らせ、直接サポートを受けるために、Telegramグループにご参加ください。",
+    "TELEGRAM_BTN": "Telegramに参加",
 };

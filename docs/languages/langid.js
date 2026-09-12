@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Tidak Diketahui",
     "EG_POTA_REF": "mis. K-1234",
     "EG_SOTA_REF": "mis. W6/NC-001",
+    "TELEGRAM_TITLE": "Grup Telegram",
+    "TELEGRAM_DESC": "Bergabunglah dengan grup Telegram langsung untuk diskusi waktu nyata, pengumuman fitur baru, dan dukungan langsung.",
+    "TELEGRAM_BTN": "Gabung Telegram",
 };

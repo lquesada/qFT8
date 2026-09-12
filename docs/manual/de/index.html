@@ -203,6 +203,7 @@ html
 <p>Bitte stellen Sie sicher, dass Sie das verwenden<strong>richtige Stromversorgung</strong>für den Transceiver
                 (z. B. ≤12 V für einen QMX), sonst wird es beschädigt.</p>
 <p>Bitte stellen Sie außerdem sicher, dass das USB-Kabel und der Adapter, den Sie zum Verbinden des Telefons und des Transceivers verwenden, für die Datenübertragung ausgelegt ist. Beachten Sie, dass für Geräte mit anderen Anschlüssen als USB-C häufig ein spezielles OTG-Kabel (On-The-Go) erforderlich ist. Bei den meisten Konnektivitätsproblemen sieht qFT8 den Transceiver nicht, was auf die Verwendung eines inkompatiblen Kabels oder Adapters zurückzuführen ist.</p>
+<p>Auf einigen Android-Geräten ist <strong>USB OTG standardmäßig deaktiviert</strong>. Dies muss in den Geräteeinstellungen aktiviert werden (die Option befindet sich möglicherweise in erweiterten Einstellungen, Systemeinstellungen oder zusätzlichen Einstellungen). Wenn Verbindungsprobleme auftreten – insbesondere, wenn Sie mit qFT8 Signale empfangen, aber nicht senden können und CAT-Befehle nicht funktionieren, obwohl das Gerät vollständig unterstützt wird (im Geräte-Dropdown angezeigt wird, im AUTO-Modus automatisch erkannt wird usw.) –, ist dies sehr wahrscheinlich die Ursache.</p>
 <h3 id="initial-permissions">Erteilen Sie Erstberechtigungen</h3>
 <p>Beim ersten Öffnen von qFT8 werden mehrere Berechtigungen angefordert:</p>
 <ul>
@@ -929,11 +930,13 @@ html
                         <li><strong><span translate="no">Spot</span></strong>: Schaltet live decodierte Signale auf dem Band, die von Ihrer Station empfangen wurden (<span style="color: #00ffff; font-weight: bold;">Cyan</span> für RX/CQ), und Rückwärtsempfänger, die Ihr Signal auf PSKReporter / WSPRnet gehört haben (<span style="color: #ff5252; font-weight: bold;">Rote Rauten</span>), ein/aus.</li>
                         <li><strong><span translate="no">SOTA</span></strong>: Schaltet Summits On The Air-Gipfelreferenzen und aktive Gipfel-Aktivatoren (⛰️) ein/aus.</li>
                         <li><strong><span translate="no">POTA</span></strong>: Schaltet Parks On The Air-Parkreferenzen und aktive Park-Aktivatoren (🌲) ein/aus.</li>
-                        <li><strong><span translate="no">STATS</span></strong>: Schaltet das Statistikfeld ein/aus, das die Gesamtzahl der geloggten und bestätigten Einträge für die aktive Grenzschicht anzeigt.</li>
+                        <li><strong><span translate="no">Band</span></strong>: Zeigt die Bandausbreitung aus Online-Berichten und eine Funk-Totzone (Blindspot) um den Benutzer an. Dies wird bei bestehender Internetverbindung beim Bandwechsel in Echtzeit aktualisiert.</li>
                     </ul>
+                    <p>Die Schaltflächen <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> und <strong><span translate="no">Spot</span></strong> blinken möglicherweise; dies bedeutet, dass keine Aktualisierungen heruntergeladen werden konnten.</p>
                 </li>
                 <li><strong>Rechte Symbolleiste (Erfolge &amp; Grenzschichten)</strong>:
                     <ul>
+                        <li><strong><span translate="no">STATS</span></strong>: Schaltet das Statistikfeld ein/aus, das die Gesamtzahl der geloggten und bestätigten Einträge für die aktive Grenzschicht anzeigt.</li>
                         <li><strong><span translate="no">DXCC</span></strong>: Zeigt Länder- und Gebietsgrenzen farbcodiert nach Ihrem Log-Status an (<span style="color: #00ff00; font-weight: bold;">Grün</span> für geloggt/unbestätigt, <span style="color: #ffff00; font-weight: bold;">Gelb</span> für bestätigt). Kleine Inseln und Mikro-Entitäten erscheinen als sichtbare Markierungen.</li>
                         <li><strong><span translate="no">GRID</span></strong>: Globales Maidenhead-Gitter (Großfelder und 4-stellige Planquadrate) mit Erfolgsfüllung.</li>
                         <li><strong><span translate="no">ITU</span></strong>: Überlagert die 90 ITU-Funkzonen mit Erfolgsfüllung.</li>
@@ -1638,9 +1641,10 @@ Fragt beispielsweise eine andere Station <code><span translate="no">IHR_RUFZEICH
 <h2>Fehlerbehebung</h2>
 <h3 id="trouble-not-recognized">Android-Gerät erkennt den Transceiver nicht oder die Verbindung wird getrennt</h3>
 <p>Dabei handelt es sich fast immer um ein Problem mit der Hardware-Konnektivität oder Funkstörungen. USB-Verbindungen sind empfindlich gegenüber Vibrationen,
-                Kabelqualität und flauschige Telefonwaschbären, die im USB-Anschluss wohnen.</p>
+                Kabelqualität und flauschige Telefonwaschbären, die im USB-Anschluss wohnen. Eine weitere häufige Ursache ist, dass <strong>USB OTG auf Ihrem Android-Gerät möglicherweise standardmäßig deaktiviert</strong> ist (insbesondere wenn Sie Signale von qFT8 empfangen können, aber nicht senden können und CAT-Befehle nicht funktionieren, obwohl das Gerät vollständig unterstützt wird, im Geräte-Dropdown angezeigt wird, im AUTO-Modus automatisch erkannt wird usw., ist dies sehr wahrscheinlich die Ursache).</p>
 <p><strong>Versuchen:</strong></p>
 <ul>
+<li><strong>Aktivieren von USB OTG</strong> in den Einstellungen Ihres Android-Geräts (auf einigen Geräten ist OTG standardmäßig deaktiviert und befindet sich möglicherweise unter erweiterten Einstellungen, Systemeinstellungen oder zusätzlichen Einstellungen).</li>
 <li>Verwendung eines hochwertigen, kurzen <span translate="no">USB cable</span>(Die Verwendung eines kürzeren Kabels kann erheblich helfen) und stellen Sie sicher, dass der Anschluss an Ihrem Telefon sauber und die Verbindung fest ist.</li>
 <li>Treten die Probleme speziell beim Senden auf, kann dies an Funkstörungen liegen. Das Hinzufügen von Drosseln oder Ferriten zum USB-Kabel könnte Abhilfe schaffen. Sie können auch versuchen, in einem anderen Band zu senden, da manche Geräte nur in bestimmten Bändern empfindlich auf Störungen reagieren.</li>
 </ul>

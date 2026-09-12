@@ -186,6 +186,7 @@ html
 <p>请确保您正在使用<strong>正确的电源</strong>对于收发器
                 （例如 QMX ≤12V），否则会损坏它。</p>
 <p>另请确保您用于连接手机和收发器的 USB 电缆和适配器支持数据传输。请注意，对于使用 USB-C 以外连接器的设备，通常需要特定的 OTG（On-The-Go）转接线。qFT8 无法发现收发器的大多数连接问题都是由于使用了不兼容的电缆或适配器造成的。</p>
+<p>某些 Android 设备的 <strong>USB OTG 默认处于禁用状态</strong>。必须在设备设置中启用此功能（该选项可能隐藏在高级设置、系统设置或更多设置中）。如果您遇到连接问题——特别是如果 qFT8 能够接收信号但无法发射，且即使设备完全受支持（显示在设备下拉列表中、在 AUTO 模式下被自动识别等）CAT 命令也无法工作——这很可能就是原因所在。</p>
 <h3 id="initial-permissions">授予初始权限</h3>
 <p>第一次打开qFT8时，会请求几个权限：</p>
 <ul>
@@ -893,11 +894,13 @@ html
                         <li><strong><span translate="no">Spot</span></strong>: 开关本台接收到的波段实时解码通信信号（RX/CQ为<span style="color: #00ffff; font-weight: bold;">青色</span>）以及在PSKReporter / WSPRnet上报告听到本台信号的反向接收点（<span style="color: #ff5252; font-weight: bold;">红色菱形</span>）。</li>
                         <li><strong><span translate="no">SOTA</span></strong>: 开关“山峰在空中”（Summits On The Air）山峰参考点及活跃激活者（⛰️）。</li>
                         <li><strong><span translate="no">POTA</span></strong>: 开关“公园在空中”（Parks On The Air）公园参考点及活跃激活者（🌲）。</li>
-                        <li><strong><span translate="no">STATS</span></strong>: 开关统计面板，显示当前边界图层已记录和已确认的总计数据。</li>
+                        <li><strong><span translate="no">Band</span></strong>: 显示基于在线报告的波段传播情况以及本台周围的盲区（静区）。在有网络连接的情况下，切换波段时会实时更新。</li>
                     </ul>
+                    <p><strong><span translate="no">SOTA</span></strong>、<strong><span translate="no">POTA</span></strong>、<strong><span translate="no">STATS</span></strong> 和 <strong><span translate="no">Spot</span></strong> 按钮可能会闪烁，这表示无法下载更新数据。</p>
                 </li>
                 <li><strong>右侧工具栏（成就与边界图层）</strong>:
                     <ul>
+                        <li><strong><span translate="no">STATS</span></strong>: 开关统计面板，显示当前边界图层已记录和已确认的总计数据。</li>
                         <li><strong><span translate="no">DXCC</span></strong>: 显示国家和地区实体边界，根据日志状态着色（<span style="color: #00ff00; font-weight: bold;">绿色</span>为已记录/未确认，<span style="color: #ffff00; font-weight: bold;">黄色</span>为已确认）。小型岛屿和微型实体显示为清晰的圆点。</li>
                         <li><strong><span translate="no">GRID</span></strong>: 全球Maidenhead网格（大区及4字符网格）并带有成就填充。</li>
                         <li><strong><span translate="no">ITU</span></strong>: 叠加90个国际电联（ITU）无线电分区并带有成就填充。</li>
@@ -1595,9 +1598,10 @@ html
 <h2>故障排除</h2>
 <h3 id="trouble-not-recognized">Android 设备无法识别收发器或者它断开连接</h3>
 <p>这几乎总是硬件连接或无线电干扰问题。 USB 连接对振动敏感，
-                电缆质量，以及居住在 USB 端口中的绒毛手机浣熊。</p>
+                电缆质量，以及居住在 USB 端口中的绒毛手机浣熊。另一个常见原因是 Android 设备上的 <strong>USB OTG 可能默认被禁用</strong>（特别是当您能够从 qFT8 接收信号但无法发射，且即使设备完全受支持、显示在设备下拉列表中或在 AUTO 模式下被自动识别时 CAT 命令仍不起作用，这很可能就是原因所在）。</p>
 <p><strong>尝试：</strong></p>
 <ul>
+<li>在 Android 设备设置中<strong>启用 USB OTG</strong>（在某些设备上，OTG 默认处于关闭状态，可能位于高级设置、系统设置或更多设置中）。</li>
 <li>使用高质量、短<span translate="no">USB cable</span>（使用较短的电缆会有很大帮助），并确保手机上的端口干净且连接牢固。</li>
 <li>如果问题具体发生在传输过程中，则可能是由无线电干扰引起的。在 USB 电缆上添加扼流圈或铁氧体可能会有所帮助。您还可以尝试在不同的频段进行传输，因为某些设备仅对某些频段的干扰敏感。</li>
 </ul>

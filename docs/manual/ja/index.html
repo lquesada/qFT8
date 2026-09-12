@@ -207,6 +207,12 @@
                 transceiver
                 are due to using an incompatible cable or adapter.
             </p>
+<p>
+                Some Android devices have <strong>USB OTG disabled by default</strong>. This must be enabled in your device settings (the option may be hidden in advanced, system, or additional settings). If you are having connection issues—in particular if you are able to receive signal from qFT8 but not transmit and CAT commands don't work even when the device is fully supported (shown in the device dropdown, autorecognized in AUTO mode, etc.)—this is very likely the cause.
+            </p>
+<p>
+                一部のAndroid端末では、<strong>USB OTGが無効（オフ）に設定されている</strong>場合があります。端末の設定からこの機能を有効にする必要があります（詳細設定、システム設定、またはその他の追加設定に配置されていることがあります）。接続トラブルが発生している場合、特に「qFT8で信号は受信できるが送信ができない」「無線機が完全に対応機種（ドロップダウンに表示される、AUTOモードで自動認識されるなど）であるにもかかわらずCATコマンドが機能しない」という場合は、このOTG設定が無効になっている可能性が極めて高いです。
+            </p>
 <h3 id="initial-permissions">Grant Initial Permissions / 初期権限の許可</h3>
 <p>When opening qFT8 for the first time, it will request several permissions:</p>
 <ul>
@@ -1118,11 +1124,13 @@
                         <li><strong><span translate="no">Spot</span></strong>: 自局が受信したバンド上のリアルタイム通信スポット（RX/CQは<span style="color: #00ffff; font-weight: bold;">シアン</span>）および自局の信号を受信報告したPSKReporter / WSPRnetのリバーススポッター（<span style="color: #ff5252; font-weight: bold;">赤のひし形</span>）の表示を切り替えます。</li>
                         <li><strong><span translate="no">SOTA</span></strong>: Summits On The Air（山岳運用）の山頂参照点およびアクティブ運用局（⛰️）の表示を切り替えます。</li>
                         <li><strong><span translate="no">POTA</span></strong>: Parks On The Air（公園運用）の公園参照点およびアクティブ運用局（🌲）の表示を切り替えます。</li>
-                        <li><strong><span translate="no">STATS</span></strong>: 選択中の境界レイヤーにおける交信・確認数の統計サマリーパネルの表示を切り替えます。</li>
+                        <li><strong><span translate="no">Band</span></strong>: オンラインレポートに基づくバンド伝搬状況と自局周囲のスキップゾーン（ブラインドスポット）を表示します。インターネット接続がある場合、バンド切り替え時にリアルタイムで更新されます。</li>
                     </ul>
+                    <p><strong><span translate="no">SOTA</span></strong>、<strong><span translate="no">POTA</span></strong>、<strong><span translate="no">STATS</span></strong>、<strong><span translate="no">Spot</span></strong> ボタンが点滅している場合は、更新データのダウンロードができなかったことを意味します。</p>
                 </li>
                 <li><strong>右側ツールバー（実績および境界レイヤー）</strong>:
                     <ul>
+                        <li><strong><span translate="no">STATS</span></strong>: 選択中の境界レイヤーにおける交信・確認数の統計サマリーパネルの表示を切り替えます。</li>
                         <li><strong><span translate="no">DXCC</span></strong>: ログ状況に応じて色分けされた国・地域の境界線を表示します（<span style="color: #00ff00; font-weight: bold;">緑</span>はログ記録済/未確認、<span style="color: #ffff00; font-weight: bold;">黄</span>は確認済）。小島や微小地域は視認性の高いドットで表示されます。</li>
                         <li><strong><span translate="no">GRID</span></strong>: グローバルなMaidenheadグリッド（フィールドおよび4桁グリッドスクエア）と交信実績の塗りつぶしを表示します。</li>
                         <li><strong><span translate="no">ITU</span></strong>: 90のITU無線ゾーンと交信実績を表示します。</li>
@@ -1961,10 +1969,12 @@
 <h3 id="trouble-not-recognized">Android device doesn't recognize the transceiver or it gets disconnected / Android端末がトランシーバーを認識しない、または切断される</h3>
 <p>
                 This is almost always a hardware connectivity or radio interference issue. USB connections are sensitive to vibration,
-                cable quality, and fluff phone raccoons dwelling in the USB port.
+                cable quality, and fluff phone raccoons dwelling in the USB port. Another common cause is that <strong>USB OTG may be disabled by default</strong> in your Android device (in particular if you are able to receive signal from qFT8 but not transmit and CAT commands don't work even when the device is fully supported, shown in the device dropdown, autorecognized in AUTO mode, etc., this is very likely the cause).
+                また、Android端末側で<strong>USB OTGがデフォルトで無効になっている</strong>こともよくある原因です（特に、qFT8で信号を受信できるのに送信できず、対応機種として認識されているにもかかわらずCATコマンドが機能しない場合は、これが原因である可能性が非常に高いです）。
             </p>
 <p><strong>Try:</strong></p>
 <ul>
+<li><strong>Enabling USB OTG / USB OTGの有効化</strong>: Check your Android device's settings to ensure USB OTG is enabled (on some devices, OTG is disabled by default and may be located under advanced, system, or additional settings / 一部の端末ではデフォルトで無効化されており、詳細設定やシステム設定内に項目がある場合があります).</li>
 <li>Using a high-quality, short <span translate="no">USB cable</span> (using a shorter cable can significantly help), and ensure the port on your phone is clean and the connection is tight.</li>
 <li>If the issues occur specifically while transmitting, it could be caused by radio interference. Adding chokes or ferrites to the USB cable could help. You can also try transmitting in a different band, as some devices are only sensitive to interference in certain bands.</li>
 </ul>

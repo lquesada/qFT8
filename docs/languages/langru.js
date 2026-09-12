@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Неизвестно",
     "EG_POTA_REF": "напр., K-1234",
     "EG_SOTA_REF": "напр., W6/NC-001",
+    "TELEGRAM_TITLE": "Группа в Telegram",
+    "TELEGRAM_DESC": "Присоединяйтесь к живой группе Telegram для обсуждения в реальном времени, анонсов новых функций и прямой поддержки.",
+    "TELEGRAM_BTN": "Перейти в Telegram",
 };

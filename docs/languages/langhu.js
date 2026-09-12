@@ -51,4 +51,7 @@ const langData = {
     "UNKNOWN": "Ismeretlen",
     "EG_POTA_REF": "pl. K-1234",
     "EG_SOTA_REF": "pl. W6/NC-001",
+    "TELEGRAM_TITLE": "Telegram-csoport",
+    "TELEGRAM_DESC": "Csatlakozzon az élő Telegram-csoporthoz valós idejű beszélgetésekért, új funkciók bejelentéseiért és közvetlen támogatásért.",
+    "TELEGRAM_BTN": "Csatlakozás a Telegramhoz",
 };
