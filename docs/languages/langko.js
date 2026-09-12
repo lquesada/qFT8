@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "예: W6/NC-001",
     "TELEGRAM_TITLE": "텔레그램 그룹",
     "TELEGRAM_DESC": "실시간 토론, 신기능 공지 및 직접 지원을 위해 실시간 텔레그램 그룹에 참여하세요.",
-    "TELEGRAM_BTN": "텔레그램 참여하기",
+    "TELEGRAM_BTN": "qFT8 텔레그램 그룹 참여하기",
 };

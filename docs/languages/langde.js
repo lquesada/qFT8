@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "z. B. W6/NC-001",
     "TELEGRAM_TITLE": "Telegram-Gruppe",
     "TELEGRAM_DESC": "Treten Sie der Live-Telegram-Gruppe für Echtzeit-Diskussionen, Ankündigungen neuer Funktionen und direkten Support bei.",
-    "TELEGRAM_BTN": "Telegram beitreten",
+    "TELEGRAM_BTN": "qFT8 Telegram-Gruppe beitreten",
 };

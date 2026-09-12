@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "adibidez W6/NC-001",
     "TELEGRAM_TITLE": "Telegram taldea",
     "TELEGRAM_DESC": "Batu Telegram talde bizira denbora errealeko eztabaidetarako, funtzio berrien iragarkietarako eta laguntza zuzenerako.",
-    "TELEGRAM_BTN": "Batu Telegramera",
+    "TELEGRAM_BTN": "Batu qFT8 Telegram taldera",
 };

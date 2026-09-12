@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "ex. W6/NC-001",
     "TELEGRAM_TITLE": "Grupo do Telegram",
     "TELEGRAM_DESC": "Junte-se ao grupo ao vivo do Telegram para discussões em tempo real, anúncios de novos recursos e suporte direto.",
-    "TELEGRAM_BTN": "Entrar no Telegram",
+    "TELEGRAM_BTN": "Entrar no grupo do Telegram do qFT8",
 };

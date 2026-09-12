@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "ví dụ W6/NC-001",
     "TELEGRAM_TITLE": "Nhóm Telegram",
     "TELEGRAM_DESC": "Tham gia nhóm Telegram trực tiếp để thảo luận theo thời gian thực, thông báo tính năng mới và nhận hỗ trợ trực tiếp.",
-    "TELEGRAM_BTN": "Tham gia Telegram",
+    "TELEGRAM_BTN": "Tham gia nhóm Telegram qFT8",
 };

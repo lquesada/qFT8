@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "misali, W6/NC-001",
     "TELEGRAM_TITLE": "Rukunin Telegram",
     "TELEGRAM_DESC": "Shiga rukunin Telegram kai tsaye don tattaunawa a kan kari, sanarwar sabbin fasaloli, da taimako na kai tsaye.",
-    "TELEGRAM_BTN": "Shiga Telegram",
+    "TELEGRAM_BTN": "Shiga Ƙungiyar Telegram ta qFT8",
 };

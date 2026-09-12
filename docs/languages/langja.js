@@ -53,5 +53,5 @@ const langData = {
     "EG_SOTA_REF": "例 W6/NC-001",
     "TELEGRAM_TITLE": "Telegram グループ",
     "TELEGRAM_DESC": "リアルタイムでの意見交換、新機能のお知らせ、直接サポートを受けるために、Telegramグループにご参加ください。",
-    "TELEGRAM_BTN": "Telegramに参加",
+    "TELEGRAM_BTN": "qFT8 Telegramグループに参加",
 };
