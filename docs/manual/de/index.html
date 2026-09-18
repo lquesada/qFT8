@@ -778,12 +778,18 @@ html
                     deins.</li>
 <li><strong>Distanz</strong>: Geschätzte Entfernung zwischen ihren und Ihren Stationsgitterzellen.</li>
 </ul>
-<p><strong>Die dritte und vierte Reihe</strong>die zuletzt gesendeten und empfangenen Nachrichten anzeigen,
-                einschließlich <span translate="no">UTC</span> Zeit, Frequenzversatz und die
-                Nachrichtentext (vorangestellt mit <span translate="no">Rx:</span> oder <span translate="no">Tx:</span>).
+<p><strong>Die dritte und vierte Reihe</strong> zeigen den Nachrichtenaustausch mit dieser Station an,
+                einschließlich <span translate="no">UTC</span>-Zeit, Frequenzversatz und
+                Nachrichtentext (vorangestellt mit <span translate="no">Rx:</span> für empfangene Nachrichten oder <span translate="no">Tx:</span> für gesendete Nachrichten). Je nach dem
+                unter <strong>Einstellungen &rarr; Anwendung &rarr; Benutzeroberfläche</strong> konfigurierten <em>Stationsanzeigemodus</em>
+                (Standard: <em>Kompakt - Letzter Rx</em>, mit Optionen für <em>Kompakt - Abwechselnd</em>, <em>Kompakt - Letzter Rx/Tx</em> und <em>Erweitert</em>)
+                zeigen die Stationskarten entweder drei Zeilen oder vier Zeilen mit gleichzeitiger Anzeige von <span translate="no">Rx</span>- und <span translate="no">Tx</span>-Nachrichten.
             </p>
 <p>Wichtige visuelle Indikatoren, auf die Sie achten sollten:</p>
 <ul>
+<li><strong><span style="color: #ff7f50; font-weight: bold;">Korallenfarbene</span> Rx-Nachricht (<span translate="no">UTC</span>, Versatz &amp; Text)</strong>:
+                    Eine von dieser Station empfangene <span translate="no">Rx</span>-Nachricht war im <strong>aktuellen oder vorherigen Zyklus</strong> direkt an Ihre Station / Ihr Rufzeichen gerichtet (einschließlich zusammengesetzter Rufzeichen wie <code>/P</code> und gehashter Rufzeichenübereinstimmungen). Dies weist Sie sofort visuell darauf hin, dass die Station Sie soeben gerufen oder auf Ihre Aussendungen geantwortet hat. Allgemeine <span translate="no">CQ</span>-Rufe und Nachrichten an andere Stationen werden niemals hervorgehoben, und der Text wechselt automatisch wieder zu neutralem Grau, sobald die Nachricht älter als der vorherige Zyklus ist. Gesendete (<span translate="no">Tx:</span>) Nachrichten bleiben stets in neutralem Grau.
+                </li>
 <li><strong><span style="color: #ff5252; font-weight: bold;">Rot</span> Rufzeichen</strong>:
                     <span translate="no">AUTO</span> Modus hat
                     Das Wiederholungslimit für diese Station wurde überschritten. Es wird sein
@@ -970,16 +976,20 @@ html
 
             <h4>Untermenüs und Optionen</h4>
             <ul>
-                <li><strong>AUDIO-EINSTELLUNGEN (AUDIO SETTINGS)</strong>: Konfigurieren Sie die Sendelautstärke, VOX-Schwellenwerte und andere Audioeinstellungen.</li>
+                <li><strong>GERÄTEKONFIGURATION (DEVICE CONFIGURATION)</strong>: Wählen Sie das Audiogerät, stellen Sie Sendelautstärke und VOX-Schwellenwerte ein und konfigurieren Sie die Ansteuerung des Funkgeräts.</li>
                 <li><strong>LOGS IMPORTIEREN/EXPORTIEREN (IMPORT/EXPORT LOGS)</strong>: Importieren oder exportieren Sie Ihr QSO-Logbuch im Standard-ADIF-Format (<span translate="no">.adi</span>).</li>
                 <li><strong>QSO-SYNCHRONISIERUNG (QSO SYNCING)</strong>: Richten Sie die Integration mit <span translate="no">QRZ</span> und <span translate="no">LoTW</span> für die Log-Synchronisierung und -Bestätigung ein.</li>
-                <li><strong>ANWENDUNGSEINSTELLUNGEN (APPLICATION SETTINGS)</strong>: Allgemeine Einstellungen einschließlich der Sprache der Benutzeroberfläche.</li>
+                <li><strong>QSOs LÖSCHEN (DELETE QSOs)</strong>: Löschen Sie lokale QSOs (diese Aktion betrifft nur das lokale App-Logbuch).</li>
+                <li><strong>ANWENDUNG (APPLICATION)</strong>: Allgemeine Einstellungen einschließlich der Sprache der Benutzeroberfläche.</li>
+                <li><strong>SPEKTROGRAMM (SPECTROGRAM)</strong>: Wählen Sie, welche Overlays der Wasserfall zeichnet &ndash; Decodierzeit, UTC-Zeit und Sequenz, Nachrichten, Spitzenlinien und die Frequenz der ausgewählten Station &ndash; sowie die Schriftgröße der Overlays.</li>
+                <li><strong>WELTKARTE (WORLD MAP)</strong>: Wählen Sie, was die Karte anzeigt und wie lange: erreichte QSOs, Spots sowie gesendete und empfangene Nachrichten, jeweils mit eigenem Zeitfenster.</li>
                 <li><strong>ZEIT UND STANDORT (TIME AND LOCATION)</strong>: Konfigurieren Sie die Zeitversatz-Synchronisierung (NTP oder GPS) und Ihren Maidenhead-Locator.</li>
-                <li><strong>EINSTELLUNGEN FÜR DEN AUTO-MODUS (AUTO MODE SETTINGS)</strong>: Konfigurieren Sie Automatisierungseinstellungen, Wiederholungsversuche und Präfix-Ausschlüsse.</li>
-                <li><strong>MODUS-EINSTELLUNGEN (MODE SETTINGS)</strong>: Optimieren Sie FT8-Decodierungsalgorithmen, Start-/PTT-Verzögerungen und andere Decodierungsoptionen.</li>
+                <li><strong>AUTOMATIKBETRIEB (AUTO OPERATION)</strong>: Konfigurieren Sie Automatisierungseinstellungen, Wiederholungsversuche und Präfix-Ausschlüsse.</li>
+                <li><strong>DIGITALE BETRIEBSARTEN (DIGITAL MODES)</strong>: Die Decodierungsoptionen aller Betriebsarten an einem Ort &ndash; FT8/FT4/FT2, LQ8/LQ4, JS8 und WSPR &ndash; einschließlich der gemeinsamen Einstellung <strong>Deep decode</strong> und der Anzahl der Threads für die Decodierung.</li>
                 <li><strong>BAND-AUSWAHL (BAND SELECTION)</strong>: Passen Sie aktive Bänder und das Bandwechselverhalten an.</li>
                 <li><strong>FERNSTEUERUNGS-WEBSERVER (REMOTE CONTROL WEB SERVER)</strong>: Aktivieren und konfigurieren Sie den integrierten Webserver für die Fernsteuerung.</li>
-                <li><strong>BEREINIGEN (CLEAN UP)</strong>: Löschen Sie lokale QSOs (diese Aktion betrifft nur das lokale App-Logbuch).</li>
+                <li><strong>PSKREPORTER-EINSTELLUNGEN (PSKREPORTER SETTINGS)</strong>: Laden Sie die von Ihnen empfangenen Stationen zu <span translate="no">PSKReporter</span> hoch und hinterlegen Sie die dabei gemeldete Antenne und das Funkgerät.</li>
+                <li><strong>WSPRNET-EINSTELLUNGEN (WSPRNET SETTINGS)</strong>: Laden Sie WSPR-Spots zu <span translate="no">WSPRnet</span> hoch und sehen Sie das aktuelle Upload-Protokoll ein.</li>
             </ul>
             <a class="back-to-toc" href="#top">↑ Zurück zum Inhaltsverzeichnis</a>
         </section>
@@ -1799,6 +1809,7 @@ Fragt beispielsweise eine andere Station <code><span translate="no">IHR_RUFZEICH
 <div class="footer">
 <p>Urheberrecht © 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Alle Rechte vorbehalten.</p>
 <p>Enthält Teile von <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license) und <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). Keiner dieser Drittautoren oder -projekte unterstützt qFT8 oder ist damit verbunden.</p>
+<p>Die herunterladbaren, sofort lauffähigen PC-Builds von qFT8 enthalten eine gebündelte <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_JRE.md">Eclipse Temurin (OpenJDK) Java-Laufzeitumgebung</a> (Copyright &copy; Oracle und/oder seine Tochtergesellschaften und andere Mitwirkende, GPLv2 mit Classpath-Ausnahme). Eclipse Adoptium unterstützt qFT8 nicht und ist nicht damit verbunden. Der separate, reine Jar-Build für PC enthält keine gebündelte Java-Laufzeitumgebung.</p>
 <div class="footer-links">
             <a href="../../de/">Hauptseite</a> - <a href="../../privacy/">Datenschutzerklärung</a>
         </div>
