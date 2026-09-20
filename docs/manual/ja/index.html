@@ -954,13 +954,13 @@
                     yours.</li>
 <li><strong>Distance</strong>: Estimated distance between their and your station Grid cells.</li>
 </ul>
-<p><strong>The third and fourth rows</strong> show the last transmitted and last received messages,
-                including <span translate="no">UTC</span> time, frequency offset, and the
-                message text (prefixed with <span translate="no">Rx:</span> or
-                <span translate="no">Tx:</span>).
+<p><strong>第3行と第4行</strong>は、その局とのメッセージ交換を表示し、<span translate="no">UTC</span>時刻、周波数オフセット、メッセージ本文（受信メッセージには<span translate="no">Rx:</span>、送信メッセージには<span translate="no">Tx:</span>が付きます）を含みます。<strong>設定 &rarr; アプリケーション &rarr; ユーザーインターフェース</strong>の<em>局の表示モード</em>（デフォルトは<em>コンパクト - 最後のRx</em>、他に<em>コンパクト - 交互表示</em>、<em>コンパクト - 最後のRx/Tx</em>、<em>展開表示</em>）に応じて、局カードには3行表示または<span translate="no">Rx</span>と<span translate="no">Tx</span>の両方を同時に表示する4行表示のいずれかが適用されます。
             </p>
-<p>Key visual indicators to watch for:</p>
+<p>注意すべき主な視覚的インジケーター：</p>
 <ul>
+<li><strong><span style="color: #ff7f50; font-weight: bold;">コーラル色</span>のRxメッセージ（<span translate="no">UTC</span>、オフセット、本文）</strong>:
+                    この局から受信した<span translate="no">Rx</span>メッセージが、<strong>現在または直前のサイクル</strong>において自局/コールサイン（<code>/P</code>などの複合コールサインやハッシュ化されたコールサインの一致を含む）宛てに直接送信されたことを示します。これにより、相手局が自局を呼んだ、または自局の送信に応答したことが即座に視覚的に分かります。一般的な<span translate="no">CQ</span>呼び出しや他局宛てのメッセージは強調表示されず、メッセージが直前のサイクルより古くなるとテキストの色は自動的に通常のグレーに戻ります。送信（<span translate="no">Tx:</span>）メッセージは常にニュートラルなグレーのままです。
+                </li>
 <li><strong><span style="color: #ff5252; font-weight: bold;">Red</span> Callsign</strong>:
                     <span translate="no">AUTO</span> mode has
                     surpassed the retry limit for this station. It will be
@@ -1161,16 +1161,20 @@
 </ul>
 <h4>Submenus and Options</h4>
 <ul>
-<li><strong>AUDIO SETTINGS</strong>: Configure transmission volume, VOX thresholds, and other audio settings.</li>
+<li><strong>DEVICE CONFIGURATION</strong>: Select the audio device, set transmission volume and VOX thresholds, and configure how the radio is keyed.</li>
 <li><strong>IMPORT/EXPORT LOGS</strong>: Import or export your QSO logbook using standard ADIF (<span translate="no">.adi</span>) files.</li>
 <li><strong>QSO SYNCING</strong>: Set up integration with <span translate="no">QRZ</span> and <span translate="no">LoTW</span> for log synchronization and verification.</li>
-<li><strong>APPLICATION SETTINGS</strong>: General settings including user interface language.</li>
+<li><strong>DELETE QSOs</strong>: Clear local QSOs (this action only affects the local app log).</li>
+<li><strong>APPLICATION</strong>: General settings including user interface language.</li>
+<li><strong>SPECTROGRAM</strong>: Choose which overlays the waterfall draws &mdash; decode time, UTC time and sequence, messages, peak lines and the selected station's frequency &mdash; and the overlay font scale.</li>
+<li><strong>WORLD MAP</strong>: Choose what the map shows and for how long: QSOs achieved, spots, and messages sent and received, each over its own time window.</li>
 <li><strong>TIME AND LOCATION</strong>: Configure time offset synchronization (NTP or GPS) and your Maidenhead grid locator.</li>
-<li><strong>AUTO MODE SETTINGS</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
-<li><strong>MODE SETTINGS</strong>: Fine-tune FT8 decoding algorithms, start/PTT delays, and other decoding options.</li>
+<li><strong>AUTO OPERATION</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
+<li><strong>DIGITAL MODES</strong>: Every mode's decoding options in one place &mdash; FT8/FT4/FT2, LQ8/LQ4, JS8 and WSPR &mdash; including the shared <strong>Deep decode</strong> setting and how many threads decoding may use.</li>
 <li><strong>BAND SELECTION</strong>: Customize active bands and band switching behavior.</li>
 <li><strong>REMOTE CONTROL WEB SERVER</strong>: Enable and configure the built-in web server for remote control.</li>
-<li><strong>CLEAN UP</strong>: Clear local QSOs (this action only affects the local app log).</li>
+<li><strong>PSKREPORTER SETTINGS</strong>: Upload the stations you receive to <span translate="no">PSKReporter</span>, and record the antenna and rig reported alongside them.</li>
+<li><strong>WSPRNET SETTINGS</strong>: Upload WSPR spots to <span translate="no">WSPRnet</span> and review the recent upload log.</li>
 </ul>
 <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
 </section>
@@ -2188,6 +2192,9 @@
         </p>
 <p>
             qFT8には以下のサードパーティライブラリが含まれています： <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright © 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright © 2015 Google / The Roboto Project Authors, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright © 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright © 2024 HB9HIL, HA8TKS, MIT license), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright © Jim Reisert AD1C). これらのサードパーティ著者およびプロジェクトは、qFT8を推奨または提携するものではありません。
+        </p>
+<p>
+            ダウンロードしてそのまま実行できる qFT8 の PC 版には、<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_JRE.md">Eclipse Temurin（OpenJDK）Java ランタイム</a>が同梱されています（Copyright &copy; Oracle およびその関連会社、その他の貢献者、GPLv2 with the Classpath Exception）。Eclipse Adoptium は qFT8 を推奨しておらず、提携関係もありません。jar のみで提供される別の PC 版には Java ランタイムは同梱されていません。
         </p>
 <div class="footer-links"><a href="../../">トップページ</a> - <a href="../../privacy/">プライバシーポリシー</a></div>
 </div>

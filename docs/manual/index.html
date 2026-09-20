@@ -140,7 +140,7 @@
             </p>
 
             <p>
-                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+                qFT8 includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_JRE.md">Eclipse Temurin (OpenJDK) Java Runtime</a> (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
             </p>
 
 
@@ -1069,14 +1069,20 @@
                 <li><strong>Distance</strong>: Estimated distance between their and your station Grid cells.</li>
             </ul>
 
-            <p><strong>The third and fourth rows</strong> show the last transmitted and last received messages,
+            <p><strong>The third and fourth rows</strong> show message exchanges with that station,
                 including <span translate="no">UTC</span> time, frequency offset, and the
-                message text (prefixed with <span translate="no">Rx:</span> or
-                <span translate="no">Tx:</span>).
+                message text (prefixed with <span translate="no">Rx:</span> for received messages or
+                <span translate="no">Tx:</span> for transmitted messages). Depending on the
+                <em>Stations display mode</em> configured in <strong>Settings &rarr; Application &rarr; User interface</strong>
+                (which defaults to <em>Compact - Last Rx</em>, with options for <em>Compact - Alternating</em>, <em>Compact - Last Rx/Tx</em>, and <em>Expanded</em>),
+                station cards display either three rows or four rows with both <span translate="no">Rx</span> and <span translate="no">Tx</span> messages.
             </p>
 
             <p>Key visual indicators to watch for:</p>
             <ul>
+                <li><strong><span style="color: #ff7f50; font-weight: bold;">Coral</span> Rx Message (<span translate="no">UTC</span>, Offset &amp; Text)</strong>:
+                    An <span translate="no">Rx</span> message received from this station was directed specifically to your station / callsign (including compound callsigns like <code>/P</code> and hashed callsign matches) in the <strong>current or previous cycle</strong>. This provides an immediate visual clue that the station has just called you or replied to your transmissions. Broadcast <span translate="no">CQ</span> calls and messages directed to other stations are never highlighted, and the text automatically reverts to normal grey once the message is older than the previous cycle. Transmitted (<span translate="no">Tx:</span>) messages always remain neutral grey.
+                </li>
                 <li><strong><span style="color: #ff5252; font-weight: bold;">Red</span> Callsign</strong>:
                     <span translate="no">AUTO</span> mode has
                     surpassed the retry limit for this station. It will be
@@ -1287,16 +1293,20 @@
 
             <h4>Submenus and Options</h4>
             <ul>
-                <li><strong>AUDIO SETTINGS</strong>: Configure transmission volume, VOX thresholds, and other audio settings.</li>
+                <li><strong>DEVICE CONFIGURATION</strong>: Select the audio device, set transmission volume and VOX thresholds, and configure how the radio is keyed.</li>
                 <li><strong>IMPORT/EXPORT LOGS</strong>: Import or export your QSO logbook using standard ADIF (<span translate="no">.adi</span>) files.</li>
                 <li><strong>QSO SYNCING</strong>: Set up integration with <span translate="no">QRZ</span> and <span translate="no">LoTW</span> for log synchronization and verification.</li>
-                <li><strong>APPLICATION SETTINGS</strong>: General settings including user interface language.</li>
+                <li><strong>DELETE QSOs</strong>: Clear local QSOs (this action only affects the local app log).</li>
+                <li><strong>APPLICATION</strong>: General settings including user interface language.</li>
+                <li><strong>SPECTROGRAM</strong>: Choose which overlays the waterfall draws &mdash; decode time, UTC time and sequence, messages, peak lines and the selected station's frequency &mdash; and the overlay font scale.</li>
+                <li><strong>WORLD MAP</strong>: Choose what the map shows and for how long: QSOs achieved, spots, and messages sent and received, each over its own time window.</li>
                 <li><strong>TIME AND LOCATION</strong>: Configure time offset synchronization (NTP or GPS) and your Maidenhead grid locator.</li>
-                <li><strong>AUTO MODE SETTINGS</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
-                <li><strong>MODE SETTINGS</strong>: Fine-tune FT8 decoding algorithms, start/PTT delays, and other decoding options.</li>
+                <li><strong>AUTO OPERATION</strong>: Configure automation preferences, retry counts, and prefix exclusions.</li>
+                <li><strong>DIGITAL MODES</strong>: Every mode's decoding options in one place &mdash; FT8/FT4/FT2, LQ8/LQ4, JS8 and WSPR &mdash; including the shared <strong>Deep decode</strong> setting and how many threads decoding may use.</li>
                 <li><strong>BAND SELECTION</strong>: Customize active bands and band switching behavior.</li>
                 <li><strong>REMOTE CONTROL WEB SERVER</strong>: Enable and configure the built-in web server for remote control.</li>
-                <li><strong>CLEAN UP</strong>: Clear local QSOs (this action only affects the local app log).</li>
+                <li><strong>PSKREPORTER SETTINGS</strong>: Upload the stations you receive to <span translate="no">PSKReporter</span>, and record the antenna and rig reported alongside them.</li>
+                <li><strong>WSPRNET SETTINGS</strong>: Upload WSPR spots to <span translate="no">WSPRnet</span> and review the recent upload log.</li>
             </ul>
             <a href="#top" class="back-to-toc">&uarr; Back to Table of Contents</a>
         </section>
@@ -2389,7 +2399,7 @@
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
         </p>
         <p>
-            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            Includes parts from <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C), and <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_JRE.md">Eclipse Temurin (OpenJDK) Java Runtime</a> (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
         </p>
         <div class="footer-links">
             <a href="../">Main Page</a> - <a href="../privacy/">Privacy Policy</a>

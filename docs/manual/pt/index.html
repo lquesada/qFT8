@@ -756,11 +756,17 @@ html
                     seu.</li>
 <li><strong>Distância</strong>: Distância estimada entre as células da grade deles e da sua estação.</li>
 </ul>
-<p><strong>A terceira e quarta linhas</strong>mostrar as últimas mensagens transmitidas e recebidas,
-                incluindo <span translate="no">UTC</span> tempo, deslocamento de frequência e o
-                texto da mensagem (prefixado com <span translate="no">Rx:</span> ou <span translate="no">Tx:</span>).</p>
+<p><strong>A terceira e quarta linhas</strong> mostram as trocas de mensagens com essa estação,
+                incluindo a hora <span translate="no">UTC</span>, o deslocamento de frequência e o
+                texto da mensagem (prefixado com <span translate="no">Rx:</span> para mensagens recebidas ou <span translate="no">Tx:</span> para mensagens transmitidas). Dependendo do
+                <em>Modo de exibição das estações</em> configurado em <strong>Configurações &rarr; Aplicativo &rarr; Interface do usuário</strong>
+                (cujo padrão é <em>Compacto - Último Rx</em>, com opções para <em>Compacto - Alternado</em>, <em>Compacto - Último Rx/Tx</em> e <em>Expandido</em>),
+                os cartões das estações exibem três linhas ou quatro linhas com ambas as mensagens de <span translate="no">Rx</span> e <span translate="no">Tx</span> simultaneamente.</p>
 <p>Principais indicadores visuais a serem observados:</p>
 <ul>
+<li><strong>Mensagem Rx em <span style="color: #ff7f50; font-weight: bold;">coral</span> (<span translate="no">UTC</span>, deslocamento e texto)</strong>:
+                    Uma mensagem <span translate="no">Rx</span> recebida desta estação foi direcionada especificamente para sua estação / indicativo (incluindo indicativos compostos como <code>/P</code> e correspondências de indicativos com hash) no <strong>ciclo atual ou no anterior</strong>. Isso fornece uma indicação visual imediata de que a estação acabou de chamá-lo ou respondeu às suas transmissões. Chamadas gerais de <span translate="no">CQ</span> e mensagens direcionadas a outras estações nunca são destacadas, e o texto retorna automaticamente ao cinza neutro assim que a mensagem for mais antiga que o ciclo anterior. As mensagens transmitidas (<span translate="no">Tx:</span>) permanecem sempre em cinza neutro.
+                </li>
 <li><strong><span style="color: #ff5252; font-weight: bold;">Vermelho</span> Indicativo</strong>:<span translate="no">AUTO</span> modo tem
                     ultrapassou o limite de novas tentativas para esta estação. Será
                     temporariamente ignorado, a menos que você clique em "<span translate="no">CALL</span>" para
@@ -938,16 +944,20 @@ html
 
             <h4>Submenus e Opções</h4>
             <ul>
-                <li><strong>AJUSTES DE ÁUDIO (AUDIO SETTINGS)</strong>: Configura o volume de transmissão, limites de VOX e outras configurações de áudio.</li>
-                <li><strong>IMPORTAR/EXPORTAR REGISTROS (IMPORT/EXPORT LOGS)</strong>: Importa ou exporta seu diário de bordo utilizando arquivos ADIF padrão (<span translate="no">.adi</span>).</li>
-                <li><strong>SINCRONIZAÇÃO DE QSO (QSO SYNCING)</strong>: Configura a integração com <span translate="no">QRZ</span> e <span translate="no">LoTW</span> para sincronização e verificação de registros.</li>
-                <li><strong>CONFIGURAÇÕES DO APLICATIVO (APPLICATION SETTINGS)</strong>: Configurações gerais, incluindo o idioma da interface.</li>
-                <li><strong>HORA E LOCALIZAÇÃO (TIME AND LOCATION)</strong>: Configura a sincronização do relógio (NTP ou GPS) e sua quadrícula Maidenhead.</li>
-                <li><strong>AJUSTES DE MODO AUTO (AUTO MODE SETTINGS)</strong>: Configura preferências de automação, contagem de tentativas e exclusões de prefixo.</li>
-                <li><strong>AJUSTES DE MODO (MODE SETTINGS)</strong>: Ajusta algoritmos de decodificação FT8, atrasos de início/PTT e outras opções.</li>
-                <li><strong>BAND SELECTION</strong>: Personaliza bandas ativas e comportamento de troca de banda.</li>
-                <li><strong>SERVIDOR WEB DE CONTROLE REMOTO (REMOTE CONTROL WEB SERVER)</strong>: Ativa e configura o servidor web integrado para controle remoto.</li>
-                <li><strong>LIMPIEZA (CLEAN UP)</strong>: Limpa os QSOs locais (esta ação afeta apenas o registro local do aplicativo).</li>
+                <li><strong>CONFIGURAÇÃO DO DISPOSITIVO (DEVICE CONFIGURATION)</strong>: Selecione o dispositivo de áudio, ajuste o volume de transmissão e os limiares de VOX, e configure como o rádio é acionado.</li>
+                <li><strong>IMPORTAR/EXPORTAR REGISTROS (IMPORT/EXPORT LOGS)</strong>: Importe ou exporte o seu registro de QSOs usando arquivos ADIF padrão (<span translate="no">.adi</span>).</li>
+                <li><strong>SINCRONIZAÇÃO DE QSO (QSO SYNCING)</strong>: Configure a integração com <span translate="no">QRZ</span> e <span translate="no">LoTW</span> para sincronização e confirmação do registro.</li>
+                <li><strong>EXCLUIR QSOs (DELETE QSOs)</strong>: Apaga os QSOs locais (esta ação afeta apenas o registro local do aplicativo).</li>
+                <li><strong>APLICATIVO (APPLICATION)</strong>: Configurações gerais, incluindo o idioma da interface.</li>
+                <li><strong>ESPECTROGRAMA (SPECTROGRAM)</strong>: Escolha quais camadas a cascata desenha &mdash; tempo de decodificação, hora UTC e sequência, mensagens, linhas de picos e a frequência da estação selecionada &mdash; e o tamanho da fonte das camadas.</li>
+                <li><strong>MAPA-MÚNDI (WORLD MAP)</strong>: Escolha o que o mapa mostra e por quanto tempo: QSOs conquistados, spots e mensagens enviadas e recebidas, cada um com sua própria janela de tempo.</li>
+                <li><strong>HORA E LOCALIZAÇÃO (TIME AND LOCATION)</strong>: Configure a sincronização do relógio (NTP ou GPS) e o seu localizador Maidenhead.</li>
+                <li><strong>OPERAÇÃO AUTOMÁTICA (AUTO OPERATION)</strong>: Configure as preferências de automação, o número de tentativas e os prefixos excluídos.</li>
+                <li><strong>MODOS DIGITAIS (DIGITAL MODES)</strong>: As opções de decodificação de todos os modos em um só lugar &mdash; FT8/FT4/FT2, LQ8/LQ4, JS8 e WSPR &mdash; incluindo a configuração comum <strong>Deep decode</strong> e quantas threads a decodificação pode usar.</li>
+                <li><strong>SELEÇÃO DE BANDAS (BAND SELECTION)</strong>: Personalize as bandas ativas e o comportamento de troca de banda.</li>
+                <li><strong>SERVIDOR WEB DE CONTROLE REMOTO (REMOTE CONTROL WEB SERVER)</strong>: Ative e configure o servidor web integrado para controle remoto.</li>
+                <li><strong>CONFIGURAÇÕES DO PSKREPORTER (PSKREPORTER SETTINGS)</strong>: Envie para o <span translate="no">PSKReporter</span> as estações que você recebe, e registre a antena e o rádio informados junto com elas.</li>
+                <li><strong>CONFIGURAÇÕES DO WSPRNET (WSPRNET SETTINGS)</strong>: Envie spots WSPR para o <span translate="no">WSPRnet</span> e consulte o registro recente de envios.</li>
             </ul>
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
         </section>
@@ -1745,6 +1755,7 @@ O botão <strong><span translate="no">Request</span></strong> permite enviar rap
 <div class="footer">
 <p>Direitos autorais © 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Todos os direitos reservados.</p>
 <p>Inclui partes de <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_USBSERIAL.md">usb-serial-for-android</a> (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO.md">Roboto</a> (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_ROBOTO_MONO.md">Roboto Mono</a> (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_NATURAL_EARTH.md">Natural Earth</a> (Public Domain), <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_HAMRADIO_ZONES.md">hamradio-zones-geojson</a> (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license) e <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_BIG_CTY.md">Big CTY</a> (Copyright &copy; Jim Reisert AD1C). Nenhum desses autores ou projetos terceiros endossa ou é afiliado ao qFT8.</p>
+<p>As compilações de PC do qFT8, prontas para baixar e executar, incluem um <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE_JRE.md">Java Runtime Eclipse Temurin (OpenJDK)</a> (Copyright &copy; Oracle e/ou suas afiliadas e outros colaboradores, GPLv2 com a Exceção de Classpath). A Eclipse Adoptium não endossa nem é afiliada ao qFT8. A compilação independente apenas em jar para PC não inclui um runtime Java.</p>
 <div class="footer-links">
             <a href="../../pt/">Página principal</a> - <a href="../../privacy/">Política de privacidade</a>
         </div>
