@@ -1,6 +1,6 @@
 This application's desktop binary builds (Linux, Windows, and macOS "download and run" packages) bundle a minimal [Eclipse Temurin](https://adoptium.net/) Java Runtime, built by the [Eclipse Adoptium](https://github.com/adoptium) project from the OpenJDK source code, version 21.0.12+8. It has not been modified from the upstream Temurin build -- the copy included here is trimmed down to a smaller set of modules using the JDK's own `jlink` tool (`java.base`, `java.desktop`, `java.prefs`, `jdk.crypto.ec`, plus the `java.xml` and `java.datatransfer` modules `java.desktop` requires), which does not alter any of the source code itself.
 
-The standalone "jar-only" desktop build (`qft8-desktop.jar` distributed on its own, without a bundled runtime) does not include this Java Runtime at all -- it relies on a JRE the end user has separately installed on their own machine, and is unaffected by this file.
+**Corresponding source code.** The complete corresponding source code for this Java Runtime is published by Eclipse Adoptium alongside the binaries it was built from, as `OpenJDK21U-jdk-sources_21.0.12_8.tar.gz`, at https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.12%2B8 (upstream repository: https://github.com/adoptium/jdk21u).
 
 OpenJDK/Eclipse Temurin is released under the GNU General Public License, version 2, with the Classpath Exception ("GPLv2+CE"):
 
