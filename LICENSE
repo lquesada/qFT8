@@ -66,7 +66,9 @@ affiliated with qFT8.
 | Natural Earth | world map land and country outlines | Public domain |
 | hamradio-zones-geojson | CQ and ITU zone maps | MIT |
 | Big CTY | country (DXCC) data | Copyright Jim Reisert AD1C, provided free to the amateur radio community |
-| Eclipse Temurin (OpenJDK) | the Java runtime bundled with the desktop downloads | GPL v2 with the Classpath Exception |
+| Eclipse Temurin (OpenJDK) | the Java runtime bundled with the 64-bit desktop downloads (Windows x64, macOS, Linux x86_64 and arm64) | GPL v2 with the Classpath Exception |
+| BellSoft Liberica (OpenJDK) | the Java runtime bundled with the 32-bit desktop downloads (Windows 32-bit, Linux i686, Linux armv7l) | GPL v2 with the Classpath Exception |
+| LZMA SDK (7-Zip) | the Windows launcher (qFT8.exe) is built from its self-extractor source | Public domain |
 
 ### 4.1 usb-serial-for-android
 
@@ -299,7 +301,7 @@ The country files are provided for free to the amateur radio community by Jim Re
 
 ### 4.8 Eclipse Temurin (OpenJDK) Java Runtime
 
-This application's desktop binary builds (Linux, Windows, and macOS "download and run" packages) bundle a minimal [Eclipse Temurin](https://adoptium.net/) Java Runtime, built by the [Eclipse Adoptium](https://github.com/adoptium) project from the OpenJDK source code, version 21.0.12+8. It has not been modified from the upstream Temurin build -- the copy included here is trimmed down to a smaller set of modules using the JDK's own `jlink` tool (`java.base`, `java.desktop`, `java.prefs`, `jdk.crypto.ec`, plus the `java.xml` and `java.datatransfer` modules `java.desktop` requires), which does not alter any of the source code itself.
+This application's 64-bit desktop binary builds (Windows x64, macOS, Linux x86_64 and arm64 "download and run" packages) bundle a minimal [Eclipse Temurin](https://adoptium.net/) Java Runtime, built by the [Eclipse Adoptium](https://github.com/adoptium) project from the OpenJDK source code, version 21.0.12+8. It has not been modified from the upstream Temurin build -- the copy included here is trimmed down to a smaller set of modules using the JDK's own `jlink` tool (`java.base`, `java.desktop`, `java.prefs`, `jdk.crypto.ec`, plus the `java.xml` and `java.datatransfer` modules `java.desktop` requires), which does not alter any of the source code itself.
 
 **Corresponding source code.** The complete corresponding source code for this Java Runtime is published by Eclipse Adoptium alongside the binaries it was built from, as `OpenJDK21U-jdk-sources_21.0.12_8.tar.gz`, at https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.12%2B8 (upstream repository: https://github.com/adoptium/jdk21u).
 
@@ -591,3 +593,29 @@ exception as provided by Oracle in the LICENSE file that accompanied this code."
     you modify this library, you may extend this exception to your version of
     the library, but you are not obligated to do so.  If you do not wish to do
     so, delete this exception statement from your version.
+
+### 4.9 BellSoft Liberica (OpenJDK) Java Runtime
+
+This application's 32-bit desktop binary builds (Windows 32-bit, Linux i686 and Linux armv7l "download and run"
+packages) bundle the [BellSoft Liberica](https://bell-sw.com/libericajdk/) Java Runtime, version 21.0.7+9, built by
+BellSoft from the OpenJDK source code, because Eclipse Temurin publishes no 32-bit build of Java 21. It has not been
+modified: the packages carry BellSoft's JRE archives as published (`bellsoft-jre21.0.7+9-windows-i586.zip`,
+`bellsoft-jre21.0.7+9-linux-i586.tar.gz`, `bellsoft-jre21.0.7+9-linux-arm32-vfp-hflt.tar.gz`), including their own
+`legal/` notices.
+
+**Corresponding source code.** The complete corresponding source code is published by BellSoft alongside the binaries,
+as `bellsoft-jdk21.0.7+9-src.tar.gz`, at https://github.com/bell-sw/Liberica/releases/tag/21.0.7%2B9 .
+
+Liberica, like OpenJDK and Eclipse Temurin, is released under the GNU General Public License, version 2, with the
+Classpath Exception -- the same license text reproduced in section 4.8. The Classpath Exception is what allows qFT8's
+own code, an independent program that only runs on this Java Runtime, to be distributed under qFT8's own terms (section
+2) without its source code being released; only the Java Runtime itself remains under the GPL, and its source is
+available as stated above.
+
+### 4.10 LZMA SDK (7-Zip)
+
+The Windows downloads' qFT8.exe launcher is built from the self-extractor source (C/Util/SfxSetup) of the
+[LZMA SDK](https://www.7-zip.org/sdk.html) by Igor Pavlov, modified to start qFT8's bundled Java runtime. The LZMA SDK is
+placed in the **public domain** by its author: "Anyone is free to copy, modify, publish, use, compile, sell, or distribute
+the original LZMA SDK code, either in source code form or as a compiled binary, for any purpose, commercial or
+non-commercial, and by any means."
