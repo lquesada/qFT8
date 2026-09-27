@@ -1,6 +1,6 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "3.11";
-const LATEST_DATE = "2026-09-26";
+const LATEST_VERSION = "3.12";
+const LATEST_DATE = "2026-09-27";
 const LATEST_SIZE = "2.54MB";
 
 // Supported application languages
