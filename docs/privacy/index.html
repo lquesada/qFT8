@@ -28,83 +28,126 @@
     <div class="container doc-page">
         <h1>qFT8 Privacy Policy</h1>
 
-        <p>This policy outlines how qFT8 handles your data, permissions, and communications. Our goal is transparency
+        <p>This policy outlines how qFT8 handles the user's data, permissions, and communications. Its goal is transparency
             and simplicity.</p>
 
         <div class="highlight">
-            <strong>Key Principle:</strong> qFT8 does not submit any information to a server dedicated to this app.
-            All data processing happens locally on your device. You may explicitly authorize sharing callsign, date and
-            time, and optionally approximate location if you enter a valid QRZ API Key.
+            <strong>In short:</strong> qFT8 works on the user's device. It has <strong>no ads, no tracking and no analytics
+            libraries</strong>, and nothing is ever sold. Everything that sends personal data (callsign, grid, contacts) is
+            <strong>opt-in</strong>: it happens only after the user sets up a service, turns an option on, or presses a
+            button to send. On its own, qFT8 contacts the qFT8 developer's servers only to check for a newer version and to
+            download public data (propagation, POTA/SOTA activity); these requests carry no personal data, and both can be
+            turned off.
         </div>
 
         <h2><span class="icon">🆔</span> User Identity</h2>
-        <p>You must provide an amateur radio <strong>Callsign</strong>. This is required for the fundamental operation
+        <p>The user must provide an amateur radio <strong>Callsign</strong>. This is required for the fundamental operation
             of the app.</p>
         <ul>
-            <li>This callsign personally identifies you.</li>
+            <li>This callsign personally identifies the user.</li>
             <li>It is broadcast via Radio Frequency (RF) when connected to a transceiver.</li>
             <li>It is encoded in audio signals for mock functionality when not connected to a transceiver.</li>
         </ul>
 
         <h2><span class="icon">📍</span> Location Data</h2>
-        <p>Optionally, you can grant <strong>Approximate Location</strong> permission.</p>
+        <p>Optionally, the user can grant <strong>Location</strong> permission.</p>
         <ul>
-            <li>This is used solely to calculate your <strong>Maidenhead Grid Locator</strong> (e.g., "JN47").</li>
-            <li>If enabled, this coarse location (precision of <strong>4 characters</strong>, approx. 100x100km) is
-                shared publicly via RF transmissions as part of standard amateur radio protocols.</li>
+            <li>It is used only to work out the user's <strong>Maidenhead Grid Locator</strong> (4 characters, e.g. "JN47",
+                about 100 x 100 km) to place the user on the app's map and, when needed, to set the clock from GPS time. The exact position never leaves the device.</li>
+            <li>The grid is sent over the air as part of standard amateur radio messages. If the user types a 6-character
+                grid by hand, that grid is used in the user's own logbook uploads and WSPRnet reports (below).</li>
         </ul>
 
-        <h2><span class="icon">🎙️</span> Audio Permission</h2>
-        <p>The app requires audio permission to capture signals.</p>
+        <h2><span class="icon">🎙️</span> Audio</h2>
         <ul>
-            <li><strong>Source:</strong> From the microphone (for mock/demo mode) or directly from a connected
-                transceiver via USB audio.</li>
-            <li><strong>Privacy:</strong> This audio is processed in real-time to decode FT8 signals. It is
-                <strong>never recorded, stored, or shared</strong>.
-            </li>
+            <li>The app needs audio permission to receive signals, from a transceiver connected by USB or from the
+                microphone (demo mode, and the user's voice for SSB).</li>
+            <li>Received audio is processed as it arrives and is not stored or sent to the developer or anyone else. SSB voice
+                memories the user records are kept on the device only.</li>
+            <li>With the qFT8 bridge or the web remote turned on, audio travels between the user's own devices (below).</li>
         </ul>
 
         <h2><span class="icon">📡</span> Transmissions</h2>
-        <p>The app emits audio signals to communicate:</p>
+        <p>When connected to a transceiver, the app tells the radio to transmit. Transmissions contain the user's callsign
+            and grid, as amateur radio rules require.</p>
+
+        <h2><span class="icon">🏠</span> On the user's own network (off until turned on)</h2>
         <ul>
-            <li><strong>Speaker:</strong> Used for mock functionality when no radio is connected.</li>
-            <li><strong>RF (Radio Frequency):</strong> When connected to a transceiver, the app instructs the radio
-                to transmit.</li>
-            <li>Transmissions consist of single-tone signals containing your Callsign and Approximate Location (Grid).
-            </li>
+            <li><strong>Web remote:</strong> a web page to watch and control the app from another device on the same Wi-Fi/LAN.
+                Off by default. Access needs the private link or QR code shown in the app (its key never travels over the
+                network) and, if set, a password. The page is plain HTTP on the local network unless the user turns HTTPS on
+                (needed for the browser's microphone, which then carries the user's voice to the phone for SSB).</li>
+            <li><strong>qFT8 bridge:</strong> lets another qFT8 of the user's use a radio connected to this device (radio
+                audio and radio control). Off by default. Protected by a password that is never sent over the network, and
+                encrypted by default.</li>
+            <li><strong>qFT8 log:</strong> shares the logbook between the user's own qFT8 installations on the LAN. Off by
+                default; same password protection and encryption as the bridge.</li>
+            <li>These features are found on the local network by a broadcast that reveals only a name, a port and a version.
+                They are never exposed to the internet by qFT8 and send nothing to the developer.</li>
         </ul>
 
-        <h2><span class="icon">💻</span> Optional Remote Control</h2>
-        <p>The app includes an optional integrated web server for remote control within your local network.</p>
+        <h2><span class="icon">🖥️</span> qFT8's own servers</h2>
         <ul>
-            <li><strong>Functionality:</strong> Allows you to remotely control the app and observe real-time data,
-                including received callsigns, QSOs made, and decoding status.</li>
-            <li><strong>Access:</strong> When enabled, this feature opens a local web interface accessible to other
-                devices on your local network (WiFi/LAN).</li>
-            <li><strong>Privacy:</strong> This feature is <strong>disabled by default</strong> and must be explicitly
-                enabled in settings.</li>
+            <li><strong>Update check</strong> (on by default; "Check for new versions on startup" in Settings): at most once a
+                day at start-up, the app asks reports.qft8.com for the latest version number. It sends only the app version and
+                platform.</li>
+            <li><strong>Public data cache</strong> (on by default; "Use the qFT8 data cache" in Settings &gt; Data sources, where each
+                download can also be turned off): POTA/SOTA activity, propagation and space-weather data are fetched from a copy kept by the qFT8
+                developer (data.qft8.com, or reports.qft8.com) instead of each public source. These requests contain no
+                personal data. With the cache off, the same public data comes straight from its source (POTA, SOTA, KC2G,
+                NOAA).</li>
+            <li><strong>Bug and crash reports (only when the user presses SEND):</strong> the description the user wrote, the
+                user's callsign and grid, an e-mail address only if the user gives one, and the app's logs and technical
+                details: the device and its operating system, the connected USB and audio devices (vendor and product
+                identifiers and drivers), the radio-control (CAT) messages of the first and last radio connection (any text
+                that could identify a person, such as CW text, memory names, call signs or the radio's serial number, is
+                removed), the last screens and buttons used (their internal names only, never what was typed), the audio and
+                radio-control settings, recent QSO steps and, after a freeze or crash, what the app was doing. Passwords, keys,
+                e-mail addresses inside logs, coordinates and serial numbers are removed; pictures, the logbook and
+                certificates are never included. After a crash the app asks on the next start; nothing is sent without SEND.
+                A report that could not be delivered is retried for up to 14 days.</li>
+            <li><strong>Anonymous performance summary (off by default):</strong> if the user turns on "Send an anonymous weekly
+                performance summary", about once a week, while the app is open, qFT8 sends technical performance data:
+                start-up time, screen smoothness, decoding, audio and radio-control timing, processor and memory use and
+                temperature throttling, anonymous error signatures (no message text), device model, operating system version,
+                processor cores and screen size, and, with a radio, its model (never its serial number), how it is connected,
+                the measured receive audio bandwidth and a log of the radio-control messages (times counted from the
+                connection, never the date or time of day; personal text removed). It never contains the callsign, grid,
+                location, logbook, settings values, passwords or any identifier, so a summary cannot be traced to a user or
+                linked to another. Turning it off stops it at once.</li>
+            <li>Reports and summaries are used only to fix and improve qFT8 and are not shared with third parties. The developer
+                does not store the sender's IP address; like any internet service, the connection passes through Cloudflare
+                and other network services on its way.</li>
         </ul>
 
-        <h2><span class="icon">☁️</span> Optional External Services</h2>
-        <p>You may choose to connect to optional third-party amateur radio services:</p>
+        <h2><span class="icon">☁️</span> Services the user chooses to connect (opt-in)</h2>
+        <p>Nothing is sent to these services until the user sets them up. The credentials stay on the device and go only to
+            the service they belong to. Untick a service, or clear its credentials, to stop it.</p>
         <ul>
-            <li><strong>QRZ Logbook:</strong> If you provide an API Key, finished contacts are synced to your QRZ
-                Logbook. Shared data includes: Callsign, Grid, Date, Time, Band, Frequency, and Mode.</li>
-            <li><strong>Logbook of The World (LotW):</strong> If you provide your LotW username, password, and import a
-                valid digital certificate (.p12/.t12), finished contacts are signed and uploaded to the ARRL LotW service.
-                Shared data includes: Callsign, Grid, Date, Time, Band, Frequency, Mode, and your station certificate credentials.</li>
-            <li><strong>PSKReporter:</strong> If you enable the PSKReporter spotting option, reception spots (received
-                messages and signal reports from other stations) are periodically uploaded to the PSKReporter map network.
-                Shared data includes: your Callsign, your Maidenhead Grid locator, the sender's callsign, frequency,
-                signal-to-noise ratio (SNR), and timestamp.</li>
-            <li><strong>WSPRnet:</strong> If the upload spots to WSPRnet option is enabled, they're periodically updated.
-                Shared data includes: your Callsign, your Maidenhead Grid locator, the sender's callsign, frequency,
-                signal-to-noise ratio (SNR), and timestamp.</li>
+            <li><strong>QRZ Logbook, Logbook of The World (LoTW), eQSL:</strong> once set up, each finished contact is
+                uploaded to the user's account: the user's callsign and grid, the other station's callsign and grid, date,
+                time, band, frequency, mode and reports. LoTW contacts are signed on the device with the user's own
+                certificate. qFT8 never deletes anything on these services.</li>
+            <li><strong>Wavelog / Cloudlog:</strong> the same contact data, sent to the server address the user types in (usually
+                the user's own server), with the user's API key.</li>
+            <li><strong>POTA spotting (only when the user presses ANNOUNCE):</strong> the user's callsign, park, frequency and
+                mode are posted to POTA's public spot list (api.pota.app), and again every 30 minutes while that activation is
+                running, until the user stops it.</li>
+            <li><strong>PSKReporter and WSPRnet reporting (off by default):</strong> if turned on, the stations the app hears are
+                reported (their callsign and grid, frequency, mode, signal strength, time) together with the user's callsign
+                and grid (4 characters for PSKReporter). WSPRnet reports use plain, unencrypted HTTP, as that service
+                requires.</li>
+            <li><strong>Who heard me (map):</strong> while the user has the map open, the app asks PSKReporter and WSPRnet who
+                heard the user's callsign recently (it sends the callsign). "Download spots from PSKReporter / WSPRnet" in Settings &gt; Data sources turn this off.</li>
+            <li><strong>Time:</strong> the app may ask public time servers (pool.ntp.org, time.google.com) for the exact time;
+                nothing personal is sent.</li>
         </ul>
+        <p>Data sent to a third-party service is handled under that service's own privacy policy.</p>
 
         <h2><span class="icon">📂</span> Data Management</h2>
-        <p>You can <strong>import and export</strong> your logs and settings
-            to/from files on your device at any time.</p>
+        <p>The user can <strong>import and export</strong> logs and settings to/from files on the device at any time. A
+            settings export contains the service passwords and keys, so keep that file private. Uninstalling the app removes
+            everything it stored on the device.</p>
 
     </div>
 
@@ -114,7 +157,7 @@
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
         </p>
         <p>
-            Includes parts from usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), Big CTY (Copyright &copy; Jim Reisert AD1C) (<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">LICENSE</a>), and Eclipse Temurin (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            Includes parts from usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), Big CTY (Copyright &copy; Jim Reisert AD1C) (<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">LICENSE</a>), and Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
         </p>
         <div class="footer-links">
             <a href="../">Main Page</a> - <a href="../manual/">User Manual</a>
