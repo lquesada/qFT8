@@ -1,7 +1,7 @@
 // qFT8 Multi-Language Support Script
 
-const supportedLanguages = ['en', 'es', 'pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
-const manualLanguages = ['es', 'pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja'];
+const supportedLanguages = ['en', 'es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
+const manualLanguages = ['es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
 
 function getLanguage() {
     // Check for query parameter override
@@ -12,7 +12,13 @@ function getLanguage() {
     }
     
     // Auto-determine from navigator (browser settings)
-    const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
+    // Portuguese is two languages: pt-BR (and a bare "pt") -> 'pt-br', every other pt-* -> 'pt-pt'
+    const tag = String(navigator.language || navigator.userLanguage || '').toLowerCase();
+    // Chinese too: Taiwan, Hong Kong, Macau and zh-Hant -> 'zh-hant'; the mainland, Singapore, zh-Hans and a bare "zh" -> 'zh'
+    const base = tag.split('-')[0];
+    const browserLang = base === 'pt' ? ((tag === 'pt' || tag === 'pt-br') ? 'pt-br' : 'pt-pt')
+        : base === 'zh' ? (/^zh-hans\b/.test(tag) ? 'zh' : (/^zh-(tw|hk|mo|hant)\b/.test(tag) ? 'zh-hant' : 'zh'))
+        : base;
     if (supportedLanguages.includes(browserLang)) {
         return browserLang;
     }

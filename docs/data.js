@@ -1,11 +1,23 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "3.18";
-const LATEST_DATE = "2026-10-22";
-const LATEST_SIZE = "4.97MB";
+const LATEST_VERSION = "3.19";
+const LATEST_DATE = "2026-10-24";
+const LATEST_SIZE = "5.02MB";
+const PC_SIZES = {"linux-32bits.tar.gz":"70.25MB","linux-64bits.tar.gz":"47.18MB","linux-arm64.tar.gz":"67.21MB","linux-armv7l.tar.gz":"62.57MB","macos-universal.dmg":"83.48MB","manual.zip":"8.30MB","windows-32bits.zip":"43.14MB","windows-64bits.zip":"35.66MB"};
+const JAR_SIZE = "12.40MB";
 
 // Supported application languages
-const supportedLanguages = ['en', 'es', 'pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
-const manualLanguages = ['es', 'pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja'];
+const supportedLanguages = ['en', 'es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
+const manualLanguages = ['es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja'];
+
+// PT-TWO-VARIANTS-1: the site's language code for a browser language tag ("de-AT" -> "de"). Portuguese is two
+// languages here: Brazil, and a tag that names no country, read "pt-br"; Portugal and every other country "pt-pt".
+// The old single code "pt" (old links, a stored choice, ?lang=pt) goes through the same rule.
+function siteLanguageFor(tag) {
+    const t = String(tag || '').toLowerCase().replace('_', '-');
+    const base = t.split('-')[0];
+    if (base === 'pt') return (t === 'pt' || t === 'pt-br') ? 'pt-br' : 'pt-pt';
+    return base;
+}
 
 function initPageMetadata() {
     const versionEl = document.getElementById('latest-version');
@@ -46,6 +58,7 @@ if (typeof module !== 'undefined' && module.exports) {
         LATEST_DATE,
         LATEST_SIZE,
         supportedLanguages,
-        manualLanguages
+        manualLanguages,
+        siteLanguageFor
     };
 }

@@ -2,8 +2,8 @@
 
 Copyright (c) 2026 Luis Quesada Torres (HB9IPH). All rights reserved.
 
-This file covers qFT8 -- the Android app, the desktop program for Linux, Windows and macOS, and the web page
-they serve -- and lists the licenses of the third-party components it includes.
+This file covers qFT8 -- the Android app, the desktop program for Linux, Windows and macOS, the iPhone and iPad app,
+and the web page they serve -- and lists the licenses of the third-party components it includes.
 
 ## 1. Using qFT8
 
@@ -59,16 +59,17 @@ affiliated with qFT8.
 
 | Component | Used for | License |
 |---|---|---|
-| usb-serial-for-android | USB serial drivers (Android) | BSD 3-Clause |
+| usb-serial-for-android | USB serial drivers (Android only) | BSD 3-Clause |
 | Roboto | the interface font | Apache License 2.0 |
 | Roboto Mono | the monospaced font | SIL Open Font License 1.1 |
 | Material Icons | two desktop icons (spectrogram, volume) | Apache License 2.0 |
 | Natural Earth | world map land and country outlines | Public domain |
 | hamradio-zones-geojson | CQ and ITU zone maps | MIT |
 | Big CTY | country (DXCC) data | Copyright Jim Reisert AD1C, provided free to the amateur radio community |
-| Eclipse Temurin (OpenJDK) | the Java runtime bundled with the 64-bit desktop downloads (Windows x64, macOS, Linux x86_64 and arm64) | GPL v2 with the Classpath Exception |
-| BellSoft Liberica (OpenJDK) | the Java runtime bundled with the 32-bit desktop downloads (Windows 32-bit, Linux i686, Linux armv7l) and the macOS 10.13 (older Intel Macs) download | GPL v2 with the Classpath Exception |
+| Eclipse Temurin (OpenJDK) | the Java runtime bundled with the Windows 64-bit, Linux x86_64 and Linux arm64 desktop downloads, and the Apple Silicon side of the macOS download (every Mac) | GPL v2 with the Classpath Exception |
+| BellSoft Liberica (OpenJDK) | the Java runtime bundled with the Windows 32-bit, Linux i686 and Linux armv7l desktop downloads, and the Intel side of the macOS download (every Mac) | GPL v2 with the Classpath Exception |
 | LZMA SDK (7-Zip) | the Windows launcher (qFT8.exe) is built from its self-extractor source | Public domain |
+| MobiVM (RoboVM) runtime | the Java runtime class library and virtual machine the iPhone and iPad app is built with, including the Boehm-Demers-Weiser garbage collector and the Mozilla CA certificate list | Apache License 2.0; the collector under its own permissive license; the certificate list under the Mozilla Public License 2.0 |
 
 ### 4.1 usb-serial-for-android
 
@@ -301,7 +302,7 @@ The country files are provided for free to the amateur radio community by Jim Re
 
 ### 4.8 Eclipse Temurin (OpenJDK) Java Runtime
 
-This application's 64-bit desktop binary builds (Windows x64, macOS, Linux x86_64 and arm64 "download and run" packages) bundle a minimal [Eclipse Temurin](https://adoptium.net/) Java Runtime, built by the [Eclipse Adoptium](https://github.com/adoptium) project from the OpenJDK source code, version 21.0.12+8. It has not been modified from the upstream Temurin build -- the copy included here is trimmed down to a smaller set of modules using the JDK's own `jlink` tool (`java.base`, `java.desktop`, `java.prefs`, `jdk.crypto.ec`, plus the `java.xml` and `java.datatransfer` modules `java.desktop` requires), which does not alter any of the source code itself.
+This application's Windows 64-bit, Linux x86_64 and Linux arm64 "download and run" desktop packages, and the Apple Silicon side of the macOS download (every Mac), bundle a minimal [Eclipse Temurin](https://adoptium.net/) Java Runtime, built by the [Eclipse Adoptium](https://github.com/adoptium) project from the OpenJDK source code, version 21.0.12+8. It has not been modified from the upstream Temurin build -- the copy included here is trimmed down to a smaller set of modules using the JDK's own `jlink` tool (`java.base`, `java.desktop`, `java.prefs`, `jdk.crypto.ec`, plus the `java.xml` and `java.datatransfer` modules `java.desktop` requires), which does not alter any of the source code itself.
 
 **Corresponding source code.** The complete corresponding source code for this Java Runtime is published by Eclipse Adoptium alongside the binaries it was built from, as `OpenJDK21U-jdk-sources_21.0.12_8.tar.gz`, at https://github.com/adoptium/temurin21-binaries/releases/tag/jdk-21.0.12%2B8 (upstream repository: https://github.com/adoptium/jdk21u).
 
@@ -596,15 +597,15 @@ exception as provided by Oracle in the LICENSE file that accompanied this code."
 
 ### 4.9 BellSoft Liberica (OpenJDK) Java Runtime
 
-This application's 32-bit desktop binary builds (Windows 32-bit, Linux i686 and Linux armv7l "download and run"
-packages) bundle the [BellSoft Liberica](https://bell-sw.com/libericajdk/) Java Runtime, version 21.0.7+9, built by
+This application's Windows 32-bit, Linux i686 and Linux armv7l "download and run" desktop
+packages bundle the [BellSoft Liberica](https://bell-sw.com/libericajdk/) Java Runtime, version 21.0.7+9, built by
 BellSoft from the OpenJDK source code, because Eclipse Temurin publishes no 32-bit build of Java 21. It has not been
 modified: the packages carry BellSoft's JRE archives as published (`bellsoft-jre21.0.7+9-windows-i586.zip`,
 `bellsoft-jre21.0.7+9-linux-i586.tar.gz`, `bellsoft-jre21.0.7+9-linux-arm32-vfp-hflt.tar.gz`), including their own
 `legal/` notices.
 
-The macOS download for older Intel Macs (macOS 10.13 and later) bundles BellSoft Liberica version 21.0.12.1+1, because
-it still runs on those macOS versions. Its runtime is a reduced image made with the JDK's own `jlink` tool from BellSoft's
+The Intel side of the macOS download (every Mac) bundles BellSoft Liberica version 21.0.12.1+1, because it still runs on
+Intel Macs with macOS 10.13 and later (the Apple Silicon side runs Eclipse Temurin, section 4.8). Its runtime is a reduced image made with the JDK's own `jlink` tool from BellSoft's
 unmodified `bellsoft-jdk21.0.12.1+1-macos-amd64.tar.gz` (only the Java modules qFT8 needs are included, with their
 `legal/` notices); its corresponding source code is `bellsoft-jdk21.0.12.1+1-src.tar.gz`, at
 https://github.com/bell-sw/Liberica/releases/tag/21.0.12.1%2B1 .
@@ -625,3 +626,34 @@ The Windows downloads' qFT8.exe launcher is built from the self-extractor source
 placed in the **public domain** by its author: "Anyone is free to copy, modify, publish, use, compile, sell, or distribute
 the original LZMA SDK code, either in source code form or as a compiled binary, for any purpose, commercial or
 non-commercial, and by any means."
+
+### 4.11 MobiVM (RoboVM) runtime (iPhone and iPad)
+
+The iPhone and iPad app is compiled ahead of time with [MobiVM](https://github.com/MobiVM/robovm), the continuation of
+the RoboVM project, version 2.3.26, and contains its runtime: the Java class library and the virtual machine (Copyright
+(C) RoboVM AB, MobiDevelop and contributors; large parts Copyright (C) The Android Open Source Project and The Apache
+Software Foundation). The runtime is released under the **Apache License, Version 2.0** -- the license text reproduced
+in section 4.2. Some files of the class library carry their own permissive notices (for example from the World Wide Web
+Consortium, the Legion of the Bouncy Castle, kXML and JSON-java), kept in the runtime's published source. MobiVM's
+compiler, a build tool that is not part of the app, is under the GNU General Public License, version 2; it places no
+license on the programs it compiles.
+
+The virtual machine includes the **Boehm-Demers-Weiser conservative garbage collector**:
+
+Copyright 1988, 1989 Hans-J. Boehm, Alan J. Demers
+Copyright (c) 1991-1996 by Xerox Corporation. All rights reserved.
+Copyright (c) 1996-1999 by Silicon Graphics. All rights reserved.
+Copyright (c) 1999-2011 by Hewlett-Packard Development Company. All rights reserved.
+and the collector's other contributors.
+
+THIS MATERIAL IS PROVIDED AS IS, WITH ABSOLUTELY NO WARRANTY EXPRESSED OR IMPLIED. ANY USE IS AT YOUR OWN RISK.
+
+Permission is hereby granted to use or copy this program for any purpose, provided the above notices are retained on
+all copies. Permission to modify the code and to distribute modified code is granted, provided the above notices are
+retained, and a notice that the code was modified is included with the above copyright notice.
+
+The app's list of trusted certificate authorities (for secure connections to QRZ.com, LoTW and the other services) is
+the **Mozilla CA certificate list**, available under the **Mozilla Public License, Version 2.0**
+(https://mozilla.org/MPL/2.0/); its source is published by the Mozilla Foundation (https://wiki.mozilla.org/CA).
+
+None of these authors or projects endorse or are affiliated with qFT8.

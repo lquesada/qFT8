@@ -36,11 +36,11 @@
             libraries</strong>, and nothing is ever sold. Everything that sends personal data (callsign, grid, contacts) is
             <strong>opt-in</strong>: it happens only after the user sets up a service, turns an option on, or presses a
             button to send. On its own, qFT8 contacts the qFT8 developer's servers only to check for a newer version and to
-            download public data (propagation, POTA/SOTA activity); these requests carry no personal data, and both can be
+            download public data (propagation, POTA/SOTA activity, LQ8 calls on the air); these requests carry no personal data, and all of them can be
             turned off.
         </div>
 
-        <h2><span class="icon">🆔</span> User Identity</h2>
+        <h2>User Identity</h2>
         <p>The user must provide an amateur radio <strong>Callsign</strong>. This is required for the fundamental operation
             of the app.</p>
         <ul>
@@ -49,7 +49,7 @@
             <li>It is encoded in audio signals for mock functionality when not connected to a transceiver.</li>
         </ul>
 
-        <h2><span class="icon">📍</span> Location Data</h2>
+        <h2>Location Data</h2>
         <p>Optionally, the user can grant <strong>Location</strong> permission.</p>
         <ul>
             <li>It is used only to work out the user's <strong>Maidenhead Grid Locator</strong> (4 characters, e.g. "JN47",
@@ -58,7 +58,7 @@
                 grid by hand, that grid is used in the user's own logbook uploads and WSPRnet reports (below).</li>
         </ul>
 
-        <h2><span class="icon">🎙️</span> Audio</h2>
+        <h2>Audio</h2>
         <ul>
             <li>The app needs audio permission to receive signals, from a transceiver connected by USB or from the
                 microphone (demo mode, and the user's voice for SSB).</li>
@@ -67,11 +67,11 @@
             <li>With the qFT8 bridge or the web remote turned on, audio travels between the user's own devices (below).</li>
         </ul>
 
-        <h2><span class="icon">📡</span> Transmissions</h2>
+        <h2>Transmissions</h2>
         <p>When connected to a transceiver, the app tells the radio to transmit. Transmissions contain the user's callsign
             and grid, as amateur radio rules require.</p>
 
-        <h2><span class="icon">🏠</span> On the user's own network (off until turned on)</h2>
+        <h2>On the user's own network (off until turned on)</h2>
         <ul>
             <li><strong>Web remote:</strong> a web page to watch and control the app from another device on the same Wi-Fi/LAN.
                 Off by default. Access needs the private link or QR code shown in the app (its key never travels over the
@@ -86,16 +86,27 @@
                 They are never exposed to the internet by qFT8 and send nothing to the developer.</li>
         </ul>
 
-        <h2><span class="icon">🖥️</span> qFT8's own servers</h2>
+        <h2>qFT8's own servers</h2>
         <ul>
             <li><strong>Update check</strong> (on by default; "Check for new versions on startup" in Settings): at most once a
-                day at start-up, the app asks reports.qft8.com for the latest version number. It sends only the app version and
+                day at start-up, the app asks the developer's server for the latest version number (data.qft8.com, a cached copy, or reports.qft8.com). It sends only the app version and
                 platform.</li>
             <li><strong>Public data cache</strong> (on by default; "Use the qFT8 data cache" in Settings &gt; Data sources, where each
                 download can also be turned off): POTA/SOTA activity, propagation and space-weather data are fetched from a copy kept by the qFT8
                 developer (data.qft8.com, or reports.qft8.com) instead of each public source. These requests contain no
                 personal data. With the cache off, the same public data comes straight from its source (POTA, SOTA, KC2G,
                 NOAA).</li>
+            <li><strong>LQ8 CQ announcements (off by default):</strong> if the user turns on "Announce LQ8 CQs to the qFT8 service", then while the
+                user is calling CQ in LQ8 (and for up to an hour after the last CQ, while the QSO goes on), each LQ8 transmission the radio
+                actually sends is announced to the developer's server (reports.qft8.com), at most once every 5 minutes per band. An
+                announcement contains the user's callsign, the 4-character grid, the band, the dial frequency and audio offset, the mode
+                (LQ8), the time of the transmission and the app version. Its purpose is to let other qFT8 users see LQ8 activity on their
+                map. The server keeps only the latest announcement per callsign and band, in memory, and deletes it 10 minutes after it
+                arrived; the app version is checked and then discarded. The sender's IP address is used only for a moment to limit how
+                often announcements can be sent, and is never stored or logged. Turning the option off stops the announcements at once.</li>
+            <li><strong>LQ8 CQs on the map (on by default):</strong> "Download LQ8 CQs from the qFT8 server" fetches the current list of announced LQ8
+                CQs (data.qft8.com, or reports.qft8.com) to show them on the map. This is the same kind of request as the public data
+                cache and sends nothing personal. It can be turned off in Settings &gt; Data sources.</li>
             <li><strong>Bug and crash reports (only when the user presses SEND):</strong> the description the user wrote, the
                 user's callsign and grid, an e-mail address only if the user gives one, and the app's logs and technical
                 details: the device and its operating system, the connected USB and audio devices (vendor and product
@@ -106,8 +117,8 @@
                 e-mail addresses inside logs, coordinates and serial numbers are removed; pictures, the logbook and
                 certificates are never included. After a crash the app asks on the next start; nothing is sent without SEND.
                 A report that could not be delivered is retried for up to 14 days.</li>
-            <li><strong>Anonymous performance summary (off by default):</strong> if the user turns on "Send an anonymous weekly
-                performance summary", about once a week, while the app is open, qFT8 sends technical performance data:
+            <li><strong>Anonymous performance summary (off by default):</strong> if the user turns on "Send an anonymous daily
+                performance summary", about once a day, while the app is open, qFT8 sends technical performance data:
                 start-up time, screen smoothness, decoding, audio and radio-control timing, processor and memory use and
                 temperature throttling, anonymous error signatures (no message text), device model, operating system version,
                 processor cores and screen size, and, with a radio, its model (never its serial number), how it is connected,
@@ -120,7 +131,7 @@
                 and other network services on its way.</li>
         </ul>
 
-        <h2><span class="icon">☁️</span> Services the user chooses to connect (opt-in)</h2>
+        <h2>Services the user chooses to connect (opt-in)</h2>
         <p>Nothing is sent to these services until the user sets them up. The credentials stay on the device and go only to
             the service they belong to. Untick a service, or clear its credentials, to stop it.</p>
         <ul>
@@ -144,7 +155,7 @@
         </ul>
         <p>Data sent to a third-party service is handled under that service's own privacy policy.</p>
 
-        <h2 id="delete"><span class="icon">🗑️</span> Deleting data</h2>
+        <h2 id="delete">Deleting data</h2>
         <ul>
             <li><strong>Bug and crash reports:</strong> to have a report you sent deleted, e-mail
                 <a href="mailto:hb9iph@gmail.com">hb9iph@gmail.com</a> with your callsign and, if you have it, the report ID
@@ -153,6 +164,8 @@
             <li><strong>Anonymous performance summaries:</strong> they carry no callsign or other identifier, so a summary
                 cannot be traced back to a person, and cannot be found and deleted on request. Turning the option off stops
                 them at once.</li>
+            <li><strong>LQ8 CQ announcements:</strong> they are deleted automatically 10 minutes after they arrive, and are not archived or backed
+                up, so there is nothing left to delete on request. Turning the option off stops them.</li>
             <li><strong>On the device:</strong> everything qFT8 keeps for itself (settings, logbook, received pictures) is removed by
                 uninstalling the app or clearing its data in the system settings; copies you saved to the pictures folder or exported
                 stay where you put them.</li>
@@ -160,7 +173,7 @@
                 or POTA is kept by that service; ask that service to delete it, under its own privacy policy.</li>
         </ul>
 
-        <h2><span class="icon">📂</span> Data Management</h2>
+        <h2>Data Management</h2>
         <p>The user can <strong>import and export</strong> logs and settings to/from files on the device at any time. A
             settings export contains the service passwords and keys, so keep that file private. Uninstalling the app removes
             everything it stored on the device.</p>

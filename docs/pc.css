@@ -1,0 +1,456 @@
+/* WEB-PC-1: the website's PC section (only linked while tools/web/pc_public.conf has PC_PUBLIC=1).
+   The computer monitor on top, the phone (style.css) below it, both large (WEB-SHOWCASE-STACK-1); the download list. */
+
+.intro-text {
+    max-width: 760px;
+    margin: -18px auto 8px auto;
+    font-size: 1.12rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* ─── Monitor on top, phone below (user 2026-10-02: "above the Android screenshot ... so that they can look bigger") ─── */
+.showcase {
+    width: min(1240px, 96vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    /* wider than the 900px column: centred on it with negative side margins */
+    margin: 23px calc(50% - min(620px, 48vw)) 63px calc(50% - min(620px, 48vw));
+}
+
+.showcase .phone-wrapper {
+    flex: none;
+    width: min(820px, 92vw);
+    max-width: none;
+    margin: 0;
+}
+
+.monitor-wrapper {
+    flex: none;
+    width: min(1100px, 94vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: monitorFloat 8s ease-in-out infinite;
+}
+
+.monitor {
+    width: 100%;
+    background: linear-gradient(160deg, #34363c 0%, #1d1e23 40%, #131417 100%);
+    border-radius: 12px;
+    padding: 1.6% 1.6% 2.4% 1.6%;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 18px 36px -6px rgba(0, 0, 0, 0.75),
+        0 36px 70px -12px rgba(0, 0, 0, 0.65);
+}
+
+.monitor-screen {
+    position: relative;
+    background: #000;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.monitor-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.monitor-neck {
+    width: 9%;
+    height: 0;
+    padding-bottom: 2.6%;
+    background: linear-gradient(90deg, #1b1c20 0%, #3a3c42 50%, #1b1c20 100%);
+    clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%);
+}
+
+.monitor-base {
+    width: 20%;
+    height: 0;
+    padding-bottom: 0.9%;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(180deg, #45474e 0%, #24252a 100%);
+    box-shadow: 0 14px 24px -8px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes monitorFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .monitor-wrapper { animation: none; }
+}
+
+@media (max-width: 760px) {
+    .showcase {
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+        margin: 23px 0 63px 0;
+    }
+    .showcase .phone-wrapper,
+    .monitor-wrapper {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* ─── The description (Android + PC), in the features card ─── */
+.features.about h3 {
+    margin: 22px 0 10px 0;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 0.01em;
+}
+
+.features.about h3:first-of-type {
+    margin-top: 0;
+}
+
+.features.about ul {
+    grid-template-columns: 1fr 1fr;   /* short items, two columns: the downloads stay close (WEB-OTHER-VERSIONS-1) */
+    gap: 8px;
+}
+
+@media (max-width: 650px) {
+    .features.about ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.features.about li {
+    align-items: flex-start;
+    line-height: 1.5;
+}
+
+/* ─── Downloads (WEB-OTHER-VERSIONS-1): one vertical list, a row per version: name | store button | direct download ─── */
+.download-box {
+    text-align: center;
+    padding-bottom: 36px;
+}
+
+.download-box h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 22px 0 12px 0;
+}
+
+.download-box .download-meta {
+    margin-bottom: 8px;
+}
+
+.download-box ul.dl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+
+/* rows are not the features card's ticked list items */
+.download-box li.dl-row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    margin: 0;
+    padding: 10px 14px;
+    background: var(--card-item-bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    list-style: none;
+}
+
+.download-box li.dl-row::before {
+    content: none;
+}
+
+.dl-name {
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.dl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px 10px;
+    margin-left: auto;
+}
+
+.dl-store {
+    display: inline-flex;
+    line-height: 0;
+}
+
+.dl-store-img {
+    height: 58px;   /* user 2026-10-02: "make the get it on google play button bigger" (was 40px) */
+    width: auto;
+}
+
+.dl-direct {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.dl-direct:hover,
+.dl-direct:focus {
+    border-color: var(--surface-border-hover);
+    background: rgba(56, 189, 248, 0.08);
+    text-decoration: none;
+}
+
+.dl-direct *,
+.dl-store:hover,
+.dl-store:focus {
+    text-decoration: none;
+}
+
+.dl-size,
+.dl-direct #latest-size {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* WEB-DL-ONE-TABLE-1: the visitor's own versions on top, tagged and highlighted; the others greyed out */
+.dl-mine-tag {
+    display: none;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #e0f2fe;
+    background: rgba(2, 132, 199, 0.55);
+    vertical-align: middle;
+}
+
+.download-box li.dl-row.dl-mine {
+    border-color: rgba(125, 211, 252, 0.55);
+    box-shadow: 0 10px 24px -8px rgba(2, 132, 199, 0.6);
+}
+
+.dl-mine .dl-mine-tag {
+    display: inline-block;
+}
+
+.dl-mine .dl-direct {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border-color: rgba(125, 211, 252, 0.45);
+    color: #ffffff;
+}
+
+.dl-mine .dl-direct .dl-size,
+.dl-mine .dl-direct #latest-size {
+    color: #e0f2fe;
+}
+
+.dl-has-mine li.dl-row:not(.dl-mine) {
+    opacity: 0.45;
+    transition: opacity 0.2s;
+}
+
+.dl-has-mine li.dl-row:not(.dl-mine):hover,
+.dl-has-mine li.dl-row:not(.dl-mine):focus-within {
+    opacity: 1;
+}
+
+.dl-has-mine li.dl-mine + li.dl-row:not(.dl-mine) {
+    margin-top: 10px;
+}
+
+.dl-note {
+    max-width: 760px;
+    margin: 14px auto 0 auto;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.dl-manual {
+    margin: 18px 0 0 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.dl-manual .dl-size:empty {
+    display: none;
+}
+
+@media (max-width: 520px) {
+    .download-box li.dl-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .dl-actions {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+/* WEB-PHONE-STILL-1 (user 2026-10-02: "make the phone thing not animated anymore"): on this page the phone stands still,
+   facing the viewer, with the same 3D edge and shadow (style.css keeps the animation for the page without the PC section) */
+.showcase .phone-chassis {
+    animation: none;
+    transform: none;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        1px 1px 0 1px #40424a,
+        2px 2px 0 1px #363840,
+        3px 3px 0 1px #2e3036,
+        4px 4px 0 1px #27282e,
+        5px 5px 0 1px #1a1b1f,
+        8px 20px 38px -6px rgba(0, 0, 0, 0.75),
+        16px 38px 75px -12px rgba(0, 0, 0, 0.65);
+}
+
+.showcase .screen-glare {
+    animation: none;
+    opacity: 0;
+}
+
+/* WEB-STORE-FIRST-1 (user 2026-10-02): a version with a store (Google Play now; Microsoft Store, App Store later -- give its
+   row the class dl-has-store) shows the store button first and the direct download below it, small and greyed out
+   ALWAYS, also on the visitor's own row: we want people on the store. */
+.download-box li.dl-has-store .dl-actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.download-box li.dl-has-store .dl-direct,
+.download-box li.dl-has-store.dl-mine .dl-direct {
+    /* still a button (user: "make it look like a button though, otherwise is too hidden"), but a quiet grey one */
+    padding: 5px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.download-box li.dl-has-store .dl-direct:hover,
+.download-box li.dl-has-store .dl-direct:focus {
+    color: var(--text-secondary);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.download-box li.dl-has-store .dl-direct .dl-size,
+.download-box li.dl-has-store .dl-direct #latest-size {
+    color: var(--text-muted);
+}
+
+/* no underline on any download button: style.css underlines ".container li a:hover" */
+.container li.dl-row a,
+.container li.dl-row a:hover,
+.container li.dl-row a:focus {
+    text-decoration: none;
+}
+
+@media (max-width: 520px) {
+    .download-box li.dl-has-store .dl-actions {
+        align-items: flex-start;
+    }
+}
+
+/* user 2026-10-02: "the manual download should also be a button: User manual download: __ MB" (the size, and its colon,
+   only when the release has the manual zip) */
+.dl-manual .dl-manual-btn .dl-size:not(:empty)::before {
+    content: ": ";
+}
+
+.dl-manual a.dl-manual-btn,
+.dl-manual a.dl-manual-btn:hover,
+.dl-manual a.dl-manual-btn:focus {
+    text-decoration: none;
+}
+
+/* WEB-BUTTONS-TOP-1: Download, User Manual and Telegram on one line above the computer, with room above and below */
+.buttons.buttons-top {
+    align-items: center;
+    margin: 30px 0 34px 0;
+}
+
+.buttons-top .btn-telegram {
+    align-self: center;
+}
+
+.buttons-top .btn-telegram {
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    min-width: 216px;
+}
+
+/* user 2026-10-02: "make the download button an OBVIOUS color so the user will tap it" -- green, unlike everything else */
+.buttons-top a.btn-download-top {
+    background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+    border-color: rgba(134, 239, 172, 0.6);
+    color: #ffffff;
+    box-shadow: 0 10px 26px -8px rgba(34, 197, 94, 0.75);
+}
+
+.buttons-top a.btn-download-top:hover,
+.buttons-top a.btn-download-top:focus {
+    background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+    border-color: rgba(187, 247, 208, 0.8);
+    color: #ffffff;
+}
+
+/* The program's multi-OS jar (user 2026-10-17): ONE line below the downloads, for a computer without one of the
+   packages (it needs Java 21 or newer) -- deliberately small and quiet */
+.dl-jar {
+    max-width: 760px;
+    margin: 22px auto 0 auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.dl-jar strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.dl-jar a {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.dl-jar .dl-size {
+    font-size: inherit;
+}

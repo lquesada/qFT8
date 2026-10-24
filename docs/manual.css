@@ -306,6 +306,101 @@
     color: inherit;
 }
 
+/* ─── The language switch is filled by manual/manual.js: nothing to show until it has run ─── */
+#manual-lang-select:empty {
+    display: none;
+}
+
+/* ─── Right-to-left manuals (<html lang="ar" dir="rtl">: Arabic, Hebrew, Urdu ...) ───
+   The page mirrors by itself (text, tables, lists, the top bar); these rules mirror what was written for one side,
+   and keep left to right what is never mirrored: code, call signs, messages, frequencies, and the screenshots. */
+[dir="rtl"] .doc-page,
+[dir="rtl"] .doc-page section,
+[dir="rtl"] .toc {
+    text-align: right;
+}
+
+[dir="rtl"] .doc-page h1,
+[dir="rtl"] .disclaimer-banner {
+    text-align: center;
+}
+
+[dir="rtl"] .doc-page ul,
+[dir="rtl"] .doc-page ol {
+    padding-left: 0;
+    padding-right: 24px;
+}
+
+[dir="rtl"] .toc ul {
+    padding: 0;
+}
+
+[dir="rtl"] .toc ul ul {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+[dir="rtl"] .highlight {
+    border-left: 1px solid rgba(56, 189, 248, 0.25);
+    border-right: 4px solid var(--accent-color);
+}
+
+[dir="rtl"] .disclaimer-banner {
+    border-left: 1px solid rgba(239, 68, 68, 0.3);
+    border-right: 4px solid #ef4444;
+}
+
+[dir="rtl"] .doc-page th {
+    text-align: right;
+}
+
+[dir="rtl"] .back-to-toc {
+    text-align: left;
+}
+
+[dir="rtl"] .back-link a:hover {
+    transform: translateX(3px);
+}
+
+/* The screenshots are the English app (camera strip on the left of the screen): never mirrored. */
+[dir="rtl"] .phone-mockup {
+    direction: ltr;
+}
+
+/* Code-like text keeps its own order inside a right-to-left sentence: "CQ HB9IPH JN47", "14.074 MHz", "FA;".
+   Use <code>, <span translate="no"> or <span dir="ltr"> for it in the text. */
+[dir="rtl"] .doc-page code,
+[dir="rtl"] .doc-page pre,
+[dir="rtl"] .doc-page kbd,
+[dir="rtl"] .doc-page samp,
+[dir="rtl"] [translate="no"],
+[dir="rtl"] .doc-page [dir="ltr"] {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+[dir="rtl"] .doc-page pre {
+    text-align: left;
+}
+
+/* Joined and stacked scripts: letter spacing breaks the joins, capitals do not exist, lines need more room. */
+[dir="rtl"] .doc-page h1,
+[dir="rtl"] .doc-page h2,
+[dir="rtl"] .doc-page h3,
+[dir="rtl"] .toc h3,
+:lang(hi) .doc-page h1, :lang(hi) .toc h3,
+:lang(bn) .doc-page h1, :lang(bn) .toc h3,
+:lang(th) .doc-page h1, :lang(th) .toc h3 {
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+:lang(ur) .doc-page p,
+:lang(ur) .doc-page li,
+:lang(ur) .doc-page td {
+    line-height: 2.1;
+}
+
 @media (max-width: 768px) {
     .doc-page {
         width: 100%;
