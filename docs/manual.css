@@ -250,30 +250,54 @@
     height: auto;
 }
 
-.doc-page table {
-    width: 100%;
-    border-collapse: collapse;
+/* MANUAL-NO-TABLES-1 (user 2026-10-24: "Tables break in the manual. Fix it to avoid tables"): no <table> in the manual.
+   What was a table is a <dl class="rows">: one block per row, the row's first cell as its heading (<dt>), every other
+   cell on its own line (<dd>) under its column's name (.row-label). It needs no width, so a phone never cuts it off. */
+/* A long single word (nl "qFT8-gebruikershandleiding") wraps instead of widening the page on a 360 px phone. */
+.doc-page h1,
+.doc-page h2,
+.doc-page h3,
+.doc-page h4 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.doc-page dl.rows {
     margin: 20px 0;
+    padding: 0;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    overflow: hidden;
+    overflow-wrap: anywhere;
 }
 
-.doc-page th {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+.doc-page dl.rows > div {
     padding: 12px 16px;
-    font-weight: 600;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.doc-page td {
-    padding: 10px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.doc-page dl.rows > div:last-child {
+    border-bottom: none;
+}
+
+.doc-page dl.rows dt {
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.doc-page dl.rows dd {
+    margin: 6px 0 0 0;
     color: #cbd5e1;
     font-size: 0.95rem;
+}
+
+.doc-page dl.rows .row-label {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .doc-page code {
@@ -284,6 +308,8 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.9em;
     color: var(--accent-color);
+    /* MANUAL-NO-TABLES-1: a long command or path breaks inside instead of widening the page on a phone */
+    overflow-wrap: anywhere;
 }
 
 .doc-page pre {
@@ -312,7 +338,7 @@
 }
 
 /* ─── Right-to-left manuals (<html lang="ar" dir="rtl">: Arabic, Hebrew, Urdu ...) ───
-   The page mirrors by itself (text, tables, lists, the top bar); these rules mirror what was written for one side,
+   The page mirrors by itself (text, row lists, lists, the top bar); these rules mirror what was written for one side,
    and keep left to right what is never mirrored: code, call signs, messages, frequencies, and the screenshots. */
 [dir="rtl"] .doc-page,
 [dir="rtl"] .doc-page section,
@@ -350,7 +376,7 @@
     border-right: 4px solid #ef4444;
 }
 
-[dir="rtl"] .doc-page th {
+[dir="rtl"] .doc-page dl.rows {
     text-align: right;
 }
 
@@ -397,7 +423,7 @@
 
 :lang(ur) .doc-page p,
 :lang(ur) .doc-page li,
-:lang(ur) .doc-page td {
+:lang(ur) .doc-page dd {
     line-height: 2.1;
 }
 
@@ -487,8 +513,8 @@
     span,
     div,
     strong,
-    td,
-    th {
+    dt,
+    dd {
         color: #000 !important;
         background: transparent !important;
         -webkit-text-fill-color: #000 !important;
