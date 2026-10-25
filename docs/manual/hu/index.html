@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Ha valami nem működik</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 iPhone-on és iPaden</a></li>
                 <li><a href="#quick-setup">Gyors beállítás</a>
                     <ul>
                         <li><a href="#initial-permissions">A kezdeti engedélyek megadása</a></li>
@@ -151,7 +152,7 @@
             <h2>Mi az a qFT8?</h2>
 
             <p>
-                A qFT8 <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">rádióamatőr</a> alkalmazás <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> telefonokra és táblagépekre, valamint Windows, macOS és Linux rendszerű számítógépekre, amely egy adó-vevő segítségével dekódolja és adja az FT8, FT4, FT2, LQ8, JS8 és WSPR digitális üzemmódok üzeneteit. Ugyanazzal az adó-vevővel és ugyanazzal a kábellel beszédre (SSB), távíróra (CW), RTTY-re és képátvitelre (SSTV) is használható.
+                A qFT8 <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">rádióamatőr</a> alkalmazás <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> telefonokra és táblagépekre, iPhone-ra és iPadre, valamint Windows, macOS és Linux rendszerű számítógépekre, amely egy adó-vevő segítségével dekódolja és adja az FT8, FT4, FT2, LQ8, JS8 és WSPR digitális üzemmódok üzeneteit. Ugyanazzal az adó-vevővel és ugyanazzal a kábellel beszédre (SSB), távíróra (CW), RTTY-re és képátvitelre (SSTV) is használható.
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>iPhone-on és iPaden a rádiót nem USB-kábel vezérli: lásd <a href="#iphone">qFT8 iPhone-on és iPaden</a>.</p>
 
             <p>Hagyja a <strong>Beállítások &gt; Eszköz</strong> beállítást <code>AUTO</code> értéken: a támogatott, USB-n csatlakoztatott rádiót a program automatikusan felismeri. A rádiót a listából saját maga is kiválaszthatja.</p>
 
@@ -810,6 +813,21 @@
                 <li><strong>Lefagyott vízesés, hangkimaradások vagy nagy terhelés egy- vagy kétmagos számítógépen:</strong> lásd a
                     <a href="#pc-slow">Lassú számítógépek</a> részt, zárjon be más programokat, és küldjön jelentést a
                     <strong>HIBA BEJELENTÉSE</strong> gombbal, ha a probléma tartós.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Vissza a tartalomjegyzékhez</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 iPhone-on és iPaden</h2>
+
+            <p>Az iPhone-ra és iPadre készült qFT8 ugyanúgy működik, mint az Androidos qFT8, és a kézikönyv többi része rá is érvényes; iOS 17 vagy újabb kell hozzá. Az tér el, hogyan éri el a rádiót.</p>
+
+            <p>iPhone vagy iPad nem tud kábelen keresztül rádiót vezérelni: nincs CAT, ezért a qFT8 USB-n át nem tudja beállítani a rádió frekvenciáját, és adásba sem tudja kapcsolni. A rádió USB-s hangkártyáján, egy másik hanginterfészen vagy egy hangkábelen át hallja a rádiót és küldi a hangjait. Hogy a rádió adjon, használd ezek egyikét:</p>
+            <ul>
+                <li>A rádió VOX funkciója: a rádió magától adásba kapcsol, amikor a qFT8 hangjai elérik. A qFT8 beállításaiban válaszd a VOX-ot.</li>
+                <li>Hanginterfész, amely magával a hanggal kapcsolja a rádiót: adásba kapcsolja a rádiót, valahányszor hang jön a qFT8-ból.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: a rádió mellett egy számítógép, Raspberry Pi vagy androidos telefon vagy táblagép, amelyhez a rádió USB-n csatlakozik. Ekkor az iPhone-on vagy iPaden futó qFT8 a saját hálózatodon át úgy vezérli a rádiót, mintha közvetlenül csatlakozna, a frekvenciát és az adást is. Egy más feladat nélküli számítógép, akár egy képernyő nélküli szerver is, futtathatja a bridge-et <a href="#bridge-headless">parancssorból, ablak nélkül</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Vissza a tartalomjegyzékhez</a>
@@ -3427,7 +3445,7 @@
                     működik, legközelebb ismét bridge-ként indul.
                 </p>
 
-                <p><strong>2. Parancssorból</strong> (csak számítógépre). Olyan számítógéphez, amelynek nincs más
+                <p id="bridge-headless"><strong>2. Parancssorból</strong> (csak számítógépre). Olyan számítógéphez, amelynek nincs más
                     feladata, Raspberry Pihez vagy képernyő nélküli szerverhez is: indítsa a qFT8-at a
                     <code>--bridge</code> kapcsolóval. Ekkor csak bridge-ként fut, ablak nélkül, és semmi mást nem tölt
                     be a qFT8-ból (se beállításokat, se dekódolást), így nagyon kevés memória kell neki. Az arra a

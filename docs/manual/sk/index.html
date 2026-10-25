@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Keď niečo nefunguje</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 na iPhone a iPade</a></li>
                 <li><a href="#quick-setup">Rýchle nastavenie</a>
                     <ul>
                         <li><a href="#initial-permissions">Udelenie úvodných povolení</a></li>
@@ -151,7 +152,7 @@
             <h2>Čo je qFT8?</h2>
 
             <p>
-                qFT8 je <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">rádioamatérska</a> aplikácia pre telefóny a tablety so systémom <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> a pre počítače s Windows, macOS a Linuxom, ktorá pomocou transceivera dekóduje a vysiela správy digitálnych módov FT8, FT4, FT2, LQ8, JS8 a WSPR. S tým istým transceiverom a tým istým káblom zvládne aj fone prevádzku (SSB), telegrafiu (CW), RTTY a obrázky (SSTV).
+                qFT8 je <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">rádioamatérska</a> aplikácia pre telefóny a tablety so systémom <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, pre iPhone a iPad a pre počítače s Windows, macOS a Linuxom, ktorá pomocou transceivera dekóduje a vysiela správy digitálnych módov FT8, FT4, FT2, LQ8, JS8 a WSPR. S tým istým transceiverom a tým istým káblom zvládne aj fone prevádzku (SSB), telegrafiu (CW), RTTY a obrázky (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>Na iPhone a iPade sa rádio neovláda káblom USB: pozri <a href="#iphone">qFT8 na iPhone a iPade</a>.</p>
 
             <p>Nechajte <strong>Nastavenia &gt; Zariadenie</strong> na <code>AUTO</code>: podporované rádio pripojené cez USB sa rozpozná automaticky. Rádio si v tomto zozname môžete vybrať aj sami.</p>
 
@@ -810,6 +813,21 @@
                 <li><strong>Zamrznutý vodopád, výpadky zvuku alebo vysoké zaťaženie na počítači s jedným alebo dvoma jadrami:</strong> pozrite
                     <a href="#pc-slow">Pomalé počítače</a>, zatvorte iné programy a pošlite hlásenie cez
                     <strong>NAHLÁSIŤ CHYBU</strong>, ak problém trvá.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Späť na obsah</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 na iPhone a iPade</h2>
+
+            <p>qFT8 pre iPhone a iPad funguje rovnako ako qFT8 pre Android a zvyšok tejto príručky platí aj preň; vyžaduje iOS 17 alebo novší. Líši sa len tým, ako sa dostane k rádiu.</p>
+
+            <p>iPhone ani iPad nedokážu ovládať rádio káblom: nie je tu CAT, takže qFT8 nemôže cez USB nastaviť kmitočet rádia ani ho prepnúť na vysielanie. Rádio počúva a svoje tóny posiela cez zvukové rozhranie USB rádia, iné zvukové rozhranie alebo zvukový kábel. Aby rádio vysielalo, použite jednu z týchto možností:</p>
+            <ul>
+                <li>VOX rádia: rádio sa samo prepne na vysielanie, keď k nemu dorazia tóny qFT8. V nastaveniach qFT8 zvoľte VOX.</li>
+                <li>Zvukové rozhranie, ktoré rádio kľúčuje samotným zvukom: prepne rádio na vysielanie vždy, keď z qFT8 ide zvuk.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: počítač, Raspberry Pi alebo telefón či tablet s Androidom vedľa rádia, s rádiom pripojeným cez USB. qFT8 na iPhone alebo iPade potom ovláda rádio cez vašu vlastnú sieť, akoby bolo pripojené priamo, vrátane kmitočtu a vysielania. Počítač bez inej práce, aj server bez obrazovky, môže bridge spustiť <a href="#bridge-headless">z príkazového riadka, bez okna</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Späť na obsah</a>
@@ -3358,7 +3376,7 @@
                     qFT8 zatvoríte, kým je bridge, nabudúce sa znova spustí ako bridge.
                 </p>
 
-                <p><strong>2. Z príkazového riadka</strong> (len počítače). Pre počítač, ktorý nemá inú úlohu, aj pre
+                <p id="bridge-headless"><strong>2. Z príkazového riadka</strong> (len počítače). Pre počítač, ktorý nemá inú úlohu, aj pre
                     Raspberry Pi alebo server bez obrazovky: spustite qFT8 s voľbou <code>--bridge</code>. Potom beží
                     len ako bridge, bez okna, a nenačíta nič iné z qFT8 (žiadne nastavenia, žiadne dekódovanie), takže
                     potrebuje veľmi málo pamäte. Použite qFT8 stiahnutú pre daný počítač, z terminálu:

@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Jika ada yang tidak berfungsi</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 di iPhone dan iPad</a></li>
                 <li><a href="#quick-setup">Penyiapan Cepat</a>
                     <ul>
                         <li><a href="#initial-permissions">Memberikan Izin Awal</a></li>
@@ -151,7 +152,7 @@
             <h2>Apa itu qFT8?</h2>
 
             <p>
-                qFT8 adalah aplikasi <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radio amatir</a> untuk ponsel dan tablet <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> serta komputer Windows, macOS, dan Linux yang mendekode dan memancarkan pesan data digital FT8, FT4, FT2, LQ8, JS8, atau WSPR melalui sebuah transceiver. Dengan transceiver dan kabel yang sama, aplikasi ini juga bekerja di mode suara (SSB), kode Morse (CW), RTTY, dan gambar (SSTV).
+                qFT8 adalah aplikasi <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radio amatir</a> untuk ponsel dan tablet <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, iPhone dan iPad, serta komputer Windows, macOS, dan Linux yang mendekode dan memancarkan pesan data digital FT8, FT4, FT2, LQ8, JS8, atau WSPR melalui sebuah transceiver. Dengan transceiver dan kabel yang sama, aplikasi ini juga bekerja di mode suara (SSB), kode Morse (CW), RTTY, dan gambar (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>Di iPhone dan iPad radio tidak dikendalikan lewat kabel USB: lihat <a href="#iphone">qFT8 di iPhone dan iPad</a>.</p>
 
             <p>Biarkan <strong>Pengaturan &gt; Perangkat</strong> pada <code>AUTO</code>: radio yang didukung dan terhubung lewat USB akan dikenali secara otomatis. Anda juga bisa memilih sendiri radio Anda dari daftar itu.</p>
 
@@ -830,6 +833,21 @@
                 <li><strong>Waterfall membeku, audio putus-putus, atau beban tinggi pada komputer satu atau dua inti:</strong>
                     lihat <a href="#pc-slow">Komputer yang lambat</a>, tutup program lain, dan kirim laporan dengan
                     <strong>LAPORKAN BUG</strong> jika berlanjut.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Kembali ke Daftar Isi</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 di iPhone dan iPad</h2>
+
+            <p>qFT8 untuk iPhone dan iPad bekerja seperti qFT8 untuk Android, dan bagian lain manual ini juga berlaku untuknya; aplikasi ini memerlukan iOS 17 atau lebih baru. Yang berbeda adalah cara ia terhubung ke radio.</p>
+
+            <p>iPhone atau iPad tidak dapat mengendalikan radio lewat kabel: tidak ada CAT, jadi qFT8 tidak dapat mengatur frekuensi radio atau memindahkannya ke pancar lewat USB. Aplikasi mendengar radio dan mengirim nadanya melalui antarmuka suara USB radio, antarmuka audio lain, atau kabel audio. Agar radio memancar, gunakan salah satu dari ini:</p>
+            <ul>
+                <li>VOX radio: radio berpindah ke pancar dengan sendirinya saat nada qFT8 sampai. Pilih VOX di pengaturan qFT8.</li>
+                <li>Antarmuka audio yang memancarkan radio dari audionya: ia memindahkan radio ke pancar setiap kali ada suara dari qFT8.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: komputer, Raspberry Pi, atau ponsel atau tablet Android di dekat radio, dengan radio tersambung ke sana lewat USB. qFT8 di iPhone atau iPad lalu mengendalikan radio melalui jaringan Anda sendiri seolah-olah tersambung langsung, termasuk frekuensi dan pancar. Komputer tanpa tugas lain, juga server tanpa layar, dapat menjalankan bridge <a href="#bridge-headless">dari baris perintah, tanpa jendela</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Kembali ke Daftar Isi</a>
@@ -3460,7 +3478,7 @@
                     bridge.
                 </p>
 
-                <p><strong>2. Dari baris perintah</strong> (khusus komputer). Untuk komputer yang tidak punya tugas
+                <p id="bridge-headless"><strong>2. Dari baris perintah</strong> (khusus komputer). Untuk komputer yang tidak punya tugas
                     lain, juga Raspberry Pi atau server tanpa layar: jalankan qFT8 dengan <code>--bridge</code>. Program
                     lalu hanya berjalan sebagai bridge, tanpa jendela, dan tidak memuat bagian lain dari qFT8 (tanpa
                     pengaturan, tanpa decode), sehingga hanya perlu sedikit sekali memori. Gunakan qFT8 yang Anda unduh

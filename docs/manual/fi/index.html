@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Jos jokin ei toimi</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 iPhonessa ja iPadissa</a></li>
                 <li><a href="#quick-setup">Pika-aloitus</a>
                     <ul>
                         <li><a href="#initial-permissions">Anna ensimmäiset käyttöoikeudet</a></li>
@@ -151,7 +152,7 @@
             <h2>Mikä qFT8 on?</h2>
 
             <p>
-                qFT8 on <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamatöörisovellus</a> <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>-puhelimille ja -tableteille sekä Windows-, macOS- ja Linux-tietokoneille. Se dekoodaa ja lähettää digitaalisia FT8-, FT4-, FT2-, LQ8-, JS8- ja WSPR-viestejä lähetinvastaanottimen kautta. Samalla lähetinvastaanottimella ja samalla kaapelilla sillä työskennellään myös puheella (SSB), sähkötyksellä (CW), RTTY:llä ja kuvilla (SSTV).
+                qFT8 on <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamatöörisovellus</a> <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>-puhelimille ja -tableteille, iPhonelle ja iPadille sekä Windows-, macOS- ja Linux-tietokoneille. Se dekoodaa ja lähettää digitaalisia FT8-, FT4-, FT2-, LQ8-, JS8- ja WSPR-viestejä lähetinvastaanottimen kautta. Samalla lähetinvastaanottimella ja samalla kaapelilla sillä työskennellään myös puheella (SSB), sähkötyksellä (CW), RTTY:llä ja kuvilla (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>iPhonessa ja iPadissa radiota ei ohjata USB-kaapelilla: katso <a href="#iphone">qFT8 iPhonessa ja iPadissa</a>.</p>
 
             <p>Jätä <strong>Asetukset &gt; Laite</strong> asentoon <code>AUTO</code>: tuettu, USB:llä liitetty radio tunnistetaan automaattisesti. Voit myös valita radiosi itse luettelosta.</p>
 
@@ -811,6 +814,21 @@
                 <li><strong>Jäätynyt vesiputous, katkoja äänessä tai suuri kuormitus yhden tai kahden ytimen tietokoneella:</strong> katso
                     <a href="#pc-slow">Hitaat tietokoneet</a>, sulje muut ohjelmat ja lähetä raportti painikkeella
                     <strong>ILMOITA VIRHEESTÄ</strong>, jos ongelma jatkuu.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Takaisin sisällykseen</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 iPhonessa ja iPadissa</h2>
+
+            <p>qFT8 iPhonelle ja iPadille toimii kuten qFT8 Androidille, ja tämän käyttöohjeen muut osat koskevat myös sitä; se vaatii iOS 17:n tai uudemman. Erilaista on se, miten se pääsee radioon.</p>
+
+            <p>iPhone tai iPad ei voi ohjata radiota kaapelilla: CAT-ohjausta ei ole, joten qFT8 ei voi asettaa radion taajuutta eikä kytkeä sitä lähetykselle USB:n kautta. Se kuuntelee radiota ja lähettää äänensä radion USB-ääniliitännän, toisen äänikortin tai äänikaapelin kautta. Jotta radio lähettäisi, käytä jotakin näistä:</p>
+            <ul>
+                <li>Radion VOX: radio kytkeytyy itse lähetykselle, kun qFT8:n äänet tulevat siihen. Valitse VOX qFT8:n asetuksista.</li>
+                <li>Äänikortti, joka kytkee radion lähetykselle itse äänestä: se kytkee radion lähetykselle aina, kun qFT8:sta tulee ääntä.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: radion vieressä oleva tietokone, Raspberry Pi tai Android-puhelin tai -tabletti, johon radio on kytketty USB:llä. iPhonen tai iPadin qFT8 ohjaa silloin radiota oman verkkosi kautta kuin se olisi kytketty suoraan, taajuus ja lähetys mukaan lukien. Tietokone, jolla ei ole muuta tehtävää, myös näytötön palvelin, voi ajaa bridgeä <a href="#bridge-headless">komentoriviltä, ilman ikkunaa</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Takaisin sisällykseen</a>
@@ -3429,7 +3447,7 @@
                     qFT8:n sen ollessa bridge, se käynnistyy seuraavalla kerralla taas bridgenä.
                 </p>
 
-                <p><strong>2. Komentoriviltä</strong> (vain tietokoneet). Tietokoneelle, jolla ei ole muuta tehtävää,
+                <p id="bridge-headless"><strong>2. Komentoriviltä</strong> (vain tietokoneet). Tietokoneelle, jolla ei ole muuta tehtävää,
                     myös Raspberry Pille tai palvelimelle ilman näyttöä: käynnistä qFT8 valitsimella <code>--bridge</code>.
                     Se toimii silloin pelkkänä bridgenä ilman ikkunaa eikä lataa mitään muuta qFT8:sta (ei asetuksia,
                     ei dekoodausta), joten se tarvitsee hyvin vähän muistia. Käytä sille tietokoneelle lataamaasi

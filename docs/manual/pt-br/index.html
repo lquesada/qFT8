@@ -58,6 +58,7 @@
                         <li><a href="#pc-trouble">Se algo não funciona</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 no iPhone e no iPad</a></li>
                 <li><a href="#quick-setup">Configuração rápida</a>
                     <ul>
                         <li><a href="#initial-permissions">Conceder permissões iniciais</a></li>
@@ -148,7 +149,7 @@
             <h2>O que é o qFT8?</h2>
 
             <p>
-                O qFT8 é um aplicativo de <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamadorismo</a> para celulares e tablets <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> e para computadores com Windows, macOS e Linux que decodifica e transmite mensagens de dados digitais FT8, FT4, FT2, LQ8, JS8 ou WSPR usando um transceptor. Ele também opera em voz (SSB), código Morse (CW), RTTY e imagens (SSTV) com o mesmo transceptor e o mesmo cabo.
+                O qFT8 é um aplicativo de <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamadorismo</a> para celulares e tablets <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, para iPhone e iPad e para computadores com Windows, macOS e Linux que decodifica e transmite mensagens de dados digitais FT8, FT4, FT2, LQ8, JS8 ou WSPR usando um transceptor. Ele também opera em voz (SSB), código Morse (CW), RTTY e imagens (SSTV) com o mesmo transceptor e o mesmo cabo.
             </p>
 
             <p>
@@ -239,6 +240,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>No iPhone e no iPad o rádio não é controlado por um cabo USB: veja <a href="#iphone">qFT8 no iPhone e no iPad</a>.</p>
 
             <p>Deixe <strong>Configurações &gt; Dispositivo</strong> em <code>AUTO</code>: um rádio compatível conectado por USB é reconhecido automaticamente. Você também pode escolher o seu rádio nessa lista.</p>
 
@@ -810,6 +813,21 @@
                 <li><strong>Cascata congelada, falhas de áudio ou carga alta em um computador de um ou dois núcleos:</strong> veja
                     <a href="#pc-slow">Computadores lentos</a>, feche outros programas e envie um relatório com
                     <strong>RELATAR ERRO</strong> se continuar.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 no iPhone e no iPad</h2>
+
+            <p>O qFT8 para iPhone e iPad funciona como o qFT8 para Android, e o restante deste manual vale para ele; ele precisa do iOS 17 ou mais recente. O que muda é como ele chega ao rádio.</p>
+
+            <p>Um iPhone ou iPad não consegue controlar um rádio por cabo: não há CAT, então o qFT8 não consegue ajustar a frequência do rádio nem colocá-lo em transmissão pelo USB. Ele ouve o rádio e envia seus tons pela interface de som USB do rádio, outra interface de áudio ou um cabo de áudio. Para o rádio transmitir, use uma destas opções:</p>
+            <ul>
+                <li>O VOX do rádio: o rádio entra em transmissão sozinho quando os tons do qFT8 chegam a ele. Escolha VOX nas configurações do qFT8.</li>
+                <li>Uma interface de áudio que aciona o rádio pelo próprio áudio: ela coloca o rádio em transmissão sempre que sai som do qFT8.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: um computador, um Raspberry Pi ou um celular ou tablet Android ao lado do rádio, com o rádio ligado a ele por USB. O qFT8 no iPhone ou iPad então controla o rádio pela sua própria rede como se estivesse ligado, incluindo frequência e transmissão. Um computador sem outra função, também um servidor sem tela, pode rodar o bridge <a href="#bridge-headless">pela linha de comando, sem janela</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
@@ -3363,7 +3381,7 @@
                     próxima vez.
                 </p>
 
-                <p><strong>2. Pela linha de comando</strong> (só computadores). Para um computador sem outra função,
+                <p id="bridge-headless"><strong>2. Pela linha de comando</strong> (só computadores). Para um computador sem outra função,
                     também um Raspberry Pi ou um servidor sem tela: inicie o qFT8 com <code>--bridge</code>. Ele então
                     roda apenas como bridge, sem janela, e não carrega mais nada do qFT8 (nem configurações, nem
                     decodificação), então precisa de muito pouca memória. Use o qFT8 que você baixou para esse

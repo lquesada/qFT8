@@ -55,6 +55,7 @@
                         <li><a href="#pc-trouble">うまく動かないとき</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">iPhone・iPad の qFT8</a></li>
                 <li><a href="#quick-setup">クイックセットアップ</a>
                     <ul>
                         <li><a href="#initial-permissions">初期権限の許可</a></li>
@@ -145,7 +146,7 @@
             <h2>qFT8とは？</h2>
 
             <p>
-                qFT8 は、<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> のスマートフォンやタブレット、および Windows・macOS・Linux のパソコンで動作する<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">アマチュア無線</a>用アプリです。トランシーバーを使って FT8、FT4、FT2、LQ8、JS8、WSPR のデジタルメッセージをデコード・送信します。同じトランシーバーと同じケーブルで、音声（SSB）、モールス符号（CW）、RTTY、画像（SSTV）の運用もできます。
+                qFT8 は、<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> のスマートフォンやタブレット、iPhone・iPad、および Windows・macOS・Linux のパソコンで動作する<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">アマチュア無線</a>用アプリです。トランシーバーを使って FT8、FT4、FT2、LQ8、JS8、WSPR のデジタルメッセージをデコード・送信します。同じトランシーバーと同じケーブルで、音声（SSB）、モールス符号（CW）、RTTY、画像（SSTV）の運用もできます。
             </p>
 
             <p>
@@ -236,6 +237,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>iPhone と iPad では USB ケーブルで無線機を制御しません：<a href="#iphone">iPhone・iPad の qFT8</a> を参照してください。</p>
 
             <p><strong>設定 &gt; デバイス</strong> は <code>AUTO</code> のままにしてください。対応する無線機を USB で接続すると自動的に認識されます。一覧から自分で選ぶこともできます。</p>
 
@@ -605,6 +608,21 @@
                 <li><strong>ウィンドウが真っ黒、または表示が乱れる</strong>（古いグラフィックドライバー、仮想マシン、リモートデスクトップ）: グラフィックドライバーを更新してください。直らない場合は、qFT8 を <code>--opengl</code>（<code>qFT8 --opengl</code>）で起動してください。ウィンドウを別の方法で描画します。それでも直らない場合は、お使いのシステムとグラフィックカードを添えて、（設定の）<strong>バグを報告</strong>から報告してください。</li>
                 <li><strong>ウィンドウが画面の外にある</strong>（画面が取り外された）: qFT8 は、ウィンドウを開くときに各ウィンドウの保存された位置を確認し、その画面がなくなっている場合や、大部分が画面の外に出てしまう場合は、メイン画面の中央で開きます。それでもウィンドウに手が届かない場合は、下部バーのボタンでそのペインを閉じてからもう一度開くか、qFT8 を再起動してください。</li>
                 <li><strong>ウォーターフォールが固まる、音が途切れる、1 コアまたは 2 コアのパソコンで負荷が高い:</strong> <a href="#pc-slow">低速なパソコン</a>をご覧になり、ほかのプログラムを閉じてください。続く場合は<strong>バグを報告</strong>で報告してください。</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">↑ 目次へ戻る</a>
+        </section>
+
+        <section id="iphone">
+            <h2>iPhone・iPad の qFT8</h2>
+
+            <p>iPhone・iPad 版 qFT8 は Android 版と同じように動作し、このマニュアルの他の部分もそのまま当てはまります。iOS 17 以降が必要です。違うのは無線機へのつなぎ方です。</p>
+
+            <p>iPhone や iPad はケーブルで無線機を制御できません。CAT がないため、qFT8 は USB で無線機の周波数を設定したり送信に切り替えたりできません。無線機の USB サウンドインターフェース、別のオーディオインターフェース、またはオーディオケーブルを通して受信し、トーンを送ります。無線機を送信させるには、次のいずれかを使います：</p>
+            <ul>
+                <li>無線機の VOX：qFT8 のトーンが届くと無線機が自動で送信に切り替わります。qFT8 の設定で VOX を選びます。</li>
+                <li>音声で無線機を送信させるオーディオインターフェース：qFT8 から音が出ているあいだ無線機を送信にします。</li>
+                <li><a href="#bridge">qFT8 bridge</a>：無線機のそばのパソコン、Raspberry Pi、または Android のスマートフォンやタブレットで、無線機を USB でつないだもの。iPhone や iPad の qFT8 は、ご自分のネットワーク越しに、直接つないだときと同じように周波数も送信も含めて無線機を制御します。ほかの用途のないパソコン（画面のないサーバーも）なら、bridge を<a href="#bridge-headless">コマンドラインからウィンドウなしで</a>動かせます。</li>
             </ul>
 
             <a href="#top" class="back-to-toc">↑ 目次へ戻る</a>
@@ -3125,7 +3143,7 @@
                     bridge として動いている間に qFT8 を閉じると、次回も bridge として起動します。
                 </p>
 
-                <p><strong>2. コマンドラインから</strong>（コンピューターのみ）。ほかの用途のないコンピューター向けで、Raspberry Pi や画面のないサーバーでも使えます。qFT8 を <code>--bridge</code> 付きで起動します。するとウィンドウなしで bridge としてだけ動き、qFT8 のほかの部分（設定、デコード）は何も読み込まないため、メモリーをほとんど使いません。そのコンピューター用にダウンロードした qFT8 を、ターミナルから使います。
+                <p id="bridge-headless"><strong>2. コマンドラインから</strong>（コンピューターのみ）。ほかの用途のないコンピューター向けで、Raspberry Pi や画面のないサーバーでも使えます。qFT8 を <code>--bridge</code> 付きで起動します。するとウィンドウなしで bridge としてだけ動き、qFT8 のほかの部分（設定、デコード）は何も読み込まないため、メモリーをほとんど使いません。そのコンピューター用にダウンロードした qFT8 を、ターミナルから使います。
                 </p>
                 <ul>
                     <li><strong>Windows</strong>：qFT8 のフォルダーでコマンドプロンプトを開き、<code>qFT8.exe --bridge --tx-volume 70</code> と入力します。"OpenJDK Platform binary" をネットワークで許可するか Windows に聞かれたら、許可してください。</li>

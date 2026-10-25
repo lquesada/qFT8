@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Se io ne funkcias</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 en iPhone kaj iPad</a></li>
                 <li><a href="#quick-setup">Rapida agordado</a>
                     <ul>
                         <li><a href="#initial-permissions">Doni la komencajn permesojn</a></li>
@@ -151,7 +152,7 @@
             <h2>Kio estas qFT8?</h2>
 
             <p>
-                qFT8 estas aplikaĵo por <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamatoroj</a>, por <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>-telefonoj kaj -tabulkomputiloj kaj por komputiloj kun Windows, macOS kaj Linux, kiu per sendricevilo malkodas kaj elsendas ciferecajn mesaĝojn en FT8, FT4, FT2, LQ8, JS8 aŭ WSPR. Per la sama sendricevilo kaj la sama kablo ĝi funkcias ankaŭ en voĉo (SSB), morso (CW), RTTY kaj bildoj (SSTV).
+                qFT8 estas aplikaĵo por <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">radioamatoroj</a>, por <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>-telefonoj kaj -tabulkomputiloj, por iPhone kaj iPad kaj por komputiloj kun Windows, macOS kaj Linux, kiu per sendricevilo malkodas kaj elsendas ciferecajn mesaĝojn en FT8, FT4, FT2, LQ8, JS8 aŭ WSPR. Per la sama sendricevilo kaj la sama kablo ĝi funkcias ankaŭ en voĉo (SSB), morso (CW), RTTY kaj bildoj (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>En iPhone kaj iPad la radio ne estas regata per USB-kablo: vidu <a href="#iphone">qFT8 en iPhone kaj iPad</a>.</p>
 
             <p>Lasu <strong>Agordoj &gt; Aparato</strong> je <code>AUTO</code>: subtenata radio konektita per USB estas rekonata aŭtomate. Vi ankaŭ povas mem elekti vian radion el tiu listo.</p>
 
@@ -565,6 +568,21 @@
                 <li><strong>La fenestro estas nigra aŭ konfuza</strong> (malnovaj grafikaj pelilo, virtuala maŝino, fora labortablo): ĝisdatigu la grafikan pelilon. Se tio restas, lanĉu qFT8 per <code>--opengl</code> (<code>qFT8 --opengl</code>), kiu desegnas la fenestron alimaniere; se ankaŭ tio ne helpas, raportu ĝin per <strong>RAPORTI CIMON</strong> (Agordoj), dirante kiun sistemon kaj grafikan karton vi havas.</li>
                 <li><strong>Fenestro estas ekster la ekrano</strong> (ekrano estis malkonektita): qFT8 kontrolas la konservitan lokon de ĉiu fenestro kiam ĝi malfermas la fenestron, kaj fenestro, kies ekrano malaperis, aŭ kiu estus plejparte ekster la ekrano, malfermiĝas anstataŭe en la mezo de la ĉefa ekrano. Se fenestro ankoraŭ estas neatingebla, fermu ĝian panelon per ĝia butono en la malsupra strio kaj malfermu ĝin denove, aŭ relanĉu qFT8.</li>
                 <li><strong>Frostita akvofalo, sonaj interspacoj, aŭ alta ŝarĝo en komputilo kun unu aŭ du kernoj:</strong> vidu <a href="#pc-slow">Malrapidaj komputiloj</a>, fermu aliajn programojn, kaj sendu raporton per <strong>RAPORTI CIMON</strong>, se tio daŭras.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Reen al la enhavo</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 en iPhone kaj iPad</h2>
+
+            <p>qFT8 por iPhone kaj iPad funkcias kiel qFT8 por Android, kaj la resto de ĉi tiu manlibro validas ankaŭ por ĝi; ĝi bezonas iOS 17 aŭ pli novan. Malsama estas nur kiel ĝi atingas la radion.</p>
+
+            <p>iPhone aŭ iPad ne povas regi radion per kablo: ne estas CAT, do qFT8 ne povas agordi la frekvencon de la radio nek ŝalti ĝin al sendado per USB. Ĝi aŭskultas la radion kaj sendas siajn tonojn tra la USB-sonsistemo de la radio, alia sona interfaco aŭ sonkablo. Por ke la radio sendu, uzu unu el ĉi tiuj:</p>
+            <ul>
+                <li>La VOX de la radio: la radio mem ŝaltiĝas al sendado kiam la tonoj de qFT8 atingas ĝin. Elektu VOX en la agordoj de qFT8.</li>
+                <li>Sona interfaco kiu ŝaltas la radion per la sono mem: ĝi ŝaltas la radion al sendado ĉiam kiam sono venas el qFT8.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: komputilo, Raspberry Pi aŭ Android-telefono aŭ -tabulkomputilo apud la radio, kun la radio konektita al ĝi per USB. qFT8 en la iPhone aŭ iPad tiam regas la radion tra via propra reto kvazaŭ ĝi estus konektita, inkluzive de frekvenco kaj sendado. Komputilo sen alia tasko, ankaŭ servilo sen ekrano, povas ruli la bridge <a href="#bridge-headless">el la komandlinio, sen fenestro</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Reen al la enhavo</a>
@@ -3129,7 +3147,7 @@
                     fermas qFT8 dum ĝi estas bridge, ĝi denove startas kiel bridge la venontan fojon.
                 </p>
 
-                <p><strong>2. El la komandlinio</strong> (nur komputiloj). Por komputilo sen alia tasko, ankaŭ Raspberry
+                <p id="bridge-headless"><strong>2. El la komandlinio</strong> (nur komputiloj). Por komputilo sen alia tasko, ankaŭ Raspberry
                     Pi aŭ servilo sen ekrano: startigu qFT8 kun <code>--bridge</code>. Tiam ĝi funkcias nur kiel
                     bridge, sen fenestro, kaj ŝargas nenion alian de qFT8 (nek agordojn, nek malkodadon), do ĝi bezonas
                     tre malmulte da memoro. Uzu la qFT8, kiun vi elŝutis por tiu komputilo, el terminalo:

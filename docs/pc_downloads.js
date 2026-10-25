@@ -8,7 +8,9 @@
 //            Intel, MAC-UNIVERSAL-1013-1 / MAC-ONE-DOWNLOAD); so the CPU does not matter (Safari never tells it anyway).
 //   Linux:   64-bit, unless the browser says 32-bit or ARM.
 //   Android: the Android row (Google Play + .apk).
-//   iPhone/iPad and anything else: nothing first (the whole list).
+//   iPhone/iPad (also an iPad asking for the desktop site): the iPhone/iPad row (IOS-WEB-MANUAL-321-1; the page has it
+//            only when the App Store address or the sideload .ipa is there -- otherwise nothing is marked).
+//   Anything else: nothing first (the whole list).
 // info = { ua, platform, arch, bitness, touchPoints }; arch/bitness come from userAgentData when the browser has it.
 function pickDownloads(info) {
     const ua = info.ua || '';
@@ -16,9 +18,9 @@ function pickDownloads(info) {
     const arch = (info.arch || '').toLowerCase();
     const bitness = String(info.bitness || '');
     if (/Android/i.test(ua)) return ['android'];
-    if (/iPhone|iPad|iPod/i.test(ua)) return [];
+    if (/iPhone|iPad|iPod/i.test(ua)) return ['ios'];
     if (/Mac/i.test(plat) || /Mac OS X|Macintosh/i.test(ua)) {
-        if ((info.touchPoints || 0) > 1) return [];               // an iPad asking for the desktop site
+        if ((info.touchPoints || 0) > 1) return ['ios'];          // an iPad asking for the desktop site
         return ['mac-universal'];
     }
     if (/Win/i.test(plat) || /Windows/i.test(ua)) {

@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Bir şey çalışmazsa</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">iPhone ve iPad'de qFT8</a></li>
                 <li><a href="#quick-setup">Hızlı kurulum</a>
                     <ul>
                         <li><a href="#initial-permissions">İlk izinleri verin</a></li>
@@ -151,7 +152,7 @@
             <h2>qFT8 nedir?</h2>
 
             <p>
-                qFT8; <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> telefon ve tabletler ile Windows, macOS ve Linux bilgisayarlar için bir <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amatör telsiz</a> uygulamasıdır. Bir telsiz üzerinden FT8, FT4, FT2, LQ8, JS8 veya WSPR dijital veri mesajlarını çözer ve gönderir. Aynı telsizle ve aynı kabloyla ses (SSB), Mors (CW), RTTY ve resim (SSTV) de çalışır.
+                qFT8; <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> telefon ve tabletler, iPhone ve iPad ile Windows, macOS ve Linux bilgisayarlar için bir <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amatör telsiz</a> uygulamasıdır. Bir telsiz üzerinden FT8, FT4, FT2, LQ8, JS8 veya WSPR dijital veri mesajlarını çözer ve gönderir. Aynı telsizle ve aynı kabloyla ses (SSB), Mors (CW), RTTY ve resim (SSTV) de çalışır.
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>iPhone ve iPad'de telsiz USB kablosuyla kontrol edilmez: bkz. <a href="#iphone">iPhone ve iPad'de qFT8</a>.</p>
 
             <p><strong>Ayarlar &gt; Cihaz</strong> ayarını <code>AUTO</code> olarak bırakın: USB ile bağlanan desteklenen bir telsiz otomatik olarak tanınır. Telsizinizi bu listeden kendiniz de seçebilirsiniz.</p>
 
@@ -565,6 +568,21 @@
                 <li><strong>Pencere siyah ya da bozuk</strong> (eski grafik sürücüleri, sanal makine, uzak masaüstü): grafik sürücüsünü güncelleyin. Düzelmezse qFT8'i <code>--opengl</code> ile başlatın (<code>qFT8 --opengl</code>), pencere başka bir yolla çizilir; bu da yardımcı olmazsa sisteminizi ve ekran kartınızı belirterek <strong>HATA BİLDİR</strong> (Ayarlar) ile bildirin.</li>
                 <li><strong>Bir pencere ekran dışında</strong> (bir ekran çıkarıldı): qFT8 her pencerenin kayıtlı yerini pencereyi açarken denetler ve ekranı kalmamış ya da çoğu ekran dışında kalacak bir pencere bunun yerine ana ekranın ortasında açılır. Bir pencereye yine de ulaşılamıyorsa bölmesini alt bardaki düğmesiyle kapatıp yeniden açın ya da qFT8'i yeniden başlatın.</li>
                 <li><strong>Donuk şelale, ses kopmaları ya da bir ya da iki çekirdekli bilgisayarda yüksek yük:</strong> bkz. <a href="#pc-slow">Yavaş bilgisayarlar</a>, diğer programları kapatın ve sürerse <strong>HATA BİLDİR</strong> ile rapor gönderin.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; İçindekilere dön</a>
+        </section>
+
+        <section id="iphone">
+            <h2>iPhone ve iPad'de qFT8</h2>
+
+            <p>iPhone ve iPad için qFT8, Android için qFT8 gibi çalışır ve bu kılavuzun geri kalanı onun için de geçerlidir; iOS 17 veya daha yenisini gerektirir. Farklı olan, telsize nasıl ulaştığıdır.</p>
+
+            <p>iPhone veya iPad bir telsizi kabloyla kontrol edemez: CAT yoktur, bu yüzden qFT8 USB üzerinden telsizin frekansını ayarlayamaz ve onu yayına geçiremez. Telsizi, telsizin USB ses arayüzü, başka bir ses arayüzü veya bir ses kablosu üzerinden dinler ve tonlarını gönderir. Telsizin yayın yapması için bunlardan birini kullanın:</p>
+            <ul>
+                <li>Telsizin VOX'u: qFT8'in tonları ulaştığında telsiz kendiliğinden yayına geçer. qFT8'in ayarlarında VOX'u seçin.</li>
+                <li>Telsizi sesin kendisiyle çalıştıran bir ses arayüzü: qFT8'den ses geldiği her an telsizi yayına geçirir.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: telsizin yanında, telsizin USB ile bağlı olduğu bir bilgisayar, Raspberry Pi veya Android telefon ya da tablet. Böylece iPhone veya iPad'deki qFT8, telsizi kendi ağınız üzerinden doğrudan bağlıymış gibi, frekans ve yayın dahil kontrol eder. Başka işi olmayan bir bilgisayar, ekransız bir sunucu da, bridge'i <a href="#bridge-headless">komut satırından, pencere olmadan</a> çalıştırabilir.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; İçindekilere dön</a>
@@ -3138,7 +3156,7 @@
                     iken kapatırsanız, bir sonraki açılışta yine bridge olarak başlar.
                 </p>
 
-                <p><strong>2. Komut satırından</strong> (yalnızca bilgisayarlar). Başka işi olmayan bir bilgisayar için,
+                <p id="bridge-headless"><strong>2. Komut satırından</strong> (yalnızca bilgisayarlar). Başka işi olmayan bir bilgisayar için,
                     ayrıca bir Raspberry Pi ya da ekransız bir sunucu için: qFT8'i <code>--bridge</code> ile başlatın.
                     O zaman penceresiz ve yalnızca bridge olarak çalışır, qFT8'in başka hiçbir şeyini yüklemez (ayar
                     yok, çözümleme yok), bu yüzden çok az bellek gerekir. O bilgisayar için indirdiğiniz qFT8'i bir

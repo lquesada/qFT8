@@ -58,6 +58,7 @@
                         <li><a href="#pc-trouble">如果某些功能無法運作</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">iPhone 和 iPad 上的 qFT8</a></li>
                 <li><a href="#quick-setup">快速設定</a>
                     <ul>
                         <li><a href="#initial-permissions">授予初始權限</a></li>
@@ -148,7 +149,7 @@
             <h2>qFT8 是什麼？</h2>
 
             <p>
-                qFT8 是一款<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">業餘無線電</a>應用程式，可運行於 <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> 手機和平板電腦，以及 Windows、macOS 和 Linux 電腦，透過收發信機解碼和發射 FT8、FT4、FT2、LQ8、JS8 或 WSPR 數位訊息。使用同一台收發信機和同一條纜線，它還可以進行語音（SSB）、摩斯電碼（CW）、RTTY 和影像（SSTV）通聯。
+                qFT8 是一款<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">業餘無線電</a>應用程式，可運行於 <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> 手機和平板電腦、iPhone 和 iPad，以及 Windows、macOS 和 Linux 電腦，透過收發信機解碼和發射 FT8、FT4、FT2、LQ8、JS8 或 WSPR 數位訊息。使用同一台收發信機和同一條纜線，它還可以進行語音（SSB）、摩斯電碼（CW）、RTTY 和影像（SSTV）通聯。
             </p>
 
             <p>
@@ -239,6 +240,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>在 iPhone 和 iPad 上不能透過 USB 線控制電台：見 <a href="#iphone">iPhone 和 iPad 上的 qFT8</a>。</p>
 
             <p>請將<strong>設定 &gt; 裝置</strong>保持為 <code>AUTO</code>：透過 USB 連接的受支援電台會被自動識別。您也可以在該清單中自行選擇電台。</p>
 
@@ -610,6 +613,21 @@
             </ul>
 
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
+        </section>
+
+        <section id="iphone">
+            <h2>iPhone 和 iPad 上的 qFT8</h2>
+
+            <p>iPhone 和 iPad 版 qFT8 的用法與 Android 版相同，本手冊其餘內容同樣適用；需要 iOS 17 或更新版本。不同之處在於它如何連接電台。</p>
+
+            <p>iPhone 或 iPad 無法透過線材控制電台：沒有 CAT，因此 qFT8 無法透過 USB 設定電台頻率或讓電台發射。它透過電台的 USB 聲音介面、其他音訊介面或音訊線收聽電台並送出音調。要讓電台發射，請使用以下方式之一：</p>
+            <ul>
+                <li>電台的 VOX：qFT8 的音調到達電台時，電台自動轉為發射。在 qFT8 的設定中選擇 VOX。</li>
+                <li>由音訊觸發電台的音訊介面：只要 qFT8 發出聲音，它就讓電台轉為發射。</li>
+                <li><a href="#bridge">qFT8 bridge</a>：放在電台旁邊的電腦、Raspberry Pi 或 Android 手機或平板，電台以 USB 連接到它。這樣 iPhone 或 iPad 上的 qFT8 就能透過您自己的網路控制電台，如同直接連接一樣，包括頻率和發射。沒有其他用途的電腦（包括沒有螢幕的伺服器）可以<a href="#bridge-headless">從命令列、無視窗地</a>執行 bridge。</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; 返回目錄</a>
         </section>
 
         <section id="quick-setup">
@@ -3131,7 +3149,7 @@
                     bridge 方式啟動。
                 </p>
 
-                <p><strong>2. 從命令列執行</strong>（僅限電腦）。適合沒有其他用途的電腦，也適合 Raspberry Pi 或沒有螢幕的伺服器：用 <code>--bridge</code> 啟動 qFT8。這樣它只作為 bridge 執行，沒有視窗，也不載入 qFT8 的其他任何部分（沒有設定，沒有解碼），因此只需要很少的記憶體。在終端中使用您為這臺電腦下載的 qFT8：
+                <p id="bridge-headless"><strong>2. 從命令列執行</strong>（僅限電腦）。適合沒有其他用途的電腦，也適合 Raspberry Pi 或沒有螢幕的伺服器：用 <code>--bridge</code> 啟動 qFT8。這樣它只作為 bridge 執行，沒有視窗，也不載入 qFT8 的其他任何部分（沒有設定，沒有解碼），因此只需要很少的記憶體。在終端中使用您為這臺電腦下載的 qFT8：
                 </p>
                 <ul>
                     <li><strong>Windows</strong>：在 qFT8 資料夾中開啟命令提示字元，輸入 <code>qFT8.exe --bridge --tx-volume 70</code>。如果 Windows 詢問是否允許「OpenJDK Platform binary」存取您的網路，請允許。</li>

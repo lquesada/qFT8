@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Khi có gì đó không hoạt động</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 trên iPhone và iPad</a></li>
                 <li><a href="#quick-setup">Thiết lập nhanh</a>
                     <ul>
                         <li><a href="#initial-permissions">Cấp các quyền ban đầu</a></li>
@@ -151,7 +152,7 @@
             <h2>qFT8 là gì?</h2>
 
             <p>
-                qFT8 là một ứng dụng <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">vô tuyến nghiệp dư</a> dành cho điện thoại và máy tính bảng <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, cũng như cho máy tính Windows, macOS và Linux; ứng dụng giải mã và phát các tin nhắn dữ liệu số FT8, FT4, FT2, LQ8, JS8 hoặc WSPR thông qua một máy thu phát. Với cùng máy thu phát và cùng sợi cáp đó, ứng dụng còn làm việc được ở thoại (SSB), mã Morse (CW), RTTY và hình ảnh (SSTV).
+                qFT8 là một ứng dụng <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">vô tuyến nghiệp dư</a> dành cho điện thoại và máy tính bảng <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, cho iPhone và iPad, cũng như cho máy tính Windows, macOS và Linux; ứng dụng giải mã và phát các tin nhắn dữ liệu số FT8, FT4, FT2, LQ8, JS8 hoặc WSPR thông qua một máy thu phát. Với cùng máy thu phát và cùng sợi cáp đó, ứng dụng còn làm việc được ở thoại (SSB), mã Morse (CW), RTTY và hình ảnh (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>Trên iPhone và iPad, đài không được điều khiển qua cáp USB: xem <a href="#iphone">qFT8 trên iPhone và iPad</a>.</p>
 
             <p>Hãy để <strong>Cài đặt &gt; Thiết bị</strong> ở <code>AUTO</code>: máy được hỗ trợ nối qua USB sẽ được nhận diện tự động. Bạn cũng có thể tự chọn máy của mình trong danh sách đó.</p>
 
@@ -807,6 +810,21 @@
                 <li><strong>Phổ đồ bị đứng, âm thanh bị ngắt quãng, hoặc tải cao trên máy tính một hay hai nhân:</strong> xem
                     <a href="#pc-slow">Máy tính chậm</a>, đóng các chương trình khác, và gửi báo cáo bằng
                     <strong>BÁO CÁO LỖI</strong> nếu vẫn tiếp diễn.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Quay lại Mục lục</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 trên iPhone và iPad</h2>
+
+            <p>qFT8 cho iPhone và iPad hoạt động giống qFT8 cho Android, và phần còn lại của tài liệu này cũng áp dụng cho nó; cần iOS 17 trở lên. Điều khác biệt là cách nó kết nối tới đài.</p>
+
+            <p>iPhone hoặc iPad không thể điều khiển đài qua cáp: không có CAT, nên qFT8 không thể đặt tần số của đài hay chuyển đài sang phát qua USB. Nó nghe đài và gửi các âm của mình qua giao diện âm thanh USB của đài, một giao diện âm thanh khác hoặc một cáp âm thanh. Để đài phát, hãy dùng một trong các cách sau:</p>
+            <ul>
+                <li>VOX của đài: đài tự chuyển sang phát khi các âm của qFT8 tới nó. Chọn VOX trong phần cài đặt của qFT8.</li>
+                <li>Một giao diện âm thanh kích phát đài từ chính âm thanh: nó chuyển đài sang phát mỗi khi có âm thanh từ qFT8.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: một máy tính, Raspberry Pi hoặc điện thoại hay máy tính bảng Android đặt cạnh đài, với đài cắm vào nó qua USB. Khi đó qFT8 trên iPhone hoặc iPad điều khiển đài qua mạng riêng của bạn như thể đài được cắm trực tiếp, kể cả tần số và phát. Một máy tính không có việc gì khác, kể cả máy chủ không có màn hình, có thể chạy bridge <a href="#bridge-headless">từ dòng lệnh, không có cửa sổ</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Quay lại Mục lục</a>
@@ -3368,7 +3386,7 @@
                     bridge, lần sau nó lại khởi động như một bridge.
                 </p>
 
-                <p><strong>2. Từ dòng lệnh</strong> (chỉ cho máy tính). Dành cho máy tính không có việc gì khác, kể cả
+                <p id="bridge-headless"><strong>2. Từ dòng lệnh</strong> (chỉ cho máy tính). Dành cho máy tính không có việc gì khác, kể cả
                     Raspberry Pi hoặc máy chủ không có màn hình: khởi động qFT8 với <code>--bridge</code>. Khi đó nó chỉ
                     chạy như một bridge, không có cửa sổ, và không nạp phần nào khác của qFT8 (không cài đặt, không giải
                     mã), nên cần rất ít bộ nhớ. Dùng bản qFT8 bạn đã tải về cho máy tính đó, từ một cửa sổ dòng lệnh:

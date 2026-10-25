@@ -61,6 +61,7 @@
                         <li><a href="#pc-trouble">Hvis noe ikke fungerer</a></li>
                     </ul>
                 </li>
+                <li><a href="#iphone">qFT8 på iPhone og iPad</a></li>
                 <li><a href="#quick-setup">Hurtigoppsett</a>
                     <ul>
                         <li><a href="#initial-permissions">Gi de første tillatelsene</a></li>
@@ -151,7 +152,7 @@
             <h2>Hva er qFT8?</h2>
 
             <p>
-                qFT8 er en app for <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amatørradio</a> for telefoner og nettbrett med <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> og for datamaskiner med Windows, macOS og Linux. Den dekoder og sender digitale meldinger i FT8, FT4, FT2, LQ8, JS8 og WSPR gjennom en transceiver. Med den samme transceiveren og den samme kabelen kjører den også tale (SSB), morse (CW), RTTY og bilder (SSTV).
+                qFT8 er en app for <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">amatørradio</a> for telefoner og nettbrett med <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a>, for iPhone og iPad og for datamaskiner med Windows, macOS og Linux. Den dekoder og sender digitale meldinger i FT8, FT4, FT2, LQ8, JS8 og WSPR gjennom en transceiver. Med den samme transceiveren og den samme kabelen kjører den også tale (SSB), morse (CW), RTTY og bilder (SSTV).
             </p>
 
             <p>
@@ -242,6 +243,8 @@
                 <li><strong>QuantumSDR</strong></li>
                 <li><strong>(tr)uSDX / uSDX+ / usdr</strong></li>
             </ul>
+
+            <p>På iPhone og iPad styres radioen ikke via en USB-kabel: se <a href="#iphone">qFT8 på iPhone og iPad</a>.</p>
 
             <p>La <strong>Innstillinger &gt; Enhet</strong> stå på <code>AUTO</code>: en støttet radio som er koblet til med USB, blir gjenkjent automatisk. Du kan også velge radioen din selv i listen.</p>
 
@@ -812,6 +815,21 @@
                 <li><strong>Frosset fossefall, lydhull eller høy belastning på en datamaskin med én eller to kjerner:</strong> se
                     <a href="#pc-slow">Trege datamaskiner</a>, lukk andre programmer, og send en rapport med
                     <strong>RAPPORTER FEIL</strong> hvis det fortsetter.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Tilbake til innholdet</a>
+        </section>
+
+        <section id="iphone">
+            <h2>qFT8 på iPhone og iPad</h2>
+
+            <p>qFT8 for iPhone og iPad virker som qFT8 for Android, og resten av denne manualen gjelder også for den; den krever iOS 17 eller nyere. Det som er annerledes, er hvordan den når radioen.</p>
+
+            <p>En iPhone eller iPad kan ikke styre en radio via kabel: det finnes ingen CAT, så qFT8 kan ikke stille inn radioens frekvens eller sette den på sending via USB. Den hører radioen og sender tonene sine gjennom radioens USB-lydgrensesnitt, et annet lydgrensesnitt eller en lydkabel. Bruk en av disse for å få radioen til å sende:</p>
+            <ul>
+                <li>Radioens VOX: radioen går selv over på sending når tonene fra qFT8 når den. Velg VOX i innstillingene til qFT8.</li>
+                <li>Et lydgrensesnitt som nøkler radioen på selve lyden: det setter radioen på sending hver gang det kommer lyd fra qFT8.</li>
+                <li><a href="#bridge">qFT8 bridge</a>: en datamaskin, en Raspberry Pi eller en Android-telefon eller -nettbrett ved siden av radioen, med radioen koblet til via USB. qFT8 på iPhone eller iPad styrer da radioen over ditt eget nettverk som om den var tilkoblet, frekvens og sending inkludert. En datamaskin uten andre oppgaver, også en server uten skjerm, kan kjøre bridge <a href="#bridge-headless">fra kommandolinjen, uten vindu</a>.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; Tilbake til innholdet</a>
@@ -3361,7 +3379,7 @@
                     Hvis du lukker qFT8 mens den er en bridge, starter den som bridge igjen neste gang.
                 </p>
 
-                <p><strong>2. Fra kommandolinjen</strong> (bare datamaskiner). For en datamaskin som ikke har noen annen
+                <p id="bridge-headless"><strong>2. Fra kommandolinjen</strong> (bare datamaskiner). For en datamaskin som ikke har noen annen
                     jobb, også en Raspberry Pi eller en server uten skjerm: start qFT8 med <code>--bridge</code>. Da
                     kjører det bare som bridge, uten vindu, og laster ingenting annet av qFT8 (ingen innstillinger,
                     ingen dekoding), så det trenger svært lite minne. Bruk den qFT8 du lastet ned for den datamaskinen,
