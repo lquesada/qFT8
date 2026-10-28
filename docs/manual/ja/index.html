@@ -10,6 +10,10 @@
 <meta content="https://qft8.com/manual/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="../../favicon.png" rel="icon" type="image/png"/>
+<link href="../../favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../favicon.ico" rel="shortcut icon"/>
+<link href="../../apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../../site.webmanifest" rel="manifest"/>
 <script src="../../data.js"></script>
 <script src="../manual-langs.js"></script>
 <script src="../manual.js"></script>
@@ -74,6 +78,9 @@
                         <li><a href="#mode-js8"><span translate="no">JS8</span></a></li>
                         <li><a href="#mode-wspr"><span translate="no">WSPR</span></a></li>
                         <li><a href="#mode-lq8"><span translate="no">LQ8</span></a></li>
+                        <li><a href="#mode-q65"><span translate="no">Q65</span></a></li>
+                        <li><a href="#mode-msk144-intro"><span translate="no">MSK144</span></a></li>
+                        <li><a href="#mode-fst4"><span translate="no">FST4</span></a></li>
                     </ul>
                 </li>
                 <li><a href="#user-interface">qFT8 ユーザーインターフェース</a>
@@ -111,17 +118,27 @@
                 <li><a href="#pota">Parks On The Air（<span translate="no">POTA</span>）</a>
                 </li>
                 <li><a href="#activation">公園・山頂のアクティベーション</a></li>
-                <li><a href="#js8-chat"><span translate="no">JS8</span> チャット</a>
+                <li><a href="#js8-chat"><span translate="no">JS8</span>（キーボードチャット）</a>
+                    <ul>
+                        <li><a href="#js8-speeds">速度</a></li>
+                        <li><a href="#js8-sending">メッセージの送信</a></li>
+                        <li><a href="#js8-auto">自動応答（<span translate="no">AUTO</span>）</a></li>
+                        <li><a href="#js8-logging"><span translate="no">JS8</span> QSO の記録</a></li>
+                    </ul>
                 </li>
-                <li><a href="#wspr-mode"><span translate="no">WSPR</span> モード</a></li>
+                <li><a href="#wspr-mode"><span translate="no">WSPR</span> と <span translate="no">FST4W</span>（ビーコン）</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span>（音声）</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span>（モールス符号）</a>
                     <ul>
                         <li><a href="#cw-keys">アダプター、キーボード、マウスでのキーイング</a></li>
+                        <li><a href="#cw-auto-rit"><span translate="no">AUTO RIT</span>: 自分を呼んでいる局を追う</a></li>
+                        <li><a href="#cw-radio">無線機のキーイングのしかた</a></li>
+                        <li><a href="#cw-logging"><span translate="no">CW</span> の QSO をログに記録する</a></li>
                     </ul>
                 </li>
-                <li><a href="#rtty-mode"><span translate="no">RTTY</span></a></li>
+                <li><a href="#rtty-mode"><span translate="no">RTTY</span> と <span translate="no">JTTY</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span>（画像）</a></li>
+                <li><a href="#draw-mode"><span translate="no">DRAW</span>（ウォーターフォール上の画像）</a></li>
                 <li><a href="#features">機能の説明</a>
                     <ul>
                         <li><a href="#tune-offset">スペクトログラムのチューニングオフセット</a></li>
@@ -146,7 +163,7 @@
             <h2>qFT8とは？</h2>
 
             <p>
-                qFT8 は、<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> のスマートフォンやタブレット、iPhone・iPad、および Windows・macOS・Linux のパソコンで動作する<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">アマチュア無線</a>用アプリです。トランシーバーを使って FT8、FT4、FT2、LQ8、JS8、WSPR のデジタルメッセージをデコード・送信します。同じトランシーバーと同じケーブルで、音声（SSB）、モールス符号（CW）、RTTY、画像（SSTV）の運用もできます。
+                qFT8 は、<a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> のスマートフォンやタブレット、iOS、および Windows・macOS・Linux のパソコンで動作する<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">アマチュア無線</a>用アプリです。トランシーバーを使って FT8、FT4、FT2、LQ8、JS8、WSPR のデジタルメッセージをデコード・送信します。同じトランシーバーと同じケーブルで、音声（SSB）、モールス符号（CW）、RTTY、画像（SSTV）の運用もできます。
             </p>
 
             <p>
@@ -228,7 +245,6 @@
                 <li><strong>Elecraft K3 / K3S</strong></li>
                 <li><strong>Elecraft KX3</strong></li>
                 <li><strong>Elecraft KX2</strong></li>
-                <li><strong>Elecraft KH1</strong></li>
                 <li><strong>Elecraft K2（KIO2 モジュールが必要）</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
@@ -503,7 +519,7 @@
                     <dd><span class="row-label">パソコンでは</span> 右クリック</dd>
                 </div>
                 <div>
-                    <dt><span class="row-label">Android では</span> JS8 チャットのメッセージをダブルタップ</dt>
+                    <dt><span class="row-label">Android では</span> JS8 チャットのメッセージをタップ</dt>
                     <dd><span class="row-label">パソコンでは</span> ダブルクリック</dd>
                 </div>
                 <div>
@@ -921,6 +937,8 @@
                 <li><strong>コンテストナンバー</strong>: 一部のコンテストでは、グリッドロケーターとレポートの代わりに、クラスとセクション（フィールドデー）や、州名またはシリアルナンバー付きのレポート（RTTY コンテスト）を送ります。qFT8 はバンドの様子が分かるようにこれらのメッセージを表示しますが、応答することはありません。コンテストナンバーの送信は行いません。</li>
             </ul>
 
+            <p class="mode-specs"><strong>仕様：</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020。</p>
+
             <h3 id="mode-ft4">FT4</h3>
             <p>
                 FT4 は、交信をどれだけ速くこなせるかが重要になるアマチュア無線のコンテスト専用に設計された、簡素化されたデジタルモードです:
@@ -931,6 +949,8 @@
                 <li><strong>感度の低下</strong>: 速度を 2 倍にした代わりに、FT4 のデコード限界は約 <strong>-16.4 dB から -17.5 dB SNR</strong> です（FT8 に比べて約 3.5 から 4 dB の感度低下）。</li>
                 <li><strong>運用上の用途</strong>: 4-GFSK 変調と、標準の 77 ビットの定型メッセージを使います。伝搬が許せば、標準的なコンテストのやり取りを半分の時間で終えられます。</li>
             </ul>
+
+            <p class="mode-specs"><strong>仕様：</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020。</p>
 
             <h3 id="mode-ft2">FT2</h3>
             <p>
@@ -943,22 +963,27 @@
                 <li><strong>運用上の用途</strong>: 信号の強いオープニングや、交信できる時間がごく短いバースト的な伝搬で、信号がノイズフロアを十分に上回っているときの矢継ぎ早の交信に最適です。</li>
             </ul>
 
+            <p class="mode-specs"><strong>仕様：</strong> 公開された仕様はありません。</p>
+
             <h3 id="mode-js8">JS8</h3>
             <p>
                 JS8（Jordan Sherer の設計、8-GFSK）は、定型のコンテスト交信ではなく、<strong>会話を楽しむラグチュー、キーボード同士のチャット、アドホックなネットワーク</strong>のために作られています:
             </p>
             <ul>
-                <li><strong>メッセージの分割とフレーム化</strong>: 基本となる 8-GFSK 変調と 77 ビットのフレームは FT8 と同じですが、メッセージを分割して組み立て直す上位層のトランスポートプロトコルを加えています。これにより、任意の長さの自由な文章を、連続するサイクルにまたがって途切れなく送れます。</li>
-                <li><strong>複数の速度モード</strong>: バンドのコンディションに合わせて、4 つの速度から選べます:
+                <li><strong>メッセージの分割とフレーム化</strong>: FT8 と同じ 8-GFSK 変調を使いますが、フレームは 75 ビットで、トランスポート層がメッセージをフレームに分け、組み立て直します。任意の長さの自由な文章を、連続するタイムスロットにまたがって送れます。</li>
+                <li><strong>複数の速度モード</strong>: バンドのコンディションに合わせて、5 つの速度から選べます:
                     <ul>
                         <li><em>Slow</em>: 30 秒のサイクル、帯域幅約 25 Hz、<strong>-25 dB SNR</strong> までデコード。</li>
                         <li><em>Normal</em>: 15 秒のサイクル、帯域幅約 50 Hz、<strong>-21 dB SNR</strong> までデコード。</li>
                         <li><em>Fast</em>: 10 秒のサイクル、帯域幅約 80 Hz、<strong>-18 dB SNR</strong> までデコード。</li>
                         <li><em>Turbo</em>: 6 秒のサイクル、帯域幅約 160 Hz、<strong>-15 dB SNR</strong> までデコード。</li>
+                        <li><em>Ultra</em>: 4 秒のサイクル、帯域幅約 250 Hz、強い信号専用。</li>
                     </ul>
                 </li>
-                <li><strong>ネットワーク機能</strong>: 宛先を指定したメッセージ、中間の局を経由するメッセージの自動中継、ハートビートによる在席の確認、非同期のストア・アンド・フォワード型メールボックスに対応しています。</li>
+                <li><strong>ネットワーク機能</strong>: 1 局またはグループへのメッセージ、標準の質問への自動応答、ハートビートに対応しています。qFT8 は中継されたメッセージを表示しますが、他の局のためにメッセージを中継したり預かったりはしません（<a href="#js8-chat"><span translate="no">JS8</span>（キーボードチャット）</a>を参照）。</li>
             </ul>
+
+            <p class="mode-specs"><strong>仕様：</strong> 公開された仕様はありません。</p>
 
             <h3 id="mode-wspr">WSPR</h3>
             <p>
@@ -968,21 +993,64 @@
                 <li><strong>2 分のサイクル</strong>: 厳密に同期した <strong>2 分（120 秒）のサイクル</strong>で動作し、162 シンボルの 4-FSK のトーン列を 110.6 秒かけて送信します。</li>
                 <li><strong>極めて狭い帯域幅</strong>: 占有する帯域幅は約 <strong>6 Hz</strong> だけで、送信電力をごく狭いスペクトルに集中させます。</li>
                 <li><strong>極めて高い微弱信号感度</strong>: 標準の 2.5 kHz の基準帯域幅で <strong>-28 dB から -31 dB SNR</strong> という弱い信号までデコードでき、ミリワット級（QRPp）の送信機でも地球規模の距離に届きます。</li>
-                <li><strong>伝搬レポートの自動化</strong>: 局のコールサイン、Maidenhead グリッドロケーター（4 桁または 6 桁）、送信電力（dBm）を送信します。デコードされたスポットは世界規模の WSPRnet データベースに自動的に送られ、電離層伝搬の様子がリアルタイムで地図に示されます。</li>
+                <li><strong>伝搬レポートの自動化</strong>: 局のコールサイン、Maidenhead グリッドロケーター（4 桁または 6 桁）、送信電力（dBm）を送信します。デコードされたスポットは世界規模の WSPRnet データベースに送ることができ、伝搬の様子がリアルタイムで地図に示されます（<a href="#wspr-reports">WSPRnet と PSKReporter へのスポット</a>を参照）。</li>
             </ul>
+
+            <p class="mode-specs"><strong>仕様：</strong> J. Taylor (K1JT), &ldquo;WSPRing Around the World&rdquo;, <em>QST</em>, November 2010。</p>
 
             <h3 id="mode-lq8">LQ8</h3>
             <p>
                 LQ8 は、qFT8 の作者である <strong>Luis Quesada（HB9IPH）</strong>が開発した、先進的な微弱信号用デジタルモードです:
             </p>
             <ul>
-                <li><strong>感度を犠牲にせず、QSO をより早く完了</strong>: LQ8 は、<strong>感度をまったく犠牲にせずに</strong>、双方向の QSO を FT8 よりかなり早く完了します。微弱信号のデコード限界 <strong>-21 dB SNR</strong>（FT8 と同じ）をそのまま保ちながら、最適化されたプロトコル設計により、大幅に少ない送信回数で有効な交信を終えます。</li>
-                <li><strong>複合メッセージ</strong>: レポートと確認をまとめた送信（<code>REPORT+RR73</code>）や、複数の局への並行した応答（<code>MULTI_CALL</code>）に対応しており、標準的な QSO の所要時間を 4～6 サイクルからわずか 2～3 サイクルに短縮します。</li>
-                <li><strong>現代的な設計</strong>: 標準の 15 秒サイクルで動作し、79 シンボルの 8-GFSK 変調（帯域幅約 65 Hz）、最適化したハフマン符号で圧縮した 77 ビットのペイロード、14 ビット CRC による誤り検出、定型の非常通信用の信号を備えています。</li>
+                <li><strong>より速い QSO、同じ感度</strong>: LQ8 は FT8 の微弱信号のしきい値 -21 dB SNR を保ったまま、確認済みの交信を 4 回の送信（60 秒）で完了します。FT8 では 5 回か 6 回（75～90 秒）かかります。両局はこれまでどおりコールサイン、グリッドロケーター、シグナルレポートを交換します。</li>
+                <li><strong>4 メッセージの交換</strong>: <code>CQ</code>、次に <code>CALL</code>（応答局のロケーターとレポートを 1 つのメッセージで）、次に <code>REPORT+73</code>（レポートと確認を 1 つのメッセージで）、最後に <code>73</code>。独立した <code>RR73</code> の段階はありません。パイルアップでは <code>MULTI-REPORT+73</code> が 1 つのキャリアで 2 局を同時に確認し、<code>MULTI-73</code> が両局との交信を終えます。</li>
+                <li><strong>最新のアーキテクチャ</strong>: 15 秒サイクル、12.64 秒に 79 シンボルの 8-GFSK 変調（帯域幅 50 Hz）、種類を可変長（ハフマン）プレフィックスで符号化した 77 ビットのメッセージ、14 ビット CRC、LDPC(174,91) 誤り訂正。独自の同期パターンにより、LQ8 と FT8 が互いをデコードすることはありません。</li>
             </ul>
+
+            <p class="mode-specs"><strong>仕様：</strong> L. Quesada (HB9IPH), &ldquo;The LQ Digital Mode Family: Protocol Architecture and Reference Specification for Weak-Signal Communications&rdquo;, arXiv:2609.06427 (2026); リファレンスライブラリ: lq_lib。</p>
 
             <p>
                 詳しい情報、仕様、ツールについては、LQ モードのポータルサイト <a href="https://lq8.org" target="_blank">https://lq8.org</a> をご覧ください。
+            </p>
+
+            <h3 id="mode-q65">Q65</h3>
+            <p>
+                <span translate="no">Q65</span> は、難しい伝搬路のための弱信号 QSO モードです。6 m と 2 m の電離層散乱・対流圏散乱、2 m 以上の月面反射（EME）に使います。qFT8 では試験的なモードです。
+            </p>
+            <ul>
+                <li><strong>サブモード</strong>: サブモードは周期（15、30、60、120、300 秒）とトーン間隔（A〜E）の組み合わせで、<code translate="no">30A</code> や <code translate="no">60C</code> のように書きます。周期が長いほど感度が高く、トーン間隔が広いほど散乱や月でにじんだ信号に強くなります。両局が同じサブモードを使う必要があります。</li>
+                <li><strong>FT8 と同じメッセージ</strong>: <span translate="no">Q65</span> は同じ 77 ビットのメッセージを運ぶので、QSO の 6 つの段階は <span translate="no">FT8</span> と同じです。</li>
+                <li><strong>平均化</strong>: 1 回ずつでは弱すぎて解読できない繰り返し送信を、解読できるまで足し合わせることができます。</li>
+            </ul>
+            <p>
+                サブモードの選択、バンド、すべての項目は <a href="#q65-settings">設定 &gt; <span translate="no">Q65</span></a> で説明しています。<span translate="no">Q65</span> の局リストは <a href="#stations-q65">「ステーション」タブ</a> で説明しています。
+            </p>
+
+            <h3 id="mode-msk144-intro">MSK144</h3>
+            <p>
+                <span translate="no">MSK144</span> は 10 m、6 m、2 m、70 cm の流星散乱のためのモードです。qFT8 では試験的なモードです。
+            </p>
+            <ul>
+                <li><strong>ピング</strong>: 流星の飛跡が信号を反射するのはほんの一瞬です。送信は周期全体にわたってメッセージを繰り返し、その 1 回分を運べる長さのピングがあれば解読されます。</li>
+                <li><strong>周期</strong>: 5、10、15、30 秒。通常は 15 秒です。</li>
+                <li><strong>常に 1500 Hz</strong>: どの局も音声周波数 1500 Hz で送信し、トーンは 1000 Hz と 2000 Hz です。</li>
+                <li><strong>ショートメッセージ</strong>: レポート、<span translate="no">RRR</span>、<span translate="no">73</span> は、ずっと短いピングに収まるショートメッセージとして送ることができます。</li>
+            </ul>
+            <p>
+                設定項目は <a href="#mode-msk144">設定 &gt; <span translate="no">MSK144</span></a> で説明しています。<span translate="no">MSK144</span> の局リストは <a href="#stations-msk144">「ステーション」タブ</a> で説明しています。
+            </p>
+
+            <h3 id="mode-fst4">FST4</h3>
+            <p>
+                <span translate="no">FST4</span> は、低いバンド（2200 m、630 m、160 m）と、信号がとても弱いときの HF のための弱信号 QSO モードです。qFT8 では試験的なモードです。
+            </p>
+            <ul>
+                <li><strong>周期</strong>: 15、30、60、120、300、900、1800 秒。周期が長いほど信号は狭く、感度が高くなります。15 秒で約 -21 dB、1800 秒で約 -43 dB です。</li>
+                <li><strong>FT8 と同じメッセージ</strong>: <span translate="no">FST4</span> は同じ 77 ビットのメッセージを運ぶので、QSO の 6 つの段階は <span translate="no">FT8</span> と同じで、ずっとゆっくり進むだけです。</li>
+            </ul>
+            <p>
+                設定項目は <a href="#fst4-settings">設定 &gt; <span translate="no">FST4</span></a> で説明しています。<span translate="no">FST4</span> の局リストは <a href="#stations-fst4">「ステーション」タブ</a> で説明しています。ビーコン用の <span translate="no">FST4W</span> は <span translate="no">WSPR</span> と同じように動きます。
             </p>
 
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
@@ -1027,7 +1095,7 @@
                 <li><strong>メッセージセレクター</strong>: 送信するよう選択されているメッセージ、または送信中のメッセージを表示します（送信中は<span style="color: #ffff00; font-weight: bold;">黄色</span>で強調表示されます）。<span translate="no">AUTO</span> モードでは自動で管理されます。<span translate="no">CALL</span> モードでも既定では自動で管理されますが、タップして次に送るメッセージを手動で選ぶこともできます。
                 </li>
                 <li><strong>シーケンスセレクター</strong>: ボタンの上の<span style="color: #ffff00; font-weight: bold;">黄色</span>の線が現在のシーケンス（0 または 1）を示します。0 または 1 をタップすると、そのシーケンスで送信するようになります。</li>
-                <li><strong>モードセレクター</strong>: 使用する送信モード（例: <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">JS8</span>、<span translate="no">WSPR</span>）を切り替えます。<a href="#ssb-mode"><span translate="no">SSB</span></a>、<a href="#cw-mode"><span translate="no">CW</span></a>、<a href="#rtty-mode"><span translate="no">RTTY</span></a>、<a href="#sstv-mode"><span translate="no">SSTV</span></a> にも切り替えられ、これらを選ぶと、それぞれの章で説明するとおり下部バーと「ステーション」タブが変わります。デジタルモードからこの 4 つのいずれかへ、その逆へ、またはこの 4 つの間で切り替えると、<span translate="no">TX</span> <span translate="no">OFF</span> になります。準備ができたら、もう一度送信を有効にしてください。デジタルモード同士の切り替えでは、状態は変わりません。</li>
+                <li><strong>モードセレクター</strong>: 使用する送信モード（例: <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">Q65</span>、<span translate="no">MSK144</span>、<span translate="no">FST4</span>、<span translate="no">FST4W</span>、<span translate="no">JS8</span>、<span translate="no">WSPR</span>）を切り替えます。<a href="#ssb-mode"><span translate="no">SSB</span></a>、<a href="#cw-mode"><span translate="no">CW</span></a>、<a href="#rtty-mode"><span translate="no">RTTY</span></a>、<a href="#sstv-mode"><span translate="no">SSTV</span></a> にも切り替えられ、これらを選ぶと、それぞれの章で説明するとおり下部バーと「ステーション」タブが変わります。デジタルモードからこの 4 つのいずれかへ、その逆へ、またはこの 4 つの間で切り替えると、<span translate="no">TX</span> <span translate="no">OFF</span> になります。準備ができたら、もう一度送信を有効にしてください。デジタルモード同士の切り替えでは、状態は変わりません。</li>
                 <li><strong>バンドセレクター</strong>: トランシーバーが接続されているときは、トランシーバーのバンドを切り替えます。</li>
                 <li><strong>「ステーション」タブのボタン</strong>: これまでに聞こえた局、または交信できる局の一覧のタブを開きます。</li>
                 <li><strong>「ログ」タブのボタン</strong>: これまでに行ったすべての <span translate="no">QSO</span> の一覧のタブを開きます。QRZ にアップロードされていない QSO があるときは、このボタンに黄色の点が付きます。
@@ -1107,6 +1175,7 @@
                         </li>
                     </ul>
                     どの場合も、同じ条件を満たす局は信号の強い順に並びます。たとえば <span translate="no">誰でも</span> では新しいコールサインが優先されますが、その中では信号の強い局が一覧の上に来ます。
+                    ターゲット条件を満たす局は常に先頭に並び、「以下の局はターゲット条件を満たしていません」という行を含む短い間隔でそれ以外の局と区切られます。条件を満たす局が1つもないときは、リストの先頭に「ターゲットの局はありません – 下に表示します」の行が表示されます。
                 </li>
                 <li><strong>頻度</strong>: そのターゲットとどのくらいの間隔で交信するか:
                     <ul>
@@ -1168,6 +1237,8 @@
                         <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6 RR73</span>: 自局のレポートを <span translate="no">RR73</span> で確認してきました。</li>
                         <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6 DONE</span>: <span translate="no">QSO</span> 完了（73 を交換済み）。
                         </li>
+                        <li><span style="color: #aaaaaa; font-weight: bold;"><span translate="no">BUSY</span></span>:
+                            他の局と <span translate="no">QSO</span> 中であるのが聞こえています。</li>
                         <li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>: ここ数サイクル聞こえていません。
                         </li>
                         <li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO LONG</span>: <span translate="no">FT8</span> デジタルモードの制限により、自局と相手局のコールサインを合わせると長すぎて交信できません。
@@ -1201,6 +1272,88 @@
             </ul>
 
             <p>局は関連性の高い順に自動で並べ替えられます。ターゲットの条件や制約を変えると、一覧はすぐに並べ替えられます。</p>
+
+            <h4 id="stations-order">リストの並び順</h4>
+            <p>リストの上から順に：</p>
+            <ol>
+                <li>QSO を完了したばかりの局（<span translate="no">DONE</span>）。</li>
+                <li><span translate="no">CALL</span> で選んだ局。</li>
+                <li>あなたと QSO 中の局。進んでいるものから順に、あなたの 73 を待っている局、レポートを送ってきた局、あなたを呼んできた局。</li>
+                <li>あなたのバンドでターゲット条件を満たす局。最もよく当てはまるものから順です。同じなら信号の強いものが先で、距離のターゲットでは距離が先に決めます。</li>
+                <li>「以下の局はターゲット条件を満たしていません」の行、そしてその他のすべての局を同じ順で。</li>
+                <li>もう聞こえない局（<span translate="no">GONE</span>）、そして一番下に、相手のコールサインとあなたのものを 1 つのメッセージに入れられない局（<span translate="no">TOO LONG</span>）。</li>
+            </ol>
+            <p>
+                各グループの中では、最後に別のバンドで聞こえた局は、あなたのバンドの局の後になります。別のモードで聞こえた局は表示されず、現在のモードで初めて聞こえたときに戻ってきます。+ ボタンで追加した局は常にリストに残ります。ターゲットとその他の局の間の線は、スマートフォン、コンピューター、iPhone、Web リモートで同じです。ただのラベルなので、タップしても何も起きません。
+            </p>
+
+            <h4 id="stations-modes">各 QSO モードでの「ステーション」タブ</h4>
+            <p>
+                <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">Q65</span>、<span translate="no">MSK144</span>、<span translate="no">FST4</span> はすべてこの同じタブを使います。上部の操作部も、局の行も、並び順も同じです。リストには、使っているモードで聞こえた局だけが表示されます。モードによって変わるのは次の点です：
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">FT8</span></dt>
+                    <dd><span class="row-label">周期</span> 15 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT4</span></dt>
+                    <dd><span class="row-label">周期</span> 7.5 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT2</span></dt>
+                    <dd><span class="row-label">周期</span> 3.75 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">LQ8</span></dt>
+                    <dd><span class="row-label">周期</span> 15 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/4 – 4/4</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Q65</span></dt>
+                    <dd><span class="row-label">周期</span> 15 – 300 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">下部バーで選ぶもの</span> サブモード (<span translate="no">30A</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">MSK144</span></dt>
+                    <dd><span class="row-label">周期</span> 5 – 30 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">下部バーで選ぶもの</span> 周期 (<span translate="no">15s</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FST4</span></dt>
+                    <dd><span class="row-label">周期</span> 15 – 1800 s</dd>
+                    <dd><span class="row-label">QSO の段階</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">下部バーで選ぶもの</span> 周期</dd>
+                </div>
+            </dl>
+            <p>
+                下部バーのモードの隣にある選択欄は、スマートフォン、コンピューター、iPhone、Web リモートのどれにもあります。シーケンス 0 と 1 は、長さに関係なく、そのモードの偶数周期と奇数周期です。周期が長いモードでは、それに見合う数の無音の周期が過ぎて初めて、局はもう聞こえない（<span translate="no">GONE</span>）と見なされます。
+            </p>
+
+            <p id="stations-ft4-ft2"><strong><span translate="no">FT4</span> / <span translate="no">FT2</span></strong>: すべて <span translate="no">FT8</span> と同じように動き、速いだけです。1 周期が短いので QSO は速く進み、<span translate="no">FT2</span> では QSO 全体が 1 分よりずっと短い時間で終わることもあります。</p>
+
+            <p id="stations-lq8"><strong><span translate="no">LQ8</span></strong>: <span translate="no">LQ8</span> の QSO は 6 段階ではなく 4 段階で、状態欄にそれが表示されます：</p>
+            <ul>
+                <li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/4 CQ</span></span>: <span translate="no">CQ</span> を出しているのが聞こえた。例：<code translate="no">CQ DL1XYZ JO62</code>。</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/4 CALL</span></span>: あなたを呼んできた。相手のロケーターとあなたへのレポートが同じメッセージに入っています。例：<code translate="no">HB9IPH DL1XYZ JO62 -11</code>。</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/4 RPT73</span></span>: 確認と一緒にレポートを送ってきた。<code translate="no">HB9IPH DL1XYZ R-11</code> と表示されます。</li>
+                <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">4/4 DONE</span></span>: <span translate="no">QSO</span> 完了（73 を交換済み）。</li>
+            </ul>
+            <p><span translate="no">LQ8</span> には独立したレポートの段階も <span translate="no">RR73</span> もありません。プロトコルがそのように作られています。<span translate="no">DIRECT</span>、<span translate="no">BUSY</span>、<span translate="no">GONE</span>、<span translate="no">TOO LONG</span> の意味は <span translate="no">FT8</span> と同じです。相手のコールサインをあなたのものと一緒に <span translate="no">LQ8</span> で送れない局で <span translate="no">CALL</span> を押すと、qFT8 はそのことを知らせ、呼び出しません。</p>
+
+            <p id="stations-q65"><strong><span translate="no">Q65</span></strong>: 呼ぶ前に、下部バーのモードの隣でサブモードを選んでください。別のサブモードを使っている局は解読されません。長いサブモードでは QSO の各段階が 1 周期（最長 5 分）かかるので、QSO はずっと長くかかり、局の行は 1 周期に 1 回変わります。平均化がオンのときは、何回かの送信が足し合わされてから局が現れることがあります。長いサブモードには、十分に大きな <a href="#tx-limit">連続送信時間の上限</a> が必要です。</p>
+
+            <p id="stations-msk144"><strong><span translate="no">MSK144</span></strong>: 下部バーのモードの隣で周期を選んでください。局はピングの 1 つが解読されたときに現れるので、行は流星とともに現れては消えます。信号強度はそのピングのもので、Δt は周期内でのピングの時刻であり、時計のずれではありません。ショートメッセージは長い形式と同じく両方のコールサイン付きで表示されます。例：<code translate="no">K1ABC W9XYZ R+03</code>。読めるのはその QSO の 2 局だけです。設定でショートメッセージをオンにすると、qFT8 はあなたのレポート、<span translate="no">RRR</span>、<span translate="no">73</span> をこの形で送ります。あなたの <span translate="no">CQ</span>、呼び出し、<span translate="no">RR73</span> は常に通常のメッセージで送られます。すべての局が 1500 Hz で送信するので、局のオフセットはあまり意味を持ちません。</p>
+
+            <p id="stations-fst4"><strong><span translate="no">FST4</span></strong>: 下部バーのモードの隣で周期を選んでください。相手局と同じでなければなりません。900 秒や 1800 秒の周期では 1 つの QSO に 1 時間以上かかることがあり、1 回の送信で無線機が最長 30 分送信し続けます。それを許すように <a href="#tx-limit">連続送信時間の上限</a> を設定してください。そうしないと qFT8 は送信しません。</p>
+
+            <p><span translate="no">AUTO</span> の設定、ターゲット、再試行は、これらのどのモードでも同じです。<a href="#auto-mode">自動運用（<span translate="no">AUTO</span>）</a> を参照してください。</p>
+
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
 
             <h3 id="ui-log-tab">「ログ」タブ</h3>
@@ -1291,7 +1444,7 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>: 画面上の情報カード（時刻、昼夜の境界線、太陽直下点、十字線の座標）の表示を切り替えます。</li>
                         <li><strong><span translate="no">MSGs</span></strong>: 自局が直接やり取りしたメッセージの経路とマーカーの表示を切り替えます。受信したメッセージ（自局あて）は<span style="color: #ff9800; font-weight: bold;">オレンジ</span>、送信したメッセージ（自局から）は<span style="color: #ffff00; font-weight: bold;">黄色</span>で表示されます。矢印の中央をタップすると、メッセージの本文が表示されます。</li>
-                        <li><strong><span translate="no">QSOs</span></strong>: 今回のセッションで最近交信した局のマーカーの表示を切り替えます（<span style="color: #f59e0b; font-weight: bold;">アンバー</span>は記録済み、<span style="color: #10b981; font-weight: bold;">エメラルド</span>は確認済み）。</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: 今回のセッションで最近交信した局のマーカーの表示を切り替えます（<span style="color: #f59e0b; font-weight: bold;">アンバー</span>は記録済み、<span style="color: #10b981; font-weight: bold;">エメラルド</span>は確認済み）。 <span translate="no">MSGs</span> と <span translate="no">Spot</span> の両方がオフのときは、自局から地図上の各 <span translate="no">QSO</span> 局へ細い線（矢印なし）が引かれ、交信先がひと目でわかります。共有した地図の画像にもこの線が入ります。</li>
                         <li><strong><span translate="no">Spot</span></strong>: 自局がバンドで受信してデコードした局のスポット（RX / CQ は<span style="color: #00ffff; font-weight: bold;">シアン</span>）と、自局の信号を PSKReporter / WSPRnet に報告した受信局（<span style="color: #ff5252; font-weight: bold;">赤いひし形</span>）の表示を切り替えます。</li>
                         <li><strong><span translate="no">SOTA</span></strong>: Summits On The Air の山頂リファレンスと、運用中の山頂アクティベーター（⛰️）の表示を切り替えます。</li>
                         <li><strong><span translate="no">POTA</span></strong>: Parks On The Air の公園リファレンスと、運用中の公園アクティベーター（🌲）の表示を切り替えます。</li>
@@ -1350,7 +1503,7 @@
                 <li><strong>世界地図</strong>: 地図に何をどのくらいの期間表示するかを選びます。成立した QSO、スポット、送受信したメッセージのそれぞれに、表示期間を設定できます。</li>
                 <li><strong>時刻と位置情報</strong>: 時刻オフセットの同期（NTP または GPS）と、Maidenhead グリッドロケーターを設定します。</li>
                 <li><strong>自動運用</strong>: 自動運用の設定、再試行回数、プリフィックスの除外、そして自局あてではない<a href="#auto-directed-cq">指向性 CQ</a> に <span translate="no">AUTO</span> が応答するかどうかを設定します。</li>
-                <li><strong>デジタルモード</strong>: すべてのモードのデコードオプションを 1 か所にまとめています &mdash; FT8/FT4/FT2、LQ8、JS8、WSPR &mdash; 共通の<strong>ディープデコード</strong>設定と、デコードに使えるスレッド数も含みます。</li>
+                <li><strong>デジタルモード</strong>: すべてのモードのデコードオプションを 1 か所にまとめています &mdash; FT8/FT4/FT2、LQ8、Q65、MSK144、FST4、FST4W、JS8、WSPR &mdash; 共通の<strong>ディープデコード</strong>設定と、デコードに使えるスレッド数も含みます。</li>
                 <li><strong><span translate="no">SSB</span></strong>、<strong><span translate="no">CW</span></strong>、<strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>、<strong><span translate="no">SSTV</span></strong>: これらのモードそれぞれの設定です。内容は各モードの章で説明します。各モードのペインにある歯車ボタンでも同じページが開きます。</li>
                 <li><strong>バンド選択</strong>: 使用するバンドと、バンド切り替えの動作を設定します。</li>
                 <li><strong>リモートコントロールWebサーバー</strong>: リモートコントロール用の内蔵ウェブサーバーを有効にして設定します。</li>
@@ -1835,11 +1988,66 @@
                 削除しません。ここで QSO を削除すると、それがまだそちらに残っていることが警告されるだけです。
             </p>
 
-            <h3>qFT8 サーバー</h3>
+            <h3 id="choosing-services">サービスとサーバーを選ぶ</h3>
             <p>
-                設定の下のほう、2 本の線の間にある<strong>qFT8 サーバー</strong>には、この端末が他のプログラムに提供できるものがまとまっています。
-                リモートコントロール Web サーバー、qFT8 bridge、そして
-                <span translate="no">Wavelog</span>、<span translate="no">Cloudlog</span>、qFT8log のサーバーです。
+                <strong>QSO同期</strong>には QRZ、LoTW、eQSL と、すでに設定したすべてのサービスが表示されます。行の下の<strong>サービスを追加</strong>ですべてのサービスが一覧になります。チェックを入れるとそのサービスの行ができ、チェックを外すと完全に停止します（アップロードも確認もなく、緑のチェックの判定に使われず、エクスポートの選択肢からも消えます）。アカウント、キー、スイッチは保存されるので、もう一度チェックすると元どおりに戻ります。
+            </p>
+            <p>
+                そのすぐ下の<strong>サーバー</strong>には、この端末がほかのプログラムに提供するものがあります。各行のチェックボックス（例:「リモートコントロールWebサーバー（ポート13497）」）は、そのサーバーのページにあるスイッチと同じもので、歯車でそのページが開きます。リモートコントロール Web サーバーと qFT8 bridge は常にあります（iPhone にはどちらもありません）。<strong>サーバーを追加</strong>で Wavelog、Cloudlog、qFT8log のサーバーを追加できます。チェックを外したサーバーはすぐに停止し、もう一度チェックすると元の状態に戻ります。
+            </p>
+            <p>
+                地図に使うダウンロードは その他の設定 &gt; <strong>データソース</strong>（バンド選択 のすぐ下）にあります。初期状態ではすべてオンです。
+            </p>
+
+            <h3 id="services-list">すべてのサービスとサーバー</h3>
+            <p>
+                qFT8 が QSO やレポートを送れる先、ほかのプログラムに提供できるもの、そしてそれぞれの説明箇所です。
+            </p>
+            <ul>
+                <li><strong>QSO同期</strong>（QSO が外へ出ます）: <a href="#qrz-integration"><span translate="no">QRZ</span></a>、<a href="#lotw-integration"><span translate="no">LoTW</span></a>、<a href="#eqsl"><span translate="no">eQSL</span></a>、<a href="#wavelog"><span translate="no">Wavelog</span></a>、<a href="#cloudlog"><span translate="no">Cloudlog</span></a>、<a href="#qft8-log">qFT8log</a>（別の qFT8 へ）、<a href="#online-logbooks"><span translate="no">HRDLog</span>、<span translate="no">HamQTH</span>、<span translate="no">World Radio League</span>、<span translate="no">Club Log</span></a>、そしてネットワーク上のログプログラム（<a href="#lan-loggers"><span translate="no">FT8 network log</span> と <span translate="no">ADIF over UDP</span></a>）。</li>
+                <li><strong>サーバー</strong>（ほかのプログラムがこの qFT8 に接続します）: <a href="#remote-control">リモートコントロール Web サーバー</a>、<a href="#bridge">qFT8 bridge</a>、<a href="#wavelog-server"><span translate="no">Wavelog</span></a>サーバーと<a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>サーバー、<a href="#qft8-log-server">qFT8log サーバー</a>、そして<a href="#lan-loggers">ネットワーク上のログプログラム用の受信機</a>（<span translate="no">FT8 network log</span>、<span translate="no">ADIF over UDP</span>、<span translate="no">AC Log</span> と <span translate="no">DXLab</span> のインターフェース）。</li>
+                <li><strong>レポート送信</strong>（受信した内容が外へ出ます）: <a href="#pskreporter"><span translate="no">PSKReporter</span></a>、<a href="#wspr-reports"><span translate="no">WSPRnet</span></a>、そして<a href="#lq8-announce">ライブマップでの <span translate="no">LQ8</span> のアクティビティ</a>。</li>
+                <li><strong>イベント</strong>: <a href="#activation"><span translate="no">POTA</span> と <span translate="no">SOTA</span> のアクティベーション</a>と<a href="#event-counter">QSO カウンター</a>。</li>
+            </ul>
+            <p>
+                1 つのログを複数の qFT8 で共有するには、qFT8log をおすすめします。どの qFT8 でも同じように動作し、最も安全で（パスワード、署名付きのすべてのメッセージ、そして初期設定では暗号化）、相手の qFT8 が各QSOを確認するので、途中で失われることがありません。UDP で送るサービスにはそれが保証できないため、設定では各スイッチの下にその旨が表示されます（<a href="#lan-loggers">下記</a>）。
+            </p>
+
+            <h3 id="online-logbooks">HRDLog、HamQTH、World Radio League、Club Log</h3>
+            <p>
+                それぞれに専用のページがあります。HRDLog は HRDLog のプロフィールに表示される<strong>HRDLogのアップロードコード</strong>（パスワードではありません）、HamQTH は<strong>HamQTHのコールサイン</strong>と<strong>HamQTHのパスワード</strong>、World Radio League はそのサイトで作成する<strong>WRLのAPIキー</strong>（Integrations &gt; Developer API）と、複数ある場合は<strong>WRLのログ</strong>、Club Log（qFT8 の Club Log キーを含むビルドでのみ利用可能）は<strong>Club Logのメールアドレス</strong>と<strong>Club Logのアプリケーションパスワード</strong>を求めます。そのあと<strong>検証</strong>を押します。qFT8 がそれらのサービスで QSO を削除することはありません。Club Log では、コールサイン、日付、時刻、バンド、モードを変えた QSO の古い記録が残ります（ウェブサイトで削除してください）。
+            </p>
+
+            <h3 id="lan-loggers">ネットワーク上のログプログラム</h3>
+            <p>
+                qFT8 は記録した各QSOを、ローカルネットワーク上のログ・地図プログラムに送れます。<strong>サービスを追加</strong> で <span translate="no">FT8 network log</span>(UDPポート 2237)または <span translate="no">ADIF over UDP</span>(UDPポート 2333)にチェックを入れると、その行が <strong>QSO同期</strong> の下に現れます。そのページで相手のプログラムが動くコンピューターのアドレス(127.0.0.1 はこのコンピューター)とポートを入力し、<strong>検証</strong> を押してからチェックボックスを入れます。<span translate="no">FT8 network log</span> はデコード結果と局の状態も送れます(<strong>デコード結果と局の状態も送る(地図とアラート用)</strong>)。相手のプログラムの地図とアラートがこれを使います。これらのメッセージには受領確認がないため、この方法で送ったQSOはアップロード済みとは数えられません。設定には、それぞれの下に動作を確認したプログラムが表示されます。
+            </p>
+            <p>
+                逆方向では、qFT8 は他のプログラムのQSOを自分のログに取り込めます。<strong>サーバーを追加</strong> で相手のプログラムが送る形式の受信機にチェックを入れます: <span translate="no">FT8 network log</span>(UDP 2237)、<span translate="no">ADIF over UDP</span>(UDP 2333)、<span translate="no">AC Log</span> インターフェース(TCP 1100)、<span translate="no">DXLab</span> インターフェース(TCP 52001)。次に <strong>サーバー</strong> の下のその行にチェックを入れます。そのページには相手のプログラムに入力するアドレスが表示され、ポートの変更や特定のアドレスからだけQSOを受け入れる設定ができます。この方法で受信したものが送信したり、無線機を変更したり、QSOを削除したりすることはありません。受信機はオンにするまでオフです。iPhone では qFT8 を開いている間だけ動作し、マルチキャストグループには参加しません。
+            </p>
+
+            <div class="highlight" id="lan-udp-note">
+                <p>
+                    UDP でのログ送信は完全ではありません。<span translate="no">FT8 network log</span> と <span translate="no">ADIF over UDP</span> は各QSOを受領確認なしで一度だけ送るため、そのパケットが失われると（たとえば Wi-Fi の状態が悪いとき）QSOも失われます。また、これらの形式にはパスワードがありません。オンにした受信機には、ネットワーク上の誰でもあなたになりすましてQSOを送信でき、クライアントは入力したアドレスで待ち受けているものに、あなたのQSOを送ります。設定では、それぞれのスイッチの下、行、そしてそのページにこのことが表示されます。受信機の受け入れアドレスの一覧で、送信できる相手を制限できます。QSOには、代わりに qFT8log をおすすめします。qFT8 同士で互換性があり、最も安全で、暗号化されます（<a href="#qft8-log">qFT8log</a> を参照）。
+                </p>
+            </div>
+
+            <h3 id="pskreporter"><span translate="no">PSKReporter</span></h3>
+            <p>
+                <span translate="no">PSKReporter</span> は世界中の受信レポートを集めています。どの局がどこで、どのバンドとモードで、どれくらいの強さで受信されたかです。設定の<strong>レポート送信</strong>で、<strong>PSKReporter にレポートをアップロード</strong>（初期設定ではオフ）をオンにすると、qFT8 がデコードするすべてのモードで、デコードした局が、あなたのコールサイン、ロケーター、無線機とアンテナの情報とともに送られます。歯車ボタンでページが開きます。
+            </p>
+            <ul>
+                <li><strong>スピーカー/マイクでの通信時にもレポートをアップロード</strong>: 初期設定ではオフです。そのため、無線機にケーブルで接続せず、端末のマイクで聞いている間は何も送信されません。</li>
+                <li>送信待ちのレポート（<em>現在 12 件のレコードを保存中</em>）と、送信される時刻（<em>次回アップロード: ... UTC</em>）。約 5 分ごとにまとめて送られます。同じバンドとモードの同じ局は 15 分に 1 回までしか報告されず、10 分より古いレポートは破棄されます。<strong>今すぐアップロード</strong>はすぐに送信し、<strong>キャッシュをクリア</strong>は未送信のまま削除します。</li>
+                <li><strong>デフォルトにリセット</strong>。</li>
+            </ul>
+            <p>
+                逆方向では、<strong>PSKReporter からスポットをダウンロード</strong>（設定の<strong>データソース</strong>）で、あなた自身の信号を受信した局を取得し、世界地図に表示します。ビーコンネットワークの <span translate="no">WSPRnet</span> については <a href="#wspr-reports"><span translate="no">WSPR</span></a> で説明しています。
+            </p>
+
+            <h3 id="lq8-announce">ライブマップでの <span translate="no">LQ8</span> のアクティビティ</h3>
+            <p>
+                <strong>LQ8のアクティビティをqFT8サービスに通知</strong>（設定の<strong>レポート送信</strong>、初期設定ではオフ）: 無線機を通して <span translate="no">LQ8</span> で送信している間、qFT8 はあなたのコールサイン、4 文字のロケーター、バンドと周波数、モード、時刻、qFT8 のバージョンを送ります。ほかの qFT8 と <span translate="no">lq8.org/live</span> のライブマップには 10 分間表示され、メモリ内にのみ保持されます。オフの状態で初めて <span translate="no">LQ8</span> の TX を有効にすると、オンにするかどうか一度だけ確認されます。<strong>スピーカー/マイクでの通信時にも通知</strong>は、無線機を接続していないときにも同じことを行います。<strong>qFT8サーバーからLQ8のアクティビティをダウンロード</strong>（設定の<strong>データソース</strong>）は、ほかの局の <span translate="no">LQ8</span> のアクティビティを地図に表示します。
             </p>
 
             <a href="#top" class="back-to-toc">&uarr; 目次へ戻る</a>
@@ -2293,6 +2501,18 @@
                 公園（<span translate="no">POTA</span>）や山頂（<span translate="no">SOTA</span>）から運用するときは、qFT8 で<strong>アクティベーション</strong>を開始します。それ以降に記録する QSO には、どのモードでも自動的に公園または山頂が付き、qFT8 がその数を数え、最後にはワンタップで各プログラムが求めるファイルを書き出します。
             </p>
 
+            <h3 id="events-section">設定のイベントセクション</h3>
+            <p>
+                設定には、運用イベントのための<strong>イベント</strong>セクションがあります。現在は次のものがあります。
+            </p>
+            <ul>
+                <li><strong><span translate="no">POTA</span> アクティベーション</strong>と<strong><span translate="no">SOTA</span> アクティベーション</strong>: 公園や山頂のアクティベーションです。以下で説明します。それぞれの横の虫めがねで過去のアクティベーションの一覧が表示されます。歯車ボタンがある場合は、そのプログラムへの通知設定が開きます。</li>
+                <li><strong>カウンターを開始</strong>: <a href="#event-counter">QSO カウンター</a>です。そのほかのイベント（コンテスト、クラブの日、特別局）に使います。</li>
+            </ul>
+            <p>
+                自宅から公園や山頂を狙う方法は、<a href="#pota"><span translate="no">POTA</span></a> と <a href="#sota"><span translate="no">SOTA</span></a> のセクションで説明しています。
+            </p>
+
             <h3 id="activation-start">開始する</h3>
             <ol>
                 <li>「設定」タブで <strong><span translate="no">POTA アクティベーション</span></strong> または <strong><span translate="no">SOTA アクティベーション</span></strong> を押します（<strong>設定をエクスポート / 設定をインポート</strong>のすぐ上にあります）。</li>
@@ -2328,7 +2548,7 @@
 
             <h3 id="activation-chip">開いている間: 青いマーカー</h3>
             <p>
-                アクティベーションが開いている間は、ウォーターフォールの右下に青い <strong><span translate="no">POTA</span></strong> または <strong><span translate="no">SOTA</span></strong> のマーカーが表示され、その横にアクティベーションの QSO 数が表示されます: <strong><span translate="no">POTA 10</span></strong>。記録した QSO はすべて数えられ、QSO をアクティベーションから外したり、削除したり、ロガーで取り消したりすると、数は減ります。2 つの公園を同時に運用していても数字は 1 つです。各 QSO が両方の公園に数えられるからです。表示する場所が狭いときは、マーカーはアイコンの横に数字だけを表示し、それも入らないときは、同じ行にある赤い警告とともに小さく描かれます。タップすると、アクティベーションの状態が表示されます:
+                アクティベーションが開いている間は、ウォーターフォールの右下に青い <strong><span translate="no">POTA</span></strong> または <strong><span translate="no">SOTA</span></strong> のマーカーが表示され、その横にアクティベーションの QSO 数が表示されます: <strong><span translate="no">POTA 10</span></strong>。記録した QSO は 1 回だけ数えられます。同じバンド・同じモードで同じ局とふたたび交信しても重複となり、数えられません。QSO をアクティベーションから外したり、削除したり、ロガーで取り消したりすると、数は減ります。<span translate="no">POTA</span> では、00:00 UTC に数が 0 から数え直されます。2 つの公園を同時に運用していても数字は 1 つです。各 QSO が両方の公園に数えられるからです。表示する場所が狭いときは、マーカーはアイコンの横に数字だけを表示し、それも入らないときは、同じ行にある赤い警告とともに小さく描かれます。タップすると、アクティベーションの状態が表示されます:
             </p>
 
             <div class="phone-mockup">
@@ -2337,7 +2557,7 @@
             </div>
 
             <ul>
-                <li><strong>リファレンスとカウント</strong>: 行った QSO の数と、プログラムが有効なアクティベーションに求める数（公園は 10、山頂は 4）、そしてそのうち別の公園や山頂との QSO（<span translate="no">P2P</span> / <span translate="no">S2S</span>）がいくつあるか。</li>
+                <li><strong>リファレンスとカウント</strong>: これまでに数えた QSO の数を、公園は 10、山頂は 4 に対して表示し、そのうち別の公園や山頂との QSO（<span translate="no">P2P</span> / <span translate="no">S2S</span>）がいくつあるかも示します。</li>
                 <li><strong><span translate="no">アクティベーションを表示</span></strong>: その QSO の一覧（後述）。</li>
                 <li><strong><span translate="no">アクティベーションを終了</span></strong>: アクティベーションを終了します。必ず先に確認があり、<strong><span translate="no">続ける</span></strong> で続行できます。</li>
                 <li><strong><span translate="no">閉じる</span></strong>: カードを閉じます。</li>
@@ -2365,7 +2585,7 @@
 
             <h3 id="activation-finish">終了と再開</h3>
             <p>
-                <strong><span translate="no">アクティベーションを終了</span></strong> を押すと、概要が表示されます。リファレンス、開始時刻と終了時刻、モードごとの QSO 数、アクティベーションが有効かどうかです。終了後に記録した QSO は含まれません。
+                <strong><span translate="no">アクティベーションを終了</span></strong> を押すと、概要が表示されます。リファレンス、開始時刻と終了時刻、モードごとの QSO 数です。終了後に記録した QSO は含まれません。
             </p>
             <ul>
                 <li><strong>間違えて終了した場合、または休憩から戻った場合。</strong> 24 時間以内であれば、概要、アクティベーションの一覧、そして <em><span translate="no">POTA アクティベーション</span></em> / <em><span translate="no">SOTA アクティベーション</span></em> の開始ダイアログに <strong><span translate="no">アクティベーションを再開</span></strong> が表示され、何事もなかったようにもう一度開けます。</li>
@@ -2410,13 +2630,21 @@
                 交信する相手局が同時に 2 つの公園にいる場合、qFT8 は両方を保持します。スポットした人がコメントに 2 つ目の公園を書いていれば、そこから読み取ります。ログには最初の公園と、ほかにいくつあるかが表示されます（<code>US-1234 +1</code>）。公園が間違っていたり抜けていたりする場合は、<a href="#qso-editor">QSO エディター</a>でその QSO の <strong><span translate="no">POTA</span></strong> 欄を修正してください。カンマで区切って複数の公園を入力できます。同じ局について同じ公園が 2 回挙げられていても（スポットとそのコメントの両方にある、または入力したリストに 2 回ある）、ログでもエクスポートされるどのファイルでも 1 回として数えられます。
             </p>
 
+            <h3 id="event-counter">QSO カウンター</h3>
+            <p>
+                ほかのイベントでは、イベント セクションの<strong>カウンターを開始</strong>で、それ以降にログしたすべての QSO を数えます。数えている間、ボタンは青くなり<strong>カウンター 12</strong>と表示され、同じ青いラベルがウォーターフォールの右下にも出ます。どちらかをタップすると数えるのを終了し、その後は何も残りません。アプリを閉じて開き直しても、カウントは続きます。
+            </p>
+
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
         </section>
 
         <section id="js8-chat">
-            <h2><span translate="no">JS8</span> チャット</h2>
+            <h2><span translate="no">JS8</span>（キーボードチャット）</h2>
             <p>
-                <strong><span translate="no">JS8</span></strong> モードで運用しているとき、qFT8 は従来の FT8/FT4 の QSO 運用に加えて、会話形式のフリーテキストのチャット画面を提供します。JS8 では、弱い信号でも確実な、キーボードどうしのメッセージのやり取りを、複数の速度から選んで行えます（<strong><span translate="no">Slow</span></strong> 30 秒、<strong><span translate="no">Normal</span></strong> 15 秒、<strong><span translate="no">Fast</span></strong> 10 秒、<strong><span translate="no">Turbo</span></strong> 6 秒のスロット）。
+                <span translate="no">JS8</span> は、キーボードで打つ会話のためのモードです。長さに制限のない自由な文章、1 局またはグループへのメッセージ、相手のプログラムが自動で答える短い質問に対応します。1 回の送信に収まらない長いメッセージはフレームに分けられ、タイムスロットごとに 1 フレームずつ送られます。受信側は、そのフレームを 1 つのメッセージに組み立て直します。
+            </p>
+            <p>
+                下部バーのモードセレクターで <strong><span translate="no">JS8</span></strong> を選びます。「ステーション」タブが <span translate="no">JS8</span> チャット画面に変わり、下部バーではシーケンスボタンの代わりに速度ボタン（項目 #11）が表示されます。スペクトログラム、バンドセレクター、メインの <span translate="no">TX ON</span> / <span translate="no">TX OFF</span> ボタン、送信周波数を示す赤いバーは、<span translate="no">FT8</span> と同じように使えます。
             </p>
 
             <div class="phone-mockup">
@@ -2424,135 +2652,264 @@
                 <img src="../js8chat.jpg" alt="qFT8 の JS8 チャット" class="screen" width="2280" height="1080">
             </div>
 
-            <h3>チャンネルの種類と振り分け</h3>
+            <h3 id="js8-pane"><span translate="no">JS8</span> チャット画面</h3>
+            <p>左から右、上から下の順に説明します。</p>
+            <ol>
+                <li><strong><span translate="no">AUTO</span></strong>: 自動応答のオン（緑）とオフ（黒）です。初期値はオンです。<span translate="no">AUTO</span> がオンでメインボタンが <span translate="no">TX ON</span> のとき、qFT8 は他の局から届いた質問に答えます（<a href="#js8-auto">自動応答</a>を参照）。<span translate="no">AUTO</span> が送信機をオンにすることはありません。</li>
+                <li><strong>JS8チャット</strong>: 画面のタイトルです。</li>
+                <li><strong>リクエスト</strong>: 開いているチャットへ送る標準の質問の一覧を開きます（<a href="#js8-requests">他の局への質問</a>を参照）。<code translate="no">@ALLCALL</code> 以外のグループのチャットでは、グレーになります。</li>
+                <li><strong><span translate="no">QSO</span></strong>: チャットを開いている局との <span translate="no">QSO</span> を記録します（<a href="#js8-logging"><span translate="no">JS8</span> QSO の記録</a>を参照）。<code translate="no">[GLOBAL]</code> とグループのチャットではグレーになります。</li>
+                <li><strong><span translate="no">CQ</span></strong>: <code translate="no">@ALLCALL</code> へ一般呼び出しを送ります。<code translate="no">CQ</code> に、ロケーターの先頭 4 文字が続きます。例: <code translate="no">CQ JN47</code>。</li>
+                <li><strong>+</strong>: <strong>チャットを追加</strong>を開きます。コールサインまたはグループ（<code translate="no">@NAME</code>）を入力すると、その相手から何も聞こえていなくても、チャットを始められます。</li>
+                <li><strong>メッセージ</strong>: 開いているチャットのメッセージで、新しいものが下に並びます。各メッセージの上には、バンド、オーディオ周波数、信号の強さ（受信したメッセージのみ）、<span translate="no">UTC</span> の日付と時刻が表示されます。自分のメッセージは緑、自分宛てのメッセージは青、そのほかは灰青色です。スロットを待っているメッセージは濃い黄色で、送信中のメッセージは金色の枠で囲まれ、フレームを送っている間は <code translate="no">TX (sending 2/5)...:</code> で始まります。送信済みの部分は緑に変わります。</li>
+                <li><strong>チャット一覧</strong>: 開けるチャットの一覧です（<a href="#js8-channels">チャット一覧</a>を参照）。開いているチャットは青で強調され、未読のメッセージがあるチャットは琥珀色になります。</li>
+                <li><strong>メッセージ入力欄</strong>: 文章を入力する場所です。文字は大文字に変換され、最大 100 文字まで入力できます。</li>
+                <li><strong>送信矢印</strong>: 入力した内容を、開いているチャットへ送ります。入力欄が空のときは何も起こりません。</li>
+                <li>下部バーの<strong>速度ボタン</strong>: <span translate="no">Slow</span>、<span translate="no">Normal</span>、<span translate="no">Fast</span>、<span translate="no">Turbo</span>、<span translate="no">Ultra</span> から選びます（<a href="#js8-speeds">速度</a>を参照）。</li>
+            </ol>
             <p>
-                右側のチャットパネルでは、送受信したメッセージがチャンネルごとのタブに整理されます:
+                メインボタンが <span translate="no">TX OFF</span> の間、入力欄の上に赤い文字で、メッセージが待機中なら<strong>送信を開始するにはTXを有効にしてください</strong>、または<strong>AUTO動作を許可するにはTXを有効にしてください</strong>（<span translate="no">AUTO</span> がオンのとき）と表示されます。<span translate="no">TX OFF</span> のときに送ったメッセージはチャットで待機し、メインボタンを押すまで電波には出ません。
             </p>
-            <ul>
-                <li><strong><code>[GLOBAL]</code> メインチャンネル</strong>: オーディオ通過帯域全体でデコードしたすべての JS8 の送信と、自局のすべての送信を表示します。バンド全体の動きを 1 か所でリアルタイムに見渡せます。</li>
-                <li><strong>ブロードキャスト用のグループチャンネル（<code>@CQ</code>、<code>@ALLCALL</code>）</strong>: 聞いているすべての局に向けた一般の呼び出しやお知らせに使います。<code>@CQ</code> または <code>@ALLCALL</code> あてのメッセージは、その周波数を聞いている誰にでも見えます。</li>
-                <li><strong>カスタムのグループチャンネル（<code>@GROUPNAME</code>）</strong>: qFT8 はカスタムのグループあてメッセージに対応しています（例: <code>@EMERGENCY</code>、<code>@SOTA</code>、<code>@NET</code>）。<code>@GROUP</code> タグの付いたメッセージを送受信すると、専用のチャンネルタブに自動で整理されます。</li>
-                <li><strong>局ごとのダイレクトチャンネル（コールサインのタブ）</strong>: チャンネル一覧またはステーションの表から特定の局を選ぶと、そのコールサインとの専用の会話スレッドが開きます。</li>
-            </ul>
 
+            <h3 id="js8-speeds">速度</h3>
+            <p>
+                速度ごとにタイムスロットが決まっています。遅い速度ほど帯域幅が狭く、弱い信号をデコードできます。速い速度ほど、1 分あたりに送れる文字数が増えます。qFT8 が受信するのは速度ボタンで選んだ速度だけなので、交信したい局と同じ速度を選んでください（通常は <span translate="no">Normal</span> です）。
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">Slow</span></dt>
+                    <dd><span class="row-label">スロット</span> 30 秒</dd>
+                    <dd><span class="row-label">帯域幅</span> 約 25 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Normal</span></dt>
+                    <dd><span class="row-label">スロット</span> 15 秒</dd>
+                    <dd><span class="row-label">帯域幅</span> 約 50 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Fast</span></dt>
+                    <dd><span class="row-label">スロット</span> 10 秒</dd>
+                    <dd><span class="row-label">帯域幅</span> 約 80 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Turbo</span></dt>
+                    <dd><span class="row-label">スロット</span> 6 秒</dd>
+                    <dd><span class="row-label">帯域幅</span> 約 160 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Ultra</span></dt>
+                    <dd><span class="row-label">スロット</span> 4 秒</dd>
+                    <dd><span class="row-label">帯域幅</span> 約 250 Hz</dd>
+                </div>
+            </dl>
+            <p>
+                速度の名前は、どの言語でも英語のままです。各フレームは 75 ビットで、1 フレームに入る文字数は単語によって変わります。よく使う単語は、短い符号で送られるからです。
+            </p>
+
+            <h3 id="js8-channels">チャット一覧</h3>
+            <p>上から順に説明します。</p>
+            <ul>
+                <li><strong><code translate="no">[GLOBAL]</code></strong>: バンドでデコードしたすべてと、自分が送ったすべてです。ここから送ったメッセージは、自分でコールサインやグループを先頭に付けない限り <code translate="no">@ALLCALL</code> へ送られます。<code translate="no">HB</code> または <code translate="no">HEARTBEAT</code> だけを入力すると、ハートビートを送ります（<a href="#js8-auto">自動応答</a>を参照）。</li>
+                <li><strong><code translate="no">@ALLCALL</code></strong>: すべての局へのメッセージです。</li>
+                <li><strong>参加しているグループ</strong>（<code translate="no">@NAME</code>）: 参加したグループです。まだ通信がないグループも表示されます。</li>
+                <li><strong>コールサインのチャット</strong>: 自分にメッセージを送ってきた局、自分がメッセージを送った局、<strong>+</strong> で開いた局ごとに 1 つずつあります。</li>
+                <li><strong>聞こえたグループ</strong>: 細い線の下に薄く表示される、バンドで聞こえたものの参加していないグループです。このようなグループの上には、バナーで<strong>このグループのメンバーではありません</strong>と表示され、<strong>グループに参加</strong>が付きます。聞こえたグループへメッセージを送ると、そのグループに参加します。</li>
+            </ul>
+            <p>
+                チャットを長押し（パソコンでは右クリック）すると、そのチャットのオプションが開きます。<strong>グループに参加</strong>または<strong>グループから退出</strong>（グループのみ。<code translate="no">@ALLCALL</code> には表示されません）、<strong>エクスポート（ローカル保存）</strong>と<strong>エクスポート（共有）</strong>（メッセージをテキストファイルにします）、<strong>消去</strong>（メッセージを削除します）、<strong>消去して閉じる</strong>（一覧からも外します。グループからは退出します）、<strong>すべてのチャットを消去</strong>、<strong>すべてのチャットを消去して閉じる</strong>です。<code translate="no">[GLOBAL]</code> と <code translate="no">@ALLCALL</code> は閉じられません。
+            </p>
             <div class="highlight">
-                <p><strong>電波での送信（非公開ではありません）:</strong> JS8 のメッセージはすべて、通常のアマチュア無線のデジタル信号として、暗号化されずに送信されます。局ごとのダイレクトチャットは、便利なように会話の履歴を専用のタブにまとめますが、<strong>暗号化も非公開化もされておらず</strong>、その周波数を聞いているどの局でも受信できます。</p>
+                <p><strong>非公開ではありません:</strong> <span translate="no">JS8</span> のメッセージはすべて、暗号化されずに電波に出ます。コールサインのチャットは、メッセージを整理して表示するだけです。その周波数にいる誰でも読めます。</p>
             </div>
 
-            <h3>メッセージの作成と送信</h3>
+            <h3 id="js8-sending">メッセージの送信</h3>
             <ol>
-                <li><strong>あて先を選ぶ</strong>: 右側のパネルで、チャンネルのタブ（<code>[GLOBAL]</code>、<code>@CQ</code>、<code>@ALLCALL</code>、グループ、特定の局のコールサイン）をタップします。</li>
-                <li><strong>メッセージを入力する</strong>: 下部の入力欄にテキストを入力します（標準の ASCII 文字を 100 文字まで使えます）。</li>
-                <li><strong>送信する</strong>: <strong>送信</strong>ボタンをタップします。</li>
+                <li>チャットを開きます。局、グループ、<code translate="no">@ALLCALL</code>、<code translate="no">[GLOBAL]</code> のいずれかです。</li>
+                <li><span translate="no">FT8</span> と同じように、スペクトログラムで空いている場所に送信周波数を合わせます。</li>
+                <li>文章を入力して、送信矢印を押します。メッセージはチャットに表示され、次のスロットを待ちます。</li>
+                <li>メインボタンを押して、<span translate="no">TX ON</span> にします。フレームはスロットごとに 1 つずつ送られ、メッセージには送信済みのフレーム数が表示されます。複数のメッセージは、順番に送られます。</li>
             </ol>
-
-            <h3>メッセージをタップする（すぐにチャット、詳細）</h3>
             <p>
-                チャットログのメッセージをタップすると（パソコンではダブルクリック）、詳細ダイアログが開き、完全な UTC タイムスタンプ、オーディオ周波数、SNR、Maidenhead グリッド、メッセージの内容が表示されます:
+                待機中または送信中のメッセージの横には <strong>x</strong> が表示されます。押すと<strong>送信を中止しますか？</strong>が開き、<strong>メッセージを中止</strong>と、待機中のメッセージが複数あるときは<strong>すべてのメッセージを中止</strong>を選べます。<span translate="no">TX OFF</span> にしても、送信中のメッセージは止まります。
+            </p>
+            <p>
+                長いメッセージは、何スロットも続けて無線機を送信状態にします。無線機の<a href="#tx-limit">連続送信時間の上限</a>より長く送信することになるときは、最初のフレームの前に 1 回だけ qFT8 が尋ねます。<strong>休止を入れて送信</strong>（いくつかのスロットを空けて無線機を休ませます。相手局が受け取るメッセージは 1 つのままです）、<strong>短くする</strong>（文章の入力に戻り、待たなければならない部分が選択されます）、<strong>キャンセル</strong>のいずれかを選びます。この質問（と設定）にある<strong>長い JS8 メッセージは常に休止を入れて送信</strong>をオンにすると、質問は出なくなります。
+            </p>
+            <p>
+                <span translate="no">JS8</span> では標準のコールサインが必要です。自分のコールサインを送れないときは、<span translate="no">JS8</span> の設定に<strong>このコールサインは非標準であり、JS8に収まりません。</strong>と警告が表示されます。
+            </p>
+
+            <h3 id="js8-messages">メッセージをタップする</h3>
+            <p>
+                受信または送信済みのメッセージをタップする（パソコンではダブルクリック）と、詳細が開きます。<span translate="no">UTC</span> の日付と時刻、送信した局と宛先、バンド、周波数、速度、信号の強さ、分かっている場合はロケーターと距離、そして本文です。その下に、操作が並びます。
             </p>
             <ul>
-                <li><strong>受信メッセージ（RX）</strong>: <strong><span translate="no">チャット</span></strong> をタップすると、送信した局とのダイレクトチャットのタブがすぐに開きます。グループあてのメッセージの場合は <strong><span translate="no">グループチャット</span></strong> です。</li>
-                <li><strong>送信メッセージ（TX）</strong>: <strong><span translate="no">再送信</span></strong> をタップすると、入力欄とあて先のチャンネルに同じ内容が自動で入り、簡単に再送信できます。</li>
+                <li>受信したメッセージ: <strong>返信</strong>（自分宛ての質問のみ。答えを送ります）、宛先のグループ（そのチャットを開きます）、<strong>チャット</strong>（送信した局とのチャットを開きます）、<strong>時間オフセットを合わせる</strong>（その局のタイミングに時計を合わせます。パソコンではありません）、<strong>削除</strong>。</li>
+                <li>自分のメッセージ: <strong>再送信</strong>（そのチャットの入力欄に本文を戻します）、<strong>チャット</strong>またはグループ、<strong>時間オフセットを合わせる</strong>、<strong>削除</strong>。</li>
             </ul>
-
-            <h3>複数チャンクでのメッセージ送信</h3>
             <p>
-                メッセージが JS8 の 1 回の送信フレームに収まらない長さの場合:
+                まだ答えていない自分宛ての質問には、小さな矢印も表示されます。タップすると、すぐに答えを送ります。パソコンでは、メッセージを 1 回クリックすると、送信した局のコールサインが入力欄に入ります。
+            </p>
+            <p>
+                本文の色: 自分のコールサインは赤、グループ名はオレンジ、質問とコマンド（<code translate="no">SNR?</code>、<code translate="no">GRID?</code> など）は黄色、中継経路（<code translate="no">&gt;CALL&gt;</code>）は青緑、メッセージの終わりを示す印 <code translate="no">◇</code> はシアンです。オレンジの <code translate="no">~</code> は受信できなかったフレームを示し、本文の一部が欠けていることが分かります。
+            </p>
+
+            <h3 id="js8-requests">他の局への質問</h3>
+            <p>
+                <strong>リクエスト</strong>は、<span translate="no">JS8</span> の標準の質問の 1 つを、開いているチャットへ送ります（<code translate="no">[GLOBAL]</code> からは <code translate="no">@ALLCALL</code> へ送ります）。
             </p>
             <ul>
-                <li>qFT8 はメッセージを連続する<strong>複数のチャンク</strong>のフレームに自動で分割します。</li>
-                <li>アプリは、メッセージ全体を送り終えるまで、各チャンクを連続するタイムスロットで自動的に送信します。</li>
-                <li>進行状況の表示で、複数スロットにわたる送信の状態が分かります（例: <code>TX (1/3)</code>）。</li>
-                <li>すべてのチャンクが終わる前に送信を止めたいときは、<strong>送信／停止</strong>ボタンをタップすると確認が表示され、残りの送信待ちをキャンセルできます。</li>
+                <li><code translate="no">SNR?</code> と <code translate="no">HW CPY?</code>: 相手局で自分がどれだけの強さで受信されているか。</li>
+                <li><code translate="no">INFO?</code> と <code translate="no">STATUS?</code>: その局の情報テキストとステータステキスト。</li>
+                <li><code translate="no">GRID?</code>: その局のロケーター。</li>
+                <li><code translate="no">HEARING?</code>: その局に聞こえている局。</li>
+                <li><code translate="no">AGN?</code>: 直前のメッセージの繰り返しを頼みます。</li>
+                <li><code translate="no">QSL?</code>: メッセージが受信されたかを尋ねます。</li>
+                <li><code translate="no">QUERY CALL</code>: 入力したコールサインが聞こえているかを尋ねます。</li>
+                <li><code translate="no">QUERY MSGS</code>: 自分宛てのメッセージを預かっているかを尋ねます。</li>
+                <li><code translate="no">@HB HEARTBEAT</code>: 運用中であることを、ロケーターとともにすべての局に知らせます。</li>
             </ul>
-
-            <h3>チャンネルの管理（長押しの操作）</h3>
             <p>
-                右側のパネルで局のコールサインのタブやグループチャンネルのタブを長押しすると（パソコンでは右クリック）、管理用のメニューが開きます:
+                そのほかの <span translate="no">JS8</span> コマンドも自分で入力できます。例: <code translate="no">MSG TO:</code>。<span translate="no">APRS</span> ネットワークへのスポットも送れます。例: <code translate="no">@APRSIS GRID JN47AB</code>。<code translate="no">K1ABC&gt;W9XYZ HELLO</code> のような中継経路は、入力したとおりに送られます。qFT8 は他の局のためにメッセージを中継することも、預かることもしません。
+            </p>
+
+            <h3 id="js8-auto">自動応答（<span translate="no">AUTO</span>）</h3>
+            <p>
+                <span translate="no">AUTO</span> がオンでメインボタンが <span translate="no">TX ON</span> のとき、自分のコールサイン宛ての質問を最後まで受信すると、qFT8 は答えをキューに入れ、次のスロットで送ります。
             </p>
             <ul>
-                <li><strong>チャットを消去</strong>: 選択したチャンネルのタブのメッセージ履歴を消去します。</li>
-                <li><strong>チャットを閉じる</strong>: タブを閉じ、使用中のチャンネルのバーから取り除きます。</li>
-                <li><strong>チャットをエクスポート</strong>: 選択したチャンネルのメッセージ履歴全体を、テキストファイルに書き出すか、共有シートに渡します。</li>
+                <li><code translate="no">SNR?</code> または <code translate="no">HW CPY?</code>: <code translate="no">SNR -08</code>（その局がこちらでどれだけの強さで受信されているか）。</li>
+                <li><code translate="no">GRID?</code>: ロケーターの先頭 4 文字。</li>
+                <li><code translate="no">INFO?</code> と <code translate="no">STATUS?</code>: 設定に入力したテキスト（変更するまでは <code translate="no">USING QFT8</code>）。</li>
+                <li><code translate="no">HEARING?</code>: 直近 10 分間に聞こえた局を最大 4 局。</li>
+                <li><code translate="no">QSL?</code>: <code translate="no">QSL</code>。<code translate="no">QUERY CALL</code>: その局が直近 1 時間以内に聞こえていれば、信号の強さと何分前かを付けて <code translate="no">YES</code>、聞こえていなければ <code translate="no">NO</code>。<code translate="no">QUERY MSGS</code>: <code translate="no">NO MSG</code>。</li>
+                <li>他の局からのハートビート（<code translate="no">@HB HEARTBEAT</code>）: <code translate="no">HEARTBEAT SNR -08</code>。</li>
+                <li>参加しているグループに送られた <code translate="no">SNR?</code> または <code translate="no">GRID?</code>。<code translate="no">@ALLCALL</code> や、参加していないグループへの質問には答えません。</li>
             </ul>
-
-            <h3>問い合わせへの自動応答（AUTO モード）</h3>
             <p>
-                <strong><span translate="no">AUTO</span></strong> ボタンが有効なとき、qFT8 は、ほかの局から自局あてに届いた問い合わせ（<code><span translate="no">SNR?</span></code>、<code><span translate="no">HW CPY?</span></code>、<code><span translate="no">GRID?</span></code>、<code><span translate="no">INFO?</span></code>、<code><span translate="no">STATUS?</span></code>、<code><span translate="no">HEARING?</span></code> など）と、ハートビートのメッセージ（<code><span translate="no">@HB HEARTBEAT</span></code>）に自動で応答します。
-            </p>
-            <p>
-                たとえば、ほかの局が <code><span translate="no">自局コールサイン SNR?</span></code> や <code><span translate="no">自局コールサイン HW CPY?</span></code> を送信すると、qFT8 は手動の操作なしに、シグナルレポートの応答（例: <code><span translate="no">SNR -08</span></code>）を自動で送信待ちに入れて送信します。同じように、ハートビートの送信（<code><span translate="no">@HB HEARTBEAT</span></code>）を受信すると、qFT8 はハートビートへの応答（<code><span translate="no">HEARTBEAT SNR -08</span></code>）を自動で送信待ちに入れ、受信できたことを送信した局に知らせます。
+                同じ質問は、答えがまだ待機中の間は 2 回答えません。自分のメッセージに答えることもありません。qFT8 が自分でハートビートや <span translate="no">CQ</span> を送ることはありません。送るのは、<strong><span translate="no">CQ</span></strong> を押したときと、<strong>リクエスト</strong>で選んだときだけです。<span translate="no">AUTO</span>（<span translate="no">JS8</span> 用）は、<span translate="no">AUTO</span>（<span translate="no">FT8</span> 用）とは別です。
             </p>
 
-            <h3>あて先を指定した問い合わせとリクエストボタン</h3>
+            <h3 id="js8-logging"><span translate="no">JS8</span> QSO の記録</h3>
             <p>
-                <strong><span translate="no">リクエスト</span></strong> ボタンを使うと、コマンドの書式を手で入力しなくても、選択中のあて先の局またはグループに、標準の問い合わせをすばやく送れます:
+                <span translate="no">JS8</span> にはメッセージの決まった順序がないので、<span translate="no">QSO</span> は完了したと自分で判断したときに記録します。その局のチャットを開いて <strong><span translate="no">QSO</span></strong> を押すと、<strong>JS8 QSOを記録</strong>が開き、<strong>K1ABCとのJS8 QSOを記録しますか？</strong>と尋ねます（その局との前回の <span translate="no">JS8</span> <span translate="no">QSO</span> の記録日時があれば、それも表示されます）。<strong>QSOを記録</strong>を押すと、モード <span translate="no">JS8</span>、バンドと周波数、時刻、聞こえていればその局のロケーター、チャットで交換したレポート（符号付きの 2 桁の数字: <code translate="no">+05</code>、<code translate="no">-12</code>）がログに書き込まれます。ログからは、ほかの <span translate="no">QSO</span> と同じようにアップロードされ、一覧のその局のチャットには、チェックマーク（記録済み）、時計付きのチェックマーク（アップロード待ち）、星（確認済み）が表示されます。
+            </p>
+
+            <h3 id="js8-settings">設定 &gt; <span translate="no">JS8</span></h3>
+            <p>
+                設定 &gt; <strong>デジタルモード</strong>の <strong>JS8 設定</strong>セクションには、次の項目があります。
             </p>
             <ul>
-                <li><code><span translate="no">SNR?</span></code> / <code><span translate="no">HW CPY?</span></code>: 相手局にシグナルレポートを求めます。</li>
-                <li><code><span translate="no">GRID?</span></code>: 相手局の Maidenhead グリッドロケーターを求めます。</li>
-                <li><code><span translate="no">INFO?</span></code>: 相手局が設定している情報メッセージを求めます。</li>
-                <li><code><span translate="no">STATUS?</span></code>: 相手局の運用状況のテキストを求めます。</li>
-                <li><code><span translate="no">HEARING?</span></code>: その局が直近の 10 分間に受信した局の一覧を問い合わせます。</li>
+                <li><strong>情報</strong>と<strong>ステータス</strong>: <code translate="no">INFO?</code> と <code translate="no">STATUS?</code> への答えとして送るテキストです（各 20 文字まで）。</li>
+                <li>1 分間非アクティブでメッセージを終了: 最後のフレームが聞こえなかったメッセージを、いつ終了したものとみなすかです。</li>
+                <li>帯域幅の ± 25 % 以内のメッセージをグループ化: 2 つのフレームが同じメッセージに属するために、周波数がどれだけ近い必要があるかです。</li>
+                <li>最大 1000 件のメッセージを保存と、<strong>メッセージの保存期間</strong> 1 か月: チャットをどれだけ残すかです。アプリを閉じても、チャットは残ります。</li>
+                <li><strong>長い JS8 メッセージは常に休止を入れて送信</strong>: <a href="#js8-sending">メッセージの送信</a>を参照してください。</li>
+                <li>速度ごと（<strong>低速</strong>、<strong>標準速度</strong>、<strong>高速</strong>、<strong>ターボ速度</strong>、<strong>ウルトラ速度</strong>）に、<strong>デコード開始タイミング</strong>と<strong>送信開始タイミング</strong>: スロット内でのミリ秒です。</li>
             </ul>
 
-            <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
-                <section id="wspr-mode">
-            <h2><span translate="no">WSPR</span> モード</h2>
+            <h3 id="js8-platforms">パソコン、iPhone、Web リモコンでは</h3>
+            <ul>
+                <li><strong>パソコン</strong>: 同じ画面です。長押しの代わりに右クリック、メッセージの詳細はダブルクリックで開きます。<strong>エクスポート（共有）</strong>はファイルを保存して、ファイルマネージャーで表示します。</li>
+                <li><strong>iPhone</strong>: 同じ画面です。チャットをエクスポートすると、共有シートが開きます。</li>
+                <li><strong>Web リモコン</strong>: <span translate="no">JS8</span> タブに同じチャットとチャット一覧があり、ヘッダーには<strong>エクスポート</strong>と<strong>クリア</strong>があります。メッセージが待機中または送信中の間は、送信ボタンの横に<strong>TXキャンセル</strong>が表示されます。<code translate="no">[GLOBAL]</code> から送るメッセージは、最初に<strong>グローバルメッセージを送信</strong>と尋ね、<code translate="no">@CQ</code> と <code translate="no">@ALLCALL</code> のどちらへ送るかを選びます。速度は下部バーで選びます。</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; 目次へ戻る</a>
+        </section>
+
+        <section id="wspr-mode">
+            <h2><span translate="no">WSPR</span> と <span translate="no">FST4W</span>（ビーコン）</h2>
             <p>
-                <strong><span translate="no">WSPR</span>（Weak Signal Propagation Reporter）</strong>は、ごく小さな電力の送信で電波の伝搬経路を調べるために設計された、専用のデジタルプロトコルです。WSPR の信号は、狭帯域の 4-FSK 変調、強力な畳み込み符号、ファノの逐次復号を使い、ノイズフロアを大きく下回る &minus;28 dB SNR までの信号をデコードできます。
+                <span translate="no">WSPR</span> は会話のためのモードではありません。各局が自分のコールサイン、ロケーター、出力を含む短いビーコンを送信し、ほかの局を聴きます。結果として、自分が受信している局の一覧が得られ、<span translate="no">WSPRnet</span> と <span translate="no">PSKReporter</span> を通じて、自分を受信している局の地図が得られます。<span translate="no">WSPR</span> の送信は 110.6 秒間続き、偶数 <span translate="no">UTC</span> 分の 1 秒後に始まるため、バンドは 2 分のスロットで動作します。<span translate="no">FST4W</span> は同種のビーコンモードで、スロットがより長くなります（<a href="#wspr-fst4w">このペインの <span translate="no">FST4W</span></a> を参照）。
+            </p>
+            <p>
+                下部バーのモードセレクターで <strong><span translate="no">WSPR</span></strong> を選びます。ステーションタブが <span translate="no">WSPR</span> ペインになり（Web リモコンではタブの名前は <strong><span translate="no">WSPR</span>モード</strong> です）、スペクトログラムは 2 分のスロットに合わせてゆっくりスクロールし、1400&ndash;1600 Hz の外側の部分は暗く表示されます。バンド内のすべての <span translate="no">WSPR</span> 信号はこの 200 Hz の中にあります。
             </p>
 
-            <h3>2 分のサイクルとタイミング</h3>
+            <h3 id="wspr-pane"><span translate="no">WSPR</span> ペイン</h3>
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 カメラ" class="camera" width="132" height="1080">
+                <img src="../wspr.jpg" alt="qFT8 WSPR ペイン" class="screen" width="2280" height="1080">
+            </div>
+            <p>左から右、上から下の順に説明します。</p>
+            <ol>
+                <li><strong>ビーコン</strong>：自分のビーコンをオン（緑）とオフ（黒）に切り替えます。ビーコンがオンの間、qFT8 は送信率（項目 2）で決まる数のスロットで送信します。ビーコンが自動で送信機をオンにすることはありません。下部バーのメインのボタンが <span translate="no">TX OFF</span> と表示されている間は何も送信されず、赤い行に <strong>送信を開始するにはTXを有効にしてください</strong> と表示されます。</li>
+                <li><strong>TX: 20%</strong>：ビーコンが送信するスロットの割合です。タップすると <strong>WSPR送信率</strong> が開き、<strong>0% (受信のみ)</strong>、10%、20%、25%、33%、50%、<strong>100% (連続)</strong> から選べます。スロットはスロットごとにランダムに選ばれるので、同じ設定の 2 局がいつも同時に送信し続けることはありません。20% は平均して 5 スロットに 1 回、つまり約 10 分に 1 回の送信です。無線機の<a href="#tx-limit">連続送信時間の上限</a>がこれより少ないスロットしか許さない場合、値は赤になります。その場合ビーコンは待機し、次に使えるスロットで送信します。</li>
+                <li><strong>出力</strong>（例：<strong>5 W</strong>）：ビーコンのメッセージが、自分を受信している局に知らせる出力です。タップすると <strong>報告する出力:</strong> が開き、1 mW（0 dBm）から 1000 W（60 dBm）まで、<span translate="no">WSPR</span> で送れる刻みの一覧から選びます。無線機が実際に出す出力に設定してください。これはメッセージ内の数値にすぎません。qFT8 が無線機の出力を変更することはなく、出力は無線機本体の操作で設定します。</li>
+                <li><strong>エクスポート</strong>：一覧のスポットを <span translate="no">ADIF</span> ファイルとして保存します。スマートフォンではダイアログ <strong>WSPR ADIFログを共有</strong> に <strong>ローカルに保存</strong> と <strong>共有</strong> が表示されます。パソコンでは保存先を尋ねられ、iPhone では共有シートが開き、Web リモコンでは使用中のデバイスにファイルをダウンロードします。</li>
+                <li><strong>クリア</strong>：一覧を空にします。</li>
+                <li><strong>一覧</strong>：デコードした <span translate="no">WSPR</span> 信号ごとに 1 行で、新しいものが上に並びます。コールサイン、国（<span translate="no">DXCC</span>）、ロケーター（<span translate="no">Grid</span>）、dB 単位の <span translate="no">SNR</span>（すべての <span translate="no">WSPR</span> 受信機の報告方法と同じく 2500 Hz で測定）、相手局が知らせる出力、そのスロットの日付と <span translate="no">UTC</span> 時刻（<code>yyMMdd HH:mm</code>）です。一覧はアプリを閉じても保持されます。行数と保存期間は<a href="#wspr-settings">設定 &gt; <span translate="no">WSPR</span></a>で決めます。</li>
+                <li><strong>ステータス行</strong>：次に起こることを示します。<strong>Rxサイクル終了まで 01:12. Tx: オフ</strong> はビーコンに予定がない間、<strong>次の送信まで 05:40</strong> はスロットを待っている間、<strong>送信中 — 残り 01:30</strong> は送信中、<strong>送信オフ</strong> は送信が予定されているのに下部バーのメインのボタンが <span translate="no">TX OFF</span> のときの表示です。ここが赤い場合、ビーコンを送信できません。<strong>Tx: コールサインとグリッドロケーターを設定してください</strong>（両方とも設定で必要です）、または <strong>コールサインが長すぎてWSPRで送信できません</strong> / <strong>Tx: このコールサインは WSPR で送信できません</strong> と表示されます。</li>
+                <li><strong>次回 Tx</strong>：送信率に関係なく、次のスロットで送信します。その後、ビーコンは元のとおり動作を続けます。次のスロットが使われる予定のとき（ビーコンが選んだ場合も含む）は緑で、もう一度タップするとそのスロットを取りやめます。下部バーのメインのボタンが <span translate="no">TX OFF</span> の間は灰色です。</li>
+            </ol>
             <p>
-                WSPR の送信は、同期した <strong>2 分間の UTC スロット</strong>で行われます（送信時間は 110.6 秒、162 個のトーンシンボル）。送信は必ず UTC の偶数分のちょうど 1 秒後に始まります（<code>:00, :02, :04, :06...</code>）。1 回の送信が 2 分近く続くため、小型の無線機ではそれだけの時間送信できるように設定しておく必要があります。<a href="#tx-limit">連続送信時間の上限</a>を参照してください。スペクトログラムの縦スクロールは、120 秒のサイクルに合わせて自動的に滑らかでゆっくりした速度になります。
+                下部バーのメッセージバーには、ビーコンが送信するメッセージが表示されます。自分のコールサイン、ロケーターの先頭 4 文字、項目 3 の出力です。例：<code>HB9IPH JN47 37</code>
             </p>
 
-            <h3>1 つのペインでの受信状況の表示</h3>
+            <h3 id="wspr-flow">受信とビーコン送信</h3>
+            <ol>
+                <li>バンドセレクターでバンドを選びます。無線機がそのバンドの <span translate="no">WSPR</span> 周波数に移ります（下記参照）。受信にはそれ以外の操作は不要です。2 分ごとに、スロットが終わって数秒後に、そのスロットでデコードされた信号が一覧に追加されます。</li>
+                <li>ビーコンを送信するには、コールサインとロケーターが設定されていること、<strong>出力</strong>（項目 3）が無線機の実際の出力になっていることを確認します。送信率を選び（20% が一般的です）、<strong>ビーコン</strong> を緑のままにして、下部バーのメインのボタンを押し、<span translate="no">TX ON</span> と表示させます。ステータス行が次の送信までをカウントダウンします。</li>
+                <li>今すぐビーコンを 1 回送信するには、またはビーコンがオフのときは、<strong>次回 Tx</strong> を押します。</li>
+                <li>止めるには、メインのボタンをもう一度押す（<span translate="no">TX OFF</span>）か、<strong>ビーコン</strong> をオフにします。送信中の送信は、<span translate="no">TX OFF</span> を押すと終わります。</li>
+            </ol>
             <p>
-                WSPR は双方向の会話のモードではなく、ビーコンと伝搬レポートのためのプロトコルです。そのため qFT8 は、QSO ログとの分割のない、すっきりした全幅 1 ペインの受信ログを表示します:
+                <span translate="no">WSPR</span> の送信は約 2 分間続きます。<a href="#tx-limit">連続送信時間の上限</a>がそれより短い無線機では送信できず、qFT8 がそのことを知らせます。<span translate="no">WSPR</span> ではログには何も記録されません。スポットはこのペインの一覧に残るだけで、QSO ではありません。
+            </p>
+
+            <h3 id="wspr-bands">バンドと周波数</h3>
+            <p>
+                バンドセレクターのすべてのバンドに、2200 m から 13 cm まで <span translate="no">WSPR</span> のダイヤル周波数があります：2200 m <span translate="no">136.000</span> kHz、630 m <span translate="no">474.200</span> kHz、160 m <span translate="no">1.836600</span> MHz、80 m <span translate="no">3.568600</span>、60 m <span translate="no">5.287200</span>、40 m <span translate="no">7.038600</span>、30 m <span translate="no">10.138700</span>、20 m <span translate="no">14.095600</span>、17 m <span translate="no">18.104600</span>、15 m <span translate="no">21.094600</span>、12 m <span translate="no">24.924600</span>、10 m <span translate="no">28.124600</span>、6 m <span translate="no">50.293000</span>、4 m <span translate="no">70.091000</span>、2 m <span translate="no">144.489000</span>、70 cm <span translate="no">432.300000</span>、23 cm <span translate="no">1296.500000</span>、13 cm <span translate="no">2400.048000</span> MHz（上側波帯）。
+            </p>
+            <p>
+                ビーコンは、スペクトログラムで選んだ 1400&ndash;1600 Hz 内のオーディオ周波数で送信されます。<strong>ランダム周波数ジッターを有効化 (±60 Hz)</strong> がオン（デフォルト）の場合、送信のたびに最大 60 Hz 離れたランダムな位置に移るため、毎回同じ局の真上に重なることがありません。
+            </p>
+
+            <h3 id="wspr-reports"><span translate="no">WSPRnet</span> と <span translate="no">PSKReporter</span> へのスポット</h3>
+            <ul>
+                <li><strong>レポートをWSPRnetにアップロード</strong>（デフォルトはオフ。設定の <strong>レポート送信</strong> と、その横の歯車）：デコードした局を少しずつまとめて <span translate="no">WSPRnet</span> に送ります。同じ周波数の同じ局は 15 分に 1 回までしか送られません。<span translate="no">WSPRnet</span> のページには、<strong>スピーカー/マイクでの通信時にもレポートをアップロード</strong>（オフ：ケーブルではなくスマートフォンのマイクで聴いている間はアップロードしません）、<strong>最近のWSPRnetアップロードログ:</strong>（<strong>今すぐアップロード</strong> と <strong>ログ消去</strong> 付き）、そして <strong>デフォルトにリセット</strong> もあります。</li>
+                <li><strong>PSKReporter にレポートをアップロード</strong>（設定の <strong>レポート送信</strong>）：ほかのモードと同様に、<span translate="no">WSPR</span> と <span translate="no">FST4W</span> のデコード結果も送信します。</li>
+                <li><strong>WSPRnetからスポットをダウンロード</strong>（デフォルトはオン。設定の <strong>データソース</strong>）：自分のビーコンを受信した局を取得し、世界地図の <span translate="no">SPOT</span> ボタンで表示します。</li>
+            </ul>
+
+            <h3 id="wspr-settings">設定 &gt; <span translate="no">WSPR</span></h3>
+            <p>
+                <span translate="no">WSPR</span> セクション（設定 &gt; <strong>デジタルモード</strong>）には次の項目があります。
             </p>
             <ul>
-                <li><strong>コールサイン</strong>: 局のコールサイン。</li>
-                <li><strong>DXCC エンティティ</strong>: 自動的に判別された国・DXCC エンティティの名前（幅は可変）。</li>
-                <li><strong>グリッドロケーター</strong>: 4 文字の Maidenhead ロケーター（例: <code>JN45</code>）。</li>
-                <li><strong>SNR</strong>: 受信した信号の信号対雑音比（dB）。ほかの WSPR 受信機と同じく、2,500 Hz 幅のノイズを基準に測定します。</li>
-                <li><strong>送信電力</strong>: その局が報告している送信電力（dBm。例: <code>37 dBm</code>）。</li>
-                <li><strong>日付と UTC 時刻</strong>: 送信スロットの UTC のタイムスタンプ。形式は <code>yyMMdd HH:mm</code> です。</li>
+                <li><strong>ランダム周波数ジッターを有効化 (±60 Hz)</strong>（オン）：<a href="#wspr-bands">バンドと周波数</a>を参照してください。</li>
+                <li><strong>最大</strong> 1000 件のメッセージを保存、および <strong>メッセージの保存期間</strong> 1 か月：一覧に残す行数と保存期間です。</li>
+                <li><strong>デコード開始タイミング</strong>（114000 ms）：2 分のスロット内で、デコードを始めるタイミングです。</li>
+                <li><strong>送信開始タイミング</strong>（1000 ms）：スロット内で、ビーコンが送信を始めるタイミングです。</li>
             </ul>
 
-            <h3>自動ビーコンと送信率（Tx %）</h3>
+            <h3 id="wspr-fst4w">このペインの <span translate="no">FST4W</span></h3>
             <p>
-                WSPR の受信状況画面の上部には、次のものがあります:
+                <span translate="no">FST4W</span>（モードセレクターの <strong><span translate="no">FST4W</span>（実験的）</strong> の行）は同じペインを使います。同じ一覧、<strong>ビーコン</strong>、<strong>次回 Tx</strong>、出力、<strong>エクスポート</strong>、<strong>クリア</strong>、そして <span translate="no">WSPRnet</span> と <span translate="no">PSKReporter</span> への同じアップロードです。変わる点は次のとおりです。
             </p>
             <ul>
-                <li><strong><span translate="no">ビーコン</span> の切り替え</strong>: 自動ビーコン送信を有効または無効にします。有効にすると（明るい緑で強調表示されます）、qFT8 は設定した送信率に基づき、決まった間隔でビーコン送信を自動的に予定します。</li>
-                <li><strong><span translate="no">Tx %</span> セレクター</strong>: 前回の送信からの経過時間をもとにした、決まった送信の割合を設定します（<code>0% [受信のみ]</code>、<code>10%</code>、<code>20%</code>、<code>25%</code>、<code>33%</code>、<code>50%</code>、<code>100% 連続</code>）。たとえば <code>20%</code> では、前回の送信から 10 分ごとに必ず送信します（<code>50%</code> = 4 分ごと、<code>33%</code> = 6 分ごと、<code>25%</code> = 8 分ごと、<code>10%</code> = 20 分ごと、<code>100%</code> = 2 分のサイクルごとに連続）。</li>
-                <li><strong><span translate="no">Tx 次</span> ボタン</strong>: 次の 2 分サイクルの区切りで、手動の送信をすぐに 1 回行うよう予約します。送信後は、そのサイクルを起点に、決まった間隔の自動ビーコンの予定が続きます。</li>
+                <li>スロットは <strong>周期</strong> です。120、300、900、1800 秒から、下部バーまたは設定で選びます。周期が長いほど、より弱い信号をデコードでき（120 秒で約 -33 dB、1800 秒で -45 dB）、送信も長くなります。最長でほぼ 30 分で、<a href="#tx-limit">連続送信時間の上限</a>がそれを許す必要があります。両方の局が同じ周期を使う必要があります。</li>
+                <li>送信率は独立しています（<strong>送信割合</strong>、デフォルト 20 %）。<span translate="no">FST4W</span> で変更しても <span translate="no">WSPR</span> の送信率は変わりません。</li>
+                <li>受信周波数（通常 1500 Hz）の周辺だけを、受信許容範囲内でデコードします。</li>
+                <li>2200 m、630 m、160 m では専用の周波数（<span translate="no">136.000</span> kHz、<span translate="no">474.200</span> kHz、<span translate="no">1.8368</span> MHz）を使います。ほかのバンドでは <span translate="no">WSPR</span> の周波数を使います。</li>
             </ul>
-
-            <h3>WSPRnet と PSKReporter へのスポットのアップロード</h3>
             <p>
-                qFT8 は、受信したスポットを世界規模の <strong><a href="http://wsprnet.org" target="_blank">WSPRnet</a></strong> データベースと <strong>PSKReporter</strong> に自動でアップロードできます:
+                その設定は<a href="#fst4w-settings">設定 &gt; <span translate="no">FST4W</span></a>で説明しています。
             </p>
-            <ul>
-                <li><strong>WSPRnetからスポットをダウンロード</strong>: 既定で有効です。自局のコールサインとバンドのスポットをリアルタイムで取得し、世界地図に表示します。</li>
-                <li><strong>レポートをWSPRnetにアップロード</strong>: <em>設定 &rarr; WSPRnet</em> で有効にすると、受信したスポットがまとめて WSPRnet にアップロードされます。15 分間の重複排除と送信頻度の制限があります。</li>
-                <li><strong>WSPRnetを開く</strong>: 自局のコールサインで絞り込んだ WSPRnet のデータベースをブラウザーで直接開きます。</li>
-            </ul>
 
-            <h3>単独の ADIF エクスポート</h3>
-            <p>
-                WSPR の受信状況パネルの右上にある <strong><span translate="no">エクスポート</span></strong> ボタンをタップすると、現在のセッションで記録したすべてのスポットを、伝搬の研究や記録の保存のために標準の ADIF 形式（<code>.adi</code>）でエクスポートできます。
-            </p>
-        
-            <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
+            <a href="#top" class="back-to-toc">&uarr; 目次へ戻る</a>
         </section>
 
         <section id="ssb-mode">
             <h2><span translate="no">SSB</span>（音声）</h2>
             <p>
                 <span translate="no">SSB</span> モードでは、qFT8 がトランシーバーのマイクとスピーカーになります。無線機が受信した信号は、あなたのスピーカーまたはヘッドホンから音声として聞こえ、あなたの声はマイクから無線機に送られます。無線機の接続はデジタルモードのときとまったく同じ（同じ USB ケーブル、同じサウンドカード）なので、FT8 と音声を行き来するのに何もつなぎ替える必要はありません。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> ITU電波形式J3E（ITU無線通信規則）。音声にデジタルプロトコルはありません。</p>
+            <p>
+                qFT8 は音声信号を自分で作り、無線機のサウンドカードを通して送ります。無線機を同じサイドバンドのデータモード (例: <span translate="no">USB-D</span> / <span translate="no">LSB-D</span>, <span translate="no">DATA-U</span> / <span translate="no">DATA-L</span>, <span translate="no">DIGU</span> / <span translate="no">DIGL</span>。<span translate="no">QMX</span> ではその <span translate="no">USB</span> または <span translate="no">LSB</span> モード) にするので、無線機の表示は qFT8 と同じ周波数になります。サイドバンドはバンドで決まります: 10 MHz 未満は <span translate="no">LSB</span>、10 MHz 以上と 60 m は <span translate="no">USB</span> です。
             </p>
             <p>
                 下部バーのモードセレクターで <strong><span translate="no">SSB</span></strong> を選びます。メッセージ欄、シーケンスボタン、サイクルバーが消え（音声にはタイムスロットがありません）、モードセレクターの横に <strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong> ボタンが現れ、「ステーション」タブが <span translate="no">SSB</span> ペインになります:
@@ -2566,37 +2923,41 @@
             <p><span translate="no">SSB</span> 画面の各部の詳細は次のとおりです:</p>
 
             <ol>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: チューニングホイール（項目 12）で動かす対象を選びます。<strong><span translate="no">RX/TX</span></strong> では、同じ周波数で受信と送信を行います。<strong><span translate="no">RX</span></strong> または <strong><span translate="no">TX</span></strong> ではその一方だけが動くので、ある周波数で聞きながら別の周波数で送信できます（スプリット）。</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: チューニングホイール（項目 12）で動かす対象を選びます。<strong><span translate="no">RX/TX</span></strong> では、同じ周波数で受信と送信を行います。<strong><span translate="no">RX</span></strong> または <strong><span translate="no">TX</span></strong> ではその一方だけが動くので、ある周波数で聞きながら別の周波数で送信できます（スプリット）。 CAT 接続がないとこれらのボタンはグレーになり、<span translate="no">RX/TX</span> のままです。タップすると <strong>チューニングには無線機との CAT 接続が必要です</strong> と表示されます。</li>
                 <li><strong><span translate="no">AUTO RIT</span></strong>: 周波数が少しずれている局を中央に保ち、ホイールに触れなくても相手の声が自然に聞こえるようにします。</li>
                 <li><strong>歯車</strong>: <strong>設定 &gt; <span translate="no">SSB</span></strong> を開きます（後述）。<strong>戻る</strong>でこのペインに戻ります。</li>
-                <li><strong><span translate="no">QSO</span></strong>: モード、サイドバンド、周波数が入力済みのロガーを開き、いま行った交信を記録します（<a href="#qso-logger">ロガー</a>を参照）。1 回押すごとに 1 件の QSO です。</li>
+                <li><strong><span translate="no">QSO</span></strong>: モード、サイドバンド、周波数が入力済みのロガーを開き、いま行った交信を記録します（<a href="#qso-logger">ロガー</a>を参照）。1 回押すごとに 1 件の QSO です。 レポート (59 / 59) も入力済みで、スプリットの交信の後は送信周波数と受信周波数の両方が入ります。</li>
                 <li><strong>ボイスメモリー</strong>: 録音しておいたメッセージ（CQ の呼び出し、自局のコールサインなど）。1 つも録音していない間は、この場所に<strong>ボイスメモリーは設定で登録します</strong>というリンクが表示されます。</li>
                 <li><strong><span translate="no">IN</span></strong>: マイクのレベルとゲインのスライダー。<strong><span translate="no">VOX</span></strong> と書かれた線は、<span translate="no">VOX</span> がオンのとき（項目 10）に、声がこれを超えると無線機が送信に切り替わるレベルです。ドラッグして動かせます。</li>
-                <li><strong><span translate="no">OUT</span></strong>: 受信音のレベルとスピーカーの音量スライダー。スマートフォンの音量キーでも同じ操作ができます。</li>
-                <li><strong><span translate="no">FILTER</span></strong> と <strong><span translate="no">NR</span></strong>: 受信フィルター（オフ、2.7、2.4、1.8 kHz）とノイズ低減（オフ、1、2、3）。タップするたびに次の値に切り替わります。</li>
-                <li><strong><span translate="no">PTT</span></strong>: プッシュ・トゥ・トーク。<strong>PTT モード</strong>の設定に応じて「押している間話す」または「タップして話す」と表示され、送信中は「<span translate="no">送信中</span>」と表示されます。パソコンでは、ペインにフォーカスがある間はスペースキーで同じ操作ができます。</li>
+                <li><strong><span translate="no">OUT</span></strong>: 受信音のレベルとスピーカーの音量スライダー。スマートフォンの音量キーでも同じ操作ができます。 スライダーのいちばん下では音が消えます (<span translate="no">MUTE</span>)。</li>
+                <li><strong><span translate="no">FILTER</span></strong> と <strong><span translate="no">NR</span></strong>: 受信フィルター（オフ、2.7、2.4、1.8 kHz）とノイズ低減（オフ、1、2、3）。タップするたびに次の値に切り替わります。 これらの表示はどの言語でも同じです。</li>
+                <li><strong><span translate="no">PTT</span></strong>: プッシュ・トゥ・トーク。<strong>PTT モード</strong>の設定に応じて「押している間話す」または「タップして話す」と表示され、送信中は「<span translate="no">送信中</span>」と表示されます。キーボードがあれば（パソコン、Web リモート、スマートフォンやタブレット）、最後にクリックまたはタップした場所が下部バー、スペクトログラム、世界地図、またはこのペインである間、スペースキーで同じ操作ができます。テキストボックスでは従来どおりスペースが入力されます。 送信中は、制限があるときに残り秒数も表示します (下記参照)。<span translate="no">VOX</span> が制限に達すると「<span translate="no">VOX 一時停止中</span>」、無線機がアプリから音声を送信できないときは「<span translate="no">SSBなし</span>」と表示されます。</li>
                 <li><strong><span translate="no">VOX</span></strong>: オンにすると、<span translate="no">PTT</span> ボタンの代わりに声で無線機が送信に切り替わります。</li>
-                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>: サイドバンド。バンドを変えると自動的に選ばれます（10 MHz 未満は <span translate="no">LSB</span>、それ以上は <span translate="no">USB</span>）。タップすると切り替わり、表示されている周波数は変わりません。</li>
+                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>: サイドバンド。バンドを変えると自動的に選ばれます（10 MHz 未満は <span translate="no">LSB</span>、それ以上は <span translate="no">USB</span>）。タップすると切り替わり、表示されている周波数は変わりません。 60 m でも <span translate="no">USB</span> です。無線機自身のつまみでバンドを変えたときも、そのバンドのサイドバンドが選ばれます。</li>
                 <li><strong>チューニングホイール</strong>: <span translate="no">SSB</span> では、スペクトログラムの周波数目盛りがホイールになります。目盛りに沿ってスワイプすると無線機の周波数が変わり、速くスワイプするほどステップが大きくなります。タップでは何も起きないので、周波数が誤って飛ぶことはありません。パソコンではマウスホイールでも同調できます（Shift を押している間は 1 Hz ステップ）。同調には無線機との CAT 接続が必要です。</li>
-                <li><strong>周波数とバンド</strong>: オンエアで口にする周波数（キャリア）と、バンド。オレンジ色の線とその下の <span translate="no">RX/TX</span> ラベルは、スペクトログラムのうち、聞いている部分と送信する部分を示します。</li>
+                <li><strong>周波数とバンド</strong>: オンエアで口にする周波数（キャリア）と、バンド。オレンジ色の線とその下の <span translate="no">RX/TX</span> ラベルは、スペクトログラムのうち、聞いている部分と送信する部分を示します。 周波数をタップすると <strong>無線機の周波数 (kHz)</strong> が開き、周波数を入力できます。別のバンドの周波数ならバンドが変わります。これにも CAT が必要です。</li>
             </ol>
+            <p>
+                <span translate="no">QMX</span> または <span translate="no">QMX+</span> では、<span translate="no">PTT</span> ボタンの上のグレーの行が、無線機の <span translate="no">SSB</span> 音声入力元 (メニュー <span translate="no">SSB &gt; Input</span>) を USB サウンドカードにする必要があることを知らせます (<a href="#ssb-requirements"><span translate="no">SSB</span> に必要なもの</a>を参照)。
+            </p>
 
             <h3 id="ssb-transmitting">話す</h3>
             <ol>
                 <li>下部バーの <strong><span translate="no">TX</span></strong> ボタンで送信を有効にします。ほかのモードと同じく、<span translate="no">TX OFF</span> と表示されている間は何も送信されません。赤い行の <strong><span translate="no">送信するには TX ON を押してください</span></strong> がそれを知らせます。</li>
                 <li><strong><span translate="no">PTT</span></strong> を押したまま話し、話し終えたら離します。または <strong><span translate="no">VOX</span></strong> をオンにして、そのまま話します。</li>
                 <li>ボイスメモリーを送るには、それをタップします。<span translate="no">TX ON</span> のときは送信され、自分のスピーカーからも聞こえます。<span translate="no">TX OFF</span> のときは自分に向けて再生されるだけなので、録音の確認に便利です。長押し（パソコンでは右クリック）すると、常に自分に向けて再生するだけになります。</li>
+                <li>交信が終わったら <strong><span translate="no">QSO</span></strong> を押して記録します。</li>
             </ol>
             <p>
                 自分の生の声が自分のスピーカーから再生されることはありません。送信しようとしている周波数がアマチュアバンドの外にある場合、qFT8 は無線機を送信に切り替えず、その旨を表示します。
             </p>
             <div class="highlight">
-                <p><strong>PTT 制限:</strong> <strong>タップで切り替え</strong>と <span translate="no">VOX</span> では、<strong>PTT 制限</strong>（変更しなければ 100 秒）が過ぎると送信が自動的に止まり、<span translate="no">PTT</span> ボタンに残りの秒数が表示されます。制限に達したあと、<span translate="no">VOX</span> は同じ時間だけ、または <span translate="no">PTT</span> をタップするまで休止します。これは、マイクがノイズを拾い続けた場合に無線機を守るためのものです。無線機自体の<a href="#tx-limit">連続送信時間の上限</a>も適用され、2 つのうち短いほうが優先されます。</p>
+                <p><strong>送信の制限:</strong> <span translate="no">SSB</span> の送信はすべて、無線機の<a href="#tx-limit">連続送信時間の上限</a> (デバイス設定) で自動的に終わります。無線機に上限がないときは 3 分後に終わります。<strong>タップで切り替え</strong> と <span translate="no">VOX</span> では <span translate="no">PTT</span> ボタンが残り秒数をカウントダウンします (<strong>押している間話す</strong> とボイスメモリーでは、無線機に上限があるときだけ)。上限に達した後、<span translate="no">VOX</span> は同じ時間だけ、または <span translate="no">PTT</span> をタップするまで一時停止します。これは雑音を拾い続けるマイクから無線機を守ります。</p>
             </div>
 
             <h3 id="ssb-memories">ボイスメモリー</h3>
             <p>
-                <strong>設定 &gt; <span translate="no">SSB</span> &gt; ボイスメモリー</strong>を開き（またはペインの<strong>ボイスメモリーは設定で登録します</strong>をタップし）、<strong><span translate="no">新しいボイスメモリーを録音</span></strong> を押します。メモリーは 6 個まで、それぞれ 30 秒まで保存できます。メモリーごとに、名前を付ける、録音し直す、音量を設定する、<strong><span translate="no">ノーマライズ</span></strong> を押す、といった操作ができ、音の波形の上にある 2 つのハンドルをドラッグして先頭と末尾の無音を切り取ることもできます。<strong><span translate="no">再生</span></strong> は残した部分を再生し、保存するまでは何も変わりません。メモリーは、録音も含めて設定のエクスポートに含まれます。
+                <strong>設定 &gt; <span translate="no">SSB</span> &gt; ボイスメモリー</strong>を開き（またはペインの<strong>ボイスメモリーは設定で登録します</strong>をタップし）、<strong><span translate="no">新しいボイスメモリーを録音</span></strong> を押します。メモリーは 6 個まで、それぞれ 30 秒まで保存できます。メモリーごとに、名前を付ける、録音し直す、音量を設定する、<strong><span translate="no">ノーマライズ</span></strong> を押す、といった操作ができ、音の波形の上にある 2 つのハンドルをドラッグして先頭と末尾の無音を切り取ることもできます。<strong><span translate="no">再生</span></strong> は残した部分を再生し、保存するまでは何も変わりません。メモリーは、録音も含めて設定のエクスポートに含まれます。 ボイスメモリーはあなたのマイクからあなた自身の声を録音します。無線機の音ではありません。qFT8 は交信を録音しません。
             </p>
 
             <h3 id="ssb-settings">設定 &gt; <span translate="no">SSB</span></h3>
@@ -2604,23 +2965,31 @@
                 <li><strong>PTT 方式</strong>: <span translate="no">PTT</span> ボタン、または <span translate="no">VOX</span>。</li>
                 <li><strong>PTT モード</strong>: <strong>押している間話す</strong>または<strong>タップで切り替え</strong>。</li>
                 <li><strong>PTT 遅延</strong>: 無線機を送信に切り替えてから声を送り出すまでの時間。話した内容が欠けることはありません。最初の音節は無線機の準備ができるまで待たされます。</li>
-                <li><strong>PTT 制限</strong>: 上記を参照（10～600 秒）。</li>
-                <li><strong>サイドバンド</strong>: バンドに応じて自動、常に <span translate="no">USB</span>、または常に <span translate="no">LSB</span>。</li>
+                <li><strong>サイドバンド</strong>: バンドに応じて自動、常に <span translate="no">USB</span>、または常に <span translate="no">LSB</span>。 変更はすぐに反映されます。<span translate="no">SSB</span> の最中でも同じです。</li>
                 <li><strong><span translate="no">SSB</span> に入るときのフィルター</strong>と<strong>SSB に入るときのノイズ低減</strong>。</li>
-                <li><strong>受信音をスピーカーで再生する</strong>と<strong>送信中はスピーカーを消音する</strong>。</li>
+                <li><strong>受信音をスピーカーで再生する</strong>と<strong>送信中はスピーカーを消音する</strong>。 後者は、電話機自身のマイクとスピーカーを使っている間は常にオンです。電話機が自分の音を拾わないようにするためです。</li>
                 <li><strong>ボイスメモリー</strong>と <strong><span translate="no">デフォルトにリセット</span></strong>。</li>
             </ul>
 
             <h3 id="ssb-requirements"><span translate="no">SSB</span> に必要なもの</h3>
             <ul>
                 <li><strong>無線機のサウンドカードではないマイクとスピーカー。</strong> スマートフォンには内蔵されていますし、ヘッドセットも使えます。<a href="#audio-setup">スピーカーとマイク</a>を参照してください。無線機とマイクまたはスピーカーが同じデバイスになっている場合は、赤い行でその旨が表示され、送信も再生も行われません。</li>
-                <li><strong>無線機。</strong> 無線機がないと、ペインの代わりに <strong><span translate="no">SSB</span> を使うには無線機を接続してください</strong>と書かれたカードが表示されます。無線機を接続すると、ペインは自動的に戻ります。CAT がなく、無線機自身の <span translate="no">VOX</span> で送信に切り替わる無線機でも使えますが、その場合はアプリから同調できません。</li>
-                <li><strong><span translate="no">QMX</span> または <span translate="no">QMX+</span> には、ファームウェア 1_02_000 以降が必要です。</strong> アプリから音声を送信するための条件です。古いファームウェアでは、下部バーに <strong><span translate="no">SSB</span>なし</strong>と表示され、このモードは受信専用になります。</li>
+                <li><strong>無線機。</strong> 無線機がないと、ペインの代わりに <strong><span translate="no">SSB</span> を使うには無線機を接続してください</strong>と書かれたカードが表示されます。無線機を接続すると、ペインは自動的に戻ります。CAT がなく、無線機自身の <span translate="no">VOX</span> で送信に切り替わる無線機でも使えますが、その場合はアプリから同調できません。 カードにはデバイス設定へのボタンがあります。CAT がない場合は無線機のつまみで同調します。<span translate="no">RX</span> / <span translate="no">TX</span> ボタン、ホイール、<span translate="no">AUTO RIT</span> はグレーのままです。ほかのカードは、マイクやスピーカーが選ばれていないとき、デバイス設定で全二重がオフのとき、電話機の音声が録音と再生を同時にできないときに知らせます。</li>
+                <li><strong><span translate="no">QMX</span> または <span translate="no">QMX+</span> でアプリから音声を送信するにはファームウェア 1_04_001 以降が必要です</strong>。それより古いファームウェアでは <span translate="no">PTT</span> ボタンに <span translate="no">SSBなし</span> と表示され、赤い行が理由を説明し、受信専用になります。</li>
+                <li><strong><span translate="no">QMX</span> では</strong> qFT8 は <span translate="no">SSB</span> の間、無線機の <span translate="no">SSB &gt; Input</span> を USB にし、終わるとあなたの元の設定に戻します。無線機には何も保存されません。ファームウェアがこれを許さない場合、赤い行が無線機のメニューで設定するよう求めます。声を送っているのに無線機が出力を出さない場合は、確認すべき点 (<span translate="no">SSB &gt; Input</span>、無線機の USB ゲイン、ファームウェア) を 1 つのメッセージで示します。</li>
+                <li>一部の電話機では、USB 接続の無線機と <span translate="no">VOX</span> を一緒に使えません。電話機がマイクと無線機を同時に聞けないためです。その場合は <span translate="no">PTT</span> ボタンを使ってください。</li>
                 <li>あるバンドを <span translate="no">SSB</span> で初めて開くと、qFT8 はそのバンドで、お住まいの地域で一般的な音声の周波数に合わせます。2 回目以降は、そのバンドで最後に使った周波数に戻ります。30 m バンドには音声の区分がないため、選べません。</li>
+                <li>qFT8 が無線機のモードを設定できない場合 (デバイス設定でその設定がオフ) や、無線機の <span translate="no">LSB</span> データコマンドが不明な場合、無線機は USB データモードのままで、qFT8 が自分で <span translate="no">LSB</span> を作ります。このとき <span translate="no">LSB</span> のバンドでは、無線機の表示は qFT8 の表示より 3 kHz 低い周波数になります。いずれの場合も、スピーカーとマイクで選んだマイクに向かって話し、無線機の PTT ではなく qFT8 の <span translate="no">PTT</span> を使ってください。</li>
             </ul>
             <p>
                 QSO はサイドバンドとともに <span translate="no">SSB</span> として記録され、ほかの QSO と同じように <span translate="no">QRZ</span> と <span translate="no">LoTW</span> にアップロードされます。
             </p>
+
+            <h3 id="ssb-platforms">コンピューター、iPhone、Web リモート</h3>
+            <ul>
+                <li><strong>コンピューター</strong> と <strong>iPhone</strong> は同じペインを同じボタンで表示します。コンピューターではボイスメモリーを右クリックすると自分だけに再生され、スペクトログラム上のマウスホイールで同調できます。</li>
+                <li><strong>Web リモート</strong> はアプリを <span translate="no">SSB</span> に切り替えられません。アプリが <span translate="no">SSB</span> のとき、ページにはウォーターフォールと 3 つのボタンが表示されます: <strong>聞く</strong> は無線機の音をページで再生し、<strong>マイク</strong> はブラウザーのマイクを無線機のマイクにし、<strong><span translate="no">PTT</span></strong> は送信します (1 回タップでオン、もう 1 回でオフ。スペースキーも同じ)。送信はアプリが <span translate="no">TX ON</span> のときだけです。ブラウザーはセキュアなアドレスでしかページにマイクを渡しません: Web サーバーの設定でセキュアなアドレス (https) をオンにし、ページに表示されるリンクを開いてください。</li>
+            </ul>
 
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
         </section>
@@ -2629,6 +2998,11 @@
             <h2><span translate="no">CW</span>（モールス符号）</h2>
             <p>
                 <span translate="no">CW</span> モードでは、qFT8 が通過帯域内のすべてのモールス信号を解読し、その文字をスペクトログラム上に書き出します。送信は、画面上のパドル、自分のキー、用意された定型文、入力した文字のいずれかで行えます。<span translate="no">TX OFF</span> のときは、すべてが練習として動作します。自分の送信はスピーカーから聞こえ、電波は出ません。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> ITU-R 勧告 M.1677-1, &ldquo;International Morse code&rdquo; (2009)。</p>
+            <p>
+                qFT8 は <span translate="no">CW</span> を、無線機のデータモード(例: <span translate="no">DIGU</span> または <span translate="no">DIGL</span>、<span translate="no">USB-D</span> または <span translate="no">LSB-D</span>)を通して、整形されたきれいな音声トーンとして送信します。そのため送信中は無線機がそのモードに切り替わり、受信は広帯域のままです。例外は QRP Labs <span translate="no">QMX</span> で、<span translate="no">CAT</span> 経由で本物の <span translate="no">CW</span> としてキーイングされます。
             </p>
             <p>
                 下部バーのモードセレクターで <strong><span translate="no">CW</span></strong> を選びます:
@@ -2643,16 +3017,16 @@
 
             <ol>
                 <li><strong><span translate="no">AUTO</span></strong>: qFT8 に <span translate="no">CW</span> の QSO 全体を任せます（<a href="#cw-auto">CW での AUTO</a> を参照）。</li>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: ウォーターフォールのタップやチューニングホイールで動かすバーを選びます。受信バー、送信バー、または両方を一緒に動かせます。</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: ウォーターフォールのタップやチューニングホイールで動かすバーを選びます。受信バー、送信バー、または両方を一緒に動かせます。 その後ろにある <strong><span translate="no">AUTO RIT</span></strong> は、受信バーを自分を呼んでいる局へ移します（<a href="#cw-auto-rit"><span translate="no">AUTO RIT</span></a> を参照）。</li>
                 <li><strong>歯車</strong>は <strong>設定 &gt; <span translate="no">CW</span></strong> を開き、<strong><span translate="no">QSO</span></strong> は <span translate="no">CW</span>、周波数、ターゲットが入力済みのロガーを開きます。</li>
-                <li><strong><span translate="no">ターゲット</span></strong>: 交信している相手局のコールサイン。メッセージの <code>[TARGET]</code> の部分に入ります。タップして入力するか、デコーダー行（項目 10）のコールサインをタップして取り込みます。</li>
-                <li><strong>メモリー</strong>: 用意された定型文。タップすると送信されます。自局のコールサインは青、レポートは黄色で表示されます。まだ足りない項目（ターゲット、自分の名前など）があるメモリーは薄く表示されます。タップすると、何が足りないかが分かります。</li>
+                <li><strong><span translate="no">ターゲット</span></strong>: 交信している相手局のコールサイン。メッセージの <code>[TARGET]</code> の部分に入ります。タップして入力するか、デコーダー行（項目 10）のコールサインをタップして取り込みます。 <span translate="no">AUTO</span> がオンで <span translate="no">TX</span> がオフのあいだに局があなたを呼ぶと、その下の灰色の行に <strong>K1ABC があなたを呼んでいます – TX ON を押してください</strong> と表示されます。</li>
+                <li><strong>メモリー</strong>: 用意された定型文。タップすると送信されます。自局のコールサインは青、レポートは黄色で表示されます。まだ足りない項目（ターゲット、自分の名前など）があるメモリーは薄く表示されます。タップすると、何が足りないかが分かります。 <span translate="no">AUTO RIT</span> がオンのときは、あなたを呼んでいる局の <strong>K1ABC +150 Hz に追従しますか?</strong> の行がこのリストの一番上に表示されます。</li>
                 <li><strong><span translate="no">WPM</span></strong> と <strong><span translate="no">FARNSWORTH</span></strong>: 1 分あたりの語数で表した送信速度と、オプションのファーンズワース速度（文字の速度はそのままで、文字の間隔が長くなります）。</li>
-                <li><strong><span translate="no">FILTER</span></strong> と <strong><span translate="no">NR</span></strong>: 受信バーを中心とした受信フィルターの幅と、ノイズ低減。</li>
+                <li><strong><span translate="no">FILTER</span></strong>、<strong><span translate="no">NR</span></strong>、<strong><span translate="no">SIDETONE</span></strong>：受信バーのまわりの受信フィルターの幅、ノイズリダクション、そして自分のサイドトーンの音量です（<a href="#cw-sidetone">サイドトーン</a> を参照）。</li>
                 <li><strong>パドル</strong>: 左が短点、右が長点です。アイアンビックのモードでは両方を押します。</li>
                 <li><strong>赤い行</strong>: <span translate="no">送信するには TX ON を押してください</span>。これが表示されている間、キーイングは練習になります。</li>
-                <li><strong>デコーダー行</strong>: FT8 でメッセージセレクターがある場所です。フィルター内の局の文字を緑で、自分が送っている内容を赤で表示します。新しいものが右側です。</li>
-                <li><strong>ウォーターフォール上のデコード文字</strong>: すべての信号について、その軌跡に沿って文字が書き出されるので、バンド全体を一度に読めます。受信バーの下のラベルには、いま合わせている局のコールサインと速度が表示されます。</li>
+                <li><strong>デコーダー行</strong>: FT8 でメッセージセレクターがある場所です。フィルター内の局の文字を白で、自分が送っている内容を緑で表示し、最新のものが右に来ます。コールサインをタップするとターゲットとして提案されます。それ以外の場所をタップすると、その周波数の会話全体がスペクトログラムの代わりに表示され（最新が下、ドラッグで古い文字を読めます）、デコーダー行は小さなウォーターフォールになります。そこを短くタップするとスペクトログラムに戻り、押したまま横にドラッグすると同調が変わります。</li>
+                <li><strong>ウォーターフォール上のデコード文字</strong>: すべての信号について、その軌跡に沿って文字が書かれるので、バンド全体を一度に読めます。フィルター内の局は緑、ターゲットはマゼンタ、その他は白、自分が送っている内容は黄色です。まだ読み直し中の単語は斜体で表示されます。受信バーの下のラベルには、今いる局のコールサインと速度が表示されます。</li>
                 <li><strong>チューニングホイール</strong>: 周波数目盛りです。目盛りに沿ってスワイプすると、選択中のバーが動きます（バーが端に達すると無線機の周波数も動きます）。ウォーターフォールをタップまたはドラッグすると、バーを直接動かせます。</li>
                 <li><strong>周波数へ移動</strong>: 白い信号強度の線が表示されている帯をタップすると、周波数を kHz で入力できます。</li>
             </ol>
@@ -2671,7 +3045,7 @@
 
             <h3 id="cw-practice"><span translate="no">TX OFF</span> での練習</h3>
             <p>
-                下部バーに <span translate="no">TX OFF</span> と表示されている間も、パドル、自分のキー、メモリー、キーボード入力欄はすべて動作しますが、音が出るのは自分のスピーカーだけです。キーイングした内容はデコードされ、デコーダー行に赤で表示されるので、自分の符号が読み取れるかどうかを確認できます。無線機には何も届きません。この練習に無線機はまったく必要ありません。
+                下部バーに <span translate="no">TX OFF</span> と表示されている間も、パドル、自分のキー、メモリー、キーボード入力欄はすべて動作しますが、音は自分のスピーカーだけで鳴ります。打った内容はデコードされてデコーダー行に緑で表示されるので、自分の送信が読み取れるか確認できます。無線機には何も届きません。このためには無線機はまったく必要ありません。
             </p>
 
             <h3 id="cw-paddles">パドルとキーヤー</h3>
@@ -2804,6 +3178,17 @@
                 <strong>設定 &gt; <span translate="no">CW</span></strong> には、このほか<strong>トーン</strong>（サイドトーンの鳴り方: 音程、音量、なめらかな、または鋭い立ち上がり、トーンまたはサウンダーのクリック音）、<strong>デコードと表示</strong>（<strong>自動デコード</strong>、ウォーターフォール上のすべての信号の文字を表示する<strong>マルチデコーダー</strong>、横向きのスペクトログラム、モードに入るときのフィルター）、<strong>モニター（スピーカー）</strong>、<strong>略符号と記号</strong>があります。
             </p>
 
+            <h3 id="cw-sidetone">サイドトーン</h3>
+            <p>
+                サイドトーンは、自分の送信を電話機やコンピューターのスピーカーやヘッドホンで聞く音です。無線機には決して送られません。右側の列の最後のボタン <strong><span translate="no">SIDETONE</span></strong> はその音量を表示し、タップすると横にスライダー <strong>サイドトーン音量</strong> が開き、もう一度タップすると閉じます。<strong>設定 &gt; <span translate="no">CW</span> &gt; トーン</strong> と同じ設定です。送信中は音量キーでもサイドトーンが変わります。
+            </p>
+            <p>
+                <strong>トーン</strong> では、<strong>モニターの音程</strong>（受信信号と同じ高さ）、<strong>サイドトーンの立ち上がり / 立ち下がり</strong>、<strong>サイドトーンの波形</strong>、<strong>サイドトーンの音</strong>（<strong>トーン</strong> または <strong>クリック（サウンダー）</strong>）も選べます。これらは自分に聞こえる音だけを変えます。電波に乗る <span translate="no">CW</span> は常に立ち上がりの柔らかいきれいなトーンです。<strong>スピーカー維持</strong> は押下の合間も電話機や Bluetooth ヘッドホンを起こしておき、最初の短点が欠けないようにします。短点の頭が欠けるときは上げてください。サイドトーンや受信信号を止めるには、<strong>送信内容を再生（サイドトーン）</strong> と <strong>受信信号をスピーカーで再生</strong> を使います（<strong>モニター（スピーカー）</strong> にあります）。
+            </p>
+            <p>
+                iPhone にはサイドトーンも <span translate="no">SIDETONE</span> ボタンもありません。
+            </p>
+
             <h3 id="cw-auto"><span translate="no">CW</span> での AUTO</h3>
             <p>
                 ペイン左上の <strong><span translate="no">AUTO</span></strong> ボタンを使うと、qFT8 が <span translate="no">CW</span> の QSO を最初から最後まで行います。このモードに入るたびにオフになっています。タップするとオンになり（緑色になります）、もう一度タップするとオフになります。送信するのは <span translate="no">TX</span> が <span translate="no">ON</span> の間だけです。AUTO が自分から送信を有効にすることはありません。
@@ -2821,14 +3206,53 @@
                 AUTO がオンの間はパドルが無効になり、<strong><span translate="no">手動で送信するには AUTO を無効にしてください</span></strong> という行が表示されます。<strong><span translate="no">停止</span></strong> を押しても AUTO はオフになります。まったく使わない場合は、<strong>設定 &gt; <span translate="no">CW</span></strong> で<strong>AUTO モードを表示</strong>をオフにすると、ボタンが表示されなくなります。
             </p>
 
+            <h3 id="cw-auto-rit"><span translate="no">AUTO RIT</span>: 自分を呼んでいる局を追う</h3>
+            <p>
+                自分の <span translate="no">CQ</span> に応答する局は、少し周波数がずれていることがよくあります。<span translate="no">RX/TX</span> の後ろのボタン <strong><span translate="no">AUTO RIT</span></strong> がそれに対応します。オンにするまではオフで、qFT8 は選んだ状態を覚えています。オンにすると緑になり、次のように動きます。
+            </p>
+            <ul>
+                <li>あなたを呼んでいる局（その送信にあなたのコールサインが含まれ、<span translate="no">CQ</span> でも他局への呼び出しでもないもの）が <strong>フィルターの内側</strong> にいれば、受信バーを自動的にその局へ引き寄せます。送信バーは決して動きません。呼んだ場所で送信を続けます。</li>
+                <li><strong>フィルターの外側</strong> であなたを呼んでいる局は、メモリーの一番上に <strong>K1ABC +150 Hz に追従しますか?</strong> という行として、受信バーからの距離と一緒に表示されます。<strong>追従</strong> で受信バーをその局へ移し、×でその行を消します。行は最大 3 つまで、新しいものから表示され、それぞれその局が最後に呼んでから 1 分で消えます。</li>
+                <li>ターゲットと QSO 中は、あなたを呼ぶ別の局は行が表示されるだけで、相手局から受信バーを奪うことはありません。</li>
+            </ul>
+            <p>
+                <span translate="no">AUTO RIT</span> が動かすのは受信バーだけです。送信することも <span translate="no">TX</span> をオンにすることもなく、自分が送信している間に聞こえたものは数えません。
+            </p>
+
+            <h3 id="cw-radio">無線機のキーイングのしかた</h3>
+            <ul>
+                <li><strong>ほとんどの無線機</strong>：qFT8 は <span translate="no">CW</span> を整形した音声トーンとして無線機のデータモードに送ります。そのため送信レベルは FT8 と同じく TX 音量で設定します。送信の間、無線機はデータモードに切り替わり、受信は広いままです。</li>
+                <li><strong>QRP Labs の <span translate="no">QMX</span> と <span translate="no">QMX+</span></strong>：qFT8 は <span translate="no">CAT</span> 経由で無線機を符号の要素ごとにキーイングし、無線機は自分の送信周波数ちょうどに自らキャリアを出します。無線機はずっとデジタルモードのままで、音声は送られず、TX 音量は関係ありません。サイドトーンは、あなたの速度とタイミングで電話機やコンピューターから引き続き鳴ります。</li>
+            </ul>
+            <p>
+                どちらの場合も、短点や長点の途中で <span translate="no">STOP</span> または <span translate="no">TX OFF</span> を押すとそれがきれいに終わり、無線機は受信に戻ります。qFT8 が送信している間は、TX ボタンに送信中であることが表示されます。
+            </p>
+
+            <h3 id="cw-logging"><span translate="no">CW</span> の QSO をログに記録する</h3>
+            <p>
+                ペインの右上の <strong><span translate="no">QSO</span></strong> は、記入済みのロガーを開きます。モード <span translate="no">CW</span>、バンドと送信周波数（2 本のバーが離れているときは受信周波数も）、ターゲット のコールサイン、そしてレポートです。<span translate="no">AUTO</span> がその局と交信した場合は実際に交換したレポートが入ります。そうでなければ、送ったレポートは <strong>送るレポート [RST]</strong>（空のときは信号から測ったもの）、受けたレポートは相手局の送信から読み取ったものです。開いている<a href="#activation">アクティベーション</a>の公園や山頂も記入されます。確認し、必要なところを直して保存してください（<a href="#qso-logger">ロガー</a> を参照）。
+            </p>
+            <p>
+                <span translate="no">AUTO</span> は完了した QSO を自動で記録し、両方のレポートと相手局の名前・場所をコメントに入れて、<strong>K1ABC を記録しました</strong> と表示します。<strong>省略数字で送信 (5NN)</strong> がオンのときレポートは <span translate="no">5NN</span> として送られますが、ログには常に <span translate="no">599</span> が保存されます。
+            </p>
+
+            <h3 id="cw-platforms">コンピューター、iPhone、Web リモートでは</h3>
+            <ul>
+                <li><strong>コンピューターでは</strong> ペインは同じです。マウスボタンとキーボードがパドルになり（<a href="#cw-keys">アダプター、キーボード、マウスでのキーイング</a> を参照）、スペクトログラム上のマウスホイールで選択中のバーが動き、音声 はありません。</li>
+                <li><strong>iPhone では</strong> ペインは同じですが、サイドトーンはありません（上記参照）。音声 はキーボード付きの送信欄を開くので、音声入力ができます。</li>
+                <li><strong>Web リモートでは</strong>（<a href="#remote-control">リモートコントロール Webサーバー</a> を参照）、qFT8 がデコードした文字が信号ごとに 1 行、新しいものから表示され、メッセージを入力して送る欄があります。<span translate="no">STOP</span> で止まります。コンピューターのキーボードのパドルキーで、qFT8 自身のキーヤーをその設定のまま操作できます。<span translate="no">AUTO RIT</span> とその 追従 の行もあります。<span translate="no">SIDETONE</span> ボタンはありません。ピークの帯をタップすると無線機の周波数を尋ねられます。</li>
+            </ul>
+
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
         </section>
 
         <section id="rtty-mode">
-            <h2><span translate="no">RTTY</span></h2>
+            <h2><span translate="no">RTTY</span> と <span translate="no">JTTY</span></h2>
             <p>
-                <span translate="no">RTTY</span>（ラジオテレタイプ）は、交互に切り替わる 2 つのトーンで文字を送ります。qFT8 では <a href="#cw-mode"><span translate="no">CW</span></a> と同じ画面を使いますが、パドルはありません。通過帯域内のすべての <span translate="no">RTTY</span> 信号が、それぞれの速度とシフトでデコードされ、ウォーターフォール上の軌跡に沿って書き出されます。
+                <span translate="no">RTTY</span>（ラジオテレタイプ）は、交互に切り替わる 2 つのトーンで文字を送ります。qFT8 では <a href="#cw-mode"><span translate="no">CW</span></a> と同じ画面を使いますが、パドルはありません。通過帯域内のすべての <span translate="no">RTTY</span> 信号が、それぞれの速度とシフトでデコードされ、ウォーターフォール上の軌跡に沿って書き出されます。 同じ画面で、弱い信号向けの新しい文字モード <span translate="no">JTTY</span> も動きます(<a href="#jtty-mode"><span translate="no">RTTY</span> と <span translate="no">JTTY</span> の違い</a> を参照)。
             </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> ITU-T 勧告 S.1, &ldquo;International Telegraph Alphabet No. 2&rdquo;; 45.45ボーと170 Hzシフトはアマチュアの慣行です。</p>
 
             <div class="phone-mockup">
                 <img src="../../phonecamera.jpg" alt="qFT8 カメラ" class="camera" width="132" height="1080">
@@ -2838,25 +3262,55 @@
             <p><span translate="no">RTTY</span> 画面の各部の詳細は次のとおりです:</p>
 
             <ol>
-                <li><strong><span translate="no">ターゲット</span></strong> と <strong><span translate="no">ナンバー</span></strong>: 交信している相手局のコールサインと、コンテストナンバー。メッセージの <code>[TARGET]</code> と <code>[EXCH]</code> に入ります。</li>
+                <li><strong><span translate="no">ターゲット</span></strong> と <strong><span translate="no">ナンバー</span></strong>: 交信している相手局のコールサインと、コンテストナンバー。メッセージの <code>[TARGET]</code> と <code>[EXCH]</code> に入ります。 タップすると入力できます。デコーダー行(項目 7)のコールサインをタップすると、それをターゲットにできます。</li>
                 <li><strong><span translate="no">BAUD</span></strong>: 速度。45.45（一般的な値）、50、75 のいずれかです。タップするたびに次の値に切り替わります。</li>
-                <li><strong><span translate="no">SHIFT</span></strong>: 2 つのトーンの間隔。170 Hz（一般的な値）、200、425、850 Hz のいずれかです。</li>
-                <li><strong><span translate="no">REV</span></strong>: 2 つのトーンを入れ替えます。逆向きに送ってくる局に使います。</li>
+                <li><strong><span translate="no">SHIFT</span></strong>: 2 つのトーンの間隔。170 Hz（一般的な値）、200、425、850 Hz のいずれかです。 フィルターはシフトに合わせて変わります。</li>
+                <li><strong><span translate="no">REV</span></strong>: 2 つのトーンを入れ替えます。逆向きに送ってくる局に使います。 オンの間は琥珀色になります。</li>
                 <li><strong><span translate="no">FILTER</span></strong> と <strong><span translate="no">NR</span></strong>: 受信フィルターとノイズ低減。</li>
-                <li><strong>メモリー</strong>: <span translate="no">CW</span> と同じマクロを使った定型文。タップすると送信されます。空の項目があるメッセージは薄く表示されます。<strong><span translate="no">キーボード</span></strong>（Android では <strong><span translate="no">音声</span></strong> も）は一覧の最後にあります。</li>
-                <li><strong>デコーダー行</strong>: 受信バーの下にいる局の文字は緑、自分が送る内容は赤で表示されます。</li>
+                <li><strong>メモリー</strong>: <span translate="no">CW</span> と同じマクロを使える定型メッセージです。タップすると送信します。空の項目があるメッセージは淡色表示になります。タップすると何が足りないかがわかります。<strong><span translate="no">キーボード</span></strong>(電話と iPhone では <strong><span translate="no">音声</span></strong> も)はリストの最後にあります。</li>
+                <li><strong>デコーダー行</strong>: 受信バーの下にいる局の文字は緑、自分が送る内容は赤で表示されます。 この行をタップすると(コールサイン以外の場所)、その周波数の会話全体がスペクトログラムの場所に表示されます。戻るには、行の代わりに表示される小さなスペクトログラムをタップします。</li>
                 <li><strong>受信バーとそのラベル</strong>: ラベルには、バーの下にいる局のコールサイン、速度、シフトが表示されます。信号の近くをタップすると、バーがその中心に合います。</li>
-                <li><strong><span translate="no">タップして合わせる</span></strong>: バーの下にいる局の速度、シフト、トーンの順序が自分の設定と違うときは、オレンジ色の行でその旨が表示されます。タップすると qFT8 がその局の値を取り込むので、その局に応答できるようになります。</li>
-                <li><strong>そのほかの信号</strong>: それぞれの軌跡に沿って文字が書き出されます。<code>50 Bd</code> や <code>425 Hz</code> のようなオレンジ色のタグは、自分の設定と異なる信号を示します。</li>
+                <li><strong>設定が異なる局</strong>: バーの下の局があなたと異なる速度、シフト、トーンの順序を使っていると、そのラベルが琥珀色になり、異なる <span translate="no">BAUD</span>、<span translate="no">SHIFT</span>、<span translate="no">REV</span> ボタンも琥珀色になって、その局の値とともに <code>に合わせる</code> と表示します。ラベルかそのボタンのどれかをタップすると、qFT8 はその局の値をすべて取り込み、その局に応答できるようにします。</li>
+                <li><strong>その他の信号</strong>: その文字はそれぞれの軌跡に沿って書かれます。あなたの設定との違いを示すのは、受信バーの下の局だけです。</li>
                 <li><strong>周波数</strong>: <span translate="no">RTTY</span> では、ヘッダーにマーク周波数が表示されます。これは運用者どうしが伝え合う周波数であり、ログに書き込まれる周波数でもあります。</li>
             </ol>
 
+            <p>この画面には他にも次のものがあります。</p>
+            <ul>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: ウォーターフォールのタップやチューニングホイールでどのバーを動かすかを選びます。受信バー、送信バー、または両方です。<strong><span translate="no">RX</span></strong> か <strong><span translate="no">TX</span></strong> を選ぶと、ある周波数で受信し、別の周波数で送信できます。</li>
+                <li><strong><span translate="no">AUTO RIT</span></strong>: あなたの周波数から少しずれて応答してきた局に受信バーを移します(<a href="#rtty-auto-rit"><span translate="no">AUTO RIT</span> と追従チップ</a> を参照)。</li>
+                <li><strong>歯車</strong>は 設定 &gt; <span translate="no">RTTY</span> を開きます(画面が <span translate="no">JTTY</span> で動いている間は 設定 &gt; <span translate="no">JTTY</span>)。<strong><span translate="no">QSO</span></strong> はロガーを開きます(<a href="#rtty-logging">ログ記録</a> を参照)。</li>
+                <li><strong>赤い行</strong>: <span translate="no">Press TX ON to transmit</span>。表示されている間、送信したものはプレビューだけです。</li>
+            </ul>
+            <p>
+                コンピューターでは同じ画面をマウスとキーボードで使います。Web リモートは受信した文字とともに、メッセージを書いて送る欄、送信を止めるボタン、<span translate="no">AUTO RIT</span> ボタン、追従チップを表示します。その <span translate="no">TX</span> ボタンはアプリ自身のボタンです。
+            </p>
+
             <h3 id="rtty-sending">送信する</h3>
             <p>
-                <span translate="no">TX</span> を有効にしてから、メモリーをタップするか、<strong><span translate="no">キーボード</span></strong> を開いて入力し、<strong><span translate="no">送信</span></strong> を押します。文字が送出されている間は、<strong><span translate="no">停止</span></strong> のある帯が表示されます。<span translate="no">TX OFF</span> のときは、同じ操作が<strong>プレビュー</strong>になります。メッセージは自分のスピーカーで再生されて赤で表示され、電波は出ません。<span translate="no">RTTY</span> の符号にない文字は省かれ、一覧で示されます。
+                <span translate="no">TX</span> を有効にしてから、メモリーをタップするか、<strong><span translate="no">キーボード</span></strong> を開いて入力し、<strong><span translate="no">送信</span></strong> を押します。文字が送出されている間は、<strong><span translate="no">停止</span></strong> のある帯が表示されます。<span translate="no">TX OFF</span> のときは、同じ操作が<strong>プレビュー</strong>になります。メッセージは自分のスピーカーで再生されて赤で表示され、電波は出ません。<span translate="no">RTTY</span> の符号にない文字は省かれ、一覧で示されます。 送信中のメモリーは終わるまで緑色のままです。
             </p>
             <p>
                 <span translate="no">RTTY</span> はフルパワーの連続送信なので、無線機の<a href="#tx-limit">連続送信時間の上限</a>が適用されます。上限より長いメッセージは送信が始まらず、送信中に上限に達すると停止します。
+            </p>
+
+            <h3 id="rtty-auto-rit"><span translate="no">AUTO RIT</span> と追従チップ</h3>
+            <p>
+                あなたの <span translate="no">CQ</span> に応答する局は、あなたの周波数から少しずれていることがよくあります。<span translate="no">RX/TX</span> の隣の <strong><span translate="no">AUTO RIT</span></strong> がそれに対応します。オンにするまではオフです。オンの間は緑色になり、qFT8 はその状態を覚えています。<span translate="no">RTTY</span> と <span translate="no">JTTY</span> にはそれぞれ専用のスイッチがあります。オンの間は:
+            </p>
+            <ul>
+                <li>ある局があなたのコールサインを含む送信を終え、それがフィルターの内側にあると、受信バーが自動的にその局に移ります。<span translate="no">CQ</span>、他の 2 局の間のメッセージ、読み返されたあなた自身のメッセージは数えません。送信バーは決して動きません。<span translate="no">RX/TX</span> は <span translate="no">RX</span> になるので、あなたは自分の周波数で応答し続けます。</li>
+                <li>もっと離れた周波数からあなたを呼ぶ局には、メモリーの上にチップが表示されます。例: <code>Q0ABC +150 Hz に追従しますか?</code>。<strong>追従</strong> は受信バーをその局に移します。X はその局が再び呼ぶまでチップを閉じます。チップは最大 3 つで、新しいものが先です。チップはその局の最後の呼び出しから 1 分後に消え、その局に合わせている間は隠れます。</li>
+                <li>交信中の局があなたを呼んでいる間は、他の呼び出し局にはチップだけが表示されます。</li>
+                <li>送信中は何も読み取りません。<span translate="no">AUTO RIT</span> が <span translate="no">TX</span> をオンにすることはなく、何かを送信することもありません。</li>
+            </ul>
+            <p>
+                <span translate="no">JTTY</span> ではメッセージがフレーム単位で届くため、最後のフレームが届いた時点でその局の送信は終わったとみなします。
+            </p>
+
+            <h3 id="rtty-logging">ログ記録</h3>
+            <p>
+                <strong><span translate="no">QSO</span></strong> はロガーを開きます(<a href="#qso-logger">ロガー</a> を参照)。モード、バンド、マーク周波数、ターゲット、レポートはすでに入力されています。送るレポートは設定の値で、受け取ったレポートはその局が送ってきた場合にその局の文字から読み取ります。1 回押すごとに 1 QSO です。<span translate="no">RTTY</span> の QSO は <span translate="no">RTTY</span> として、<span translate="no">JTTY</span> の QSO は <span translate="no">JTTY</span> として記録されます(<span translate="no">ADIF</span> ファイルとアップロードではモード <span translate="no">MFSK</span>、サブモード <span translate="no">JTTY</span>)。公園や山頂のアクティベーションが開いている間は、その参照番号も QSO に入ります。
             </p>
 
             <h3 id="rtty-settings">設定 &gt; <span translate="no">RTTY</span></h3>
@@ -2866,95 +3320,361 @@
                 <li><strong>デコードと表示</strong>、<strong>モニター（スピーカー）</strong>、<strong>メモリー</strong>とその値（レポート、名前、場所、コンテストナンバー）、<strong><span translate="no">デフォルトにリセット</span></strong>。</li>
             </ul>
             <p>
-                <strong><span translate="no">QSO</span></strong> ボタンで記録した QSO は、<span translate="no">RTTY</span> としてログに記録されます。<span translate="no">RTTY</span> に AUTO はありません。
+                <span translate="no">RTTY</span> と <span translate="no">JTTY</span> には AUTO はありません。qFT8 がこれらの QSO を自動で行うことはありません。
             </p>
+
+            <h3 id="jtty-mode"><span translate="no">RTTY</span> と <span translate="no">JTTY</span> の違い</h3>
+            <p>
+                モード選択で <strong><span translate="no">JTTY</span>（実験的）</strong> を選ぶと、同じ画面が <span translate="no">JTTY</span> モデムで開き、モードボタンに <span translate="no">JTTY</span> と表示されます。<span translate="no">RTTY</span> の行で <span translate="no">RTTY</span> に戻ります。それぞれ各バンドに専用の周波数があるので、切り替えるとダイヤルが動きます(例えば 20 m では <span translate="no">JTTY</span> は 14.090 MHz)。<span translate="no">JTTY</span> は新しいモードで、まだ変わる可能性があります。電話、コンピューター、iPhone で動作し、Web リモートでは <span translate="no">RTTY</span> と同じように、受信テキスト、<span translate="no">AUTO RIT</span> とそのチップ、送信するテキストが表示されます。
+            </p>
+            <ul>
+                <li>信号: <span translate="no">RTTY</span> は選んだ速度とシフトの 2 トーンです。<span translate="no">JTTY</span> は固定速度の 4 トーンで、幅は約 130 Hz、送信バーを中心とし、ずっと弱い信号でも受信できます。<span translate="no">JTTY</span> では、画面に <span translate="no">BAUD</span>、<span translate="no">SHIFT</span>、<span translate="no">REV</span> のボタンはありません。</li>
+                <li>文字: <span translate="no">RTTY</span> は届いた文字をそのつど表示します。<span translate="no">JTTY</span> はメッセージを約 2 秒のフレームで送り、フレームごとに、1 行に 1 メッセージずつ表示します。</li>
+                <li>あなたのメッセージ: <span translate="no">JTTY</span> では、メモリーやキーボードで入力したメッセージの各行が、<span translate="no">JTTY</span> 独自の文字セットで最大 80 文字の 1 メッセージになります。設定 &gt; <span translate="no">JTTY</span> のメモリーエディターで、メモリーがどのように送られるかがわかります。</li>
+                <li>設定: <span translate="no">JTTY</span> には専用の設定ページと値(下記参照)、専用の <span translate="no">AUTO RIT</span> スイッチがあります。</li>
+                <li>ログ記録: <a href="#rtty-logging">ログ記録</a> で説明したとおり <span translate="no">RTTY</span> または <span translate="no">JTTY</span> です。</li>
+            </ul>
 
             <h3 id="jtty-settings">設定 &gt; <span translate="no">JTTY</span></h3>
             <p>
                 <span translate="no">JTTY</span>（モードセレクターの <strong><span translate="no">JTTY</span>（実験的）</strong> の行）は、この同じパネルを <span translate="no">JTTY</span> モデムで使います。その設定には専用のページがあり、設定一覧で <span translate="no">RTTY</span> の隣にあります。パネルが <span translate="no">JTTY</span> で動いている間は、パネルの歯車ボタンでそのページが開きます。<span translate="no">JTTY</span> が使うものだけがあります：<strong>デコードと表示</strong>、<strong>モニター（スピーカー）</strong>、値付きの <strong>メモリー</strong>、そして <strong><span translate="no">デフォルトにリセット</span></strong>。<span translate="no">RTTY</span> の <strong>モデム</strong> と <strong>送信</strong> の設定は適用されません。<span translate="no">JTTY</span> を初めて使うとき、設定 &gt; <span translate="no">RTTY</span> で変更した内容（メモリー、名前、場所など）を引き継ぎます。変更していなかったものは <span translate="no">JTTY</span> 独自の既定値から始まります（例えば、それぞれ <span translate="no">JTTY</span> メッセージ1つに収まる短いメモリー）。その後は、一方を変えても他方は変わりません。
             </p>
 
+            <p class="mode-specs"><strong>仕様：</strong> 公開された仕様はありません。</p>
+
+            <h3 id="q65-settings">設定 &gt; <span translate="no">Q65</span></h3>
+            <p>
+                <span translate="no">Q65</span>（モードセレクターの<strong><span translate="no">Q65</span>（実験的）</strong>の行）は、セレクターの横にサブモード選択がある 1 つのモードです。周期（15、30、60、120、300 秒）とトーン間隔（A～E）で、<span translate="no">30A</span> のように呼びます。サブモードは 22 種類（15 秒: A-C、30 秒: A-D、60・120・300 秒: A-E）で、初期値は <span translate="no">30A</span> です。<span translate="no">Q65</span> は <span translate="no">FT8</span> のメッセージと同じ QSO の流れ（CQ、レポート、<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、局リスト）を使います。QSO は <span translate="no">MODE=MFSK SUBMODE=Q65</span> として記録され、スポットは <span translate="no">Q65</span> として <span translate="no">PSKReporter</span> に送られます。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> J. Taylor, B. Somerville, S. Franke, N. Palermo, &ldquo;Q65 Quick Start&rdquo;, 2021。</p>
+            <p>
+                代表的な使い方は、6 m の電離層散乱（<span translate="no">30A</span>、<span translate="no">50.275</span> MHz）、2 m の散乱（<span translate="no">60C</span>、<span translate="no">144.170</span> MHz）、2 m 以上の EME（<span translate="no">60A</span>、<span translate="no">60B</span>、<span translate="no">60C</span>）です。選べるバンドは 10 m（<span translate="no">28.140</span>）、6 m（<span translate="no">50.275</span>）、2 m（<span translate="no">144.170</span>）、70 cm、23 cm、13 cm です（この 3 つは <span translate="no">Q65</span> の周波数が確認されるまで <span translate="no">FT8</span> の周波数を使います）。送信は 12.75、25.5、51、113.3、293.8 秒続き、<strong>連続送信時間の上限</strong>の設定に現れます。300 秒のサブモードには十分に大きな制限が必要です。<span translate="no">Q65</span> は音声のみで送られ、qFT8 は無線機の CAT トーンモードでキーイングしません。
+            </p>
+            <p>
+                設定 &gt; <strong>デジタルモード</strong> の <span translate="no">Q65</span> セクションには次があります。
+            </p>
+            <ul>
+                <li><strong>サブモード</strong>: セレクターと同じ周期とトーン間隔。</li>
+                <li><strong>平均化</strong>（オン）: 弱く繰り返される送信を加算し、デコードできるようにします。</li>
+                <li><strong>事前情報</strong>（オン）: 自分と QSO 相手のコールサインをデコーダーの助けに使います。</li>
+                <li><strong>単一デコード</strong>（オフ）: オフではバンド全体をデコードし、オンでは受信周波数の付近だけをデコードします。</li>
+                <li><strong>Rx 許容範囲</strong>: 受信周波数の周りの幅（Hz、初期値 100）。</li>
+                <li><strong>平均をクリア</strong>: これまでに集めた送信を忘れます。</li>
+                <li><strong>参考文献</strong>: プロトコルの説明（著者によるもの）: Taylor、Somerville、Franke、Palermo による「Quick-Start Guide to Q65」と、Palermo の q 元繰り返し累積符号に関する研究。</li>
+            </ul>
+            <p>
+                受信していないものはデコードされません。事前情報で見つかったデコードも、他と同じ検査に合格する必要があります。
+            </p>
+
+            <h3 id="mode-msk144">設定 &gt; <span translate="no">MSK144</span></h3>
+            <p>
+                <span translate="no">MSK144</span>（モード選択の <strong><span translate="no">MSK144</span>（実験的）</strong> の行）は流星散乱通信のためのモードです。流星の飛跡が信号を一瞬だけ反射するため、信号は短い「ping」としてしか聞こえません。送信は期間全体にわたってメッセージを繰り返し、それを運べるだけの長さの ping はすべてデコードされます。<span translate="no">MSK144</span> は <span translate="no">FT8</span> のメッセージと同じ QSO の流れ（CQ、コールサインとグリッド、レポート、<span translate="no">RRR</span>/<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、局リスト）を使います。QSO は <span translate="no">MODE=MSK144</span> として記録され、スポットは <span translate="no">MSK144</span> として <span translate="no">PSKReporter</span> に送られます。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> S. Franke, J. Taylor, &ldquo;The MSK144 Protocol for Meteor-Scatter Communication&rdquo;, <em>QEX</em>, July/August 2017。</p>
+            <p>
+                送信はすべてオーディオ 1500 Hz を中心とし、トーンは 1000 Hz と 2000 Hz です。TX オフセットは <span translate="no">MSK144</span> には適用されません。各バンドの <span translate="no">MSK144</span> 呼び出し周波数は、バンドを選んだときに設定されます。<span translate="no">MSK144</span> は他のモードと同様に <strong>連続送信時間の上限</strong> の設定に含まれます。
+            </p>
+            <p>
+                設定 &gt; <strong>デジタルモード</strong> の <span translate="no">MSK144</span> セクションには次の項目があります：
+            </p>
+            <ul>
+                <li><strong>送受信周期</strong>：各送信と各受信期間の長さ（5、10、15、30 s）。通常は 15 s。</li>
+                <li><strong>レポート、RRR、73 に短縮メッセージを使う</strong>：レポート、<span translate="no">RRR</span>、<span translate="no">73</span> を、両方のコールサインのハッシュを運ぶ短縮メッセージとして送ります。読めるのは交信相手だけです。144 MHz 以上で最も有効。</li>
+                <li><strong>受信許容範囲</strong>：1500 Hz（＋ RX オフセット）の周囲どこまで信号を探すか：25、50、100、200、300 Hz。</li>
+            </ul>
+            <p>
+                参考文献：<span translate="no">QEX</span>（2016）に掲載された Franke と Taylor による <span translate="no">MSK144</span> の記事。
+            </p>
+
+            <h3 id="fst4-settings">設定 &gt; <span translate="no">FST4</span></h3>
+            <p>
+                <span translate="no">FST4</span>（モード選択の<strong><span translate="no">FST4</span>（実験的）</strong>の行）は、LF・MF・HF の微弱信号向けの QSO モードです。<span translate="no">FT8</span> のメッセージと同じ QSO の流れ（CQ、レポート、<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、局リスト、ログ）を使い、4 トーン（GFSK）、160 シンボルです。QSO は <span translate="no">MODE=MFSK SUBMODE=FST4</span> として記録され、スポットは <span translate="no">FST4</span> として <span translate="no">PSKReporter</span> に送られます。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020。</p>
+            <p>
+                送受信の周期は 15、30、60、120、300、900、1800 秒で、下部バーまたは設定で選びます。周期が長いほどモードは狭帯域で高感度になります：15 秒で約 -21 dB、1800 秒で -43 dB（2500 Hz 帯域）。よく使われる周波数：2200 m <span translate="no">136.000</span> kHz、630 m <span translate="no">474.200</span> kHz、160 m <span translate="no">1.8390</span> MHz。非常に長い周期では送信機が最大 30 分間オンのままになります。<strong>連続送信時間の上限</strong> の設定がそれを許可している必要があります。<span translate="no">FST4</span> は実験的です。
+            </p>
+            <p>
+                設定 &gt; <strong>デジタルモード</strong> の <span translate="no">FST4</span> セクションには次があります。
+            </p>
+            <ul>
+                <li><strong>周期</strong>（60 s）：送受信の周期。下部バーと同じです。</li>
+                <li><strong>事前情報</strong>（オン）: 自分と QSO 相手のコールサインをデコーダーの助けに使います。</li>
+                <li><strong>単一デコード</strong>（オフ）: オフではバンド全体をデコードし、オンでは受信周波数の付近だけをデコードします。</li>
+                <li><strong>Rx 許容範囲</strong>: 受信周波数の周りの幅（Hz、初期値 100）。</li>
+                <li><strong>参考文献</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
+            <h3 id="fst4w-settings">設定 &gt; <span translate="no">FST4W</span></h3>
+            <p>
+                <span translate="no">FST4W</span>（モード選択の<strong><span translate="no">FST4W</span>（実験的）</strong>の行）は <span translate="no">WSPR</span> のようなビーコン用モードです。同じ WSPR ペイン（スポット一覧、ビーコンの送信割合、<span translate="no">WSPRnet</span> へのアップロード）を使います。メッセージは 50 ビットで、<span translate="no">CALL GRID POWER</span>、または <span translate="no">PFX/CALL POWER</span>、<span translate="no">CALL/X POWER</span> の形です。周期は 120、300、900、1800 秒で、感度は約 -33 dB（120 秒）から -45 dB（1800 秒）です。受信周波数（通常 1500 Hz）の周りの受信許容範囲（既定 100 Hz）内でデコードします。スポットは周期とともに <span translate="no">WSPRnet</span> に送られます。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020。</p>
+            <p>
+                よく使われる周波数：2200 m <span translate="no">136.000</span> kHz、630 m <span translate="no">474.200</span> kHz、160 m <span translate="no">1.8368</span> MHz。高い方のバンドでは、<span translate="no">WSPR</span> のダイヤル周波数の隣の周波数を使います。非常に長い周期では送信機が最大 30 分間オンのままになります。<strong>連続送信時間の上限</strong> の設定がそれを許可している必要があります。<span translate="no">FST4W</span> は実験的です。
+            </p>
+            <p>
+                設定 &gt; <strong>デジタルモード</strong> の <span translate="no">FST4W</span> セクションには次があります。
+            </p>
+            <ul>
+                <li><strong>周期</strong>（120 s）：送受信の周期。下部バーと同じです。</li>
+                <li><strong>Rx 許容範囲</strong>: 受信周波数の周りの幅（Hz、初期値 100）。</li>
+                <li><strong>送信割合</strong>（20 %）：ビーコンが送信する周期の割合。</li>
+                <li><strong>参考文献</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
             <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
         </section>
 
         <section id="sstv-mode">
             <h2><span translate="no">SSTV</span>（画像）</h2>
-            <p>
-                <span translate="no">SSTV</span>（スロースキャンテレビジョン）は、静止画を音に変えて 1 行ずつ、1～4 分かけて送ります。このモードにしている間、qFT8 は画像を自動で受信します。また、ギャラリーの画像に自局のコールサインを書き込んで送信できます。
-            </p>
-            <p>
-                下部バーのモードセレクターで <strong><span translate="no">SSTV</span></strong> を選びます。ペインの左半分が送信用、右半分が受信用です:
-            </p>
+            <p><span translate="no">SSTV</span>（スロースキャンテレビ）は、静止画を音として 1 行ずつ、30 秒からおよそ 4 分かけて送ります。qFT8 はこのモードにいる間、画像を自動で受信し、あなた自身の画像、写真、または qFT8 の既製画像に、あなたのコールサインを書き込んで送信します。</p>
+
+            <p class="mode-specs"><strong>仕様：</strong> J. L. Barber (N7CXI), &ldquo;Proposal for SSTV Mode Specifications&rdquo;, Dayton Hamvention SSTV forum, May 2000。</p>
+            <p>下部バーのモード選択で <strong><span translate="no">SSTV</span></strong> を選びます。無線機はそのバンドの <span translate="no">SSTV</span> 呼び出し周波数に <span translate="no">USB</span> で移ります。パネルは一度に半分だけを表示します。<strong>RX</strong> は受信した画像、<strong>TX</strong> は送信する画像です。左上の 2 つのボタンで切り替えます。切り替えは表示が変わるだけで、何かが送信されることはありません。</p>
+
+            <h3 id="sstv-rx-half">受信側（<span translate="no">RX</span>）</h3>
 
             <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 カメラ" class="camera" width="132" height="1080">
-                <img src="../sstv.jpg" alt="qFT8 SSTV ペイン" class="screen" width="2280" height="1080">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv.jpg" alt="qFT8 の SSTV パネル、受信側" class="screen" width="2280" height="1080">
             </div>
 
-            <p><span translate="no">SSTV</span> 画面の各部の詳細は次のとおりです:</p>
-
             <ol>
-                <li><strong><span translate="no">送信</span></strong>: 画像を送信するモードとそのサイズ。モードは項目 12 で選びます。</li>
-                <li><strong><span translate="no">読み込み</span></strong>: 「画像を選ぶ」（ギャラリーまたはファイルから）、「写真を撮る」（カメラ付きのスマートフォンやタブレットで）、「用意された画像」を選べます。「用意された画像」は、qFT8 がモードの大きさで描いた約 20 枚の絵で、あなたのコールサインが入っています（CQ カード、qFT8 のロゴ、風景、錯視、QSL カード、73 など）。ほかのアプリから qFT8 に画像を共有することもできます。別のモードを使用中の場合、qFT8 は <span translate="no">SSTV</span> に切り替える前に確認します。</li>
-                <li><strong>送信する画像</strong>。送信されるとおりに表示されます。タップすると、モードの縦横比に合わせて調整できます。全体を表示する、切り抜く（ドラッグで移動、ピンチで拡大・縮小）、回転する、明るさとコントラストを調整する、といった操作ができます。</li>
-                <li><strong>文字スタイル</strong>: 矢印で、コールサインを画像に書き込む方法を順に切り替えます（下部の帯、隅、太い縁取りなど、またはコールサインなし）。鉛筆ボタンで自由なテキストを追加できます。</li>
-                <li><strong><span translate="no">取り除く</span></strong> は読み込んだ画像を取り除きます。<strong><span translate="no">送信</span></strong> には送信にかかる秒数が表示され、送信中は残りの秒数が付いた <strong><span translate="no">停止</span></strong> に変わります。</li>
-                <li><strong>赤い行</strong>: <span translate="no">画像を送信するには TX ON を押してください</span>。その下の残りの場所には小さな画像が並びます。最近読み込んだ画像、続いて用意された画像です。1 回タップすると、その画像が送る画像として読み込まれます（<span translate="no">送信</span> を押すまで送信されることはありません）。画像の縦横比がモードと違う場合は、先に調整の手順が開きます。</li>
-                <li><strong>受信状態</strong>: <span translate="no">待受中</span>、または <span translate="no">受信中</span> とともにモード、相手局の周波数のずれ、描画中の行が表示されます。</li>
-                <li><strong>受信した画像</strong>。届くそばから描かれます。その下には時刻、モード、進み具合が表示され、画像が完成すると<a href="#sstv-callsign">コールサイン欄</a>が表示されます。</li>
-                <li><strong><span translate="no">保存</span></strong> は、画像を端末の画像フォルダーに保存します（画像がまだ届いている途中で押すと、受信が終わった時点で保存されます）。<strong><span translate="no">編集</span></strong> は、受信した画像を補正します（コントラスト、明るさ、色、色合い、シャープネス、ノイズ除去）。受信したままの画像は必ず残るので、どの変更も元に戻せます。<strong><span translate="no">返信</span></strong> は、受信した画像を送信用の画像として読み込み、自局のコールサインの横に相手局のコールサインを入れます。</li>
-                <li><strong>保持している画像</strong>: 最近受信した画像。タップすると、もう一度表示されます。</li>
-                <li><strong>歯車</strong>は <strong>設定 &gt; <span translate="no">SSTV</span></strong> を開き、<strong><span translate="no">QSO</span></strong> はモードが <span translate="no">SSTV</span> のロガーを開きます。</li>
-                <li><strong><span translate="no">SSTV</span> モードセレクター</strong>: Martin、Scottie、Robot、PD、Wraase、Pasokon の各モード。その横のメッセージ欄に、いま何が起きているかが表示されます（「待受中」、「受信中」、残り秒数付きの「送信中」）。</li>
-                <li><strong><span translate="no">SSTV</span> の帯域</strong>: 画像は 1100～2300 Hz の間で送受信されます。聞こえた画像と送った画像には、それぞれウォーターフォール上にモード名付きの枠が表示されます。</li>
+                <li><strong><span translate="no">AUTO</span></strong>：オン（緑、既定）では、qFT8 があらゆるモードの画像を自動で見つけます。オフでは、1 つのモードで常時受信し、流れる画像として表示します（<a href="#sstv-manual">手動受信</a>）。選択は記憶されます。</li>
+                <li><strong><span translate="no">RX</span> | <span translate="no">TX</span></strong>：表示する側。<span translate="no">RX</span> 上の黄色い点は、送信側を表示している間に画像が届いたことを示します。<span translate="no">送信</span> を押すと自動で送信側が表示され、画像が終わるとパネルは受信側に戻ります。</li>
+                <li><strong>受信状態</strong>：<span translate="no">待受中</span>（全モード、通過帯域全体）、モード・局の周波数のずれ・描画中の行を伴う <span translate="no">受信中</span>、<span translate="no">AUTO</span> がオフのときは <span translate="no">手動</span>、送信中は <span translate="no">一時停止</span>。</li>
+                <li><strong>歯車</strong> で <a href="#sstv-settings">設定 &gt; <span translate="no">SSTV</span></a> を開きます。</li>
+                <li><strong><span translate="no">QSO</span></strong> は表示中の画像についてロガーを開きます（<a href="#sstv-logging">ログ記録</a>）。</li>
+                <li><strong>受信画像</strong>：届きつつある画像（1 行ずつ描画）、またはストリップで選んだ保持画像。隅のマーク：受信中に満ちていく琥珀色のリング（終了時に保存される場合は中に緑の矢印）、保存済みなら緑のチェック、未保存なら灰色の矢印。保持画像をタップすると編集できます。</li>
+                <li><strong>キャプション</strong>：時刻（<span translate="no">UTC</span>）とモード。受信中は割合と残り秒数。保持画像が完全でない場合は「... 行目から受信」「... 行目で信号が途絶」「... 行欠落」。その横に <a href="#sstv-callsign">コールサイン欄</a>。</li>
+                <li><strong><span translate="no">保存</span></strong> は画像を <a href="#sstv-folder">画像フォルダー</a> に書き込み、緑（<span translate="no">保存済み</span>）になります。画像の受信中に押すと <span translate="no">終了時に保存</span> と表示されます。</li>
+                <li><strong><span translate="no">編集</span></strong> は保持画像を補正します：明るさ、コントラスト、色の濃さ、色相、シャープネス、ノイズ除去。受信したままの画像は常に残ります。<span translate="no">元に戻す</span> ですべて取り消し、<span translate="no">コピーを保存</span> で編集版を別ファイルとして保存します。</li>
+                <li><strong><span translate="no">返信</span></strong> は相手局のコールサインを尋ね（コールサイン欄から始まります）、<em>あなたの</em> 送信画像に「相手のコールサイン <span translate="no">DE</span> あなたのコールサイン」を 5 つの返信レイアウトのいずれかで書き込みます。受信画像が送り返されることはありません。モードは受信画像が使ったモードに変わります。そのモードに対してあなたの <a href="#tx-limit">連続送信時間の上限</a> が短すぎる場合は通知が出ます。上限が勝手に変更されることはありません。</li>
+                <li><strong>ごみ箱</strong> は確認のあと、表示中の画像を qFT8 から削除します。画像フォルダーにすでに保存したコピーは残り、確認文にもそう書かれています。</li>
+                <li><strong>ストリップ</strong>：まず受信中の画像、続いて保持画像を新しい順に並べます（<a href="#sstv-strip">受信した画像</a>）。</li>
+                <li>下部バーの <strong><span translate="no">SSTV</span> モード選択</strong>：Martin、Scottie、Robot、PD、Wraase、Pasokon の各モードを、1 枚にかかる秒数つきで表示します。画像を送るモードであり、<span translate="no">AUTO</span> がオフのときに受信するモードでもあります。その横のメッセージ欄が状況を示します（「待受中」、割合つきの「受信中」、残り秒数つきの「送信中」）。</li>
+                <li>ウォーターフォール上の <strong><span translate="no">SSTV</span> の帯域</strong>：画像は 1100～2300 Hz で送受信され、モールスの ID は 1000 Hz です。受信・送信した画像ごとに、モードとコールサインを示す枠が付きます。枠をタップするとその画像を表示します。</li>
             </ol>
 
-            <h3 id="sstv-receiving">画像を受信する</h3>
-            <p>
-                設定するものは何もありません。qFT8 は、送信ごとに開始信号からモードを判別し、画像が始まったあとで周波数を合わせた場合でも判別します（すでに逃した行は空のままになります）。周波数が少しずれて送られた画像や、タイミングが少しずれた局からの画像は、自動的にまっすぐに補正されます。2 つの局がはっきり離れた周波数で同時に送信した場合は、両方の画像を受信して保持します。ウォーターフォール上の枠をタップすると、表示する画像を選べます。
-            </p>
-            <p>
-                最近の画像はアプリが自動で保持します。<strong>受信した画像をすべて端末に自動保存</strong>をオンにすると、画像フォルダーにも書き込まれます。オフの場合は、必要な画像を自分で保存します。
-            </p>
+            <h3 id="sstv-tx-half">送信側（<span translate="no">TX</span>）</h3>
 
-            <h4 id="sstv-callsign">誰の画像か: コールサイン欄</h4>
-            <p>
-                多くの局は、画像の前後にモールス符号で、または画像のあとの短いデータバーストで、自局を名乗ります。qFT8 はその両方を読み取り、画像の下の、時刻とモードの横にある欄にコールサインを書き込みます。何も聞こえなかったときは、欄に <strong><span translate="no">コールサイン不明</span></strong> と表示されます。欄をタップすると、コールサインを自分で入力したり（画像に書かれていることがよくあります）、修正したりできます。入力した内容は、聞き取った内容を置き換えます。
-            </p>
-            <p>
-                保存した画像には、日付と時刻（<span translate="no">UTC</span>）、バンド、kHz 単位の周波数、モード、コールサインから成る名前が付きます。たとえば <code translate="no">2026-10-05_1431_20m_14230_M1_F4ABC.png</code> で、コールサインがないときは <code translate="no">..._UNKNOWN.png</code> になります。画像を保存したあとでコールサインが届いたり入力されたりした場合は、保存済みのファイルの名前が変更され、2 つ目のコピーは作られません。
-            </p>
-
-            <h3 id="sstv-sending">画像を送信する</h3>
-            <ol>
-                <li>下部バーのセレクターでモードを選びます。ある局に応答するときは、その局が使ったモードを使います。よく使われるのは Robot 36、Martin 1、Scottie 1 です。</li>
-                <li><span translate="no">送信</span> の下にある小さな画像のどれかをタップするか、<strong><span translate="no">読み込み</span></strong> を押して画像を選び、求められたら縦横比を調整します。</li>
-                <li>矢印で、コールサインの入れ方を選びます。</li>
-                <li><span translate="no">TX</span> を有効にして <strong><span translate="no">送信</span></strong> を押します。</li>
-            </ol>
-            <p>
-                <span translate="no">TX</span> をオフにする、<strong><span translate="no">停止</span></strong> を押す、バンドまたはモードを変える、のいずれかで、画像の送信はすぐに止まります。<strong><span translate="no">送信</span></strong> を押したときに画像を受信中だった場合、qFT8 は受信をやめる前に確認します。
-            </p>
-            <div class="highlight">
-                <p><strong>長いモードと小型の無線機:</strong> 1 枚の画像は、フルパワーでの 1 回の連続送信です。Robot 36 で約 40 秒、Martin 1 で 2 分、もっとも遅いモードでは 4 分を超えます。無線機の<a href="#tx-limit">連続送信時間の上限</a>より長いモードは、一覧でグレー表示になり、選ぶと理由が表示されます。<span translate="no">QMX</span> では、既定の 60 秒のままで短いモードが使えます。</p>
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv_send.jpg" alt="qFT8 の SSTV パネル、送信側" class="screen" width="2280" height="1080">
             </div>
+
+            <ol>
+                <li><strong>モード</strong>：画像を送るモードと、そのサイズ・色方式。下部バーのモード選択で選びます。</li>
+                <li><strong><span translate="no">読み込み</span></strong> で <a href="#sstv-sending">画像を選ぶ</a> が開きます。</li>
+                <li><strong>送信する画像</strong>：電波に乗るとおりに表示されます。空のときは <span translate="no">タップして画像を読み込む</span> と表示されます。タップするとモードの形に合わせ直せます。隅の小さな矢印で、送信されるとおりの画像を画像フォルダーに保存できます。</li>
+                <li><strong>コールサインのスタイル</strong>：矢印で 16 のスタイルと <span translate="no">コールサインなし</span> を順に切り替えます。スタイル名をタップするとスタイルと色の選択が開きます。</li>
+                <li><strong>パレット</strong> でも同じ選択が開きます：スタイルの一覧と 8 つの文字色。選んだものはすぐ画像に反映され、次の画像にも引き継がれます。</li>
+                <li><strong>ペン</strong> で画像に自分の文字を 1 行加えます（文字があるあいだペンは黄色になります）。</li>
+                <li><strong><span translate="no">取り除く</span></strong> で読み込んだ画像を外します。</li>
+                <li><strong><span translate="no">送信</span></strong> には送信全体にかかる秒数が表示されます。画像の送信中は残り秒数つきの <span translate="no">停止</span> になり、送信済みの行が画像上に示されます。</li>
+                <li><strong>赤い行</strong>：<span translate="no">画像を送信するには TX ON を押してください</span>。ファームウェアが画像送信に対応していない <span translate="no">QMX</span> では、代わりにその旨を表示します。</li>
+                <li><strong>クイック画像</strong>：最後に読み込んだ 6 枚、続いて既製画像が、すでにあなたのコールサインのスタイルで並びます。1 回のタップで送信画像として読み込みます。<span translate="no">送信</span> を押すまで送信されることはありません。</li>
+            </ol>
+
+            <h3 id="sstv-receiving">画像の受信</h3>
+            <p><span translate="no">AUTO</span> がオンなら設定するものはありません。qFT8 は送信ごとに開始信号からモードを判別し、画像の途中から周波数を合わせた場合でも判別します（受け損ねた行は空白のままです）。通過帯域全体、つまり通常のトーンより約 1000 Hz 下から 800 Hz 上までを聞いています。少し周波数がずれた画像や、タイミングが少しずれた局の画像は、自動でまっすぐに補正されます。2 局が明らかに異なる周波数で同時に送信した場合は、両方の画像を受信して保持します。ウォーターフォール上の枠をタップして表示する方を選びます。</p>
+
+            <h4 id="sstv-manual">手動受信（<span translate="no">AUTO</span> オフ）</h4>
+            <p>開始信号を聞き逃した局や、qFT8 が自動で拾えない局には、<span translate="no">AUTO</span> をオフにします。qFT8 は下部バーで選んだモードを常時受信し、1 枚の長い流れる画像として表示します。新しい行が下に加わり、画像は上へ流れます。状態表示はモードとオフセットを伴う <span translate="no">手動</span> になり、どこかのモードの開始信号が聞こえると、ヒントとしてだけ知らせます（モードは自分で変えてください）。</p>
+            <ul>
+                <li><strong>受信マーカー</strong>：ウォーターフォールの帯域が、黄色い 2 本の縁を持つマーカーになります。これを信号の上へドラッグします（指で、コンピューターではマウスで）。qFT8 はマーカーから約 100 Hz 以内で信号を追従します。位置は記憶されます。</li>
+                <li><strong><span translate="no">保存</span></strong> と <strong><span translate="no">編集</span></strong> は、まず <strong>画像を切り抜く</strong> を開きます：欲しい画像の周りに黄色い 2 本の縁をドラッグします。最初は最後の完全な 1 枚に合わせてあります。切り抜いたものはストリップの保持画像になり、続いて保存されるかエディターで開きます。</li>
+                <li><strong>ごみ箱</strong> は流れる画像を空からやり直します。保持画像には触れません。</li>
+            </ul>
+
+            <h4 id="sstv-callsign">誰の画像？ コールサイン欄</h4>
+            <p>多くの局は、画像の前後にモールスで、または画像のあとに短いデータバーストで名乗ります。qFT8 はその両方を読み取り、キャプション横の欄にコールサインを書き込みます。何も聞こえなかった場合、欄には <strong><span translate="no">コールサイン不明</span></strong> と表示されます。欄をタップすると、コールサインを自分で入力（画像に書かれていることがよくあります）したり訂正したりできます。入力した内容は聞き取ったものより優先され、<span translate="no">返信</span> と <span translate="no">QSO</span> はそこから始まります。</p>
+
+            <h3 id="sstv-strip">受信した画像</h3>
+            <p>qFT8 は、保存するかどうかに関係なく、最近受信した画像を自動で保持します。<strong>アプリに保持する受信画像の数</strong> を変えない限り 100 枚で、新しい画像が届くと最も古いものが消えます。再起動しても残ります。画像の下のストリップに新しい順で並び、それぞれに保存済み／未保存のマークが付きます。受信中の画像が先頭です。タップすると表示し、画像の受信中は先頭をタップすると再びそれを追います。何も届いていないときは、最新の保持画像を表示します。</p>
+
+            <h3 id="sstv-folder">画像フォルダー</h3>
+            <p><span translate="no">保存</span>（または <strong>受信した画像をすべて端末に自動保存</strong>）は画像を <span translate="no">PNG</span> ファイルとして書き込み、保存先を通知します：</p>
+            <ul>
+                <li><strong>スマートフォン・タブレット</strong>：<code translate="no">Pictures/qFT8 SSTV</code>。画像はギャラリーに表示されます。Android 6～9 では一度だけストレージへのアクセスを求めます。許可しない場合、画像は qFT8 専用のフォルダーに入り、通知にそう表示されます。</li>
+                <li><strong>コンピューター</strong>：あなた自身のピクチャフォルダー（デスクトップ環境が使うもので、言語によって名前が違っても同じ）の中の <code translate="no">qFT8 SSTV</code> フォルダー。</li>
+                <li><strong>iPhone・iPad</strong>：qFT8 専用ストレージの中の <code translate="no">qFT8 SSTV</code> フォルダー。</li>
+                <li><strong>Web リモート</strong>：画像は qFT8 が動いている機器に保存され、ブラウザーがコピーをダウンロードします。閲覧のみ許可されたページでは代わりに <span translate="no">ダウンロード</span> が表示され、ダウンロードだけを行います。</li>
+            </ul>
+            <p>自動保存はスマートフォン、タブレット、iPhone ではオフ、コンピューターではオンです。保存した画像の名前は日付と時刻（<span translate="no">UTC</span>）、バンド、kHz 単位の周波数、モード、コールサインで、例えば <code translate="no">2026-10-05_1431_20m_14230_M1_Q1ABC.png</code>、コールサインがなければ <code translate="no">..._UNKNOWN.png</code> となります。保存後にコールサインが届いたり入力されたりすると、保存済みファイルの名前が変わります。2 つ目のコピーは作られません。編集したコピーは <code translate="no">_edit.png</code>、送信側から保存した画像は <code translate="no">_tx.png</code> で終わります。qFT8 で画像を削除しても、保存したファイルは決して削除されません。</p>
+
+            <h3 id="sstv-sending">画像の送信</h3>
+            <ol>
+                <li>下部バーの選択でモードを選びます。相手局に応答する場合は、相手が使ったモードにします（<span translate="no">返信</span> なら自動でそうなります）。よく使われるのは Robot 36、Martin 1、Scottie 1 です。</li>
+                <li><strong><span translate="no">読み込み</span></strong> を押します（または空の画像をタップ）。<strong>画像を選ぶ</strong> には、あなた自身の画像（<strong>ギャラリー</strong>、コンピューターでは <strong>ファイル</strong>）、カメラのある機器では <strong>カメラ</strong>、そして 59 枚の既製画像（CQ カード、qFT8 のロゴ、風景、錯視、QSL カード、73...）が並びます。他のアプリから qFT8 に画像を共有することもできます。別のモードを使用中なら、qFT8 は <span translate="no">SSTV</span> に切り替える前に確認します。</li>
+                <li>画像がモードの形と違う場合は <strong>画像を合わせる</strong> が続きます：<span translate="no">全体</span> は余白付きで全体を表示、<span translate="no">切り抜き</span> は枠いっぱいに表示（ドラッグで移動、ピンチで拡大）、<span translate="no">回転</span> で回転、明るさ・コントラスト・<span translate="no">自動コントラスト</span> で調整します。<span translate="no">この画像を使う</span> で確定します。</li>
+                <li>続いて <strong>コールサインのスタイル</strong>：16 のコールサインスタイルそれぞれで表示したあなたの画像です。1 つをタップして <strong>使う</strong> を押します。<strong>戻る</strong> で画像の選択に戻ります。</li>
+                <li><span translate="no">TX ON</span> ボタンで <span translate="no">TX</span> を有効にし、<strong><span translate="no">送信</span></strong> を押します。</li>
+            </ol>
+            <p><span translate="no">TX</span> をオフにする、<strong><span translate="no">停止</span></strong> を押す、またはバンドやモードを変えると、画像はすぐに止まります。<span translate="no">停止</span> のあとも <span translate="no">TX</span> はオンのままで、すぐに再送信できます。<strong><span translate="no">送信</span></strong> を押したときに画像を受信中なら、qFT8 は受信を止める前に確認します。</p>
+
+            <h4 id="sstv-styles">コールサインのスタイル</h4>
+            <p>日付は画像を送信した <span translate="no">UTC</span> の日付、バンドは使用中のバンドです。スタイル中の「CQ」は <span translate="no">CQ DE</span> とあなたのコールサインとして書かれます。</p>
+            <ol>
+                <li><strong>CQ + 日付 + バンド</strong>、下部の帯に（既定）。</li>
+                <li><strong>コールサイン</strong> のみ、下部の帯に。</li>
+                <li><strong>大きな日付 + バンド（下）</strong>：CQ とコールサイン、バンドと日付を大きな文字で。</li>
+                <li><strong>大きな日付 + バンド（上）</strong>：上にバンドと日付を大きな文字で、下に CQ とコールサイン。</li>
+                <li><strong>帯：コールサイン + 日付 + バンド</strong>：画像を少し小さくし、その下の帯に CQ、コールサイン、日付、バンド。</li>
+                <li><strong>帯：コールサイン</strong>：同じく、コールサインのみ。</li>
+                <li><strong>大きなCQ + 日付ラベル</strong>：隅に大きな CQ、バンドと日付の小さなラベル。</li>
+                <li><strong>コールサイン中央</strong>：中央に大きな文字のコールサイン。</li>
+                <li><strong>チケット + 日付</strong>：隅にコールサイン、バンド、日付入りのチケット。</li>
+                <li><strong>コールサイン左上</strong>。</li>
+                <li><strong>枠 + 日付</strong>：色付きの枠に、コールサインとバンド・日付。</li>
+                <li><strong>影付きコールサイン</strong>：ドロップシャドウ付きのコールサイン。</li>
+                <li><strong>CQ CQ + 日付</strong>：上に CQ CQ CQ、下にコールサイン、バンド、日付。</li>
+                <li><strong>上の帯にコールサイン</strong>：上端に沿った明るい帯にコールサイン。</li>
+                <li><strong>消印風の日付</strong>：左上にコールサイン、バンドと日付入りの丸い消印。</li>
+                <li><strong>多重縁取りコールサイン</strong>：文字の周りに何重もの縁取りを付けたコールサイン。</li>
+            </ol>
+            <p><strong>コールサインなし</strong> は画像に何も書き込みません（自分で加えた文字の行だけは書かれます）。設定でオンになっていれば、コールサインはモールスや <span translate="no">FSK ID</span> として送られます。返信画像は代わりに 5 つの返信レイアウト（上下に並べる、横に並べる、上と下、太い縁取り、日付 + バンド付き）のいずれかを使い、矢印とパレットはそれらを切り替えます。</p>
+
+            <h3 id="sstv-limits">送信の上限</h3>
+            <p>画像 1 枚はフルパワーでの 1 回の連続送信です：Robot 36 で約 40 秒、Martin 1 で 2 分、最も遅いモードでは 4 分を超えます。開始信号、モールスのコールサイン、画像、<span translate="no">FSK ID</span> のすべてが含まれ、<span translate="no">送信</span> とモード一覧に表示される秒数はその合計です。</p>
+            <ul>
+                <li>無線機の <a href="#tx-limit">連続送信時間の上限</a> より長いモードは、モード一覧で灰色になります。それを選ぶか、そのモードで <span translate="no">送信</span> を押すと、理由が説明され、設定を開くよう提案されます。何も送信されません。</li>
+                <li>この設定の各選択肢の下に、qFT8 はその選択で追加される <span translate="no">SSTV</span> モードを一覧表示するので、上限を上げると何が使えるかがわかります。</li>
+                <li><a href="#sstv-settings">設定 &gt; <span translate="no">SSTV</span></a> でモールスのコールサインや <span translate="no">FSK ID</span> をオフにすると、画像 1 枚が数秒短くなります。</li>
+                <li>上限が勝手に変更されることはありません。<span translate="no">返信</span> でも同じです。</li>
+            </ul>
+            <p><span translate="no">QMX</span> や <span translate="no">QMX+</span> で画像を送信するには、ファームウェア 1_04_001 以降が必要です。それより古いファームウェアでは <span translate="no">SSTV</span> は受信のみとなり、送信側の赤い行にその旨が表示されます。</p>
+
+            <h3 id="sstv-logging"><span translate="no">SSTV</span> の <span translate="no">QSO</span> を記録する</h3>
+            <p>自動では何も記録されません。相手局の画像を表示して <strong><span translate="no">QSO</span></strong> を押すと、<a href="#qso-logger">ロガー</a> がモード <span translate="no">SSTV</span>、バンド、無線機の周波数、コールサイン欄のコールサイン、送受とも 595 を入れた状態で開きます。通知がコールサインの確認を、見つからなかった場合は入力を求めます。他の <span translate="no">QSO</span> と同じように保存してください。その後、他と同様に <a href="#choosing-services">サービス</a> へアップロードされます。</p>
+
+            <h3 id="sstv-platforms">コンピューター、iPhone、Web リモートでは</h3>
+            <ul>
+                <li><strong>コンピューター</strong>：同じパネルで、<span translate="no">RX</span> | <span translate="no">TX</span> の代わりに <span translate="no">受信</span> | <span translate="no">送信</span>、指の代わりにマウス（クリックで読み込み、マーカーをドラッグ）、ギャラリーとカメラの代わりに <strong>ファイル</strong> を使います。</li>
+                <li><strong>iPhone・iPad</strong>：Android スマートフォンと同じパネルと操作です。</li>
+                <li><strong>Web リモート</strong>：受信と送信の列が横に並び、一方に <span translate="no">AUTO</span>、受信マーカー、ストリップ、<span translate="no">保存</span>、<span translate="no">返信</span>、もう一方にモード選択、<span translate="no">読み込み</span>、スタイル、<span translate="no">取り除く</span>、<span translate="no">送信</span> があります。<span translate="no">読み込み</span> はブラウザーで画像を選び、その場で切り抜きます（ドラッグ、スライダーまたはマウスホイールで拡大）。編集、削除、ログ記録は qFT8 本体で行います。<span translate="no">送信</span> は、オペレーターが qFT8 で <span translate="no">TX ON</span> にしているときだけ働きます。</li>
+            </ul>
 
             <h3 id="sstv-settings">設定 &gt; <span translate="no">SSTV</span></h3>
+            <p>パネルの歯車、または設定タブから開きます。<strong>受信</strong>：</p>
             <ul>
-                <li><strong>コールサインを <span translate="no">CW</span> で送出</strong>: オフ、画像の前（既定）、画像のあと、または両方。送るのはコールサインだけで、速度は 20 WPM です。その秒数は送信時間に含まれます。</li>
-                <li><strong>画像ごとに <span translate="no">FSK ID</span> を送出</strong>: 相手局のプログラムが自局のコールサインを読み取れるようにする、短いデータバーストです。</li>
-                <li><strong>文字スタイル</strong>、<strong>自動コントラスト</strong>、<strong>自動でシャープにする</strong>。</li>
-                <li><strong>受信した画像をすべて端末に自動保存</strong>と、<strong>アプリに保持する受信画像の数</strong>。</li>
+                <li><strong>受信した画像をすべて端末に自動保存</strong>（スマートフォンと iPhone ではオフ、コンピューターではオン）。</li>
+                <li><strong>アプリに保持する受信画像の数</strong>：25、50、100（既定）、200、500。</li>
             </ul>
-            <p>
-                <span translate="no">QMX</span> または <span translate="no">QMX+</span> で画像を送信するには、ファームウェア 1_02_000 以降が必要です。古いファームウェアでは、<span translate="no">SSTV</span> は受信専用になります。
-            </p>
+            <p><strong>送信</strong>：</p>
+            <ul>
+                <li><strong>コールサインを <span translate="no">CW</span> で送出</strong>：オフ、画像の前（既定）、画像の後、または前後両方。コールサインのみを 20 WPM で送り、その秒数は送信時間に含まれます。</li>
+                <li><strong>画像ごとに <span translate="no">FSK ID</span> を送出</strong>（オン）：相手局のプログラムがあなたのコールサインを読み取れる短いデータバースト。</li>
+                <li><strong>文字スタイル</strong>：次の画像が最初に使うコールサインのスタイル（新規インストールではスタイル 1）と、<strong>文字の色</strong>（白）。</li>
+                <li><strong>自動コントラスト</strong> と <strong>自動でシャープにする</strong>（どちらもオン）：送信する画像に適用されます。</li>
+            </ul>
+            <p><strong>デフォルトにリセット</strong> で <span translate="no">SSTV</span> の設定をすべて元に戻します。</p>
 
-            <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+            <a href="#top" class="back-to-toc">↑ 目次へ戻る</a>
         </section>
 
 
 
+
+
+
+        <section id="draw-mode">
+            <span id="pix-mode"></span>
+            <h2><span translate="no">DRAW</span>（ウォーターフォール上の画像）</h2>
+            <p>
+                <span translate="no">DRAW</span> は、グレーの画像を他の局のウォーターフォールにそのまま描き出します。画像の各列が1つのトーンで、隣のトーンとは 6.25 Hz 離れており、画像の各行は、一番下の行から一番上の行へ向かって、それぞれ1秒の何分の一かの間送信されます。ウォーターフォールがあれば、qFT8 がなくても、あなたの画像が現れるのを見ることができます。画像の形は自由で、写真でも、絵でも、コールサインのような1行の文字だけでも構いません。<span translate="no">DRAW</span> は標準のモードではなく、見てもらうために作られています。
+            </p>
+
+            <p class="mode-specs"><strong>仕様：</strong> qFT8独自の設計。</p>
+            <p>
+                下部バーのモードセレクターで <strong><span translate="no">DRAW</span></strong>を選びます。ペイン上部の <strong><span translate="no">RX</span></strong>と <strong><span translate="no">TX</span></strong>で、受信側と送信側を切り替えます。
+            </p>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 カメラ" class="camera" width="132" height="1080">
+                <img src="../pix.jpg" alt="qFT8 DRAW ペイン（送信側）" class="screen" width="2280" height="1080">
+            </div>
+
+            <ol>
+                <li><strong>基本情報</strong>：幅、画像の列数と行数、そして速度。</li>
+                <li><strong>ロード</strong>：「写真を撮る」または「画像を選ぶ」。画像は元の縦横比を保ちます。</li>
+                <li><strong>送信する画像</strong>。グレーで、自分のウォーターフォールの色で描かれます。他の局にはこれが見えます。送信中は、送信している行を黄色い線が示し、「送信中：M 行中 N 行目」と表示されます。</li>
+                <li><strong>コールサインプレート</strong>（初期設定でオン）：画像の下に大きな文字で自分のコールサインを入れます。鉛筆ボタンでプレートの文字を変更できます（空欄 = 自分のコールサイン）。<strong>自動コントラスト</strong>はワンタップで画像の最も暗い部分を黒、最も明るい部分を白にします。その後、<strong>コントラスト</strong>と<strong>明るさ</strong>を手動で調整できます。</li>
+                <li><strong>取り除く</strong>はコールサインプレートだけの状態に戻します。<strong>送信</strong>は画像の送信にかかる秒数を表示し、送信中は残り秒数付きの <strong>停止</strong>に変わります。</li>
+                <li><strong>赤い行</strong>は、いま画像を送れない理由を示し、妨げるものがないときは表示されません：「画像を送信するには TX ON を押してください」、「20 s：上限 15 s を超えています」（画像が無線機の<a href="#tx-limit">連続送信時間の上限</a>より長い）、「30 m では 500 Hz 幅のみ送信できます」、「送信がアマチュアバンドの外になります」、またはファームウェアが <span translate="no">CAT</span> で無線機を <span translate="no">SSB</span> に切り替えられない <span translate="no">QMX</span> では、画像は受信しかできないこと。</li>
+                <li><strong>速度</strong>：3.125、6.25（初期設定。1行が <span translate="no">FT8</span> の1トーンと同じ長さ）、または 12.5 行/秒。隣に、画像が<a href="#tx-limit">連続送信時間の上限</a>のどれだけを使うかが表示されます。 リストには各速度での画像の秒数が表示され、上限に対して長すぎる速度はタップするとその旨を表示します。メーターの表示は例えば「上限 30 s のうち 20 s」です。</li>
+                <li><strong>文字プレート</strong>：ワンタップで、「CQ」とコールサイン、「73」とコールサイン、またはコールサインだけを画像全体として読み込みます。</li>
+                <li><strong>回転</strong>（取り除く の隣）は、プレートを含む送信全体を押すたびに 90 度ずつ回転させ、横にスクロールするウォーターフォール上でも正立して読めるようにします。受信側では、<strong>回転</strong>が表示中（および保存される）画像を同じように回転させます。</li>
+                <li>下部バーの<strong>幅</strong>：500、700（初期設定）、1200 Hz。各幅での画像の秒数も表示されます。幅が広いほど列数が増えて鮮明になりますが、時間もかかります。</li>
+                <li>ウォーターフォール上の <span translate="no">DRAW</span> <strong>帯域</strong>：画像は 1000 Hz から 1000 Hz + 幅の間に表示されます。</li>
+            </ol>
+
+            <h3 id="pix-receiving">画像の受信</h3>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 カメラ" class="camera" width="132" height="1080">
+                <img src="../pixrx.jpg" alt="qFT8 DRAW ペイン（受信側）" class="screen" width="2280" height="1080">
+            </div>
+
+            <p>
+                開始する操作はありません：このモードにいる間、送信側を表示していても、qFT8 は常に受信しています。
+            </p>
+            <ol>
+                <li><strong><span translate="no">RX</span></strong>と <strong><span translate="no">TX</span></strong>：受信側と送信側。</li>
+                <li><strong>状態行</strong>：受信中、幅と受信している帯域（700 Hz なら 1000&ndash;1700 Hz）。自分の画像を送信している間は受信が一時停止し、この行がそれを示します。</li>
+                <li><strong>受信した画像</strong>：直近 3 分間の <span translate="no">DRAW</span> 帯域を 1 枚の画像として、最新の行を上に、正方形の画素で、ウォーターフォールの色で表示します。qFT8 で送られた画像は正しい向きで現れます。何も届いていないうちは、受信している周波数を表示します。</li>
+                <li><strong>ライブ表示</strong>：モード、幅、画像を描く速度。</li>
+                <li><strong>保存</strong>（保存するものがあると青）は、表示中の画像を、ノイズから浮き出た部分で切り取り、受信したままのグレーで、日付と時刻（<span translate="no">UTC</span>）と幅を名前に含む <span translate="no">PNG</span> として保存します。スマートフォンやタブレットでは画像フォルダの <code translate="no">Pictures/qFT8 DRAW</code> に入ります。qFT8 がそこに書き込めない場合は qFT8 自身のフォルダに残り、通知が場所を示します。</li>
+                <li><strong>回転</strong>は、表示中の（保存される）画像を押すたびに 90 度回します。ボタンに回転角（90&deg;、180&deg;、270&deg;）が表示されます。</li>
+                <li><strong>速度</strong>：相手局が使っている速度（毎秒 3.125、6.25、12.5 行）に合わせます。受信した画像全体が新しい速度で描き直されます。自分の送信速度は変わりません。</li>
+            </ol>
+            <div class="highlight">
+                <p><strong>無線機の AGC：</strong>無線機の自動ゲイン制御は、明るい行ではゲインを下げ、暗い行では上げるため、受信した画像に縞が入ります。qFT8 は各行で画像の横のノイズを測定して補正し、ゲインが画像に合わせて動いているのを検出するとそう知らせます。その場合は、無線機の <span translate="no">AGC</span> を <span translate="no">OFF</span> または <span translate="no">SLOW</span> にしてください（バンドが騒がしい場合は <span translate="no">RF</span> ゲインも少し下げてください）。</p>
+            </div>
+
+            <h3 id="pix-sending">画像の送信</h3>
+            <ol>
+                <li>下部バーで幅を、<strong>速度</strong>で速度を選びます。</li>
+                <li>画像を読み込むか、文字プレートをタップします。コントラストを設定するか、<strong>自動コントラスト</strong>を押します。</li>
+                <li><span translate="no">TX</span> をオンにして <strong>送信</strong>を押します。</li>
+            </ol>
+            <p>
+                <span translate="no">TX</span> をオフにする、<strong>停止</strong>を押す、<span translate="no">TUNE</span>、またはバンドやモードの変更で、画像は直ちに停止します。無線機の<a href="#tx-limit">連続送信時間の上限</a>より長い画像は送信されません。赤い行に長さが表示され、速度を上げる、幅を狭める、または画像を小さくすることで上限内に収まります。すべてのトーンが同時に送信されるので、送信レベルは <span translate="no">FT8</span> の場合と同じにし、無線機の <span translate="no">ALC</span> は低く保ってください。
+            </p>
+
+            <h3 id="draw-platforms">コンピューター、iPhone、Web リモートでは</h3>
+            <p>
+                ペインはどこでも同じで、ボタンも同じです。違いは次のとおりです：
+            </p>
+            <ul>
+                <li><strong>コンピューター</strong>：<strong>読み込み</strong>は画像ファイルを開きます。<strong>保存</strong>はピクチャフォルダ内の <code translate="no">qFT8 DRAW</code> フォルダに書き込みます。</li>
+                <li><strong>iPhone</strong>：<strong>読み込み</strong>はスマートフォンと同じく「写真を撮る」か「画像を選ぶ」を表示します。<strong>保存</strong>は qFT8 自身のファイルの <code translate="no">qFT8 DRAW</code> フォルダに画像を保存します。</li>
+                <li><strong>Web リモート</strong>は、送る画像と受信した画像を同じように表示します。<strong>読み込み</strong>はブラウザーが動いている機器の画像を使います（<span translate="no">DRAW</span> が送る最も幅の広い画像である 192 列以下に縮小）。<strong>保存</strong>はブラウザーではなく、qFT8 が動いているスマートフォンやコンピューターに保存します。送信にはフルコントロールのアクセスレベルが必要で、アプリと同じく <span translate="no">TX</span> が有効なときだけ電波が出ます。</li>
+            </ul>
+
+            <h3 id="draw-reach">どこまで届くか</h3>
+            <p>
+                <span translate="no">DRAW</span> は見てもらうためのもので、雑音の中から信号を掘り出すためのものではありません。初期設定の 700 Hz・毎秒 6.25 行のコールサイン表示は <span translate="no">SNR</span> 約 -2 dB（帯域幅 2500 Hz）まで読め、毎秒 3.125 行なら約 -5 dB まで読めます。写真は約 +4 dB からきれいに見えます。<span translate="no">FT8</span> は約 -21 dB まで届くので、相手局があなたの <span translate="no">FT8</span> をやっとデコードできる程度なら、あなたの画像は見えません。遅い速度と狭い幅ほど遠くまで届きます。フェージングはどのモードでも約 6 dB の損失になります。<span translate="no">DRAW</span> だけが与えてくれるもの: ウォーターフォールを見ている人なら誰でも、特別なプログラムなしにあなたの画像を見られます。
+            </p>
+
+            <h3 id="pix-frequencies">周波数、サイドバンド、ログ</h3>
+            <p>
+                qFT8 は各バンドの <span translate="no">DRAW</span> 周波数に同調します。この周波数は、3つの地域の <span translate="no">IARU</span> バンドプランの「全モード」セグメントの中から、<span translate="no">SSTV</span>、デジタル、音声の活動の中心から離して選ばれています（ダイヤル、<span translate="no">USB</span>）：160 m 1.865, 80 m 3.665, 40 m 7.190, 30 m 10.145 (500 Hz のみ), 20 m 14.335, 17 m 18.140, 15 m 21.400, 12 m 24.975, 10 m 28.520、6 m 50.380 MHz。60 m には周波数がありません（規則が国ごとに異なるため）。30 m ではバンドプランで許可されるのは最大 500 Hz なので、そこでは 500 Hz 幅のみ送信されます。ご自身の免許と地域のバンドプランを確認してください。
+            </p>
+            <p>
+                無線機はすべてのバンドで <span translate="no">USB</span> になります。<span translate="no">LSB</span> で聞いている局には、画像が左右反転して見えます。
+            </p>
+            <p>
+                <strong><span translate="no">QSO</span></strong>は、モード <span translate="no">DRAW</span> でログを開きます。ログの標準（<span translate="no">ADIF</span>）には <span translate="no">DRAW</span> がなく、1行ずつ送られる静止画像は、そこでは <span translate="no">FAX</span> にあたります（<span translate="no">SSTV</span> と同様に画像モードとして扱われます）。<span translate="no">QMX</span> には <span translate="no">SSTV</span> と同じファームウェアが必要です。ログ、ファイル、アップロードではサブモード <span translate="no">DRAW</span> 付きの <span translate="no">FAX</span> として記録されます。公園（<span translate="no">POTA</span>）と <span translate="no">eQSL</span> には <span translate="no">FAX</span> のみが送られます。
+            </p>
+
+            <a class="back-to-toc" href="#top">↑ 目次へ戻る</a>
+        </section>
 
 
 
@@ -3241,10 +3961,10 @@
                     iPhone では、アプリを開いている間だけ動作します。
                 </p>
 
-                <h4>サーバーの設定</h4>
+                <h4 id="qft8-log-server">サーバーの設定</h4>
                 <ol>
                     <li>QSO を集めたい qFT8 で<strong>設定</strong>を開き、
-                        <strong>qFT8 サーバー</strong>へ進んで<strong>qFT8log サーバー</strong>を開きます。</li>
+                        <strong>サーバー</strong>へ進んで<strong>qFT8log サーバー</strong>を開きます。</li>
                     <li>パスワードを入力します。
                         <a href="#bridge">qFT8 bridge</a> と同じ種類のパスワードを使ってください。7 文字以上です。</li>
                     <li>ほかのものが使っていなければポートは 13510 のままにして、サーバーをオンにします。ページにはサーバーのアドレスと、
@@ -3316,7 +4036,8 @@
                 <div class="highlight">
                     <p><strong>セキュリティ上の注意:</strong> パスワードはネットワーク上に送られません。2 台の qFT8 は互いにパスワードを知っていることを証明し、
                         それ以降のメッセージはすべて署名されるので、途中で改ざんや再送はできません。
-                        QSO 自体は暗号化されていません。qFT8log は自分のネットワーク内だけで使い、そのポートをインターネットに公開しないでください。</p>
+                        <strong>qFT8 log の接続を暗号化</strong>をオン（初期設定。クライアントとサーバーの両方）にすると、QSO も暗号化され、
+                        ネットワーク上のほかの人には読めません。qFT8log は自分のネットワーク内だけで使い、そのポートをインターネットに公開しないでください。</p>
                 </div>
 
                 <h4>制限</h4>

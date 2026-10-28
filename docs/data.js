@@ -1,9 +1,9 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "3.21";
-const LATEST_DATE = "2026-10-25";
-const LATEST_SIZE = "5.06MB";
-const PC_SIZES = {"linux-32bits.tar.gz":"70.36MB","linux-64bits.tar.gz":"47.28MB","linux-arm64.tar.gz":"67.32MB","linux-armv7l.tar.gz":"62.68MB","macos-universal.dmg":"83.59MB","manual.zip":"8.33MB","windows-32bits.zip":"43.25MB","windows-64bits.zip":"35.69MB"};
-const JAR_SIZE = "12.48MB";
+const LATEST_VERSION = "3.22";
+const LATEST_DATE = "2026-10-27";
+const LATEST_SIZE = "5.64MB";
+const PC_SIZES = {"linux-32bits.tar.gz":"73.81MB","linux-64bits.tar.gz":"50.73MB","linux-arm64.tar.gz":"70.77MB","linux-armv7l.tar.gz":"66.13MB","macos-universal.dmg":"87.42MB","manual.zip":"9.80MB","windows-32bits.zip":"46.52MB","windows-64bits.zip":"39.12MB"};
+const JAR_SIZE = "14.55MB";
 
 // Supported application languages
 const supportedLanguages = ['en', 'es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];

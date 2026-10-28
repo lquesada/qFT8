@@ -11,6 +11,10 @@
     <meta property="og:url" content="https://qft8.com/privacy/">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
     <script src="../data.js"></script>
     <!-- Shared Stylesheets -->
     <link rel="stylesheet" href="../style.css">
@@ -82,6 +86,14 @@
                 encrypted by default.</li>
             <li><strong>qFT8 log:</strong> shares the logbook between the user's own qFT8 installations on the LAN. Off by
                 default; same password protection and encryption as the bridge.</li>
+            <li><strong>Logging programs on the network (off until set up):</strong> qFT8 can send each contact the user logs
+                to logging programs on the user's network (the address and port the user enters; plain, unencrypted network
+                messages, as those formats are), receive contacts that other programs on the network log (on ports the user turns
+                on), and answer logging programs that connect to it. Only contact data travels: callsigns, grids, date, time,
+                band, frequency, mode, reports and the user's notes on the contact.</li>
+            <li><strong>Logbook servers (off by default):</strong> qFT8 can act as a logbook server on the local network, so the
+                user's own logging programs can send contacts to it, and can show its logbook read-only in a browser. Plain HTTP
+                on the local network, protected by the key or password the user types on both ends.</li>
             <li>These features are found on the local network by a broadcast that reveals only a name, a port and a version.
                 They are never exposed to the internet by qFT8 and send nothing to the developer.</li>
         </ul>
@@ -116,7 +128,9 @@
                 that could identify a person, such as CW text, memory names, call signs or the radio's serial number, is
                 removed), the last screens and buttons used (their internal names only, never what was typed), the audio and
                 radio-control settings, recent QSO steps and, after a freeze or crash, what the app was doing. Passwords, keys,
-                e-mail addresses inside logs, coordinates and serial numbers are removed; pictures, the logbook and
+                e-mail addresses inside logs, coordinates, serial numbers and internet (public) IP addresses, such as those of
+                devices that tried to reach the web remote, are removed; addresses inside the user's own home network are
+                kept, as they help to find network problems; pictures, the logbook and
                 certificates are never included. After a crash the app asks on the next start; nothing is sent without SEND.
                 A report that could not be delivered is retried for up to 14 days.</li>
             <li><strong>Anonymous performance summary (off by default):</strong> if the user turns on "Send an anonymous daily
@@ -141,6 +155,10 @@
                 uploaded to the user's account: the user's callsign and grid, the other station's callsign and grid, date,
                 time, band, frequency, mode and reports. LoTW contacts are signed on the device with the user's own
                 certificate. qFT8 never deletes anything on these services.</li>
+            <li><strong>Club Log, HRDLog, HamQTH, World Radio League (WRL):</strong> once set up, the same contact data is
+                uploaded to the user's account on that service (clublog.org, hrdlog.net, hamqth.com,
+                worldradioleague.com), with the login, upload code or API key the user typed. qFT8 never deletes anything on
+                these services.</li>
             <li><strong>Wavelog / Cloudlog:</strong> the same contact data, sent to the server address the user types in (usually
                 the user's own server), with the user's API key.</li>
             <li><strong>POTA spotting (only when the user presses ANNOUNCE):</strong> the user's callsign, park, frequency and
@@ -171,8 +189,8 @@
             <li><strong>On the device:</strong> everything qFT8 keeps for itself (settings, logbook, received pictures) is removed by
                 uninstalling the app or clearing its data in the system settings; copies you saved to the pictures folder or exported
                 stay where you put them.</li>
-            <li><strong>Third-party services:</strong> data you sent to QRZ, LoTW, eQSL, Wavelog / Cloudlog, PSKReporter, WSPRnet
-                or POTA is kept by that service; ask that service to delete it, under its own privacy policy.</li>
+            <li><strong>Third-party services:</strong> data you sent to QRZ, LoTW, eQSL, Club Log, HRDLog, HamQTH, World Radio
+                League, Wavelog / Cloudlog, PSKReporter, WSPRnet or POTA is kept by that service; ask that service to delete it, under its own privacy policy.</li>
         </ul>
 
         <h2>Data Management</h2>
@@ -188,7 +206,7 @@
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). All rights reserved.
         </p>
         <p>
-            Includes parts from usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), Big CTY (Copyright &copy; Jim Reisert AD1C) (<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">LICENSE</a>), and Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
+            Includes parts from usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), Big CTY (Copyright &copy; Jim Reisert AD1C), SatNOGS DB (CC BY-SA 4.0), CelesTrak (<a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">LICENSE</a>), and Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). None of these third-party authors or projects endorse or are affiliated with qFT8.
         </p>
         <div class="footer-links">
             <a href="../">Main Page</a> - <a href="../manual/">User Manual</a>

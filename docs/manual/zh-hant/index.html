@@ -10,6 +10,10 @@
 <meta content="https://qft8.com/manual/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <link href="../../favicon.png" rel="icon" type="image/png"/>
+<link href="../../favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../favicon.ico" rel="shortcut icon"/>
+<link href="../../apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../../site.webmanifest" rel="manifest"/>
 <script src="../../data.js"></script>
 <script src="../manual-langs.js"></script>
 <script src="../manual.js"></script>
@@ -77,6 +81,9 @@
                         <li><a href="#mode-js8"><span translate="no">JS8</span></a></li>
                         <li><a href="#mode-wspr"><span translate="no">WSPR</span></a></li>
                         <li><a href="#mode-lq8"><span translate="no">LQ8</span></a></li>
+                        <li><a href="#mode-q65"><span translate="no">Q65</span></a></li>
+                        <li><a href="#mode-msk144-intro"><span translate="no">MSK144</span></a></li>
+                        <li><a href="#mode-fst4"><span translate="no">FST4</span></a></li>
                     </ul>
                 </li>
                 <li><a href="#user-interface">qFT8 使用者介面</a>
@@ -114,17 +121,27 @@
                 <li><a href="#pota">公園通聯（<span translate="no">POTA</span>）</a>
                 </li>
                 <li><a href="#activation">啟動公園或山峰</a></li>
-                <li><a href="#js8-chat"><span translate="no">JS8</span> 聊天</a>
+                <li><a href="#js8-chat"><span translate="no">JS8</span>（鍵盤聊天）</a>
+                    <ul>
+                        <li><a href="#js8-speeds">速度</a></li>
+                        <li><a href="#js8-sending">傳送訊息</a></li>
+                        <li><a href="#js8-auto">自動應答（<span translate="no">AUTO</span>）</a></li>
+                        <li><a href="#js8-logging">記錄 <span translate="no">JS8</span> QSO</a></li>
+                    </ul>
                 </li>
-                <li><a href="#wspr-mode"><span translate="no">WSPR</span> 模式</a></li>
+                <li><a href="#wspr-mode"><span translate="no">WSPR</span> 和 <span translate="no">FST4W</span>（信標）</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span>（語音）</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span>（摩斯電碼）</a>
                     <ul>
                         <li><a href="#cw-keys">用轉接器、鍵盤或滑鼠發報</a></li>
+                        <li><a href="#cw-auto-rit"><span translate="no">AUTO RIT</span>: 跟隨呼叫您的電台</a></li>
+                        <li><a href="#cw-radio">電台如何被鍵控</a></li>
+                        <li><a href="#cw-logging">記錄 <span translate="no">CW</span> 通聯</a></li>
                     </ul>
                 </li>
-                <li><a href="#rtty-mode"><span translate="no">RTTY</span></a></li>
+                <li><a href="#rtty-mode"><span translate="no">RTTY</span> 和 <span translate="no">JTTY</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span>（影像）</a></li>
+                <li><a href="#draw-mode"><span translate="no">DRAW</span> （瀑布圖上的圖片）</a></li>
                 <li><a href="#features">功能說明</a>
                     <ul>
                         <li><a href="#tune-offset">頻譜圖調諧偏移</a></li>
@@ -149,7 +166,7 @@
             <h2>qFT8 是什麼？</h2>
 
             <p>
-                qFT8 是一款<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">業餘無線電</a>應用程式，可運行於 <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> 手機和平板電腦、iPhone 和 iPad，以及 Windows、macOS 和 Linux 電腦，透過收發信機解碼和發射 FT8、FT4、FT2、LQ8、JS8 或 WSPR 數位訊息。使用同一台收發信機和同一條纜線，它還可以進行語音（SSB）、摩斯電碼（CW）、RTTY 和影像（SSTV）通聯。
+                qFT8 是一款<a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">業餘無線電</a>應用程式，可運行於 <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> 手機和平板電腦、iOS，以及 Windows、macOS 和 Linux 電腦，透過收發信機解碼和發射 FT8、FT4、FT2、LQ8、JS8 或 WSPR 數位訊息。使用同一台收發信機和同一條纜線，它還可以進行語音（SSB）、摩斯電碼（CW）、RTTY 和影像（SSTV）通聯。
             </p>
 
             <p>
@@ -231,7 +248,6 @@
                 <li><strong>Elecraft K3 / K3S</strong></li>
                 <li><strong>Elecraft KX3</strong></li>
                 <li><strong>Elecraft KX2</strong></li>
-                <li><strong>Elecraft KH1</strong></li>
                 <li><strong>Elecraft K2（需要 KIO2 模組）</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
@@ -506,7 +522,7 @@
                     <dd><span class="row-label">在電腦上</span> 按滑鼠右鍵</dd>
                 </div>
                 <div>
-                    <dt><span class="row-label">在 Android 上</span> 在 JS8 聊天中的訊息上點兩下</dt>
+                    <dt><span class="row-label">在 Android 上</span> 在 JS8 聊天中點按一條訊息</dt>
                     <dd><span class="row-label">在電腦上</span> 連按兩下</dd>
                 </div>
                 <div>
@@ -923,6 +939,8 @@
                 <li><strong>比賽交換內容</strong>：在某些比賽中，電臺傳送的不是網格定位和訊號報告，而是類別和分區（Field Day），或者帶有州名或序號的報告（RTTY 比賽）。qFT8 會顯示這些報文，讓您瞭解波段上的情況，但從不應答：它不傳送比賽交換內容。</li>
             </ul>
 
+            <p class="mode-specs"><strong>規範：</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020。</p>
+
             <h3 id="mode-ft4">FT4</h3>
             <p>
                 FT4 是專為業餘無線電比賽設計的精簡數字模式，比賽中快速完成一個又一個通聯至關重要：
@@ -933,6 +951,8 @@
                 <li><strong>靈敏度損耗</strong>：換取兩倍速率的代價是解碼門限約為 <strong>-16.4 dB 至 -17.5 dB SNR</strong>（相比 FT8 存在約 3.5 至 4 dB 的接收靈敏度損耗）。</li>
                 <li><strong>實際應用</strong>：採用 4-GFSK 調製和標準的 77 位結構化報文載荷，傳播條件允許時只用一半時間即可完成標準的比賽交換。</li>
             </ul>
+
+            <p class="mode-specs"><strong>規範：</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020。</p>
 
             <h3 id="mode-ft2">FT2</h3>
             <p>
@@ -945,22 +965,27 @@
                 <li><strong>實際應用</strong>：非常適合在訊號強的傳播開通期間，以及通聯視窗轉瞬即逝的突發傳播模式下進行快速通聯，此時訊號明顯高於底噪。</li>
             </ul>
 
+            <p class="mode-specs"><strong>規範：</strong> 沒有公開發布的規範。</p>
+
             <h3 id="mode-js8">JS8</h3>
             <p>
                 JS8（Jordan Sherer 設計，8-GFSK）是為<strong>閒聊（ragchew）、鍵盤對鍵盤的對話和臨時組網</strong>而建立的，而不是用於結構化的比賽交換：
             </p>
             <ul>
-                <li><strong>報文分片與成幀</strong>：使用與 FT8 相同的 8-GFSK 基本調製和 77 位幀，但增加了一層上層傳輸協議來分片和重組報文。這樣任意長度的自由文字就能跨越連續的週期順暢地傳送。</li>
-                <li><strong>多種速度模式</strong>：提供四種可選的速度檔，以適應波段條件：
+                <li><strong>訊息分片與成幀</strong>：與 FT8 一樣使用 8-GFSK 調制，但幀携帶 75 位，並由一個傳輸層把訊息切成幀再還原。任意長度的自由文字訊息可以跨越連續的時隙傳送。</li>
+                <li><strong>多種速度模式</strong>：提供五種可選的速度檔，以適應波段條件：
                     <ul>
-                        <li><em>Slow</em>：30 秒週期，頻寬約 25 Hz，可解碼低至 <strong>-25 dB SNR</strong> 的訊號。</li>
-                        <li><em>Normal</em>：15 秒週期，頻寬約 50 Hz，可解碼低至 <strong>-21 dB SNR</strong> 的訊號。</li>
-                        <li><em>Fast</em>：10 秒週期，頻寬約 80 Hz，可解碼低至 <strong>-18 dB SNR</strong> 的訊號。</li>
-                        <li><em>Turbo</em>：6 秒週期，頻寬約 160 Hz，可解碼低至 <strong>-15 dB SNR</strong> 的訊號。</li>
+                        <li><em>Slow</em>：30 秒周期，頻寬約 25 Hz，可解碼低至 <strong>-25 dB SNR</strong> 的訊號。</li>
+                        <li><em>Normal</em>：15 秒周期，頻寬約 50 Hz，可解碼低至 <strong>-21 dB SNR</strong> 的訊號。</li>
+                        <li><em>Fast</em>：10 秒周期，頻寬約 80 Hz，可解碼低至 <strong>-18 dB SNR</strong> 的訊號。</li>
+                        <li><em>Turbo</em>：6 秒周期，頻寬約 160 Hz，可解碼低至 <strong>-15 dB SNR</strong> 的訊號。</li>
+                        <li><em>Ultra</em>：4 秒周期，頻寬約 250 Hz，僅適用於強訊號。</li>
                     </ul>
                 </li>
-                <li><strong>組網能力</strong>：支援定向報文、經中間電臺自動中繼報文、心跳線上監測，以及非同步的儲存轉發信箱網路。</li>
+                <li><strong>組網能力</strong>：發給一個電台或一個群組的訊息、自動回答的標準提問，以及心跳。qFT8 會顯示被中繼的訊息，但不會為其他電台中繼或保管訊息（見<a href="#js8-chat"><span translate="no">JS8</span>（鍵盤聊天）</a>）。</li>
             </ul>
+
+            <p class="mode-specs"><strong>規範：</strong> 沒有公開發布的規範。</p>
 
             <h3 id="mode-wspr">WSPR</h3>
             <p>
@@ -970,21 +995,64 @@
                 <li><strong>兩分鐘週期</strong>：以嚴格同步的 <strong>2 分鐘（120 秒）週期</strong>工作，在 110.6 秒內發射 162 個符號的 4-FSK 單音序列。</li>
                 <li><strong>極窄頻寬</strong>：只佔用約 <strong>6 Hz</strong> 射頻頻寬，把輻射功率集中在極窄的一段頻譜內。</li>
                 <li><strong>極高的弱訊號靈敏度</strong>：在標準的 2.5 kHz 參考頻寬下，能解碼低至 <strong>-28 dB 至 -31 dB SNR</strong> 的微弱訊號，使毫瓦級（QRPp）發射機也能跨越全球距離。</li>
-                <li><strong>自動傳播報告</strong>：發射內容包括電臺呼號、Maidenhead 網格定位（4 位或 6 位）和以 dBm 表示的發射功率。解碼出的 spot 會自動轉發到全球的 WSPRnet 資料庫，實時描繪電離層傳播情況。</li>
+                <li><strong>自動傳播報告</strong>：發射內容包括電臺呼號、Maidenhead 網格定位（4 位或 6 位）和以 dBm 表示的發射功率。解碼出的 spot 可以傳送到全球的 WSPRnet 資料庫，即時描繪傳播情況（見<a href="#wspr-reports">向 WSPRnet 和 PSKReporter 傳送 spot</a>）。</li>
             </ul>
+
+            <p class="mode-specs"><strong>規範：</strong> J. Taylor (K1JT), &ldquo;WSPRing Around the World&rdquo;, <em>QST</em>, November 2010。</p>
 
             <h3 id="mode-lq8">LQ8</h3>
             <p>
                 LQ8 是由 qFT8 的作者 <strong>Luis Quesada（HB9IPH）</strong>開發的先進弱訊號數字模式：
             </p>
             <ul>
-                <li><strong>更快完成 QSO，且沒有代價</strong>：LQ8 完成雙向 QSO 比 FT8 快得多，而且<strong>靈敏度沒有任何損失</strong>。它保留了完整的 <strong>-21 dB SNR</strong> 弱訊號解碼門限（與 FT8 相同），同時透過最佳化的協議設計，用少得多的發射輪次完成有效通聯。</li>
-                <li><strong>複合報文</strong>：支援合併發射，例如把訊號報告和確認合在一起（<code>REPORT+RR73</code>），以及同時回答多個電臺（<code>MULTI_CALL</code>），把標準 QSO 的時長從 4–6 個週期縮短到只需 2–3 個週期。</li>
-                <li><strong>現代架構</strong>：以標準的 15 秒週期工作，79 個符號的 8-GFSK 調製（頻寬約 65 Hz），77 位載荷採用最佳化的哈夫曼編碼壓縮，14 位 CRC 檢錯，並有結構化的應急排程信令。</li>
+                <li><strong>更快完成 QSO，靈敏度不變</strong>：LQ8 保留 FT8 的弱訊號門檻 -21 dB SNR，用 4 次發射（60 秒）完成一次經確認的通聯，而 FT8 需要 5 或 6 次（75 到 90 秒）。雙方仍然交換呼號、網格定位和訊號報告。</li>
+                <li><strong>四則訊息的交換</strong>：<code>CQ</code>，然後 <code>CALL</code>（應答台的網格定位和訊號報告合在一則訊息裡），然後 <code>REPORT+73</code>（報告和確認合在一則訊息裡），最後 <code>73</code>；沒有單獨的 <code>RR73</code> 步驟。在堆積呼叫中，<code>MULTI-REPORT+73</code> 在單一載波上同時確認兩個應答台，<code>MULTI-73</code> 與兩者結束通聯。</li>
+                <li><strong>現代架構</strong>：15 秒週期，8-GFSK 調變，12.64 秒內 79 個符號（頻寬 50 Hz），77 位元訊息，其類型以變長（霍夫曼）前綴編碼，14 位元 CRC 和 LDPC(174,91) 糾錯。獨有的同步圖樣使 LQ8 和 FT8 不會互相解碼。</li>
             </ul>
+
+            <p class="mode-specs"><strong>規範：</strong> L. Quesada (HB9IPH), &ldquo;The LQ Digital Mode Family: Protocol Architecture and Reference Specification for Weak-Signal Communications&rdquo;, arXiv:2609.06427 (2026); 參考函式庫: lq_lib。</p>
 
             <p>
                 欲瞭解更多資訊、規範和工具，請訪問 LQ 模式的入口網站 <a href="https://lq8.org" target="_blank">https://lq8.org</a>。
+            </p>
+
+            <h3 id="mode-q65">Q65</h3>
+            <p>
+                <span translate="no">Q65</span> 是一種用於困難路徑的弱訊號 QSO 模式：6 公尺與 2 公尺的電離層及對流層散射，以及 2 公尺以上的月面反射（EME）。在 qFT8 中它是實驗性的：
+            </p>
+            <ul>
+                <li><strong>子模式</strong>: 每個子模式由一個週期（15、30、60、120 或 300 秒）和一個音調間隔（A 到 E）組成，寫作 <code translate="no">30A</code> 或 <code translate="no">60C</code>。週期越長越靈敏；間隔越寬，越能應付被散射或月球拖散的訊號。雙方必須使用相同的子模式。</li>
+                <li><strong>與 FT8 相同的訊息</strong>: <span translate="no">Q65</span> 承載相同的 77 位元訊息，因此 QSO 的六個步驟與 <span translate="no">FT8</span> 相同。</li>
+                <li><strong>平均</strong>: 單次太弱、無法解碼的重複發射可以累加，直到能夠解碼。</li>
+            </ul>
+            <p>
+                子模式選擇、波段與所有選項請見 <a href="#q65-settings">設定 &gt; <span translate="no">Q65</span></a>；<span translate="no">Q65</span> 下的電台清單請見 <a href="#stations-q65">電台分頁</a>。
+            </p>
+
+            <h3 id="mode-msk144-intro">MSK144</h3>
+            <p>
+                <span translate="no">MSK144</span> 專為 10 公尺、6 公尺、2 公尺與 70 公分的流星餘跡散射而設計。在 qFT8 中它是實驗性的：
+            </p>
+            <ul>
+                <li><strong>閃現（ping）</strong>: 流星餘跡只在一瞬間反射訊號。一次發射在整個週期內重複其訊息，任何長到足以承載一份完整訊息的 ping 都會被解碼。</li>
+                <li><strong>週期</strong>: 5、10、15 或 30 秒；通常選擇 15 秒。</li>
+                <li><strong>一律在 1500 Hz</strong>: 每個電台都在 1500 Hz 音頻上發射，音調為 1000 Hz 與 2000 Hz。</li>
+                <li><strong>短訊息</strong>: 訊號報告、<span translate="no">RRR</span> 與 <span translate="no">73</span> 可以作為短訊息傳送，能放進短得多的 ping 中。</li>
+            </ul>
+            <p>
+                各選項請見 <a href="#mode-msk144">設定 &gt; <span translate="no">MSK144</span></a>；<span translate="no">MSK144</span> 下的電台清單請見 <a href="#stations-msk144">電台分頁</a>。
+            </p>
+
+            <h3 id="mode-fst4">FST4</h3>
+            <p>
+                <span translate="no">FST4</span> 是一種弱訊號 QSO 模式，用於低頻波段（2200 公尺、630 公尺、160 公尺）以及訊號非常弱時的短波。在 qFT8 中它是實驗性的：
+            </p>
+            <ul>
+                <li><strong>週期</strong>: 15、30、60、120、300、900 或 1800 秒。週期越長，訊號越窄、越靈敏：從 15 秒時約 -21 dB 到 1800 秒時約 -43 dB。</li>
+                <li><strong>與 FT8 相同的訊息</strong>: <span translate="no">FST4</span> 承載相同的 77 位元訊息，因此 QSO 的六個步驟與 <span translate="no">FT8</span> 相同，只是慢得多。</li>
+            </ul>
+            <p>
+                各選項請見 <a href="#fst4-settings">設定 &gt; <span translate="no">FST4</span></a>；<span translate="no">FST4</span> 下的電台清單請見 <a href="#stations-fst4">電台分頁</a>。它的信標版本 <span translate="no">FST4W</span> 用法與 <span translate="no">WSPR</span> 相同。
             </p>
 
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
@@ -1029,7 +1097,7 @@
                 <li><strong>報文選擇器</strong>：顯示已選定要發射或正在發射的報文（正在發射時以<span style="color: #ffff00; font-weight: bold;">黃色</span>高亮）。在 <span translate="no">AUTO</span> 模式下它由程式自動管理。在 <span translate="no">CALL</span> 模式下預設也是自動管理，但可以點按它，手動選擇下一條要發的報文。
                 </li>
                 <li><strong>序列選擇器</strong>：按鈕上方的<span style="color: #ffff00; font-weight: bold;">黃色</span>線條表示當前序列（0 或 1）。點按 0 或 1，即選擇在該序列發射。</li>
-                <li><strong>模式選擇器</strong>：切換所用的發射模式（例如 <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">JS8</span> 或 <span translate="no">WSPR</span>），也可切換到 <a href="#ssb-mode"><span translate="no">SSB</span></a>、<a href="#cw-mode"><span translate="no">CW</span></a>、<a href="#rtty-mode"><span translate="no">RTTY</span></a> 和 <a href="#sstv-mode"><span translate="no">SSTV</span></a>，它們會按各自章節所述改變底部欄和電臺選項卡。從數字模式切換到這四種模式之一、切換回來或在它們之間切換時，<span translate="no">TX</span> 會變為 <span translate="no">OFF</span>：準備好後請重新開啟。在數字模式之間切換則保持原狀態。</li>
+                <li><strong>模式選擇器</strong>：切換所用的發射模式（例如 <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">Q65</span>、<span translate="no">MSK144</span>、<span translate="no">FST4</span>、<span translate="no">FST4W</span>、<span translate="no">JS8</span> 或 <span translate="no">WSPR</span>），也可切換到 <a href="#ssb-mode"><span translate="no">SSB</span></a>、<a href="#cw-mode"><span translate="no">CW</span></a>、<a href="#rtty-mode"><span translate="no">RTTY</span></a> 和 <a href="#sstv-mode"><span translate="no">SSTV</span></a>，它們會按各自章節所述改變底部欄和電臺選項卡。從數字模式切換到這四種模式之一、切換回來或在它們之間切換時，<span translate="no">TX</span> 會變為 <span translate="no">OFF</span>：準備好後請重新開啟。在數字模式之間切換則保持原狀態。</li>
                 <li><strong>波段選擇器</strong>：連線了收發信機時，它會更改收發信機的波段。</li>
                 <li><strong>電臺選項卡按鈕</strong>：開啟電臺選項卡，其中列出您收到的或可以通聯的所有電臺。</li>
                 <li><strong>日誌選項卡按鈕</strong>：開啟日誌選項卡，其中列出您完成的所有 <span translate="no">QSO</span>。如果有 QSO 尚未上傳到 QRZ，這個按鈕上會出現一個黃點。
@@ -1109,6 +1177,7 @@
                         </li>
                     </ul>
                     無論哪種條件，符合同一條件的電臺都按訊號強度排序。例如，<span translate="no">任何人</span>會優先新的呼號，而其中訊號最強的排在列表最前面。
+                    符合目標條件的電台一律排在最前面；一小段間隔與「以下電台不符合目標條件」這一行會把它們與其他電台分開。若沒有任何電台符合條件，清單頂端會顯示「沒有任何電台是目標 – 請見下方」這一行。
                 </li>
                 <li><strong>週期</strong>：多久與該目標通聯一次：
                     <ul>
@@ -1170,6 +1239,8 @@
                         <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6 RR73</span>：用 <span translate="no">RR73</span> 確認了您的報告。</li>
                         <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6 DONE</span>：<span translate="no">QSO</span> 已完成（已互致 73）。
                         </li>
+                        <li><span style="color: #aaaaaa; font-weight: bold;"><span translate="no">BUSY</span></span>:
+                            聽到正與另一電台進行 <span translate="no">QSO</span>。</li>
                         <li><span style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>：最近幾個週期沒有再收到。
                         </li>
                         <li><span style="color: #555555; font-weight: bold;"><span translate="no">TOO LONG</span>：受 <span translate="no">FT8</span> 數字模式的限制，您的呼號和對方的呼號加起來太長，無法建立通聯。
@@ -1203,6 +1274,88 @@
             </ul>
 
             <p>電臺會按相關程度自動排序。更改目標條件或限制後，列表會立即重新排序。</p>
+
+            <h4 id="stations-order">清單的順序</h4>
+            <p>從清單頂端往下：</p>
+            <ol>
+                <li>剛與您完成 QSO 的電台（<span translate="no">DONE</span>）。</li>
+                <li>您用 <span translate="no">CALL</span> 選擇的電台。</li>
+                <li>正與您進行 QSO 的電台，進度最遠的在前：等待您的 73 的，接著是傳給您訊號報告的，再來是呼叫您的。</li>
+                <li>在您的波段上符合目標條件的電台，最符合的在前。符合程度相同時訊號最強的在前；若是距離類目標，先由距離決定。</li>
+                <li>「以下電台不符合目標條件」這一行，然後是其他所有電台，依同樣順序。</li>
+                <li>已聽不到的電台（<span translate="no">GONE</span>），最底部是呼號與您的呼號無法同時放進一則訊息的電台（<span translate="no">TOO LONG</span>）。</li>
+            </ol>
+            <p>
+                在每一組中，最後在其他波段聽到的電台排在您波段上的電台之後。在其他模式下聽到的電台不會顯示；它們在目前模式下第一次被聽到時會重新出現。用 + 按鈕加入的電台一律留在清單中。目標與其他電台之間的分隔線在手機、電腦、iPhone 與網頁遙控上都一樣；它只是一個標籤，點選它沒有任何作用。
+            </p>
+
+            <h4 id="stations-modes">各 QSO 模式下的電台分頁</h4>
+            <p>
+                <span translate="no">FT8</span>、<span translate="no">FT4</span>、<span translate="no">FT2</span>、<span translate="no">LQ8</span>、<span translate="no">Q65</span>、<span translate="no">MSK144</span> 與 <span translate="no">FST4</span> 都使用這同一個分頁：頂端相同的控制項、相同的電台列與相同的順序。清單只顯示在您目前使用的模式下聽到的電台。各模式的不同之處：
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">FT8</span></dt>
+                    <dd><span class="row-label">週期</span> 15 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT4</span></dt>
+                    <dd><span class="row-label">週期</span> 7.5 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT2</span></dt>
+                    <dd><span class="row-label">週期</span> 3.75 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">LQ8</span></dt>
+                    <dd><span class="row-label">週期</span> 15 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/4 – 4/4</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Q65</span></dt>
+                    <dd><span class="row-label">週期</span> 15 – 300 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">在底部列中選擇</span> 子模式 (<span translate="no">30A</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">MSK144</span></dt>
+                    <dd><span class="row-label">週期</span> 5 – 30 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">在底部列中選擇</span> 週期 (<span translate="no">15s</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FST4</span></dt>
+                    <dd><span class="row-label">週期</span> 15 – 1800 s</dd>
+                    <dd><span class="row-label">QSO 的步驟</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">在底部列中選擇</span> 週期</dd>
+                </div>
+            </dl>
+            <p>
+                底部列中模式旁邊的選擇器在手機、電腦、iPhone 與網頁遙控上都有。序列 0 與 1 是該模式的偶數與奇數週期，與週期長短無關。在長週期下，必須經過相應數量的靜默週期後，電台才會被視為已聽不到（<span translate="no">GONE</span>）。
+            </p>
+
+            <p id="stations-ft4-ft2"><strong><span translate="no">FT4</span> / <span translate="no">FT2</span></strong>: 一切都與 <span translate="no">FT8</span> 相同，只是更快。每個週期都很短，所以 QSO 進展很快：在 <span translate="no">FT2</span> 中，一個完整的 QSO 可以在遠不到一分鐘內結束。</p>
+
+            <p id="stations-lq8"><strong><span translate="no">LQ8</span></strong>: <span translate="no">LQ8</span> 的 QSO 只有四個步驟而不是六個，狀態欄會顯示它們：</p>
+            <ul>
+                <li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/4 CQ</span></span>: 聽到正在呼叫 <span translate="no">CQ</span>，例如 <code translate="no">CQ DL1XYZ JO62</code>。</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/4 CALL</span></span>: 呼叫了您，同一則訊息中包含其網格定位與給您的訊號報告，例如 <code translate="no">HB9IPH DL1XYZ JO62 -11</code>。</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/4 RPT73</span></span>: 連同確認一起傳來訊號報告；顯示為 <code translate="no">HB9IPH DL1XYZ R-11</code>。</li>
+                <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">4/4 DONE</span></span>: <span translate="no">QSO</span> 已完成（已交換 73）。</li>
+            </ul>
+            <p><span translate="no">LQ8</span> 沒有單獨的訊號報告步驟，也沒有 <span translate="no">RR73</span>：協定就是這樣設計的。<span translate="no">DIRECT</span>、<span translate="no">BUSY</span>、<span translate="no">GONE</span> 與 <span translate="no">TOO LONG</span> 的意思與 <span translate="no">FT8</span> 相同。如果對一個呼號無法在 <span translate="no">LQ8</span> 中與您的呼號一起傳送的電台按下 <span translate="no">CALL</span>，qFT8 會提示並且不會呼叫。</p>
+
+            <p id="stations-q65"><strong><span translate="no">Q65</span></strong>: 呼叫之前，請在底部列模式旁邊選擇子模式；使用其他子模式的電台不會被解碼。在較長的子模式下，QSO 的每一步都要一整個週期（最長 5 分鐘），所以 QSO 要長得多，電台列每個週期變化一次。開啟平均後，某個電台可能要在其幾次發射被累加之後才出現。長子模式需要足夠大的 <a href="#tx-limit">連續發射時間上限</a>。</p>
+
+            <p id="stations-msk144"><strong><span translate="no">MSK144</span></strong>: 請在底部列模式旁邊選擇週期。電台在其某個 ping 被解碼時出現，所以清單列隨流星來去；其訊號強度是該 ping 的強度，其 Δt 是該 ping 在週期內出現的時刻，而不是時鐘誤差。短訊息與長格式一樣顯示兩個呼號，例如 <code translate="no">K1ABC W9XYZ R+03</code>；只有該 QSO 的兩個電台能讀懂它。在設定中開啟短訊息後，qFT8 會以這種方式傳送您的訊號報告、<span translate="no">RRR</span> 與 <span translate="no">73</span>；您的 <span translate="no">CQ</span>、您的呼叫與您的 <span translate="no">RR73</span> 一律以一般訊息送出。所有電台都在 1500 Hz 發射，因此電台的偏移說明不了什麼。</p>
+
+            <p id="stations-fst4"><strong><span translate="no">FST4</span></strong>: 請在底部列模式旁邊選擇週期；它必須與對方電台相同。使用 900 或 1800 秒週期時，一個 QSO 可能需要一小時或更久，而且您的每次發射都會讓電台連續發射長達 30 分鐘：請將 <a href="#tx-limit">連續發射時間上限</a> 設定為允許這樣做，否則 qFT8 不會發射。</p>
+
+            <p><span translate="no">AUTO</span> 的設定、目標與重試在所有這些模式中都相同；請見 <a href="#auto-mode">自動操作（<span translate="no">AUTO</span>）</a>。</p>
+
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
 
             <h3 id="ui-log-tab">日誌選項卡</h3>
@@ -1293,7 +1446,7 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>：開關螢幕上的資訊卡片（時間、晨昏線、日下點位置和十字準線座標）。</li>
                         <li><strong><span translate="no">MSGs</span></strong>：開關定向訊息的路徑和標記：收到的訊息（發給您電台的）顯示為<span style="color: #ff9800; font-weight: bold;">橙色</span>，發出的訊息（由您電台發射的）顯示為<span style="color: #ffff00; font-weight: bold;">黃色</span>。點按箭頭中點會顯示訊息文字。</li>
-                        <li><strong><span translate="no">QSOs</span></strong>：開關您近期通聯的標記（已記錄為<span style="color: #f59e0b; font-weight: bold;">琥珀色</span>，已確認為<span style="color: #10b981; font-weight: bold;">翠綠色</span>）。</li>
+                        <li><strong><span translate="no">QSOs</span></strong>：開關您近期通聯的標記（已記錄為<span style="color: #f59e0b; font-weight: bold;">琥珀色</span>，已確認為<span style="color: #10b981; font-weight: bold;">翠綠色</span>）。 當 <span translate="no">MSGs</span> 和 <span translate="no">Spot</span> 都關閉時，地圖上會從您的電台到每個 <span translate="no">QSO</span> 電台畫一條細線（不帶箭頭），讓您一眼看出通聯到了哪裡；分享的地圖圖片也包含這些線。</li>
                         <li><strong><span translate="no">Spot</span></strong>：開關您電台在本波段即時解碼到的 spot（RX/CQ 為<span style="color: #00ffff; font-weight: bold;">青色</span>），以及在 PSKReporter / WSPRnet 上回報收到您訊號的監測點（<span style="color: #ff5252; font-weight: bold;">紅色菱形</span>）。</li>
                         <li><strong><span translate="no">SOTA</span></strong>：開關山峰通聯（Summits On The Air）的山峰編號和正在活動的山峰啟動者（⛰️）。</li>
                         <li><strong><span translate="no">POTA</span></strong>：開關公園通聯（Parks On The Air）的公園編號和正在活動的公園啟動者（🌲）。</li>
@@ -1352,7 +1505,7 @@
                 <li><strong>世界地圖</strong>：選擇地圖顯示什麼、顯示多久：已完成的 QSO、spot 以及收發的訊息，各有自己的時間視窗。</li>
                 <li><strong>時間和位置</strong>：設定時間偏差同步（NTP 或 GPS）和您的 Maidenhead 網格定位。</li>
                 <li><strong>自動操作</strong>：設定自動操作的偏好、重試次數、排除的前綴，以及 <span translate="no">AUTO</span> 是否回答不是發給您的<a href="#auto-directed-cq">定向 CQ</a>。</li>
-                <li><strong>數位模式</strong>：所有模式的解碼選項集中在一處 &mdash; FT8/FT4/FT2、LQ8、JS8 和 WSPR &mdash; 包括共用的<strong>深度解碼</strong>設定，以及解碼可以使用多少個執行緒。</li>
+                <li><strong>數位模式</strong>：所有模式的解碼選項集中在一處 &mdash; FT8/FT4/FT2、LQ8、Q65、MSK144、FST4、FST4W、JS8 和 WSPR &mdash; 包括共用的<strong>深度解碼</strong>設定，以及解碼可以使用多少個執行緒。</li>
                 <li><strong><span translate="no">SSB</span></strong>、<strong><span translate="no">CW</span></strong>、<strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong> 和 <strong><span translate="no">SSTV</span></strong>：這些模式各自的設定，在它們的章節中說明。每種模式面板上的齒輪按鈕開啟的是同一個頁面。</li>
                 <li><strong>波段選擇</strong>：自訂啟用哪些波段，以及切換波段時的行為。</li>
                 <li><strong>遠端控制 Web 伺服器</strong>：啟用並設定用於遠端控制的內建 Web 伺服器。</li>
@@ -1833,11 +1986,66 @@
                 <span translate="no">qFT8</span> 絕不會刪除任何服務上的 QSO：在這裡刪除 QSO 時，只會提醒您它仍然留在那裡。
             </p>
 
-            <h3>qFT8 伺服器</h3>
+            <h3 id="choosing-services">選擇服務和伺服器</h3>
             <p>
-                在設定的靠下位置，兩條線之間，<strong>qFT8 伺服器</strong>裡是本裝置可以向其他程式提供的服務：
-                遠端控制 Web 伺服器、qFT8 bridge，以及
-                <span translate="no">Wavelog</span>、<span translate="no">Cloudlog</span> 和 qFT8log 伺服器。
+                <strong>QSO 同步</strong>顯示 QRZ、LoTW 和 eQSL,以及你已設定的每個服務。列下方的<strong>新增更多服務</strong>列出所有服務:勾選一個,它就有自己的一列;取消勾選,它就完全停止(不上傳、不確認,不再計入綠色勾號,也會從匯出選項中消失)。其帳號、金鑰和開關都會保留,再次勾選後恢復原樣。
+            </p>
+            <p>
+                緊接在下方的<strong>伺服器</strong>包含本裝置提供給其他程式的服務。每列的核取方塊(例如「遠端控制 Web 伺服器,連接埠 13497」)與該伺服器頁面上的開關是同一個,齒輪會開啟該頁面。遠端控制網頁伺服器和 qFT8 bridge 始終存在(iPhone 上兩者都沒有);<strong>新增更多伺服器</strong>可新增 Wavelog、Cloudlog 和 qFT8log 伺服器。取消勾選的伺服器會立即停止,再次勾選後恢復原樣。
+            </p>
+            <p>
+                為地圖提供資料的下載位於 更多設定 &gt; <strong>資料來源</strong>,就在 波段選擇 下方;預設全部開啟。
+            </p>
+
+            <h3 id="services-list">所有服務和伺服器</h3>
+            <p>
+                qFT8 可以把您的 QSO 和報告傳送到哪裡、可以向其他程式提供什麼，以及各項在哪裡說明：
+            </p>
+            <ul>
+                <li><strong>QSO 同步</strong>（您的 QSO 送出去）：<a href="#qrz-integration"><span translate="no">QRZ</span></a>、<a href="#lotw-integration"><span translate="no">LoTW</span></a>、<a href="#eqsl"><span translate="no">eQSL</span></a>、<a href="#wavelog"><span translate="no">Wavelog</span></a>、<a href="#cloudlog"><span translate="no">Cloudlog</span></a>、<a href="#qft8-log">qFT8log</a>（送往另一個 qFT8）、<a href="#online-logbooks"><span translate="no">HRDLog</span>、<span translate="no">HamQTH</span>、<span translate="no">World Radio League</span> 和 <span translate="no">Club Log</span></a>，以及您網路中的日誌程式（<a href="#lan-loggers"><span translate="no">FT8 network log</span> 和 <span translate="no">ADIF over UDP</span></a>）。</li>
+                <li><strong>伺服器</strong>（其他程式連線到這個 qFT8）：<a href="#remote-control">遠端控制 Web 伺服器</a>、<a href="#bridge">qFT8 bridge</a>、<a href="#wavelog-server"><span translate="no">Wavelog</span></a> 和 <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a> 伺服器、<a href="#qft8-log-server">qFT8log 伺服器</a>，以及<a href="#lan-loggers">供您網路中的日誌程式使用的接收器</a>（<span translate="no">FT8 network log</span>、<span translate="no">ADIF over UDP</span>、<span translate="no">AC Log</span> 和 <span translate="no">DXLab</span> 介面）。</li>
+                <li><strong>回報</strong>（您聽到的內容送出去）：<a href="#pskreporter"><span translate="no">PSKReporter</span></a>、<a href="#wspr-reports"><span translate="no">WSPRnet</span></a> 以及<a href="#lq8-announce">即時地圖上的 <span translate="no">LQ8</span> 活動</a>。</li>
+                <li><strong>活動</strong>：<a href="#activation"><span translate="no">POTA</span> 和 <span translate="no">SOTA</span> 啟動</a>以及 <a href="#event-counter">QSO 計數器</a>。</li>
+            </ul>
+            <p>
+                要在多個 qFT8 之間共用同一份日誌，建議使用 qFT8log：它在每個 qFT8 上的運作方式相同，也最安全（有密碼，每則訊息都經過簽名，預設還會加密），而且對方的 qFT8 會確認每個 QSO，所以不會在途中遺失。透過 UDP 傳送的服務無法保證這一點，設定會在它們各自的開關下方說明（見<a href="#lan-loggers">下文</a>）。
+            </p>
+
+            <h3 id="online-logbooks">HRDLog、HamQTH、World Radio League 和 Club Log</h3>
+            <p>
+                每個都有自己的頁面。HRDLog 需要你 HRDLog 個人資料中顯示的<strong>HRDLog 上傳代碼</strong>(不是密碼);HamQTH 需要<strong>HamQTH 呼號</strong>和<strong>HamQTH 密碼</strong>;World Radio League 需要你在其網站上建立的<strong>WRL API 金鑰</strong>(Integrations &gt; Developer API),如有多個還需要<strong>WRL 日誌</strong>;Club Log(僅在帶有 qFT8 的 Club Log 金鑰的版本中提供)需要<strong>Club Log 電子郵件</strong>和<strong>Club Log 應用程式密碼</strong>。然後按<strong>驗證</strong>。qFT8 從不刪除那裡的 QSO;在 Club Log 上,如果你變更了某個 QSO 的呼號、日期、時間、波段或模式,舊記錄會保留(請在網站上刪除)。
+            </p>
+
+            <h3 id="lan-loggers">您網路中的日誌程式</h3>
+            <p>
+                qFT8 可以把您記錄的每個 QSO 傳送到區域網路中的日誌和地圖程式。在 <strong>新增更多服務</strong> 中勾選 <span translate="no">FT8 network log</span>(UDP 連接埠 2237)或 <span translate="no">ADIF over UDP</span>(UDP 連接埠 2333),它的列會出現在 <strong>QSO 同步</strong> 下。在它的頁面上輸入執行另一個程式的電腦位址(127.0.0.1 即本機)和連接埠,按 <strong>驗證</strong>,然後勾選它的核取方塊。<span translate="no">FT8 network log</span> 還可以傳送您的解碼和電台狀態(<strong>同時傳送我的解碼和我的電台狀態(用於地圖和提醒)</strong>),供另一個程式的地圖和提醒使用。這些訊息沒有回條,因此這樣傳送的 QSO 永遠不算已上傳。設定會在每一項下方列出測試過的程式。
+            </p>
+            <p>
+                反過來,qFT8 也可以把其他程式的 QSO 收進自己的日誌。在 <strong>新增更多伺服器</strong> 中勾選另一個程式所傳送格式的接收器:<span translate="no">FT8 network log</span>(UDP 2237)、<span translate="no">ADIF over UDP</span>(UDP 2333)、<span translate="no">AC Log</span> 介面(TCP 1100)或 <span translate="no">DXLab</span> 介面(TCP 52001);然後勾選 <strong>伺服器</strong> 下它的列。它的頁面顯示要在另一個程式中填寫的位址,並可變更連接埠、只接受部分位址的 QSO。這樣收到的任何內容都不能發射、變更電台或刪除 QSO。接收器在您開啟之前保持關閉;在 iPhone 上只在 qFT8 開啟時執行,且從不加入群播群組。
+            </p>
+
+            <div class="highlight" id="lan-udp-note">
+                <p>
+                    UDP 記錄並不完美：<span translate="no">FT8 network log</span> 和 <span translate="no">ADIF over UDP</span> 每個 QSO 只傳送一次，沒有回條，所以如果這個封包遺失（例如 Wi-Fi 連線不好時），這個 QSO 就遺失了。這些格式也都沒有密碼：您開啟的接收器會讓網路上的任何人都能冒充您提交 QSO，而用戶端會把您的 QSO 傳送給您輸入的位址上監聽的任何程式。設定會在它們各自的開關下方、列中以及它們的頁面上說明這一點。接收器的接受位址清單可以限制誰能向它傳送。對於您的 QSO，建議改用 qFT8log：各個 qFT8 之間相容，最安全，並且經過加密（見 <a href="#qft8-log">qFT8log</a>）。
+                </p>
+            </div>
+
+            <h3 id="pskreporter"><span translate="no">PSKReporter</span></h3>
+            <p>
+                <span translate="no">PSKReporter</span> 收集世界各地的接收報告：哪個電台在哪裡、在哪個頻段和模式下被聽到，以及訊號有多強。在設定的<strong>回報</strong>下，<strong>上傳報告至 PSKReporter</strong>（預設關閉）會傳送您解碼到的電台，涵蓋 qFT8 解碼的每種模式，並附上您的呼號、您的網格定位和您的電台與天線。它的齒輪會開啟該頁面：
+            </p>
+            <ul>
+                <li><strong>使用喇叭/麥克風通訊時也上傳報告</strong>：預設關閉，所以應用程式透過裝置的麥克風而不是連接電台的纜線收聽時，不會傳送任何內容。</li>
+                <li>等待傳送的報告（<em>目前儲存了 12 筆記錄</em>）以及傳送時間（<em>下次上傳時間：... UTC</em>）。它們大約每 5 分鐘一起傳送。同一電台在同一頻段和模式下每 15 分鐘最多回報一次，超過 10 分鐘的報告會被丟棄。<strong>立即上傳</strong>會馬上傳送；<strong>清除快取</strong>會不傳送直接刪除。</li>
+                <li><strong>恢復預設設定</strong>。</li>
+            </ul>
+            <p>
+                反過來，<strong>從 PSKReporter 下載 Spot</strong>（設定，<strong>資料來源</strong>）會取得誰聽到了您自己的訊號，並顯示在世界地圖上。信標網路 <span translate="no">WSPRnet</span> 在 <a href="#wspr-reports"><span translate="no">WSPR</span></a> 中說明。
+            </p>
+
+            <h3 id="lq8-announce">即時地圖上的 <span translate="no">LQ8</span> 活動</h3>
+            <p>
+                <strong>向 qFT8 服務通報 LQ8 活動</strong>（設定，<strong>回報</strong>，預設關閉）：當您透過電台以 <span translate="no">LQ8</span> 發射時，qFT8 會傳送您的呼號、4 位網格定位、頻段和頻率、模式、時間以及 qFT8 版本。其他 qFT8 和 <span translate="no">lq8.org/live</span> 的即時地圖會顯示 10 分鐘，僅儲存在記憶體中。關閉時，您第一次在 <span translate="no">LQ8</span> 中啟用 TX，qFT8 會詢問一次是否開啟它。<strong>使用喇叭/麥克風通訊時也通報</strong>在沒有連接電台時做同樣的事。<strong>從 qFT8 伺服器下載 LQ8 活動</strong>（設定，<strong>資料來源</strong>）會在您的地圖上顯示其他電台的 <span translate="no">LQ8</span> 活動。
             </p>
 
             <a href="#top" class="back-to-toc">&uarr; 返回目錄</a>
@@ -2293,6 +2501,18 @@
                 當您在公園（<span translate="no">POTA</span>）或山峰（<span translate="no">SOTA</span>）操作時，請在 qFT8 中開始一次<strong>啟動</strong>。此後您記錄的每個 QSO，無論哪種模式，都會自動帶上您的公園或山峰；qFT8 替您計數，最後只需點選一次，就能產生這些活動要求的檔案。
             </p>
 
+            <h3 id="events-section">設定中的「活動」部分</h3>
+            <p>
+                設定中有一個<strong>活動</strong>部分，用於各種運作活動。目前包含：
+            </p>
+            <ul>
+                <li><strong><span translate="no">POTA</span> 啟動</strong>和 <strong><span translate="no">SOTA</span> 啟動</strong>：啟動公園或山峰，見下文。每個按鈕旁邊的放大鏡會列出您以往的啟動記錄；有齒輪的地方，齒輪會開啟該計畫的通報設定。</li>
+                <li><strong>開始計數</strong>：<a href="#event-counter">QSO 計數器</a>，用於任何其他活動（比賽、俱樂部活動日、特別紀念電台）。</li>
+            </ul>
+            <p>
+                在家裡獵取公園和山峰，見 <a href="#pota"><span translate="no">POTA</span></a> 和 <a href="#sota"><span translate="no">SOTA</span></a> 章節。
+            </p>
+
             <h3 id="activation-start">開始</h3>
             <ol>
                 <li>在設定分頁中，按 <strong><span translate="no">POTA 啟動</span></strong> 或 <strong><span translate="no">SOTA 啟動</span></strong>（就在<strong>匯出設定 / 匯入設定</strong>的上方）。</li>
@@ -2328,7 +2548,7 @@
 
             <h3 id="activation-chip">啟動進行期間：藍色標記</h3>
             <p>
-                只要啟動處於開啟狀態，瀑布圖右下角就會一直顯示藍色的 <strong><span translate="no">POTA</span></strong> 或 <strong><span translate="no">SOTA</span></strong> 標記，旁邊是本次啟動的 QSO 數量：<strong><span translate="no">POTA 10</span></strong>。您記錄的每個 QSO 都會計入；當某個 QSO 被移出啟動、被刪除或在記錄器中被復原時，數位會相應減少。同時啟動兩個公園時仍然只有一個數位，因為每個 QSO 同時計入兩個公園。空間不足時，標記只在圖示旁顯示數位；連這也放不下時，它會連同共用一行的紅色警告一起縮小顯示。點選它可檢視啟動的狀態：
+                只要啟動處於開啟狀態，瀑布圖右下角就會一直顯示藍色的 <strong><span translate="no">POTA</span></strong> 或 <strong><span translate="no">SOTA</span></strong> 標記，旁邊是本次啟動的 QSO 數量：<strong><span translate="no">POTA 10</span></strong>。您記錄的每個 QSO 只計一次：在同一波段、同一模式下再次與同一電台通聯屬於重複，不會計入。當某個 QSO 被移出啟動、被刪除或在記錄器中被復原時，數字會相應減少。對於 <span translate="no">POTA</span>，數字會在 00:00 UTC 重新從零開始。同時啟動兩個公園時仍然只有一個數位，因為每個 QSO 同時計入兩個公園。空間不足時，標記只在圖示旁顯示數位；連這也放不下時，它會連同共用一行的紅色警告一起縮小顯示。點選它可檢視啟動的狀態：
             </p>
 
             <div class="phone-mockup">
@@ -2337,7 +2557,7 @@
             </div>
 
             <ul>
-                <li><strong>編號和計數</strong>：已完成的 QSO 數，以及該活動認定有效啟動所要求的數量（公園 10 個，山峰 4 個），還有其中多少個是與另一個公園或山峰通聯的（<span translate="no">P2P</span> / <span translate="no">S2S</span>）。</li>
+                <li><strong>編號和計數</strong>：目前已計入的 QSO 數，與公園 10 個或山峰 4 個並列顯示，還有其中多少個是與另一個公園或山峰通聯的（<span translate="no">P2P</span> / <span translate="no">S2S</span>）。</li>
                 <li><strong><span translate="no">檢視啟動</span></strong>：本次啟動的 QSO 清單（見下文）。</li>
                 <li><strong><span translate="no">結束啟動</span></strong>：結束本次啟動。它總會先詢問，按 <strong><span translate="no">繼續</span></strong> 可接著進行。</li>
                 <li><strong><span translate="no">關閉</span></strong>：關閉卡片。</li>
@@ -2365,7 +2585,7 @@
 
             <h3 id="activation-finish">結束與恢復</h3>
             <p>
-                <strong><span translate="no">結束啟動</span></strong> 會顯示一份摘要：編號、開始和結束時間、各模式的 QSO 數，以及啟用是否有效。結束之後記錄的 QSO 不屬於本次啟動。
+                <strong><span translate="no">結束啟動</span></strong> 會顯示一份摘要：編號、開始和結束時間，以及各模式的 QSO 數。結束之後記錄的 QSO 不屬於本次啟動。
             </p>
             <ul>
                 <li><strong>誤點了結束，還是休息後回來了？</strong> 24 小時之內，摘要、啟動清單以及 <em><span translate="no">POTA 啟動</span></em> / <em><span translate="no">SOTA 啟動</span></em> 開始對話方塊都會提供 <strong><span translate="no">恢復啟動</span></strong>，可以重新開啟它，就像什麼都沒發生過。</li>
@@ -2410,13 +2630,21 @@
                 當您通聯的電台同時身處兩個公園時，qFT8 會把兩個都保留下來：如果發 spot 的人把第二個公園寫在了 spot 的備註裡，它就從那裡讀取。日誌顯示第一個公園以及還有幾個（<code>US-1234 +1</code>）。如果公園有誤或缺失，請在 <a href="#qso-editor">QSO 編輯器</a>中更正該 QSO 的 <strong><span translate="no">POTA</span></strong> 欄位；它可以填寫用逗號分隔的多個公園。同一電台的同一個公園被提到兩次時（spot 中一次、備註中又一次，或在輸入的清單中出現兩次），在日誌和每個匯出檔案中都只算一次。
             </p>
 
+            <h3 id="event-counter">QSO 計數器</h3>
+            <p>
+                對於其他任何活動,活動 部分中的<strong>開始計數</strong>會計算從那時起你記錄的每個 QSO。計數期間,按鈕變為藍色並顯示<strong>計數 12</strong>,同樣的藍色標籤也會出現在瀑布圖右下角。點選其中任一個即可結束計數;之後不會保留任何內容。關閉並重新開啟應用程式後,計數會繼續。
+            </p>
+
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
         </section>
 
         <section id="js8-chat">
-            <h2><span translate="no">JS8</span> 聊天</h2>
+            <h2><span translate="no">JS8</span>（鍵盤聊天）</h2>
             <p>
-                在 <strong><span translate="no">JS8</span></strong> 模式下，除了傳統的 FT8/FT4 式 QSO 操作之外，qFT8 還提供一個對話式的自由文字聊天介面。JS8 可以在弱訊號條件下可靠地進行鍵盤對鍵盤的訊息往來，並有多種速度可選（<strong><span translate="no">Slow</span></strong> 30 秒、<strong><span translate="no">Normal</span></strong> 15 秒、<strong><span translate="no">Fast</span></strong> 10 秒和 <strong><span translate="no">Turbo</span></strong> 6 秒時隙）。
+                <span translate="no">JS8</span> 用於鍵盤輸入的對話：任意長度的自由文字、發給一個電台或一個群組的訊息，以及對方程式會自動回答的簡短提問。比一次發射更長的訊息會被切成幀，每個時隙傳送一幀；接收電台再把這些幀還原成一條完整的訊息。
+            </p>
+            <p>
+                在底部欄的模式選擇器中選擇 <strong><span translate="no">JS8</span></strong>。電台選項卡會變成 <span translate="no">JS8</span> 聊天面板，底部欄中的速度按鈕（第 #11 項）取代序列按鈕。頻譜圖、波段選擇器、主 <span translate="no">TX ON</span> / <span translate="no">TX OFF</span> 按鈕以及標示發射頻率的紅色條，與 <span translate="no">FT8</span> 中的用法相同。
             </p>
 
             <div class="phone-mockup">
@@ -2424,128 +2652,252 @@
                 <img src="../js8chat.jpg" alt="qFT8 JS8 聊天" class="screen" width="2280" height="1080">
             </div>
 
-            <h3>頻道類型與訊息歸類</h3>
+            <h3 id="js8-pane"><span translate="no">JS8</span> 聊天面板</h3>
+            <p>從左到右、從上到下依次為：</p>
+            <ol>
+                <li><strong><span translate="no">AUTO</span></strong>：自動應答的開關，開（綠色）或關（黑色），預設為開。<span translate="no">AUTO</span> 開啟且主按鈕為 <span translate="no">TX ON</span> 時，qFT8 會回答其他電台發給你的提問（見<a href="#js8-auto">自動應答</a>）。<span translate="no">AUTO</span> 絕不會打開你的發射機。</li>
+                <li><strong>JS8 聊天</strong>：面板的標題。</li>
+                <li><strong>請求</strong>：打開標準提問清單，發給目前打開的聊天（見<a href="#js8-requests">向其他電台提問</a>）。在與 <code translate="no">@ALLCALL</code> 以外的群組的聊天中為灰色。</li>
+                <li><strong><span translate="no">QSO</span></strong>：記錄與目前聊天電台的 <span translate="no">QSO</span>（見<a href="#js8-logging">記錄 <span translate="no">JS8</span> QSO</a>）。在 <code translate="no">[GLOBAL]</code> 和群組聊天中為灰色。</li>
+                <li><strong><span translate="no">CQ</span></strong>：向 <code translate="no">@ALLCALL</code> 傳送通用呼叫：<code translate="no">CQ</code> 後面跟你的網格定位前四個字元，例如 <code translate="no">CQ JN47</code>。</li>
+                <li><strong>+</strong>：打開<strong>新增聊天</strong>，輸入呼號或群組（<code translate="no">@NAME</code>）即可與其開始聊天，即使還沒有收到過對方的任何訊號。</li>
+                <li><strong>訊息</strong>：目前打開的聊天的訊息，最新的在底部。每條訊息上方顯示：波段、音頻頻率、訊號強度（僅收到的訊息）、<span translate="no">UTC</span> 日期和時間。你自己的訊息為綠色，發給你的訊息為藍色，其餘為灰藍色。等待時隙的訊息為暗黃色，正在發射的訊息有金色邊框，在各幀發出期間以 <code translate="no">TX (sending 2/5)...:</code> 開頭，已發出的部分變為綠色。</li>
+                <li><strong>聊天清單</strong>：你可以打開的聊天（見<a href="#js8-channels">聊天清單</a>）。目前打開的聊天以藍色醒目標示；有未讀訊息的聊天為珀琥珀珀色。</li>
+                <li><strong>訊息輸入框</strong>：輸入文字的地方。字母會轉為大寫，最多 100 個字元。</li>
+                <li><strong>傳送箭頭</strong>：把你輸入的內容發到目前打開的聊天。輸入框為空時不起作用。</li>
+                <li>底部欄中的<strong>速度按鈕</strong>：<span translate="no">Slow</span>、<span translate="no">Normal</span>、<span translate="no">Fast</span>、<span translate="no">Turbo</span> 或 <span translate="no">Ultra</span>（見<a href="#js8-speeds">速度</a>）。</li>
+            </ol>
             <p>
-                右側的聊天面板把收發的訊息分別歸入各自的頻道標籤：
+                主按鈕顯示 <span translate="no">TX OFF</span> 時，訊息輸入框上方會出現一行紅字：有訊息在等待時是<strong>啟用 TX 以開始發射</strong>，或者是<strong>啟用 TX 以允許 AUTO 操作</strong>（當 <span translate="no">AUTO</span> 開啟時）。在 <span translate="no">TX OFF</span> 狀態下傳送的訊息會留在聊天中等待；在你按下主按鈕之前，不會有任何內容發射出去。
             </p>
-            <ul>
-                <li><strong><code>[GLOBAL]</code> 主頻道</strong>：顯示在整個音訊通頻帶內解碼到的每一次 JS8 發射，以及您自己的全部發射。在這一處就能即時縱覽波段上的所有活動。</li>
-                <li><strong>廣播群組頻道（<code>@CQ</code>、<code>@ALLCALL</code>）</strong>：用於向所有監聽的電台發出一般呼叫和通告。發到 <code>@CQ</code> 或 <code>@ALLCALL</code> 的訊息，調頻在該頻率上的任何人都能看到。</li>
-                <li><strong>自訂群組頻道（<code>@GROUPNAME</code>）</strong>：qFT8 支援自訂的定向群組（例如 <code>@EMERGENCY</code>、<code>@SOTA</code>、<code>@NET</code>）。收發帶有 <code>@GROUP</code> 標記的訊息時，它會自動歸入該群組專用的頻道標籤。</li>
-                <li><strong>電台直接頻道（呼號標籤）</strong>：從頻道清單或電台表格中選擇某個電台，會開啟與該呼號的專用對話。</li>
-            </ul>
 
+            <h3 id="js8-speeds">速度</h3>
+            <p>
+                每種速度都有自己的時隙。速度越慢，占用的頻寬越小，能解碼的訊號越弱；速度越快，每分鐘能傳送的文字越多。qFT8 只接收速度按鈕所選的那一種速度，所以請選擇與你想聯絡的電台相同的速度（通常用 <span translate="no">Normal</span>）。
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">Slow</span></dt>
+                    <dd><span class="row-label">時隙</span> 30 秒</dd>
+                    <dd><span class="row-label">頻寬</span> 約 25 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Normal</span></dt>
+                    <dd><span class="row-label">時隙</span> 15 秒</dd>
+                    <dd><span class="row-label">頻寬</span> 約 50 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Fast</span></dt>
+                    <dd><span class="row-label">時隙</span> 10 秒</dd>
+                    <dd><span class="row-label">頻寬</span> 約 80 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Turbo</span></dt>
+                    <dd><span class="row-label">時隙</span> 6 秒</dd>
+                    <dd><span class="row-label">頻寬</span> 約 160 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Ultra</span></dt>
+                    <dd><span class="row-label">時隙</span> 4 秒</dd>
+                    <dd><span class="row-label">頻寬</span> 約 250 Hz</dd>
+                </div>
+            </dl>
+            <p>
+                速度名稱在所有語言中都保持英文。每一幀携帶 75 位；一幀能放多少文字取决於用词，因為常用词會用更短的編碼傳送。
+            </p>
+
+            <h3 id="js8-channels">聊天清單</h3>
+            <p>從上到下依次為：</p>
+            <ul>
+                <li><strong><code translate="no">[GLOBAL]</code></strong>：波段上解碼到的全部內容，以及你傳送的全部內容。你在這裡傳送的訊息會發給 <code translate="no">@ALLCALL</code>，除非你自己以呼號或群組開頭；只輸入 <code translate="no">HB</code> 或 <code translate="no">HEARTBEAT</code> 則傳送心跳（見<a href="#js8-auto">自動應答</a>）。</li>
+                <li><strong><code translate="no">@ALLCALL</code></strong>：發給所有電台的訊息。</li>
+                <li><strong>你的群組</strong>（<code translate="no">@NAME</code>）：你加入的群組，還沒有通信的群組也在其中。</li>
+                <li><strong>呼號聊天</strong>：每個給你發過訊息、你給其發過訊息，或你用 <strong>+</strong> 打開的電台，各有一個聊天。</li>
+                <li><strong>聽到的群組</strong>：在一條細線下方以暗色顯示，是在波段上聽到但你尚未加入的群組。這類群組上方會出現横幅<strong>你不是該群組的成員</strong>，並帶有<strong>加入群組</strong>。向聽到的群組傳送訊息即視為加入該群組。</li>
+            </ul>
+            <p>
+                長按聊天（在電腦上為右鍵單擊）會打開它的選項：<strong>加入群組</strong>或<strong>退出群組</strong>（僅限群組；<code translate="no">@ALLCALL</code> 沒有）、<strong>匯出 (儲存於本機)</strong>和<strong>匯出 (分享)</strong>（把其中的訊息匯出為文字檔）、<strong>清除</strong>（刪除其中的訊息）、<strong>清除並關閉</strong>（同時從清單中移除；群組會被退出）、<strong>清除所有聊天</strong>和<strong>清除並關閉所有聊天</strong>。<code translate="no">[GLOBAL]</code> 和 <code translate="no">@ALLCALL</code> 不能關閉。
+            </p>
             <div class="highlight">
-                <p><strong>空中發射（不保密）：</strong>所有 JS8 訊息都作為普通的業餘無線電數位訊號以明文發射。與某個電台的直接聊天只是為了方便而把對話記錄歸入專用標籤，它<strong>既不加密也不私密</strong>，任何監聽該頻率的電台都能收到。</p>
+                <p><strong>不是私密的：</strong>每一條 <span translate="no">JS8</span> 訊息都是明文發射的。呼號聊天只是幫你整理訊息；這個頻率上的任何人都可以讀到。</p>
             </div>
 
-            <h3>撰寫和傳送訊息</h3>
+            <h3 id="js8-sending">傳送訊息</h3>
             <ol>
-                <li><strong>選擇目標</strong>：在右側面板中點選一個頻道標籤（<code>[GLOBAL]</code>、<code>@CQ</code>、<code>@ALLCALL</code>、某個群組或某個電台的呼號）。</li>
-                <li><strong>輸入訊息</strong>：在底部的輸入欄位中輸入文字（支援全部標準 ASCII 字元，最多 100 個字元）。</li>
-                <li><strong>傳送</strong>：點選<strong>傳送</strong>按鈕。</li>
+                <li>打開聊天：某個電台、某個群組、<code translate="no">@ALLCALL</code> 或 <code translate="no">[GLOBAL]</code>。</li>
+                <li>與 <span translate="no">FT8</span> 一樣，在頻譜圖上的空閒位置選擇你的發射頻率。</li>
+                <li>輸入文字並按傳送箭頭。訊息會出現在聊天中，等待下一個時隙。</li>
+                <li>按主按鈕，使其顯示 <span translate="no">TX ON</span>。各幀每個時隙發出一幀；訊息會顯示已發出多少幀。多條訊息依次發出。</li>
             </ol>
-
-            <h3>點選訊息（快速聊天和詳情）</h3>
             <p>
-                點選聊天記錄中的任何一條訊息（在電腦上：按兩下），會開啟詳情對話方塊，顯示完整的 UTC 時間戳記、音訊頻率、SNR、Maidenhead 網格和訊息內容：
+                正在等待或正在發射的訊息旁邊有一個 <strong>x</strong>：點它會打開<strong>中止傳送？</strong>，其中有<strong>中止訊息</strong>，當等待的訊息多於一條時還有<strong>中止所有訊息</strong>。<span translate="no">TX OFF</span> 也會停止正在發射的訊息。
+            </p>
+            <p>
+                長訊息會讓電台連續多個時隙處於發射狀態。當發射時間會超過電台的<a href="#tx-limit">連續發射時間上限</a>時，qFT8 會在第一幀之前詢問一次：<strong>間隔發送</strong>（空出一些時隙讓電台休息；對方電台仍然收到一條完整的訊息）、<strong>縮短</strong>（回到文字編輯，並選中需要等待的那部分）或<strong>取消</strong>。在這個詢問（以及設定）中勾選<strong>長 JS8 訊息一律間隔發送</strong>，就不會再詢問。
+            </p>
+            <p>
+                <span translate="no">JS8</span> 需要標準呼號：在 <span translate="no">JS8</span> 中，如果你的呼號無法傳送，設定會警告<strong>此呼號為非標準呼號，超出 JS8 編碼限制。</strong>
+            </p>
+
+            <h3 id="js8-messages">點按訊息</h3>
+            <p>
+                點按一條已收到或已傳送的訊息（在電腦上為雙擊）會打開它的詳情：<span translate="no">UTC</span> 日期和時間、誰發給誰、波段、頻率、速度、訊號強度、已知時的網格定位和距離，以及正文。下面是可用的操作：
             </p>
             <ul>
-                <li><strong>收到的訊息（RX）</strong>：點選 <strong><span translate="no">CHAT</span></strong> 可立即開啟與發信電台的直接聊天標籤；如果訊息是發給群組的，則點選 <strong><span translate="no">GROUP CHAT</span></strong>。</li>
-                <li><strong>發出的訊息（TX）</strong>：點選 <strong><span translate="no">RESEND</span></strong> 會自動把文字填回輸入欄位並選好目標頻道，方便重新傳送。</li>
+                <li>收到的訊息：<strong>回覆</strong>（僅用於發給你的提問：傳送答案）、訊息發往的群組（打開該聊天）、<strong>聊天</strong>（打開與傳送者的聊天）、<strong>符合時間偏移</strong>（把你的時鐘校正到該電台的時序；電腦上沒有）和<strong>刪除</strong>。</li>
+                <li>你自己的訊息：<strong>重新傳送</strong>（把它的文字放回其聊天的輸入框）、<strong>聊天</strong>或群組、<strong>符合時間偏移</strong>和<strong>刪除</strong>。</li>
             </ul>
-
-            <h3>多區塊訊息的連續傳送</h3>
             <p>
-                如果您的訊息太長，一個 JS8 發射訊框放不下：
+                發給你但尚未回答的提問，旁邊還會有一個小箭頭：點按即可立即傳送答案。在電腦上，單擊一條訊息會把傳送者的呼號放入輸入框。
+            </p>
+            <p>
+                正文中的顏色：你自己的呼號為紅色，群組名為橙色，提問和命令（<code translate="no">SNR?</code>、<code translate="no">GRID?</code> 等）為黃色，中繼路径（<code translate="no">&gt;CALL&gt;</code>）為青綠色，表示訊息結束的標記 <code translate="no">◇</code> 為青色。橙色的 <code translate="no">~</code> 表示一個沒有收到的幀，讓你知道正文缺了一部分。
+            </p>
+
+            <h3 id="js8-requests">向其他電台提問</h3>
+            <p>
+                <strong>請求</strong>會把一條標準的 <span translate="no">JS8</span> 提問發到目前打開的聊天（在 <code translate="no">[GLOBAL]</code> 中：發給 <code translate="no">@ALLCALL</code>）：
             </p>
             <ul>
-                <li>qFT8 會自動把訊息拆成連續的<strong>多個區塊</strong>訊框。</li>
-                <li>App 會在接連的時隙中自動依次發出每個區塊，直到整條訊息發完。</li>
-                <li>進度指示會顯示這次多時隙發射的進展（例如 <code>TX (1/3)</code>）。</li>
-                <li>如果需要在全部區塊發完之前停止，點選<strong>傳送/停止</strong>按鈕會彈出提示，可以取消佇列中剩餘的發射。</li>
+                <li><code translate="no">SNR?</code> 和 <code translate="no">HW CPY?</code>：對方收到你的訊號有多強。</li>
+                <li><code translate="no">INFO?</code> 和 <code translate="no">STATUS?</code>：該電台的資訊文字和狀態文字。</li>
+                <li><code translate="no">GRID?</code>：它的網格定位。</li>
+                <li><code translate="no">HEARING?</code>：它聽到了哪些電台。</li>
+                <li><code translate="no">AGN?</code>：請求重複上一條訊息。</li>
+                <li><code translate="no">QSL?</code>：詢問你的訊息是否已收到。</li>
+                <li><code translate="no">QUERY CALL</code>：詢問它是否聽到你輸入的某個呼號。</li>
+                <li><code translate="no">QUERY MSGS</code>：詢問它是否為你保管訊息。</li>
+                <li><code translate="no">@HB HEARTBEAT</code>：告訴所有人你在線，並附上你的網格定位。</li>
             </ul>
-
-            <h3>管理頻道（長按操作）</h3>
             <p>
-                在右側面板中長按（按住不放；在電腦上：按滑鼠右鍵）任何電台呼號標籤或群組頻道標籤，會開啟帶有管理選項的選單：
+                你也可以自己輸入其他 <span translate="no">JS8</span> 命令，例如 <code translate="no">MSG TO:</code>，或發往 <span translate="no">APRS</span> 網路的報告：<code translate="no">@APRSIS GRID JN47AB</code>。像 <code translate="no">K1ABC&gt;W9XYZ HELLO</code> 這樣的中繼路径會按你輸入的原樣傳送；qFT8 不會為其他電台中繼訊息，也不會為它們保管訊息。
+            </p>
+
+            <h3 id="js8-auto">自動應答（<span translate="no">AUTO</span>）</h3>
+            <p>
+                <span translate="no">AUTO</span> 開啟且主按鈕為 <span translate="no">TX ON</span> 時，一旦完整收到發給你呼號的提問，qFT8 會把答案放入隊列，並在下一個時隙傳送：
             </p>
             <ul>
-                <li><strong>清除聊天</strong>：清除所選頻道標籤的訊息記錄。</li>
-                <li><strong>關閉聊天</strong>：關閉該標籤，並把它從活動頻道欄中移除。</li>
-                <li><strong>匯出聊天</strong>：把所選頻道的全部訊息記錄匯出為文字檔案，或透過分享面板傳送。</li>
+                <li><code translate="no">SNR?</code> 或 <code translate="no">HW CPY?</code>：<code translate="no">SNR -08</code>（該電台在這裡被收到的強度）。</li>
+                <li><code translate="no">GRID?</code>：你的網格定位前四個字元。</li>
+                <li><code translate="no">INFO?</code> 和 <code translate="no">STATUS?</code>：你在設定中填寫的文字（在你修改之前是 <code translate="no">USING QFT8</code>）。</li>
+                <li><code translate="no">HEARING?</code>：最近 10 分鐘內聽到的電台，最多四個。</li>
+                <li><code translate="no">QSL?</code>：<code translate="no">QSL</code>。<code translate="no">QUERY CALL</code>：如果最近一小時內聽到過該電台，回答 <code translate="no">YES</code>，並附上訊號強度和多久以前，否則回答 <code translate="no">NO</code>。<code translate="no">QUERY MSGS</code>：<code translate="no">NO MSG</code>。</li>
+                <li>其他電台的心跳（<code translate="no">@HB HEARTBEAT</code>）：<code translate="no">HEARTBEAT SNR -08</code>。</li>
+                <li>發給你已加入的群組的 <code translate="no">SNR?</code> 或 <code translate="no">GRID?</code>；發給 <code translate="no">@ALLCALL</code> 或你不在其中的群組的提問，一律不回答。</li>
             </ul>
-
-            <h3>自動回答查詢（AUTO 模式）</h3>
             <p>
-                啟用 <strong><span translate="no">AUTO</span></strong> 按鈕後，qFT8 會自動回答其他電台發來的定向查詢（例如 <code><span translate="no">SNR?</span></code>、<code><span translate="no">HW CPY?</span></code>、<code><span translate="no">GRID?</span></code>、<code><span translate="no">INFO?</span></code>、<code><span translate="no">STATUS?</span></code> 和 <code><span translate="no">HEARING?</span></code>）以及心跳訊息（<code><span translate="no">@HB HEARTBEAT</span></code>）。
-            </p>
-            <p>
-                例如，如果另一個電台發來 <code><span translate="no">YOURCALL SNR?</span></code> 或 <code><span translate="no">YOURCALL HW CPY?</span></code>（YOURCALL 即您的呼號），qFT8 會自動把您的訊號報告回答（例如 <code><span translate="no">SNR -08</span></code>）排入佇列並發出，無需手動操作。同樣，收到心跳發射（<code><span translate="no">@HB HEARTBEAT</span></code>）時，qFT8 會自動把心跳確認（<code><span translate="no">HEARTBEAT SNR -08</span></code>）排入佇列，向發射電台報告接收情況。
+                同一個提問在答案還在等待傳送時不會回答两次，你自己的訊息也從不回答。qFT8 不會自己傳送心跳或 <span translate="no">CQ</span>：只有當你按下 <strong><span translate="no">CQ</span></strong> 或在<strong>請求</strong>中選擇它們時才會傳送。<span translate="no">AUTO</span>（用於 <span translate="no">JS8</span>）與 <span translate="no">AUTO</span>（用於 <span translate="no">FT8</span>）是各自獨立的。
             </p>
 
-            <h3>定向查詢和「請求」按鈕</h3>
+            <h3 id="js8-logging">記錄 <span translate="no">JS8</span> QSO</h3>
             <p>
-                <strong><span translate="no">請求</span></strong>按鈕可以讓您快速向目前選定的目標電台或群組傳送標準的定向查詢，不必手動輸入指令：
+                <span translate="no">JS8</span> 沒有固定的訊息順序，所以 <span translate="no">QSO</span> 在你認為已經完成時才記錄。打開該電台的聊天並按 <strong><span translate="no">QSO</span></strong>：<strong>記錄 JS8 QSO</strong> 會詢問<strong>記錄與 K1ABC 的 JS8 QSO？</strong>（如果有，還會說明上一次與該電台的 <span translate="no">JS8</span> <span translate="no">QSO</span> 是何時記錄的）。<strong>記錄 QSO</strong> 會把它寫入日誌：模式 <span translate="no">JS8</span>、波段和頻率、時間、聽到時該電台的網格定位，以及在聊天中交換的報告（帶符號的两位數：<code translate="no">+05</code>、<code translate="no">-12</code>）。之後它會像其他 <span translate="no">QSO</span> 一樣從日誌上傳，清單中該電台的聊天會顯示一個對勾（已記錄）、帶時鐘的對勾（等待上傳）或一颗星（已確認）。
+            </p>
+
+            <h3 id="js8-settings">設定 &gt; <span translate="no">JS8</span></h3>
+            <p>
+                設定 &gt; <strong>數位模式</strong>中的 <strong>JS8 設定</strong>部分包含：
             </p>
             <ul>
-                <li><code><span translate="no">SNR?</span></code> / <code><span translate="no">HW CPY?</span></code>：請對方電台給出訊號報告。</li>
-                <li><code><span translate="no">GRID?</span></code>：要求對方電台的 Maidenhead 網格定位。</li>
-                <li><code><span translate="no">INFO?</span></code>：要求對方電台設定的資訊文字。</li>
-                <li><code><span translate="no">STATUS?</span></code>：要求對方電台的工作狀態文字。</li>
-                <li><code><span translate="no">HEARING?</span></code>：查詢對方電台在最近 10 分鐘內收到的電台清單。</li>
+                <li><strong>資訊</strong>和<strong>狀態</strong>：作為 <code translate="no">INFO?</code> 和 <code translate="no">STATUS?</code> 的答案傳送的文字（各最多 20 個字元）。</li>
+                <li>無活動 1 分鐘後關閉訊息：最後一幀沒有聽到的訊息何時算作已結束。</li>
+                <li>對模式頻寬 ± 25 % 內的訊息進行分組：两幀在頻率上要多接近，才算屬於同一條訊息。</li>
+                <li>最多保存 1000 條訊息，以及<strong>訊息保存期限最長</strong> 1 個月：聊天保留多少。關閉應用程式後，聊天仍會保留。</li>
+                <li><strong>長 JS8 訊息一律間隔發送</strong>：見<a href="#js8-sending">傳送訊息</a>。</li>
+                <li>對每種速度（<strong>慢速</strong>、<strong>正常速度</strong>、<strong>快速</strong>、<strong>Turbo 速度</strong>、<strong>Ultra 速度</strong>）：<strong>開始解碼時間</strong>和<strong>開始發射時間</strong>，以時隙內的毫秒數表示。</li>
             </ul>
 
-            <a href="#top" class="back-to-toc">↑ 返回目錄</a>
-                <section id="wspr-mode">
-            <h2><span translate="no">WSPR</span> 模式</h2>
+            <h3 id="js8-platforms">在電腦、iPhone 和網頁遙控上</h3>
+            <ul>
+                <li><strong>電腦</strong>：同樣的面板。右鍵單擊代替長按，雙擊一條訊息打開它的詳情，<strong>匯出 (分享)</strong>會保存文件並在檔案管理員中顯示。</li>
+                <li><strong>iPhone</strong>：同樣的面板；匯出聊天會打開分享面板。</li>
+                <li><strong>網頁遙控</strong>：<span translate="no">JS8</span> 選項卡有同樣的聊天和聊天清單，標題欄中有<strong>匯出</strong>和<strong>清除</strong>；有訊息在等待或正在發射時，傳送按鈕旁邊有<strong>取消 TX</strong>。從 <code translate="no">[GLOBAL]</code> 傳送的訊息會先詢問<strong>傳送全域訊息</strong>：發給 <code translate="no">@CQ</code> 還是 <code translate="no">@ALLCALL</code>。速度在其底部欄中選擇。</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; 返回目錄</a>
+        </section>
+
+        <section id="wspr-mode">
+            <h2><span translate="no">WSPR</span> 和 <span translate="no">FST4W</span>（信標）</h2>
             <p>
-                <strong><span translate="no">WSPR</span>（Weak Signal Propagation Reporter，弱訊號傳播報告）</strong>是一種專門的數位協定，用極低功率的發射來探測電波傳播路徑。WSPR 訊號採用窄頻 4-FSK 調變、穩健的迴旋編碼和循序 Fano 解碼，能解出遠低於雜訊底限的訊號，低至 &minus;28 dB SNR。
+                <span translate="no">WSPR</span> 不是用來聊天的：每個電台發送一條帶有自己呼號、網格定位和功率的短信標，並收聽其他電台。你會得到一份你聽到的電台清單，並通過 <span translate="no">WSPRnet</span> 和 <span translate="no">PSKReporter</span> 得到一張聽到你的電台地圖。一次 <span translate="no">WSPR</span> 發射持續 110.6 秒，在偶數 <span translate="no">UTC</span> 分鐘後 1 秒開始，因此波段按 2 分鐘的時隙工作。<span translate="no">FST4W</span> 是同類的信標模式，時隙更長（見<a href="#wspr-fst4w">此面板中的 <span translate="no">FST4W</span></a>）。
+            </p>
+            <p>
+                用底部列的模式選擇器選擇 <strong><span translate="no">WSPR</span></strong>。電台標籤頁變成 <span translate="no">WSPR</span> 面板（在網頁遙控中，該標籤頁名為 <strong><span translate="no">WSPR</span> 模式</strong>），頻譜圖按 2 分鐘時隙緩慢滾動，頻譜圖中 1400&ndash;1600 Hz 以外的部分會變暗：波段內所有 <span translate="no">WSPR</span> 訊號都位於這 200 Hz 之內。
             </p>
 
-            <h3>2 分鐘週期與定時</h3>
+            <h3 id="wspr-pane"><span translate="no">WSPR</span> 面板</h3>
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 相機" class="camera" width="132" height="1080">
+                <img src="../wspr.jpg" alt="qFT8 WSPR 面板" class="screen" width="2280" height="1080">
+            </div>
+            <p>從左到右、從上到下：</p>
+            <ol>
+                <li><strong>信標</strong>：打開（綠色）或關閉（黑色）你自己的信標。信標打開時，qFT8 會在一部分時隙中發射，數量由發射比例（第 2 項）決定。信標不會自行打開你的發射機：底部列的主按鈕顯示 <span translate="no">TX OFF</span> 時，不會發送任何內容，並且一行紅字顯示 <strong>啟用 TX 以開始發射</strong>。</li>
+                <li><strong>TX: 20%</strong>：信標發射的時隙所佔的比例。點按會打開 <strong>WSPR 發射比例</strong>：<strong>0% (僅接收)</strong>、10%、20%、25%、33%、50% 或 <strong>100% (連續)</strong>。時隙逐個隨機選取，因此設定相同的兩個電台不會總是同時發射；20% 表示平均每 5 個時隙發射 1 次，大約每 10 分鐘一次發射。當電台的<a href="#tx-limit">連續發射時間上限</a>允許的時隙少於該比例時，數值顯示為紅色：信標會等待，並在下一個可用的時隙發射。</li>
+                <li><strong>功率</strong>（例如 <strong>5 W</strong>）：你的信標訊息向聽到你的電台通報的功率。點按會打開 <strong>回報功率：</strong>，這是一個從 1 mW（0 dBm）到 1000 W（60 dBm）的清單，檔位為 <span translate="no">WSPR</span> 能夠攜帶的數值。請設為你的電台實際輸出的功率。它只是訊息中的一個數字：qFT8 絕不會更改電台的功率，功率仍由電台自己的控件設定。</li>
+                <li><strong>匯出</strong>：把清單中的 spot 儲存為 <span translate="no">ADIF</span> 檔案。在手機上，對話框 <strong>分享 WSPR ADIF 日誌</strong> 提供 <strong>本機儲存</strong> 和 <strong>分享</strong>；電腦會詢問儲存位置；iPhone 會打開分享面板；網頁遙控會把檔案下載到你正在使用的設備。</li>
+                <li><strong>清除</strong>：清空清單。</li>
+                <li><strong>清單</strong>：每解碼出一個 <span translate="no">WSPR</span> 訊號就佔一行，最新的在最上面：呼號、國家（<span translate="no">DXCC</span>）、網格定位（<span translate="no">Grid</span>）、以 dB 為單位的 <span translate="no">SNR</span>（在 2500 Hz 帶寬內測量，與所有 <span translate="no">WSPR</span> 接收機的報告方式相同）、對方電台通報的功率，以及其時隙的日期和 <span translate="no">UTC</span> 時間（<code>yyMMdd HH:mm</code>）。關閉應用後清單仍會保留；保留多少行、保留多久，在<a href="#wspr-settings">設定 &gt; <span translate="no">WSPR</span></a>中設定。</li>
+                <li><strong>狀態行</strong>：顯示接下來會發生什麼：<strong>接收週期剩餘 01:12. Tx：關閉</strong> 表示信標沒有任何計劃，<strong>下次發射：05:40</strong> 表示正在等待它的時隙，<strong>正在發射 — 01:30 後結束</strong> 表示正在發射，<strong>發射已關閉</strong> 表示已計劃發射但底部列的主按鈕顯示 <span translate="no">TX OFF</span>。這裡出現紅字表示你的信標無法發送：<strong>Tx：請設定呼號和網格定位</strong>（兩者都需要在設定中填寫），或 <strong>呼號太長，無法發射 WSPR</strong> / <strong>Tx：此呼號無法在 WSPR 中發送</strong>。</li>
+                <li><strong>下次 Tx</strong>：無論發射比例是多少，都在下一個時隙發射；之後信標照常繼續。下一個時隙將被使用時（包括由信標選中的情況）按鈕為綠色，再點按一次則放棄該時隙。主按鈕顯示 <span translate="no">TX OFF</span> 時為灰色。</li>
+            </ol>
             <p>
-                WSPR 發射在同步的 <strong>2 分鐘 UTC 時隙</strong>內進行（發射持續 110.6 秒，共 162 個音調符號）。發射總是在偶數 UTC 分鐘過後整一秒開始（<code>:00, :02, :04, :06...</code>）。由於一次發射持續將近兩分鐘，小功率電台必須被允許發射這麼長時間：見<a href="#tx-limit">連續發射時間上限</a>。頻譜圖的垂直滾動會自動調整為平滑的慢速滾動，與 120 秒的週期相符。
+                底部列的訊息欄顯示你的信標發送的訊息：你的呼號、網格定位的前四個字元，以及第 3 項的功率，例如 <code>HB9IPH JN47 37</code>。
             </p>
 
-            <h3>單面板活動檢視</h3>
+            <h3 id="wspr-flow">接收和信標發射</h3>
+            <ol>
+                <li>用波段選擇器選擇波段：電台會調到該波段的 <span translate="no">WSPR</span> 頻率（見下文）。接收不需要其他操作：每隔 2 分鐘，在時隙結束幾秒後，其中解碼出的訊號會加入清單。</li>
+                <li>要發射信標，請確認已設定呼號和網格定位，並且<strong>功率</strong>（第 3 項）與你的電台實際輸出一致。選擇發射比例（通常為 20%），保持 <strong>信標</strong> 為綠色，然後按底部列的主按鈕，使其顯示 <span translate="no">TX ON</span>。狀態行會倒數到你的下一次發射。</li>
+                <li>要立即發射一次信標，或在信標關閉時發射，請按 <strong>下次 Tx</strong>。</li>
+                <li>要停止，請再按一次主按鈕（<span translate="no">TX OFF</span>），或關閉 <strong>信標</strong>。正在進行的發射會在按下 <span translate="no">TX OFF</span> 時結束。</li>
+            </ol>
             <p>
-                WSPR 是信標和傳播報告協定，而不是雙向對話的模式，因此 qFT8 提供一個簡潔的全寬單面板活動記錄，不再分出 QSO 日誌：
+                一次 <span translate="no">WSPR</span> 發射持續近兩分鐘：<a href="#tx-limit">連續發射時間上限</a>比這更短的電台無法發射，qFT8 會告訴你。<span translate="no">WSPR</span> 不會記錄任何通聯：spot 只儲存在此面板的清單中，不是 QSO。
+            </p>
+
+            <h3 id="wspr-bands">波段和頻率</h3>
+            <p>
+                波段選擇器中的每個波段都有一個 <span translate="no">WSPR</span> 撥盤頻率，從 2200 m 到 13 cm：2200 m <span translate="no">136.000</span> kHz，630 m <span translate="no">474.200</span> kHz，160 m <span translate="no">1.836600</span> MHz，80 m <span translate="no">3.568600</span>，60 m <span translate="no">5.287200</span>，40 m <span translate="no">7.038600</span>，30 m <span translate="no">10.138700</span>，20 m <span translate="no">14.095600</span>，17 m <span translate="no">18.104600</span>，15 m <span translate="no">21.094600</span>，12 m <span translate="no">24.924600</span>，10 m <span translate="no">28.124600</span>，6 m <span translate="no">50.293000</span>，4 m <span translate="no">70.091000</span>，2 m <span translate="no">144.489000</span>，70 cm <span translate="no">432.300000</span>，23 cm <span translate="no">1296.500000</span> 和 13 cm <span translate="no">2400.048000</span> MHz（上邊帶）。
+            </p>
+            <p>
+                你的信標以在頻譜圖上選定的音頻頻率發射，位於 1400&ndash;1600 Hz 之內。打開 <strong>啟用隨機頻率抖動 (±60 Hz)</strong>（預設）後，每次發射會移到最多 60 Hz 之外的隨機位置，這樣你就不會每次都壓在同一個電台上。
+            </p>
+
+            <h3 id="wspr-reports">向 <span translate="no">WSPRnet</span> 和 <span translate="no">PSKReporter</span> 發送 spot</h3>
+            <ul>
+                <li><strong>上傳報告至 WSPRnet</strong>（預設關閉；設定中的 <strong>回報</strong> 及其旁邊的齒輪）：你解碼到的電台會分批發送到 <span translate="no">WSPRnet</span>。同一頻率上的同一電台最多每 15 分鐘發送一次。<span translate="no">WSPRnet</span> 頁面還有 <strong>使用喇叭/麥克風通訊時也上傳報告</strong>（關閉：應用通過手機麥克風而不是線纜收聽時不上傳）、<strong>最近的 WSPRnet 上傳日誌：</strong>（帶有 <strong>立即上傳</strong> 和 <strong>清除日誌</strong>），以及 <strong>恢復預設設定</strong>。</li>
+                <li><strong>上傳報告至 PSKReporter</strong>（設定中的 <strong>回報</strong>）：與其他模式一樣，也會發送你的 <span translate="no">WSPR</span> 和 <span translate="no">FST4W</span> 解碼結果。</li>
+                <li><strong>從 WSPRnet 下載 Spot</strong>（預設開啟；設定中的 <strong>資料來源</strong>）：獲取誰接收到了你自己的信標，並通過世界地圖上的 <span translate="no">SPOT</span> 按鈕顯示。</li>
+            </ul>
+
+            <h3 id="wspr-settings">設定 &gt; <span translate="no">WSPR</span></h3>
+            <p>
+                <span translate="no">WSPR</span> 部分位於設定 &gt; <strong>數位模式</strong> 中，包含：
             </p>
             <ul>
-                <li><strong>呼號</strong>：電台的呼號。</li>
-                <li><strong>DXCC 實體</strong>：自動識別出的國家 / DXCC 實體名稱（寬度自動調整）。</li>
-                <li><strong>網格定位</strong>：4 字元的 Maidenhead 網格（例如 <code>JN45</code>）。</li>
-                <li><strong>SNR</strong>：接收訊號的訊雜比，單位 dB，與其他 WSPR 接收機一樣，以 2,500 Hz 頻寬內的雜訊為基準測量。</li>
-                <li><strong>功率</strong>：電台回報的發射功率，單位 dBm（例如 <code>37 dBm</code>）。</li>
-                <li><strong>日期和 UTC 時間</strong>：發射時隙的 UTC 時間戳記，格式為 <code>yyMMdd HH:mm</code>。</li>
+                <li><strong>啟用隨機頻率抖動 (±60 Hz)</strong>（開）：見<a href="#wspr-bands">波段和頻率</a>。</li>
+                <li><strong>最多儲存</strong> 1000 條訊息，以及 <strong>訊息保存期限最長</strong> 1 個月：清單保留多少行以及保留多久。</li>
+                <li><strong>開始解碼時間</strong>（114000 ms）：在 2 分鐘時隙內，從何時開始解碼。</li>
+                <li><strong>開始發射時間</strong>（1000 ms）：在時隙內，信標從何時開始發射。</li>
             </ul>
 
-            <h3>自動信標和發射比例（Tx %）</h3>
+            <h3 id="wspr-fst4w">此面板中的 <span translate="no">FST4W</span></h3>
             <p>
-                在 WSPR 活動介面頂部的標題列中：
+                <span translate="no">FST4W</span>（模式選擇器中的 <strong><span translate="no">FST4W</span>（實驗性）</strong> 一行）使用同一個面板：相同的清單、<strong>信標</strong>、<strong>下次 Tx</strong>、功率、<strong>匯出</strong> 和 <strong>清除</strong>，以及向 <span translate="no">WSPRnet</span> 和 <span translate="no">PSKReporter</span> 的相同上傳。不同之處：
             </p>
             <ul>
-                <li><strong><span translate="no">信標</span>開關</strong>：開啟或關閉自動信標發射。開啟時（以亮綠色醒目標示），qFT8 會依您設定的發射比例，以確定的間隔自動安排信標發射。</li>
-                <li><strong><span translate="no">Tx %</span> 選擇器</strong>：設定確定性的發射工作週期，依距上次發射經過的時間計算（<code>0% [Rx Only]</code>（僅接收）、<code>10%</code>、<code>20%</code>、<code>25%</code>、<code>33%</code>、<code>50%</code> 或 <code>100% Continuous</code>（連續））。例如，<code>20%</code> 表示從上次發射起每 10 分鐘發射一次（<code>50%</code> = 每 4 分鐘，<code>33%</code> = 每 6 分鐘，<code>25%</code> = 每 8 分鐘，<code>10%</code> = 每 20 分鐘，<code>100%</code> = 每個 2 分鐘週期都發射）。</li>
-                <li><strong><span translate="no">Tx 下次</span>按鈕</strong>：安排在下一個 2 分鐘週期開始時立即手動發射一次。發射之後，自動的確定性信標安排從該週期起繼續。</li>
+                <li>時隙就是<strong>週期</strong>：120、300、900 或 1800 秒，在底部列或設定中選擇。週期越長，能解碼的訊號越弱（120 秒時約 -33 dB，1800 秒時 -45 dB），發射的時間也越長：最長接近 30 分鐘，這必須是<a href="#tx-limit">連續發射時間上限</a>所允許的。雙方電台必須使用相同的週期。</li>
+                <li>發射比例是獨立的（<strong>發射比例</strong>，預設 20 %）：在 <span translate="no">FST4W</span> 中更改它不會改變 <span translate="no">WSPR</span> 的發射比例。</li>
+                <li>它只在接收頻率（通常為 1500 Hz）附近、接收容差範圍內解碼。</li>
+                <li>在 2200 m、630 m 和 160 m 上，它有自己的頻率（<span translate="no">136.000</span> kHz、<span translate="no">474.200</span> kHz、<span translate="no">1.8368</span> MHz）；在其他波段上使用 <span translate="no">WSPR</span> 的頻率。</li>
             </ul>
-
-            <h3>向 WSPRnet 和 PSKReporter 上傳 spot</h3>
             <p>
-                qFT8 可以把收到的 spot 自動上傳到全球的 <strong><a href="http://wsprnet.org" target="_blank">WSPRnet</a></strong> 資料庫和 <strong>PSKReporter</strong>：
+                它的設定見<a href="#fst4w-settings">設定 &gt; <span translate="no">FST4W</span></a>。
             </p>
-            <ul>
-                <li><strong>從 WSPRnet 下載 Spot</strong>：預設開啟，即時取得與您的呼號和波段有關的 spot，顯示在世界地圖上。</li>
-                <li><strong>上傳報告至 WSPRnet</strong>：在<em>設定 &rarr; WSPRnet</em> 中啟用後，收到的 spot 會成批上傳到 WSPRnet，並帶有 15 分鐘去重和速率限制。</li>
-                <li><strong>開啟 WSPRnet</strong>：直接在瀏覽器中開啟 WSPRnet 資料庫，並已依您電台的呼號篩選。</li>
-            </ul>
 
-            <h3>單獨的 ADIF 匯出</h3>
-            <p>
-                點按 WSPR 活動面板右上角的 <strong><span translate="no">匯出</span></strong> 按鈕，可以把本次工作階段記錄的所有 spot 匯出為標準 ADIF 格式（<code>.adi</code>），用於傳播研究和存檔。
-            </p>
-        
             <a href="#top" class="back-to-toc">&uarr; 返回目錄</a>
         </section>
 
@@ -2553,6 +2905,11 @@
             <h2><span translate="no">SSB</span>（語音）</h2>
             <p>
                 在 <span translate="no">SSB</span> 模式下，qFT8 就是您收發信機的麥克風和喇叭：電台收到的訊號在您的喇叭或耳機中變成語音，您的聲音從您的麥克風送到電台。電台的連接方式與數位模式完全相同（同一條 USB 線、同一張音效卡），因此在 FT8 和語音之間來回切換時，不需要重新插拔任何東西。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> ITU發射類別J3E（ITU無線電規則）；語音沒有數位協定。</p>
+            <p>
+                qFT8 自行產生語音訊號，並透過電台的音效卡送出。它把電台設為同一邊帶的資料模式（例如 <span translate="no">USB-D</span> / <span translate="no">LSB-D</span>, <span translate="no">DATA-U</span> / <span translate="no">DATA-L</span>, <span translate="no">DIGU</span> / <span translate="no">DIGL</span>；在 <span translate="no">QMX</span> 上是它自己的 <span translate="no">USB</span> 或 <span translate="no">LSB</span> 模式），因此電台顯示的頻率與 qFT8 相同。邊帶隨頻段而定：10 MHz 以下為 <span translate="no">LSB</span>，10 MHz 以上及 60 m 為 <span translate="no">USB</span>。
             </p>
             <p>
                 用底部列的模式選擇器選擇 <strong><span translate="no">SSB</span></strong>。訊息區域、序列按鈕和週期進度條會消失（語音沒有時隙），模式選擇器旁邊出現 <strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong> 按鈕，「電台」分頁變為 <span translate="no">SSB</span> 面板：
@@ -2566,37 +2923,41 @@
             <p><span translate="no">SSB</span> 介面的各個組成部分如下：</p>
 
             <ol>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>：選擇調諧輪（第 12 項）移動的對象。選 <strong><span translate="no">RX/TX</span></strong> 時，收發在同一頻率上。選 <strong><span translate="no">RX</span></strong> 或 <strong><span translate="no">TX</span></strong> 時只移動其中一個，這樣可以在一個頻率上收聽、在另一個頻率上發射（異頻操作）。</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>：選擇調諧輪（第 12 項）移動的對象。選 <strong><span translate="no">RX/TX</span></strong> 時，收發在同一頻率上。選 <strong><span translate="no">RX</span></strong> 或 <strong><span translate="no">TX</span></strong> 時只移動其中一個，這樣可以在一個頻率上收聽、在另一個頻率上發射（異頻操作）。 沒有 CAT 連線時，這些按鈕為灰色並停在 <span translate="no">RX/TX</span>；點按會提示 <strong>調諧需要與電台的 CAT 連線</strong>。</li>
                 <li><strong><span translate="no">AUTO RIT</span></strong>：讓稍微偏離頻率的電台保持置中，不用碰調諧輪，對方的聲音聽起來也自然。</li>
                 <li><strong>齒輪</strong>：開啟<strong>設定 &gt; <span translate="no">SSB</span></strong>（見下文）。<strong>返回</strong>回到此面板。</li>
-                <li><strong><span translate="no">QSO</span></strong>：開啟已填好模式、邊帶和頻率的記錄器，記錄您剛完成的通聯（見<a href="#qso-logger">記錄器</a>）。每按一次記錄一個 QSO。</li>
+                <li><strong><span translate="no">QSO</span></strong>：開啟已填好模式、邊帶和頻率的記錄器，記錄您剛完成的通聯（見<a href="#qso-logger">記錄器</a>）。每按一次記錄一個 QSO。 訊號報告（59 / 59）也已填好；分頻（split）通聯之後，發射頻率和收聽頻率都會填入。</li>
                 <li><strong>語音記憶</strong>：您錄製的語音（CQ 呼叫、您的呼號……）。在錄製第一則之前，這個區域顯示連結<strong>在設定中設定語音記憶</strong>。</li>
                 <li><strong><span translate="no">IN</span></strong>：您麥克風的音量及其增益滑桿。標有 <strong><span translate="no">VOX</span></strong> 的線，是 <span translate="no">VOX</span> 開啟時（第 10 項）您的聲音必須超過才能讓電台發射的音量：可以拖曳它。</li>
-                <li><strong><span translate="no">OUT</span></strong>：接收音訊的音量和您喇叭的音量滑桿。手機的音量鍵作用相同。</li>
-                <li><strong><span translate="no">FILTER</span></strong> 和 <strong><span translate="no">NR</span></strong>：接收濾波器（關、2.7、2.4 或 1.8 kHz）和降噪（關、1、2 或 3）。每點按一次切換到下一個值。</li>
-                <li><strong><span translate="no">PTT</span></strong>：按鍵通話。依 <strong>PTT 模式</strong>設定，它顯示「按住說話」或「點按說話」，發射時顯示「<span translate="no">發射中</span>」。在電腦上，面板取得焦點時空白鍵的作用相同。</li>
+                <li><strong><span translate="no">OUT</span></strong>：接收音訊的音量和您喇叭的音量滑桿。手機的音量鍵作用相同。 滑桿最底端聲音關閉（<span translate="no">MUTE</span>）。</li>
+                <li><strong><span translate="no">FILTER</span></strong> 和 <strong><span translate="no">NR</span></strong>：接收濾波器（關、2.7、2.4 或 1.8 kHz）和降噪（關、1、2 或 3）。每點按一次切換到下一個值。 這些標籤在所有語言中都一樣。</li>
+                <li><strong><span translate="no">PTT</span></strong>：按鍵通話。依 <strong>PTT 模式</strong>設定，它顯示「按住說話」或「點按說話」，發射時顯示「<span translate="no">發射中</span>」。有鍵盤時（電腦、網頁遙控、手機或平板），只要您最後點擊或點按的是底列、頻譜圖、世界地圖或此面板，空白鍵的作用相同；在文字方塊中它仍然輸入空格。 發射時，如有限制，它也會顯示剩餘秒數（見下文）。<span translate="no">VOX</span> 達到限制後顯示「<span translate="no">VOX 已暫停</span>」；電台無法從 App 發射語音時顯示「<span translate="no">無 SSB</span>」。</li>
                 <li><strong><span translate="no">VOX</span></strong>：開啟後，由您的聲音而不是 <span translate="no">PTT</span> 按鈕控制電台發射。</li>
-                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>：邊帶。更換波段時會自動替您選好（10 MHz 以下為 <span translate="no">LSB</span>，以上為 <span translate="no">USB</span>）；點按即可切換，而您讀到的頻率保持不變。</li>
+                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>：邊帶。更換波段時會自動替您選好（10 MHz 以下為 <span translate="no">LSB</span>，以上為 <span translate="no">USB</span>）；點按即可切換，而您讀到的頻率保持不變。 60 m 也是 <span translate="no">USB</span>；用電台本身的旋鈕換頻段時，也會選擇該頻段的邊帶。</li>
                 <li><strong>調諧輪</strong>：在 <span translate="no">SSB</span> 中，頻譜圖的頻率刻度是一個轉輪。沿著它滑動即可調諧電台；滑得越快，步進越大。點按不起作用，所以頻率不會意外跳變。在電腦上也可以用滑鼠滾輪調諧（按住 Shift 為 1 Hz 步進）。調諧需要與電台的 CAT 連線。</li>
-                <li><strong>頻率和波段</strong>：您在空中報出的頻率（載波頻率）和波段。橙色線及其下方的 <span translate="no">RX/TX</span> 標籤，標出您正在收聽和發射的那一段頻譜圖。</li>
+                <li><strong>頻率和波段</strong>：您在空中報出的頻率（載波頻率）和波段。橙色線及其下方的 <span translate="no">RX/TX</span> 標籤，標出您正在收聽和發射的那一段頻譜圖。 點按頻率會開啟 <strong>電台頻率 (kHz)</strong> 以輸入頻率；輸入其他頻段的頻率會切換頻段。這同樣需要 CAT。</li>
             </ol>
+            <p>
+                使用 <span translate="no">QMX</span> 或 <span translate="no">QMX+</span> 時，<span translate="no">PTT</span> 按鈕上方的一行灰字提醒：電台的 <span translate="no">SSB</span> 音訊來源（其選單 <span translate="no">SSB &gt; Input</span>）必須是 USB 音效卡（見 <a href="#ssb-requirements"><span translate="no">SSB</span> 需要什麼</a>）。
+            </p>
 
             <h3 id="ssb-transmitting">通話</h3>
             <ol>
                 <li>用底部列的 <strong><span translate="no">TX</span></strong> 按鈕開啟發射。和其他所有模式一樣，它顯示 <span translate="no">TX OFF</span> 時不會有任何發射：紅色的一行<strong><span translate="no">按 TX ON 發射</span></strong>會提醒您。</li>
                 <li>按住 <strong><span translate="no">PTT</span></strong> 講話，講完鬆開。或者開啟 <strong><span translate="no">VOX</span></strong>，直接講話。</li>
                 <li>要發送一則語音記憶，點按它即可。<span translate="no">TX ON</span> 時它會被發射出去，您也能在喇叭裡聽到。<span translate="no">TX OFF</span> 時它只播放給您聽，適合用來檢查錄音。長按（在電腦上是按滑鼠右鍵）則一律只播放給您聽。</li>
+                <li>通聯結束後，按 <strong><span translate="no">QSO</span></strong> 記錄它。</li>
             </ol>
             <p>
                 您自己的即時語音絕不會在您的喇叭中回放。如果您要發射的頻率在業餘波段之外，qFT8 不會讓電台發射，並會告訴您。
             </p>
             <div class="highlight">
-                <p><strong>PTT 限時：</strong>使用<strong>點按切換</strong>和 <span translate="no">VOX</span> 時，發射會在 <strong>PTT 限時</strong>（除非您更改，否則為 100 秒）到達後自動停止，<span translate="no">PTT</span> 按鈕上會倒數剩餘秒數。到達限時後，<span translate="no">VOX</span> 會暫停同樣長的時間，或直到您點按 <span translate="no">PTT</span>。這樣可以保護電台，避免麥克風一直拾取到雜訊而持續發射。電台自身的<a href="#tx-limit">連續發射時間上限</a>同樣有效：以兩者中較短的為準。</p>
+                <p><strong>發射限制：</strong>每次 <span translate="no">SSB</span> 發射都會在電台的<a href="#tx-limit">連續發射時間上限</a>（裝置設定）處自動結束；電台沒有上限時則在 3 分鐘後結束。使用 <strong>點按切換</strong> 和 <span translate="no">VOX</span> 時，<span translate="no">PTT</span> 按鈕倒數剩餘秒數（使用 <strong>按住說話</strong> 和語音記憶時，僅在電台有上限時倒數）。達到上限後，<span translate="no">VOX</span> 暫停同樣長的時間，或直到你點按 <span translate="no">PTT</span>。這可保護電台免受一直聽到雜訊的麥克風影響。</p>
             </div>
 
             <h3 id="ssb-memories">語音記憶</h3>
             <p>
-                進入<strong>設定 &gt; <span translate="no">SSB</span> &gt; 語音記憶</strong>（或在面板中點按<strong>在設定中設定語音記憶</strong>），按 <strong><span translate="no">錄製新語音記憶</span></strong>。最多可儲存 6 則記憶，每則 30 秒。每一則都可以命名、重新錄製、設定音量或按 <strong><span translate="no">正規化</span></strong>，還可以拖曳聲音波形圖上的兩個控點，裁掉開頭和結尾的靜音；<strong><span translate="no">播放</span></strong> 播放您保留的部分，儲存之前不會有任何改變。記憶連同錄音一起包含在設定匯出中。
+                進入<strong>設定 &gt; <span translate="no">SSB</span> &gt; 語音記憶</strong>（或在面板中點按<strong>在設定中設定語音記憶</strong>），按 <strong><span translate="no">錄製新語音記憶</span></strong>。最多可儲存 6 則記憶，每則 30 秒。每一則都可以命名、重新錄製、設定音量或按 <strong><span translate="no">正規化</span></strong>，還可以拖曳聲音波形圖上的兩個控點，裁掉開頭和結尾的靜音；<strong><span translate="no">播放</span></strong> 播放您保留的部分，儲存之前不會有任何改變。記憶連同錄音一起包含在設定匯出中。 語音記憶錄下的是你從麥克風說出的聲音，而不是電台的聲音。qFT8 不會錄下你的通聯。
             </p>
 
             <h3 id="ssb-settings">設定 &gt; <span translate="no">SSB</span></h3>
@@ -2604,23 +2965,31 @@
                 <li><strong>PTT 方式</strong>：<span translate="no">PTT</span> 按鈕，或 <span translate="no">VOX</span>。</li>
                 <li><strong>PTT 模式</strong>：<strong>按住說話</strong>或<strong>點按切換</strong>。</li>
                 <li><strong>PTT 延遲</strong>：讓電台轉入發射到送出您的聲音之間的時間。您說的話不會遺失：第一個音節會等電台準備好。</li>
-                <li><strong>PTT 限時</strong>：見上文（10 至 600 秒）。</li>
-                <li><strong>邊帶</strong>：依波段自動選擇、一律 <span translate="no">USB</span> 或一律 <span translate="no">LSB</span>。</li>
+                <li><strong>邊帶</strong>：依波段自動選擇、一律 <span translate="no">USB</span> 或一律 <span translate="no">LSB</span>。 變更立即生效，在 <span translate="no">SSB</span> 中也一樣。</li>
                 <li><strong>進入 <span translate="no">SSB</span> 時的濾波器</strong>和<strong>進入 SSB 時的降噪</strong>。</li>
-                <li><strong>在喇叭上播放接收到的聲音</strong>和<strong>發射時喇叭靜音</strong>。</li>
+                <li><strong>在喇叭上播放接收到的聲音</strong>和<strong>發射時喇叭靜音</strong>。 使用手機內建的麥克風和喇叭時，後者始終開啟，以免手機聽到自己的聲音。</li>
                 <li><strong>語音記憶</strong>和 <strong><span translate="no">恢復預設設定</span></strong>。</li>
             </ul>
 
             <h3 id="ssb-requirements"><span translate="no">SSB</span> 需要什麼</h3>
             <ul>
                 <li><strong>不是電台音效卡的麥克風和喇叭。</strong>手機自帶這兩樣；耳機麥克風也可以。見<a href="#audio-setup">喇叭和麥克風</a>。如果電台與您的麥克風或喇叭是同一個裝置，會有一行紅字提示，並且不會發射或播放任何聲音。</li>
-                <li><strong>一台電台。</strong>沒有電台時，面板會被一張卡片取代，上面寫著<strong>請連接電台以使用 <span translate="no">SSB</span></strong>；電台接好後面板會自動恢復。沒有 CAT、靠自身 <span translate="no">VOX</span> 轉入發射的電台也可以用，只是應用程式無法為它調諧。</li>
-                <li><strong><span translate="no">QMX</span> 或 <span translate="no">QMX+</span> 需要 1_02_000 或更新的韌體</strong>才能從應用程式發射語音。韌體較舊時，底部列顯示<strong>無 <span translate="no">SSB</span></strong>，該模式只能接收。</li>
+                <li><strong>一台電台。</strong>沒有電台時，面板會被一張卡片取代，上面寫著<strong>請連接電台以使用 <span translate="no">SSB</span></strong>；電台接好後面板會自動恢復。沒有 CAT、靠自身 <span translate="no">VOX</span> 轉入發射的電台也可以用，只是應用程式無法為它調諧。 該卡片上有一個前往裝置設定的按鈕。沒有 CAT 時用電台旋鈕調諧：<span translate="no">RX</span> / <span translate="no">TX</span> 按鈕、滾輪和 <span translate="no">AUTO RIT</span> 維持灰色。其他卡片會在未選擇麥克風或喇叭、裝置設定中關閉了全雙工、或手機音訊無法同時錄音和播放時提示。</li>
+                <li><strong><span translate="no">QMX</span> 或 <span translate="no">QMX+</span> 需要 1_04_001 或更新的韌體</strong>才能從 App 發射語音。韌體較舊時，<span translate="no">PTT</span> 按鈕顯示 <span translate="no">無 SSB</span>，一行紅字說明原因，該模式只能接收。</li>
+                <li><strong>在 <span translate="no">QMX</span> 上</strong>，你處於 <span translate="no">SSB</span> 時 qFT8 會把電台的 <span translate="no">SSB &gt; Input</span> 設為 USB，離開時恢復你自己的選擇；電台中不儲存任何東西。如果韌體不允許，一行紅字會請你在電台選單中設定。如果你的聲音送到電台而電台沒有輸出功率，會有一則訊息列出要檢查的項目（<span translate="no">SSB &gt; Input</span>、電台的 USB 增益、韌體）。</li>
+                <li>在某些手機上，<span translate="no">VOX</span> 不能與 USB 電台一起使用，因為手機無法同時監聽自己的麥克風和電台；這時請使用 <span translate="no">PTT</span> 按鈕。</li>
                 <li>第一次在 <span translate="no">SSB</span> 下進入某個波段時，qFT8 會調諧到該波段在您所在地區常用的語音頻率；此後則回到您上次在該波段使用的頻率。30 公尺波段沒有語音段，因此不提供。</li>
+                <li>如果 qFT8 無權設定電台模式（裝置設定中該設定已關閉），或不知道電台的 <span translate="no">LSB</span> 資料指令，電台會留在 USB 資料模式，由 qFT8 自己產生 <span translate="no">LSB</span>：此時在 <span translate="no">LSB</span> 頻段上，電台顯示的頻率比 qFT8 顯示的低 3 kHz。無論哪種情況，都請對著在喇叭和麥克風中選擇的麥克風說話，並使用 qFT8 的 <span translate="no">PTT</span>，而不是電台自己的。</li>
             </ul>
             <p>
                 QSO 以 <span translate="no">SSB</span> 連同邊帶記入日誌，並像其他 QSO 一樣上傳到 <span translate="no">QRZ</span> 和 <span translate="no">LoTW</span>。
             </p>
+
+            <h3 id="ssb-platforms">電腦、iPhone 和網頁遙控</h3>
+            <ul>
+                <li><strong>電腦</strong>和 <strong>iPhone</strong> 顯示同樣的面板和同樣的按鈕。在電腦上，右鍵點按語音記憶只播放給你聽，在頻譜圖上滾動滑鼠滾輪可以調諧。</li>
+                <li><strong>網頁遙控</strong>無法把 App 切換到 <span translate="no">SSB</span>。App 處於 <span translate="no">SSB</span> 時，頁面顯示瀑布圖和三個按鈕：<strong>收聽</strong>在頁面上播放電台聲音，<strong>麥克風</strong>把瀏覽器的麥克風作為電台的麥克風，<strong><span translate="no">PTT</span></strong>用於發射（點一次開，再點一次關；空白鍵作用相同）。只有 App 處於 <span translate="no">TX ON</span> 時才會發射。瀏覽器只在安全位址上把麥克風交給網頁：請在網頁伺服器設定中開啟安全位址（https），並開啟頁面顯示的連結。</li>
+            </ul>
 
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
         </section>
@@ -2629,6 +2998,11 @@
             <h2><span translate="no">CW</span>（摩斯電碼）</h2>
             <p>
                 在 <span translate="no">CW</span> 模式下，qFT8 會抄收通帶內的每一個摩斯訊號，並把文字寫在頻譜圖上；發報可以用螢幕上的電鍵槳、您自己的按鍵、預設訊息或輸入的文字。<span translate="no">TX OFF</span> 時一切都可以當作練習：您在喇叭裡聽到自己拍發的電碼，但什麼都不會發射出去。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> ITU-R 建議書 M.1677-1, &ldquo;International Morse code&rdquo; (2009)。</p>
+            <p>
+                qFT8 透過電台的資料模式(例如 <span translate="no">DIGU</span> 或 <span translate="no">DIGL</span>、<span translate="no">USB-D</span> 或 <span translate="no">LSB-D</span>),把 <span translate="no">CW</span> 作為乾淨、經過整形的音訊音調發送,因此發射時電台會切換到該模式,接收仍維持寬頻。QRP Labs <span translate="no">QMX</span> 是例外:它透過 <span translate="no">CAT</span> 以真正的 <span translate="no">CW</span> 鍵控。
             </p>
             <p>
                 用底部列的模式選擇器選擇 <strong><span translate="no">CW</span></strong>：
@@ -2643,16 +3017,16 @@
 
             <ol>
                 <li><strong><span translate="no">AUTO</span></strong>：讓 qFT8 自己完成整個 <span translate="no">CW</span> QSO（見 <a href="#cw-auto">CW 中的 AUTO</a>）。</li>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>：選擇點按瀑布圖或轉動調諧輪時移動哪一條標線：接收標線、發射標線，或兩者一起。</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>：選擇點按瀑布圖或轉動調諧輪時移動哪一條標線：接收標線、發射標線，或兩者一起。 其後的 <strong><span translate="no">AUTO RIT</span></strong> 會把接收條移到正在呼叫您的電台上（見 <a href="#cw-auto-rit"><span translate="no">AUTO RIT</span></a>）。</li>
                 <li><strong>齒輪</strong>開啟<strong>設定 &gt; <span translate="no">CW</span></strong>，<strong><span translate="no">QSO</span></strong> 開啟已填好 <span translate="no">CW</span>、頻率和目標的記錄器。</li>
-                <li><strong><span translate="no">目標</span></strong>：您正在通聯的電台的呼號。它會填入您訊息中的 <code>[TARGET]</code> 部分。點按它可輸入呼號，也可以點按解碼行（第 10 項）中的呼號，直接取用。</li>
-                <li><strong>記憶</strong>：預設訊息。點按即發送。您自己的呼號顯示為藍色，訊號報告顯示為黃色。還缺內容的記憶（目標、您的名字……）會變暗；點按它可以看到缺什麼。</li>
+                <li><strong><span translate="no">目標</span></strong>：您正在通聯的電台的呼號。它會填入您訊息中的 <code>[TARGET]</code> 部分。點按它可輸入呼號，也可以點按解碼行（第 10 項）中的呼號，直接取用。 當 <span translate="no">AUTO</span> 開啟而 <span translate="no">TX</span> 關閉時，若有電台呼叫您，下方的灰色列會顯示 <strong>K1ABC 正在呼叫您 – 按 TX ON</strong>。</li>
+                <li><strong>記憶</strong>：預設訊息。點按即發送。您自己的呼號顯示為藍色，訊號報告顯示為黃色。還缺內容的記憶（目標、您的名字……）會變暗；點按它可以看到缺什麼。 開啟 <span translate="no">AUTO RIT</span> 後，呼叫您的電台的 <strong>跟隨 K1ABC +150 Hz?</strong> 列會出現在此清單頂端。</li>
                 <li><strong><span translate="no">WPM</span></strong> 和 <strong><span translate="no">FARNSWORTH</span></strong>：以每分鐘字數表示的發報速度，以及可選的 Farnsworth 速度（字元保持原速，字元之間的間隔加長）。</li>
-                <li><strong><span translate="no">FILTER</span></strong> 和 <strong><span translate="no">NR</span></strong>：接收標線兩側接收濾波器的寬度，以及降噪。</li>
+                <li><strong><span translate="no">FILTER</span></strong>、<strong><span translate="no">NR</span></strong> 和 <strong><span translate="no">SIDETONE</span></strong>：接收條周圍接收濾波器的寬度、降噪，以及您自己側音的音量（見 <a href="#cw-sidetone">側音</a>）。</li>
                 <li><strong>電鍵槳</strong>：左槳發點，右槳發劃。同時按下兩槳用於 Iambic 模式。</li>
                 <li><strong>紅色的一行</strong>：<span translate="no">按 TX ON 發射</span>。它顯示時，您的拍發只是練習。</li>
-                <li><strong>解碼行</strong>：位於 FT8 中訊息選擇器所在的位置。它用綠色顯示您濾波器內那個電台的文字，用紅色顯示您發出的內容，最新的在右邊。</li>
-                <li><strong>瀑布圖上的解碼文字</strong>：每個訊號的文字都沿著它自己的軌跡寫出，因此您可以一次讀到整個波段。接收標線下方的標籤顯示您所在的那個電台的呼號和速度。</li>
+                <li><strong>解碼行</strong>：位於 FT8 中訊息選擇器所在的位置。它用白色顯示您濾波器內那個電台的文字，用綠色顯示您發出的內容，最新的在右邊。點一下呼號會把它提議為目標；點其他任何地方會在頻譜圖的位置顯示該頻率上的整段對話，最新的在底部（拖曳可閱讀較早的文字），同時解碼行變成一個小瀑布圖：在上面短按一下回到頻譜圖，按住並橫向拖曳則改變調諧。</li>
+                <li><strong>瀑布圖上的解碼文字</strong>：每個訊號的文字都沿著它自己的軌跡寫出，因此您可以一次讀到整個波段：您濾波器內的電台為綠色，目標為洋紅色，其他為白色，您發出的內容為黃色；仍在重新識讀的字詞以斜體顯示。接收條下方的標籤顯示您所在電台的呼號和速度。</li>
                 <li><strong>調諧輪</strong>：即頻率刻度。沿著它滑動可移動所選的標線（標線到達邊緣時也會帶動電台）。在瀑布圖上點按或拖曳可直接移動標線。</li>
                 <li><strong>跳到頻率</strong>：點按帶有白色訊號強度線的窄條，可輸入以 kHz 為單位的頻率。</li>
             </ol>
@@ -2671,7 +3045,7 @@
 
             <h3 id="cw-practice">在 <span translate="no">TX OFF</span> 下練習</h3>
             <p>
-                底部列顯示 <span translate="no">TX OFF</span> 時，電鍵槳、您的按鍵、記憶和鍵盤輸入框都可以使用，但只在您的喇叭上發聲。您拍發的內容會被解碼並以紅色顯示在解碼行中，這樣您可以看出自己的手法是否清晰可辨。沒有任何訊號到達電台。做這件事根本不需要電台。
+                底部列顯示 <span translate="no">TX OFF</span> 時，電鍵槳、您的按鍵、記憶和鍵盤輸入框都可以使用，但只在您的喇叭上發聲。您拍發的內容會被解碼並以綠色顯示在解碼行中，讓您看到自己的拍發是否可讀。沒有任何東西到達電台。這完全不需要電台。
             </p>
 
             <h3 id="cw-paddles">電鍵槳和電鍵器</h3>
@@ -2804,6 +3178,17 @@
                 <strong>設定 &gt; <span translate="no">CW</span></strong> 中還有<strong>音調</strong>（您的側音聽起來如何：音高、音量、柔和或陡峭的邊緣、單音或發聲器的喀嗒聲）、<strong>解碼與顯示</strong>（<strong>自動解碼</strong>、為瀑布圖上每個訊號顯示文字的<strong>多路解碼器</strong>、水平頻譜圖、進入該模式時的濾波器）、<strong>監聽（喇叭）</strong>和<strong>勤務符號與標點</strong>。
             </p>
 
+            <h3 id="cw-sidetone">側音</h3>
+            <p>
+                側音是您在手機或電腦的喇叭或耳機中聽到的自己拍發的聲音。它從不送往電台。右側一欄的最後一個按鈕 <strong><span translate="no">SIDETONE</span></strong> 顯示其音量；點一下會在旁邊開啟滑桿 <strong>側音音量</strong>，再點一下將其關閉。它與 <strong>設定 &gt; <span translate="no">CW</span> &gt; 音調</strong> 中的設定是同一個。發射時，音量鍵也會改變側音。
+            </p>
+            <p>
+                在 <strong>音調</strong> 中還可以選擇 <strong>監聽音高</strong>（與接收訊號相同的音高）、<strong>側音上升 / 下降</strong>、<strong>側音波形</strong> 和 <strong>側音聲音</strong>（<strong>音調</strong> 或 <strong>喀嗒聲（發聲器）</strong>）。這些只改變您聽到的聲音：空中的 <span translate="no">CW</span> 始終是邊緣柔和的純淨音。<strong>揚聲器保持喚醒</strong> 讓手機和藍牙耳機在按鍵之間保持喚醒，使第一個點不被截掉；如果點的開頭缺失，請調高它。要關閉側音或接收訊號，請使用 <strong>播放您發送的內容（側音）</strong> 和 <strong>用喇叭播放接收訊號</strong>（位於 <strong>監聽（喇叭）</strong> 中）。
+            </p>
+            <p>
+                iPhone 上沒有側音，也沒有 <span translate="no">SIDETONE</span> 按鈕。
+            </p>
+
             <h3 id="cw-auto"><span translate="no">CW</span> 中的 AUTO</h3>
             <p>
                 面板左上角的 <strong><span translate="no">AUTO</span></strong> 按鈕讓 qFT8 完成完整的 <span translate="no">CW</span> QSO。每次進入該模式時它都是關閉的。點按它即開啟（變為綠色），再點按一次即關閉。它只在 <span translate="no">TX</span> 為 <span translate="no">ON</span> 時才會發射：AUTO 絕不會自行開啟發射。
@@ -2821,14 +3206,53 @@
                 AUTO 開啟期間電鍵槳被停用，並有一行文字提示 <strong><span translate="no">關閉 AUTO 以手動發射</span></strong>。<strong><span translate="no">停止</span></strong> 也會關閉 AUTO。如果您從不需要它，可在<strong>設定 &gt; <span translate="no">CW</span></strong> 中關閉<strong>顯示 AUTO 模式</strong>，按鈕就會隱藏。
             </p>
 
+            <h3 id="cw-auto-rit"><span translate="no">AUTO RIT</span>: 跟隨呼叫您的電台</h3>
+            <p>
+                回應您 <span translate="no">CQ</span> 的電台常常與您的頻率略有偏差。<span translate="no">RX/TX</span> 之後的按鈕 <strong><span translate="no">AUTO RIT</span></strong> 會處理這個問題。在您開啟之前它是關閉的，qFT8 會記住您的選擇。開啟後它變成綠色，並且：
+            </p>
+            <ul>
+                <li>呼叫您的電台（其發射中含有您的呼號，且不是 <span translate="no">CQ</span>，也不是呼叫別人）若在 <strong>您的濾波器內</strong>，會自動把接收條拉到它身上。發射條從不移動：您繼續在您呼叫的地方發射；</li>
+                <li>在 <strong>您的濾波器外</strong> 呼叫您的電台會以一列的形式顯示在記憶頂端，<strong>跟隨 K1ABC +150 Hz?</strong>，並附上與接收條的距離。<strong>跟隨</strong> 把接收條移到它那裡，叉號刪除該列。最多顯示三列，最新的在前；每一列在該電台最後一次呼叫您一分鐘後消失；</li>
+                <li>當您正與目標通聯時，另一個呼叫您的電台只會得到一列；它絕不會從您的通聯對象那裡奪走接收條。</li>
+            </ul>
+            <p>
+                <span translate="no">AUTO RIT</span> 只移動接收條。它從不發射，從不開啟 <span translate="no">TX</span>，您發射期間聽到的任何內容都不計入。
+            </p>
+
+            <h3 id="cw-radio">電台如何被鍵控</h3>
+            <ul>
+                <li><strong>大多數電台</strong>：qFT8 把 <span translate="no">CW</span> 作為經過整形的音訊音調送入電台的數據模式，因此發射電平用 TX 音量設定，與 FT8 相同。發射期間電台切換到數據模式，接收保持寬頻。</li>
+                <li><strong>QRP Labs <span translate="no">QMX</span> 和 <span translate="no">QMX+</span></strong>：qFT8 透過 <span translate="no">CAT</span> 逐個碼元鍵控電台，電台在您的發射頻率上精確地產生自己的載波。它始終停留在數位模式，不向它傳送音訊，TX 音量無關緊要。您的側音仍以您的速度和節奏在手機或電腦上播放。</li>
+            </ul>
+            <p>
+                兩種情況下，在點或劃的中途按 <span translate="no">STOP</span> 或 <span translate="no">TX OFF</span> 都會乾淨地結束它，電台回到接收。qFT8 發射時，TX 按鈕會顯示正在發射。
+            </p>
+
+            <h3 id="cw-logging">記錄 <span translate="no">CW</span> 通聯</h3>
+            <p>
+                面板右上角的 <strong><span translate="no">QSO</span></strong> 會開啟已預先填寫的日誌器：模式 <span translate="no">CW</span>、波段和您的發射頻率（兩條接收/發射條分開時還有接收頻率）、目標 中的呼號以及訊號報告。如果 <span translate="no">AUTO</span> 與該電台通聯過，報告就是實際交換的報告；否則發出的報告是您的 <strong>要發送的報告 [RST]</strong>（為空時為根據訊號測得的值），收到的報告是從對方拍發中讀出的。已開啟的<a href="#activation">啟動</a>的公園或山峰也會填入。檢查後修改需要的內容並儲存（見 <a href="#qso-logger">記錄器</a>）。
+            </p>
+            <p>
+                <span translate="no">AUTO</span> 會自動記錄它完成的每次通聯，把雙方報告以及對方的姓名和位置寫入備註，並顯示 <strong>已記錄 K1ABC</strong>。開啟 <strong>發送簡碼數字 (5NN)</strong> 時，報告以 <span translate="no">5NN</span> 拍發，但日誌始終儲存 <span translate="no">599</span>。
+            </p>
+
+            <h3 id="cw-platforms">在電腦、iPhone 和網頁遙控中</h3>
+            <ul>
+                <li><strong>在電腦上</strong> 面板相同。滑鼠按鍵和鍵盤就是電鍵槳（見 <a href="#cw-keys">用轉接器、鍵盤或滑鼠發報</a>），頻譜圖上的滑鼠滾輪移動所選的條，沒有 語音。</li>
+                <li><strong>在 iPhone 上</strong> 面板相同，但沒有側音（見上文）。語音 開啟帶鍵盤的傳送框，方便您聽寫。</li>
+                <li><strong>在網頁遙控中</strong>（見 <a href="#remote-control">遠端控制 Web 伺服器</a>）頁面顯示 qFT8 解碼的文字，每個訊號一列，最新的在前，並有一個框用於輸入並傳送訊息；<span translate="no">STOP</span> 將其停止。電腦鍵盤上的電鍵按鍵會以 qFT8 自己的設定鍵控它的鍵控器。<span translate="no">AUTO RIT</span> 及其 跟隨 列也在其中；<span translate="no">SIDETONE</span> 按鈕則沒有。點一下峰值條會詢問電台的頻率。</li>
+            </ul>
+
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
         </section>
 
         <section id="rtty-mode">
-            <h2><span translate="no">RTTY</span></h2>
+            <h2><span translate="no">RTTY</span> 和 <span translate="no">JTTY</span></h2>
             <p>
-                <span translate="no">RTTY</span>（無線電傳打字）用兩個交替的音調傳送文字。在 qFT8 中它與 <a href="#cw-mode"><span translate="no">CW</span></a> 共用同一個介面，只是沒有電鍵槳：通帶內的每個 <span translate="no">RTTY</span> 訊號都會依各自的速度和頻移解碼，並沿著它的軌跡寫在瀑布圖上。
+                <span translate="no">RTTY</span>（無線電傳打字）用兩個交替的音調傳送文字。在 qFT8 中它與 <a href="#cw-mode"><span translate="no">CW</span></a> 共用同一個介面，只是沒有電鍵槳：通帶內的每個 <span translate="no">RTTY</span> 訊號都會依各自的速度和頻移解碼，並沿著它的軌跡寫在瀑布圖上。 同一螢幕還可執行 <span translate="no">JTTY</span>,一種較新的弱訊號文字模式(見 <a href="#jtty-mode"><span translate="no">RTTY</span> 和 <span translate="no">JTTY</span> 的區別</a>)。
             </p>
+
+            <p class="mode-specs"><strong>規範：</strong> ITU-T 建議書 S.1, &ldquo;International Telegraph Alphabet No. 2&rdquo;; 45.45波特和170 Hz頻移是業餘無線電的慣例。</p>
 
             <div class="phone-mockup">
                 <img src="../../phonecamera.jpg" alt="qFT8 相機" class="camera" width="132" height="1080">
@@ -2838,25 +3262,55 @@
             <p><span translate="no">RTTY</span> 介面的各個組成部分如下：</p>
 
             <ol>
-                <li><strong><span translate="no">目標</span></strong> 和 <strong><span translate="no">交換</span></strong>：您正在通聯的電台的呼號，以及比賽交換內容。它們會填入您訊息中的 <code>[TARGET]</code> 和 <code>[EXCH]</code>。</li>
+                <li><strong><span translate="no">目標</span></strong> 和 <strong><span translate="no">交換</span></strong>：您正在通聯的電台的呼號，以及比賽交換內容。它們會填入您訊息中的 <code>[TARGET]</code> 和 <code>[EXCH]</code>。 點按其中一個即可輸入;點按解碼行(第 7 项)中的呼號,可將其設為目標。</li>
                 <li><strong><span translate="no">BAUD</span></strong>：速度：45.45（常用）、50 或 75。每點按一次切換到下一個。</li>
-                <li><strong><span translate="no">頻移</span></strong>：兩個音調之間的間距：170 Hz（常用）、200、425 或 850 Hz。</li>
-                <li><strong><span translate="no">REV</span></strong>：對調兩個音調，用於對方以相反方式發送的情況。</li>
+                <li><strong><span translate="no">頻移</span></strong>：兩個音調之間的間距：170 Hz（常用）、200、425 或 850 Hz。 濾波器隨頻移變化。</li>
+                <li><strong><span translate="no">REV</span></strong>：對調兩個音調，用於對方以相反方式發送的情況。 開啟時顯示為琥珀色。</li>
                 <li><strong><span translate="no">FILTER</span></strong> 和 <strong><span translate="no">NR</span></strong>：接收濾波器和降噪。</li>
-                <li><strong>記憶</strong>：預設訊息，使用與 <span translate="no">CW</span> 相同的巨集。點按即發送。有空白欄位的訊息會變暗。<strong><span translate="no">鍵盤</span></strong>（以及 Android 上的 <strong><span translate="no">語音</span></strong>）在列表末尾。</li>
-                <li><strong>解碼行</strong>：接收標線下那個電台的文字，顯示為綠色；您發出的內容，顯示為紅色。</li>
+                <li><strong>記憶</strong>:預設訊息,巨集與 <span translate="no">CW</span> 中相同。點按一次發送一條。有空欄位的訊息顯示為灰色:點按它可查看缺少什么。<strong><span translate="no">鍵盤</span></strong>(在手機和 iPhone 上還有 <strong><span translate="no">語音</span></strong>)位於列表末尾。</li>
+                <li><strong>解碼行</strong>：接收標線下那個電台的文字，顯示為綠色；您發出的內容，顯示為紅色。 點按此行(呼號以外的任何位置),即可在頻譜圖的位置看到该頻率上的全部對話;點按取代此行的小頻譜圖即可返回。</li>
                 <li><strong>接收標線及其標籤</strong>：標籤顯示標線下電台的呼號、速度和頻移。在訊號附近點按，標線會落到訊號的中心。</li>
-                <li><strong><span translate="no">點按以匹配</span></strong>：當標線下的電台使用的速度、頻移或音調順序與您的不同時，會有一行橙色文字提示。點按它，qFT8 就採用該電台的參數，這樣您就可以應答它。</li>
-                <li><strong>其他訊號</strong>：它們的文字沿各自的軌跡寫出。<code>50 Bd</code> 或 <code>425 Hz</code> 這樣的橙色標籤，表示該訊號與您的設定不同。</li>
+                <li><strong>設定不同的電台</strong>:當接收條下的電台使用與你不同的速率、頻移或音調順序時,它的標籤變為琥珀色,不同的 <span translate="no">BAUD</span>、<span translate="no">SHIFT</span> 或 <span translate="no">REV</span> 按鈕也變為琥珀色,並顯示 <code>符合</code> 及该電台的數值。點按標籤或其中一個按鈕,qFT8 就會採用该電台的全部數值,以便你回覆它。</li>
+                <li><strong>其他訊號</strong>:它們的文字沿各自的軌跡書寫。只有接收條下的電台會顯示它與你的設定有何不同。</li>
                 <li><strong>頻率</strong>：在 <span translate="no">RTTY</span> 中，頂部顯示的是 mark（傳號）頻率，這是操作員通常報出的頻率，也是寫入日誌的頻率。</li>
             </ol>
 
+            <p>此螢幕上還有:</p>
+            <ul>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: 選擇點按瀑布圖或調諧輪時移動哪一條:接收條、發射條,或兩者一起。選擇 <strong><span translate="no">RX</span></strong> 或 <strong><span translate="no">TX</span></strong> 時,你可以在一個頻率上收聽,在另一個頻率上發射。</li>
+                <li><strong><span translate="no">AUTO RIT</span></strong>: 把接收條移到一個在你頻率稍偏處回覆你的電台上(見 <a href="#rtty-auto-rit"><span translate="no">AUTO RIT</span> 和跟隨卡片</a>)。</li>
+                <li><strong>齒輪</strong>開啟 設定 &gt; <span translate="no">RTTY</span>(螢幕執行 <span translate="no">JTTY</span> 時開啟 設定 &gt; <span translate="no">JTTY</span>),<strong><span translate="no">QSO</span></strong> 開啟記錄器(見 <a href="#rtty-logging">記錄</a>)。</li>
+                <li><strong>紅色的一行</strong>:<span translate="no">Press TX ON to transmit</span>。它顯示期間,你發送的內容只是預覽。</li>
+            </ul>
+            <p>
+                在電腦上,同一螢幕用滑鼠和鍵盤操作。網頁遙控顯示收到的文字,並提供一個輸入並發送訊息的框、一個停止發送的按鈕、<span translate="no">AUTO RIT</span> 按鈕和跟隨卡片;其 <span translate="no">TX</span> 按鈕就是應用程式本身的按鈕。
+            </p>
+
             <h3 id="rtty-sending">發送</h3>
             <p>
-                先開啟 <span translate="no">TX</span>，然後點按一則記憶，或開啟 <strong><span translate="no">鍵盤</span></strong>，輸入後按 <strong><span translate="no">發送</span></strong>。文字發出期間會顯示帶 <strong><span translate="no">停止</span></strong> 的窄條。<span translate="no">TX OFF</span> 時，同樣的操作只是<strong>預覽</strong>：訊息在您的喇叭中播放並以紅色顯示，不會有任何發射。<span translate="no">RTTY</span> 碼表中沒有的字元會被略去並列出。
+                先開啟 <span translate="no">TX</span>，然後點按一則記憶，或開啟 <strong><span translate="no">鍵盤</span></strong>，輸入後按 <strong><span translate="no">發送</span></strong>。文字發出期間會顯示帶 <strong><span translate="no">停止</span></strong> 的窄條。<span translate="no">TX OFF</span> 時，同樣的操作只是<strong>預覽</strong>：訊息在您的喇叭中播放並以紅色顯示，不會有任何發射。<span translate="no">RTTY</span> 碼表中沒有的字元會被略去並列出。 正在發送的記憶內容保持綠色,直到發送結束。
             </p>
             <p>
                 <span translate="no">RTTY</span> 是滿功率的連續發射，因此受電台<a href="#tx-limit">連續發射時間上限</a>的約束：長度超過上限的訊息不會開始發送，發射在到達上限時停止。
+            </p>
+
+            <h3 id="rtty-auto-rit"><span translate="no">AUTO RIT</span> 和跟隨卡片</h3>
+            <p>
+                回覆你 <span translate="no">CQ</span> 的電台常常稍偏離你的頻率。<span translate="no">RX/TX</span> 旁邊的 <strong><span translate="no">AUTO RIT</span></strong> 會處理這種情況。在你開啟它之前它是關閉的;開啟時顯示為綠色,qFT8 會記住它。<span translate="no">RTTY</span> 和 <span translate="no">JTTY</span> 各有自己的開關。開啟期間:
+            </p>
+            <ul>
+                <li>當某電台結束一次包含你呼號的發射,並且它位於你的濾波器内時,接收條會自動移到它上面。<span translate="no">CQ</span>、另外兩個電台之間的訊息以及讀回的你自己的訊息都不算。發射條從不移動:<span translate="no">RX/TX</span> 變為 <span translate="no">RX</span>,因此你繼續在自己的頻率上回覆。</li>
+                <li>從更遠處呼叫你的電台會在記憶列表上方得到一張卡片,例如 <code>跟隨 Q0ABC +150 Hz?</code>。<strong>跟隨</strong> 把接收條移到它上面;X 關閉卡片,直到该電台再次呼叫。最多三張卡片,最新的在前。卡片在该電台最後一次呼叫一分鐘後消失,你在它上面時會被隱藏。</li>
+                <li>當你正在聯絡的電台呼叫你時,其他呼叫的電台只會得到一張卡片。</li>
+                <li>你發射期間不讀取任何內容。<span translate="no">AUTO RIT</span> 從不開啟 <span translate="no">TX</span>,也從不發送任何內容。</li>
+            </ul>
+            <p>
+                在 <span translate="no">JTTY</span> 中訊息按幀到達,因此當電台的最後一幀到達時,其發射才算結束。
+            </p>
+
+            <h3 id="rtty-logging">記錄</h3>
+            <p>
+                <strong><span translate="no">QSO</span></strong> 開啟記錄器(見 <a href="#qso-logger">記錄器</a>),模式、波段、傳號頻率、目標和報告都已填好:你發送的報告來自你的設定,收到的報告在對方發送時從其文字中讀取。每按一次記錄一個 QSO。<span translate="no">RTTY</span> QSO 記錄為 <span translate="no">RTTY</span>;<span translate="no">JTTY</span> QSO 記錄為 <span translate="no">JTTY</span>(在 <span translate="no">ADIF</span> 檔案和上傳中為模式 <span translate="no">MFSK</span>、子模式 <span translate="no">JTTY</span>)。公園或山峰啟用進行期間,其參考編號也會寫入 QSO。
             </p>
 
             <h3 id="rtty-settings">設定 &gt; <span translate="no">RTTY</span></h3>
@@ -2866,95 +3320,361 @@
                 <li><strong>解碼與顯示</strong>、<strong>監聽（喇叭）</strong>、<strong>記憶</strong>及其取值（訊號報告、名字、位置、交換內容）和 <strong><span translate="no">恢復預設設定</span></strong>。</li>
             </ul>
             <p>
-                用 <strong><span translate="no">QSO</span></strong> 按鈕記錄的 QSO 以 <span translate="no">RTTY</span> 記入日誌。<span translate="no">RTTY</span> 中沒有 AUTO。
+                <span translate="no">RTTY</span> 和 <span translate="no">JTTY</span> 中沒有 AUTO:qFT8 不會自行完成這些 QSO。
             </p>
+
+            <h3 id="jtty-mode"><span translate="no">RTTY</span> 和 <span translate="no">JTTY</span> 的區別</h3>
+            <p>
+                在模式選擇器中選擇 <strong><span translate="no">JTTY</span>（實驗性）</strong>:同一螢幕以 <span translate="no">JTTY</span> 數據機開啟,模式按鈕顯示 <span translate="no">JTTY</span>;選擇 <span translate="no">RTTY</span> 行則回到 <span translate="no">RTTY</span>。兩者在每個波段上都有各自的頻率,所以在它們之間切換會移動刻度(例如在 20 m 上,<span translate="no">JTTY</span> 位於 14.090 MHz)。<span translate="no">JTTY</span> 是新模式,仍可能變化。它可在手機、電腦和 iPhone 上使用;網頁遙控的顯示方式與 <span translate="no">RTTY</span> 相同:接收的文字、<span translate="no">AUTO RIT</span> 及其卡片,以及傳送的文字。
+            </p>
+            <ul>
+                <li>訊號:<span translate="no">RTTY</span> 是兩個音調,速率和頻移由你選擇。<span translate="no">JTTY</span> 是固定速率的四個音調,寬約 130 Hz,以發射條為中心,在弱得多的訊號下也能接收。在 <span translate="no">JTTY</span> 中,螢幕上沒有 <span translate="no">BAUD</span>、<span translate="no">SHIFT</span> 和 <span translate="no">REV</span> 按鈕。</li>
+                <li>文字:<span translate="no">RTTY</span> 每到一個字元就顯示一個。<span translate="no">JTTY</span> 以約 2 秒的幀發送訊息,並逐幀顯示,每行一條訊息。</li>
+                <li>你的訊息:在 <span translate="no">JTTY</span> 中,記憶內容或用鍵盤輸入的訊息的每一行都是一條最多 80 個字元的訊息,使用 <span translate="no">JTTY</span> 自己的字元集。設定 &gt; <span translate="no">JTTY</span> 中的記憶編輯器會顯示一條記憶內容將如何發出。</li>
+                <li>設定:<span translate="no">JTTY</span> 有自己的設定頁面和數值(見下文),以及自己的 <span translate="no">AUTO RIT</span> 開關。</li>
+                <li>記錄:<span translate="no">RTTY</span> 或 <span translate="no">JTTY</span>,如 <a href="#rtty-logging">記錄</a> 中所述。</li>
+            </ul>
 
             <h3 id="jtty-settings">設定 &gt; <span translate="no">JTTY</span></h3>
             <p>
                 <span translate="no">JTTY</span>（模式選擇器中的 <strong><span translate="no">JTTY</span>（實驗性）</strong> 一行）使用同一個面板，搭配 <span translate="no">JTTY</span> 數據機。它的設定有單獨的頁面，在設定列表中 <span translate="no">RTTY</span> 的旁邊；面板執行 <span translate="no">JTTY</span> 時，面板的齒輪按鈕會開啟該頁面。頁面中只有 <span translate="no">JTTY</span> 用到的內容：<strong>解碼與顯示</strong>、<strong>監聽（喇叭）</strong>、帶數值的 <strong>記憶</strong>，以及 <strong><span translate="no">恢復預設設定</span></strong>；<span translate="no">RTTY</span> 的 <strong>數據機</strong> 和 <strong>發射</strong> 設定不適用於它。第一次使用 <span translate="no">JTTY</span> 時，它會沿用您在 設定 &gt; <span translate="no">RTTY</span> 中改過的內容（例如記憶內容、姓名和位置）；您沒改過的部分從 <span translate="no">JTTY</span> 自己的預設值開始，例如每則都能放進一則 <span translate="no">JTTY</span> 訊息的簡短記憶。此後，改動其中一個不會改動另一個。
             </p>
 
+            <p class="mode-specs"><strong>規範：</strong> 沒有公開發布的規範。</p>
+
+            <h3 id="q65-settings">設定 &gt; <span translate="no">Q65</span></h3>
+            <p>
+                <span translate="no">Q65</span>（模式選擇器中的<strong><span translate="no">Q65</span>（實驗性）</strong>一列）是一個模式，選擇器旁有子模式選擇：週期（15、30、60、120 或 300 秒）和音調間隔（A 到 E），命名如 <span translate="no">30A</span>。共有 22 個子模式（15 秒：A-C，30 秒：A-D，60、120 和 300 秒：A-E）；預設是 <span translate="no">30A</span>。<span translate="no">Q65</span> 使用 <span translate="no">FT8</span> 的訊息和相同的 QSO 流程（CQ、報告、<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、電台清單）。QSO 記錄為 <span translate="no">MODE=MFSK SUBMODE=Q65</span>，spot 以 <span translate="no">Q65</span> 傳送到 <span translate="no">PSKReporter</span>。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> J. Taylor, B. Somerville, S. Franke, N. Palermo, &ldquo;Q65 Quick Start&rdquo;, 2021。</p>
+            <p>
+                典型用途：6 m 電離層散射（<span translate="no">30A</span>，<span translate="no">50.275</span> MHz）、2 m 散射（<span translate="no">60C</span>，<span translate="no">144.170</span> MHz）以及 2 m 及以上的 EME（<span translate="no">60A</span>、<span translate="no">60B</span>、<span translate="no">60C</span>）。提供的波段有 10 m（<span translate="no">28.140</span>）、6 m（<span translate="no">50.275</span>）、2 m（<span translate="no">144.170</span>）、70 cm、23 cm 和 13 cm（這三個在確認 <span translate="no">Q65</span> 頻率之前使用 <span translate="no">FT8</span> 頻率）。發射持續 12.75、25.5、51、113.3 或 293.8 秒，並出現在<strong>連續發射時間上限</strong>設定中；300 秒的子模式需要足夠大的限制。<span translate="no">Q65</span> 僅以音訊傳送：qFT8 不透過電台的 CAT 音調模式鍵控它。
+            </p>
+            <p>
+                設定 &gt; <strong>數位模式</strong> 中的 <span translate="no">Q65</span> 部分包含：
+            </p>
+            <ul>
+                <li><strong>子模式</strong>：週期和音調間隔，與選擇器相同。</li>
+                <li><strong>平均</strong>（開）：把微弱的重複發射疊加起來，以便解碼。</li>
+                <li><strong>先驗資訊</strong>（開）：使用您自己和 QSO 對方的呼號來協助解碼器。</li>
+                <li><strong>單次解碼</strong>（關）：關閉時解碼整個波段；開啟時只解碼接收頻率附近。</li>
+                <li><strong>Rx 容差</strong>：接收頻率周圍的寬度，單位 Hz（預設 100）。</li>
+                <li><strong>清除平均</strong>：忘記到目前為止收集的發射。</li>
+                <li><strong>參考文獻</strong>：作者本人對協定的描述：Taylor、Somerville、Franke 和 Palermo 的「Quick-Start Guide to Q65」，以及 Palermo 關於 q 元重複累積碼的研究。</li>
+            </ul>
+            <p>
+                未接收到的內容不會被解碼：用先驗資訊找到的解碼必須通過與其他解碼相同的檢查。
+            </p>
+
+            <h3 id="mode-msk144">設定 &gt; <span translate="no">MSK144</span></h3>
+            <p>
+                <span translate="no">MSK144</span>（模式選擇中的 <strong><span translate="no">MSK144</span>（實驗性）</strong> 一列）用於流星餘跡散射通訊：流星餘跡只會短暫地反射訊號，因此訊號只以短促的「ping」出現。每次發射在整個週期內重複其訊息，任何長到足以承載訊息的 ping 都會被解碼。<span translate="no">MSK144</span> 使用 <span translate="no">FT8</span> 的訊息和相同的 QSO 流程（CQ、呼號與網格、報告、<span translate="no">RRR</span>/<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、電台列表）。QSO 以 <span translate="no">MODE=MSK144</span> 記入日誌，spot 以 <span translate="no">MSK144</span> 傳送到 <span translate="no">PSKReporter</span>。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> S. Franke, J. Taylor, &ldquo;The MSK144 Protocol for Meteor-Scatter Communication&rdquo;, <em>QEX</em>, July/August 2017。</p>
+            <p>
+                每次發射都以 1500 Hz 音訊為中心，音調位於 1000 Hz 和 2000 Hz：TX 偏移不適用於 <span translate="no">MSK144</span>。選擇波段時會設定該波段的 <span translate="no">MSK144</span> 呼叫頻率。與所有模式一樣，<span translate="no">MSK144</span> 出現在 <strong>連續發射時間上限</strong> 設定中。
+            </p>
+            <p>
+                設定 &gt; <strong>數位模式</strong> 中的 <span translate="no">MSK144</span> 部分包括：
+            </p>
+            <ul>
+                <li><strong>收發週期</strong>：每次發射和每個接收週期的時長（5、10、15 或 30 s）；通常選擇 15 s。</li>
+                <li><strong>報告、RRR 和 73 使用短訊息</strong>：報告、<span translate="no">RRR</span> 和 <span translate="no">73</span> 以短訊息傳送，短訊息攜帶雙方呼號的雜湊：只有你的通聯對象能讀懂。在 144 MHz 及以上最有用。</li>
+                <li><strong>接收容差</strong>：在 1500 Hz（加上 RX 偏移）周圍多遠範圍內尋找訊號：25、50、100、200 或 300 Hz。</li>
+            </ul>
+            <p>
+                參考資料：Franke 和 Taylor 發表於 <span translate="no">QEX</span>（2016）的 <span translate="no">MSK144</span> 文章。
+            </p>
+
+            <h3 id="fst4-settings">設定 &gt; <span translate="no">FST4</span></h3>
+            <p>
+                <span translate="no">FST4</span>（模式選擇器中的 <strong><span translate="no">FST4</span>（實驗性）</strong> 一列）是用於 LF、MF 和 HF 弱訊號的 QSO 模式。它使用 <span translate="no">FT8</span> 的訊息和相同的 QSO 流程（CQ、報告、<span translate="no">RR73</span>/<span translate="no">73</span>、<span translate="no">AUTO</span>、電台清單、日誌），有 4 個音調（GFSK）和 160 個符號。QSO 記錄為 <span translate="no">MODE=MFSK SUBMODE=FST4</span>，spots 以 <span translate="no">FST4</span> 傳送到 <span translate="no">PSKReporter</span>。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020。</p>
+            <p>
+                發射和接收週期為 15、30、60、120、300、900 或 1800 秒，可在底列或設定中選擇。週期越長，模式越窄、越靈敏：15 秒時約 -21 dB，1800 秒時 -43 dB（2500 Hz 頻寬內）。常用頻率：2200 m <span translate="no">136.000</span> kHz，630 m <span translate="no">474.200</span> kHz，160 m <span translate="no">1.8390</span> MHz。在很長的週期下，發射機最多保持開啟 30 分鐘：<strong>連續發射時間上限</strong> 設定必須允許這一點。<span translate="no">FST4</span> 是實驗性的。
+            </p>
+            <p>
+                設定 &gt; <strong>數位模式</strong> 中的 <span translate="no">FST4</span> 部分包含：
+            </p>
+            <ul>
+                <li><strong>週期</strong>（60 s）：發射和接收週期，與底列相同。</li>
+                <li><strong>先驗資訊</strong>（開）：使用您自己和 QSO 對方的呼號來協助解碼器。</li>
+                <li><strong>單次解碼</strong>（關）：關閉時解碼整個波段；開啟時只解碼接收頻率附近。</li>
+                <li><strong>Rx 容差</strong>：接收頻率周圍的寬度，單位 Hz（預設 100）。</li>
+                <li><strong>參考文獻</strong>：<span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
+            <h3 id="fst4w-settings">設定 &gt; <span translate="no">FST4W</span></h3>
+            <p>
+                <span translate="no">FST4W</span>（模式選擇器中的 <strong><span translate="no">FST4W</span>（實驗性）</strong> 一列）是類似 <span translate="no">WSPR</span> 的信標模式：它使用同一個 WSPR 面板（spots 清單、信標發射百分比、上傳到 <span translate="no">WSPRnet</span>）。訊息為 50 位元：<span translate="no">CALL GRID POWER</span>，或 <span translate="no">PFX/CALL POWER</span>、<span translate="no">CALL/X POWER</span>。週期為 120、300、900 或 1800 秒；靈敏度約為 -33 dB（120 秒）到 -45 dB（1800 秒）。它在接收頻率（通常 1500 Hz）周圍的接收容差（預設 100 Hz）內解碼。Spots 連同週期一起傳送到 <span translate="no">WSPRnet</span>。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020。</p>
+            <p>
+                常用頻率：2200 m <span translate="no">136.000</span> kHz，630 m <span translate="no">474.200</span> kHz，160 m <span translate="no">1.8368</span> MHz。在較高的波段，它使用 <span translate="no">WSPR</span> 撥號頻率旁邊的頻率。在很長的週期下，發射機最多保持開啟 30 分鐘：<strong>連續發射時間上限</strong> 設定必須允許這一點。<span translate="no">FST4W</span> 是實驗性的。
+            </p>
+            <p>
+                設定 &gt; <strong>數位模式</strong> 中的 <span translate="no">FST4W</span> 部分包含：
+            </p>
+            <ul>
+                <li><strong>週期</strong>（120 s）：發射和接收週期，與底列相同。</li>
+                <li><strong>Rx 容差</strong>：接收頻率周圍的寬度，單位 Hz（預設 100）。</li>
+                <li><strong>發射比例</strong>（20 %）：信標進行發射的週期所占的比例。</li>
+                <li><strong>參考文獻</strong>：<span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
             <a class="back-to-toc" href="#top">↑ 返回目錄</a>
         </section>
 
         <section id="sstv-mode">
             <h2><span translate="no">SSTV</span>（影像）</h2>
-            <p>
-                <span translate="no">SSTV</span>（慢掃描電視）把一幅靜止影像變成聲音逐行傳送，耗時一到四分鐘。您處於該模式時，qFT8 會自動接收圖片，並可發送您相簿中的圖片，圖片上寫有您的呼號。
-            </p>
-            <p>
-                用底部列的模式選擇器選擇 <strong><span translate="no">SSTV</span></strong>。面板的左半部分用於發送，右半部分用於接收：
-            </p>
+            <p><span translate="no">SSTV</span>（慢掃描電視）把一張靜止圖片以聲音的形式逐行傳送，耗時半分鐘到大約四分鐘。在此模式下，qFT8 會自動接收圖片，並傳送您自己的圖片、照片或它的現成圖片，圖片上寫有您的呼號。</p>
+
+            <p class="mode-specs"><strong>規範：</strong> J. L. Barber (N7CXI), &ldquo;Proposal for SSTV Mode Specifications&rdquo;, Dayton Hamvention SSTV forum, May 2000。</p>
+            <p>用底列的模式選擇器選擇 <strong><span translate="no">SSTV</span></strong>。電台會轉到該波段的 <span translate="no">SSTV</span> 呼叫頻率，使用 <span translate="no">USB</span>。面板一次只顯示一半：<strong>RX</strong> 為收到的圖片，<strong>TX</strong> 為要傳送的圖片。左上角的兩個按鈕在兩者之間切換；切換只改變您看到的內容，絕不會傳送任何東西。</p>
+
+            <h3 id="sstv-rx-half">接收半區（<span translate="no">RX</span>）</h3>
 
             <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="qFT8 相機" class="camera" width="132" height="1080">
-                <img src="../sstv.jpg" alt="qFT8 SSTV 面板" class="screen" width="2280" height="1080">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv.jpg" alt="qFT8 的 SSTV 面板，接收半區" class="screen" width="2280" height="1080">
             </div>
 
-            <p><span translate="no">SSTV</span> 介面的各個組成部分如下：</p>
+            <ol>
+                <li><strong><span translate="no">AUTO</span></strong>：開啟（綠色，預設）時，qFT8 會自動找到任何模式的每張圖片。關閉時，它始終以一種模式接收，顯示為捲動圖片（<a href="#sstv-manual">手動接收</a>）。該選擇會被記住。</li>
+                <li><strong><span translate="no">RX</span> | <span translate="no">TX</span></strong>：顯示的一半。<span translate="no">RX</span> 上的黃點表示在顯示傳送半區時收到了一張圖片。<span translate="no">傳送</span> 會自動顯示傳送半區，圖片結束後面板回到接收半區。</li>
+                <li><strong>接收狀態</strong>：<span translate="no">守聽中</span>（所有模式，整個通帶）；<span translate="no">正在接收</span>，並顯示模式、電台的頻率偏差和正在繪製的行；<span translate="no">AUTO</span> 關閉時為 <span translate="no">手動</span>；您傳送時為 <span translate="no">傳送期間暫停</span>。</li>
+                <li><strong>齒輪</strong> 開啟 <a href="#sstv-settings">設定 &gt; <span translate="no">SSTV</span></a>。</li>
+                <li><strong><span translate="no">QSO</span></strong> 為目前顯示的圖片開啟記錄器（<a href="#sstv-logging">記錄</a>）。</li>
+                <li><strong>收到的圖片</strong>：正在到達的圖片（逐行繪製），或您在圖片條中選擇的已保留圖片。角落的標記：到達時逐漸填滿的琥珀色圓環（若結束時會儲存，圓環內有綠色箭頭），已儲存時為綠色勾號，未儲存時為灰色箭頭。點選已保留的圖片可編輯它。</li>
+                <li><strong>說明文字</strong>：時間（<span translate="no">UTC</span>）和模式；圖片到達時顯示百分比和剩餘秒數；已保留的圖片不完整時顯示「從第 ... 行開始接收」「訊號在第 ... 行遺失」或「遺失 ... 行」。旁邊是 <a href="#sstv-callsign">呼號欄</a>。</li>
+                <li><strong><span translate="no">儲存</span></strong> 將圖片寫入 <a href="#sstv-folder">圖片資料夾</a> 並變為綠色（<span translate="no">已儲存</span>）。若在圖片仍在到達時按下，它顯示 <span translate="no">結束時儲存</span>。</li>
+                <li><strong><span translate="no">編輯</span></strong> 改善已保留的圖片：亮度、對比度、色彩、色相、銳化和降噪。收到時的原圖始終保留：<span translate="no">還原</span> 撤銷全部變更，<span translate="no">儲存副本</span> 將編輯後的版本另存為單獨的檔案。</li>
+                <li><strong><span translate="no">回覆</span></strong> 詢問對方電台的呼號（從呼號欄開始），並以五種回覆版面之一，把「對方呼號 <span translate="no">DE</span> 您的呼號」寫在<em>您自己</em>要傳送的圖片上；收到的圖片絕不會被送回。模式會切換為收到的圖片所用的模式。如果您的 <a href="#tx-limit">連續發射時間上限</a> 對該模式太短，會有提示說明；上限絕不會替您更改。</li>
+                <li><strong>垃圾桶</strong> 在確認後從 qFT8 刪除目前顯示的圖片。已儲存到圖片資料夾的副本仍會保留，確認提示也會說明這一點。</li>
+                <li><strong>圖片條</strong>：先是正在到達的圖片，然後是已保留的圖片，最新的在前（<a href="#sstv-strip">收到的圖片</a>）。</li>
+                <li>底列的 <strong><span translate="no">SSTV</span> 模式選擇器</strong>：Martin、Scottie、Robot、PD、Wraase 和 Pasokon 模式，每種都標有一張圖片所需的秒數。它是傳送圖片所用的模式，也是 <span translate="no">AUTO</span> 關閉時接收的模式。旁邊的訊息區顯示目前狀態（「守聽中」、帶百分比的「正在接收」、帶剩餘秒數的「正在傳送」）。</li>
+                <li>瀑布圖上的 <strong><span translate="no">SSTV</span> 頻段</strong>：圖片在 1100 至 2300 Hz 之間收發，摩斯識別在 1000 Hz。每張聽到或傳送的圖片都有一個標有模式和呼號的方框；點選方框可顯示該圖片。</li>
+            </ol>
+
+            <h3 id="sstv-tx-half">傳送半區（<span translate="no">TX</span>）</h3>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv_send.jpg" alt="qFT8 的 SSTV 面板，傳送半區" class="screen" width="2280" height="1080">
+            </div>
 
             <ol>
-                <li><strong><span translate="no">發送</span></strong>：發送圖片所用的模式及其尺寸。模式用第 12 項選擇。</li>
-                <li><strong><span translate="no">載入</span></strong>：提供「選擇圖片」（從相簿或檔案）、「拍照」（在帶相機的手機或平板上）和「現成圖片」：約二十幅由 qFT8 依模式大小繪製、印有您的呼號的圖畫（CQ 卡片、qFT8 標誌、風景、視錯覺圖、QSL 卡、73 等）。您也可以從其他應用程式把圖片分享給 qFT8；如果當時正在使用別的模式，qFT8 會先詢問再切換到 <span translate="no">SSTV</span>。</li>
-                <li><strong>待發送的圖片</strong>，按發送時的樣子原樣顯示。點按它可讓圖片適配該模式的畫幅：完整顯示、裁剪（拖曳可移動，雙指捏合可縮放）、旋轉，以及調整亮度和對比。</li>
-                <li><strong>文字樣式</strong>：用箭頭逐一切換把呼號寫在圖片上的方式（底部橫條、角落、大號描邊……或不寫呼號）。鉛筆按鈕可新增自由文字。</li>
-                <li><strong><span translate="no">移除</span></strong> 移除已載入的圖片。<strong><span translate="no">發送</span></strong> 顯示發射需要多少秒；發射期間它變為 <strong><span translate="no">停止</span></strong>，並顯示剩餘秒數。</li>
-                <li><strong>紅色的一行</strong>：<span translate="no">按 TX ON 發送圖片</span>。其下的剩餘空間排滿小圖片：先是您最近載入的圖片，然後是現成圖片。點一下就把其中一張載入為待發送的圖片（在您按 <span translate="no">發送</span> 之前絕不會發送）。圖片的形狀與模式不同時，會先開啟調整畫幅的步驟。</li>
-                <li><strong>接收狀態</strong>：<span translate="no">守聽中</span>，或 <span translate="no">正在接收</span> 並顯示模式、對方電台的頻率偏差以及正在繪製的行。</li>
-                <li><strong>接收到的圖片</strong>，隨到隨畫。圖片下方是時間、模式和進度；圖片接收完成後，還有<a href="#sstv-callsign">呼號列</a>。</li>
-                <li><strong><span translate="no">儲存</span></strong> 把圖片存入裝置的圖片資料夾（圖片還在接收時按下，會在接收結束後儲存）。<strong><span translate="no">編輯</span></strong> 可改善接收到的圖片（對比、亮度、色彩、色調、銳利化、去雜訊）；接收到的原圖始終保留，因此每項修改都可以復原。<strong><span translate="no">回覆</span></strong> 把接收到的圖片載入為待發送的圖片，並在您的呼號旁邊寫上對方電台的呼號。</li>
-                <li><strong>保留的圖片</strong>：最近接收到的圖片。點按其中一張可重新顯示。</li>
-                <li><strong>齒輪</strong>開啟<strong>設定 &gt; <span translate="no">SSTV</span></strong>，<strong><span translate="no">QSO</span></strong> 開啟模式為 <span translate="no">SSTV</span> 的記錄器。</li>
-                <li><strong><span translate="no">SSTV</span> 模式選擇器</strong>：Martin、Scottie、Robot、PD、Wraase 和 Pasokon 各模式。它旁邊的訊息區域說明目前的狀態（「守聽中」、「正在接收」、帶剩餘秒數的「正在發送」）。</li>
-                <li><strong><span translate="no">SSTV</span> 頻段</strong>：圖片在 1100 至 2300 Hz 之間發送和接收。每張聽到或發出的圖片都會在瀑布圖上得到一個標有模式的方框。</li>
+                <li><strong>模式</strong>：傳送圖片所用的模式，以及它的尺寸和色彩制式。用底列的模式選擇器選擇。</li>
+                <li><strong><span translate="no">載入</span></strong> 開啟 <a href="#sstv-sending">選擇圖片</a>。</li>
+                <li><strong>要傳送的圖片</strong>，與發射出去時完全一樣。為空時顯示 <span translate="no">點選以載入圖片</span>。點選它可重新調整為模式的形狀。角落的小箭頭會把它按傳送時的樣子儲存到圖片資料夾。</li>
+                <li><strong>呼號樣式</strong>：箭頭在 16 種樣式和 <span translate="no">無呼號</span> 之間切換；點選樣式名稱會開啟樣式和顏色選擇。</li>
+                <li><strong>調色盤</strong> 開啟同一個選擇：樣式清單和八種文字顏色。每次選擇立即顯示在圖片上，並保留給下一張圖片。</li>
+                <li><strong>筆</strong> 在圖片上加入一行您自己的文字（有文字時筆變成黃色）。</li>
+                <li><strong><span translate="no">移除</span></strong> 移除已載入的圖片。</li>
+                <li><strong><span translate="no">傳送</span></strong> 顯示整個發射所需的秒數。圖片發射期間，它變為帶剩餘秒數的 <span translate="no">停止</span>，已傳送的行會在圖片上標出。</li>
+                <li><strong>紅色提示行</strong>：<span translate="no">按 TX ON 傳送圖片</span>。若 <span translate="no">QMX</span> 的韌體無法傳送圖片，則改為說明這一點。</li>
+                <li><strong>快捷圖片</strong>：您最近載入的六張圖片，然後是現成圖片，均已套用您的呼號樣式。點選一次即載入為要傳送的圖片；在您按下 <span translate="no">傳送</span> 之前絕不會傳送。</li>
             </ol>
 
             <h3 id="sstv-receiving">接收圖片</h3>
-            <p>
-                不需要任何設定。qFT8 根據每次發射的起始訊號識別模式；圖片開始之後您才調諧進來時，它也能識別（已經錯過的行保持空白）。頻率略有偏差的圖片，或由時序略有偏差的電台發出的圖片，會被自動校正。如果兩個電台在明顯不同的頻率上同時發送，兩張圖片都會被接收並保留；點按瀑布圖上的方框可選擇顯示哪一張。
-            </p>
-            <p>
-                應用程式會自動保留最近的圖片。開啟<strong>自動將每張接收到的圖片儲存到裝置</strong>後，它們還會寫入圖片資料夾；否則由您儲存想要的圖片。
-            </p>
+            <p><span translate="no">AUTO</span> 開啟時不需要任何設定。qFT8 根據每次發射的起始訊號識別模式；圖片開始之後您才調諧進來時，它也能識別（錯過的行保持空白）。它在整個通帶內監聽，從通常音調以下約 1000 Hz 到以上 800 Hz。頻率略有偏差的圖片，或定時稍有偏差的電台傳來的圖片，會被自動校正。如果兩個電台在明顯不同的頻率上同時傳送，兩張圖片都會被接收和保留；點選瀑布圖上的方框選擇要顯示的那張。</p>
+
+            <h4 id="sstv-manual">手動接收（<span translate="no">AUTO</span> 關閉）</h4>
+            <p>對於您錯過了起始訊號、或 qFT8 無法自動擷取的電台，請關閉 <span translate="no">AUTO</span>。qFT8 隨後會一直以底列所選的模式接收，顯示為一張長長的捲動圖片：最新的行加在底部，圖片向上移動。狀態顯示 <span translate="no">手動</span> 以及模式和偏移；當聽到某種模式的起始訊號時會提示，但只是提示（模式由您自己更改）。</p>
+            <ul>
+                <li><strong>接收標記</strong>：在瀑布圖上，頻段變成一個帶兩條黃色邊緣的標記。把它拖到訊號上（用手指，在電腦上用滑鼠）；qFT8 在標記附近約 100 Hz 內追蹤訊號。位置會被記住。</li>
+                <li><strong><span translate="no">儲存</span></strong> 和 <strong><span translate="no">編輯</span></strong> 會先開啟 <strong>裁剪圖片</strong>：把兩條黃色邊緣拖到您想要的圖片周圍；它們一開始位於最後一張完整圖片上。裁剪結果成為圖片條中的已保留圖片，然後被儲存或在編輯器中開啟。</li>
+                <li><strong>垃圾桶</strong> 讓捲動圖片重新從空白開始；已保留的圖片不受影響。</li>
+            </ul>
 
             <h4 id="sstv-callsign">這是誰的圖片？呼號欄</h4>
-            <p>
-                許多電台會在圖片前後表明身份：在圖片之前或之後用莫爾斯電碼，或在圖片之後發一小段資料脈衝。這兩種 qFT8 都能讀取，並把呼號寫在圖片下方時間和模式旁邊的欄中。什麼都沒聽到時，該欄顯示 <strong><span translate="no">呼號未知</span></strong>。點按該欄可自己輸入呼號（它通常寫在圖片上）或加以更正；您輸入的內容會替換聽到的內容。
-            </p>
-            <p>
-                儲存的圖片以日期和時間（<span translate="no">UTC</span>）、波段、以 kHz 表示的頻率、模式和呼號命名，例如 <code translate="no">2026-10-05_1431_20m_14230_M1_F4ABC.png</code>；沒有呼號時為 <code translate="no">..._UNKNOWN.png</code>。如果呼號是在圖片儲存之後才收到或輸入的，已儲存的檔案會被重新命名，不會另存一份。
-            </p>
+            <p>許多電台會在圖片前後用摩斯碼、或在圖片後用一段簡短的資料突發報出自己的呼號。qFT8 兩者都會讀取，並把呼號寫在說明文字旁的欄位中。若什麼都沒聽到，該欄顯示 <strong><span translate="no">呼號未知</span></strong>。點選該欄可自己輸入呼號（它常常寫在圖片上）或加以更正；您輸入的內容會取代聽到的內容，<span translate="no">回覆</span> 和 <span translate="no">QSO</span> 都以它為準。</p>
+
+            <h3 id="sstv-strip">收到的圖片</h3>
+            <p>無論您是否儲存，qFT8 都會自動保留最近收到的圖片：除非您更改 <strong>應用程式中保留的接收圖片數量</strong>，否則保留 100 張；新圖片到達時最舊的一張會被移除。重新啟動後它們仍在。圖片下方的圖片條按最新在前的順序顯示它們，每張都有已儲存／未儲存標記；仍在到達的圖片排在最前。點選一張即可顯示；圖片到達期間，點選第一張可重新跟隨它。沒有圖片到達時，顯示最新的已保留圖片。</p>
+
+            <h3 id="sstv-folder">圖片資料夾</h3>
+            <p><span translate="no">儲存</span>（或 <strong>自動將每張接收到的圖片儲存到裝置</strong>）把圖片寫成 <span translate="no">PNG</span> 檔案，並有提示說明儲存位置：</p>
+            <ul>
+                <li><strong>手機或平板</strong>：<code translate="no">Pictures/qFT8 SSTV</code>，因此圖片會出現在相簿中。Android 6 至 9 會請求一次儲存空間權限；若未授權，圖片會存入 qFT8 自己的資料夾，提示也會說明。</li>
+                <li><strong>電腦</strong>：您自己的圖片資料夾（桌面環境所用的那個，即使它在您的語言中名稱不同）中的 <code translate="no">qFT8 SSTV</code> 資料夾。</li>
+                <li><strong>iPhone 和 iPad</strong>：qFT8 自身儲存空間中的 <code translate="no">qFT8 SSTV</code> 資料夾。</li>
+                <li><strong>網頁遙控</strong>：圖片儲存在執行 qFT8 的裝置上，瀏覽器會下載一份副本。只允許檢視的頁面改為顯示 <span translate="no">下載</span>，它只進行下載。</li>
+            </ul>
+            <p>自動儲存在手機、平板和 iPhone 上預設關閉，在電腦上預設開啟。儲存的圖片以日期和時間（<span translate="no">UTC</span>）、波段、以 kHz 為單位的頻率、模式和呼號命名，例如 <code translate="no">2026-10-05_1431_20m_14230_M1_Q1ABC.png</code>，沒有呼號時為 <code translate="no">..._UNKNOWN.png</code>。若呼號在儲存之後才到達或被輸入，已儲存的檔案會被重新命名；不會產生第二份副本。編輯後的副本以 <code translate="no">_edit.png</code> 結尾，從傳送半區儲存的圖片以 <code translate="no">_tx.png</code> 結尾。在 qFT8 中刪除圖片絕不會刪除已儲存的檔案。</p>
 
             <h3 id="sstv-sending">傳送圖片</h3>
             <ol>
-                <li>用底部欄的選擇器選擇模式。如果您是回應某個電台，請使用它所用的模式。Robot 36、Martin 1 和 Scottie 1 是常用的模式。</li>
-                <li>點按 <span translate="no">傳送</span> 下方的小圖片之一，或按 <strong><span translate="no">載入</span></strong>，選取圖片，如有提示則調整畫幅。</li>
-                <li>用箭頭選擇您的呼號的顯示方式。</li>
-                <li>開啟 <span translate="no">TX</span> 並按 <strong><span translate="no">傳送</span></strong>。</li>
+                <li>用底列的選擇器選擇模式。如果您是回應某個電台，請使用它所用的模式（<span translate="no">回覆</span> 會替您完成）。Robot 36、Martin 1 和 Scottie 1 最常用。</li>
+                <li>按 <strong><span translate="no">載入</span></strong>（或點選空白圖片）。<strong>選擇圖片</strong> 顯示您自己的圖片（<strong>相簿</strong>；電腦上為 <strong>檔案</strong>）、有相機的裝置上的 <strong>相機</strong>，以及 59 張現成圖片（CQ 卡片、qFT8 標誌、風景、視錯覺、QSL 卡片、73……）。您也可以從其他應用程式把圖片分享給 qFT8；如果正在使用其他模式，qFT8 會在切換到 <span translate="no">SSTV</span> 之前詢問。</li>
+                <li>如果圖片形狀與模式不符，接下來是 <strong>調整圖片</strong>：<span translate="no">完整</span> 帶邊框顯示整張圖片，<span translate="no">裁剪</span> 填滿畫框（拖曳以移動，雙指縮放），<span translate="no">旋轉</span> 旋轉圖片，亮度、對比度和 <span translate="no">自動對比度</span> 用於調整。<span translate="no">使用圖片</span> 確認。</li>
+                <li>接著是 <strong>呼號樣式</strong>：您的圖片在 16 種呼號樣式中的樣子。點選其中一種，然後按 <strong>使用</strong>；<strong>返回</strong> 回到圖片選擇。</li>
+                <li>用 <span translate="no">TX ON</span> 按鈕啟用 <span translate="no">TX</span>，然後按 <strong><span translate="no">傳送</span></strong>。</li>
             </ol>
-            <p>
-                關閉 <span translate="no">TX</span>、按 <strong><span translate="no">停止</span></strong>，或更換波段或模式，都會立即停止傳送圖片。如果您按 <strong><span translate="no">傳送</span></strong> 時正有圖片在接收，qFT8 會先詢問再停止接收。
-            </p>
-            <div class="highlight">
-                <p><strong>長模式與小功率電台：</strong>一張圖片就是一次滿功率的連續發射：Robot 36 約 40 秒，Martin 1 約兩分鐘，最慢的模式超過四分鐘。比您電台的<a href="#tx-limit">連續發射時間上限</a>還長的模式在列表中顯示為灰色，選擇它時會說明原因。<span translate="no">QMX</span> 在預設的 60 秒下，短模式無需更改即可使用。</p>
-            </div>
+            <p>關閉 <span translate="no">TX</span>、按 <strong><span translate="no">停止</span></strong>，或更換波段或模式，都會立即停止圖片；按 <span translate="no">停止</span> 後 <span translate="no">TX</span> 仍保持開啟，可隨時再次傳送。若您按 <strong><span translate="no">傳送</span></strong> 時正有圖片在到達，qFT8 會在停止接收前詢問。</p>
+
+            <h4 id="sstv-styles">呼號樣式</h4>
+            <p>日期是傳送圖片時的 <span translate="no">UTC</span> 日期，波段是您目前使用的波段。樣式中的「CQ」寫作 <span translate="no">CQ DE</span> 加您的呼號。</p>
+            <ol>
+                <li><strong>CQ + 日期 + 波段</strong>，位於底部橫條（預設）。</li>
+                <li><strong>呼號</strong> 單獨位於底部橫條。</li>
+                <li><strong>大號日期 + 波段（底部）</strong>：CQ 和您的呼號，波段和日期用大字。</li>
+                <li><strong>大號日期 + 波段（頂部）</strong>：頂部用大字寫波段和日期，底部為 CQ 和您的呼號。</li>
+                <li><strong>橫條：呼號 + 日期 + 波段</strong>：圖片略微縮小，下方橫條寫有 CQ、您的呼號、日期和波段。</li>
+                <li><strong>橫條：呼號</strong>：同上，只有您的呼號。</li>
+                <li><strong>大號 CQ + 日期標籤</strong>：角落的大號 CQ 和寫有波段與日期的小標籤。</li>
+                <li><strong>呼號置中</strong>：您的呼號以大字位於中央。</li>
+                <li><strong>票籤 + 日期</strong>：角落的票籤，寫有您的呼號、波段和日期。</li>
+                <li><strong>呼號左上</strong>。</li>
+                <li><strong>邊框 + 日期</strong>：彩色邊框，框內寫有您的呼號以及波段和日期。</li>
+                <li><strong>帶陰影的呼號</strong>：帶投影的呼號。</li>
+                <li><strong>CQ CQ + 日期</strong>：頂部 CQ CQ CQ，底部為您的呼號、波段和日期。</li>
+                <li><strong>頂部橫條呼號</strong>：沿頂部的淺色橫條中寫有您的呼號。</li>
+                <li><strong>郵戳日期</strong>：左上角為您的呼號，另有寫著波段和日期的圓形郵戳。</li>
+                <li><strong>多層描邊呼號</strong>：字母周圍有多層描邊的呼號。</li>
+            </ol>
+            <p><strong>無呼號</strong> 不在圖片上寫任何內容（只寫您自己加入的那行文字，如果有的話）。如果在設定中開啟了摩斯呼號或 <span translate="no">FSK ID</span>，呼號仍會傳送。回覆圖片則改用五種回覆版面之一（上下排列、左右並排、頂部和底部、粗描邊、含日期 + 波段），箭頭和調色盤在這些版面間切換。</p>
+
+            <h3 id="sstv-limits">發射限制</h3>
+            <p>一張圖片就是一次全功率的連續發射：Robot 36 約 40 秒，Martin 1 兩分鐘，最慢的模式超過四分鐘。所有部分都計入：起始訊號、摩斯呼號、圖片和 <span translate="no">FSK ID</span>；<span translate="no">傳送</span> 上和模式清單中顯示的秒數就是這整段時間。</p>
+            <ul>
+                <li>比您電台的 <a href="#tx-limit">連續發射時間上限</a> 更長的模式在模式清單中顯示為灰色。選擇它，或在該模式下按 <span translate="no">傳送</span>，會說明原因並提議開啟該設定；不會傳送任何內容。</li>
+                <li>在該設定的每個選項下，qFT8 都會列出該選項新增的 <span translate="no">SSTV</span> 模式，讓您看到提高上限能得到什麼。</li>
+                <li>在 <a href="#sstv-settings">設定 &gt; <span translate="no">SSTV</span></a> 中關閉摩斯呼號或 <span translate="no">FSK ID</span>，可使每張圖片縮短幾秒。</li>
+                <li>上限絕不會替您更改，<span translate="no">回覆</span> 也不會。</li>
+            </ul>
+            <p><span translate="no">QMX</span> 或 <span translate="no">QMX+</span> 需要 1_04_001 或更新的韌體才能傳送圖片；韌體較舊時 <span translate="no">SSTV</span> 只能接收，傳送半區的紅色提示行會說明這一點。</p>
+
+            <h3 id="sstv-logging">記錄 <span translate="no">SSTV</span> <span translate="no">QSO</span></h3>
+            <p>不會自動記錄任何內容。顯示對方電台的圖片並按 <strong><span translate="no">QSO</span></strong>：<a href="#qso-logger">記錄器</a> 開啟，已填入模式 <span translate="no">SSTV</span>、波段、電台頻率、呼號欄中的呼號，以及傳送和接收的 595。提示會請您核對呼號，找不到時請您輸入。像其他 <span translate="no">QSO</span> 一樣儲存；之後它會和其他記錄一樣上傳到您的 <a href="#choosing-services">服務</a>。</p>
+
+            <h3 id="sstv-platforms">在電腦、iPhone 和網頁遙控上</h3>
+            <ul>
+                <li><strong>電腦</strong>：同樣的面板，用 <span translate="no">接收</span> | <span translate="no">傳送</span> 代替 <span translate="no">RX</span> | <span translate="no">TX</span>，用滑鼠代替手指（點按載入，拖曳標記），用 <strong>檔案</strong> 代替相簿和相機。</li>
+                <li><strong>iPhone 和 iPad</strong>：與 Android 手機相同的面板和控制項。</li>
+                <li><strong>網頁遙控</strong>：接收欄和傳送欄並排，一側是 <span translate="no">AUTO</span>、接收標記、圖片條、<span translate="no">儲存</span> 和 <span translate="no">回覆</span>，另一側是模式選擇器、<span translate="no">載入</span>、樣式、<span translate="no">移除</span> 和 <span translate="no">傳送</span>。<span translate="no">載入</span> 在瀏覽器中選擇圖片並就地裁剪（拖曳；用滑桿或滑鼠滾輪縮放）。編輯、刪除和記錄在 qFT8 本身中進行。只有當操作員在 qFT8 中處於 <span translate="no">TX ON</span> 時，<span translate="no">傳送</span> 才起作用。</li>
+            </ul>
 
             <h3 id="sstv-settings">設定 &gt; <span translate="no">SSTV</span></h3>
+            <p>用面板上的齒輪或從設定分頁開啟。<strong>接收</strong>：</p>
             <ul>
-                <li><strong>用 <span translate="no">CW</span> 傳送您的呼號</strong>：關閉、在圖片之前（預設）、在圖片之後，或前後都發。只發呼號，速度 20 WPM；它占用的秒數計入發射時間。</li>
-                <li><strong>每張圖片後傳送 <span translate="no">FSK ID</span></strong>：一小段資料脈衝，讓對方電台的程式讀出您的呼號。</li>
-                <li><strong>文字樣式</strong>、<strong>自動對比度</strong>和<strong>自動銳化</strong>。</li>
-                <li><strong>自動將每張接收到的圖片儲存到裝置</strong>，以及<strong>應用中保留的接收圖片數量</strong>。</li>
+                <li><strong>自動將每張接收到的圖片儲存到裝置</strong>（手機和 iPhone 上關閉，電腦上開啟）。</li>
+                <li><strong>應用程式中保留的接收圖片數量</strong>：25、50、100（預設）、200 或 500。</li>
             </ul>
-            <p>
-                <span translate="no">QMX</span> 或 <span translate="no">QMX+</span> 需要 1_02_000 或更新的韌體才能傳送圖片；韌體較舊時，<span translate="no">SSTV</span> 只能接收。
-            </p>
+            <p><strong>傳送</strong>：</p>
+            <ul>
+                <li><strong>用 <span translate="no">CW</span> 傳送您的呼號</strong>：關、圖片之前（預設）、圖片之後，或前後都傳送。只傳送呼號，速度 20 WPM；其秒數計入發射時間。</li>
+                <li><strong>每張圖片後傳送 <span translate="no">FSK ID</span></strong>（開啟）：一段簡短的資料突發，讓對方電台的程式讀出您的呼號。</li>
+                <li><strong>文字樣式</strong>：下一張圖片起始使用的呼號樣式（新安裝時為樣式 1），以及 <strong>文字顏色</strong>（白色）。</li>
+                <li><strong>自動對比度</strong> 和 <strong>自動銳化</strong>（均開啟）：套用於您傳送的圖片。</li>
+            </ul>
+            <p><strong>恢復預設設定</strong> 將所有 <span translate="no">SSTV</span> 設定恢復為初始值。</p>
 
-            <a class="back-to-toc" href="#top">↑ 返回目錄</a>
+            <a href="#top" class="back-to-toc">&uarr; 返回目錄</a>
         </section>
 
 
 
+
+
+
+        <section id="draw-mode">
+            <span id="pix-mode"></span>
+            <h2><span translate="no">DRAW</span> （瀑布圖上的圖片）</h2>
+            <p>
+                <span translate="no">DRAW</span> 把灰階圖片直接畫在其他電臺的瀑布圖上：圖片的每一列是一個音調，與下一個相距 6.25 Hz，圖片的每一行發送一小段不到一秒的時間，從最下面一行到最上面一行。任何有瀑布圖的人，不論是否使用 qFT8，都會看到您的圖片浮現。圖片可以是任何形狀：照片、繪圖，或只是一行文字，例如您的呼號。<span translate="no">DRAW</span> 不是標準模式；它是為了被看見而設計的。
+            </p>
+
+            <p class="mode-specs"><strong>規範：</strong> qFT8自己的設計。</p>
+            <p>
+                用底部列的模式選擇器選擇 <strong><span translate="no">DRAW</span></strong>。面板頂部的 <strong><span translate="no">RX</span></strong>和 <strong><span translate="no">TX</span></strong>顯示接收或發送的一半：
+            </p>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 攝影機" class="camera" width="132" height="1080">
+                <img src="../pix.jpg" alt="qFT8 DRAW 面板，發送一側" class="screen" width="2280" height="1080">
+            </div>
+
+            <ol>
+                <li><strong>基本資訊</strong>：寬度、圖片的列數和行數，以及速度。</li>
+                <li><strong>載入</strong>：「拍照」或「選擇圖片」。圖片保持自己的形狀。</li>
+                <li><strong>待發送的圖片</strong>，灰階，以您自己瀑布圖的顏色繪製：其他電臺看到的就是這個。發射期間，一條黃線標出正在發送的一行，並顯示「發射中：第 N 行，共 M 行」。</li>
+                <li><strong>呼號牌</strong>（預設開啟）：您的呼號以大字顯示在圖片下方。鉛筆可更改牌上的文字（留空 = 您的呼號）。<strong>自動對比度</strong>一次按下就讓圖片最暗的部分變黑、最亮的部分變白；<strong>對比度</strong>和<strong>亮度</strong>之後由您手動調整。</li>
+                <li><strong>移除</strong>回到只有呼號牌。<strong>傳送</strong>顯示圖片需要幾秒，並變成帶有剩餘秒數的 <strong>停止</strong>。</li>
+                <li><strong>紅色的一行</strong>說明圖片現在為何不能傳送，沒有阻礙時隱藏：「按 TX ON 傳送圖片」；「20 秒：超過您的 15 秒上限」（圖片長於電台的<a href="#tx-limit">連續發射時間上限</a>）；「30 m 頻段只能發送 500 Hz 的寬度」；「發射將超出業餘波段」；或者，對於韌體無法透過 <span translate="no">CAT</span> 把電台切換到 <span translate="no">SSB</span> 的 <span translate="no">QMX</span>，說明圖片只能接收。</li>
+                <li><strong>速度</strong>：3.125、6.25（預設：一行的時間與一個 <span translate="no">FT8</span> 音調相同）或每秒 12.5 行。旁邊顯示圖片佔用了您的<a href="#tx-limit">連續發射時間上限</a>的多少。 清單顯示每種速度下圖片的秒數；對你的上限來說過長的速度，點按時會說明。旁邊的指示例如顯示「佔您 30 秒上限的 20 秒」。</li>
+                <li><strong>文字牌</strong>：點一下就把「CQ」加您的呼號、「73」加您的呼號，或只有您的呼號載入為整張圖片。</li>
+                <li><strong>旋轉</strong>（在 移除 旁邊）每按一次就把整個發射（包括呼號牌）旋轉四分之一圈，這樣在橫向捲動的瀑布圖上也能正立閱讀。在接收端，<strong>旋轉</strong>以同樣方式旋轉所顯示（和儲存）的圖片。</li>
+                <li>底部列的<strong>寬度</strong>：500、700（預設）或 1200 Hz，並顯示各寬度下圖片所需的秒數。更寬的圖片有更多列，所以更清晰，也需要更長時間。</li>
+                <li>瀑布圖上的 <strong><span translate="no">DRAW</span> 頻段</strong>：圖片位於 1000 Hz 到 1000 Hz 加上其寬度之間。</li>
+            </ol>
+
+            <h3 id="pix-receiving">接收圖片</h3>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 攝影機" class="camera" width="132" height="1080">
+                <img src="../pixrx.jpg" alt="qFT8 DRAW 面板，接收一側" class="screen" width="2280" height="1080">
+            </div>
+
+            <p>
+                無需啟動任何東西：只要處於該模式，qFT8 就一直在接收，顯示傳送一半時也是如此。
+            </p>
+            <ol>
+                <li><strong><span translate="no">RX</span></strong>和 <strong><span translate="no">TX</span></strong>：接收一半和傳送一半。</li>
+                <li><strong>狀態列</strong>：正在接收、寬度和所接收的頻段（700 Hz 時為 1000&ndash;1700 Hz）。你自己的圖片在發射時，接收暫停，這一列會說明。</li>
+                <li><strong>收到的圖片</strong>：最近三分鐘的 <span translate="no">DRAW</span> 頻段合成一張圖片，最新的一行在最上面，像素為正方形，使用你瀑布圖的顏色：用 qFT8 傳送的圖片是正的。尚未收到任何內容時，它會顯示正在接收哪些頻率。</li>
+                <li><strong>即時標籤</strong>：模式、寬度以及繪製圖片所用的速度。</li>
+                <li><strong>儲存</strong>（有可儲存的內容時變為藍色）儲存目前顯示的圖片：裁切到圖片從雜訊中浮現的部分，灰階，按收到的樣子，存為 <span translate="no">PNG</span>，檔名包含日期時間（<span translate="no">UTC</span>）和寬度。在手機或平板上儲存到圖片資料夾的 <code translate="no">Pictures/qFT8 DRAW</code>；如果 qFT8 無權寫入那裡，就留在 qFT8 自己的資料夾，提示會說明位置。</li>
+                <li><strong>旋轉</strong>每按一次把顯示（和儲存）的圖片轉四分之一圈；按鈕顯示旋轉角度（90&deg;、180&deg;、270&deg;）。</li>
+                <li><strong>速度</strong>：設為對方電台使用的速度（每秒 3.125、6.25 或 12.5 行）；整張收到的圖片會按新速度重新繪製。它不改變你自己傳送的速度。</li>
+            </ol>
+            <div class="highlight">
+                <p><strong>您電臺的 AGC：</strong>電臺的自動增益控制在亮的一行降低增益、在暗的一行提高增益，使接收的圖片出現條紋。qFT8 在每一行測量圖片旁邊的雜訊並加以修正，看到增益隨圖片變動時會提示：這時請把電臺的 <span translate="no">AGC</span> 設為 <span translate="no">OFF</span> 或 <span translate="no">SLOW</span>（頻段很吵時再把 <span translate="no">RF</span> 增益稍微調低）。</p>
+            </div>
+
+            <h3 id="pix-sending">發送圖片</h3>
+            <ol>
+                <li>在底部列選擇寬度，用 <strong>速度</strong>選擇速度。</li>
+                <li>載入圖片，或點一張文字牌。設定對比度，或按<strong>自動對比度</strong>。</li>
+                <li>開啟 <span translate="no">TX</span> 並按 <strong>傳送</strong>。</li>
+            </ol>
+            <p>
+                關閉 <span translate="no">TX</span>、按 <strong>停止</strong>、<span translate="no">TUNE</span>，或更換頻段或模式，都會立即停止圖片。比電臺的<a href="#tx-limit">連續發射時間上限</a>更長的圖片不會發送：紅色的一行會說明它有多長，更快的速度、更窄的寬度或更小的圖片可讓它降到上限以下。所有音調同時發送，所以請保持與 <span translate="no">FT8</span> 相同的發射電平，並讓電臺的 <span translate="no">ALC</span> 保持在低位。
+            </p>
+
+            <h3 id="draw-platforms">在電腦、iPhone 和網頁遙控上</h3>
+            <p>
+                各處的面板相同，按鈕也相同。不同之處：
+            </p>
+            <ul>
+                <li><strong>電腦</strong>：<strong>載入</strong>開啟一個圖片檔案；<strong>儲存</strong>寫入你的「圖片」資料夾中的 <code translate="no">qFT8 DRAW</code> 資料夾。</li>
+                <li><strong>iPhone</strong>：<strong>載入</strong>與手機一樣提供「拍照」或「選擇圖片」；<strong>儲存</strong>把圖片儲存在 qFT8 自己檔案中的 <code translate="no">qFT8 DRAW</code> 資料夾。</li>
+                <li><strong>網頁遙控</strong>顯示同樣的待傳送圖片和收到的圖片。<strong>載入</strong>從執行瀏覽器的裝置上取一張圖片（縮小到最多 192 欄寬，即 <span translate="no">DRAW</span> 傳送的最寬圖片）；<strong>儲存</strong>儲存在執行 qFT8 的手機或電腦上，而不是瀏覽器裡。傳送需要「完全控制」存取等級，並且和應用程式中一樣，只有在 <span translate="no">TX</span> 已啟用時才會發射。</li>
+            </ul>
+
+            <h3 id="draw-reach">能傳多遠？</h3>
+            <p>
+                <span translate="no">DRAW</span> 是用來被看見的，而不是用來從雜訊中挖出訊號的。預設 700 Hz、每秒 6.25 行的呼號牌，在 <span translate="no">SNR</span> 約 -2 dB（2500 Hz 頻寬）時仍可讀，每秒 3.125 行時約 -5 dB；照片從約 +4 dB 起效果良好。<span translate="no">FT8</span> 可達約 -21 dB，所以如果對方電台勉強才能解碼您的 <span translate="no">FT8</span>，就看不到您的圖片。速度越慢、寬度越窄，傳得越遠。衰落會讓每種模式損失約 6 dB。<span translate="no">DRAW</span> 能給您而其他模式不能的：任何看著瀑布圖的人，不需要特別的程式，就能看到您的圖片。
+            </p>
+
+            <h3 id="pix-frequencies">頻率、邊帶和記錄</h3>
+            <p>
+                qFT8 在每個頻段調諧到它的 <span translate="no">DRAW</span> 頻率，該頻率選自三個區域的 <span translate="no">IARU</span> 頻段規劃中的「所有模式」區段，遠離 <span translate="no">SSTV</span>、數字模式和語音的活動中心（刻度，<span translate="no">USB</span>）：160 m 1.865、80 m 3.665、40 m 7.190、30 m 10.145（僅 500 Hz）、20 m 14.335、17 m 18.140、15 m 21.400、12 m 24.975、10 m 28.520 和 6 m 50.380 MHz。60 m 沒有頻率（各國規定不同）。在 30 m，頻段規劃最多允許 500 Hz，所以那裡只發送 500 Hz 的寬度。請查看您自己的執照和當地的頻段規劃。
+            </p>
+            <p>
+                電臺在每個頻段都處於 <span translate="no">USB</span>。用 <span translate="no">LSB</span> 收聽的電臺會看到圖片左右鏡像。
+            </p>
+            <p>
+                <strong><span translate="no">QSO</span></strong>以 <span translate="no">DRAW</span> 模式開啟記錄器：記錄標準（<span translate="no">ADIF</span>）中沒有 <span translate="no">DRAW</span>，而逐行發送的靜止圖片在那裡正是 <span translate="no">FAX</span> 的意思（它算作影像模式，與 <span translate="no">SSTV</span> 一樣）。<span translate="no">QMX</span> 需要與 <span translate="no">SSTV</span> 相同的韌體。日誌、檔案和上傳都將其寫為 <span translate="no">FAX</span>，子模式為 <span translate="no">DRAW</span>；公園（<span translate="no">POTA</span>）和 <span translate="no">eQSL</span> 只收到 <span translate="no">FAX</span>。
+            </p>
+
+            <a class="back-to-toc" href="#top">↑ 返回目錄</a>
+        </section>
 
 
 
@@ -3265,10 +3985,10 @@
                     當<strong>在背景執行</strong>開啟時，伺服器會在背景持續執行；在 iPhone 上，它只在應用開啟時執行。
                 </p>
 
-                <h4>設定伺服器</h4>
+                <h4 id="qft8-log-server">設定伺服器</h4>
                 <ol>
                     <li>在要收集 QSO 的那個 qFT8 上，開啟<strong>設定</strong>，進入
-                        <strong>qFT8 伺服器</strong>，再開啟<strong>qFT8log 伺服器</strong>。</li>
+                        <strong>伺服器</strong>，再開啟<strong>qFT8log 伺服器</strong>。</li>
                     <li>輸入密碼。使用與
                         <a href="#bridge">qFT8 bridge</a> 相同類型的密碼：七個字元或更多。</li>
                     <li>除非連接埠被其他程式占用，否則保持連接埠為 13510，然後啟用伺服器。頁面會顯示伺服器的位址和連到它的
@@ -3336,8 +4056,8 @@
                 </ul>
                 <div class="highlight">
                     <p><strong>安全提示：</strong>密碼絕不會透過網路傳送：兩個 qFT8 互相證明自己知道密碼，
-                        之後的每條訊息都經過簽名，因此途中不可能被竄改或重送攻擊。QSO 本身沒有加密。
-                        請只在您自己的網路內使用 qFT8log，不要把它的連接埠開放到網際網路。</p>
+                        之後的每條訊息都經過簽名，因此途中不可能被竄改或重送攻擊。當<strong>加密 qFT8 log 連線</strong>開啟時（預設開啟，用戶端和伺服器都是），QSO 也會被加密，
+                        因此網路上的其他人無法讀取。請只在您自己的網路內使用 qFT8log，不要把它的連接埠開放到網際網路。</p>
                 </div>
 
                 <h4>限制</h4>

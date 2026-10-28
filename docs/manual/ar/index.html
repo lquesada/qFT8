@@ -12,6 +12,10 @@
     <meta property="og:url" content="https://qft8.com/manual/">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="manifest" href="../../site.webmanifest">
     <script src="../../data.js"></script>
     <script src="../manual-langs.js"></script>
     <script src="../manual.js"></script>
@@ -80,6 +84,9 @@
                         <li><a href="#mode-js8"><span translate="no">JS8</span></a></li>
                         <li><a href="#mode-wspr"><span translate="no">WSPR</span></a></li>
                         <li><a href="#mode-lq8"><span translate="no">LQ8</span></a></li>
+                        <li><a href="#mode-q65"><span translate="no">Q65</span></a></li>
+                        <li><a href="#mode-msk144-intro"><span translate="no">MSK144</span></a></li>
+                        <li><a href="#mode-fst4"><span translate="no">FST4</span></a></li>
                     </ul>
                 </li>
                 <li><a href="#user-interface">واجهة مستخدم qFT8</a>
@@ -118,16 +125,26 @@
                 </li>
                 <li><a href="#activation">تفعيل متنزه أو قمة</a></li>
                 <li><a href="#js8-chat">محادثة <span translate="no">JS8</span></a>
+                    <ul>
+                        <li><a href="#js8-speeds">السرعات</a></li>
+                        <li><a href="#js8-sending">إرسال رسالة</a></li>
+                        <li><a href="#js8-auto">الردود الآلية (<span translate="no">AUTO</span>)</a></li>
+                        <li><a href="#js8-logging">تسجيل QSO بنمط <span translate="no">JS8</span></a></li>
+                    </ul>
                 </li>
-                <li><a href="#wspr-mode">نمط <span translate="no">WSPR</span></a></li>
+                <li><a href="#wspr-mode"><span translate="no">WSPR</span> و<span translate="no">FST4W</span> (المنارات)</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span> (الصوت)</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span> (شفرة مورس)</a>
                     <ul>
                         <li><a href="#cw-keys">الإرسال بمحوّل أو بلوحة المفاتيح أو بالفأرة</a></li>
+                        <li><a href="#cw-auto-rit"><span translate="no">AUTO RIT</span>: تتبّع محطة تناديك</a></li>
+                        <li><a href="#cw-radio">كيف يُبرَق جهاز الراديو</a></li>
+                        <li><a href="#cw-logging">تسجيل اتصال <span translate="no">CW</span></a></li>
                     </ul>
                 </li>
-                <li><a href="#rtty-mode"><span translate="no">RTTY</span></a></li>
+                <li><a href="#rtty-mode"><span translate="no">RTTY</span> و<span translate="no">JTTY</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span> (الصور)</a></li>
+                <li><a href="#draw-mode"><span translate="no">DRAW</span> (الصور على الشلال)</a></li>
                 <li><a href="#features">شرح الخصائص</a>
                     <ul>
                         <li><a href="#tune-offset">إزاحة ضبط مخطط الطيف</a></li>
@@ -152,7 +169,7 @@
             <h2>ما هو qFT8؟</h2>
 
             <p>
-                qFT8 تطبيق <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">لهواة الراديو</a> يعمل على هواتف وأجهزة <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> اللوحية وعلى iPhone وiPad وعلى حواسيب Windows و macOS و Linux، يفك ترميز رسائل البيانات الرقمية FT8 و FT4 و FT2 و LQ8 و JS8 و WSPR ويرسلها عبر جهاز إرسال واستقبال. ويعمل كذلك بالصوت (SSB) وشفرة مورس (CW) و RTTY والصور (SSTV) بالجهاز نفسه وبالكابل نفسه.
+                qFT8 تطبيق <a href="https://en.wikipedia.org/wiki/Amateur_radio" target="_blank">لهواة الراديو</a> يعمل على هواتف وأجهزة <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank">Android</a> اللوحية وعلى iOS وعلى حواسيب Windows و macOS و Linux، يفك ترميز رسائل البيانات الرقمية FT8 و FT4 و FT2 و LQ8 و JS8 و WSPR ويرسلها عبر جهاز إرسال واستقبال. ويعمل كذلك بالصوت (SSB) وشفرة مورس (CW) و RTTY والصور (SSTV) بالجهاز نفسه وبالكابل نفسه.
             </p>
 
             <p>
@@ -234,7 +251,6 @@
                 <li><span dir="ltr"><strong>Elecraft K3 / K3S</strong></span></li>
                 <li><span dir="ltr"><strong>Elecraft KX3</strong></span></li>
                 <li><span dir="ltr"><strong>Elecraft KX2</strong></span></li>
-                <li><span dir="ltr"><strong>Elecraft KH1</strong></span></li>
                 <li><strong>Elecraft K2 (يتطلب وحدة KIO2)</strong></li>
                 <li><span dir="ltr"><strong>Xiegu X6100</strong></span></li>
                 <li><span dir="ltr"><strong>Xiegu X6200</strong></span></li>
@@ -488,7 +504,7 @@
                     <dd><span class="row-label">على الحاسوب</span> نقرة بالزر الأيمن</dd>
                 </div>
                 <div>
-                    <dt><span class="row-label">على Android</span> نقرتان باللمس على رسالة في دردشة JS8</dt>
+                    <dt><span class="row-label">على Android</span> نقرة على رسالة في دردشة JS8</dt>
                     <dd><span class="row-label">على الحاسوب</span> نقرة مزدوجة</dd>
                 </div>
                 <div>
@@ -883,6 +899,8 @@
                 <li><strong>تبادلات المسابقات</strong>: في بعض المسابقات ترسل المحطات فئة وقسما (Field Day) أو تقريرا مع ولاية أو رقم تسلسلي (مسابقات RTTY) بدل محدد الموقع والتقرير. يعرض qFT8 هذه الرسائل لترى ما يجري على النطاق، ولا يرد عليها أبدا: فهو لا يرسل تبادلات المسابقات.</li>
             </ul>
 
+            <p class="mode-specs"><strong>المواصفات:</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020.</p>
+
             <h3 id="mode-ft4">FT4</h3>
             <p>
                 FT4 نمط رقمي مبسط صُمم خصيصا لمسابقات هواة الراديو، حيث سرعة تتابع الاتصالات أمر حيوي:
@@ -893,6 +911,8 @@
                 <li><strong>خسارة في الحساسية</strong>: مقابل مضاعفة السرعة، عتبة حساسية فك الترميز في FT4 نحو <strong><span dir="ltr">-16.4 dB</span> إلى <span dir="ltr">-17.5 dB SNR</span></strong> (خسارة في الحساسية بنحو 3.5 إلى 4 dB مقارنة بـ FT8).</li>
                 <li><strong>الاستخدام العملي</strong>: يستخدم تعديل <span dir="ltr">4-GFSK</span> وحمولة الرسالة القياسية ذات 77 بتا، فيتمكن المشغلون من إتمام تبادلات المسابقات القياسية في نصف الوقت متى سمح الانتشار.</li>
             </ul>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> S. Franke, B. Somerville, J. Taylor, &ldquo;The FT4 and FT8 Communication Protocols&rdquo;, <em>QEX</em>, July/August 2020.</p>
 
             <h3 id="mode-ft2">FT2</h3>
             <p>
@@ -905,22 +925,27 @@
                 <li><strong>الاستخدام العملي</strong>: مثالي للاتصالات الخاطفة المتتابعة في فترات الانفتاح ذات الإشارات القوية وفي أنماط الانتشار بالدفقات، حيث نوافذ الاتصال لحظية والإشارات أعلى من مستوى الضوضاء بهامش مريح.</li>
             </ul>
 
+            <p class="mode-specs"><strong>المواصفات:</strong> لا توجد مواصفات منشورة.</p>
+
             <h3 id="mode-js8">JS8</h3>
             <p>
                 JS8 (تصميم Jordan Sherer، <span dir="ltr">8-GFSK</span>) وُضع من أجل <strong>الدردشة الحرة والمحادثة من لوحة مفاتيح إلى لوحة مفاتيح والتشبيك عند الحاجة</strong> لا من أجل تبادلات المسابقات ذات البنية المحددة:
             </p>
             <ul>
-                <li><strong>تقطيع الرسائل وتأطيرها</strong>: يستخدم التعديل الأساسي نفسه <span dir="ltr">8-GFSK</span> والإطارات نفسها ذات 77 بتا كما في FT8، لكنه يضيف بروتوكول نقل في طبقة أعلى لتجزئة الرسائل وإعادة تجميعها. وبهذا تنساب الرسائل النصية الحرة بأي طول عبر دورات متتالية.</li>
-                <li><strong>عدة سرعات</strong>: يقدم أربع سرعات يُختار منها ما يناسب حالة النطاق:
+                <li><strong>تقطيع الرسائل وتأطيرها</strong>: يستخدم تعديل 8-GFSK مثل FT8، لكن إطاراته تحمل 75 بتا، وتقطع طبقة نقل الرسالة إلى إطارات ثم تجمعها من جديد. وبهذا تنساب الرسائل النصية الحرة بأي طول عبر فترات زمنية متتالية.</li>
+                <li><strong>عدة سرعات</strong>: خمس سرعات تناسب حالة النطاق:
                     <ul>
-                        <li><em>Slow</em>: دورات من 30 ثانية، عرض نطاق نحو 25 Hz، يفك الترميز حتى <strong><span dir="ltr">-25 dB SNR</span></strong>.</li>
-                        <li><em>Normal</em>: دورات من 15 ثانية، عرض نطاق نحو 50 Hz، يفك الترميز حتى <strong><span dir="ltr">-21 dB SNR</span></strong>.</li>
-                        <li><em>Fast</em>: دورات من 10 ثوان، عرض نطاق نحو 80 Hz، يفك الترميز حتى <strong><span dir="ltr">-18 dB SNR</span></strong>.</li>
-                        <li><em>Turbo</em>: دورات من 6 ثوان، عرض نطاق نحو 160 Hz، يفك الترميز حتى <strong><span dir="ltr">-15 dB SNR</span></strong>.</li>
+                        <li><em>Slow</em>: دورات من 30 ثانية، عرض نطاق نحو 25 Hz، يفك الترميز حتى <strong>-25 dB SNR</strong>.</li>
+                        <li><em>Normal</em>: دورات من 15 ثانية، عرض نطاق نحو 50 Hz، يفك الترميز حتى <strong>-21 dB SNR</strong>.</li>
+                        <li><em>Fast</em>: دورات من 10 ثوان، عرض نطاق نحو 80 Hz، يفك الترميز حتى <strong>-18 dB SNR</strong>.</li>
+                        <li><em>Turbo</em>: دورات من 6 ثوان، عرض نطاق نحو 160 Hz، يفك الترميز حتى <strong>-15 dB SNR</strong>.</li>
+                        <li><em>Ultra</em>: دورات من 4 ثوان، عرض نطاق نحو 250 Hz، للإشارات القوية فقط.</li>
                     </ul>
                 </li>
-                <li><strong>إمكانات التشبيك</strong>: يدعم الرسائل الموجهة، وترحيل الرسائل آليا عبر محطات وسيطة، ومراقبة الحضور بنبضات heartbeat، وشبكات صناديق البريد غير المتزامنة بأسلوب «خزّن ثم مرّر».</li>
+                <li><strong>إمكانات التشبيك</strong>: رسائل إلى محطة واحدة أو إلى مجموعة، وأسئلة قياسية تُجاب آليا، ونبضات heartbeat. يعرض qFT8 الرسائل المرحَّلة لكنه لا يرحّل رسائل لمحطات أخرى ولا يخزنها (انظر <a href="#js8-chat">محادثة <span translate="no">JS8</span></a>).</li>
             </ul>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> لا توجد مواصفات منشورة.</p>
 
             <h3 id="mode-wspr">WSPR</h3>
             <p>
@@ -930,21 +955,64 @@
                 <li><strong>دورات من دقيقتين</strong>: يعمل على <strong>دورات من دقيقتين (120 ثانية)</strong> مزامنة بصرامة، ويرسل سلسلة نغمات <span dir="ltr">4-FSK</span> من 162 رمزا خلال 110.6 ثانية.</li>
                 <li><strong>عرض نطاق بالغ الضيق</strong>: لا يشغل سوى نحو <strong>6 Hz</strong> من عرض نطاق RF، فيركّز القدرة المشعة في شريحة طيف شديدة الضيق.</li>
                 <li><strong>حساسية فائقة للإشارات الضعيفة</strong>: قادر على فك ترميز إشارات خافتة حتى <strong><span dir="ltr">-28 dB</span> إلى <span dir="ltr">-31 dB SNR</span></strong> في عرض نطاق مرجعي قياسي قدره 2.5 kHz، فتقطع مرسلات بقدرة الميلي واط (QRPp) مسافات عالمية.</li>
-                <li><strong>تقارير انتشار آلية</strong>: يرسل رمز نداء المحطة ومحدد الموقع Maidenhead (من 4 أو 6 خانات) وقدرة المرسل بوحدة dBm. والرصدات المفكوكة الترميز تُرسل آليا إلى قاعدة بيانات WSPRnet العالمية لرسم خريطة الانتشار الأيونوسفيري لحظة بلحظة.</li>
+                <li><strong>تقارير انتشار آلية</strong>: يرسل رمز نداء المحطة ومحدد الموقع Maidenhead (من 4 أو 6 خانات) وقدرة المرسل بوحدة dBm. ويمكن إرسال الرصدات المفكوكة الترميز إلى قاعدة بيانات WSPRnet العالمية التي ترسم خريطة الانتشار لحظة بلحظة (انظر <a href="#wspr-reports">الرصدات إلى WSPRnet وPSKReporter</a>).</li>
             </ul>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> J. Taylor (K1JT), &ldquo;WSPRing Around the World&rdquo;, <em>QST</em>, November 2010.</p>
 
             <h3 id="mode-lq8">LQ8</h3>
             <p>
                 LQ8 نمط رقمي متقدم للإشارات الضعيفة طوّره <strong>Luis Quesada (HB9IPH)</strong>، مؤلف qFT8 ومبتكره:
             </p>
             <ul>
-                <li><strong>ينهي QSO أسرع دون ثمن</strong>: يُتم LQ8 أي QSO في الاتجاهين أسرع بكثير من FT8 <strong>دون أي خسارة في الحساسية</strong>. فهو يحافظ على عتبة فك ترميز الإشارات الضعيفة كاملة عند <strong><span dir="ltr">-21 dB SNR</span></strong> (مثل FT8) وينهي الاتصالات الصحيحة في جولات إرسال أقل بكثير بفضل تصميم محسَّن للبروتوكول.</li>
-                <li><strong>رسائل مركبة</strong>: يدعم إرسالات مجمّعة مثل التقرير مع التأكيد معا (<code>REPORT+RR73</code>) والرد على عدة محطات بالتوازي (<code>MULTI_CALL</code>)، فيختصر مدة QSO القياسية من 4 إلى 6 دورات إلى دورتين أو ثلاث فقط.</li>
-                <li><strong>بنية حديثة</strong>: يعمل على دورات قياسية من 15 ثانية بتعديل <span dir="ltr">8-GFSK</span> على 79 رمزا (عرض نطاق نحو 65 Hz)، وحمولات من 77 بتا مضغوطة بترميز Huffman محسَّن، وكشف للأخطاء بـ CRC من 14 بتا، وإشارات منظمة لنداءات الطوارئ.</li>
+                <li><strong>اتصالات أسرع بنفس الحساسية</strong>: يحافظ LQ8 على عتبة الإشارات الضعيفة في FT8، أي -21 dB SNR، ويُتم اتصالًا مؤكدًا في 4 إرسالات (60 ثانية)، بينما يحتاج FT8 إلى 5 أو 6 (من 75 إلى 90 ثانية). وتتبادل المحطتان مع ذلك النداءات ومحددات المواقع وتقارير الإشارة.</li>
+                <li><strong>تبادل من أربع رسائل</strong>: <code>CQ</code>، ثم <code>CALL</code> (محدد موقع المحطة المجيبة وتقريرها في رسالة واحدة)، ثم <code>REPORT+73</code> (التقرير والتأكيد في رسالة واحدة)، ثم <code>73</code>؛ ولا توجد خطوة <code>RR73</code> منفصلة. وفي حالات التزاحم، تؤكد <code>MULTI-REPORT+73</code> محطتين مجيبتين معًا على حامل واحد، وتُنهي <code>MULTI-73</code> الاتصال مع كلتيهما.</li>
+                <li><strong>بنية حديثة</strong>: دورات من 15 ثانية، وتعديل 8-GFSK بـ 79 رمزًا في 12.64 ثانية (عرض نطاق 50 Hz)، ورسائل من 77 بت يُرمَّز نوعها ببادئات متغيرة الطول (هوفمان)، وCRC من 14 بت، وتصحيح أخطاء LDPC(174,91). ونمط التزامن الخاص به يمنع LQ8 وFT8 من فك ترميز بعضهما.</li>
             </ul>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> L. Quesada (HB9IPH), &ldquo;The LQ Digital Mode Family: Protocol Architecture and Reference Specification for Weak-Signal Communications&rdquo;, arXiv:2609.06427 (2026); المكتبة المرجعية: lq_lib.</p>
 
             <p>
                 لمزيد من المعلومات والمواصفات والأدوات زر <a href="https://lq8.org" target="_blank">https://lq8.org</a>، بوابة أنماط LQ.
+            </p>
+
+            <h3 id="mode-q65">Q65</h3>
+            <p>
+                <span translate="no">Q65</span> نمط اتصال QSO للإشارات الضعيفة على المسارات الصعبة: التشتت الأيونوسفيري والتروبوسفيري على 6 م و2 م، والانعكاس عن القمر (EME) من 2 م فما فوق. وهو في qFT8 تجريبي:
+            </p>
+            <ul>
+                <li><strong>الأنماط الفرعية</strong>: كل نمط فرعي هو مدة دورة (15 أو 30 أو 60 أو 120 أو 300 ثانية) وتباعد نغمات (من A إلى E)، ويُكتب مثل <code translate="no">30A</code> أو <code translate="no">60C</code>. الدورات الأطول أكثر حساسية؛ والتباعد الأوسع يتحمل بشكل أفضل الإشارات التي يشوّهها التشتت أو القمر. يجب أن تستخدم المحطتان النمط الفرعي نفسه.</li>
+                <li><strong>رسائل FT8 نفسها</strong>: يحمل <span translate="no">Q65</span> رسائل 77 بت نفسها، لذا للاتصال الخطوات الست نفسها كما في <span translate="no">FT8</span>.</li>
+                <li><strong>المتوسط</strong>: يمكن جمع الإرسالات المتكررة الأضعف من أن تُفك كلٌّ منها وحدها حتى تُفك.</li>
+            </ul>
+            <p>
+                اختيار النمط الفرعي والنطاقات وكل الخيارات موصوفة في <a href="#q65-settings">الإعدادات &gt; <span translate="no">Q65</span></a>؛ وقائمة المحطات في <span translate="no">Q65</span> موصوفة في <a href="#stations-q65">تبويب المحطات</a>.
+            </p>
+
+            <h3 id="mode-msk144-intro">MSK144</h3>
+            <p>
+                صُمم <span translate="no">MSK144</span> للتشتت النيزكي على 10 م و6 م و2 م و70 سم. وهو في qFT8 تجريبي:
+            </p>
+            <ul>
+                <li><strong>الومضات</strong>: أثر النيزك يعكس الإشارة للحظة فقط. يكرر الإرسال رسالته طوال الدورة، وتُفك أي ومضة طويلة بما يكفي لحمل نسخة واحدة منها.</li>
+                <li><strong>مدد الدورة</strong>: 5 أو 10 أو 15 أو 30 ثانية؛ والاختيار المعتاد 15 ثانية.</li>
+                <li><strong>دائمًا على 1500 هرتز</strong>: ترسل كل محطة على تردد صوتي 1500 هرتز، بنغمتين عند 1000 و2000 هرتز.</li>
+                <li><strong>الرسائل القصيرة</strong>: يمكن إرسال التقارير و<span translate="no">RRR</span> و<span translate="no">73</span> كرسائل قصيرة تتسع في ومضة أقصر بكثير.</li>
+            </ul>
+            <p>
+                الخيارات موصوفة في <a href="#mode-msk144">الإعدادات &gt; <span translate="no">MSK144</span></a>؛ وقائمة المحطات في <span translate="no">MSK144</span> موصوفة في <a href="#stations-msk144">تبويب المحطات</a>.
+            </p>
+
+            <h3 id="mode-fst4">FST4</h3>
+            <p>
+                <span translate="no">FST4</span> نمط اتصال QSO للإشارات الضعيفة على النطاقات المنخفضة (2200 م و630 م و160 م) وعلى الموجات القصيرة عندما تكون الإشارات ضعيفة جدًا. وهو في qFT8 تجريبي:
+            </p>
+            <ul>
+                <li><strong>مدد الدورة</strong>: 15 أو 30 أو 60 أو 120 أو 300 أو 900 أو 1800 ثانية. كلما طالت الدورة صارت الإشارة أضيق وأكثر حساسية: من نحو -21 ديسيبل عند 15 ثانية إلى نحو -43 ديسيبل عند 1800 ثانية.</li>
+                <li><strong>رسائل FT8 نفسها</strong>: يحمل <span translate="no">FST4</span> رسائل 77 بت نفسها، لذا للاتصال الخطوات الست نفسها كما في <span translate="no">FT8</span>، لكن أبطأ بكثير.</li>
+            </ul>
+            <p>
+                الخيارات موصوفة في <a href="#fst4-settings">الإعدادات &gt; <span translate="no">FST4</span></a>؛ وقائمة المحطات في <span translate="no">FST4</span> موصوفة في <a href="#stations-fst4">تبويب المحطات</a>. ورفيقه للمنارات <span translate="no">FST4W</span> يعمل مثل <span translate="no">WSPR</span>.
             </p>
 
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
@@ -993,7 +1061,7 @@
                 </li>
                 <li><strong>محدد الفترة</strong>: الخط <span
                         style="color: #ffff00; font-weight: bold;">الأصفر</span> فوق الزرين يبين الفترة الحالية (0 أو 1). الضغط على 0 أو 1 يختار تلك الفترة للإرسال.</li>
-                <li><strong>محدد النمط</strong>: يغير نمط الإرسال المستخدم (مثل <span translate="no">FT8</span> أو <span translate="no">FT4</span> أو <span translate="no">FT2</span> أو <span translate="no">LQ8</span> أو <span translate="no">JS8</span> أو <span translate="no">WSPR</span>)، وكذلك <a href="#ssb-mode"><span translate="no">SSB</span></a> و<a href="#cw-mode"><span translate="no">CW</span></a> و<a href="#rtty-mode"><span translate="no">RTTY</span></a> و<a href="#sstv-mode"><span translate="no">SSTV</span></a>، وهذه تغير الشريط السفلي وتبويب المحطات كما تشرح أقسامها. الانتقال من الأنماط الرقمية إلى أحد هذه الأربعة، أو العودة منها، أو التنقل بينها يجعل <span translate="no">TX</span> في وضع <span translate="no">OFF</span>: فعّله من جديد حين تكون جاهزا. أما التنقل بين الأنماط الرقمية فيتركه كما هو.</li>
+                <li><strong>محدد النمط</strong>: يغير نمط الإرسال المستخدم (مثل <span translate="no">FT8</span> أو <span translate="no">FT4</span> أو <span translate="no">FT2</span> أو <span translate="no">LQ8</span> أو <span translate="no">Q65</span> أو <span translate="no">MSK144</span> أو <span translate="no">FST4</span> أو <span translate="no">FST4W</span> أو <span translate="no">JS8</span> أو <span translate="no">WSPR</span>)، وكذلك <a href="#ssb-mode"><span translate="no">SSB</span></a> و<a href="#cw-mode"><span translate="no">CW</span></a> و<a href="#rtty-mode"><span translate="no">RTTY</span></a> و<a href="#sstv-mode"><span translate="no">SSTV</span></a>، وهذه تغير الشريط السفلي وتبويب المحطات كما تشرح أقسامها. الانتقال من الأنماط الرقمية إلى أحد هذه الأربعة، أو العودة منها، أو التنقل بينها يجعل <span translate="no">TX</span> في وضع <span translate="no">OFF</span>: فعّله من جديد حين تكون جاهزا. أما التنقل بين الأنماط الرقمية فيتركه كما هو.</li>
                 <li><strong>محدد النطاق</strong>: عند توصيل جهاز إرسال واستقبال يغير النطاق في الجهاز.</li>
                 <li><strong>زر تبويب المحطات</strong>: يفتح التبويب الذي يسرد كل المحطات التي سمعتها أو تستطيع التخاطب معها.</li>
                 <li><strong>زر تبويب السجل</strong>: يفتح التبويب الذي يسرد كل <span translate="no">QSO</span> التي أجريتها. تظهر على هذا الزر نقطة صفراء إذا كان لديك QSO لم تُرفع إلى QRZ.
@@ -1075,6 +1143,7 @@
                         </li>
                     </ul>
                     في كل الحالات تُرتب المحطات التي تستوفي المعيار نفسه حسب قوة الإشارة. فمثلا <span translate="no">أي شخص</span> يقدّم رموز النداء الجديدة أولا، لكن أقواها إشارة يكون في أعلى القائمة.
+                    تُعرض المحطات التي تستوفي معايير الهدف دائمًا أولًا؛ ويفصلها عن البقية فاصل قصير فيه السطر «المحطات أدناه لا تستوفي معايير الهدف». وعندما لا تستوفي أي محطة المعايير يظهر السطر «لا توجد محطة مستهدفة – انظرها أدناه» في أعلى القائمة.
                 </li>
                 <li><strong>التكرار</strong>: كم مرة يُتصل بذلك الهدف:
                     <ul>
@@ -1137,6 +1206,8 @@
                         <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">5/6 RR73</span>: أكدت تقريرك بـ <span translate="no">RR73</span>.</li>
                         <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">6/6 DONE</span>: اكتمل <span translate="no">QSO</span> (تُبودلت 73).
                         </li>
+                        <li><span style="color: #aaaaaa; font-weight: bold;"><span translate="no">BUSY</span></span>:
+                            سُمعت في <span translate="no">QSO</span> مع محطة أخرى.</li>
                         <li><span
                                 style="color: #555555; font-weight: bold;"><span translate="no">GONE</span>: لم تُسمع في الدورات القليلة الأخيرة.
                         </li>
@@ -1171,6 +1242,88 @@
             </ul>
 
             <p>تُرتب المحطات آليا حسب الأهمية. وتغيير معايير الهدف أو القيود يعيد ترتيب القائمة فورا.</p>
+
+            <h4 id="stations-order">ترتيب القائمة</h4>
+            <p>من أعلى القائمة إلى أسفلها:</p>
+            <ol>
+                <li>المحطات التي أنهيت معها اتصالًا للتو (<span translate="no">DONE</span>).</li>
+                <li>المحطة التي اخترتها بـ <span translate="no">CALL</span>.</li>
+                <li>المحطات التي في اتصال معك، الأكثر تقدمًا أولًا: التي تنتظر 73 منك، ثم التي أرسلت لك تقريرها، ثم التي نادتك.</li>
+                <li>المحطات على نطاقك التي تطابق معايير الهدف، الأفضل مطابقة أولًا. عند تساوي المطابقة تأتي الإشارة الأقوى أولًا؛ ومع هدف المسافة تحسم المسافة أولًا.</li>
+                <li>سطر «المحطات أدناه لا تستوفي معايير الهدف»، ثم كل المحطات الأخرى بالترتيب نفسه.</li>
+                <li>المحطات التي لم تعد تُسمع (<span translate="no">GONE</span>)، وفي الأسفل تمامًا المحطات التي لا يتسع نداؤها مع ندائك معًا في رسالة واحدة (<span translate="no">TOO LONG</span>).</li>
+            </ol>
+            <p>
+                داخل كل مجموعة تأتي المحطات التي سُمعت آخر مرة على نطاق آخر بعد محطات نطاقك. لا تُعرض المحطات المسموعة في نمط آخر؛ وتعود أول مرة تُسمع فيها في النمط الحالي. المحطات التي أضفتها بزر + تبقى دائمًا في القائمة. الخط بين الأهداف وبقية المحطات هو نفسه على الهاتف والحاسوب وiPhone والتحكم عن بُعد عبر الويب؛ وهو مجرد عنوان، ولا يفعل النقر عليه شيئًا.
+            </p>
+
+            <h4 id="stations-modes">تبويب المحطات في كل نمط اتصال</h4>
+            <p>
+                تستخدم <span translate="no">FT8</span> و<span translate="no">FT4</span> و<span translate="no">FT2</span> و<span translate="no">LQ8</span> و<span translate="no">Q65</span> و<span translate="no">MSK144</span> و<span translate="no">FST4</span> كلها هذا التبويب نفسه: عناصر التحكم نفسها في الأعلى، وصفوف المحطات نفسها، والترتيب نفسه. لا تعرض القائمة إلا المحطات المسموعة في النمط الذي تستخدمه. ما يتغير من نمط إلى آخر:
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">FT8</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 15 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT4</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 7.5 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FT2</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 3.75 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">LQ8</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 15 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/4 – 4/4</span></dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Q65</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 15 – 300 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">يُختار في الشريط السفلي</span> النمط الفرعي (<span translate="no">30A</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">MSK144</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 5 – 30 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">يُختار في الشريط السفلي</span> مدة الدورة (<span translate="no">15s</span> ...)</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">FST4</span></dt>
+                    <dd><span class="row-label">مدة الدورة</span> 15 – 1800 s</dd>
+                    <dd><span class="row-label">خطوات الاتصال</span> <span translate="no">1/6 – 6/6</span></dd>
+                    <dd><span class="row-label">يُختار في الشريط السفلي</span> مدة الدورة</dd>
+                </div>
+            </dl>
+            <p>
+                المُختار بجانب النمط في الشريط السفلي موجود على الهاتف والحاسوب وiPhone والتحكم عن بُعد عبر الويب. التسلسلان 0 و1 هما الدورات الزوجية والفردية للنمط أيًا كان طولها. ومع الدورات الطويلة لا تُعد المحطة غير مسموعة (<span translate="no">GONE</span>) إلا بعد عدد مماثل من الدورات الصامتة.
+            </p>
+
+            <p id="stations-ft4-ft2"><strong><span translate="no">FT4</span> / <span translate="no">FT2</span></strong>: كل شيء يعمل كما في <span translate="no">FT8</span>، لكن أسرع. كل دورة قصيرة، لذا يتقدم الاتصال بسرعة: في <span translate="no">FT2</span> قد ينتهي اتصال كامل في أقل من دقيقة بكثير.</p>
+
+            <p id="stations-lq8"><strong><span translate="no">LQ8</span></strong>: لاتصال <span translate="no">LQ8</span> أربع خطوات بدل ست، ويعرضها عمود الحالة:</p>
+            <ul>
+                <li><span style="color: #00ff00; font-weight: bold;"><span translate="no">1/4 CQ</span></span>: سُمعت وهي تنادي <span translate="no">CQ</span>، مثلًا <code translate="no">CQ DL1XYZ JO62</code>.</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">2/4 CALL</span></span>: نادتك، مع محدد موقعها وتقريرك في الرسالة نفسها، مثلًا <code translate="no">HB9IPH DL1XYZ JO62 -11</code>.</li>
+                <li><span style="color: #00ffff; font-weight: bold;"><span translate="no">3/4 RPT73</span></span>: أرسلت تقريرها مع التأكيد؛ ويظهر بالشكل <code translate="no">HB9IPH DL1XYZ R-11</code>.</li>
+                <li><span style="color: #0088ff; font-weight: bold;"><span translate="no">4/4 DONE</span></span>: اكتمل <span translate="no">QSO</span> (تم تبادل 73).</li>
+            </ul>
+            <p>لا توجد في <span translate="no">LQ8</span> خطوة تقرير منفصلة ولا <span translate="no">RR73</span>: هكذا صُمم البروتوكول. <span translate="no">DIRECT</span> و<span translate="no">BUSY</span> و<span translate="no">GONE</span> و<span translate="no">TOO LONG</span> لها المعنى نفسه كما في <span translate="no">FT8</span>. إذا ضغطت <span translate="no">CALL</span> على محطة لا يمكن إرسال ندائها في <span translate="no">LQ8</span> مع ندائك، يخبرك qFT8 بذلك ولا ينادي.</p>
+
+            <p id="stations-q65"><strong><span translate="no">Q65</span></strong>: اختر النمط الفرعي بجانب النمط في الشريط السفلي قبل أن تنادي؛ لا تُفك المحطات التي تستخدم نمطًا فرعيًا آخر. في الأنماط الفرعية الطويلة تستغرق كل خطوة من الاتصال دورة كاملة (حتى 5 دقائق)، فيطول الاتصال كثيرًا، وتتغير صفوف المحطات مرة كل دورة. مع تشغيل المتوسط قد لا تظهر المحطة إلا بعد جمع عدة إرسالات منها. تحتاج الأنماط الفرعية الطويلة إلى <a href="#tx-limit">حد الإرسال المتواصل</a> كبير بما يكفي.</p>
+
+            <p id="stations-msk144"><strong><span translate="no">MSK144</span></strong>: اختر مدة الدورة بجانب النمط في الشريط السفلي. تظهر المحطة عندما تُفك إحدى ومضاتها، فتأتي الصفوف وتذهب مع النيازك؛ قوة إشارتها هي قوة الومضة، وΔt الخاص بها هو لحظة الومضة داخل الدورة، لا خطأ في الساعة. تُعرض الرسالة القصيرة بالنداءين كالشكل الطويل، مثلًا <code translate="no">K1ABC W9XYZ R+03</code>؛ ولا تقرؤها إلا محطتا ذلك الاتصال. عند تشغيل الرسائل القصيرة في الإعدادات يرسل qFT8 تقاريرك و<span translate="no">RRR</span> و<span translate="no">73</span> بهذا الشكل؛ أما <span translate="no">CQ</span> الخاص بك ونداؤك و<span translate="no">RR73</span> فتخرج دائمًا كرسائل عادية. كل المحطات ترسل على 1500 هرتز، لذا لا تقول إزاحة المحطة الكثير.</p>
+
+            <p id="stations-fst4"><strong><span translate="no">FST4</span></strong>: اختر مدة الدورة بجانب النمط في الشريط السفلي؛ يجب أن تطابق مدة المحطة الأخرى. مع دورات 900 أو 1800 ثانية قد يستغرق اتصال واحد ساعة أو أكثر، وكل إرسال منك يبقي الجهاز في الإرسال حتى 30 دقيقة: اضبط <a href="#tx-limit">حد الإرسال المتواصل</a> ليسمح بذلك، وإلا فلن يرسل qFT8.</p>
+
+            <p>إعدادات <span translate="no">AUTO</span> والأهداف وإعادة المحاولات هي نفسها في كل هذه الأنماط؛ انظر <a href="#auto-mode">التشغيل الآلي (<span translate="no">AUTO</span>)</a>.</p>
+
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
 
             <h3 id="ui-log-tab">تبويب السجل</h3>
@@ -1261,7 +1414,7 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>: يُظهر أو يخفي بطاقات المعلومات على الشاشة (الوقت، خط الليل والنهار، موضع تعامد الشمس، إحداثيات المؤشر).</li>
                         <li><strong><span translate="no">MSGs</span></strong>: يُظهر أو يخفي مسارات الرسائل المباشرة وعلاماتها: <span style="color: #ff9800; font-weight: bold;">بالبرتقالي</span> للرسائل المستقبلة (الموجهة إلى محطتك) و<span style="color: #ffff00; font-weight: bold;">بالأصفر</span> للرسائل المرسلة (من محطتك). الضغط على منتصف السهم يفتح نص الرسالة.</li>
-                        <li><strong><span translate="no">QSOs</span></strong>: يُظهر أو يخفي علامات اتصالات جلستك الأخيرة (<span style="color: #f59e0b; font-weight: bold;">كهرماني</span> للمسجَّل، <span style="color: #10b981; font-weight: bold;">زمردي</span> للمؤكد).</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: يُظهر أو يخفي علامات اتصالات جلستك الأخيرة (<span style="color: #f59e0b; font-weight: bold;">كهرماني</span> للمسجَّل، <span style="color: #10b981; font-weight: bold;">زمردي</span> للمؤكد). عند إيقاف <span translate="no">MSGs</span> و<span translate="no">Spot</span> كليهما، يصل خط رفيع بين محطتك وكل محطة <span translate="no">QSO</span> على الخريطة (بلا أسهم)، فترى بلمحة إلى أين ذهبت اتصالاتك؛ وتظهر هذه الخطوط أيضًا في صورة الخريطة المشتركة.</li>
                         <li><strong><span translate="no">Spot</span></strong>: يُظهر أو يخفي رصدات الحركة الحية المفكوكة الترميز على النطاق كما تسمعها محطتك (<span style="color: #00ffff; font-weight: bold;">سماوي</span> لـ RX/CQ) والراصدين الذين يبلغون عن إشارتك في PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">معيّنات حمراء</span>).</li>
                         <li><strong><span translate="no">SOTA</span></strong>: يُظهر أو يخفي مراجع قمم «قمم على الهواء» ومفعِّلي القمم النشطين (⛰️).</li>
                         <li><strong><span translate="no">POTA</span></strong>: يُظهر أو يخفي مراجع متنزهات «متنزهات على الهواء» ومفعِّلي المتنزهات النشطين (🌲).</li>
@@ -1320,7 +1473,7 @@
                 <li><strong>خريطة العالم</strong>: اختيار ما تعرضه الخريطة وإلى متى: QSO المنجزة، والرصدات، والرسائل المرسلة والمستقبلة، ولكل منها نافذته الزمنية.</li>
                 <li><strong>الوقت والموقع</strong>: ضبط مزامنة فارق التوقيت (NTP أو GPS) ومحدد الموقع Maidenhead الخاص بك.</li>
                 <li><strong>التشغيل التلقائي</strong>: ضبط تفضيلات التشغيل الآلي، وعدد إعادات المحاولة، واستبعاد البادئات، وهل يرد <span translate="no">AUTO</span> على <a href="#auto-directed-cq">نداءات CQ الموجهة</a> التي ليست لك.</li>
-                <li><strong>الأنماط الرقمية</strong>: خيارات فك الترميز لكل نمط في مكان واحد &mdash; FT8/FT4/FT2 و LQ8 و JS8 و WSPR &mdash; ومنها الإعداد المشترك <strong>فك ترميز عميق</strong> وعدد الخيوط التي يجوز لفك الترميز استخدامها.</li>
+                <li><strong>الأنماط الرقمية</strong>: خيارات فك الترميز لكل نمط في مكان واحد &mdash; FT8/FT4/FT2 و LQ8 و Q65 و MSK144 و FST4 و FST4W و JS8 و WSPR &mdash; ومنها الإعداد المشترك <strong>فك ترميز عميق</strong> وعدد الخيوط التي يجوز لفك الترميز استخدامها.</li>
                 <li><strong><span translate="no">SSB</span></strong> و<strong><span translate="no">CW</span></strong> و<strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong> و<strong><span translate="no">SSTV</span></strong>: إعدادات كل نمط من هذه الأنماط، وشرحها في أقسامها. زر الترس في لوحة كل نمط يفتح الصفحة نفسها.</li>
                 <li><strong>تحديد النطاق</strong>: تخصيص النطاقات النشطة وسلوك تبديل النطاق.</li>
                 <li><strong>خادم ويب للتحكم عن بعد</strong>: تفعيل خادم الويب المدمج للتحكم عن بعد وتهيئته.</li>
@@ -1807,11 +1960,66 @@
                 أي خدمة: حذف اتصال QSO هنا لا يؤدي إلا إلى تنبيهك بأنه لا يزال موجودًا هناك.
             </p>
 
-            <h3>خوادم qFT8</h3>
+            <h3 id="choosing-services">اختيار الخدمات والخوادم</h3>
             <p>
-                قرب أسفل الإعدادات، بين خطين، يضم قسم <strong>خوادم qFT8</strong> ما يستطيع هذا الجهاز
-                تقديمه لبرامج أخرى: خادم الويب للتحكم عن بعد، والـ bridge الخاص بـ qFT8، وخوادم
-                <span translate="no">Wavelog</span> و<span translate="no">Cloudlog</span> وqFT8log.
+                يعرض قسم <strong>مزامنة QSO</strong> كلًّا من QRZ وLoTW وeQSL وكل خدمة سبق أن أعددتها. ويعرض زر <strong>إضافة خدمات أخرى</strong> أسفل الصفوف كل الخدمات: حدّد خدمة لتحصل على صفّها؛ وألغِ تحديدها فتتوقف تمامًا (لا رفع ولا تأكيدات، ولا تُحتسب لعلامة الصح الخضراء وتخرج من خيارات التصدير). ويُحفظ حسابها ومفتاحها ومفتاح تشغيلها، فتعود كما كانت عند تحديدها من جديد.
+            </p>
+            <p>
+                وتحته مباشرةً يضم قسم <strong>الخوادم</strong> ما يقدّمه هذا الجهاز لبرامج أخرى. مربع الاختيار في كل صف، مثل «خادم ويب للتحكم عن بعد على المنفذ 13497»، هو المفتاح نفسه الموجود في صفحة ذلك الخادم، وزر الترس يفتح الصفحة. خادم الويب للتحكم عن بعد وqFT8 bridge موجودان دائمًا (لا يوجد أيٌّ منهما على iPhone)؛ ويضيف زر <strong>إضافة خوادم أخرى</strong> خوادم Wavelog وCloudlog وqFT8log. الخادم الذي تلغي تحديده يتوقف فورًا ويعود كما كان عند تحديده من جديد.
+            </p>
+            <p>
+                التنزيلات التي تغذّي الخريطة موجودة في إعدادات أخرى &gt; <strong>مصادر البيانات</strong>، أسفل تحديد النطاق مباشرةً؛ وكلها مفعّلة افتراضيًا.
+            </p>
+
+            <h3 id="services-list">كل خدمة وكل خادم</h3>
+            <p>
+                ما يستطيع qFT8 إرسال اتصالات QSO والتقارير إليه، وما يستطيع تقديمه لبرامج أخرى، ومكان وصف كل منها:
+            </p>
+            <ul>
+                <li><strong>مزامنة QSO</strong> (تخرج اتصالات QSO الخاصة بك): <a href="#qrz-integration"><span translate="no">QRZ</span></a> و<a href="#lotw-integration"><span translate="no">LoTW</span></a> و<a href="#eqsl"><span translate="no">eQSL</span></a> و<a href="#wavelog"><span translate="no">Wavelog</span></a> و<a href="#cloudlog"><span translate="no">Cloudlog</span></a> و<a href="#qft8-log">qFT8log</a> (إلى qFT8 آخر) و<a href="#online-logbooks"><span translate="no">HRDLog</span> و<span translate="no">HamQTH</span> و<span translate="no">World Radio League</span> و<span translate="no">Club Log</span></a>، وبرامج السجل في شبكتك (<a href="#lan-loggers"><span translate="no">FT8 network log</span> و<span translate="no">ADIF over UDP</span></a>).</li>
+                <li><strong>الخوادم</strong> (تتصل برامج أخرى بهذا qFT8): <a href="#remote-control">خادم الويب للتحكم عن بُعد</a> و<a href="#bridge">الـ bridge الخاص بـ qFT8</a> وخادما <a href="#wavelog-server"><span translate="no">Wavelog</span></a> و<a href="#cloudlog-server"><span translate="no">Cloudlog</span></a> و<a href="#qft8-log-server">خادم qFT8log</a> و<a href="#lan-loggers">المستقبِلات لبرامج السجل في شبكتك</a> (<span translate="no">FT8 network log</span> و<span translate="no">ADIF over UDP</span> وواجهتا <span translate="no">AC Log</span> و<span translate="no">DXLab</span>).</li>
+                <li><strong>الإبلاغ</strong> (ما تسمعه يخرج): <a href="#pskreporter"><span translate="no">PSKReporter</span></a> و<a href="#wspr-reports"><span translate="no">WSPRnet</span></a> و<a href="#lq8-announce">نشاط <span translate="no">LQ8</span> على الخريطة المباشرة</a>.</li>
+                <li><strong>الفعاليات</strong>: <a href="#activation">تفعيلات <span translate="no">POTA</span> و<span translate="no">SOTA</span></a> و<a href="#event-counter">عدّاد QSO</a>.</li>
+            </ul>
+            <p>
+                لمشاركة سجل واحد بين عدة برامج qFT8، qFT8log هو الطريقة الموصى بها: يعمل بالطريقة نفسها على كل qFT8، وهو الأكثر أمانًا (كلمة مرور، وكل رسالة موقّعة، ومشفّرة افتراضيًا)، ويؤكد برنامج qFT8 الآخر كل اتصال QSO فلا يضيع شيء في الطريق. أما الخدمات التي تسير عبر UDP فلا تستطيع أن تعد بذلك، وتقول الإعدادات هذا تحت كل مفتاح منها (<a href="#lan-loggers">أدناه</a>).
+            </p>
+
+            <h3 id="online-logbooks">HRDLog وHamQTH وWorld Radio League وClub Log</h3>
+            <p>
+                لكلٍّ منها صفحته. يطلب HRDLog <strong>رمز الرفع في HRDLog</strong> الظاهر في ملفك الشخصي على HRDLog (لا كلمة المرور)؛ ويطلب HamQTH <strong>النداء في HamQTH</strong> و<strong>كلمة مرور HamQTH</strong>؛ ويطلب World Radio League <strong>مفتاح API لـ WRL</strong> الذي تنشئه على موقعه (Integrations &gt; Developer API)، و<strong>سجل WRL</strong> إن كان لديك أكثر من سجل؛ ويطلب Club Log، المتاح فقط في الإصدارات التي تحمل مفتاح Club Log الخاص بـ qFT8، <strong>بريد Club Log الإلكتروني</strong> و<strong>كلمة مرور تطبيق Club Log</strong>. ثم اضغط <strong>تحقق</strong>. لا يحذف qFT8 أي QSO هناك أبدًا؛ وفي Club Log يترك QSO غيّرت نداءه أو تاريخه أو وقته أو نطاقه أو نمطه إدخاله القديم (احذفه من الموقع).
+            </p>
+
+            <h3 id="lan-loggers">برامج السجل في شبكتك</h3>
+            <p>
+                يمكن لـ qFT8 إرسال كل اتصال تسجّله إلى برامج السجل والخرائط في شبكتك المحلية. في <strong>إضافة خدمات أخرى</strong> حدّد <span translate="no">FT8 network log</span> (منفذ UDP ‏2237) أو <span translate="no">ADIF over UDP</span> (منفذ UDP ‏2333)؛ يظهر صفّه تحت <strong>مزامنة QSO</strong>. في صفحته اكتب عنوان الحاسوب الذي يعمل عليه البرنامج الآخر (127.0.0.1 هو هذا الحاسوب) والمنفذ، واضغط <strong>تحقق</strong>، ثم حدّد مربعه. يمكن لـ <span translate="no">FT8 network log</span> أيضاً إرسال فك التشفير وحالة محطتك (<strong>أرسل أيضاً فك التشفير وحالة محطتي (للخرائط والتنبيهات)</strong>)، وهي ما تستخدمه خريطة البرنامج الآخر وتنبيهاته. لا إشعار استلام لهذه الرسائل، لذا لا يُحتسب الاتصال المرسل بهذه الطريقة مرفوعاً أبداً. تذكر الإعدادات تحت كل واحد البرامج التي جُرّب معها.
+            </p>
+            <p>
+                وفي الاتجاه المعاكس، يمكن لـ qFT8 استقبال اتصالات البرامج الأخرى في سجله. في <strong>إضافة خوادم أخرى</strong> حدّد المستقبِل للصيغة التي يرسلها البرنامج الآخر: <span translate="no">FT8 network log</span> (UDP ‏2237) أو <span translate="no">ADIF over UDP</span> (UDP ‏2333) أو واجهة <span translate="no">AC Log</span> (TCP ‏1100) أو واجهة <span translate="no">DXLab</span> (TCP ‏52001)؛ ثم حدّد صفّه تحت <strong>الخوادم</strong>. تعرض صفحته العنوان الذي يُدخل في البرنامج الآخر وتتيح تغيير المنفذ وقبول الاتصالات من بعض العناوين فقط. لا شيء يُستقبل بهذه الطريقة يمكنه الإرسال أو تغيير الجهاز أو حذف اتصال. المستقبِلات مطفأة حتى تشغّلها؛ وعلى iPhone لا تعمل إلا ما دام qFT8 مفتوحاً ولا تنضم أبداً إلى مجموعة بث متعدد.
+            </p>
+
+            <div class="highlight" id="lan-udp-note">
+                <p>
+                    تسجيل UDP ليس كاملًا: يرسل <span translate="no">FT8 network log</span> و<span translate="no">ADIF over UDP</span> كل اتصال QSO مرة واحدة دون إشعار استلام، فإذا ضاعت تلك الحزمة (مثلًا على اتصال Wi-Fi ضعيف) ضاع الاتصال QSO. ولا توجد كلمة مرور في أي من هذه الصيغ أيضًا: المستقبِل الذي تشغّله يسمح لأي شخص في الشبكة بإرسال اتصالات QSO باسمك، والعميل يرسل اتصالات QSO الخاصة بك إلى أي جهاز يستمع على العنوان الذي كتبته. تعرض الإعدادات هذا تحت كل مفتاح منها، وعلى الصفوف وفي صفحاتها. وقائمة العناوين المقبولة في المستقبِل تحدّد من يستطيع الإرسال إليه. أما لاتصالات QSO الخاصة بك فنوصي بـ qFT8log بدلًا من ذلك: متوافق بين برامج qFT8، وهو الأكثر أمانًا، ومشفّر (انظر <a href="#qft8-log">qFT8log</a>).
+                </p>
+            </div>
+
+            <h3 id="pskreporter"><span translate="no">PSKReporter</span></h3>
+            <p>
+                يجمع <span translate="no">PSKReporter</span> تقارير الاستقبال من أنحاء العالم: أي محطة سُمعت وأين، وعلى أي نطاق وبأي نمط، وبأي قوة. في الإعدادات، تحت <strong>الإبلاغ</strong>، يرسل <strong>رفع التقارير إلى PSKReporter</strong> (معطّل افتراضيًا) المحطات التي تفك تشفيرها، في كل نمط يفك qFT8 تشفيره، مع رمز ندائك ومحدد موقعك والـ Rig والهوائي. يفتح ترسه الصفحة:
+            </p>
+            <ul>
+                <li><strong>رفع التقارير أيضًا عند الاتصال عبر مكبر الصوت/الميكروفون</strong>: معطّل افتراضيًا، فلا يُرسل شيء بينما يستمع التطبيق عبر ميكروفون الجهاز بدل كابل إلى الراديو.</li>
+                <li>التقارير المنتظرة للإرسال (<em>يتم تخزين 12 سجل حاليًا</em>) ووقت إرسالها (<em>الرفع التالي في ... UTC</em>). تُرسل معًا كل 5 دقائق تقريبًا. تُبلَّغ المحطة نفسها على النطاق والنمط نفسيهما مرة واحدة على الأكثر كل 15 دقيقة، ويُسقَط التقرير الأقدم من 10 دقائق. يرسلها <strong>رفع الآن</strong> فورًا؛ ويحذفها <strong>مسح ذاكرة التخزين المؤقت</strong> دون إرسال.</li>
+                <li><strong>إعادة الضبط للافتراضي</strong>.</li>
+            </ul>
+            <p>
+                وفي الاتجاه المعاكس، يجلب <strong>تنزيل الرصدات من PSKReporter</strong> (الإعدادات، <strong>مصادر البيانات</strong>) من سمع إشارتك ويعرضهم على خريطة العالم. أما <span translate="no">WSPRnet</span>، شبكة المنارات، فيُوصف مع <a href="#wspr-reports"><span translate="no">WSPR</span></a>.
+            </p>
+
+            <h3 id="lq8-announce">نشاط <span translate="no">LQ8</span> على الخريطة المباشرة</h3>
+            <p>
+                <strong>الإعلان عن نشاط LQ8 لخدمة qFT8</strong> (الإعدادات، <strong>الإبلاغ</strong>، معطّل افتراضيًا): أثناء إرسالك بنمط <span translate="no">LQ8</span> عبر راديو، يرسل qFT8 رمز ندائك ومحدد موقعك من 4 أحرف والنطاق والتردد والنمط والوقت وإصدار qFT8. تعرضه برامج qFT8 الأخرى والخريطة المباشرة على <span translate="no">lq8.org/live</span> لمدة 10 دقائق؛ ويُحفظ في الذاكرة فقط. في أول مرة تفعّل فيها TX بنمط <span translate="no">LQ8</span> وهو معطّل، يسأل qFT8 مرة واحدة إن كنت تريد تشغيله. <strong>الإعلان عنه أيضًا عند الاتصال عبر مكبر الصوت/الميكروفون</strong> يفعل الشيء نفسه حين لا يوجد راديو موصول بكابل. <strong>تنزيل نشاط LQ8 من خادم qFT8</strong> (الإعدادات، <strong>مصادر البيانات</strong>) يعرض نشاط <span translate="no">LQ8</span> للمحطات الأخرى على خريطتك.
             </p>
 
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
@@ -2268,6 +2476,18 @@
                 عندما تشتغل من متنزه (<span translate="no">POTA</span>) أو من قمة (<span translate="no">SOTA</span>) ابدأ <strong>تفعيلا</strong> في qFT8. من تلك اللحظة يحمل كل QSO تسجله، بأي نمط، متنزهك أو قمتك آليا، ويعدّها qFT8 لك، وفي النهاية يكتب الملفات التي تطلبها البرامج بضغطة واحدة.
             </p>
 
+            <h3 id="events-section">قسم الفعاليات في الإعدادات</h3>
+            <p>
+                في الإعدادات قسم <strong>الفعاليات</strong> لفعاليات التشغيل. وهو يضم اليوم:
+            </p>
+            <ul>
+                <li><strong>تفعيل <span translate="no">POTA</span></strong> و<strong>تفعيل <span translate="no">SOTA</span></strong>: تفعيل متنزه أو قمة، كما هو موصوف أدناه. تسرد العدسة المكبرة بجانب كل منهما تفعيلاتك السابقة؛ ويفتح الترس، حيث يظهر، إعدادات الإعلان الخاصة بالبرنامج.</li>
+                <li><strong>بدء العداد</strong>: <a href="#event-counter">عدّاد QSO</a>، لأي فعالية أخرى (مسابقة أو يوم نادٍ أو محطة فعالية خاصة).</li>
+            </ul>
+            <p>
+                يوصف صيد المتنزهات والقمم من المنزل في قسمي <a href="#pota"><span translate="no">POTA</span></a> و<a href="#sota"><span translate="no">SOTA</span></a>.
+            </p>
+
             <h3 id="activation-start">البدء</h3>
             <ol>
                 <li>في تبويب الإعدادات اضغط <strong><span translate="no">تفعيل POTA</span></strong> أو <strong><span translate="no">تفعيل SOTA</span></strong> (تفعيل POTA / تفعيل SOTA، فوق <strong>تصدير / استيراد الإعدادات</strong> مباشرة).</li>
@@ -2303,7 +2523,7 @@
 
             <h3 id="activation-chip">ما دام مفتوحا: العلامة الزرقاء</h3>
             <p>
-                تبقى علامة <strong><span translate="no">POTA</span></strong> أو <strong><span translate="no">SOTA</span></strong> زرقاء أسفل يمين الشلال ما دام التفعيل مفتوحا، وبجانب الكلمة عدد QSO في التفعيل: <strong><span translate="no">POTA 10</span></strong>. كل QSO تسجله يُحسب، وينقص العدد إذا أُزيل QSO من التفعيل أو حُذف أو تُراجع عنه في المسجِّل. مع متنزهين معا يبقى العدد واحدا، لأن كل QSO يُحسب للمتنزهين. وحيث يضيق المكان تعرض العلامة العدد وحده بجانب أيقونتها، وحيث لا يتسع حتى لذلك تُرسم أصغر، هي والتحذير الأحمر الذي يشاركها السطر. اضغط عليها لمعرفة حالة التفعيل:
+                تبقى علامة <strong><span translate="no">POTA</span></strong> أو <strong><span translate="no">SOTA</span></strong> زرقاء أسفل يمين الشلال ما دام التفعيل مفتوحا، وبجانب الكلمة عدد QSO في التفعيل: <strong><span translate="no">POTA 10</span></strong>. كل QSO تسجله يُحسب مرة واحدة: مراسلة المحطة نفسها مرة أخرى على النطاق والنمط نفسيهما تُعدّ تكرارا ولا تُحسب. وينقص العدد إذا أُزيل QSO من التفعيل أو حُذف أو تُراجع عنه في المسجِّل. وفي <span translate="no">POTA</span> يبدأ العدد من الصفر من جديد عند 00:00 UTC. مع متنزهين معا يبقى العدد واحدا، لأن كل QSO يُحسب للمتنزهين. وحيث يضيق المكان تعرض العلامة العدد وحده بجانب أيقونتها، وحيث لا يتسع حتى لذلك تُرسم أصغر، هي والتحذير الأحمر الذي يشاركها السطر. اضغط عليها لمعرفة حالة التفعيل:
             </p>
 
             <div class="phone-mockup">
@@ -2312,7 +2532,7 @@
             </div>
 
             <ul>
-                <li><strong>المرجع والعدد</strong>: QSO المنجزة من العدد الذي يشترطه البرنامج لصحة التفعيل (10 للمتنزه و 4 للقمة)، وكم منها كان مع متنزه آخر أو قمة أخرى (<span translate="no">P2P</span> / <span translate="no">S2S</span>).</li>
+                <li><strong>المرجع والعدد</strong>: عدد QSO المحسوبة حتى الآن، معروضا مقابل 10 للمتنزه أو 4 للقمة، وكم منها كان مع متنزه آخر أو قمة أخرى (<span translate="no">P2P</span> / <span translate="no">S2S</span>).</li>
                 <li><strong>عرض التفعيل</strong>: قائمة QSO الخاصة به (أدناه).</li>
                 <li><strong>إنهاء التفعيل</strong>: ينهيه. يسأل أولا دائما، ومعه <strong>متابعة</strong> للاستمرار.</li>
                 <li><strong>إغلاق</strong>: يغلق البطاقة.</li>
@@ -2340,7 +2560,7 @@
 
             <h3 id="activation-finish">الإنهاء والاستئناف</h3>
             <p>
-                <strong>إنهاء التفعيل</strong> يعرض ملخصا: المراجع، ووقتي البدء والانتهاء، وعدد QSO لكل نمط، وهل التفعيل صحيح. QSO المسجلة بعد الإنهاء ليست جزءا منه.
+                <strong>إنهاء التفعيل</strong> يعرض ملخصا: المراجع، ووقتي البدء والانتهاء، وعدد QSO لكل نمط. QSO المسجلة بعد الإنهاء ليست جزءا منه.
             </p>
             <ul>
                 <li><strong>أنهيته خطأ، أو عدت بعد استراحة؟</strong> لمدة 24 ساعة يعرض الملخص وقائمة التفعيل ونافذة بدء <em><span translate="no">تفعيل POTA</span></em> / <em><span translate="no">تفعيل SOTA</span></em> الزر <strong>استئناف التفعيل</strong>، وهو يعيد فتحه كأن شيئًا لم يكن.</li>
@@ -2385,13 +2605,21 @@
                 عندما تكون المحطة التي تشتغل معها في متنزهين معا يحتفظ qFT8 بالاثنين: يقرأ المتنزه الثاني من تعليق الرصدة إذا كتبه الراصد هناك. ويعرض السجل المتنزه الأول وعدد ما زاد عليه (<code>US-1234 +1</code>). إذا كان متنزه خاطئا أو ناقصا فصحح الحقل <strong><span translate="no">POTA</span></strong> في QSO من <a href="#qso-editor">محرر QSO</a>؛ وهو يقبل عدة متنزهات مفصولة بفواصل. والمتنزه الذي يُذكر مرتين للمحطة نفسها (في الرصدة ثم في تعليقها، أو مرتين في قائمة مكتوبة) يُحسب مرة واحدة، في السجل وفي كل ملف مصدَّر.
             </p>
 
+            <h3 id="event-counter">عدّاد QSO</h3>
+            <p>
+                لأي فعالية أخرى، يعدّ زر <strong>بدء العداد</strong> في قسم الفعاليات كل QSO تسجّله من تلك اللحظة. أثناء العدّ يصبح الزر أزرق ويعرض <strong>العداد 12</strong>، وتظهر الشارة الزرقاء نفسها أسفل يمين الشلال. لمسة على أيٍّ منهما تنهي العدّ؛ ولا يُحفظ شيء بعد ذلك. ويستمر العدّ إذا أُغلق التطبيق ثم فُتح من جديد.
+            </p>
+
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
 
         <section id="js8-chat">
             <h2>محادثة <span translate="no">JS8</span></h2>
             <p>
-                عند التشغيل بنمط <strong><span translate="no">JS8</span></strong> يقدم qFT8 واجهة محادثة حوارية بالنص الحر إلى جانب عمليات QSO التقليدية في FT8/FT4. يتيح JS8 مراسلة متينة بالإشارات الضعيفة من لوحة مفاتيح إلى لوحة مفاتيح بعدة سرعات قابلة للاختيار (فترات <strong><span translate="no">Slow</span></strong> من 30 ثانية و<strong><span translate="no">Normal</span></strong> من 15 ثانية و<strong><span translate="no">Fast</span></strong> من 10 ثوان و<strong><span translate="no">Turbo</span></strong> من 6 ثوان).
+                يُستخدم <span translate="no">JS8</span> للمحادثات المكتوبة على لوحة المفاتيح: نص حر بأي طول، ورسائل إلى محطة واحدة أو إلى مجموعة، وأسئلة قصيرة يجيب عنها برنامج المحطة الأخرى آليا. الرسالة الأطول من إرسال واحد تُقطَّع إلى إطارات وتُرسل بمعدل إطار واحد في كل فترة زمنية، وتجمع المحطة المستقبلة الإطارات من جديد في رسالة واحدة.
+            </p>
+            <p>
+                اختر <strong><span translate="no">JS8</span></strong> من محدد النمط في الشريط السفلي. يصبح تبويب المحطات لوحة محادثة <span translate="no">JS8</span>، ويحل زر السرعة (البند #11) محل زر التتابع في الشريط السفلي. أما مخطط الطيف ومحدد النطاق وزر <span translate="no">TX ON</span> / <span translate="no">TX OFF</span> الرئيسي والشريط الأحمر لتردد الإرسال فتعمل كما في <span translate="no">FT8</span>.
             </p>
 
             <div class="phone-mockup">
@@ -2399,128 +2627,252 @@
                 <img src="../js8chat.jpg" alt="محادثة JS8 في qFT8" class="screen" width="2280" height="1080">
             </div>
 
-            <h3>أنواع القنوات والتوجيه</h3>
+            <h3 id="js8-pane">لوحة محادثة <span translate="no">JS8</span></h3>
+            <p>من اليسار إلى اليمين ومن الأعلى إلى الأسفل:</p>
+            <ol>
+                <li><strong><span translate="no">AUTO</span></strong>: الردود الآلية، مفعّلة (أخضر) أو معطلة (أسود)؛ وهي مفعّلة افتراضيا. عند تفعيل <span translate="no">AUTO</span> وضبط الزر الرئيسي على <span translate="no">TX ON</span> يجيب qFT8 عن الأسئلة التي ترسلها إليك المحطات الأخرى (انظر <a href="#js8-auto">الردود الآلية</a>). لا يشغّل <span translate="no">AUTO</span> مرسلك أبدا.</li>
+                <li><strong>دردشة JS8</strong>: عنوان اللوحة.</li>
+                <li><strong>طلب</strong>: يفتح قائمة الأسئلة القياسية لإرسالها إلى المحادثة المفتوحة (انظر <a href="#js8-requests">أسئلة إلى المحطات الأخرى</a>). يكون رماديا في محادثة مع مجموعة غير <code translate="no">@ALLCALL</code>.</li>
+                <li><strong><span translate="no">QSO</span></strong>: يسجل <span translate="no">QSO</span> مع المحطة المفتوحة محادثتها (انظر <a href="#js8-logging">تسجيل QSO بنمط <span translate="no">JS8</span></a>). يكون رماديا في <code translate="no">[GLOBAL]</code> وفي محادثات المجموعات.</li>
+                <li><strong><span translate="no">CQ</span></strong>: يرسل نداء عاما إلى <code translate="no">@ALLCALL</code>: <code translate="no">CQ</code> متبوعا بأول أربعة أحرف من محدد موقعك، مثل <code translate="no">CQ JN47</code>.</li>
+                <li><strong>+</strong>: يفتح <strong>إضافة محادثة</strong> حيث تكتب رمز نداء أو مجموعة (<code translate="no">@NAME</code>) لبدء محادثة معها، حتى قبل سماع أي شيء منها.</li>
+                <li><strong>الرسائل</strong>: رسائل المحادثة المفتوحة، والأحدث في الأسفل. فوق كل رسالة: النطاق وتردد الصوت وقوة الإشارة (للرسائل المستلمة) وتاريخ <span translate="no">UTC</span> ووقته. رسائلك خضراء؛ والرسائل الموجهة إليك زرقاء؛ والبقية أزرق رمادي. الرسالة المنتظرة دورها صفراء داكنة، والتي على الهواء لها إطار ذهبي وتبدأ بـ <code translate="no">TX (sending 2/5)...:</code> أثناء خروج إطاراتها، ويتحول الجزء المرسل إلى الأخضر.</li>
+                <li><strong>قائمة المحادثات</strong>: المحادثات التي يمكنك فتحها (انظر <a href="#js8-channels">قائمة المحادثات</a>). المحادثة المفتوحة مظللة بالأزرق؛ والمحادثة التي فيها رسائل لم تقرأها بعد كهرمانية اللون.</li>
+                <li><strong>مربع الرسالة</strong>: حيث تكتب. تتحول الأحرف إلى كبيرة؛ حتى 100 حرف.</li>
+                <li><strong>سهم الإرسال</strong>: يرسل ما كتبته إلى المحادثة المفتوحة. ولا يفعل شيئا إذا كان المربع فارغا.</li>
+                <li><strong>زر السرعة</strong> في الشريط السفلي: <span translate="no">Slow</span> أو <span translate="no">Normal</span> أو <span translate="no">Fast</span> أو <span translate="no">Turbo</span> أو <span translate="no">Ultra</span> (انظر <a href="#js8-speeds">السرعات</a>).</li>
+            </ol>
             <p>
-                لوحة المحادثة في الجهة اليمنى تنظم الحركة الواردة والصادرة في تبويبات قنوات منفصلة:
+                عندما يعرض الزر الرئيسي <span translate="no">TX OFF</span> يظهر خط أحمر فوق مربع الرسالة يقول <strong>قم بتمكين TX لبدء الإرسال</strong> إذا كانت هناك رسالة منتظرة، أو <strong>قم بتمكين TX للسماح بتشغيل AUTO</strong> إذا كان <span translate="no">AUTO</span> مفعّلا. الرسائل التي ترسلها وأنت على <span translate="no">TX OFF</span> تنتظر في المحادثة؛ ولا يخرج شيء على الهواء حتى تضغط الزر الرئيسي.
             </p>
-            <ul>
-                <li><strong>القناة الرئيسية <code>[GLOBAL]</code></strong>: تعرض كل إرسال JS8 مفكوك الترميز في كامل نطاق التمرير الصوتي، وكذلك كل إرسالاتك. فتعطيك نظرة حية شاملة على كل نشاط النطاق في مكان واحد.</li>
-                <li><strong>قنوات المجموعات العامة (<code>@CQ</code>، <code>@ALLCALL</code>)</strong>: تُستخدم للنداءات العامة والإعلانات إلى كل المحطات المستمعة. الرسائل المرسلة إلى <code>@CQ</code> أو <code>@ALLCALL</code> يراها كل من هو مضبوط على التردد.</li>
-                <li><strong>قنوات المجموعات المخصصة (<code>@GROUPNAME</code>)</strong>: يدعم qFT8 مجموعات موجهة مخصصة (مثل <code>@EMERGENCY</code> و <code>@SOTA</code> و <code>@NET</code>). عند إرسال رسالة بوسم <code>@GROUP</code> أو استقبالها توضع آليا في تبويب قناتها الخاص.</li>
-                <li><strong>قنوات المحطات المباشرة (تبويبات رموز النداء)</strong>: اختيار محطة بعينها من قائمة القنوات أو من جدول المحطات يفتح محادثة خاصة برمز ندائها.</li>
-            </ul>
 
+            <h3 id="js8-speeds">السرعات</h3>
+            <p>
+                لكل سرعة فترتها الزمنية الخاصة. السرعات الأبطأ تستخدم عرض نطاق أقل وتفك إشارات أضعف؛ والأسرع ترسل نصا أكثر في الدقيقة. يستقبل qFT8 السرعة التي اخترتها بزر السرعة فقط، فاختر السرعة نفسها التي تستخدمها المحطات التي تريد محادثتها (<span translate="no">Normal</span> هي المعتادة).
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt><span translate="no">Slow</span></dt>
+                    <dd><span class="row-label">الفترة</span> 30 ث</dd>
+                    <dd><span class="row-label">عرض النطاق</span> نحو 25 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Normal</span></dt>
+                    <dd><span class="row-label">الفترة</span> 15 ث</dd>
+                    <dd><span class="row-label">عرض النطاق</span> نحو 50 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Fast</span></dt>
+                    <dd><span class="row-label">الفترة</span> 10 ث</dd>
+                    <dd><span class="row-label">عرض النطاق</span> نحو 80 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Turbo</span></dt>
+                    <dd><span class="row-label">الفترة</span> 6 ث</dd>
+                    <dd><span class="row-label">عرض النطاق</span> نحو 160 Hz</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Ultra</span></dt>
+                    <dd><span class="row-label">الفترة</span> 4 ث</dd>
+                    <dd><span class="row-label">عرض النطاق</span> نحو 250 Hz</dd>
+                </div>
+            </dl>
+            <p>
+                تبقى أسماء السرعات بالإنجليزية في كل اللغات. يحمل كل إطار 75 بتا؛ ويتوقف مقدار النص الذي يتسع في إطار واحد على الكلمات، لأن الكلمات الشائعة تُرسل برمز أقصر.
+            </p>
+
+            <h3 id="js8-channels">قائمة المحادثات</h3>
+            <p>من الأعلى:</p>
+            <ul>
+                <li><strong><code translate="no">[GLOBAL]</code></strong>: كل ما فُك ترميزه على النطاق وكل ما ترسله. الرسالة التي ترسلها من هنا تذهب إلى <code translate="no">@ALLCALL</code> ما لم تبدأها برمز نداء أو بمجموعة بنفسك؛ وكتابة <code translate="no">HB</code> أو <code translate="no">HEARTBEAT</code> فقط ترسل نبضة heartbeat (انظر <a href="#js8-auto">الردود الآلية</a>).</li>
+                <li><strong><code translate="no">@ALLCALL</code></strong>: رسائل إلى كل المحطات.</li>
+                <li><strong>مجموعاتك</strong> (<code translate="no">@NAME</code>): المجموعات التي انضممت إليها، حتى التي لا حركة فيها بعد.</li>
+                <li><strong>محادثات رموز النداء</strong>: محادثة لكل محطة كتبت إليك أو كتبت إليها أو فتحتها بـ <strong>+</strong>.</li>
+                <li><strong>المجموعات المسموعة</strong>: تحت خط رفيع وبلون باهت، المجموعات المسموعة على النطاق ولم تنضم إليها. فوق مثل هذه المجموعة تظهر لافتة تقول <strong>أنت لست عضوًا في هذه المجموعة</strong> مع <strong>الانضمام إلى المجموعة</strong>. إرسال رسالة إلى مجموعة مسموعة ينضم بك إليها.</li>
+            </ul>
+            <p>
+                الضغط المطول على محادثة (وعلى الحاسوب: نقرة يمنى) يفتح خياراتها: <strong>الانضمام إلى المجموعة</strong> أو <strong>مغادرة المجموعة</strong> (للمجموعات فقط؛ ولا تظهر لـ <code translate="no">@ALLCALL</code>)، و<strong>تصدير (حفظ محلي)</strong> و<strong>تصدير (مشاركة)</strong> (رسائلها كملف نصي)، و<strong>مسح</strong> (يحذف رسائلها)، و<strong>مسح وإغلاق</strong> (يزيلها من القائمة أيضا؛ وتُغادَر المجموعة)، و<strong>مسح جميع الدردشات</strong> و<strong>مسح وإغلاق جميع الدردشات</strong>. لا يمكن إغلاق <code translate="no">[GLOBAL]</code> و<code translate="no">@ALLCALL</code>.
+            </p>
             <div class="highlight">
-                <p><strong>إرسال على الهواء (غير خاص):</strong> كل رسائل JS8 تُرسل مكشوفة كإشارات رقمية عادية لهواة الراديو. محادثات المحطات المباشرة تجمع سجل الحديث في تبويب خاص تسهيلا عليك، لكنها <strong>غير مشفرة وليست خاصة</strong> ويستطيع استقبالها كل من يراقب التردد.</p>
+                <p><strong>غير خاصة:</strong> كل رسالة <span translate="no">JS8</span> تخرج على الهواء مكشوفة. محادثة رمز النداء ترتب لك الرسائل فقط؛ ويستطيع أي أحد على التردد قراءتها.</p>
             </div>
 
-            <h3>كتابة الرسائل وإرسالها</h3>
+            <h3 id="js8-sending">إرسال رسالة</h3>
             <ol>
-                <li><strong>اختر الوجهة</strong>: في اللوحة اليمنى اضغط على تبويب قناة (<code>[GLOBAL]</code> أو <code>@CQ</code> أو <code>@ALLCALL</code> أو مجموعة أو رمز نداء محطة بعينها).</li>
-                <li><strong>أدخل الرسالة</strong>: اكتب نصك في مربع الإدخال في الأسفل (يدعم نص ASCII القياسي كاملا حتى 100 حرف).</li>
-                <li><strong>أرسل</strong>: اضغط زر <strong>إرسال</strong>.</li>
+                <li>افتح المحادثة: محطة أو مجموعة أو <code translate="no">@ALLCALL</code> أو <code translate="no">[GLOBAL]</code>.</li>
+                <li>اختر تردد الإرسال على مخطط الطيف في موضع خال، كما في <span translate="no">FT8</span>.</li>
+                <li>اكتب النص واضغط سهم الإرسال. تظهر الرسالة في المحادثة بانتظار الفترة التالية.</li>
+                <li>اضغط الزر الرئيسي حتى يعرض <span translate="no">TX ON</span>. تخرج الإطارات بمعدل إطار في كل فترة؛ وتعرض الرسالة عدد ما أُرسل. وتخرج عدة رسائل واحدة بعد الأخرى.</li>
             </ol>
-
-            <h3>الضغط على الرسائل (محادثة سريعة وتفاصيل)</h3>
             <p>
-                الضغط على أي رسالة في سجل المحادثة (على الحاسوب: النقر المزدوج عليها) يفتح نافذة تفاصيل فيها وقت UTC كاملا، والتردد الصوتي، و SNR، ومحدد Maidenhead، ومحتوى الرسالة:
+                الرسالة المنتظرة أو التي على الهواء بجانبها <strong>x</strong>: يفتح <strong>إلغاء الإرسال؟</strong> مع <strong>إلغاء الرسالة</strong>، ومع <strong>إلغاء جميع الرسائل</strong> عندما تنتظر أكثر من رسالة. كذلك يوقف <span translate="no">TX OFF</span> الرسالة التي على الهواء.
+            </p>
+            <p>
+                الرسالة الطويلة تُبقي الراديو في الإرسال لفترات كثيرة متتالية. عندما تتجاوز مدة الإرسال ما يسمح به <a href="#tx-limit">حد الإرسال المتواصل</a> للراديو، يسأل qFT8 مرة واحدة قبل الإطار الأول: <strong>إرسال مع فواصل</strong> (تُترك بعض الفترات فارغة ليرتاح الراديو؛ وتستقبل المحطة الأخرى رسالة واحدة مع ذلك)، أو <strong>اختصار</strong> (العودة إلى النص مع تحديد الجزء الذي سيضطر إلى الانتظار)، أو <strong>إلغاء</strong>. الخيار <strong>أرسل دائمًا رسائل JS8 الطويلة مع فواصل</strong> في ذلك السؤال (وفي الإعدادات) يوقف السؤال.
+            </p>
+            <p>
+                يحتاج <span translate="no">JS8</span> إلى رمز نداء قياسي: في <span translate="no">JS8</span> تحذر الإعدادات بعبارة <strong>رمز النداء هذا غير قياسي ولا يتسع له JS8.</strong> عندما يتعذر إرسال رمز ندائك.
+            </p>
+
+            <h3 id="js8-messages">النقر على رسالة</h3>
+            <p>
+                النقر على رسالة مستلمة أو مرسلة (وعلى الحاسوب: نقرة مزدوجة) يفتح تفاصيلها: تاريخ <span translate="no">UTC</span> ووقته، ومن أرسلها وإلى من، والنطاق والتردد والسرعة وقوة الإشارة ومحدد الموقع والمسافة عند توفرهما، والنص. وتحتها الإجراءات:
             </p>
             <ul>
-                <li><strong>الرسائل المستقبلة (RX)</strong>: اضغط <strong><span translate="no">CHAT</span></strong> لفتح تبويب محادثة مباشرة مع المحطة المرسلة فورا، أو <strong><span translate="no">GROUP CHAT</span></strong> إذا كانت الرسالة موجهة إلى مجموعة.</li>
-                <li><strong>الرسائل المرسلة (TX)</strong>: اضغط <strong><span translate="no">RESEND</span></strong> ليُملأ مربع النص والقناة الوجهة آليا من جديد فتعيد إرسال الرسالة بسهولة.</li>
+                <li>للرسالة المستلمة: <strong>رد</strong> (لسؤال موجه إليك فقط: يرسل الجواب)، والمجموعة التي أُرسلت إليها (تفتح محادثتها)، و<strong>محادثة</strong> (يفتح المحادثة مع المرسل)، و<strong>مطابقة فارق التوقيت</strong> (يصحح ساعتك وفق توقيت تلك المحطة؛ غير متاح على الحاسوب) و<strong>حذف</strong>.</li>
+                <li>لرسالتك: <strong>إعادة إرسال</strong> (يعيد نصها إلى مربع الرسالة في محادثتها)، و<strong>محادثة</strong> أو المجموعة، و<strong>مطابقة فارق التوقيت</strong> و<strong>حذف</strong>.</li>
+            </ul>
+            <p>
+                السؤال الموجه إليك الذي لم يُجَب بعد يظهر بجانبه سهم صغير: النقر عليه يرسل الجواب فورا. وعلى الحاسوب، تضع نقرة واحدة على رسالة رمز نداء المرسل في مربع الرسالة.
+            </p>
+            <p>
+                الألوان داخل النص: رمز ندائك أحمر، وأسماء المجموعات برتقالية، والأسئلة والأوامر (<code translate="no">SNR?</code> و<code translate="no">GRID?</code> ...) صفراء، ومسارات الترحيل (<code translate="no">&gt;CALL&gt;</code>) أزرق مخضر، والعلامة <code translate="no">◇</code> التي تنهي الرسالة سماوية. أما <code translate="no">~</code> البرتقالية فتدل على إطار لم يُستلم، لتعرف أن جزءا من النص ناقص.
+            </p>
+
+            <h3 id="js8-requests">أسئلة إلى المحطات الأخرى</h3>
+            <p>
+                <strong>طلب</strong> يرسل أحد أسئلة <span translate="no">JS8</span> القياسية إلى المحادثة المفتوحة (من <code translate="no">[GLOBAL]</code>: إلى <code translate="no">@ALLCALL</code>):
+            </p>
+            <ul>
+                <li><code translate="no">SNR?</code> و<code translate="no">HW CPY?</code>: مدى قوة استقبالك هناك.</li>
+                <li><code translate="no">INFO?</code> و<code translate="no">STATUS?</code>: نصا المعلومات والحالة للمحطة.</li>
+                <li><code translate="no">GRID?</code>: محدد موقعها.</li>
+                <li><code translate="no">HEARING?</code>: المحطات التي تسمعها.</li>
+                <li><code translate="no">AGN?</code>: يطلب إعادة آخر رسالة.</li>
+                <li><code translate="no">QSL?</code>: يسأل هل استُلمت رسالتك.</li>
+                <li><code translate="no">QUERY CALL</code>: يسأل هل تسمع رمز نداء تكتبه.</li>
+                <li><code translate="no">QUERY MSGS</code>: يسأل هل تحتفظ برسائل لك.</li>
+                <li><code translate="no">@HB HEARTBEAT</code>: يخبر الجميع أنك على الهواء، مع محدد موقعك.</li>
+            </ul>
+            <p>
+                يمكنك أيضا أن تكتب بنفسك أوامر <span translate="no">JS8</span> أخرى، مثل <code translate="no">MSG TO:</code>، أو بلاغا لشبكة <span translate="no">APRS</span>: <code translate="no">@APRSIS GRID JN47AB</code>. مسار الترحيل مثل <code translate="no">K1ABC&gt;W9XYZ HELLO</code> يُرسل كما تكتبه؛ وqFT8 لا يرحّل رسائل لمحطات أخرى ولا يحتفظ برسائل لها.
+            </p>
+
+            <h3 id="js8-auto">الردود الآلية (<span translate="no">AUTO</span>)</h3>
+            <p>
+                عند تفعيل <span translate="no">AUTO</span> وضبط الزر الرئيسي على <span translate="no">TX ON</span>، وبعد استلام سؤال موجه إلى رمز ندائك كاملا، يضع qFT8 الجواب في الطابور ويرسله في الفترة التالية:
+            </p>
+            <ul>
+                <li><code translate="no">SNR?</code> أو <code translate="no">HW CPY?</code>: <code translate="no">SNR -08</code> (مدى قوة استقبال تلك المحطة هنا).</li>
+                <li><code translate="no">GRID?</code>: أول أربعة أحرف من محدد موقعك.</li>
+                <li><code translate="no">INFO?</code> و<code translate="no">STATUS?</code>: نصاك من الإعدادات (<code translate="no">USING QFT8</code> إلى أن تغيرهما).</li>
+                <li><code translate="no">HEARING?</code>: حتى أربع محطات سُمعت في آخر 10 دقائق.</li>
+                <li><code translate="no">QSL?</code>: <code translate="no">QSL</code>. <code translate="no">QUERY CALL</code>: <code translate="no">YES</code> مع قوة الإشارة ومنذ متى، إذا سُمعت تلك المحطة في آخر ساعة، وإلا <code translate="no">NO</code>. <code translate="no">QUERY MSGS</code>: <code translate="no">NO MSG</code>.</li>
+                <li>نبضة heartbeat من محطة أخرى (<code translate="no">@HB HEARTBEAT</code>): <code translate="no">HEARTBEAT SNR -08</code>.</li>
+                <li><code translate="no">SNR?</code> أو <code translate="no">GRID?</code> مرسلان إلى مجموعة انضممت إليها؛ ولا يُجاب أبدا عن سؤال إلى <code translate="no">@ALLCALL</code> أو إلى مجموعة لست فيها.</li>
+            </ul>
+            <p>
+                لا يُجاب عن السؤال نفسه مرتين ما دام الجواب منتظرا، ولا يُجاب أبدا عن رسائلك أنت. لا يرسل qFT8 نبضات heartbeat أو <span translate="no">CQ</span> من تلقاء نفسه: يرسلها فقط عندما تضغط <strong><span translate="no">CQ</span></strong> أو تختارها في <strong>طلب</strong>. و<span translate="no">AUTO</span> في <span translate="no">JS8</span> منفصل عن <span translate="no">AUTO</span> في <span translate="no">FT8</span>.
+            </p>
+
+            <h3 id="js8-logging">تسجيل QSO بنمط <span translate="no">JS8</span></h3>
+            <p>
+                لا يوجد في <span translate="no">JS8</span> تسلسل ثابت للرسائل، لذلك يُسجَّل <span translate="no">QSO</span> عندما تقرر أنه اكتمل. افتح محادثة المحطة واضغط <strong><span translate="no">QSO</span></strong>: يسأل <strong>تسجيل QSO بـ JS8</strong> هذا السؤال: <strong>تسجيل QSO بـ JS8 مع K1ABC؟</strong> (ويذكر متى سُجل آخر <span translate="no">JS8</span> <span translate="no">QSO</span> مع تلك المحطة إن وُجد). <strong>تسجيل QSO</strong> يكتبه في السجل بنمط <span translate="no">JS8</span> مع النطاق والتردد والوقت ومحدد موقع المحطة إن سُمع، والتقارير المتبادلة في المحادثة كأرقام من خانتين بإشارة (<code translate="no">+05</code> و<code translate="no">-12</code>). ومن السجل يُرفع مثل أي <span translate="no">QSO</span> آخر، وتعرض محادثة المحطة في القائمة علامة صح (سُجل) أو علامة صح مع ساعة (بانتظار الرفع) أو نجمة (مؤكد).
+            </p>
+
+            <h3 id="js8-settings">الإعدادات &gt; <span translate="no">JS8</span></h3>
+            <p>
+                يحتوي قسم <strong>إعدادات JS8</strong> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
+            </p>
+            <ul>
+                <li><strong>معلومات</strong> و<strong>الحالة</strong>: النصان المرسلان جوابا عن <code translate="no">INFO?</code> و<code translate="no">STATUS?</code> (حتى 20 حرفا لكل منهما).</li>
+                <li>إغلاق الرسائل بعد 1 دقيقة من عدم النشاط: متى تُعد الرسالة التي لم يُسمع إطارها الأخير منتهية.</li>
+                <li>تجميع الرسائل ضمن ± 25 من عرض النطاق: مدى تقارب إطارين في التردد ليكونا من الرسالة نفسها.</li>
+                <li>تخزين ما يصل إلى 1000 رسالة، و<strong>تخزين الرسائل لمدة تصل إلى</strong> شهر واحد: مقدار ما يُحفظ من المحادثة. تُحفظ المحادثة عند إغلاق التطبيق.</li>
+                <li><strong>أرسل دائمًا رسائل JS8 الطويلة مع فواصل</strong>: انظر <a href="#js8-sending">إرسال رسالة</a>.</li>
+                <li>لكل سرعة (<strong>سرعة بطيئة</strong> و<strong>سرعة عادية</strong> و<strong>سرعة سريعة</strong> و<strong>سرعة توربو</strong> و<strong>سرعة فائقة</strong>): <strong>وقت بدء فك الترميز</strong> و<strong>وقت بدء الإرسال</strong>، بالميلي ثانية داخل الفترة.</li>
             </ul>
 
-            <h3>إرسال الرسائل على عدة أجزاء</h3>
-            <p>
-                إذا كانت رسالتك أطول مما يتسع له إطار إرسال JS8 واحد:
-            </p>
+            <h3 id="js8-platforms">على الحاسوب والآيفون والتحكم عن بعد عبر الويب</h3>
             <ul>
-                <li>يقسم qFT8 الرسالة آليا إلى إطارات متتالية <strong>متعددة الأجزاء</strong>.</li>
-                <li>يرسل التطبيق كل جزء آليا في فترات زمنية متتالية حتى تصل الرسالة كاملة.</li>
-                <li>مؤشر تقدم مرئي يعرض حالة الإرسال الجاري على عدة فترات (مثل <code>TX (1/3)</code>).</li>
-                <li>إذا أردت إيقاف الإرسال قبل انتهاء كل الأجزاء فالضغط على زر <strong>إرسال/إيقاف</strong> يفتح سؤالا يتيح لك إلغاء ما بقي في الانتظار.</li>
-            </ul>
-
-            <h3>إدارة القنوات (إجراءات الضغط المطوّل)</h3>
-            <p>
-                الضغط المطوّل (وعلى الحاسوب: النقر بالزر الأيمن) على أي تبويب رمز نداء محطة أو تبويب قناة مجموعة في اللوحة اليمنى يفتح قائمة سياقية فيها خيارات الإدارة:
-            </p>
-            <ul>
-                <li><strong>مسح المحادثة</strong>: يمسح سجل الرسائل لتبويب القناة المحدد.</li>
-                <li><strong>إغلاق المحادثة</strong>: يغلق التبويب ويزيله من شريط القنوات النشطة.</li>
-                <li><strong>تصدير المحادثة</strong>: يصدّر كامل سجل رسائل القناة المحددة إلى ملف نصي أو إلى نافذة المشاركة.</li>
-            </ul>
-
-            <h3>الرد الآلي على الاستعلامات (نمط AUTO)</h3>
-            <p>
-                عند تفعيل الزر <strong><span translate="no">AUTO</span></strong> يرد qFT8 آليا على الاستعلامات الموجهة الواردة من محطات أخرى (مثل <code><span translate="no">SNR?</span></code> و <code><span translate="no">HW CPY?</span></code> و <code><span translate="no">GRID?</span></code> و <code><span translate="no">INFO?</span></code> و <code><span translate="no">STATUS?</span></code> و <code><span translate="no">HEARING?</span></code>) وعلى رسائل heartbeat ‏(<code><span translate="no">@HB HEARTBEAT</span></code>).
-            </p>
-            <p>
-                مثلا، إذا أرسلت محطة أخرى <code><span translate="no">YOURCALL SNR?</span></code> أو <code><span translate="no">YOURCALL HW CPY?</span></code> وضع qFT8 آليا رد تقرير الإشارة في قائمة الانتظار وأرسله (مثل <code><span translate="no">SNR -08</span></code>) دون تدخل يدوي. وكذلك عند استقبال إرسال heartbeat ‏(<code><span translate="no">@HB HEARTBEAT</span></code>) يضع qFT8 آليا إشعار استلام (<code><span translate="no">HEARTBEAT SNR -08</span></code>) في قائمة الانتظار ليبلغ المحطة المرسلة بأنه استقبلها.
-            </p>
-
-            <h3>الاستعلامات الموجهة وزر «طلب»</h3>
-            <p>
-                الزر <strong>طلب</strong> يتيح لك إرسال الاستعلامات الموجهة القياسية بسرعة إلى المحطة أو المجموعة المحددة حاليا دون كتابة صيغة الأمر يدويا:
-            </p>
-            <ul>
-                <li><code><span translate="no">SNR?</span></code> / <code><span translate="no">HW CPY?</span></code>: يطلب تقرير الإشارة من المحطة البعيدة.</li>
-                <li><code><span translate="no">GRID?</span></code>: يطلب محدد Maidenhead للمحطة.</li>
-                <li><code><span translate="no">INFO?</span></code>: يطلب رسالة المعلومات المضبوطة في المحطة.</li>
-                <li><code><span translate="no">STATUS?</span></code>: يطلب نص حالة تشغيل المحطة.</li>
-                <li><code><span translate="no">HEARING?</span></code>: يستعلم عن قائمة المحطات التي سمعتها تلك المحطة في آخر 10 دقائق.</li>
+                <li><strong>الحاسوب</strong>: اللوحة نفسها. النقر الأيمن يحل محل الضغط المطول، والنقر المزدوج على رسالة يفتح تفاصيلها، و<strong>تصدير (مشاركة)</strong> يحفظ الملف ويعرضه في مدير الملفات.</li>
+                <li><strong>الآيفون</strong>: اللوحة نفسها؛ وتصدير محادثة يفتح ورقة المشاركة.</li>
+                <li><strong>التحكم عن بعد عبر الويب</strong>: تبويب <span translate="no">JS8</span> فيه المحادثة وقائمة المحادثات نفسهما، مع <strong>تصدير</strong> و<strong>مسح</strong> في رأسه، و<strong>إلغاء TX</strong> بجانب زر الإرسال ما دامت رسالة منتظرة أو على الهواء. الرسالة المرسلة من <code translate="no">[GLOBAL]</code> تسأل أولا <strong>إرسال رسالة عامة</strong>: إلى <code translate="no">@CQ</code> أو <code translate="no">@ALLCALL</code>. تُختار السرعة في شريطه السفلي.</li>
             </ul>
 
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
-                <section id="wspr-mode">
-            <h2>نمط <span translate="no">WSPR</span></h2>
+        </section>
+
+        <section id="wspr-mode">
+            <h2><span translate="no">WSPR</span> و<span translate="no">FST4W</span> (المنارات)</h2>
             <p>
-                <strong><span translate="no">WSPR</span> ‏(Weak Signal Propagation Reporter)</strong> بروتوكول رقمي متخصص صُمم لاستكشاف مسارات انتشار الموجات بإرسالات ضعيفة القدرة جدا. إشارات WSPR تستخدم تعديل <span dir="ltr">4-FSK</span> ضيقا مع ترميز تلافيفي متين وفك ترميز Fano تتابعي، ويمكن فك ترميزها تحت مستوى الضوضاء بكثير، حتى <span dir="ltr">&minus;28 dB SNR</span>.
+                <span translate="no">WSPR</span> ليس للمحادثات: كل محطة ترسل منارة قصيرة تحمل رمز ندائها ومحدد موقعها وقدرتها، وتستمع إلى المحطات الأخرى. والنتيجة قائمة بالمحطات التي تسمعها، وخريطة، عبر <span translate="no">WSPRnet</span> و<span translate="no">PSKReporter</span>، بالمحطات التي تسمعك. يستمر إرسال <span translate="no">WSPR</span> 110.6 ثانية ويبدأ بعد ثانية واحدة من بداية دقيقة <span translate="no">UTC</span> زوجية، فيعمل النطاق في فترات مدة كل منها دقيقتان. و<span translate="no">FST4W</span> نمط منارات من النوع نفسه بفترات أطول (انظر <a href="#wspr-fst4w"><span translate="no">FST4W</span> في هذه اللوحة</a>).
+            </p>
+            <p>
+                اختر <strong><span translate="no">WSPR</span></strong> من محدد النمط في الشريط السفلي. يتحول تبويب المحطات إلى لوحة <span translate="no">WSPR</span> (في التحكم عن بعد عبر الويب يسمى التبويب <strong>نمط <span translate="no">WSPR</span></strong>)، ويتحرك مخطط الطيف ببطء بما يوافق فترات الدقيقتين، ويظهر الجزء الواقع خارج 1400&ndash;1600 هرتز من مخطط الطيف مظللًا: كل إشارات <span translate="no">WSPR</span> في النطاق تقع ضمن هذه الـ 200 هرتز.
             </p>
 
-            <h3>دورات الدقيقتين والتوقيت</h3>
+            <h3 id="wspr-pane">لوحة <span translate="no">WSPR</span></h3>
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="كاميرا qFT8" class="camera" width="132" height="1080">
+                <img src="../wspr.jpg" alt="لوحة WSPR في qFT8" class="screen" width="2280" height="1080">
+            </div>
+            <p>من اليسار إلى اليمين ومن الأعلى إلى الأسفل:</p>
+            <ol>
+                <li><strong>منارة</strong>: تشغّل منارتك الخاصة (أخضر) وتوقفها (أسود). عند تشغيل المنارة يرسل qFT8 في بعض الفترات، بعدد تحدده نسبة الإرسال (البند 2). لا تشغّل المنارة مرسلك بنفسها أبدًا: ما دام الزر الرئيسي في الشريط السفلي يعرض <span translate="no">TX OFF</span> فلا يُرسل شيء ويظهر سطر أحمر نصه <strong>قم بتمكين TX لبدء الإرسال</strong>.</li>
+                <li><strong>TX: 20%</strong>: نسبة الفترات التي ترسل فيها المنارة. تفتح النقرة <strong>نسبة Tx في WSPR</strong>: <strong>0% (Rx فقط)</strong> أو 10% أو 20% أو 25% أو 33% أو 50% أو <strong>100% (مستمر)</strong>. تُختار الفترات عشوائيًا، فترة بعد فترة، حتى لا تظل محطتان بالإعداد نفسه ترسلان في وقت واحد؛ ونسبة 20% تعني فترة واحدة من كل خمس في المتوسط، أي إرسالًا كل 10 دقائق تقريبًا. تظهر القيمة بالأحمر عندما يسمح <a href="#tx-limit">حد الإرسال المتواصل</a> للراديو بفترات أقل من ذلك: تنتظر المنارة حينئذ وترسل في أول فترة يُسمح لها باستخدامها.</li>
+                <li><strong>القدرة</strong> (مثل <strong>5 W</strong>): القدرة التي تعلنها رسالة منارتك للمحطات التي تسمعك. تفتح النقرة <strong>القدرة المعلنة:</strong>، وهي قائمة من 1 mW (0 dBm) إلى 1000 W (60 dBm) بالخطوات التي يستطيع <span translate="no">WSPR</span> حملها. اضبطها على القدرة التي يخرجها راديوك فعلًا. إنها مجرد رقم في رسالتك: لا يغيّر qFT8 قدرة الراديو أبدًا، فهي تبقى في أزرار الراديو نفسه.</li>
+                <li><strong>تصدير</strong>: يحفظ رصدات القائمة في ملف <span translate="no">ADIF</span>. على الهاتف يعرض الحوار <strong>مشاركة سجل ADIF لـ WSPR</strong> الخيارين <strong>حفظ محلي</strong> و<strong>مشاركة</strong>؛ ويسأل الكمبيوتر عن مكان حفظ الملف؛ ويفتح الآيفون ورقة المشاركة الخاصة به؛ وينزّل التحكم عن بعد عبر الويب الملف إلى الجهاز الذي تستخدمه.</li>
+                <li><strong>مسح</strong>: يفرّغ القائمة.</li>
+                <li><strong>القائمة</strong>: صف لكل إشارة <span translate="no">WSPR</span> مفكوكة الترميز، والأحدث في الأعلى: رمز النداء، والبلد (<span translate="no">DXCC</span>)، ومحدد الموقع (<span translate="no">Grid</span>)، و<span translate="no">SNR</span> بالديسيبل (مقيسًا في 2500 هرتز، كما يبلغ به كل مستقبل <span translate="no">WSPR</span>)، والقدرة التي تعلنها المحطة الأخرى، وتاريخ فترتها ووقتها بتوقيت <span translate="no">UTC</span> (<code>yyMMdd HH:mm</code>). تبقى القائمة عند إغلاق التطبيق؛ ويُحدَّد عدد الصفوف ومدة بقائها في <a href="#wspr-settings">الإعدادات &gt; <span translate="no">WSPR</span></a>.</li>
+                <li><strong>سطر الحالة</strong>: ما سيحدث تاليًا: <strong>تنتهي دورة Rx خلال 01:12. Tx: معطل</strong> ما دامت المنارة بلا شيء مخطط، و<strong>الإرسال التالي خلال 05:40</strong> أثناء انتظارها فترتها، و<strong>جارٍ الإرسال — ينتهي خلال 01:30</strong> أثناء البث، و<strong>الإرسال متوقف</strong> عندما يكون هناك إرسال مخطط لكن الزر الرئيسي يعرض <span translate="no">TX OFF</span>. السطر الأحمر هنا يعني أن منارتك لا يمكن إرسالها: <strong>Tx: اضبط رمز النداء ومحدد الموقع</strong> (كلاهما لازم، في الإعدادات)، أو <strong>رمز النداء طويل جدًا لإرسال WSPR</strong> / <strong>Tx: لا يمكن إرسال رمز النداء هذا في WSPR</strong>.</li>
+                <li><strong>Tx التالي</strong>: يرسل في الفترة التالية مهما كانت النسبة؛ وبعد ذلك تواصل المنارة عملها كما كان. يكون أخضر عندما ستُستخدم الفترة التالية (حتى لو اختارتها المنارة)، وتتخلى النقرة الثانية عن تلك الفترة. ويكون رماديًا ما دام الزر الرئيسي يعرض <span translate="no">TX OFF</span>.</li>
+            </ol>
             <p>
-                إرسالات WSPR تجري في <strong>فترات UTC مزامنة مدتها دقيقتان</strong> (يدوم الإرسال 110.6 ثانية بـ 162 رمز نغمة). وتبدأ الإرسالات دائما بعد ثانية واحدة بالضبط من دقائق UTC الزوجية (<code>:00, :02, :04, :06...</code>). ولأن الإرسال الواحد يدوم قرابة دقيقتين يجب السماح للراديو الصغير بأن يرسل هذه المدة: انظر <a href="#tx-limit">حد الإرسال المتواصل</a>. والتمرير العمودي لمخطط الطيف يتكيف آليا مع سرعة تمرير بطيئة سلسة توافق طول الدورة البالغ 120 ثانية.
+                يعرض شريط الرسالة في الشريط السفلي الرسالة التي ترسلها منارتك: رمز ندائك، وأول أربعة أحرف من محدد موقعك، وقدرة البند 3، مثل <code>HB9IPH JN47 37</code>.
             </p>
 
-            <h3>عرض النشاط في لوحة واحدة</h3>
+            <h3 id="wspr-flow">الاستقبال والإرسال بالمنارة</h3>
+            <ol>
+                <li>اختر النطاق بمحدد النطاق: ينتقل الراديو إلى تردد <span translate="no">WSPR</span> الخاص بالنطاق (انظر أدناه). لا يحتاج الاستقبال إلى شيء آخر: كل دقيقتين، بعد انتهاء الفترة بثوانٍ، تُضاف الإشارات المفكوكة الترميز فيها إلى القائمة.</li>
+                <li>لإرسال منارتك، تأكد من ضبط رمز ندائك ومحدد موقعك ومن أن <strong>القدرة</strong> (البند 3) هي ما يخرجه راديوك. اختر نسبة إرسال (20% هي المعتادة)، وأبقِ <strong>منارة</strong> أخضر، واضغط الزر الرئيسي في الشريط السفلي حتى يعرض <span translate="no">TX ON</span>. يعدّ سطر الحالة تنازليًا حتى إرسالك التالي.</li>
+                <li>لإرسال منارة واحدة الآن، أو والمنارة متوقفة، اضغط <strong>Tx التالي</strong>.</li>
+                <li>للإيقاف اضغط الزر الرئيسي مرة أخرى (<span translate="no">TX OFF</span>) أو أوقف <strong>منارة</strong>. ينتهي الإرسال الجاري عند الضغط على <span translate="no">TX OFF</span>.</li>
+            </ol>
             <p>
-                لأن WSPR بروتوكول منارات وتقارير انتشار لا نمط حوار في الاتجاهين، يقدم qFT8 سجل نشاط مبسطا في لوحة واحدة بكامل العرض دون تقسيم لسجل QSO:
+                يستمر إرسال <span translate="no">WSPR</span> قرابة دقيقتين: لا يستطيع إرساله راديو يكون <a href="#tx-limit">حد الإرسال المتواصل</a> فيه أقصر من ذلك، ويخبرك qFT8 بهذا. لا يُسجَّل شيء في <span translate="no">WSPR</span>: تبقى الرصدات في قائمة هذه اللوحة وليست اتصالات (QSO).
             </p>
+
+            <h3 id="wspr-bands">النطاقات والترددات</h3>
+            <p>
+                لكل نطاق في محدد النطاق تردد قرص <span translate="no">WSPR</span>، من 2200 م إلى 13 سم: 2200 م <span translate="no">136.000</span> kHz، و630 م <span translate="no">474.200</span> kHz، و160 م <span translate="no">1.836600</span> MHz، و80 م <span translate="no">3.568600</span>، و60 م <span translate="no">5.287200</span>، و40 م <span translate="no">7.038600</span>، و30 م <span translate="no">10.138700</span>، و20 م <span translate="no">14.095600</span>، و17 م <span translate="no">18.104600</span>، و15 م <span translate="no">21.094600</span>، و12 م <span translate="no">24.924600</span>، و10 م <span translate="no">28.124600</span>، و6 م <span translate="no">50.293000</span>، و4 م <span translate="no">70.091000</span>، و2 م <span translate="no">144.489000</span>، و70 سم <span translate="no">432.300000</span>، و23 سم <span translate="no">1296.500000</span> و13 سم <span translate="no">2400.048000</span> MHz (الحزمة الجانبية العليا).
+            </p>
+            <p>
+                ترسل منارتك على التردد الصوتي المختار في مخطط الطيف، ضمن 1400&ndash;1600 هرتز. وعند تشغيل <strong>تمكين الارتعاش العشوائي للتردد (±60 هرتز)</strong> (الافتراضي) ينتقل كل إرسال إلى موضع عشوائي يبعد حتى 60 هرتز، حتى لا تجلس فوق المحطة نفسها كل مرة.
+            </p>
+
+            <h3 id="wspr-reports">الرصدات إلى <span translate="no">WSPRnet</span> و<span translate="no">PSKReporter</span></h3>
             <ul>
-                <li><strong>النداء</strong>: رمز نداء المحطة.</li>
-                <li><strong>كيان DXCC</strong>: اسم البلد / كيان DXCC، يُستخرج آليا (بعرض مرن).</li>
-                <li><strong>محدد الموقع</strong>: محدد Maidenhead من 4 خانات (مثل <code>JN45</code>).</li>
-                <li><strong>SNR</strong>: نسبة الإشارة إلى الضوضاء المستقبلة بوحدة dB، مقيسة مقابل الضوضاء في 2,500 Hz كما تفعل مستقبلات WSPR الأخرى.</li>
-                <li><strong>مستوى القدرة</strong>: قدرة الإرسال التي تعلنها المحطة بوحدة dBm (مثل <code>37 dBm</code>).</li>
-                <li><strong>التاريخ ووقت UTC</strong>: وقت فترة الإرسال بتوقيت UTC بالصيغة <code>yyMMdd HH:mm</code>.</li>
+                <li><strong>رفع التقارير إلى WSPRnet</strong> (متوقف افتراضيًا؛ الإعدادات، <strong>الإبلاغ</strong>، والترس بجانبه): تُرسل المحطات التي تفك ترميزها إلى <span translate="no">WSPRnet</span> على دفعات صغيرة. تُرسل المحطة نفسها على التردد نفسه مرة واحدة على الأكثر كل 15 دقيقة. وفي صفحة <span translate="no">WSPRnet</span> أيضًا <strong>رفع التقارير أيضًا عند الاتصال عبر مكبر الصوت/الميكروفون</strong> (متوقف: لا رفع ما دام التطبيق يستمع عبر ميكروفون الهاتف بدل الكابل)، و<strong>سجل الرفع الأخير لـ WSPRnet:</strong> مع <strong>رفع الآن</strong> و<strong>مسح السجل</strong>، و<strong>إعادة الضبط للافتراضي</strong>.</li>
+                <li><strong>رفع التقارير إلى PSKReporter</strong> (الإعدادات، <strong>الإبلاغ</strong>): يرسل أيضًا ما تفكه من <span translate="no">WSPR</span> و<span translate="no">FST4W</span>، كما في كل نمط آخر.</li>
+                <li><strong>تنزيل الرصدات من WSPRnet</strong> (يعمل افتراضيًا؛ الإعدادات، <strong>مصادر البيانات</strong>): يجلب من استقبل منارتك ويعرضهم على خريطة العالم بزر <span translate="no">SPOT</span> الخاص بها.</li>
             </ul>
 
-            <h3>المنارة الآلية ونسبة Tx</h3>
+            <h3 id="wspr-settings">الإعدادات &gt; <span translate="no">WSPR</span></h3>
             <p>
-                في الترويسة العليا لشاشة نشاط WSPR:
+                يحتوي قسم <span translate="no">WSPR</span> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
             </p>
             <ul>
-                <li><strong>مفتاح <span translate="no">منارة</span></strong>: يفعّل إرسالات المنارة الآلية أو يوقفها. عند التفعيل (يُبرز بالأخضر الزاهي) يجدول qFT8 إرسالات المنارة آليا على فواصل محددة حسب نسبة Tx التي ضبطتها.</li>
-                <li><strong>محدد <span translate="no">Tx %</span></strong>: يضبط دورة تشغيل الإرسال المحددة، محسوبة من الوقت المنقضي منذ آخر إرسال لك (<code>0% [Rx Only]</code> أو <code>10%</code> أو <code>20%</code> أو <code>25%</code> أو <code>33%</code> أو <code>50%</code> أو <code>100% Continuous</code>). مثلا <code>20%</code> يرسل بانتظام كل 10 دقائق من آخر إرسال لك (<code>50%</code> = كل 4 دقائق، <code>33%</code> = كل 6 دقائق، <code>25%</code> = كل 8 دقائق، <code>10%</code> = كل 20 دقيقة، <code>100%</code> = في كل دورة من دقيقتين دون توقف).</li>
-                <li><strong>زر <span translate="no">Tx التالي</span></strong>: يضع إرسالا يدويا فوريا في الانتظار لبداية دورة الدقيقتين القادمة. وبعد الإرسال تستمر جدولة المنارة الآلية المحددة من تلك الدورة.</li>
+                <li><strong>تمكين الارتعاش العشوائي للتردد (±60 هرتز)</strong> (يعمل): انظر <a href="#wspr-bands">النطاقات والترددات</a>.</li>
+                <li><strong>تخزين ما يصل إلى</strong> 1000 رسالة، و<strong>تخزين الرسائل لمدة تصل إلى</strong> شهر واحد: عدد الصفوف التي تحتفظ بها القائمة ومدة ذلك.</li>
+                <li><strong>وقت بدء فك الترميز</strong> (114000 ms): متى يبدأ فك الترميز ضمن فترة الدقيقتين.</li>
+                <li><strong>وقت بدء الإرسال</strong> (1000 ms): متى تبدأ المنارة الإرسال ضمن الفترة.</li>
             </ul>
 
-            <h3>رفع الرصدات إلى WSPRnet و PSKReporter</h3>
+            <h3 id="wspr-fst4w"><span translate="no">FST4W</span> في هذه اللوحة</h3>
             <p>
-                يستطيع qFT8 رفع الرصدات المستقبلة آليا إلى قاعدة البيانات العالمية <strong><a href="http://wsprnet.org" target="_blank">WSPRnet</a></strong> وإلى <strong>PSKReporter</strong>:
+                يستخدم <span translate="no">FST4W</span> (صف <strong><span translate="no">FST4W</span> (تجريبي)</strong> في محدد النمط) اللوحة نفسها: القائمة نفسها، و<strong>منارة</strong>، و<strong>Tx التالي</strong>، والقدرة، و<strong>تصدير</strong> و<strong>مسح</strong>، وعمليات الرفع نفسها إلى <span translate="no">WSPRnet</span> و<span translate="no">PSKReporter</span>. وما يختلف:
             </p>
             <ul>
-                <li><strong>تنزيل الرصدات من WSPRnet</strong>: مفعَّل افتراضيا، يجلب الرصدات الحية لرمز ندائك ونطاقك لعرضها على خريطة العالم.</li>
-                <li><strong>رفع التقارير إلى WSPRnet</strong>: عند تفعيله من <em>الإعدادات &larr; WSPRnet</em> تُجمع الرصدات المستقبلة وتُرفع إلى WSPRnet على دفعات، مع إزالة التكرار خلال 15 دقيقة وتحديد معدل الرفع.</li>
-                <li><strong>فتح WSPRnet في المتصفح</strong>: يفتح قاعدة بيانات WSPRnet مباشرة مصفاة على رمز نداء محطتك.</li>
+                <li>الفترة هي <strong>الفترة</strong>: 120 أو 300 أو 900 أو 1800 ثانية، تُختار في الشريط السفلي أو في الإعدادات. كلما طالت الفترة فُكّت إشارات أضعف (نحو -33 dB عند 120 ث، و-45 dB عند 1800 ث) وطال إرسالك: حتى ما يقارب 30 دقيقة، وهذا ما يجب أن يسمح به <a href="#tx-limit">حد الإرسال المتواصل</a>. يجب أن تستخدم المحطتان الفترة نفسها.</li>
+                <li>نسبة الإرسال خاصة به (<strong>نسبة الإرسال</strong>، الافتراضي 20 %): تغييرها في <span translate="no">FST4W</span> لا يغيّر نسبة <span translate="no">WSPR</span>.</li>
+                <li>لا يفك الترميز إلا حول تردد الاستقبال (عادة 1500 هرتز)، ضمن تفاوت الاستقبال الخاص به.</li>
+                <li>على 2200 م و630 م و160 م له ترددات خاصة (<span translate="no">136.000</span> kHz و<span translate="no">474.200</span> kHz و<span translate="no">1.8368</span> MHz)؛ وفي النطاقات الأخرى يستخدم ترددات <span translate="no">WSPR</span>.</li>
             </ul>
-
-            <h3>تصدير ADIF مستقل</h3>
             <p>
-                اضغط الزر <strong>تصدير</strong> أعلى يمين لوحة نشاط WSPR لتصدير كل الرصدات المسجلة في الجلسة الحالية بصيغة ADIF القياسية (<code>.adi</code>) لدراسة الانتشار وحفظ السجلات.
+                تُشرح إعداداته في <a href="#fst4w-settings">الإعدادات &gt; <span translate="no">FST4W</span></a>.
             </p>
-        
+
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
 
@@ -2528,6 +2880,11 @@
             <h2><span translate="no">SSB</span> (الصوت)</h2>
             <p>
                 في نمط <span translate="no">SSB</span> يكون qFT8 ميكروفون جهازك ومكبر صوته: الإشارة التي يستقبلها الراديو تتحول إلى صوت في سماعتك أو سماعات رأسك، وصوتك يذهب من ميكروفونك إلى الراديو. يبقى الراديو موصولا تماما كما هو للأنماط الرقمية (كابل USB نفسه وبطاقة الصوت نفسها)، فلا حاجة إلى إعادة توصيل أي شيء للانتقال من FT8 إلى الصوت والعودة.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> فئة الإصدار J3E حسب ITU (لوائح الراديو)؛ الصوت لا يملك بروتوكولًا رقميًا.</p>
+            <p>
+                يُنشئ qFT8 إشارة الصوت بنفسه ويرسلها عبر بطاقة الصوت في الراديو. ويضع الراديو في وضع البيانات بالنطاق الجانبي نفسه (مثلًا <span translate="no">USB-D</span> / <span translate="no">LSB-D</span>, <span translate="no">DATA-U</span> / <span translate="no">DATA-L</span>, <span translate="no">DIGU</span> / <span translate="no">DIGL</span>؛ وفي <span translate="no">QMX</span> وضعه الخاص <span translate="no">USB</span> أو <span translate="no">LSB</span>)، فتعرض شاشة الراديو التردد نفسه الذي يعرضه qFT8. يتبع النطاق الجانبي النطاق: <span translate="no">LSB</span> تحت 10 ميغاهرتز، و<span translate="no">USB</span> من 10 ميغاهرتز فما فوق وعلى 60 م.
             </p>
             <p>
                 اختر <strong><span translate="no">SSB</span></strong> من محدد النمط في الشريط السفلي. تختفي منطقة الرسالة وزرا الفترة وشريط الدورة (فالصوت لا فترات زمنية له)، ويظهر زر <strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong> بجانب محدد النمط، ويصير تبويب المحطات لوحة <span translate="no">SSB</span>:
@@ -2541,37 +2898,41 @@
             <p>هذه مكونات شاشة <span translate="no">SSB</span> بالتفصيل:</p>
 
             <ol>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: يختار ما تحركه عجلة التوليف (البند 12). مع <strong><span translate="no">RX/TX</span></strong> تستقبل وترسل على التردد نفسه. ومع <strong><span translate="no">RX</span></strong> أو <strong><span translate="no">TX</span></strong> يتحرك ذاك وحده، فتستمع على تردد وترسل على آخر (split).</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: يختار ما تحركه عجلة التوليف (البند 12). مع <strong><span translate="no">RX/TX</span></strong> تستقبل وترسل على التردد نفسه. ومع <strong><span translate="no">RX</span></strong> أو <strong><span translate="no">TX</span></strong> يتحرك ذاك وحده، فتستمع على تردد وترسل على آخر (split). من دون اتصال CAT تكون هذه الأزرار رمادية وتبقى على <span translate="no">RX/TX</span>؛ والنقر عليها يعرض <strong>يتطلب الضبط اتصال CAT بالراديو</strong>.</li>
                 <li><strong><span translate="no">AUTO RIT</span></strong>: يُبقي المحطة المنحرفة قليلا عن التردد في المركز، فيبدو صوتها طبيعيا دون لمس العجلة.</li>
                 <li><strong>الترس</strong>: يفتح <strong>الإعدادات &gt; <span translate="no">SSB</span></strong> (انظر أدناه). و<strong>عودة</strong> يرجع إلى هذه اللوحة.</li>
-                <li><strong><span translate="no">QSO</span></strong>: يفتح المسجِّل وفيه النمط والنطاق الجانبي والتردد معبأة سلفا، لتسجيل الاتصال الذي أجريته للتو (انظر <a href="#qso-logger">المسجِّل</a>). QSO واحد لكل ضغطة.</li>
+                <li><strong><span translate="no">QSO</span></strong>: يفتح المسجِّل وفيه النمط والنطاق الجانبي والتردد معبأة سلفا، لتسجيل الاتصال الذي أجريته للتو (انظر <a href="#qso-logger">المسجِّل</a>). QSO واحد لكل ضغطة. وتُملأ التقارير أيضًا (59 / 59)، وبعد اتصال بتردد منفصل (split) يُملأ تردد الإرسال وتردد الاستماع معًا.</li>
                 <li><strong>الذاكرات الصوتية</strong>: رسائلك المسجلة (نداء CQ، رمز ندائك...). إلى أن تسجل واحدة تعرض هذه المنطقة الرابط <strong>اضبط الذاكرات الصوتية في الإعدادات</strong>.</li>
                 <li><strong><span translate="no">IN</span></strong>: مستوى ميكروفونك ومنزلق كسبه. الخط المعلَّم بـ <strong><span translate="no">VOX</span></strong> هو المستوى الذي يجب أن يتجاوزه صوتك ليشغّل إرسال الراديو عند تفعيل <span translate="no">VOX</span> (البند 10): اسحبه.</li>
-                <li><strong><span translate="no">OUT</span></strong>: مستوى الصوت المستقبل ومنزلق مستوى صوت سماعتك. مفتاحا الصوت في الهاتف يفعلان الشيء نفسه.</li>
-                <li><strong><span translate="no">FILTER</span></strong> و<strong><span translate="no">NR</span></strong>: مرشّح الاستقبال (متوقف، 2.7 أو 2.4 أو 1.8 kHz) وخفض الضوضاء (متوقف، 1 أو 2 أو 3). كل ضغطة تنتقل إلى القيمة التالية.</li>
-                <li><strong><span translate="no">PTT</span></strong>: اضغط لتتكلم. يُكتب عليه «اضغط مطولاً للتحدث» أو «انقر للتحدث» حسب الإعداد <strong>وضع PTT</strong>، و«<span translate="no">على الهواء</span>» أثناء إرسالك. على الحاسوب مفتاح المسافة يفعل الشيء نفسه ما دام التركيز على اللوحة.</li>
+                <li><strong><span translate="no">OUT</span></strong>: مستوى الصوت المستقبل ومنزلق مستوى صوت سماعتك. مفتاحا الصوت في الهاتف يفعلان الشيء نفسه. في أسفل المنزلق تمامًا يكون الصوت مكتومًا (<span translate="no">MUTE</span>).</li>
+                <li><strong><span translate="no">FILTER</span></strong> و<strong><span translate="no">NR</span></strong>: مرشّح الاستقبال (متوقف، 2.7 أو 2.4 أو 1.8 kHz) وخفض الضوضاء (متوقف، 1 أو 2 أو 3). كل ضغطة تنتقل إلى القيمة التالية. هذه التسميات واحدة في كل اللغات.</li>
+                <li><strong><span translate="no">PTT</span></strong>: اضغط لتتكلم. يُكتب عليه «اضغط مطولاً للتحدث» أو «انقر للتحدث» حسب الإعداد <strong>وضع PTT</strong>، و«<span translate="no">على الهواء</span>» أثناء إرسالك. مع لوحة مفاتيح (الحاسوب، أو التحكم عن بُعد عبر الويب، أو هاتف أو جهاز لوحي) يفعل مفتاح المسافة الشيء نفسه ما دام آخر مكان نقرت عليه هو الشريط السفلي أو المخطط الطيفي أو خريطة العالم أو هذه اللوحة؛ أما في مربع نص فيكتب مسافة كالمعتاد. وأثناء الإرسال يعرض أيضًا الثواني المتبقية عندما يسري حد (انظر أدناه). وعندما يبلغ <span translate="no">VOX</span> الحد يظهر عليه "<span translate="no">VOX متوقف مؤقتًا</span>"، ويظهر "<span translate="no">لا SSB</span>" عندما لا يستطيع الراديو إرسال الصوت من التطبيق.</li>
                 <li><strong><span translate="no">VOX</span></strong>: عند تفعيله يشتغل إرسال الراديو بصوتك بدل زر <span translate="no">PTT</span>.</li>
-                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>: النطاق الجانبي. يُختار لك عند تغيير النطاق (<span translate="no">LSB</span> تحت 10 MHz و <span translate="no">USB</span> فوقها)؛ ضغطة تغيره والتردد الذي تقرؤه يبقى كما هو.</li>
+                <li><strong><span translate="no">USB</span> / <span translate="no">LSB</span></strong>: النطاق الجانبي. يُختار لك عند تغيير النطاق (<span translate="no">LSB</span> تحت 10 MHz و <span translate="no">USB</span> فوقها)؛ ضغطة تغيره والتردد الذي تقرؤه يبقى كما هو. وعلى 60 م يكون <span translate="no">USB</span> أيضًا، وتغيير النطاق بمقبض الراديو نفسه يختار كذلك النطاق الجانبي لذلك النطاق.</li>
                 <li><strong>عجلة التوليف</strong>: في <span translate="no">SSB</span> مقياس التردد في مخطط الطيف عجلة. اسحب عليها لتوليف الراديو؛ والسحب الأسرع يأخذ خطوات أكبر. الضغطة لا تفعل شيئا، فلا يقفز التردد سهوا أبدا. على الحاسوب عجلة الفأرة توالف أيضا (مع Shift لخطوات من 1 Hz). التوليف يحتاج إلى اتصال CAT بالراديو.</li>
-                <li><strong>التردد والنطاق</strong>: التردد الذي تقوله على الهواء (الحامل)، والنطاق. الخط البرتقالي والتسمية <span translate="no">RX/TX</span> تحته يعلّمان الجزء الذي تستمع إليه وترسل عليه من مخطط الطيف.</li>
+                <li><strong>التردد والنطاق</strong>: التردد الذي تقوله على الهواء (الحامل)، والنطاق. الخط البرتقالي والتسمية <span translate="no">RX/TX</span> تحته يعلّمان الجزء الذي تستمع إليه وترسل عليه من مخطط الطيف. النقر على التردد يفتح <strong>تردد الراديو (kHz)</strong> لكتابة تردد؛ والتردد في نطاق آخر يغيّر النطاق. وهذا أيضًا يحتاج إلى CAT.</li>
             </ol>
+            <p>
+                مع <span translate="no">QMX</span> أو <span translate="no">QMX+</span> يذكّرك سطر رمادي فوق زر <span translate="no">PTT</span> بأن مصدر صوت <span translate="no">SSB</span> في الراديو (قائمته <span translate="no">SSB &gt; Input</span>) يجب أن يكون بطاقة الصوت USB (انظر <a href="#ssb-requirements">ما يحتاجه <span translate="no">SSB</span></a>).
+            </p>
 
             <h3 id="ssb-transmitting">الكلام</h3>
             <ol>
                 <li>فعّل الإرسال بزر <strong><span translate="no">TX</span></strong> في الشريط السفلي. وكما في كل الأنماط الأخرى لا يُرسل شيء ما دام مكتوبا <span translate="no">TX OFF</span>: والسطر الأحمر <strong>اضغط TX ON للإرسال</strong> يذكّرك بذلك.</li>
                 <li>اضغط مطولا على <strong><span translate="no">PTT</span></strong> وتكلم ثم اتركه. أو فعّل <strong><span translate="no">VOX</span></strong> وتكلم فحسب.</li>
                 <li>لإرسال ذاكرة صوتية اضغط عليها. مع <span translate="no">TX ON</span> تُرسل وتسمعها في سماعتك أيضا. ومع <span translate="no">TX OFF</span> تُشغَّل لك وحدك، وهذه طريقة جيدة لفحص التسجيل. والضغط المطوّل (النقر بالزر الأيمن على الحاسوب) يشغّلها لك وحدك دائما.</li>
+                <li>عند انتهاء الاتصال اضغط <strong><span translate="no">QSO</span></strong> لتسجيله.</li>
             </ol>
             <p>
                 صوتك الحي لا يعاد تشغيله في سماعتك أبدا. وإذا كان التردد الذي توشك أن ترسل عليه خارج نطاق الهواة فإن qFT8 لا يشغّل إرسال الراديو ويخبرك بذلك.
             </p>
             <div class="highlight">
-                <p><strong>حد PTT:</strong> مع <strong>انقر للتبديل</strong> ومع <span translate="no">VOX</span> يتوقف الإرسال من تلقاء نفسه بعد <strong>حد PTT</strong> (100 ثانية ما لم تغيره)، ويعدّ زر <span translate="no">PTT</span> الثواني الباقية. بعد بلوغ الحد يبقى <span translate="no">VOX</span> متوقفا المدة نفسها، أو إلى أن تضغط <span translate="no">PTT</span>. هذا يحمي الراديو من ميكروفون يظل يلتقط ضوضاء. و<a href="#tx-limit">حد الإرسال المتواصل</a> الخاص بالراديو يسري كذلك: والأقصر منهما هو الذي يُعمل به.</p>
+                <p><strong>حد الإرسال:</strong> ينتهي كل إرسال <span translate="no">SSB</span> من تلقاء نفسه عند <a href="#tx-limit">حد الإرسال المتواصل</a> للراديو (تهيئة الجهاز)، أو بعد 3 دقائق إن لم يكن للراديو حد. مع <strong>انقر للتبديل</strong> ومع <span translate="no">VOX</span> يعدّ زر <span translate="no">PTT</span> الثواني المتبقية تنازليًا (مع <strong>اضغط مطولاً للتحدث</strong> ومع الذاكرات الصوتية، فقط عندما يكون للراديو حد). بعد الحد يبقى <span translate="no">VOX</span> متوقفًا مؤقتًا المدة نفسها، أو حتى تنقر <span translate="no">PTT</span>. هذا يحمي الراديو من ميكروفون يظل يسمع الضجيج.</p>
             </div>
 
             <h3 id="ssb-memories">الذاكرات الصوتية</h3>
             <p>
-                اذهب إلى <strong>الإعدادات &gt; <span translate="no">SSB</span> &gt; الذاكرات الصوتية</strong> (أو اضغط <strong>اضبط الذاكرات الصوتية في الإعدادات</strong> في اللوحة) واضغط <strong>سجّل ذاكرة صوتية جديدة</strong>. يمكنك حفظ حتى 6 ذاكرات مدة كل منها 30 ثانية. ولكل واحدة يمكنك تسميتها، وإعادة تسجيلها، وضبط مستوى صوتها أو الضغط على <strong>تسوية</strong>، وقص الصمت من أولها وآخرها بسحب المقبضين على صورة الصوت؛ <strong>تشغيل</strong> يشغّل الجزء الذي أبقيته، ولا يتغير شيء حتى تحفظ. الذاكرات جزء من تصدير الإعدادات، ومعها التسجيلات.
+                اذهب إلى <strong>الإعدادات &gt; <span translate="no">SSB</span> &gt; الذاكرات الصوتية</strong> (أو اضغط <strong>اضبط الذاكرات الصوتية في الإعدادات</strong> في اللوحة) واضغط <strong>سجّل ذاكرة صوتية جديدة</strong>. يمكنك حفظ حتى 6 ذاكرات مدة كل منها 30 ثانية. ولكل واحدة يمكنك تسميتها، وإعادة تسجيلها، وضبط مستوى صوتها أو الضغط على <strong>تسوية</strong>، وقص الصمت من أولها وآخرها بسحب المقبضين على صورة الصوت؛ <strong>تشغيل</strong> يشغّل الجزء الذي أبقيته، ولا يتغير شيء حتى تحفظ. الذاكرات جزء من تصدير الإعدادات، ومعها التسجيلات. تسجّل الذاكرة الصوتية صوتك أنت من ميكروفونك، لا صوت الراديو. ولا يسجّل qFT8 اتصالاتك.
             </p>
 
             <h3 id="ssb-settings">الإعدادات &gt; <span translate="no">SSB</span></h3>
@@ -2579,23 +2940,31 @@
                 <li><strong>طريقة PTT</strong>: زر <span translate="no">PTT</span> أو <span translate="no">VOX</span>.</li>
                 <li><strong>وضع PTT</strong>: <strong>اضغط مطولاً للتحدث</strong> أو <strong>انقر للتبديل</strong>.</li>
                 <li><strong>تأخير PTT</strong>: المدة بين تشغيل إرسال الراديو وإرسال صوتك. لا يضيع شيء مما تقوله: مقطعك الأول ينتظر الراديو.</li>
-                <li><strong>حد PTT</strong>: انظر أعلاه (10 إلى 600 ثانية).</li>
-                <li><strong>النطاق الجانبي</strong>: تلقائي حسب النطاق، أو <span translate="no">USB</span> دائما، أو <span translate="no">LSB</span> دائما.</li>
+                <li><strong>النطاق الجانبي</strong>: تلقائي حسب النطاق، أو <span translate="no">USB</span> دائما، أو <span translate="no">LSB</span> دائما. يسري التغيير فورًا، حتى وأنت في <span translate="no">SSB</span>.</li>
                 <li><strong>المرشّح</strong> و<strong>خفض الضوضاء عند الدخول إلى <span translate="no">SSB</span></strong>.</li>
-                <li><strong>شغّل الصوت المستقبَل على مكبر الصوت</strong> و<strong>اكتم مكبر الصوت أثناء الإرسال</strong>.</li>
+                <li><strong>شغّل الصوت المستقبَل على مكبر الصوت</strong> و<strong>اكتم مكبر الصوت أثناء الإرسال</strong>. الخيار الثاني مفعّل دائمًا ما دام ميكروفون الهاتف وسماعته المدمجان مستخدمين، كي لا يسمع الهاتف نفسه.</li>
                 <li><strong>الذاكرات الصوتية</strong> و<strong>إعادة الضبط للافتراضي</strong>.</li>
             </ul>
 
             <h3 id="ssb-requirements">ما يحتاجه <span translate="no">SSB</span></h3>
             <ul>
                 <li><strong>ميكروفون وسماعة ليسا بطاقة صوت الراديو.</strong> للهاتف ميكروفونه وسماعته؛ وسماعة الرأس بميكروفون تصلح أيضا. انظر <a href="#audio-setup">السماعات والميكروفون</a>. إذا كان الراديو وميكروفونك أو سماعتك جهازا واحدا ظهر سطر أحمر يقول ذلك ولم يُرسل شيء ولم يُشغَّل.</li>
-                <li><strong>راديو.</strong> دونه تحل محل اللوحة بطاقة تقول <strong>وصّل راديو لاستخدام <span translate="no">SSB</span></strong>؛ وتعود اللوحة من تلقاء نفسها عند توصيل الراديو. والراديو الذي لا CAT فيه ويشتغل إرساله بـ <span translate="no">VOX</span> الخاص به يصلح أيضا، لكن التطبيق لا يستطيع توليفه عندئذ.</li>
-                <li><strong><span translate="no">QMX</span> أو <span translate="no">QMX+</span> يحتاج إلى البرنامج الثابت 1_02_000 أو أحدث</strong> لإرسال الصوت من التطبيق. مع برنامج ثابت أقدم يُكتب في الشريط السفلي <strong>لا SSB</strong> ويكون النمط للاستقبال فقط.</li>
+                <li><strong>راديو.</strong> دونه تحل محل اللوحة بطاقة تقول <strong>وصّل راديو لاستخدام <span translate="no">SSB</span></strong>؛ وتعود اللوحة من تلقاء نفسها عند توصيل الراديو. والراديو الذي لا CAT فيه ويشتغل إرساله بـ <span translate="no">VOX</span> الخاص به يصلح أيضا، لكن التطبيق لا يستطيع توليفه عندئذ. في البطاقة زر إلى تهيئة الجهاز. من دون CAT تضبط التردد بمقبض الراديو: تبقى أزرار <span translate="no">RX</span> / <span translate="no">TX</span> والعجلة و<span translate="no">AUTO RIT</span> رمادية. وتنبّه بطاقات أخرى عندما لا يكون قد اختير ميكروفون أو سماعة، أو عندما يكون ازدواج كامل متوقفًا في تهيئة الجهاز، أو عندما لا يستطيع صوت الهاتف التسجيل والتشغيل في الوقت نفسه.</li>
+                <li><strong>يحتاج <span translate="no">QMX</span> أو <span translate="no">QMX+</span> إلى البرنامج الثابت 1_04_001 أو أحدث</strong> لإرسال الصوت من التطبيق. ومع برنامج ثابت أقدم يظهر على زر <span translate="no">PTT</span> <span translate="no">لا SSB</span>، ويشرح سطر أحمر السبب، ويكون الوضع للاستقبال فقط.</li>
+                <li><strong>في <span translate="no">QMX</span></strong> يضبط qFT8 إعداد <span translate="no">SSB &gt; Input</span> في الراديو على USB ما دمت في <span translate="no">SSB</span>، ويعيد اختيارك أنت عند الخروج؛ ولا يُحفظ شيء في الراديو. وإن لم يسمح البرنامج الثابت بذلك، يطلب منك سطر أحمر ضبطه من قائمة الراديو. وإن لم يُخرج الراديو أي قدرة بينما يصل إليه صوتك، تعرض رسالة واحدة ما يجب فحصه (<span translate="no">SSB &gt; Input</span>، وكسب USB في الراديو، والبرنامج الثابت).</li>
+                <li>في بعض الهواتف لا يمكن استخدام <span translate="no">VOX</span> مع راديو USB، لأن الهاتف لا يستطيع الاستماع إلى ميكروفونه وإلى الراديو في الوقت نفسه؛ استخدم هناك زر <span translate="no">PTT</span>.</li>
                 <li>أول مرة تزور نطاقا في <span translate="no">SSB</span> يوالف qFT8 على تردد الصوت المعتاد لذلك النطاق في منطقتك من العالم؛ وبعدها يعود إلى آخر تردد استخدمته هناك. نطاق 30 m ليس فيه قسم للصوت فلا يُعرض.</li>
+                <li>إذا لم يكن مسموحًا لـ qFT8 بضبط وضع الراديو (ذلك الإعداد متوقف في تهيئة الجهاز) أو كان أمر بيانات <span translate="no">LSB</span> للراديو غير معروف، يبقى الراديو في وضع بيانات USB ويُنشئ qFT8 <span translate="no">LSB</span> بنفسه: على نطاقات <span translate="no">LSB</span> تعرض شاشة الراديو عندئذ ترددًا أقل بـ 3 كيلوهرتز مما يعرضه qFT8. وفي كل الأحوال تحدّث في الميكروفون المختار في السماعات والميكروفون واستخدم <span translate="no">PTT</span> الخاص بـ qFT8، لا الخاص بالراديو.</li>
             </ul>
             <p>
                 تُسجَّل QSO بنمط <span translate="no">SSB</span> مع نطاقها الجانبي، وتُرفع إلى <span translate="no">QRZ</span> و <span translate="no">LoTW</span> مثل أي QSO آخر.
             </p>
+
+            <h3 id="ssb-platforms">على الحاسوب وiPhone والتحكم عن بُعد عبر الويب</h3>
+            <ul>
+                <li>يعرض <strong>الحاسوب</strong> و<strong>iPhone</strong> اللوحة نفسها بالأزرار نفسها. على الحاسوب، النقر بالزر الأيمن على ذاكرة صوتية يشغّلها لك وحدك، وعجلة الفأرة فوق المخطط الطيفي تضبط التردد.</li>
+                <li><strong>التحكم عن بُعد عبر الويب</strong> لا يستطيع تحويل التطبيق إلى <span translate="no">SSB</span>. وما دام التطبيق في <span translate="no">SSB</span> تعرض الصفحة الشلال وثلاثة أزرار: <strong>استماع</strong> يشغّل صوت الراديو في الصفحة، و<strong>الميكروفون</strong> يجعل ميكروفون المتصفح ميكروفون الراديو، و<strong><span translate="no">PTT</span></strong> يرسل (نقرة للتشغيل ونقرة للإيقاف؛ ومفتاح المسافة يفعل الشيء نفسه). ولا يرسل إلا مع <span translate="no">TX ON</span> في التطبيق. لا تعطي المتصفحات الصفحة الميكروفون إلا على عنوان آمن: فعّل العنوان الآمن (https) في إعدادات خادم الويب وافتح الرابط الذي تعرضه الصفحة.</li>
+            </ul>
 
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
@@ -2604,6 +2973,11 @@
             <h2><span translate="no">CW</span> (شفرة مورس)</h2>
             <p>
                 في نمط <span translate="no">CW</span> يقرأ qFT8 كل إشارة مورس في نطاق التمرير ويكتب نصها على مخطط الطيف، ويرسل مورس من مجاديف على الشاشة أو من مفاتيحك أنت أو من رسائل جاهزة أو من نص مكتوب. مع <span translate="no">TX OFF</span> يعمل كل شيء كتدريب: تسمع إرسالك في السماعة ولا يخرج شيء على الهواء.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> ITU-R التوصية M.1677-1, &ldquo;International Morse code&rdquo; (2009).</p>
+            <p>
+                يرسل qFT8 الـ <span translate="no">CW</span> كنغمة صوتية نظيفة ومشكَّلة عبر وضع البيانات في جهاز الراديو (مثل <span translate="no">DIGU</span> أو <span translate="no">DIGL</span>، <span translate="no">USB-D</span> أو <span translate="no">LSB-D</span>)، لذا ينتقل الجهاز إلى هذا الوضع أثناء الإرسال ويبقى الاستقبال عريضاً. الاستثناء هو QRP Labs <span translate="no">QMX</span>: يُفتَح ويُغلَق بإشارة <span translate="no">CW</span> حقيقية عبر <span translate="no">CAT</span>.
             </p>
             <p>
                 اختر <strong><span translate="no">CW</span></strong> من محدد النمط في الشريط السفلي:
@@ -2618,16 +2992,16 @@
 
             <ol>
                 <li><strong><span translate="no">AUTO</span></strong>: يدع qFT8 يجري QSO كاملة بـ <span translate="no">CW</span> بنفسه (انظر <a href="#cw-auto">AUTO في CW</a>).</li>
-                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: يختار أي شريط تحركه الضغطة على الشلال أو عجلة التوليف: شريط الاستقبال، أو شريط الإرسال، أو كليهما معا.</li>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: يختار أي شريط تحركه الضغطة على الشلال أو عجلة التوليف: شريط الاستقبال، أو شريط الإرسال، أو كليهما معا. <strong><span translate="no">AUTO RIT</span></strong>، بعدها مباشرة، ينقل شريط الاستقبال إلى محطة تناديك (انظر <a href="#cw-auto-rit"><span translate="no">AUTO RIT</span></a>).</li>
                 <li><strong>الترس</strong> يفتح <strong>الإعدادات &gt; <span translate="no">CW</span></strong>، و<strong><span translate="no">QSO</span></strong> يفتح المسجِّل وفيه <span translate="no">CW</span> والتردد والهدف معبأة سلفا.</li>
-                <li><strong>الهدف</strong>: رمز نداء المحطة التي تشتغل معها. يملأ الجزء <code>[TARGET]</code> من رسائلك. اضغط عليه لكتابة رمز، أو اضغط على رمز نداء في سطر فك الترميز (البند 10) لأخذه من هناك.</li>
-                <li><strong>الذاكرات</strong>: رسائل جاهزة. ضغطة ترسل واحدة منها. رمز ندائك يظهر بالأزرق والتقرير بالأصفر. الذاكرة التي ما زال ينقصها شيء (هدف، اسمك...) تظهر باهتة؛ اضغط عليها لترى ما الناقص.</li>
+                <li><strong>الهدف</strong>: رمز نداء المحطة التي تشتغل معها. يملأ الجزء <code>[TARGET]</code> من رسائلك. اضغط عليه لكتابة رمز، أو اضغط على رمز نداء في سطر فك الترميز (البند 10) لأخذه من هناك. ما دام <span translate="no">AUTO</span> مفعّلًا و<span translate="no">TX</span> متوقفًا، يقول سطر رمادي تحته <strong>K1ABC يناديك – اضغط TX ON</strong> عندما تناديك محطة.</li>
+                <li><strong>الذاكرات</strong>: رسائل جاهزة. ضغطة ترسل واحدة منها. رمز ندائك يظهر بالأزرق والتقرير بالأصفر. الذاكرة التي ما زال ينقصها شيء (هدف، اسمك...) تظهر باهتة؛ اضغط عليها لترى ما الناقص. عندما يكون <span translate="no">AUTO RIT</span> مفعّلًا، تظهر أسطر <strong>تتبّع K1ABC ‎+150 Hz؟</strong> للمحطات التي تناديك في أعلى هذه القائمة.</li>
                 <li><strong><span translate="no">WPM</span></strong> و<strong><span translate="no">FARNSWORTH</span></strong>: سرعة الإرسال بالكلمات في الدقيقة، وسرعة Farnsworth الاختيارية (تحتفظ الحروف بسرعتها وتطول الفواصل بينها).</li>
-                <li><strong><span translate="no">FILTER</span></strong> و<strong><span translate="no">NR</span></strong>: عرض مرشّح الاستقبال حول شريط الاستقبال، وخفض الضوضاء.</li>
+                <li><strong><span translate="no">FILTER</span></strong> و<strong><span translate="no">NR</span></strong> و<strong><span translate="no">SIDETONE</span></strong>: عرض مرشّح الاستقبال حول شريط الاستقبال، وتقليل الضوضاء، وارتفاع نغمة المراقبة الخاصة بك (انظر <a href="#cw-sidetone">نغمة المراقبة</a>).</li>
                 <li><strong>المجاديف</strong>: الأيسر يرسل النقاط والأيمن يرسل الشرطات. اضغطهما معا في أوضاع iambic.</li>
                 <li><strong>السطر الأحمر</strong>: <span translate="no">اضغط TX ON للإرسال</span>. ما دام ظاهرا فإرسالك تدريب.</li>
-                <li><strong>سطر فك الترميز</strong>: في المكان الذي فيه محدد الرسالة في FT8. يعرض نص المحطة التي داخل مرشّحك بالأخضر وما ترسله أنت بالأحمر، والأحدث في اليمين.</li>
-                <li><strong>النص المفكوك الترميز على الشلال</strong>: كل إشارة يُكتب نصها على امتداد أثرها، فتقرأ النطاق كله دفعة واحدة. والتسمية تحت شريط الاستقبال تعرض رمز نداء المحطة التي أنت عليها وسرعتها.</li>
+                <li><strong>سطر فك الترميز</strong>: يوجد حيث يوجد محدد الرسالة في FT8. يعرض نص المحطة داخل مرشّحك بالأبيض وما ترسله أنت بالأخضر، والأحدث على اليمين. النقر على رمز نداء يعرضه هدفًا؛ والنقر في أي مكان آخر يضع المحادثة كلها على ذلك التردد مكان المخطط الطيفي، والأحدث في الأسفل (اسحب لقراءة النص الأقدم)، بينما يصبح سطر فك الترميز شلالًا صغيرًا: نقرة قصيرة عليه تعيد المخطط الطيفي، والضغط المطوّل مع السحب جانبًا يغيّر التوليف.</li>
+                <li><strong>النص المفكوك الترميز على الشلال</strong>: لكل إشارة نصها مكتوبًا على طول أثرها، فتقرأ الحزمة كلها دفعة واحدة: المحطة داخل مرشّحك بالأخضر، والهدف بالأرجواني، والبقية بالأبيض، وما ترسله أنت بالأصفر؛ والكلمة التي ما زالت تُعاد قراءتها تُكتب بخط مائل. والتسمية تحت شريط الاستقبال تعرض رمز النداء والسرعة للمحطة التي أنت عليها.</li>
                 <li><strong>عجلة التوليف</strong>: مقياس التردد. اسحب عليها لتحريك الشريط المحدد (والراديو معه حين يبلغ الشريط الحافة). الضغطة أو السحب على الشلال يحرك الشريط مباشرة.</li>
                 <li><strong>الذهاب إلى تردد</strong>: اضغط على الشريط الذي فيه خط قوة الإشارة الأبيض لكتابة تردد بوحدة kHz.</li>
             </ol>
@@ -2646,7 +3020,7 @@
 
             <h3 id="cw-practice">التدريب مع <span translate="no">TX OFF</span></h3>
             <p>
-                ما دام الشريط السفلي يقول <span translate="no">TX OFF</span> فالمجاديف ومفاتيحك والذاكرات ومربع لوحة المفاتيح تعمل كلها، لكن في سماعتك فقط. ما ترسله يُفك ترميزه ويظهر بالأحمر في سطر فك الترميز، فترى هل إرسالك مقروء. لا شيء يصل إلى الراديو. ولا حاجة إلى راديو أصلا لهذا.
+                ما دام الشريط السفلي يقول <span translate="no">TX OFF</span> فالمجاديف ومفاتيحك والذاكرات ومربع لوحة المفاتيح تعمل كلها، ولكن على مكبّر الصوت عندك فقط. ما تبرقه يُفك ترميزه ويُعرض بالأخضر في سطر فك الترميز، فترى إن كان إرسالك مقروءًا. لا شيء يصل إلى الراديو. ولا حاجة إلى أي راديو لهذا.
             </p>
 
             <h3 id="cw-paddles">المجاديف والمفتاح الإلكتروني</h3>
@@ -2779,6 +3153,17 @@
                 في <strong>الإعدادات &gt; <span translate="no">CW</span></strong> أيضا <strong>النغمات</strong> (كيف تبدو نغمتك الجانبية: الطبقة، مستوى الصوت، حواف ناعمة أو حادة، نغمة أو طقطقة sounder) و<strong>فكّ الترميز والعرض</strong> (<strong>فكّ الترميز التلقائي</strong>، و<strong>مفكّك ترميز متعدّد</strong> لنص كل إشارة على الشلال، ومخطط الطيف الأفقي، والمرشّح عند دخول النمط) و<strong>المراقبة (السمّاعة)</strong> و<strong>الإشارات الإجرائية والرموز</strong>.
             </p>
 
+            <h3 id="cw-sidetone">نغمة المراقبة</h3>
+            <p>
+                نغمة المراقبة هي ما تسمعه من إرسالك أنت، على مكبّر صوت الهاتف أو الحاسوب أو سماعاته. لا تذهب أبدًا إلى الراديو. <strong><span translate="no">SIDETONE</span></strong>، آخر زر في العمود الأيمن، يعرض ارتفاعها؛ نقرة تفتح منزلقًا بجانبه، <strong>مستوى النغمة الجانبية</strong>، ونقرة أخرى تغلقه. وهو الإعداد نفسه الموجود في <strong>الإعدادات &gt; <span translate="no">CW</span> &gt; النغمات</strong>. وأثناء الإرسال تغيّر أزرار الصوت نغمة المراقبة أيضًا.
+            </p>
+            <p>
+                في <strong>النغمات</strong> تختار أيضًا <strong>طبقة نغمة المراقبة</strong> (طبقة الإشارة المستقبلة نفسها)، و<strong>صعود / هبوط النغمة الجانبية</strong>، و<strong>موجة النغمة الجانبية</strong>، و<strong>صوت النغمة الجانبية</strong> (<strong>نغمة</strong> أو <strong>نقرات (ساوندر)</strong>). هذه تغيّر ما تسمعه أنت فقط: على الهواء يكون <span translate="no">CW</span> دائمًا نغمة نظيفة بحواف ناعمة. <strong>إبقاء السماعة نشطة</strong> يبقي الهواتف وسماعات Bluetooth مستيقظة بين الضغطات حتى لا تُقطع النقطة الأولى؛ ارفعه إذا كانت بداية النقطة مفقودة. لإيقاف نغمة المراقبة أو الإشارة المستقبلة استخدم <strong>تشغيل ما ترسله (النغمة الجانبية)</strong> و<strong>تشغيل الإشارة المستقبَلة على السمّاعة</strong> في <strong>المراقبة (السمّاعة)</strong>.
+            </p>
+            <p>
+                على iPhone لا توجد نغمة مراقبة ولا زر <span translate="no">SIDETONE</span>.
+            </p>
+
             <h3 id="cw-auto">AUTO في <span translate="no">CW</span></h3>
             <p>
                 الزر <strong><span translate="no">AUTO</span></strong> أعلى يسار اللوحة يدع qFT8 يجري QSO كاملة بـ <span translate="no">CW</span>. يكون متوقفا كلما دخلت النمط. اضغط عليه لتشغيله (يصير أخضر) ومرة أخرى لإيقافه. وهو لا يرسل إلا و <span translate="no">TX</span> في وضع <span translate="no">ON</span>: AUTO لا يفعّل الإرسال من تلقاء نفسه أبدا.
@@ -2796,14 +3181,53 @@
                 ما دام AUTO مشغَّلا تُعطَّل المجاديف ويظهر سطر يقول <strong>عطّل AUTO للإرسال يدويًا</strong>. و<strong>إيقاف</strong> يوقف AUTO أيضا. وإذا كنت لا تريده أبدا فأوقف <strong>إظهار الوضع التلقائي</strong> في <strong>الإعدادات &gt; <span translate="no">CW</span></strong> فيُخفى الزر.
             </p>
 
+            <h3 id="cw-auto-rit"><span translate="no">AUTO RIT</span>: تتبّع محطة تناديك</h3>
+            <p>
+                المحطة التي تجيب على <span translate="no">CQ</span> الخاص بك تكون غالبًا بعيدة قليلًا عن ترددك. <strong><span translate="no">AUTO RIT</span></strong>، الزر الذي بعد <span translate="no">RX/TX</span>، يتولى ذلك. يبقى متوقفًا حتى تفعّله، ويتذكر qFT8 اختيارك. عندما يكون مفعّلًا يصبح أخضر، و:
+            </p>
+            <ul>
+                <li>المحطة التي تناديك (في إرسالها رمز ندائك، وليس <span translate="no">CQ</span> ولا نداء لغيرك) <strong>داخل مرشّحك</strong> تجذب شريط الاستقبال إليها من تلقاء نفسها. شريط الإرسال لا يتحرك أبدًا: تواصل الإرسال حيث ناديت؛</li>
+                <li>المحطة التي تناديك <strong>خارج مرشّحك</strong> تُعرض سطرًا في أعلى الذاكرات، <strong>تتبّع K1ABC ‎+150 Hz؟</strong>، مع بعدها عن شريط الاستقبال. <strong>تتبّع</strong> ينقل شريط الاستقبال إليها، والعلامة × تزيل السطر. تُعرض حتى ثلاثة أسطر، الأحدث أولًا؛ ويختفي كل منها بعد دقيقة من آخر نداء لتلك المحطة؛</li>
+                <li>ما دمت في اتصال مع هدفك، فإن محطة أخرى تناديك لا تحصل إلا على سطر؛ ولا تأخذ أبدًا شريط الاستقبال من شريكك.</li>
+            </ul>
+            <p>
+                <span translate="no">AUTO RIT</span> يحرّك شريط الاستقبال فقط. لا يرسل أبدًا ولا يشغّل <span translate="no">TX</span> أبدًا، ولا يُحتسب أي شيء يُسمع أثناء إرسالك.
+            </p>
+
+            <h3 id="cw-radio">كيف يُبرَق جهاز الراديو</h3>
+            <ul>
+                <li><strong>معظم أجهزة الراديو</strong>: يرسل qFT8 الـ<span translate="no">CW</span> نغمةً صوتية مشكَّلة إلى نمط البيانات في الراديو، فتضبط مستوى الإرسال بمستوى صوت TX، كما في FT8. يتحول الراديو إلى نمط البيانات أثناء الإرسال ويبقى الاستقبال عريضًا.</li>
+                <li><strong>QRP Labs <span translate="no">QMX</span> و<span translate="no">QMX+</span></strong>: يبرق qFT8 الراديو عبر <span translate="no">CAT</span>، عنصرًا بعد عنصر، ويولّد الراديو حامله بنفسه على تردد إرسالك تمامًا. يبقى طوال الوقت في نمطه الرقمي، ولا يُرسل إليه أي صوت، ولا أهمية لمستوى صوت TX. وتستمر نغمة المراقبة في العزف على الهاتف أو الحاسوب، بسرعتك وتوقيتك.</li>
+            </ul>
+            <p>
+                في الحالتين، <span translate="no">STOP</span> أو <span translate="no">TX OFF</span> في منتصف نقطة أو شَرطة ينهيها بنظافة ويعود الراديو إلى الاستقبال. وأثناء إرسال qFT8 يبيّن زر TX أنه يرسل.
+            </p>
+
+            <h3 id="cw-logging">تسجيل اتصال <span translate="no">CW</span></h3>
+            <p>
+                <strong><span translate="no">QSO</span></strong>، في أعلى يمين اللوحة، يفتح أداة التسجيل معبأةً مسبقًا: النمط <span translate="no">CW</span>، والحزمة وتردد إرسالك (وتردد الاستقبال إذا كان الشريطان متباعدين)، ورمز النداء من الهدف، والتقارير. التقارير هي التي تُبودلت فعلًا إن كان <span translate="no">AUTO</span> قد اتصل بتلك المحطة؛ وإلا فالتقرير المرسل هو <strong>التقرير المراد إرساله [RST]</strong> الخاص بك (أو، إن كان فارغًا، المقيس من الإشارة) والتقرير المستلم هو المقروء من إرسال المحطة الأخرى. وتُملأ أيضًا الحديقة أو القمة لـ<a href="#activation">تفعيل</a> مفتوح. راجعه وغيّر ما تحتاج واحفظ (انظر <a href="#qso-logger">المسجِّل</a>).
+            </p>
+            <p>
+                يسجّل <span translate="no">AUTO</span> بنفسه كل اتصال يكمله، مع التقريرين واسم المحطة الأخرى وموقعها في التعليق، ويقول <strong>سُجّل K1ABC</strong>. ومع تفعيل <strong>إرسال الأرقام المختصرة (5NN)</strong> تُبرق التقارير على شكل <span translate="no">5NN</span>، لكن السجل يحفظ دائمًا <span translate="no">599</span>.
+            </p>
+
+            <h3 id="cw-platforms">على الحاسوب وعلى iPhone وفي التحكم عن بعد عبر الويب</h3>
+            <ul>
+                <li><strong>على الحاسوب</strong> اللوحة نفسها. أزرار الفأرة ولوحة المفاتيح هي المجاديف (انظر <a href="#cw-keys">الإرسال بمحوّل أو بلوحة المفاتيح أو بالفأرة</a>)، وعجلة الفأرة فوق المخطط الطيفي تحرّك الشريط المحدد، ولا يوجد الصوت.</li>
+                <li><strong>على iPhone</strong> اللوحة نفسها، بلا نغمة مراقبة (انظر أعلاه). الصوت يفتح مربع الإرسال مع لوحة المفاتيح، فتستطيع الإملاء.</li>
+                <li><strong>في التحكم عن بعد عبر الويب</strong> (انظر <a href="#remote-control">خادم الويب للتحكم عن بعد</a>) تعرض الصفحة النص الذي يفك qFT8 ترميزه، سطرًا لكل إشارة، الأحدث أولًا، ومربعًا لكتابة رسالة وإرسالها؛ و<span translate="no">STOP</span> يوقفها. ومفاتيح المجاديف في لوحة مفاتيح حاسوبك تبرق مفتاح qFT8 نفسه بإعداداته. <span translate="no">AUTO RIT</span> وأسطره تتبّع موجودة أيضًا؛ أما زر <span translate="no">SIDETONE</span> فلا. والنقر على شريط القمم يطلب تردد الراديو.</li>
+            </ul>
+
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
 
         <section id="rtty-mode">
-            <h2><span translate="no">RTTY</span></h2>
+            <h2><span translate="no">RTTY</span> و<span translate="no">JTTY</span></h2>
             <p>
-                <span translate="no">RTTY</span> (المبرقة الراديوية) يرسل النص على شكل نغمتين متناوبتين. في qFT8 يشارك شاشة <a href="#cw-mode"><span translate="no">CW</span></a> دون المجاديف: كل إشارة <span translate="no">RTTY</span> في نطاق التمرير يُفك ترميزها، كل بسرعتها وإزاحتها، ويُكتب نصها على امتداد أثرها على الشلال.
+                <span translate="no">RTTY</span> (المبرقة الراديوية) يرسل النص على شكل نغمتين متناوبتين. في qFT8 يشارك شاشة <a href="#cw-mode"><span translate="no">CW</span></a> دون المجاديف: كل إشارة <span translate="no">RTTY</span> في نطاق التمرير يُفك ترميزها، كل بسرعتها وإزاحتها، ويُكتب نصها على امتداد أثرها على الشلال. وتشغّل الشاشة نفسها أيضًا <span translate="no">JTTY</span>، وهو نمط نصي أحدث للإشارات الضعيفة (انظر <a href="#jtty-mode"><span translate="no">RTTY</span> و<span translate="no">JTTY</span>: الفروق</a>).
             </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> ITU-T التوصية S.1, &ldquo;International Telegraph Alphabet No. 2&rdquo;; سرعة 45.45 بود وإزاحة 170 هرتز هما العرف المتبع بين الهواة.</p>
 
             <div class="phone-mockup">
                 <img src="../../phonecamera.jpg" alt="كاميرا qFT8" class="camera" width="132" height="1080">
@@ -2813,25 +3237,55 @@
             <p>هذه مكونات شاشة <span translate="no">RTTY</span> بالتفصيل:</p>
 
             <ol>
-                <li><strong>الهدف</strong> و<strong>التبادل</strong>: رمز نداء المحطة التي تشتغل معها وتبادل المسابقة. يملآن <code>[TARGET]</code> و <code>[EXCH]</code> في رسائلك.</li>
+                <li><strong>الهدف</strong> و<strong>التبادل</strong>: رمز نداء المحطة التي تشتغل معها وتبادل المسابقة. يملآن <code>[TARGET]</code> و <code>[EXCH]</code> في رسائلك. المس أحدهما لكتابته؛ والمس نداءً في سطر فك الترميز (العنصر رقم 7) لاتخاذه هدفًا.</li>
                 <li><strong><span translate="no">BAUD</span></strong>: السرعة: 45.45 (المعتادة) أو 50 أو 75. كل ضغطة تنتقل إلى التالية.</li>
-                <li><strong><span translate="no">SHIFT</span></strong>: المسافة بين النغمتين: 170 Hz (المعتادة) أو 200 أو 425 أو 850 Hz.</li>
-                <li><strong><span translate="no">REV</span></strong>: يبدّل النغمتين، لمحطة ترسلهما بالعكس.</li>
+                <li><strong><span translate="no">SHIFT</span></strong>: المسافة بين النغمتين: 170 Hz (المعتادة) أو 200 أو 425 أو 850 Hz. يتبع المرشّح الإزاحة.</li>
+                <li><strong><span translate="no">REV</span></strong>: يبدّل النغمتين، لمحطة ترسلهما بالعكس. يكون كهرماني اللون ما دام مفعّلًا.</li>
                 <li><strong><span translate="no">FILTER</span></strong> و<strong><span translate="no">NR</span></strong>: مرشّح الاستقبال وخفض الضوضاء.</li>
-                <li><strong>الذاكرات</strong>: رسائل جاهزة بالماكرو نفسه الذي في <span translate="no">CW</span>. ضغطة ترسل واحدة منها. الرسالة التي فيها حقل فارغ تظهر باهتة. <strong>لوحة المفاتيح</strong> (و<strong>الصوت</strong> على Android) في آخر القائمة.</li>
-                <li><strong>سطر فك الترميز</strong>: نص المحطة التي تحت شريط الاستقبال بالأخضر؛ وما ترسله أنت بالأحمر.</li>
+                <li><strong>الذاكرات</strong>: رسائل جاهزة بوحدات الماكرو نفسها كما في <span translate="no">CW</span>. لمسة واحدة ترسل واحدة. الرسالة التي فيها حقل فارغ تظهر باهتة: المسها لترى ما الناقص. <strong>لوحة المفاتيح</strong> (و<strong>الصوت</strong> على الهاتف وiPhone) في آخر القائمة.</li>
+                <li><strong>سطر فك الترميز</strong>: نص المحطة التي تحت شريط الاستقبال بالأخضر؛ وما ترسله أنت بالأحمر. المسه (في أي مكان عدا فوق نداء) لترى المحادثة كلها على ذلك التردد مكان المخطط الطيفي؛ والمس المخطط الطيفي الصغير الذي يحل محل السطر للعودة.</li>
                 <li><strong>شريط الاستقبال وتسميته</strong>: التسمية تعرض رمز نداء المحطة التي تحت الشريط وسرعتها وإزاحتها. الضغط قرب إشارة يضع الشريط على مركزها.</li>
-                <li><strong><span translate="no">tap to match</span></strong>: عندما تستخدم المحطة التي تحت الشريط سرعة أو إزاحة أو ترتيب نغمات غير ما عندك يظهر سطر برتقالي يقول ذلك. اضغط عليه فيأخذ qFT8 قيم تلك المحطة لتستطيع الرد عليها.</li>
-                <li><strong>الإشارات الأخرى</strong>: يُكتب نصها على امتداد آثارها. ووسم برتقالي مثل <code>50 Bd</code> أو <code>425 Hz</code> يعلّم إشارة تختلف عن إعداداتك.</li>
+                <li><strong>محطة بإعدادات أخرى</strong>: عندما تستخدم المحطة التي تحت الشريط سرعة أو إزاحة أو ترتيب نغمات يختلف عن إعداداتك، يصبح ملصقها كهرمانيًا، وتصبح أزرار <span translate="no">BAUD</span> أو <span translate="no">SHIFT</span> أو <span translate="no">REV</span> المختلفة كهرمانية وتعرض <code>طابق</code> مع قيمة تلك المحطة. المس الملصق أو أحد تلك الأزرار فيأخذ qFT8 كل قيم تلك المحطة، لتتمكن من الرد عليها.</li>
+                <li><strong>إشارات أخرى</strong>: يُكتب نصها على امتداد آثارها. وحدها المحطة التي تحت شريط الاستقبال تبيّن كيف تختلف عن إعداداتك.</li>
                 <li><strong>التردد</strong>: في <span translate="no">RTTY</span> تعرض الترويسة تردد mark، وهو التردد الذي يذكره المشغلون والذي يُكتب في السجل.</li>
             </ol>
 
+            <p>وعلى هذه الشاشة أيضًا:</p>
+            <ul>
+                <li><strong><span translate="no">RX</span> / <span translate="no">TX</span> / <span translate="no">RX/TX</span></strong>: يختار أي شريط تحركه لمسة على الشلال أو عجلة التوليف: شريط الاستقبال أو شريط الإرسال أو كلاهما معًا. مع <strong><span translate="no">RX</span></strong> أو <strong><span translate="no">TX</span></strong> يمكنك الاستماع على تردد والإرسال على آخر.</li>
+                <li><strong><span translate="no">AUTO RIT</span></strong>: ينقل شريط الاستقبال إلى محطة تجيبك بعيدًا قليلًا عن ترددك (انظر <a href="#rtty-auto-rit"><span translate="no">AUTO RIT</span> وبطاقات التتبّع</a>).</li>
+                <li><strong>الترس</strong> يفتح الإعدادات &gt; <span translate="no">RTTY</span> (أو الإعدادات &gt; <span translate="no">JTTY</span> ما دامت الشاشة تعمل بـ<span translate="no">JTTY</span>)، و<strong><span translate="no">QSO</span></strong> يفتح المسجِّل (انظر <a href="#rtty-logging">التسجيل</a>).</li>
+                <li><strong>السطر الأحمر</strong>: <span translate="no">Press TX ON to transmit</span>. ما دام ظاهرًا، فما ترسله مجرد معاينة.</li>
+            </ul>
+            <p>
+                على الحاسوب تُستخدم الشاشة نفسها بالفأرة ولوحة المفاتيح. ويعرض التحكم عن بُعد عبر الويب النص المستقبَل مع مربع لكتابة رسالة وإرسالها، وزر لإيقافها، وزر <span translate="no">AUTO RIT</span> وبطاقات التتبّع؛ وزر <span translate="no">TX</span> فيه هو زر التطبيق نفسه.
+            </p>
+
             <h3 id="rtty-sending">الإرسال</h3>
             <p>
-                فعّل <span translate="no">TX</span>، ثم اضغط على ذاكرة، أو افتح <strong>لوحة المفاتيح</strong> واكتب واضغط <strong>إرسال</strong>. يظهر شريط فيه <strong>إيقاف</strong> ما دام النص يخرج. مع <span translate="no">TX OFF</span> تكون الإجراءات نفسها <strong>معاينة</strong>: تُشغَّل الرسالة في سماعتك وتظهر بالأحمر، ولا يخرج شيء على الهواء. الحروف التي ليست في شفرة <span translate="no">RTTY</span> تُحذف وتُسرد.
+                فعّل <span translate="no">TX</span>، ثم اضغط على ذاكرة، أو افتح <strong>لوحة المفاتيح</strong> واكتب واضغط <strong>إرسال</strong>. يظهر شريط فيه <strong>إيقاف</strong> ما دام النص يخرج. مع <span translate="no">TX OFF</span> تكون الإجراءات نفسها <strong>معاينة</strong>: تُشغَّل الرسالة في سماعتك وتظهر بالأحمر، ولا يخرج شيء على الهواء. الحروف التي ليست في شفرة <span translate="no">RTTY</span> تُحذف وتُسرد. تبقى الذاكرة التي يجري إرسالها خضراء حتى تنتهي.
             </p>
             <p>
                 <span translate="no">RTTY</span> إرسال متواصل بكامل القدرة، ولذلك يسري <a href="#tx-limit">حد الإرسال المتواصل</a> الخاص بالراديو: الرسالة الأطول من الحد لا تُبدأ، والإرسال يتوقف عند بلوغ الحد.
+            </p>
+
+            <h3 id="rtty-auto-rit"><span translate="no">AUTO RIT</span> وبطاقات التتبّع</h3>
+            <p>
+                كثيرًا ما تكون المحطة التي تجيب <span translate="no">CQ</span> الخاص بك بعيدة قليلًا عن ترددك. <strong><span translate="no">AUTO RIT</span></strong>، بجانب <span translate="no">RX/TX</span>، يتولى ذلك. يبقى مطفأً حتى تشغّله؛ ويصبح أخضر ما دام مشغّلًا، ويتذكره qFT8. لكل من <span translate="no">RTTY</span> و<span translate="no">JTTY</span> مفتاحه الخاص. ما دام مشغّلًا:
+            </p>
+            <ul>
+                <li>عندما تنهي محطة إرسالًا يحتوي نداءك، وتكون داخل مرشّحك، ينتقل شريط الاستقبال إليها تلقائيًا. لا يُحتسب <span translate="no">CQ</span>، ولا رسالة بين محطتين أخريين، ولا رسالتك أنت حين تُقرأ عائدة. شريط الإرسال لا يتحرك أبدًا: يصبح <span translate="no">RX/TX</span> <span translate="no">RX</span>، فتواصل الرد على ترددك أنت.</li>
+                <li>المحطة التي تناديك من مسافة أبعد تحصل على بطاقة أعلى الذاكرات، مثل <code>تتبّع Q0ABC ‎+150 Hz؟</code>. <strong>تتبّع</strong> ينقل شريط الاستقبال إليها؛ وX يغلق البطاقة حتى تنادي تلك المحطة مجددًا. هناك ثلاث بطاقات على الأكثر، الأحدث أولًا. تختفي البطاقة بعد دقيقة من آخر نداء لتلك المحطة، وتُخفى ما دمت عليها.</li>
+                <li>ما دامت المحطة التي تعمل معها تناديك، لا تحصل أي محطة أخرى تنادي إلا على بطاقة.</li>
+                <li>لا يُقرأ شيء أثناء إرسالك. <span translate="no">AUTO RIT</span> لا يشغّل <span translate="no">TX</span> أبدًا ولا يرسل شيئًا أبدًا.</li>
+            </ul>
+            <p>
+                في <span translate="no">JTTY</span> تصل الرسالة على هيئة إطارات، فيُعدّ إرسال المحطة منتهيًا عند وصول آخر إطار منه.
+            </p>
+
+            <h3 id="rtty-logging">التسجيل</h3>
+            <p>
+                <strong><span translate="no">QSO</span></strong> يفتح المسجِّل (انظر <a href="#qso-logger">المسجِّل</a>) والنمط والنطاق وتردد العلامة والهدف والتقارير معبّأة مسبقًا: التقرير الذي ترسله هو الموجود في إعداداتك، والتقرير المستلم يُقرأ من نص المحطة إن أرسلته. اتصال QSO واحد لكل ضغطة. تُسجَّل اتصالات <span translate="no">RTTY</span> بنمط <span translate="no">RTTY</span>، واتصالات <span translate="no">JTTY</span> بنمط <span translate="no">JTTY</span> (في ملفات <span translate="no">ADIF</span> وعمليات الرفع: النمط <span translate="no">MFSK</span> مع النمط الفرعي <span translate="no">JTTY</span>). وما دام تفعيل حديقة أو قمة مفتوحًا، يدخل مرجعه أيضًا في الاتصال.
             </p>
 
             <h3 id="rtty-settings">الإعدادات &gt; <span translate="no">RTTY</span></h3>
@@ -2841,95 +3295,361 @@
                 <li><strong>فكّ الترميز والعرض</strong> و<strong>المراقبة (السمّاعة)</strong> و<strong>الذاكرات</strong> بقيمها (التقرير، الاسم، الموقع، التبادل) و<strong>إعادة الضبط للافتراضي</strong>.</li>
             </ul>
             <p>
-                QSO التي تُجرى بالزر <strong><span translate="no">QSO</span></strong> تُسجَّل بنمط <span translate="no">RTTY</span>. لا يوجد AUTO في <span translate="no">RTTY</span>.
+                لا يوجد AUTO في <span translate="no">RTTY</span> ولا في <span translate="no">JTTY</span>: لا يجري qFT8 هذه الاتصالات بنفسه.
             </p>
+
+            <h3 id="jtty-mode"><span translate="no">RTTY</span> و<span translate="no">JTTY</span>: الفروق</h3>
+            <p>
+                اختر <strong><span translate="no">JTTY</span> (تجريبي)</strong> في محدد النمط: تُفتح الشاشة نفسها بمودم <span translate="no">JTTY</span> ويعرض زر النمط <span translate="no">JTTY</span>؛ ويعيد صف <span translate="no">RTTY</span> نمط <span translate="no">RTTY</span>. لكل منهما تردده الخاص في كل نطاق، فالتبديل بينهما يحرّك القرص (على 20 m مثلًا يكون <span translate="no">JTTY</span> على 14.090 MHz). <span translate="no">JTTY</span> جديد وقد يتغير بعد. يعمل على الهاتف والحاسوب وiPhone؛ ويعرضه التحكم عن بُعد عبر الويب كما يعرض <span translate="no">RTTY</span>: النص المستلم و<span translate="no">AUTO RIT</span> وبطاقاته والنص الذي ترسله.
+            </p>
+            <ul>
+                <li>الإشارة: <span translate="no">RTTY</span> نغمتان بالسرعة والإزاحة اللتين تختارهما. <span translate="no">JTTY</span> أربع نغمات بسرعة ثابتة، بعرض نحو 130 Hz، متمركزة على شريط الإرسال، ويمكن استقبالها وهي أضعف بكثير. لا تحتوي الشاشة على أزرار <span translate="no">BAUD</span> و<span translate="no">SHIFT</span> و<span translate="no">REV</span> في <span translate="no">JTTY</span>.</li>
+                <li>النص: يكتب <span translate="no">RTTY</span> كل حرف فور وصوله. ويرسل <span translate="no">JTTY</span> الرسالة في إطارات مدة كل منها نحو ثانيتين ويكتبها إطارًا إطارًا، رسالة واحدة في كل سطر.</li>
+                <li>رسائلك: في <span translate="no">JTTY</span> كل سطر من ذاكرة، أو من رسالة مكتوبة بلوحة المفاتيح، رسالة واحدة لا تتجاوز 80 حرفًا، بمجموعة الأحرف الخاصة بـ<span translate="no">JTTY</span>. ويُظهر محرر الذاكرات في الإعدادات &gt; <span translate="no">JTTY</span> كيف ستُرسل الذاكرة.</li>
+                <li>الإعدادات: لـ<span translate="no">JTTY</span> صفحة إعدادات وقيم خاصة به (انظر أدناه)، ومفتاح <span translate="no">AUTO RIT</span> خاص به.</li>
+                <li>التسجيل: <span translate="no">RTTY</span> أو <span translate="no">JTTY</span>، كما هو موضح في <a href="#rtty-logging">التسجيل</a>.</li>
+            </ul>
 
             <h3 id="jtty-settings">الإعدادات &gt; <span translate="no">JTTY</span></h3>
             <p>
                 يستخدم <span translate="no">JTTY</span> (السطر <strong><span translate="no">JTTY</span> (تجريبي)</strong> في محدد النمط) اللوحة نفسها مع مودم <span translate="no">JTTY</span>. لإعداداته صفحة خاصة بها، بجوار <span translate="no">RTTY</span> في قائمة الإعدادات؛ ويفتحها زر الترس في اللوحة ما دامت اللوحة تعمل بنمط <span translate="no">JTTY</span>. فيها فقط ما يستخدمه <span translate="no">JTTY</span>: <strong>فكّ الترميز والعرض</strong> و<strong>المراقبة (السمّاعة)</strong> و<strong>الذاكرات</strong> بقيمها و<strong>إعادة الضبط للافتراضي</strong>؛ ولا تنطبق عليه إعدادات <strong>المودم</strong> و<strong>الإرسال</strong> الخاصة بـ <span translate="no">RTTY</span>. عند استخدام <span translate="no">JTTY</span> أول مرة يأخذ ما كنت قد غيّرته في الإعدادات &gt; <span translate="no">RTTY</span> (مثل ذاكراتك واسمك وموقعك)؛ وما لم تغيّره يبدأ بالقيم الافتراضية الخاصة بـ <span translate="no">JTTY</span>، مثل ذاكرات قصيرة تتسع كل منها لرسالة <span translate="no">JTTY</span> واحدة. بعد ذلك، تغيير أحدهما لا يغيّر الآخر.
             </p>
 
+            <p class="mode-specs"><strong>المواصفات:</strong> لا توجد مواصفات منشورة.</p>
+
+            <h3 id="q65-settings">الإعدادات &gt; <span translate="no">Q65</span></h3>
+            <p>
+                <span translate="no">Q65</span> (صف <strong><span translate="no">Q65</span> (تجريبي)</strong> في محدد النمط) نمط واحد بجانبه محدد للنمط الفرعي: الدورة (15 أو 30 أو 60 أو 120 أو 300 ثانية) وتباعد النغمات (من A إلى E)، وتُسمّى مثل <span translate="no">30A</span>. توجد 22 نمطًا فرعيًا (15 ثانية: A-C، و30 ثانية: A-D، و60 و120 و300 ثانية: A-E)؛ والافتراضي <span translate="no">30A</span>. يستخدم <span translate="no">Q65</span> رسائل <span translate="no">FT8</span> ونفس سير الاتصال (CQ والتقارير و<span translate="no">RR73</span>/<span translate="no">73</span> و<span translate="no">AUTO</span> وقائمة المحطات). تُسجَّل الاتصالات بصيغة <span translate="no">MODE=MFSK SUBMODE=Q65</span> وتُرسل النقاط (spots) إلى <span translate="no">PSKReporter</span> باسم <span translate="no">Q65</span>.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> J. Taylor, B. Somerville, S. Franke, N. Palermo, &ldquo;Q65 Quick Start&rdquo;, 2021.</p>
+            <p>
+                الاستخدامات المعتادة: التشتت الأيونوسفيري على 6 م (<span translate="no">30A</span>، <span translate="no">50.275</span> MHz)، والتشتت على 2 م (<span translate="no">60C</span>، <span translate="no">144.170</span> MHz)، وEME على 2 م وما فوق (<span translate="no">60A</span> و<span translate="no">60B</span> و<span translate="no">60C</span>). النطاقات المعروضة هي 10 م (<span translate="no">28.140</span>) و6 م (<span translate="no">50.275</span>) و2 م (<span translate="no">144.170</span>) و70 سم و23 سم و13 سم (وهذه الثلاثة تستخدم تردد <span translate="no">FT8</span> إلى أن يُؤكَّد تردد <span translate="no">Q65</span>). تستمر عمليات الإرسال 12.75 أو 25.5 أو 51 أو 113.3 أو 293.8 ثانية وتظهر في إعداد <strong>حد الإرسال المتواصل</strong>؛ ويحتاج النمط الفرعي ذو 300 ثانية إلى حد كبير بما يكفي. يُرسل <span translate="no">Q65</span> صوتًا فقط: لا يشغّله qFT8 عبر وضع نغمة CAT في الراديو.
+            </p>
+            <p>
+                يحتوي قسم <span translate="no">Q65</span> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
+            </p>
+            <ul>
+                <li><strong>النمط الفرعي</strong>: الدورة وتباعد النغمات كما في المحدد.</li>
+                <li><strong>المتوسط</strong> (مفعّل): يجمع عمليات الإرسال الضعيفة المتكررة لتتم محاولة فك ترميزها.</li>
+                <li><strong>A priori</strong> (مفعّل): يستخدم إشارة ندائك وإشارة نداء شريكك في الاتصال لمساعدة فاكّ الترميز.</li>
+                <li><strong>فك ترميز واحد</strong> (معطّل): عند التعطيل يفك ترميز النطاق كله؛ وعند التفعيل حول تردد الاستقبال فقط.</li>
+                <li><strong>تسامح Rx</strong>: العرض بالهرتز حول تردد الاستقبال (الافتراضي 100).</li>
+                <li><strong>مسح المتوسط</strong>: ينسى عمليات الإرسال المجمّعة حتى الآن.</li>
+                <li><strong>المراجع</strong>: أوصاف البروتوكول من مؤلفيها: &laquo;Quick-Start Guide to Q65&raquo; لـ Taylor وSomerville وFranke وPalermo، وعمل Palermo حول رموز التكرار والتراكم q-ary.</li>
+            </ul>
+            <p>
+                لا يُفك ترميز شيء لم يُستقبل: فك الترميز الذي يُعثر عليه بمعلومات a priori يجب أن يجتاز الفحوص نفسها كأي فك ترميز آخر.
+            </p>
+
+            <h3 id="mode-msk144">الإعدادات &gt; <span translate="no">MSK144</span></h3>
+            <p>
+                <span translate="no">MSK144</span> (سطر <strong><span translate="no">MSK144</span> (تجريبي)</strong> في محدد الأوضاع) مصمَّم للتشتت النيزكي: يعكس أثر النيزك الإشارة للحظة، فلا تُسمع إلا على شكل نبضات قصيرة (pings). يكرر الإرسال رسالته طوال الفترة، ويُفك ترميز أي نبضة طويلة بما يكفي لحملها. يستخدم <span translate="no">MSK144</span> رسائل <span translate="no">FT8</span> ومسار QSO نفسه (CQ، النداءات والمربع، التقارير، <span translate="no">RRR</span>/<span translate="no">RR73</span>/<span translate="no">73</span>، <span translate="no">AUTO</span>، قائمة المحطات). تُسجَّل الاتصالات بصيغة <span translate="no">MODE=MSK144</span> وتُرسل الرصدات إلى <span translate="no">PSKReporter</span> باسم <span translate="no">MSK144</span>.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> S. Franke, J. Taylor, &ldquo;The MSK144 Protocol for Meteor-Scatter Communication&rdquo;, <em>QEX</em>, July/August 2017.</p>
+            <p>
+                يتمركز كل إرسال على 1500 Hz صوتي، ونغماته عند 1000 و2000 Hz: لا ينطبق إزاحة الإرسال على <span translate="no">MSK144</span>. يُضبط تردد النداء <span translate="no">MSK144</span> لكل نطاق عند اختيارك النطاق. يظهر <span translate="no">MSK144</span> في إعداد <strong>حد الإرسال المتواصل</strong> مثل كل الأوضاع.
+            </p>
+            <p>
+                يحتوي قسم <span translate="no">MSK144</span> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
+            </p>
+            <ul>
+                <li><strong>الفترة</strong>: مدة كل إرسال وكل فترة استماع (5 أو 10 أو 15 أو 30 s)؛ 15 s هو الاختيار المعتاد.</li>
+                <li><strong>رسائل قصيرة للتقارير و RRR و 73</strong>: تُرسل التقارير و<span translate="no">RRR</span> و<span translate="no">73</span> كرسائل قصيرة تحمل بصمة (hash) لكلا النداءين: لا يستطيع قراءتها إلا شريكك. أكثر فائدة على 144 MHz وما فوق.</li>
+                <li><strong>سماحية الاستقبال</strong>: إلى أي مدى حول 1500 Hz (مضافًا إليه إزاحة الاستقبال) يُبحث عن إشارة: 25 أو 50 أو 100 أو 200 أو 300 Hz.</li>
+            </ul>
+            <p>
+                المراجع: مقالة <span translate="no">MSK144</span> لفرانكه وتايلور في <span translate="no">QEX</span> (2016).
+            </p>
+
+            <h3 id="fst4-settings">الإعدادات &gt; <span translate="no">FST4</span></h3>
+            <p>
+                <span translate="no">FST4</span> (صف <strong><span translate="no">FST4</span> (تجريبي)</strong> في محدد النمط) نمط اتصالات QSO للإشارات الضعيفة على LF وMF وHF. يستخدم رسائل <span translate="no">FT8</span> ونفس سير الاتصال (CQ والتقارير و<span translate="no">RR73</span>/<span translate="no">73</span> و<span translate="no">AUTO</span> وقائمة المحطات والسجل)، بأربع نغمات (GFSK) و160 رمزًا. تُسجَّل الاتصالات بصيغة <span translate="no">MODE=MFSK SUBMODE=FST4</span> وتُرسل النقاط (spots) إلى <span translate="no">PSKReporter</span> باسم <span translate="no">FST4</span>.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020.</p>
+            <p>
+                فترة الإرسال والاستقبال هي 15 أو 30 أو 60 أو 120 أو 300 أو 900 أو 1800 ثانية، وتُختار من الشريط السفلي أو من الإعدادات. كلما طالت الفترة صار النمط أضيق وأكثر حساسية: نحو -21 dB عند 15 ثانية وحتى -43 dB عند 1800 ثانية (في 2500 Hz). الترددات المعتادة: 2200 م <span translate="no">136.000</span> kHz، و630 م <span translate="no">474.200</span> kHz، و160 م <span translate="no">1.8390</span> MHz. مع الفترات الطويلة جدًا يبقى المرسل يعمل حتى 30 دقيقة: يجب أن يسمح بذلك إعداد <strong>حد الإرسال المتواصل</strong>. <span translate="no">FST4</span> نمط تجريبي.
+            </p>
+            <p>
+                يحتوي قسم <span translate="no">FST4</span> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
+            </p>
+            <ul>
+                <li><strong>الفترة</strong> (60 s): فترة الإرسال والاستقبال، كما في الشريط السفلي.</li>
+                <li><strong>A priori</strong> (مفعّل): يستخدم إشارة ندائك وإشارة نداء شريكك في الاتصال لمساعدة فاكّ الترميز.</li>
+                <li><strong>فك ترميز واحد</strong> (معطّل): عند التعطيل يفك ترميز النطاق كله؛ وعند التفعيل حول تردد الاستقبال فقط.</li>
+                <li><strong>تسامح Rx</strong>: العرض بالهرتز حول تردد الاستقبال (الافتراضي 100).</li>
+                <li><strong>المراجع</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
+            <h3 id="fst4w-settings">الإعدادات &gt; <span translate="no">FST4W</span></h3>
+            <p>
+                <span translate="no">FST4W</span> (صف <strong><span translate="no">FST4W</span> (تجريبي)</strong> في محدد النمط) نمط منارة مثل <span translate="no">WSPR</span>: يستخدم نفس لوحة WSPR (قائمة النقاط ونسبة إرسال المنارة والرفع إلى <span translate="no">WSPRnet</span>). الرسائل من 50 بتًا: <span translate="no">CALL GRID POWER</span>، أو <span translate="no">PFX/CALL POWER</span> أو <span translate="no">CALL/X POWER</span>. الفترة 120 أو 300 أو 900 أو 1800 ثانية؛ والحساسية نحو -33 dB (120 ثانية) إلى -45 dB (1800 ثانية). يفك الترميز ضمن تسامح الاستقبال (الافتراضي 100 Hz) حول تردد الاستقبال (عادة 1500 Hz). تُرسل النقاط إلى <span translate="no">WSPRnet</span> مع الفترة.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> S. Franke, J. Taylor, B. Somerville, &ldquo;Protocol Specifications&rdquo; (FST4, FST4W), 2020.</p>
+            <p>
+                الترددات المعتادة: 2200 م <span translate="no">136.000</span> kHz، و630 م <span translate="no">474.200</span> kHz، و160 م <span translate="no">1.8368</span> MHz. في النطاقات الأعلى يستخدم الترددات المجاورة لترددات القرص في <span translate="no">WSPR</span>. مع الفترات الطويلة جدًا يبقى المرسل يعمل حتى 30 دقيقة: يجب أن يسمح بذلك إعداد <strong>حد الإرسال المتواصل</strong>. <span translate="no">FST4W</span> نمط تجريبي.
+            </p>
+            <p>
+                يحتوي قسم <span translate="no">FST4W</span> في الإعدادات &gt; <strong>الأنماط الرقمية</strong> على:
+            </p>
+            <ul>
+                <li><strong>الفترة</strong> (120 s): فترة الإرسال والاستقبال، كما في الشريط السفلي.</li>
+                <li><strong>تسامح Rx</strong>: العرض بالهرتز حول تردد الاستقبال (الافتراضي 100).</li>
+                <li><strong>نسبة الإرسال</strong> (20 %): حصة الفترات التي ترسل فيها المنارة.</li>
+                <li><strong>المراجع</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
+            </ul>
+
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
 
         <section id="sstv-mode">
             <h2><span translate="no">SSTV</span> (الصور)</h2>
-            <p>
-                <span translate="no">SSTV</span> (التلفزيون البطيء المسح) يرسل صورة ثابتة على شكل صوت، سطرا سطرا، في دقيقة إلى أربع دقائق. يستقبل qFT8 الصور بنفسه ما دمت في النمط، ويرسل صورا من معرضك مكتوبا عليها رمز ندائك.
-            </p>
-            <p>
-                اختر <strong><span translate="no">SSTV</span></strong> من محدد النمط في الشريط السفلي. النصف الأيسر من اللوحة للإرسال والنصف الأيمن للاستقبال:
-            </p>
+            <p>يرسل <span translate="no">SSTV</span> (التلفزيون بطيء المسح) صورة ثابتة على شكل صوت، سطرًا بعد سطر، في مدة تتراوح بين نصف دقيقة ونحو أربع دقائق. يستقبل qFT8 الصور من تلقاء نفسه ما دمت في هذا النمط، ويرسل صورك أنت، أو صورة فوتوغرافية، أو إحدى صوره الجاهزة، وعليها رمز ندائك.</p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> J. L. Barber (N7CXI), &ldquo;Proposal for SSTV Mode Specifications&rdquo;, Dayton Hamvention SSTV forum, May 2000.</p>
+            <p>اختر <strong><span translate="no">SSTV</span></strong> بمحدد الأنماط في الشريط السفلي. ينتقل الجهاز اللاسلكي إلى تردد النداء <span translate="no">SSTV</span> للنطاق، في <span translate="no">USB</span>. تعرض اللوحة نصفًا واحدًا في كل مرة: <strong>RX</strong> للصور المستقبَلة، أو <strong>TX</strong> للصورة المراد إرسالها. يبدّل الزران في الأعلى يسارًا بينهما؛ والتبديل يغيّر ما تراه فقط ولا يرسل شيئًا أبدًا.</p>
+
+            <h3 id="sstv-rx-half">نصف الاستقبال (<span translate="no">RX</span>)</h3>
 
             <div class="phone-mockup">
-                <img src="../../phonecamera.jpg" alt="كاميرا qFT8" class="camera" width="132" height="1080">
-                <img src="../sstv.jpg" alt="لوحة SSTV في qFT8" class="screen" width="2280" height="1080">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv.jpg" alt="لوحة SSTV في qFT8، نصف الاستقبال" class="screen" width="2280" height="1080">
             </div>
 
-            <p>هذه مكونات شاشة <span translate="no">SSTV</span> بالتفصيل:</p>
+            <ol>
+                <li><strong><span translate="no">AUTO</span></strong>: عند تشغيله (أخضر، الافتراضي) يعثر qFT8 على كل صورة بنفسه، في أي نمط. وعند إيقافه يستقبل طوال الوقت في نمط واحد، كصورة متدحرجة (<a href="#sstv-manual">الاستقبال اليدوي</a>). يُحفظ الاختيار.</li>
+                <li><strong><span translate="no">RX</span> | <span translate="no">TX</span></strong>: النصف المعروض. تعني النقطة الصفراء على <span translate="no">RX</span> أن صورة وصلت بينما كان نصف الإرسال معروضًا. يعرض <span translate="no">إرسال</span> نصف الإرسال من تلقاء نفسه، وتعود اللوحة إلى نصف الاستقبال عند انتهاء الصورة.</li>
+                <li><strong>حالة الاستقبال</strong>: <span translate="no">استماع</span> (كل الأنماط، كامل نطاق التمرير)؛ <span translate="no">جارٍ استقبال</span> مع النمط ومقدار ابتعاد المحطة عن التردد والسطر الجاري رسمه؛ <span translate="no">يدوي</span> عندما يكون <span translate="no">AUTO</span> متوقفًا؛ <span translate="no">متوقف مؤقتًا</span> أثناء إرسالك.</li>
+                <li><strong>الترس</strong> يفتح <a href="#sstv-settings">الإعدادات &gt; <span translate="no">SSTV</span></a>.</li>
+                <li><strong><span translate="no">QSO</span></strong> يفتح المسجِّل للصورة المعروضة (<a href="#sstv-logging">التسجيل</a>).</li>
+                <li><strong>الصورة المستقبَلة</strong>: الصورة الواردة، تُرسم سطرًا بعد سطر، أو الصورة المحفوظة التي اخترتها في الشريط. العلامة في زاويتها: حلقة كهرمانية تمتلئ أثناء وصولها (وفي داخلها سهم أخضر إن كانت ستُحفظ عند الانتهاء)، وعلامة صح خضراء بعد حفظها، وسهم رمادي ما دامت غير محفوظة. اضغط على صورة محفوظة لتعديلها.</li>
+                <li><strong>التعليق</strong>: الوقت (<span translate="no">UTC</span>) والنمط؛ وأثناء وصول الصورة، النسبة المئوية والثواني المتبقية؛ وللصورة المحفوظة غير المكتملة: "استُقبلت من السطر ..." أو "فُقدت الإشارة عند السطر ..." أو "فُقد ... سطرًا". وبجانبه <a href="#sstv-callsign">حقل رمز النداء</a>.</li>
+                <li><strong><span translate="no">حفظ</span></strong> يكتب الصورة في <a href="#sstv-folder">مجلد الصور</a> ويصبح أخضر (<span translate="no">تم الحفظ</span>). وإذا ضُغط والصورة ما زالت تصل، يعرض <span translate="no">تُحفظ عند الانتهاء</span>.</li>
+                <li><strong><span translate="no">تعديل</span></strong> يحسّن صورة محفوظة: السطوع والتباين واللون وتدرّج اللون والحدّة وإزالة التشويش. تبقى الصورة كما استُقبلت محفوظة دائمًا: <span translate="no">استرجاع</span> يلغي كل شيء، و<span translate="no">حفظ نسخة</span> يحفظ النسخة المعدّلة في ملف مستقل.</li>
+                <li><strong><span translate="no">رد</span></strong> يسأل عن رمز نداء المحطة الأخرى (بدءًا من حقل رمز النداء) ويكتب "رمز ندائهم <span translate="no">DE</span> رمز ندائك" على صورتك <em>أنت</em> المراد إرسالها، بأحد تخطيطات الرد الخمسة؛ ولا تُعاد الصورة المستقبَلة أبدًا. يتغير النمط إلى النمط الذي استخدمته الصورة المستقبَلة. وإذا كان <a href="#tx-limit">حد الإرسال المتواصل</a> لديك أقصر من اللازم لهذا النمط، فإن إشعارًا يقول ذلك؛ ولا يُغيَّر الحد نيابةً عنك أبدًا.</li>
+                <li><strong>سلة المهملات</strong> تحذف الصورة المعروضة من qFT8 بعد سؤال. تبقى النسخة المحفوظة مسبقًا في مجلد الصور في مكانها، والسؤال يذكر ذلك.</li>
+                <li><strong>الشريط</strong>: أولًا الصورة الواردة، ثم الصور المحفوظة، الأحدث أولًا (<a href="#sstv-strip">الصور المستقبَلة</a>).</li>
+                <li><strong>محدد أنماط <span translate="no">SSTV</span></strong> في الشريط السفلي: أنماط Martin وScottie وRobot وPD وWraase وPasokon، كلٌّ منها مع عدد الثواني التي تستغرقها الصورة. إنه النمط الذي تُرسل به الصور، والنمط المستقبَل عندما يكون <span translate="no">AUTO</span> متوقفًا. وبجانبه تقول منطقة الرسائل ما يحدث ("استماع"، "استقبال" مع النسبة المئوية، "إرسال" مع الثواني المتبقية).</li>
+                <li><strong>نطاق <span translate="no">SSTV</span></strong> على الشلال: تُرسل الصور وتُستقبل بين 1100 و2300 هرتز، مع تعريف مورس عند 1000 هرتز. تحصل كل صورة مسموعة أو مرسلة على مربع بنمطها ورمز ندائها؛ اضغط على مربع لعرض تلك الصورة.</li>
+            </ol>
+
+            <h3 id="sstv-tx-half">نصف الإرسال (<span translate="no">TX</span>)</h3>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="qFT8 Camera" class="camera" width="132" height="1080">
+                <img src="../sstv_send.jpg" alt="لوحة SSTV في qFT8، نصف الإرسال" class="screen" width="2280" height="1080">
+            </div>
 
             <ol>
-                <li><strong>إرسال</strong>: النمط الذي ستُرسل به الصورة، مع حجمها. يُختار النمط بالبند 12.</li>
-                <li><strong>تحميل</strong>: يعرض “اختيار صورة” (من المعرض أو من ملف)، و“التقاط صورة” (على هاتف أو جهاز لوحي مزود بكاميرا)، و“صور جاهزة”: نحو عشرين رسمة أعدّها qFT8 بحجم النمط وعليها رمز ندائك (بطاقات CQ، وشعار qFT8، ومناظر طبيعية، وخدع بصرية، وبطاقة QSL، و73...). ويمكنك أيضا مشاركة صورة إلى qFT8 من تطبيق آخر؛ وإذا كان نمط آخر قيد الاستخدام سأل qFT8 قبل الانتقال إلى <span translate="no">SSTV</span>.</li>
-                <li><strong>الصورة المراد إرسالها</strong>، معروضة تماما كما ستُرسل. اضغط عليها لملاءمتها مع شكل النمط: عرضها كاملة، أو قصها (اسحب للتحريك، وقرّب إصبعين أو باعدهما للتكبير)، أو تدويرها، وضبط السطوع والتباين.</li>
-                <li><strong>نمط النص</strong>: السهمان يتنقلان بين طرق كتابة رمز ندائك على الصورة (شريط في الأسفل، زاوية، حروف مفرغة كبيرة... أو دون رمز نداء). والقلم يضيف نصا حرا.</li>
-                <li><strong>إزالة</strong> يزيل الصورة المحمّلة. <strong>إرسال</strong> يعرض كم ثانية سيستغرق الإرسال، ويصير <strong>إيقاف</strong> مع الثواني الباقية ما دام الإرسال على الهواء.</li>
-                <li><strong>السطر الأحمر</strong>: <span translate="no">اضغط TX ON لإرسال الصور</span>. وتحتها تُملأ المساحة المتبقية بصور صغيرة: آخر الصور التي حمّلتها ثم الصور الجاهزة. تحمّل لمسة واحدة صورة منها لتكون الصورة المراد إرسالها (ولا تُرسل أبدا حتى تضغط <span translate="no">إرسال</span>). وإذا لم يكن شكل الصورة هو شكل النمط فُتحت خطوة الملاءمة أولا.</li>
-                <li><strong>حالة الاستقبال</strong>: <span translate="no">استماع</span>، أو <span translate="no">RECEIVING</span> مع النمط، ومقدار انحراف المحطة عن التردد، والسطر الجاري رسمه.</li>
-                <li><strong>الصورة المستقبلة</strong>، تُرسم وهي تصل. تحتها: الوقت والنمط والتقدم، وعند اكتمال الصورة <a href="#sstv-callsign">حقل رمز النداء</a>.</li>
-                <li><strong>حفظ</strong> يخزّن الصورة في مجلد الصور في الجهاز (وإذا ضُغط والصورة ما زالت تصل حفظها عند انتهائها). <strong>تعديل</strong> يحسّن الصورة المستقبلة (التباين، السطوع، اللون، الصبغة، الحدّة، إزالة الضوضاء)؛ والصورة كما استُقبلت تُحفظ دائما، فيمكن التراجع عن كل تغيير. <strong>رد</strong> يحمّل الصورة المستقبلة لتكون هي المرسلة، وعليها رمز نداء المحطة الأخرى بجانب رمزك.</li>
-                <li><strong>الصور المحفوظة</strong>: أحدث الصور المستقبلة. اضغط على واحدة لعرضها من جديد.</li>
-                <li><strong>الترس</strong> يفتح <strong>الإعدادات &gt; <span translate="no">SSTV</span></strong>، و<strong><span translate="no">QSO</span></strong> يفتح المسجِّل بالنمط <span translate="no">SSTV</span>.</li>
-                <li><strong>محدد نمط <span translate="no">SSTV</span></strong>: أنماط Martin و Scottie و Robot و PD و Wraase و Pasokon. وبجانبه تبين منطقة الرسالة ما يجري («استماع»، «استقبال»، «إرسال» مع الثواني الباقية).</li>
-                <li><strong>حيّز <span translate="no">SSTV</span></strong>: تُرسل الصور وتُستقبل بين 1100 و 2300 Hz. كل صورة تُسمع أو تُرسل يُرسم لها مربع على الشلال مع نمطها.</li>
+                <li><strong>النمط</strong> الذي ستُرسل به الصورة، مع حجمها ونظام ألوانها. يُختار بمحدد الأنماط في الشريط السفلي.</li>
+                <li><strong><span translate="no">تحميل</span></strong> يفتح <a href="#sstv-sending">اختيار صورة</a>.</li>
+                <li><strong>الصورة المراد إرسالها</strong>، تمامًا كما ستخرج على الهواء. وهي فارغة تقول <span translate="no">اضغط لتحميل صورة</span>. اضغط عليها لملاءمتها مجددًا مع شكل النمط. السهم الصغير في زاويتها يحفظها، كما ستُرسل، في مجلد الصور.</li>
+                <li><strong>نمط رمز النداء</strong>: تتنقل الأسهم بين الأنماط الستة عشر و<span translate="no">بلا رمز نداء</span>؛ والضغط على اسم النمط يفتح منتقي النمط واللون.</li>
+                <li><strong>لوحة الألوان</strong> تفتح المنتقي نفسه: الأنماط في قائمة وثمانية ألوان للنص. يظهر كل اختيار على الصورة فورًا ويبقى للصورة التالية.</li>
+                <li><strong>القلم</strong> يضيف إلى الصورة سطرًا من نصك الخاص (يصبح القلم أصفر ما دام هناك سطر).</li>
+                <li><strong><span translate="no">إزالة</span></strong> تزيل الصورة المحمّلة.</li>
+                <li><strong><span translate="no">إرسال</span></strong> يعرض عدد الثواني التي يستغرقها الإرسال كله. وأثناء بث الصورة يصبح <span translate="no">إيقاف</span> مع الثواني المتبقية، وتُعلَّم الأسطر المرسلة على الصورة.</li>
+                <li><strong>السطر الأحمر</strong>: <span translate="no">اضغط TX ON لإرسال الصور</span>. ومع جهاز <span translate="no">QMX</span> لا تستطيع برمجيته الثابتة إرسال الصور، يقول ذلك بدلًا من هذا.</li>
+                <li><strong>الصور السريعة</strong>: آخر ست صور حمّلتها، ثم الصور الجاهزة، بنمط رمز ندائك مسبقًا. ضغطة واحدة تحمّل واحدة كصورة للإرسال؛ ولا تُرسل أبدًا قبل أن تضغط <span translate="no">إرسال</span>.</li>
             </ol>
 
             <h3 id="sstv-receiving">استقبال الصور</h3>
-            <p>
-                لا شيء يحتاج إلى ضبط. يتعرف qFT8 على نمط كل إرسال من إشارة بدايته، وكذلك إذا والفت بعد أن بدأت الصورة (الأسطر التي فاتت تبقى فارغة). الصورة المرسلة بانحراف قليل عن التردد، أو من محطة توقيتها غير دقيق قليلا، تُقوَّم آليا. وإذا أرسلت محطتان في الوقت نفسه على ترددين متباعدين بوضوح استُقبلت الصورتان وحُفظتا؛ اضغط على مربع في الشلال لاختيار المعروضة.
-            </p>
-            <p>
-                يحتفظ التطبيق بأحدث الصور من تلقاء نفسه. ومع <strong>حفظ كل صورة مستقبَلة على الجهاز تلقائيًا</strong> تُكتب أيضا في مجلد الصور؛ وإلا حفظت أنت ما تريده منها.
-            </p>
+            <p>عند تشغيل <span translate="no">AUTO</span> لا شيء يحتاج إلى ضبط. يتعرف qFT8 على نمط كل إرسال من إشارة بدايته، وكذلك إذا وُلِّفت بعد أن بدأت الصورة (الأسطر الفائتة تبقى فارغة). يستمع في كامل نطاق التمرير، من نحو 1000 هرتز تحت النغمات المعتادة إلى 800 هرتز فوقها. الصورة المرسلة بعيدًا قليلًا عن التردد، أو من محطة توقيتها منحرف قليلًا، تُقوَّم تلقائيًا. وإذا أرسلت محطتان في الوقت نفسه على ترددين مختلفين بوضوح، تُستقبل الصورتان وتُحفظان؛ اضغط على مربع في الشلال لاختيار الصورة المعروضة.</p>
 
-            <h4 id="sstv-callsign">صورة مَن هذه؟ حقل رمز النداء</h4>
-            <p>
-                محطات كثيرة تعرّف بنفسها حول صورتها، بشفرة مورس قبلها أو بعدها، أو بدفقة بيانات قصيرة بعدها. يقرأ qFT8 الاثنتين، ويكتب رمز النداء في الحقل الذي بجانب الوقت والنمط تحت الصورة. وإذا لم يُسمع شيء كُتب في الحقل <strong>رمز النداء غير معروف</strong>. اضغط على الحقل لتكتب رمز النداء بنفسك (وكثيرا ما يكون مكتوبا على الصورة) أو لتصححه؛ وما تكتبه يحل محل ما سُمع.
-            </p>
-            <p>
-                الصور المحفوظة تُسمى بالتاريخ والوقت (<span translate="no">UTC</span>) والنطاق والتردد بوحدة kHz والنمط ورمز النداء، مثل <code translate="no">2026-10-05_1431_20m_14230_M1_F4ABC.png</code>، أو <code translate="no">..._UNKNOWN.png</code> إذا لم يكن هناك رمز نداء. وإذا وصل رمز النداء أو كُتب بعد حفظ الصورة أُعيدت تسمية الملف المحفوظ؛ ولا تُنشأ نسخة ثانية.
-            </p>
+            <h4 id="sstv-manual">الاستقبال اليدوي (<span translate="no">AUTO</span> متوقف)</h4>
+            <p>لمحطة فاتتك إشارة بدايتها، أو لا يلتقطها qFT8 بنفسه، أوقف <span translate="no">AUTO</span>. عندها يستقبل qFT8 طوال الوقت النمط المختار في الشريط السفلي، كصورة متدحرجة طويلة واحدة: تُضاف الأسطر الأحدث في الأسفل وتتحرك الصورة إلى الأعلى. تعرض الحالة <span translate="no">يدوي</span> مع النمط والإزاحة؛ وعند سماع إشارة بداية في أحد الأنماط تذكر ذلك، كتلميح فقط (غيّر النمط بنفسك).</p>
+            <ul>
+                <li><strong>علامة الاستقبال</strong>: على الشلال يتحول النطاق إلى علامة بحافتين صفراوين. اسحبها فوق الإشارة (بإصبعك، أو بالفأرة على الحاسوب)؛ يتبع qFT8 الإشارة ضمن نحو 100 هرتز منها. يُحفظ الموضع.</li>
+                <li><strong><span translate="no">حفظ</span></strong> و<strong><span translate="no">تعديل</span></strong> يفتحان أولًا <strong>قص الصورة</strong>: اسحب الحافتين الصفراوين حول الصورة التي تريدها؛ تبدآن عند آخر صورة كاملة. يصبح الجزء المقصوص صورة محفوظة في الشريط، ثم يُحفظ أو يُفتح في المحرر.</li>
+                <li><strong>سلة المهملات</strong> تعيد بدء الصورة المتدحرجة فارغة؛ ولا تُمسّ الصور المحفوظة.</li>
+            </ul>
+
+            <h4 id="sstv-callsign">لمن هذه الصورة؟ حقل رمز النداء</h4>
+            <p>تعرّف محطات كثيرة بنفسها حول صورتها، بشفرة مورس قبلها أو بعدها، أو بدفعة بيانات قصيرة بعدها. يقرأ qFT8 كليهما، ويكتب رمز النداء في الحقل المجاور للتعليق. وإذا لم يُسمع شيء يقول الحقل <strong><span translate="no">رمز النداء غير معروف</span></strong>. اضغط على الحقل لكتابة رمز النداء بنفسك (كثيرًا ما يكون مكتوبًا على الصورة) أو لتصحيحه؛ ما تكتبه يحل محل ما سُمع، ومنه ينطلق <span translate="no">رد</span> و<span translate="no">QSO</span>.</p>
+
+            <h3 id="sstv-strip">الصور المستقبَلة</h3>
+            <p>يحتفظ qFT8 بنفسه بآخر الصور المستقبَلة، سواء حفظتها أم لا: 100 صورة ما لم تغيّر <strong>الصور المستقبَلة المحفوظة في التطبيق</strong>؛ وتُحذف الأقدم عند وصول صورة جديدة. وتبقى بعد إعادة التشغيل. يعرضها الشريط أسفل الصورة، الأحدث أولًا، ولكلٍّ منها علامة محفوظة / غير محفوظة؛ والصورة التي ما زالت تصل تأتي أولًا. اضغط على إحداها لعرضها؛ وأثناء وصول صورة، اضغط على الأولى لمتابعتها مجددًا. وحين لا يصل شيء، تُعرض أحدث صورة محفوظة.</p>
+
+            <h3 id="sstv-folder">مجلد الصور</h3>
+            <p><span translate="no">حفظ</span> (أو <strong>حفظ كل صورة مستقبَلة على الجهاز تلقائيًا</strong>) يكتب الصورة كملف <span translate="no">PNG</span>، ويقول إشعار أين:</p>
+            <ul>
+                <li><strong>الهاتف أو الجهاز اللوحي</strong>: <code translate="no">Pictures/qFT8 SSTV</code>، فتظهر الصور في المعرض. يطلب Android من 6 إلى 9 إذن الوصول إلى التخزين مرة واحدة؛ ومن دونه تذهب الصور إلى مجلد qFT8 الخاص ويذكر الإشعار ذلك.</li>
+                <li><strong>الحاسوب</strong>: مجلد <code translate="no">qFT8 SSTV</code> داخل مجلد الصور الخاص بك (الذي يستخدمه سطح مكتبك، حتى لو كان له اسم آخر بلغتك).</li>
+                <li><strong>iPhone وiPad</strong>: مجلد <code translate="no">qFT8 SSTV</code> في التخزين الخاص بـ qFT8.</li>
+                <li><strong>التحكم عن بُعد عبر الويب</strong>: تُحفظ الصورة حيث يعمل qFT8، وينزّل المتصفح نسخة منها. والصفحة المسموح لها بالمشاهدة فقط تعرض بدلًا من ذلك <span translate="no">تنزيل</span>، الذي ينزّل فقط.</li>
+            </ul>
+            <p>الحفظ التلقائي متوقف على الهاتف والجهاز اللوحي وiPhone، ومشغّل على الحاسوب. تُسمّى الصور المحفوظة بالتاريخ والوقت (<span translate="no">UTC</span>) والنطاق والتردد بالكيلوهرتز والنمط ورمز النداء، مثل <code translate="no">2026-10-05_1431_20m_14230_M1_Q1ABC.png</code>، أو <code translate="no">..._UNKNOWN.png</code> عند غياب رمز النداء. وإذا وصل رمز النداء أو كُتب بعد حفظ الصورة، يُعاد تسمية الملف المحفوظ؛ ولا تُنشأ نسخة ثانية. تنتهي النسخة المعدّلة بـ <code translate="no">_edit.png</code>، والصورة المحفوظة من نصف الإرسال بـ <code translate="no">_tx.png</code>. حذف صورة في qFT8 لا يحذف أبدًا ملفًا محفوظًا.</p>
 
             <h3 id="sstv-sending">إرسال صورة</h3>
             <ol>
-                <li>اختر النمط من المحدد في الشريط السفلي. إذا كنت ترد على محطة فاستخدم النمط الذي استخدمته. Robot 36 و Martin 1 و Scottie 1 هي الشائعة.</li>
-                <li>المس إحدى الصور الصغيرة تحت <span translate="no">إرسال</span>، أو اضغط <strong>تحميل</strong> واختر الصورة ولائمها إذا طُلب منك.</li>
-                <li>اختر بالسهمين كيف يظهر رمز ندائك.</li>
-                <li>فعّل <span translate="no">TX</span> واضغط <strong>إرسال</strong>.</li>
+                <li>اختر النمط بالمحدد في الشريط السفلي. إذا كنت ترد على محطة، فاستخدم النمط الذي استخدمته (<span translate="no">رد</span> يفعل ذلك نيابة عنك). Robot 36 وMartin 1 وScottie 1 هي الأكثر شيوعًا.</li>
+                <li>اضغط <strong><span translate="no">تحميل</span></strong> (أو اضغط على الصورة الفارغة). يعرض <strong>اختيار صورة</strong> صورك الخاصة (<strong>المعرض</strong>؛ و<strong>الملفات</strong> على الحاسوب)، و<strong>الكاميرا</strong> حيث توجد، و59 صورة جاهزة (بطاقات CQ، شعار qFT8، مناظر طبيعية، خدع بصرية، بطاقة QSL، 73...). يمكنك أيضًا مشاركة صورة مع qFT8 من تطبيق آخر؛ وإذا كان نمط آخر قيد الاستخدام، يسأل qFT8 قبل التحول إلى <span translate="no">SSTV</span>.</li>
+                <li>إذا لم يكن للصورة شكل النمط، تأتي بعد ذلك <strong>ملاءمة الصورة</strong>: <span translate="no">كاملة</span> تعرضها كاملة مع حواف، و<span translate="no">قص</span> يملأ الإطار (اسحب للتحريك، واضمم إصبعيك للتكبير)، و<span translate="no">تدوير</span> يديرها، والسطوع والتباين و<span translate="no">تباين تلقائي</span> تضبطها. <span translate="no">استخدم الصورة</span> يعتمدها.</li>
+                <li>ثم تأتي <strong>نمط رمز النداء</strong>: صورتك في كل نمط من أنماط رمز النداء الستة عشر. اضغط على أحدها ثم اضغط <strong>استخدام</strong>؛ و<strong>رجوع</strong> يعود إلى الصور.</li>
+                <li>فعّل <span translate="no">TX</span> بزر <span translate="no">TX ON</span> واضغط <strong><span translate="no">إرسال</span></strong>.</li>
             </ol>
-            <p>
-                إيقاف <span translate="no">TX</span>، أو الضغط على <strong>إيقاف</strong>، أو تغيير النطاق أو النمط يوقف الصورة فورا. وإذا كانت صورة تصل حين تضغط <strong>إرسال</strong> سأل qFT8 قبل أن يوقف الاستقبال.
-            </p>
-            <div class="highlight">
-                <p><strong>الأنماط الطويلة والأجهزة الصغيرة:</strong> الصورة إرسال واحد متواصل بكامل القدرة: نحو 40 ثانية في Robot 36، ودقيقتان في Martin 1، وأكثر من أربع دقائق في أبطأ الأنماط. النمط الأطول من <a href="#tx-limit">حد الإرسال المتواصل</a> لراديوك يظهر باهتا في القائمة، واختياره يشرح السبب. مع <span translate="no">QMX</span> بقيمته الافتراضية 60 ثانية تعمل الأنماط القصيرة كما هي.</p>
-            </div>
+            <p>إيقاف <span translate="no">TX</span>، أو الضغط على <strong><span translate="no">إيقاف</span></strong>، أو تغيير النطاق أو النمط، يوقف الصورة فورًا؛ وبعد <span translate="no">إيقاف</span> يبقى <span translate="no">TX</span> مشغّلًا، جاهزًا للإرسال مجددًا. وإذا كانت صورة تصل عند ضغطك <strong><span translate="no">إرسال</span></strong>، يسأل qFT8 قبل أن يتوقف عن الاستقبال.</p>
+
+            <h4 id="sstv-styles">أنماط رمز النداء</h4>
+            <p>التاريخ هو تاريخ <span translate="no">UTC</span> عند إرسال الصورة، والنطاق هو النطاق الذي تعمل عليه. يُكتب "CQ" في النمط على صورة <span translate="no">CQ DE</span> متبوعًا برمز ندائك.</p>
+            <ol>
+                <li><strong>CQ + التاريخ + النطاق</strong>، في شريط في الأسفل (الافتراضي).</li>
+                <li><strong>رمز النداء</strong> وحده، في شريط في الأسفل.</li>
+                <li><strong>تاريخ ونطاق كبيران، أسفل</strong>: CQ ورمز ندائك، مع النطاق والتاريخ بأحرف كبيرة.</li>
+                <li><strong>تاريخ ونطاق كبيران، أعلى</strong>: النطاق والتاريخ بأحرف كبيرة في الأعلى، وCQ ورمز ندائك في الأسفل.</li>
+                <li><strong>شريط: رمز النداء + التاريخ + النطاق</strong>: الصورة أصغر قليلًا، فوق شريط فيه CQ ورمز ندائك والتاريخ والنطاق.</li>
+                <li><strong>شريط: رمز النداء</strong>: الشيء نفسه، برمز ندائك فقط.</li>
+                <li><strong>CQ كبير + بطاقة التاريخ</strong>: CQ كبير في الزاوية وبطاقة صغيرة بالنطاق والتاريخ.</li>
+                <li><strong>رمز النداء في الوسط</strong>: رمز ندائك بأحرف كبيرة في المنتصف.</li>
+                <li><strong>تذكرة + التاريخ</strong>: تذكرة في الزاوية فيها رمز ندائك والنطاق والتاريخ.</li>
+                <li><strong>رمز النداء أعلى اليسار</strong>.</li>
+                <li><strong>إطار + التاريخ</strong>: إطار ملون، وفيه رمز ندائك والنطاق والتاريخ.</li>
+                <li><strong>رمز النداء بظل</strong>: رمز ندائك مع ظل.</li>
+                <li><strong>CQ CQ + التاريخ</strong>: CQ CQ CQ في الأعلى، ورمز ندائك والنطاق والتاريخ في الأسفل.</li>
+                <li><strong>رمز النداء في شريط علوي</strong>: رمز ندائك في شريط فاتح على طول الحافة العليا.</li>
+                <li><strong>ختم بريدي بالتاريخ</strong>: رمز ندائك أعلى اليسار وختم بريدي دائري بالنطاق والتاريخ.</li>
+                <li><strong>رمز النداء بعدة حواف</strong>: رمز ندائك بعدة حدود حول الحروف.</li>
+            </ol>
+            <p><strong>بلا رمز نداء</strong> لا يكتب شيئًا على الصورة (سوى سطر نصك الخاص، إن أضفته). ويظل رمز النداء يُرسل بشفرة مورس أو كـ <span translate="no">FSK ID</span> إذا كانا مشغّلين في الإعدادات. أما صورة الرد فتستخدم بدلًا من ذلك أحد تخطيطات الرد الخمسة (أحدهما فوق الآخر، جنبًا إلى جنب، أعلى وأسفل، حدّ عريض، مع التاريخ + النطاق)؛ وتتنقل الأسهم ولوحة الألوان بينها.</p>
+
+            <h3 id="sstv-limits">حدود الإرسال</h3>
+            <p>الصورة إرسال متواصل واحد بكامل القدرة: نحو 40 ثانية في Robot 36، ودقيقتان في Martin 1، وأكثر من أربع دقائق في أبطأ الأنماط. كل شيء يُحتسب: إشارة البداية، ورمز النداء بمورس، والصورة، و<span translate="no">FSK ID</span>، والثواني الظاهرة على <span translate="no">إرسال</span> وفي قائمة الأنماط هي هذا الوقت كله.</p>
+            <ul>
+                <li>النمط الأطول من <a href="#tx-limit">حد الإرسال المتواصل</a> لجهازك يظهر رماديًا في قائمة الأنماط. اختياره، أو الضغط على <span translate="no">إرسال</span> فيه، يشرح السبب ويعرض فتح الإعداد؛ ولا يُرسل شيء.</li>
+                <li>تحت كل خيار من خيارات الإعداد، يسرد qFT8 أنماط <span translate="no">SSTV</span> التي يضيفها ذلك الخيار، لترى ما يمنحك رفعه.</li>
+                <li>إيقاف رمز النداء بمورس أو <span translate="no">FSK ID</span> في <a href="#sstv-settings">الإعدادات &gt; <span translate="no">SSTV</span></a> يجعل كل صورة أقصر ببضع ثوانٍ.</li>
+                <li>لا يُغيَّر الحد نيابةً عنك أبدًا، ولا حتى عبر <span translate="no">رد</span>.</li>
+            </ul>
+            <p>يحتاج جهاز <span translate="no">QMX</span> أو <span translate="no">QMX+</span> إلى البرمجية الثابتة 1_04_001 أو أحدث لإرسال الصور؛ ومع برمجية أقدم يقتصر <span translate="no">SSTV</span> على الاستقبال ويذكر السطر الأحمر في نصف الإرسال ذلك.</p>
+
+            <h3 id="sstv-logging">تسجيل <span translate="no">QSO</span> في <span translate="no">SSTV</span></h3>
+            <p>لا يُسجَّل شيء من تلقاء نفسه. اعرض صورة المحطة الأخرى واضغط <strong><span translate="no">QSO</span></strong>: يُفتح <a href="#qso-logger">المسجِّل</a> بالنمط <span translate="no">SSTV</span> والنطاق وتردد الجهاز ورمز النداء من حقل رمز النداء، و595 مرسلًا ومستقبَلًا. يطلب منك إشعار التحقق من رمز النداء، أو كتابته إذا لم يُعثر على أي رمز. احفظه كأي <span translate="no">QSO</span> آخر؛ ثم يُرفع إلى <a href="#choosing-services">خدماتك</a> مثل غيره.</p>
+
+            <h3 id="sstv-platforms">على الحاسوب وiPhone والتحكم عن بُعد عبر الويب</h3>
+            <ul>
+                <li><strong>الحاسوب</strong>: اللوحة نفسها، مع <span translate="no">استقبال</span> | <span translate="no">إرسال</span> بدلًا من <span translate="no">RX</span> | <span translate="no">TX</span>، والفأرة بدلًا من الإصبع (انقر للتحميل، واسحب العلامة)، و<strong>الملفات</strong> بدلًا من المعرض والكاميرا.</li>
+                <li><strong>iPhone وiPad</strong>: اللوحة نفسها وعناصر التحكم نفسها كما في هاتف Android.</li>
+                <li><strong>التحكم عن بُعد عبر الويب</strong>: عمودا الاستقبال والإرسال جنبًا إلى جنب، في أحدهما <span translate="no">AUTO</span> وعلامة الاستقبال والشريط و<span translate="no">حفظ</span> و<span translate="no">رد</span>، وفي الآخر محدد الأنماط و<span translate="no">تحميل</span> والأنماط و<span translate="no">إزالة</span> و<span translate="no">إرسال</span>. يختار <span translate="no">تحميل</span> صورة في المتصفح ويقصها هناك (اسحب؛ وكبّر بشريط التمرير أو بعجلة الفأرة). يتم التعديل والحذف والتسجيل في qFT8 نفسه. لا يعمل <span translate="no">إرسال</span> إلا عندما يكون المشغّل قد فعّل <span translate="no">TX ON</span> في qFT8.</li>
+            </ul>
 
             <h3 id="sstv-settings">الإعدادات &gt; <span translate="no">SSTV</span></h3>
+            <p>افتحها بترس اللوحة، أو من تبويب الإعدادات. <strong>الاستقبال</strong>:</p>
             <ul>
-                <li><strong>إرسال رمز ندائك بـ CW</strong>: متوقف، أو قبل الصورة (الافتراضي)، أو بعدها، أو كلاهما. رمز النداء فقط، بسرعة 20 WPM؛ وثوانيه تُحسب ضمن مدة الإرسال.</li>
-                <li><strong>إرسال FSK ID بعد كل صورة</strong>: دفقة بيانات قصيرة تتيح لبرنامج المحطة الأخرى قراءة رمز ندائك.</li>
-                <li><strong>نمط النص</strong> و<strong>تباين تلقائي</strong> و<strong>زيادة الحدّة تلقائيًا</strong>.</li>
-                <li><strong>حفظ كل صورة مستقبَلة على الجهاز تلقائيًا</strong> وعدد <strong>الصور المستقبلة التي يُحتفظ بها في التطبيق</strong>.</li>
+                <li><strong>حفظ كل صورة مستقبَلة على الجهاز تلقائيًا</strong> (متوقف على الهواتف وiPhone، مشغّل على الحاسوب).</li>
+                <li><strong>الصور المستقبَلة المحفوظة في التطبيق</strong>: 25 أو 50 أو 100 (الافتراضي) أو 200 أو 500.</li>
             </ul>
-            <p>
-                <span translate="no">QMX</span> أو <span translate="no">QMX+</span> يحتاج إلى البرنامج الثابت 1_02_000 أو أحدث لإرسال الصور؛ ومع برنامج ثابت أقدم يكون <span translate="no">SSTV</span> للاستقبال فقط.
-            </p>
+            <p><strong>الإرسال</strong>:</p>
+            <ul>
+                <li><strong>إرسال رمز ندائك بـ <span translate="no">CW</span></strong>: إيقاف، أو قبل الصورة (الافتراضي)، أو بعدها، أو كلاهما. رمز النداء فقط، بسرعة 20 WPM؛ وتُحتسب ثوانيه في زمن الإرسال.</li>
+                <li><strong>إرسال <span translate="no">FSK ID</span> بعد كل صورة</strong> (مشغّل): دفعة بيانات قصيرة تتيح لبرنامج المحطة الأخرى قراءة رمز ندائك.</li>
+                <li><strong>نمط النص</strong>: نمط رمز النداء الذي تبدأ به الصورة التالية (النمط 1 في تثبيت جديد)، و<strong>لون النص</strong> (أبيض).</li>
+                <li><strong>تباين تلقائي</strong> و<strong>زيادة الحدّة تلقائيًا</strong> (كلاهما مشغّل): يُطبَّقان على الصورة التي ترسلها.</li>
+            </ul>
+            <p><strong>إعادة الضبط للافتراضي</strong> يعيد كل إعدادات <span translate="no">SSTV</span> إلى قيمها الأولى.</p>
 
             <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
         </section>
 
 
 
+
+
+
+        <section id="draw-mode">
+            <span id="pix-mode"></span>
+            <h2><span translate="no">DRAW</span> (الصور على الشلال)</h2>
+            <p>
+                <span translate="no">DRAW</span> يرسم صورة رمادية مباشرة على شلال المحطات الأخرى: كل عمود في الصورة نغمة واحدة، تبعد 6.25 Hz عن التي تليها، ويُرسل كل سطر من الصورة لجزء من الثانية، من السطر السفلي إلى العلوي. كل من لديه شلال يرى صورتك تظهر، سواء كان يستخدم qFT8 أم لا. يمكن أن يكون للصورة أي شكل: صورة فوتوغرافية، أو رسم، أو مجرد سطر نصي مثل رمز ندائك. <span translate="no">DRAW</span> ليس نمطا قياسيا؛ فقد صُنع ليُرى.
+            </p>
+
+            <p class="mode-specs"><strong>المواصفات:</strong> تصميم qFT8 الخاص.</p>
+            <p>
+                اختر <strong><span translate="no">DRAW</span></strong> من محدد النمط في الشريط السفلي. <strong><span translate="no">RX</span></strong> و<strong><span translate="no">TX</span></strong> أعلى اللوحة يعرضان نصف الاستقبال أو نصف الإرسال:
+            </p>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="كاميرا qFT8" class="camera" width="132" height="1080">
+                <img src="../pix.jpg" alt="لوحة DRAW في qFT8، جانب الإرسال" class="screen" width="2280" height="1080">
+            </div>
+
+            <ol>
+                <li><strong>المعلومات</strong>: العرض، وحجم الصورة بالأعمدة والأسطر، والسرعة.</li>
+                <li><strong><span translate="no">تحميل</span></strong>: “التقاط صورة” أو “اختيار صورة”. تحتفظ الصورة بشكلها.</li>
+                <li><strong>الصورة المراد إرسالها</strong>، بالرمادي، مرسومة بألوان شلالك أنت: هذا ما ستراه المحطات الأخرى. وأثناء إرسالها يحدد خط أصفر السطر الذي يُرسل الآن، مع “على الهواء: السطر N من M”.</li>
+                <li><strong>لوحة رمز النداء</strong> (مفعّلة افتراضيا): رمز ندائك بأحرف كبيرة تحت الصورة. يغيّر القلم نص اللوحة (فارغ = رمز ندائك). <strong>تباين تلقائي</strong> يجعل أغمق جزء في الصورة أسود وأفتحه أبيض بضغطة واحدة؛ أما <strong>التباين</strong> و<strong>السطوع</strong> فتضبطهما بنفسك يدويا بعد ذلك.</li>
+                <li><strong><span translate="no">إزالة</span></strong> يعود إلى لوحة رمز النداء وحدها. <strong><span translate="no">إرسال</span></strong> يعرض عدد الثواني التي تستغرقها الصورة، ويصبح <strong><span translate="no">إيقاف</span></strong> مع الثواني الباقية.</li>
+                <li><strong>السطر الأحمر</strong> يقول لماذا لا يمكن إرسال الصورة الآن، ويختفي حين لا يمنعها شيء: «اضغط TX ON لإرسال الصور»؛ «20 s: أكثر من حدّك البالغ 15 s» (الصورة أطول من <a href="#tx-limit">حد الإرسال المتواصل</a> لجهازك)؛ «على 30 m يمكن إرسال عرض 500 Hz فقط»؛ «سيكون الإرسال خارج نطاقات الهواة»؛ أو، مع <span translate="no">QMX</span> لا يستطيع برنامجه الثابت تحويل الجهاز إلى <span translate="no">SSB</span> عبر <span translate="no">CAT</span>، أن الصور يمكن استقبالها فقط.</li>
+                <li><strong><span translate="no">السرعة</span></strong>: ‏3.125 أو 6.25 (الافتراضي: يستغرق السطر الواحد مدة نغمة <span translate="no">FT8</span> واحدة) أو 12.5 سطرا في الثانية. وبجانبه: مقدار ما تستهلكه الصورة من <a href="#tx-limit">حد الإرسال المتواصل</a> لديك. تعرض القائمة ثواني الصورة عند كل سرعة؛ والسرعة الأطول من حدك تقول ذلك عند لمسها. يعرض المؤشر مثلًا «20 s من حدّك البالغ 30 s».</li>
+                <li><strong>لوحات النص</strong>: نقرة واحدة تحمّل “CQ” مع رمز ندائك، أو “73” مع رمز ندائك، أو رمز ندائك وحده، ليكون هو الصورة كلها.</li>
+                <li><strong>تدوير</strong> (بجانب <span translate="no">إزالة</span>) يدير الإرسال كله، بما فيه اللوحة، ربع دورة عند كل ضغطة، فيُقرأ معتدلاً على شلال يتحرك أفقياً. وعلى جهة الاستقبال، يدير <strong>تدوير</strong> الصورة المعروضة (والمحفوظة) بالطريقة نفسها.</li>
+                <li><strong>العرض</strong> في الشريط السفلي: 500 أو 700 (الافتراضي) أو 1200 Hz، مع ثواني الصورة عند كل عرض. الصورة الأعرض لها أعمدة أكثر، فهي أوضح وتستغرق وقتا أطول.</li>
+                <li><strong>حيّز <span translate="no">DRAW</span></strong> على الشلال: تقع الصورة بين 1000 Hz و1000 Hz زائد عرضها.</li>
+            </ol>
+
+            <h3 id="pix-receiving">استقبال الصور</h3>
+
+            <div class="phone-mockup">
+                <img src="../../phonecamera.jpg" alt="كاميرا qFT8" class="camera" width="132" height="1080">
+                <img src="../pixrx.jpg" alt="لوحة DRAW في qFT8، جانب الاستقبال" class="screen" width="2280" height="1080">
+            </div>
+
+            <p>
+                لا شيء لتشغيله: يستمع qFT8 طوال الوقت ما دمت في هذا النمط، حتى أثناء عرض نصف الإرسال.
+            </p>
+            <ol>
+                <li><strong><span translate="no">RX</span></strong> و<strong><span translate="no">TX</span></strong>: نصف الاستقبال ونصف الإرسال.</li>
+                <li><strong>سطر الحالة</strong>: الاستماع، والعرض، والنطاق المسموع (1000&ndash;1700 Hz عند 700 Hz). أثناء بث صورتك أنت يتوقف الاستقبال مؤقتًا ويقول السطر ذلك.</li>
+                <li><strong>الصورة المستقبلة</strong>: نطاق <span translate="no">DRAW</span> لآخر ثلاث دقائق كصورة واحدة، أحدث سطر في الأعلى، بنقاط مربعة، بألوان الشلال لديك: الصورة المرسلة بـ qFT8 تظهر مستقيمة. قبل وصول أي شيء يذكر الترددات التي يستمع إليها.</li>
+                <li><strong>الوسم المباشر</strong>: النمط والعرض والسرعة التي تُرسم بها الصورة.</li>
+                <li><strong><span translate="no">حفظ</span></strong> (أزرق حين يوجد ما يُحفظ) يحفظ الصورة المعروضة، مقصوصة حيث تبرز من الضجيج، بالرمادي، كما استُقبلت، كملف <span translate="no">PNG</span> يحمل اسمه التاريخ والوقت (<span translate="no">UTC</span>) والعرض. على الهاتف أو الجهاز اللوحي تذهب إلى مجلد الصور، في <code translate="no">Pictures/qFT8 DRAW</code>؛ وإن لم يُسمح لـ qFT8 بالكتابة هناك تبقى في مجلد qFT8 الخاص ويقول الإشعار أين.</li>
+                <li><strong><span translate="no">تدوير</span></strong> يدير الصورة المعروضة (والمحفوظة) ربع دورة مع كل ضغطة؛ ويعرض الزر الدوران (90&deg;، 180&deg;، 270&deg;).</li>
+                <li><strong><span translate="no">السرعة</span></strong>: اضبطها على السرعة التي تستخدمها المحطة الأخرى (3.125 أو 6.25 أو 12.5 سطرًا في الثانية)؛ تُعاد رسم الصورة المستقبلة كلها بالسرعة الجديدة. ولا تغيّر السرعة التي ترسل بها أنت.</li>
+            </ol>
+            <div class="highlight">
+                <p><strong>AGC في الراديو:</strong> يخفض التحكم الآلي بالكسب في الراديو الكسب عند السطر الساطع ويرفعه عند السطر الداكن، فتظهر على الصورة المستقبلة خطوط. يقيس qFT8 الضوضاء بجانب الصورة في كل سطر ويصححها، ويخبرك عندما يرى الكسب يتحرك مع الصورة: اضبط حينها <span translate="no">AGC</span> في الراديو على <span translate="no">OFF</span> أو <span translate="no">SLOW</span> (وخفّض كسب <span translate="no">RF</span> قليلا إذا كان النطاق صاخبا).</p>
+            </div>
+
+            <h3 id="pix-sending">إرسال صورة</h3>
+            <ol>
+                <li>اختر العرض من الشريط السفلي، والسرعة بالزر <strong><span translate="no">السرعة</span></strong>.</li>
+                <li>حمّل صورة، أو اضغط على لوحة نص. اضبط التباين، أو اضغط <strong>تباين تلقائي</strong>.</li>
+                <li>فعّل <span translate="no">TX</span> واضغط <strong><span translate="no">إرسال</span></strong>.</li>
+            </ol>
+            <p>
+                إيقاف <span translate="no">TX</span>، أو الضغط على <strong><span translate="no">إيقاف</span></strong> أو <span translate="no">TUNE</span>، أو تغيير النطاق أو النمط يوقف الصورة فورا. الصورة الأطول من <a href="#tx-limit">حد الإرسال المتواصل</a> في الراديو لا تُرسل: يخبرك السطر الأحمر بطولها، وتجعلها سرعة أعلى أو عرض أضيق أو صورة أصغر ضمن الحد. تُرسل كل النغمات في وقت واحد، فأبقِ مستوى الإرسال كما في <span translate="no">FT8</span>، مع إبقاء <span translate="no">ALC</span> في الراديو منخفضا.
+            </p>
+
+            <h3 id="draw-platforms">على الحاسوب وiPhone وجهاز التحكم عبر الويب</h3>
+            <p>
+                اللوحة نفسها في كل مكان، بالأزرار نفسها. الفروق:
+            </p>
+            <ul>
+                <li><strong>الحاسوب</strong>: <strong><span translate="no">تحميل</span></strong> يفتح ملف صورة؛ و<strong><span translate="no">حفظ</span></strong> يكتب في مجلد <code translate="no">qFT8 DRAW</code> داخل مجلد الصور لديك.</li>
+                <li><strong>iPhone</strong>: <strong><span translate="no">تحميل</span></strong> يعرض «التقاط صورة» أو «اختيار صورة» كما على الهاتف؛ و<strong><span translate="no">حفظ</span></strong> يحفظ الصورة في مجلد <code translate="no">qFT8 DRAW</code> ضمن ملفات qFT8 الخاصة.</li>
+                <li><strong>التحكم عبر الويب</strong> يعرض الصورة نفسها للإرسال والصورة المستقبلة. <strong><span translate="no">تحميل</span></strong> يأخذ صورة من الجهاز الذي يعمل عليه المتصفح (مصغّرة إلى 192 عمودًا عرضًا على الأكثر، وهي أعرض صورة يرسلها <span translate="no">DRAW</span>)؛ و<strong><span translate="no">حفظ</span></strong> يحفظ على الهاتف أو الحاسوب الذي يشغّل qFT8، لا في المتصفح. يحتاج الإرسال مستوى وصول التحكم الكامل، وكما في التطبيق لا يخرج إلى الهواء إلا و<span translate="no">TX</span> مفعَّل.</li>
+            </ul>
+
+            <h3 id="draw-reach">إلى أي مدى يصل؟</h3>
+            <p>
+                صُمم <span translate="no">DRAW</span> ليُرى، لا لاستخراج الإشارات من الضوضاء. لوحة نداء على القيم الافتراضية 700 Hz و6.25 سطر في الثانية تُقرأ حتى نحو -2 dB <span translate="no">SNR</span> (عرض نطاق 2500 Hz)، وعلى 3.125 سطر في الثانية حتى نحو -5 dB؛ وتبدو الصورة جيدة من نحو +4 dB. يصل <span translate="no">FT8</span> إلى نحو -21 dB، فإذا كانت المحطة الأخرى بالكاد تفك <span translate="no">FT8</span> الخاص بك فلن ترى صورتك. السرعات الأبطأ والعروض الأضيق تصل أبعد. يكلّف الخفوت كل نمط نحو 6 dB. ما يمنحه <span translate="no">DRAW</span> ولا تمنحه الأنماط الأخرى: كل من ينظر إلى الشلال يرى صورتك، دون أي برنامج خاص.
+            </p>
+
+            <h3 id="pix-frequencies">الترددات والشريط الجانبي والتسجيل</h3>
+            <p>
+                يضبط qFT8 على تردد <span translate="no">DRAW</span> الخاص به في كل نطاق، وقد اختير ضمن مقاطع «كل الأنماط» في خطط نطاقات <span translate="no">IARU</span> للأقاليم الثلاثة، بعيدا عن مراكز نشاط <span translate="no">SSTV</span> والأنماط الرقمية والصوت (التردد المعروض، <span translate="no">USB</span>): ‏160 m عند 1.865، و80 m عند 3.665، و40 m عند 7.190، و30 m عند 10.145 (500 Hz فقط)، و20 m عند 14.335، و17 m عند 18.140، و15 m عند 21.400، و12 m عند 24.975، و10 m عند 28.520، و6 m عند 50.380 MHz. لا يوجد تردد لنطاق 60 m (القواعد تختلف من بلد إلى آخر). في نطاق 30 m تسمح خطط النطاقات بـ 500 Hz كحد أقصى، لذلك يُرسل هناك عرض 500 Hz فقط. تحقق من رخصتك ومن خطة النطاقات المحلية.
+            </p>
+            <p>
+                يعمل الراديو في <span translate="no">USB</span> على كل نطاق. المحطة التي تستمع في <span translate="no">LSB</span> ترى الصورة معكوسة من اليسار إلى اليمين.
+            </p>
+            <p>
+                <strong><span translate="no">QSO</span></strong> يفتح المسجِّل بالنمط <span translate="no">DRAW</span>: معيار التسجيل (<span translate="no">ADIF</span>) لا يعرف <span translate="no">DRAW</span>، والصورة الثابتة المرسلة سطرا بسطر هي ما يعنيه <span translate="no">FAX</span> هناك (تُحسب نمط صور، مثل <span translate="no">SSTV</span>). يحتاج <span translate="no">QMX</span> إلى البرنامج الثابت نفسه المطلوب لـ <span translate="no">SSTV</span>. تكتبه السجلات والملفات وعمليات الرفع على أنه <span translate="no">FAX</span> مع النمط الفرعي <span translate="no">DRAW</span>؛ وتحصل المتنزهات (<span translate="no">POTA</span>) و<span translate="no">eQSL</span> على <span translate="no">FAX</span> وحده.
+            </p>
+
+            <a href="#top" class="back-to-toc">&uarr; العودة إلى جدول المحتويات</a>
+        </section>
 
 
 
@@ -3288,10 +4008,10 @@
                     <strong>التشغيل في الخلفية</strong> مفعّلًا؛ وعلى iPhone يعمل فقط ما دام التطبيق مفتوحًا.
                 </p>
 
-                <h4>إعداد الخادم</h4>
+                <h4 id="qft8-log-server">إعداد الخادم</h4>
                 <ol>
                     <li>على برنامج qFT8 الذي سيجمع اتصالات QSO، افتح <strong>الإعدادات</strong> وانتقل إلى
-                        <strong>خوادم qFT8</strong> وافتح <strong>خادم qFT8log</strong>.</li>
+                        <strong>الخوادم</strong> وافتح <strong>خادم qFT8log</strong>.</li>
                     <li>اكتب كلمة مرور. استخدم النوع نفسه من كلمات المرور الذي تستخدمه مع
                         <a href="#bridge">الـ bridge الخاص بـ qFT8</a>: سبعة أحرف أو أكثر.</li>
                     <li>اترك المنفذ 13510 ما لم يستخدمه شيء آخر، وشغّل الخادم. تعرض الصفحة
@@ -3367,8 +4087,8 @@
                 <div class="highlight">
                     <p><strong>ملاحظة أمنية:</strong> لا تُرسل كلمة المرور عبر الشبكة أبدًا: يثبت برنامجا qFT8
                         أنهما يعرفانها، وكل رسالة بعد ذلك موقّعة، فلا يمكن تغيير شيء أو إعادة إرساله
-                        في الطريق. أما اتصالات QSO نفسها فغير مشفّرة. استخدم qFT8log داخل شبكتك الخاصة فقط، ولا
-                        تفتح منفذه إلى الإنترنت.</p>
+                        في الطريق. وبتفعيل <strong>تشفير اتصالات qFT8 log</strong> (وهو الافتراضي، في العميل والخادم معًا) تُشفَّر اتصالات QSO أيضًا، فلا يستطيع أي شخص آخر في الشبكة قراءتها. استخدم
+                        qFT8log داخل شبكتك الخاصة فقط، ولا تفتح منفذه إلى الإنترنت.</p>
                 </div>
 
                 <h4>الحدود</h4>

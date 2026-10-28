@@ -455,12 +455,16 @@
     font-size: inherit;
 }
 
-/* IOS-WEB-MANUAL-321-1: the store badges other than Google Play (the stores' own artwork, no padding of their own: the
-   Google Play image carries a margin, so these are drawn smaller to look the same size), and the notes under a row
-   (the iPhone/iPad row: no cable control; sideloading) */
-.dl-store-img.dl-store-badge {
-    height: 44px;
-    margin: 7px 0;
+/* IOS-WEB-MANUAL-321-1 / WEB-STORE-BADGES-2: the store badges other than Google Play are the stores' own artwork,
+   drawn as high as the Google Play badge (.dl-store-img) with no margin: that image has no margin of its own either
+   (its grey frame is at its edge, like the Apple badges'). The Microsoft badge has no visible frame of its own, so it
+   gets the same thin grey frame, outside the artwork. Then the notes under a row (the iPhone/iPad row: no cable
+   control; sideloading). */
+.dl-store-ms .dl-store-img {
+    box-sizing: border-box;
+    border: 1px solid #a6a6a6;
+    border-radius: 7px;
+    background: #202020;
 }
 
 .download-box li.dl-row.dl-row-notes {
