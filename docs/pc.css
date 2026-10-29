@@ -481,3 +481,157 @@
 .dl-row-note a {
     color: var(--link-color);
 }
+
+/* WEB-FEATURES-FULL-1 (user 2026-10-28): the complete features list -- cards in a grid, each with a monochrome vector
+   icon, a heading, one or two sentences and the names as chips. Wider than the other boxes on a computer. */
+.features.feature-catalog {
+    /* wider than the 900px column, centred on it like the showcase above */
+    width: min(1080px, 94vw);
+    max-width: none;
+    flex: none;
+    padding: 36px 28px 28px 28px;
+}
+.feature-catalog ul.fc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 26px 0;
+}
+.feature-catalog ul.fc-pills li {
+    border-radius: 999px;
+    padding: 6px 16px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    font-size: 0.95rem;
+}
+.feature-catalog ul.fc-pills li::before,
+.feature-catalog ul.fc-chips li::before {
+    content: none;
+    display: none;
+}
+.feature-catalog .fc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+.feature-catalog .fc-card {
+    background: var(--card-item-bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 18px 20px 16px 20px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+.feature-catalog .fc-card:hover {
+    border-color: var(--surface-border-hover);
+    background: var(--card-item-hover);
+}
+.feature-catalog .fc-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px 0;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+.feature-catalog .fc-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.35));
+}
+.feature-catalog .fc-card p {
+    margin: 0 0 12px 0;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+.feature-catalog .fc-card p:last-child {
+    margin-bottom: 0;
+}
+.feature-catalog ul.fc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+}
+.feature-catalog ul.fc-chips li {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    /* names are Latin text: keep "(tr)uSDX" and "N1MM Logger+" whole on the right-to-left pages */
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+/* experimental: a dashed outline, explained by the card's own sentence */
+.feature-catalog ul.fc-chips li.exp {
+    color: var(--text-muted);
+    border-style: dashed;
+    background: transparent;
+}
+/* the two media slots (animation, screenshots) take no space until another change fills them */
+.feature-catalog .fc-media:empty,
+.feature-catalog .fc-shots:empty {
+    display: none;
+}
+.feature-catalog .fc-media {
+    margin: 0 0 22px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--surface-border);
+}
+.feature-catalog .fc-media video,
+.feature-catalog .fc-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* WEB-ANIM-1: the PC and the Android loop side by side (one above the other on a phone) */
+.feature-catalog .fc-media.fc-media-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: center;
+    border: none;
+    border-radius: 0;
+}
+.feature-catalog .fc-media.fc-media-two video {
+    border-radius: 12px;
+    border: 1px solid var(--surface-border);
+}
+.feature-catalog .fc-shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+}
+.feature-catalog .fc-shots img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+@media (max-width: 760px) {
+    .features.feature-catalog {
+        width: 100%;
+        padding: 28px 16px 20px 16px;
+    }
+    .feature-catalog .fc-grid {
+        grid-template-columns: 1fr;
+    }
+    .feature-catalog .fc-media.fc-media-two {
+        grid-template-columns: 1fr;
+    }
+}

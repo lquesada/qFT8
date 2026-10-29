@@ -83,7 +83,7 @@
 <body>
     <!-- Language Selector -->
         <div class="lang-selector-wrapper">
-            <span class="lang-icon">🌐</span>
+            <span class="lang-icon"><svg class="lang-icon-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM18.92,8h-2.95c-0.32,-1.25 -0.78,-2.45 -1.38,-3.56 1.84,0.63 3.37,1.91 4.33,3.56zM12,4.04c0.83,1.2 1.48,2.53 1.91,3.96h-3.82c0.43,-1.43 1.08,-2.76 1.91,-3.96zM4.26,14C4.09,13.36 4,12.69 4,12s0.09,-1.36 0.26,-2h3.38c-0.08,0.66 -0.14,1.32 -0.14,2 0,0.68 0.06,1.34 0.14,2H4.26zM5.08,16h2.95c0.32,1.25 0.78,2.45 1.38,3.56 -1.84,-0.63 -3.37,-1.9 -4.33,-3.56zM8.03,8H5.08c0.96,-1.66 2.49,-2.93 4.33,-3.56C8.81,5.55 8.35,6.75 8.03,8zM12,19.96c-0.83,-1.2 -1.48,-2.53 -1.91,-3.96h3.82c-0.43,1.43 -1.08,2.76 -1.91,3.96zM14.34,14H9.66c-0.09,-0.66 -0.16,-1.32 -0.16,-2 0,-0.68 0.07,-1.34 0.16,-2h4.68c0.09,0.66 0.16,1.32 0.16,2 0,0.68 -0.07,1.34 -0.16,2zM14.59,19.56c0.6,-1.11 1.06,-2.31 1.38,-3.56h2.95c-0.96,1.65 -2.49,2.93 -4.33,3.56zM16.36,14c0.08,-0.66 0.14,-1.32 0.14,-2 0,-0.68 -0.06,-1.34 -0.14,-2h3.38c0.17,0.64 0.26,1.31 0.26,2s-0.09,1.36 -0.26,2h-3.38z"/></svg></span>
             <select id="lang-select" class="lang-dropdown" onchange="onLanguageChange(this.value)" aria-label="Select Language">
                 <option value="en">English</option>
                 <option value="es">Español</option>
@@ -169,51 +169,116 @@
         </div>
 
 
-        <!-- WEB-OTHER-VERSIONS-1 (user 2026-10-02): "super summarized", so the downloads stay in view -->
-        <div class="features about">
+        <!-- WEB-FEATURES-FULL-1 (user 2026-10-28): the complete list -- every mode, radio brand, SDR, award programme,
+             contest, online logbook and logging program. Names of modes, programmes, services, brands and programs are
+             never translated (translate="no"); only the headings and the sentences are. A new mode, service or programme
+             goes into its group here in the same change. -->
+        <div class="features about feature-catalog" id="features">
             <h2 data-i18n="FEATURES_TITLE">বৈশিষ্ট্য সমূহ</h2>
-            <ul>
+            <ul class="fc-pills">
                 <li><span data-i18n="FEAT2_FREE">বিনামূল্যে, বিজ্ঞাপন নেই, অ্যাকাউন্ট লাগে না</span></li>
                 <li><span data-i18n="FEAT2_PLATFORMS">Android ফোন ও ট্যাবলেট, iOS, Windows, macOS ও Linux</span></li>
-                <li><span data-i18n="FEAT2_MODES">FT8, FT4, FT2, LQ8, Q65, MSK144, FST4, FST4W, JS8, WSPR, CW, RTTY, JTTY, SSTV, DRAW ও SSB</span></li>
-                <li><span data-i18n="FEAT2_RADIOS">70টিরও বেশি রেডিওর সাথে প্লাগ অ্যান্ড প্লে</span></li>
-                <li><span data-i18n="FEAT2_AUTO">সম্পূর্ণ AUTO অথবা এক ক্লিকে ম্যানুয়াল কলিং</span></li>
-                <li><span data-i18n="FEAT2_MAP">রিয়েল-টাইম স্পট, POTA, SOTA ও ব্যান্ড প্রোপাগেশনসহ লাইভ বিশ্ব মানচিত্র</span></li>
-                <li><span data-i18n="FEAT2_CUSTOM">সম্পূর্ণ কাস্টমাইজযোগ্য</span></li>
-                <li><span data-i18n="FEAT2_LOG">যুক্ত হয়: QRZ, Logbook of the World, Wavelog, Cloudlog, qFT8log ও eQSL; ADIF, SOTA ও POTA</span></li>
-                <li><span data-i18n="FEAT2_REMOTE">যেকোনো ব্রাউজার থেকে রিমোট কন্ট্রোল</span></li>
                 <li><span data-i18n="FEAT2_LANGS">37টি ভাষা</span></li>
             </ul>
+            <!-- MEDIA SLOT: looping animation (about 30 s, muted, PC + Android). Put ONE <video autoplay muted loop
+                 playsinline> (or <img>) inside this div; while it is empty the slot takes no space. -->
+            <div class="fc-media fc-media-two" id="feature-animation"><video class="fc-anim-pc" autoplay muted loop playsinline preload="metadata" poster="../media/qft8_pc_loop_poster.jpg" width="1024" height="576" aria-hidden="true"><source src="../media/qft8_pc_loop.webm" type="video/webm"><source src="../media/qft8_pc_loop.mp4" type="video/mp4"></video><video class="fc-anim-android" autoplay muted loop playsinline preload="metadata" poster="../media/qft8_android_loop_poster.jpg" width="950" height="450" aria-hidden="true"><source src="../media/qft8_android_loop.webm" type="video/webm"><source src="../media/qft8_android_loop.mp4" type="video/mp4"></video></div>
+            <div class="fc-grid">
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l2-6 3 12 3-9 2 5 2-2h5"/></svg><span data-i18n="FEATX_MODES_T">মোড</span></h3>
+                    <p data-i18n="FEATX_MODES_D">দুর্বল সংকেতের ডিজিটাল মোড, কীবোর্ড চ্যাট, মর্স, টেলিটাইপ, ছবি ও ভয়েস। Q65, MSK144, FST4, FST4W এবং JTTY পরীক্ষামূলক।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>FT8</li><li>FT4</li><li>FT2</li><li>LQ8</li><li>JS8</li><li>WSPR</li><li class="exp">Q65</li><li class="exp">MSK144</li><li class="exp">FST4</li><li class="exp">FST4W</li><li>CW</li><li>RTTY</li><li class="exp">JTTY</li><li>SSTV</li><li>DRAW</li><li>SSB</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="12" rx="2"/><circle cx="16" cy="14" r="3"/><path d="M5 12h6M5 16h6M7 8l10-5"/></svg><span data-i18n="FEATX_RADIOS_T">রেডিও</span></h3>
+                    <p data-i18n="FEATX_RADIOS_D">USB-তে প্লাগ অ্যান্ড প্লে, ৭০টিরও বেশি রেডিও মডেলসহ: qFT8 রেডিও চিনে নেয় এবং CAT ও অডিও নিজেই সেট করে। অন্য যেকোনো রেডিও VOX অডিও কেবল বা DigiRig দিয়ে চলে।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>QRP Labs</li><li>Icom</li><li>Yaesu</li><li>Kenwood</li><li>Elecraft</li><li>Xiegu</li><li>Lab599</li><li>GuoHe</li><li>FlexRadio</li><li>(tr)uSDX</li><li>FX-4CR</li><li>KN990</li><li>mcHF</li><li>Wolf SDR</li><li>QuantumSDR</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13v8M8 21h8"/><path d="M8.5 9.5a5 5 0 0 1 7 0M5.5 6.5a9 9 0 0 1 13 0"/><circle cx="12" cy="13" r="1.5"/></svg><span data-i18n="FEATX_SDR_T">SDR রিসিভার</span></h3>
+                    <p data-i18n="FEATX_SDR_D">আপনার নেটওয়ার্কে সফটওয়্যার-ডিফাইন্ড রেডিওর মাধ্যমে রিসিভ করুন: RTL-SDR নেটওয়ার্ক সার্ভার, অথবা Hermes-Lite 2-এর মতো OpenHPSDR রিসিভার। অথবা একটি RTL-SDR ডংগল সরাসরি আপনার Android ফোনে লাগান। শুধু রিসিভ।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>RTL-SDR</li><li>KiwiSDR</li><li>OpenHPSDR</li><li>Hermes-Lite 2</li><li>Red Pitaya</li><li>Airspy / RTL-SDR server</li><li>remote SDR host</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg><span data-i18n="FEATX_OPERATE_T">পরিচালনা</span></h3>
+                    <p data-i18n="FEATX_OPERATE_D">সম্পূর্ণ AUTO CQ-এর উত্তর দেয়, QSO চালায় এবং লগ করে, পুনরায় চেষ্টার সীমা আপনি ঠিক করেন; অথবা এক ট্যাপে নিজে স্টেশনকে ডাকুন। অন-স্ক্রিন প্যাডল, কীবোর্ড ও মেমরিসহ CW, ভয়েস মেমরিসহ SSB, এবং ট্রান্সমিট সময়সীমা যা আপনার রেডিওকে রক্ষা করে।</p>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"/><path d="M15 4v6M15 4h4l-1 1.5 1 1.5h-4"/></svg><span data-i18n="FEATX_AWARDS_T">অ্যাওয়ার্ড প্রোগ্রাম</span></h3>
+                    <p data-i18n="FEATX_AWARDS_D">খুঁজুন ও অ্যাক্টিভেট করুন: মানচিত্রে ও স্টেশন তালিকায় রেফারেন্স, লাইভ স্পট, QSO কাউন্টার এবং ADIF এক্সপোর্ট। POTA ও SOTA শুরু থেকেই চালু; বাকিগুলো পরীক্ষামূলক।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>POTA</li><li>SOTA</li><li class="exp">WWFF</li><li class="exp">WWBOTA</li><li class="exp">IOTA</li><li class="exp">SiOTA</li><li class="exp">HEMA</li><li class="exp">LLOTA</li><li class="exp">WWTOTA</li><li class="exp">RAZA</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6"/></svg><span data-i18n="FEATX_CONTESTS_T">প্রতিযোগিতা (পরীক্ষামূলক)</span></h3>
+                    <p data-i18n="FEATX_CONTESTS_D">এক্সচেঞ্জ, ডুপ্লিকেট যাচাই, স্কোর এবং Cabrillo এক্সপোর্ট। যেসব প্রতিযোগিতার নিয়মে স্বয়ংক্রিয় QSO নিষিদ্ধ, সেখানে AUTO বন্ধ থাকে।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li class="exp">ARRL Field Day</li><li class="exp">Winter Field Day</li><li class="exp">ARRL RTTY Roundup</li><li class="exp">ARRL International Digital Contest</li><li class="exp">FT Challenge</li><li class="exp">EU VHF</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z"/><path d="M12 15V10M9.5 12.5L12 10l2.5 2.5"/></svg><span data-i18n="FEATX_ONLINE_T">অনলাইন লগবুক</span></h3>
+                    <p data-i18n="FEATX_ONLINE_D">প্রতিটি QSO লগ করার সময়ই আপনার বেছে নেওয়া সেবায় যায়। qFT8log আপনার নিজের qFT8-গুলোর মধ্যে একটি লগ শেয়ার করে। ADIF ইম্পোর্ট ও এক্সপোর্ট।</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>QRZ</li><li>Logbook of the World</li><li>eQSL</li><li>Club Log</li><li>HRDLog</li><li>HamQTH</li><li>World Radio League</li><li>Wavelog</li><li>Cloudlog</li><li>qFT8log</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/><path d="M7 10h3l1.5-2 2 4 1.5-2h2"/></svg><span data-i18n="FEATX_LAN_T">আপনার নেটওয়ার্কের লগিং প্রোগ্রাম</span></h3>
+                    <p data-i18n="FEATX_LAN_D">FT8 নেটওয়ার্ক লগ এবং UDP-তে ADIF, দুই দিকেই, সাথে AC Log ও DXLab ইন্টারফেস (পরীক্ষামূলক)। যেগুলোর সাথে পরীক্ষিত:</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>N1MM Logger+</li><li>Log4OM 2</li><li>N3FJP AC Log</li><li>CQRLOG</li><li>GridTracker</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span data-i18n="FEATX_MAP_T">মানচিত্র ও স্পট</span></h3>
+                    <p data-i18n="FEATX_MAP_D">আপনার শোনা প্রতিটি স্টেশনের লাইভ বিশ্ব মানচিত্র, দূরত্ব ও দিকসহ; PSK Reporter ও WSPRnet-এর স্পট, LQ8 কার্যকলাপ, POTA ও SOTA অ্যাক্টিভেশন, ব্যান্ড প্রপাগেশন, স্যাটেলাইট ট্র্যাক এবং মানচিত্রের কম্পাস। আপনার নিজের ডিকোড PSK Reporter ও WSPRnet-এ রিপোর্ট হয়।</p>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="12" height="9" rx="1.5"/><rect x="16" y="9" width="5" height="11" rx="1"/><path d="M6 18h6M9 14v4"/></svg><span data-i18n="FEATX_ANYWHERE_T">যেকোনো জায়গায়</span></h3>
+                    <p data-i18n="FEATX_ANYWHERE_D">যেকোনো ব্রাউজার থেকে রিমোট কন্ট্রোল: রেডিও শুনুন ও SSB-তে কথা বলুন, ব্যক্তিগত লিংক ও পাসওয়ার্ডের আড়ালে। সময় ইন্টারনেট বা GPS থেকে, এবং স্ক্রিন বন্ধ থাকলেও চলে।</p>
+                </section>
+            </div>
+            <!-- MEDIA SLOT: new screenshots (a row of <figure><img ...><figcaption>...</figcaption></figure>). While it is
+                 empty the slot takes no space. -->
+            <div class="fc-shots" id="feature-screenshots"><img src="../media/shot_world_map.jpg" alt="" width="1140" height="540" loading="lazy"><img src="../media/shot_events.jpg" alt="" width="1140" height="540" loading="lazy"><img src="../media/shot_cw.jpg" alt="" width="1140" height="540" loading="lazy"></div>
         </div>
 
         <div id="download" class="features download-box">
             <h2 data-i18n="DOWNLOAD_TITLE">ডাউনলোড</h2>
             <div class="download-meta">
-                <span class="meta-badge"><strong data-i18n="DOWNLOAD_VERSION">সংস্করণ:</strong> <span id="latest-version">3.22</span></span>
-                <span class="meta-badge"><strong data-i18n="DOWNLOAD_DATE">তারিখ:</strong> <span id="latest-date">2026-10-27</span></span>
+                <span class="meta-badge"><strong data-i18n="DOWNLOAD_VERSION">সংস্করণ:</strong> <span id="latest-version">3.23</span></span>
+                <span class="meta-badge"><strong data-i18n="DOWNLOAD_DATE">তারিখ:</strong> <span id="latest-date">2026-10-29</span></span>
             </div>
             <!-- WEB-OTHER-VERSIONS-1 / WEB-DL-ONE-TABLE-1: ONE list, a row per version: its name, its store button (if it has
                  one), the direct download. pc_downloads.js moves the visitor's own rows to the top, marks them "For this
                  device" and greys out the others. -->
             <ul id="dl-table" class="dl-list dl-all">
-                <li class="dl-row dl-has-store" data-dl="android" id="dl-android"><span class="dl-name">Android</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store" href="https://play.google.com/store/apps/details?id=com.ft8.app"><img src="../googleplay.png" alt="গুগল প্লে থেকে ডাউনলোড করুন" class="dl-store-img" width="1024" height="304" data-i18n="BTN_GOOGLE_PLAY_ALT"></a><a id="latest-download-link" class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22.apk"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .apk: <span id="latest-size">5.64MB</span></a></span></li>
-                <li class="dl-row dl-has-store" data-dl="win64"><span class="dl-name" data-i18n="DL_WIN64">Windows (64-বিট)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Microsoft থেকে নিন" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-windows-64bits.zip"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .zip: <span class="dl-size" data-pc-file="windows-64bits.zip">39.12MB</span></a></span></li>
-                <li class="dl-row dl-has-store" data-dl="win32"><span class="dl-name" data-i18n="DL_WIN32">Windows (32-বিট)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Microsoft থেকে নিন" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-windows-32bits.zip"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .zip: <span class="dl-size" data-pc-file="windows-32bits.zip">46.52MB</span></a></span></li>
-                <li class="dl-row" data-dl="mac-universal"><span class="dl-name" data-i18n="DL_MAC_ALL">macOS (সব Mac: Apple Silicon ও Intel)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-macos-universal.dmg"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .dmg: <span class="dl-size" data-pc-file="macos-universal.dmg">87.42MB</span></a></span></li>
-                <li class="dl-row" data-dl="linux64"><span class="dl-name" data-i18n="DL_LINUX64">Linux (64-বিট, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-linux-64bits.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-64bits.tar.gz">50.73MB</span></a></span></li>
-                <li class="dl-row" data-dl="linux32"><span class="dl-name" data-i18n="DL_LINUX32">Linux (32-বিট, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-linux-32bits.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-32bits.tar.gz">73.81MB</span></a></span></li>
-                <li class="dl-row" data-dl="linux-arm64"><span class="dl-name" data-i18n="DL_LINUX_ARM64">Linux (ARM 64-বিট, Raspberry Pi 4/5)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-linux-arm64.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-arm64.tar.gz">70.77MB</span></a></span></li>
-                <li class="dl-row" data-dl="linux-armv7"><span class="dl-name" data-i18n="DL_LINUX_ARMV7">Linux (ARM 32-বিট, Raspberry Pi 2/3)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22-linux-armv7l.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-armv7l.tar.gz">66.13MB</span></a></span></li>
+                <li class="dl-row dl-has-store" data-dl="android" id="dl-android"><span class="dl-name">Android</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store" href="https://play.google.com/store/apps/details?id=com.ft8.app"><img src="../googleplay.png" alt="গুগল প্লে থেকে ডাউনলোড করুন" class="dl-store-img" width="1024" height="304" data-i18n="BTN_GOOGLE_PLAY_ALT"></a><a id="latest-download-link" class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23.apk"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .apk: <span id="latest-size">5.93MB</span></a></span></li>
+                <li class="dl-row dl-has-store" data-dl="win64"><span class="dl-name" data-i18n="DL_WIN64">Windows (64-বিট)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Microsoft থেকে নিন" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-windows-64bits.zip"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .zip: <span class="dl-size" data-pc-file="windows-64bits.zip">40.12MB</span></a></span></li>
+                <li class="dl-row dl-has-store" data-dl="win32"><span class="dl-name" data-i18n="DL_WIN32">Windows (32-বিট)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Microsoft থেকে নিন" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-windows-32bits.zip"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .zip: <span class="dl-size" data-pc-file="windows-32bits.zip">47.53MB</span></a></span></li>
+                <li class="dl-row" data-dl="mac-universal"><span class="dl-name" data-i18n="DL_MAC_ALL">macOS (সব Mac: Apple Silicon ও Intel)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-macos-universal.dmg"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .dmg: <span class="dl-size" data-pc-file="macos-universal.dmg">88.48MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux64"><span class="dl-name" data-i18n="DL_LINUX64">Linux (64-বিট, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-64bits.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-64bits.tar.gz">51.73MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux32"><span class="dl-name" data-i18n="DL_LINUX32">Linux (32-বিট, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-32bits.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-32bits.tar.gz">74.80MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux-arm64"><span class="dl-name" data-i18n="DL_LINUX_ARM64">Linux (ARM 64-বিট, Raspberry Pi 4/5)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-arm64.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-arm64.tar.gz">71.76MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux-armv7"><span class="dl-name" data-i18n="DL_LINUX_ARMV7">Linux (ARM 32-বিট, Raspberry Pi 2/3)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">এই ডিভাইসের জন্য</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-armv7l.tar.gz"><span data-i18n="DL_DIRECT">সরাসরি ডাউনলোড</span> .tar.gz: <span class="dl-size" data-pc-file="linux-armv7l.tar.gz">67.13MB</span></a></span></li>
             </ul>
             <script>detectAndShowDownloads();</script>
             <p class="dl-note" data-i18n="DL_APK_NOTE">সরাসরি Android ডাউনলোড (.apk) Play Store-এর বাইরে ইনস্টল হয়: Android আপনাকে ব্রাউজার বা ফাইল ম্যানেজার থেকে অ্যাপ ইনস্টলের অনুমতি দিতে বলতে পারে।</p>
             <p class="dl-manual"><a href="../manual/bn/" class="dl-manual-link" data-i18n="DL_MANUAL_ONLINE">ব্যবহারকারী নির্দেশিকা পড়ুন</a></p>
-            <p class="dl-manual"><a id="manual-zip-link" class="dl-direct dl-manual-btn" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-manual-v3.22.zip"><span data-i18n="DL_MANUAL_DOWNLOAD">ব্যবহারকারী নির্দেশিকা ডাউনলোড</span><span class="dl-size" data-pc-file="manual.zip">9.80MB</span></a></p>
+            <p class="dl-manual"><a id="manual-zip-link" class="dl-direct dl-manual-btn" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-manual-v3.23.zip"><span data-i18n="DL_MANUAL_DOWNLOAD">ব্যবহারকারী নির্দেশিকা ডাউনলোড</span><span class="dl-size" data-pc-file="manual.zip">10.16MB</span></a></p>
             <!-- The program's jar (user 2026-10-17): ONE small line offering the multi-OS jar, for a computer without
                  one of the packages above (it needs an installed Java 21 or newer). Kept only when
                  tools/deploy/build_website.sh found qFT8-v<version>.jar in the release folder (its size in docs/data.js:
                  const JAR_SIZE). The link stays on this ONE line: build_website.sh checks that the jar is linked only here. -->
-            <p id="dl-jar" class="dl-jar"><strong data-i18n="DL_JAR_DESC">Java 21 বা তার নতুন সংস্করণ থাকা যেকোনো কম্পিউটার (যেমন একটি Raspberry Pi)</strong>: <a href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.22.jar">.jar: <span class="dl-size" data-jar-size="jar">14.55MB</span></a></p>
+            <p id="dl-jar" class="dl-jar"><strong data-i18n="DL_JAR_DESC">Java 21 বা তার নতুন সংস্করণ থাকা যেকোনো কম্পিউটার (যেমন একটি Raspberry Pi)</strong>: <a href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23.jar">.jar: <span class="dl-size" data-jar-size="jar">15.22MB</span></a></p>
         </div>
 
 
