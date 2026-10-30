@@ -1,8 +1,8 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "3.23";
-const LATEST_DATE = "2026-10-29";
+const LATEST_VERSION = "3.23.1";
+const LATEST_DATE = "2026-10-30";
 const LATEST_SIZE = "5.93MB";
-const PC_SIZES = {"linux-32bits.tar.gz":"74.80MB","linux-64bits.tar.gz":"51.73MB","linux-arm64.tar.gz":"71.76MB","linux-armv7l.tar.gz":"67.13MB","macos-universal.dmg":"88.48MB","manual.zip":"10.16MB","windows-32bits.zip":"47.53MB","windows-64bits.zip":"40.12MB"};
+const PC_SIZES = {"linux-32bits.tar.gz":"74.80MB","linux-64bits.tar.gz":"51.73MB","linux-arm64.tar.gz":"71.77MB","linux-armv7l.tar.gz":"67.12MB","macos-universal.dmg":"88.48MB","manual.zip":"10.16MB","windows-32bits.zip":"47.53MB","windows-64bits.zip":"40.12MB"};
 const JAR_SIZE = "15.22MB";
 
 // Supported application languages
