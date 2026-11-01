@@ -373,6 +373,27 @@
     color: var(--text-muted);
 }
 
+/* WEB-WIN-OLD-1: a Windows older than the Store package needs: no Store button, the direct download is the main (blue)
+   button, one short line says why. Set by pc_downloads.js only when the browser tells us the Windows is old. */
+.download-box li.dl-row.dl-old-win .dl-store {
+    display: none;
+}
+
+.download-box li.dl-row.dl-old-win .dl-direct,
+.download-box li.dl-row.dl-old-win.dl-mine .dl-direct {
+    padding: 10px 22px;
+    border: 1px solid rgba(125, 211, 252, 0.45);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.download-box li.dl-row.dl-old-win .dl-direct .dl-size {
+    color: #e0f2fe;
+}
+
 /* no underline on any download button: style.css underlines ".container li a:hover" */
 .container li.dl-row a,
 .container li.dl-row a:hover,
@@ -529,22 +550,6 @@
 .feature-catalog ul.fc-chips + p {
     margin-top: 12px;
 }
-.feature-catalog .fc-example {
-    margin: 14px 0 0 0;
-}
-.feature-catalog .fc-example img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid var(--surface-border);
-}
-.feature-catalog .fc-example figcaption {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-}
 .feature-catalog .fc-card:hover {
     border-color: var(--surface-border-hover);
     background: var(--card-item-hover);
@@ -695,65 +700,3 @@
     line-height: 1.6;
 }
 
-.feature-catalog .fc-zoom {
-    display: block;
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: zoom-in;
-}
-.feature-catalog .fc-zoom:focus-visible {
-    outline: 2px solid var(--text-secondary);
-    outline-offset: 3px;
-}
-.feature-catalog .fc-zoom img {
-    cursor: zoom-in;
-}
-html.fc-lb-open {
-    overflow: hidden;
-}
-.fc-lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: rgba(0, 0, 0, 0.88);
-    overflow: auto;
-    touch-action: pan-x pan-y pinch-zoom;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-    cursor: zoom-out;
-}
-.fc-lightbox img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-    border-radius: 8px;
-    cursor: default;
-}
-.fc-lb-close {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.fc-lb-close:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-}

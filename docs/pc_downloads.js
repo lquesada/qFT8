@@ -39,6 +39,35 @@ function pickDownloads(info) {
     return [];
 }
 
+// WEB-WIN-OLD-1: the Microsoft Store package needs Windows 10 1809 (build 17763) or newer. On an older Windows the Store
+// button would only fail ("doesn't meet the minimum requirements"), so the direct download becomes the main button.
+// ONE constant: the UniversalApiContract major version of that build. Chromium's userAgentData platformVersion on
+// Windows reports it as its major number (1809 = 7, 1903/1909 = 8, 2004..21H2 = 10, Windows 11 = 13 or more; Windows 10
+// before 1809 reports 0). Windows 7/8/8.1 say "Windows NT 6.x" in the user agent. Unknown version (Firefox, Safari: no
+// hints): not old, the layout stays as it was.
+const STORE_MIN_WIN_API = 10; // LIVE STORE PACKAGE: Windows 10 2004 (19041) until the 1809 refresh is published, then 7
+
+function isOldWindows(info) {
+    const ua = info.ua || '';
+    if (!/Windows/i.test(ua) && !/Win/i.test(info.platform || '')) return false;
+    if (/Windows NT [1-5]\.|Windows NT 6\.[0-3]/i.test(ua)) return true;
+    if (!/Windows NT 10/i.test(ua)) return false;
+    const pv = info.platformVersion;
+    if (pv === undefined || pv === null || pv === '') return false;
+    const major = parseInt(String(pv).split('.')[0], 10);
+    return !isNaN(major) && major < STORE_MIN_WIN_API;
+}
+
+function markOldWindows(old) {
+    const table = document.getElementById('dl-table');
+    if (!table) return;
+    table.querySelectorAll('.dl-row[data-dl="win64"], .dl-row[data-dl="win32"]').forEach(el => {
+        el.classList.toggle('dl-old-win', !!old);
+        const note = el.querySelector('.dl-old-win-note');
+        if (note) note.hidden = !old;
+    });
+}
+
 let dlOriginalOrder = null;   // the list as the page wrote it, so a second (refined) pick starts from it again
 let dlApplied = '';
 
@@ -75,11 +104,13 @@ function detectAndShowDownloads() {
         touchPoints: nav.maxTouchPoints || 0
     };
     if (!showDownloadsFirst(pickDownloads(info))) return false;
+    markOldWindows(isOldWindows(info));
     const uad = nav.userAgentData;
     if (uad && typeof uad.getHighEntropyValues === 'function') {
-        uad.getHighEntropyValues(['architecture', 'bitness']).then(v => {
-            info.arch = v.architecture; info.bitness = v.bitness;
+        uad.getHighEntropyValues(['architecture', 'bitness', 'platformVersion']).then(v => {
+            info.arch = v.architecture; info.bitness = v.bitness; info.platformVersion = v.platformVersion;
             showDownloadsFirst(pickDownloads(info));
+            markOldWindows(isOldWindows(info));
         }, () => {});
     }
     return true;
@@ -91,5 +122,5 @@ if (typeof document !== 'undefined') {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { pickDownloads };
+    module.exports = { pickDownloads, isOldWindows, STORE_MIN_WIN_API };
 }
