@@ -126,6 +126,7 @@
                 </li>
                 <li><a href="#pota">Parks On The Air (<span translate="no">POTA</span>)</a>
                 </li>
+                <li><a href="#multitone">Vícetón: dva signály najednou</a></li>
                 <li><a href="#activation">Aktivace parku nebo vrcholu</a></li>
                 <li><a href="#events-supported">Podporované události</a></li>
                 <li><a href="#js8-chat"><span translate="no">JS8</span> (chat z klávesnice)</a>
@@ -138,6 +139,7 @@
                 </li>
                 <li><a href="#wspr-mode"><span translate="no">WSPR</span> a <span translate="no">FST4W</span> (majáky)</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span> (fone)</a></li>
+                <li><a href="#mode-am"><span translate="no">AM</span>, letecké a námořní pásmo <span translate="no">VHF</span> (hlas)</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span> (telegrafie)</a>
                     <ul>
                         <li><a href="#cw-keys">Klíčování adaptérem, klávesnicí nebo myší</a></li>
@@ -147,9 +149,17 @@
                     </ul>
                 </li>
                 <li><a href="#rtty-mode"><span translate="no">RTTY</span> a <span translate="no">JTTY</span></a></li>
+                <li><a href="#psk-mode"><span translate="no">PSK31</span> a <span translate="no">PSK63</span></a></li>
+                <li><a href="#olivia-mode"><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> a <span translate="no">DominoEX</span></a></li>
+                <li><a href="#thor-mode"><span translate="no">THOR</span>, <span translate="no">Contestia</span> a <span translate="no">MT63</span></a></li>
+                <li><a href="#hell-mode"><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>)</a></li>
+                <li><a href="#mode-packet"><span translate="no">Packet (APRS)</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span> (obrázky)</a></li>
                 <li><a href="#draw-mode"><span translate="no">DRAW</span> (obrázky na vodopádu)</a></li>
                 <li><a href="#satellites">Satelity a kompas na mapě</a></li>
+                <li><a href="#bcast-receive">Rozhlasové vysílání: <span translate="no">FM</span> + <span translate="no">RDS</span> a <span translate="no">AM</span></a></li>
+                <li><a href="#swl">Použití qFT8 pro <span translate="no">SWL</span> (poslech)</a></li>
+                <li><a href="#map-live">Co se zobrazuje na mapě</a></li>
                 <li><a href="#features">Popis funkcí</a>
                     <ul>
                         <li><a href="#tune-offset">Posun ladění spektrogramu</a></li>
@@ -1264,6 +1274,32 @@
                 Volby jsou popsány v <a href="#fst4-settings">Nastavení &gt; <span translate="no">FST4</span></a>; seznam stanic v <span translate="no">FST4</span> je popsán v <a href="#stations-fst4">Karta Stanice</a>. Jeho majáková obdoba <span translate="no">FST4W</span> funguje jako <span translate="no">WSPR</span>.
             </p>
 
+            <h3 id="mode-jt65"><span translate="no">JT65</span> a <span translate="no">JT9</span></h3>
+            <p id="mode-jt9">
+                <span translate="no">JT65</span> a <span translate="no">JT9</span> jsou starší jednominutové režimy pro spojení se slabými signály. Oba jsou v qFT8 experimentální:
+            </p>
+            <ul>
+                <li>Jednominutové intervaly: vysílání začíná jednu sekundu po začátku sudé nebo liché minuty <span translate="no">UTC</span> a trvá asi 47 s (<span translate="no">JT65</span>) nebo 49 s (<span translate="no">JT9</span>); sudou nebo lichou volíte jako u <span translate="no">FT8</span>.</li>
+                <li>Zprávy: 72 bitů: CQ, dvě značky s lokátorem, report (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> nebo až 13 znaků volného textu. Spojení probíhá stejně jako u <span translate="no">FT8</span> (<span translate="no">AUTO</span>, seznam stanic, deník). Značku, která by potřebovala předponu i příponu zároveň, nelze vysílat.</li>
+                <li>Poddruhy <span translate="no">JT65</span>: A (KV), B a C (VKV a výše, větší rozestup tónů), volí se vedle druhu provozu ve spodní liště nebo v nastavení; obě stanice musí použít stejný. <span translate="no">JT9</span> je <span translate="no">JT9-1</span>, široký jen 16 Hz.</li>
+            </ul>
+            <p>
+                Možnosti jsou popsány v <a href="#jt65-settings">Nastavení &gt; <span translate="no">JT65</span></a> a <a href="#jt9-settings">Nastavení &gt; <span translate="no">JT9</span></a>.
+            </p>
+
+            <h3 id="mode-jt4"><span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> je jednominutový režim pro spojení se slabými signály na pásmech <span translate="no">VHF</span>, <span translate="no">UHF</span> a mikrovlnných (<span translate="no">EME</span>, mikrovlnné majáky). V qFT8 je experimentální:
+            </p>
+            <ul>
+                <li>Jednominutové intervaly jako u <span translate="no">JT65</span>: vysílání začíná jednu sekundu po začátku sudé nebo liché minuty <span translate="no">UTC</span> a trvá asi 47 s.</li>
+                <li>Zprávy: stejné 72bitové zprávy jako <span translate="no">JT65</span> a <span translate="no">JT9</span> a stejný průběh spojení jako u <span translate="no">FT8</span> (<span translate="no">AUTO</span>, seznam stanic, deník).</li>
+                <li>Poddruhy A až G: 4 tóny, u A s rozestupem 4,375 Hz a u G až 72krát širší (asi 950 Hz), pro dopplerovské rozptýlení vyšších pásem. A se používá na 2 m a 70 cm, širší na mikrovlnných pásmech. Volí se vedle druhu provozu ve spodní liště nebo v nastavení; obě stanice musí použít stejný.</li>
+            </ul>
+            <p>
+                Možnosti jsou popsány v <a href="#jt4-settings">Nastavení &gt; <span translate="no">JT4</span></a>.
+            </p>
+
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
         </section>
 
@@ -1301,13 +1337,17 @@
                 <li><strong>Značka spuštění Tx</strong>: <span style="color: #ff5252; font-weight: bold;">červená</span> tečka v levé části pruhu označuje okamžik spuštění vysílání. Je-li Tx zapnuto (viz bod 4) a aktuální sekvence je sekvence zvolená (viz bod 6), vysílání začne v tomto bodě.</li>
                 <li><strong>Značka času dekódování</strong>: <span style="color: #ffffff; font-weight: bold;">bílá</span> tečka v pravé části pruhu označuje čas dekódování, tedy okamžik, kdy se z přijatých signálů dekódují zprávy a následně se zpracují.
                 </li>
-                <li><strong>Tlačítko TX</strong>: vysílání může být zakázané (<span translate="no">OFF</span>), nebo povolené (<span translate="no">ON</span>). Tlačítko také ukazuje, kdy se vysílá, a vysílací výkon a <span translate="no">SWR</span>. U firmwaru <span translate="no">QMX</span> novějšího než 1_04 je na tlačítku nápis „HOLD: TUNE“. Podržením tlačítka se zapne ladicí režim s průběžným měřením <span translate="no">SWR</span>.
+                <li><strong>The TX button</strong>: Can be disarmed
+                    (<span translate="no">OFF</span>) or armed
+                    (<span translate="no">ON</span>). It also shows when transmission
+                    is happening,
+                    and the transmit power and <span translate="no">SWR</span>; while transmitting, the power and the <span translate="no">SWR</span> are the average of the radio's last 2 seconds of readings, so they do not flicker. The button's words stay in English in every language. It reads <span translate="no">NO TX / SDR</span> while a receive-only <span translate="no">SDR</span> is the receiver, <span translate="no">NO TX / I/Q</span> while a <span translate="no">QMX</span> is in I/Q mode, <span translate="no">NO TX / SWL</span> in <span translate="no">SWL</span> mode and <span translate="no">NO TX / RX</span> while a receiver (marine <span translate="no">VHF</span>, airband, a beacon or time-signal receiver ...) has the radio: nothing can transmit then, and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span> again. With the Ham features off it reads <span translate="no">NO CALLSIGN</span> on red; tapping it explains that transmitting needs an amateur licence, a callsign and the Ham features, and <strong>NASTAVIT</strong> asks for your callsign and switches the Ham features on (<span translate="no">TX</span> stays <span translate="no">OFF</span>). In <span translate="no">QMX</span> firmwares above 1_04, this button will show "HOLD: TUNE". Holding the button will enable tuning mode and report on <span translate="no">SWR</span> live.
                 </li>
                 <li><strong>Volič zprávy</strong>: ukazuje zprávu zvolenou k odeslání nebo právě vysílanou (ta je zvýrazněna <span style="color: #ffff00; font-weight: bold;">žlutě</span>). V režimu <span translate="no">AUTO</span> se řídí automaticky. V režimu <span translate="no">CALL</span> se ve výchozím stavu také řídí automaticky, ale klepnutím na něj můžete další zprávu k odeslání vybrat ručně.
                 </li>
                 <li><strong>Volič sekvence</strong>: <span style="color: #ffff00; font-weight: bold;">žlutá</span> čárka nad tlačítky ukazuje aktuální sekvenci (0 nebo 1). Klepnutím na 0 nebo 1 zvolíte tuto sekvenci pro své vysílání.</li>
-                <li><strong>Volič módu</strong>: mění použitý mód (např. <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, <span translate="no">LQ8</span>, <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>, <span translate="no">FST4W</span>, <span translate="no">JS8</span> nebo <span translate="no">WSPR</span>) a také <a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a> a <a href="#sstv-mode"><span translate="no">SSTV</span></a>, které mění dolní lištu a kartu Stanice tak, jak popisují jejich kapitoly. Přechod z digitálních módů do některého z těchto čtyř, zpět nebo mezi nimi přepne <span translate="no">TX</span> na <span translate="no">OFF</span>: až budete připraveni, povolte ho znovu. Přechod mezi digitálními módy ho ponechá beze změny.</li>
-                <li><strong>Volič pásma</strong>: je-li připojen transceiver, mění pásmo v transceiveru.</li>
+                <li><strong>The mode selector</strong>: It changes the mode (every mode is listed in <a href="#ui-mode-select">The mode selector</a>, below). Changing from the digital modes to a mode with its own pane (<a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a>, <a href="#sstv-mode"><span translate="no">SSTV</span></a>, and the other ones that change the bottom bar and the Stations tab as their sections describe), back, or between them switches <span translate="no">TX</span> <span translate="no">OFF</span>: arm it again when you are ready. Changing between digital modes leaves it as it is.</li>
+                <li><strong>The band selector</strong>: Opens the list of bands with their frequencies and, when a transceiver is connected, changes the band in the transceiver (see <a href="#ui-band-select">The band selector</a>, below).</li>
                 <li><strong>Tlačítko karty Stanice</strong>: otevře kartu se seznamem všech stanic, které jste slyšeli nebo se kterými můžete navázat spojení.</li>
                 <li><strong>Tlačítko karty Deník</strong>: otevře kartu se seznamem všech vašich <span translate="no">QSO</span>. Tlačítko je označeno žlutou tečkou, máte-li QSO, která nejsou odeslána na QRZ.
                 </li>
@@ -1567,6 +1607,49 @@
 
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
 
+            <h3 id="ui-mode-select">The mode selector</h3>
+            <p>
+                The button with the mode's name in the bottom bar opens the mode selector. At the top are two tabs, <strong>HAM</strong>
+                and <strong>SWL</strong>, that stay in place while the list scrolls, and at their right the <strong>PROBE</strong> button
+                (see below). The selector opens on the tab you used last, keeps its size when you switch tabs (a taller tab scrolls inside
+                it) and closes when you tap outside it. With only the Ham features on there is no tab row (only <strong>HAM</strong>); with
+                the <span translate="no">SWL</span> features on both tabs show, and with the Ham features off the <strong>HAM</strong> tab
+                stays, for receiving only.
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: numbered sections of equal buttons that adapt to the screen width and the text size: weak signal,
+                    beacons, keyboard and chat, classic radio, images, digital voice and packet. The most used modes (<span translate="no">FT8, LQ8, FT4, FT2, WSPR, JS8, RTTY, JTTY, SSB, CW, SSTV</span> and <span translate="no">Packet (APRS)</span>)
+                    are in a slightly brighter box with a bold name; the mode in use keeps its own look. Experimental modes say so on a second small line.</li>
+                <li><strong>SWL</strong>: the receivers, one button each, with what they decode under the name: broadcast, HF utility and time signals,
+                    air and sea, weather, balloons and satellites, IoT and mesh. They are described in <a href="#swl">Using qFT8 for SWL</a>.</li>
+                <li>Families of modes have <strong>one button</strong>: <strong>PSK</strong> (PSK31, PSK63, PSK125, PSK250, QPSK31, QPSK63) and
+                    <strong>Rodina MFSK</strong> (MFSK, THOR, DominoEX, Throb); Olivia, Contestia, MT63 and the other keyboard modes too. The variant is
+                    picked in the bottom bar beside the mode, as the sub-modes of <span translate="no">JT65</span> are (A, B, C): the closed picker shows short names
+                    (31, Q63, M16, TH22, 8/250, 32/1K) and the open one the full names. Each family remembers the variant you used last, and every
+                    variant is still logged by its own name.</li>
+                <li>A mode your radio cannot do is hidden. The check box <strong>Zobrazit druhy provozu, které mé rádio nepodporuje</strong> at the bottom shows them
+                    greyed; tapping one says why (for example &ldquo;Your radio has no I/Q output&rdquo;).</li>
+            </ul>
+            <p>
+                <strong>PROBE</strong> opens the free <strong>AUTO MODE DETECTOR</strong>, whatever is switched on (the bottom bar then reads
+                <span translate="no">PROBE</span>). It names the signals on the spectrogram as you watch; the ones qFT8 decoded get a check mark. Tap a label
+                and qFT8 asks &ldquo;Go to FT8 on 14075.250 kHz?&rdquo; (the mode and the frequency of that signal): <strong>YES</strong> switches to it.
+                It is experimental: it can be wrong, and it never names room noise, voices, music or hum. In Settings &gt; Spectrogram the check box
+                <strong>Pojmenovat ostatní signály ve spektrogramu (detektor módů)</strong> lets it keep listening while you operate.
+            </p>
+
+            <h3 id="ui-band-select">The band selector</h3>
+            <p>
+                The band button of the bottom bar opens the band selector: the bands one per row, each with the frequencies of the current mode (for
+                example FT8 on 20 m: 14.074 Standard and 14.090 DXpedition; on 6 m: 50.313 and 50.323 Alternate). Tap a frequency to go there; the one
+                you pick is remembered for each mode and band. A band in red has no frequency in this mode (60 m in FT4, for example) and cannot be picked.
+                Below the bands are your custom bands A to E (an empty one opens the settings to fill it), a box for any frequency (in
+                <span translate="no">FT8</span> and the other band modes it becomes that band's frequency; in <span translate="no">SSB, CW, RTTY</span> and
+                <span translate="no">SSTV</span> it tunes the radio), a gear to the band settings and the check box <strong>Držet rádio na zvoleném kmitočtu</strong>:
+                on, a radio turned by hand is put back on the frequency you chose; off, qFT8 follows the radio. It closes when you tap outside it. In
+                marine <span translate="no">VHF</span>, airband, the broadcast radio and the signals receivers the button only shows the receiver's frequency (for
+                example 156.8) and does not open the list; pick an amateur mode to change band. In the web remote each band of the list shows the same frequency buttons.
+            </p>
             <h3 id="ui-log-tab">Karta Deník</h3>
             <p>Karta Deník ukazuje navázaná QSO.</p>
             <div class="phone-mockup">
@@ -1580,7 +1663,8 @@
                 <li><strong>Textový filtr značky</strong>: filtruje QSO podle toho, zda značka obsahuje zadaný text.</li>
                 <li><strong>Filtr stavu</strong>: filtr QSO, který ukazuje:
                     <ul>
-                        <li><span translate="no">Vše</span>: všechna zaznamenaná QSO.</li>
+                        <li><strong>QSO / SWL</strong>: once something has been heard, or the <span translate="no">SWL</span> features are on, the top of the log has one dropdown, <strong>QSO</strong> / <strong>SWL</strong>, in the colour of the log you are looking at (<span translate="no">QSO</span> blue, <span translate="no">SWL</span> red). <span translate="no">QSO</span>, your own log, is the default; <span translate="no">SWL</span> shows what you heard, newest first, in its place. The choice is remembered. The <span translate="no">SWL</span> page has the same filter bar (<strong>Obsahuje</strong>, <strong>Zobrazit</strong>, <strong>nedávné</strong>), which searches the whole <span translate="no">SWL</span> log, and a tap on an entry opens it to edit or delete (nothing is ever deleted on eQSL or any online service). Beside the <strong>+</strong> a file button asks <strong>IMPORT QSO LOG</strong> / <strong>EXPORT QSO LOG</strong>, or <strong>IMPORT SWL LOG</strong> / <strong>EXPORT SWL LOG</strong>, for the log shown (the same as Settings &gt; Log files; the web remote only exports).</li>
+            <li><span translate="no">Vše</span>: všechna zaznamenaná QSO.</li>
                         <li><span translate="no">Potvrzené</span>: jen QSO, která byla potvrzena.</li>
                         <li><span translate="no">Lovec POTA</span> / <span translate="no">Lovec SOTA</span>: zobrazí QSO s parkem nebo vrcholem.</li>
                         <li><span translate="no">Neodeslané</span>: QSO, která nebyla odeslána na QRZ.</li>
@@ -1655,13 +1739,13 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>: zapíná a vypíná informační karty na obrazovce (čas, terminátor, subsolární bod a souřadnice zaměřovacího kříže).</li>
                         <li><strong><span translate="no">MSGs</span></strong>: zapíná a vypíná trasy a značky přímých zpráv: <span style="color: #ff9800; font-weight: bold;">oranžově</span> přijaté (adresované vaší stanici), <span style="color: #ffff00; font-weight: bold;">žlutě</span> odeslané (vysílané z vaší stanice). Klepnutím na střed šipky zobrazíte text zprávy.</li>
-                        <li><strong><span translate="no">QSOs</span></strong>: zapíná a vypíná značky spojení z poslední relace (<span style="color: #f59e0b; font-weight: bold;">jantarové</span> pro zapsaná, <span style="color: #10b981; font-weight: bold;">smaragdové</span> pro potvrzená). Když jsou vypnuté <span translate="no">MSGs</span> i <span translate="no">Spot</span>, spojí tenká čára vaši stanici s každou stanicí <span translate="no">QSO</span> na mapě (bez šipek), takže na první pohled vidíte, kam vaše spojení vedla; sdílený obrázek mapy tyto čáry obsahuje také.</li>
-                        <li><strong><span translate="no">Spot</span></strong>: zapíná a vypíná spoty živě dekódovaného provozu na pásmu, který slyší vaše stanice (<span style="color: #00ffff; font-weight: bold;">azurové</span> pro RX/CQ), a stanice, které hlásí příjem vašeho signálu na PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">červené kosočtverce</span>).</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: zapíná a vypíná značky spojení z poslední relace (<span style="color: #f59e0b; font-weight: bold;">jantarové</span> pro zapsaná, <span style="color: #10b981; font-weight: bold;">smaragdové</span> pro potvrzená). Když jsou vypnuté <span translate="no">MSGs</span> i <span translate="no">SPOT</span>, spojí tenká čára vaši stanici s každou stanicí <span translate="no">QSO</span> na mapě (bez šipek), takže na první pohled vidíte, kam vaše spojení vedla; sdílený obrázek mapy tyto čáry obsahuje také.</li>
+                        <li><strong><span translate="no">SPOT</span></strong>: zapíná a vypíná spoty živě dekódovaného provozu na pásmu, který slyší vaše stanice (<span style="color: #00ffff; font-weight: bold;">azurové</span> pro RX/CQ), a stanice, které hlásí příjem vašeho signálu na PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">červené kosočtverce</span>).</li>
                         <li><strong><span translate="no">SOTA</span></strong>: zapíná a vypíná reference vrcholů Summits On The Air a aktivní aktivátory vrcholů (⛰️).</li>
                         <li><strong><span translate="no">POTA</span></strong>: zapíná a vypíná reference parků Parks On The Air a aktivní aktivátory parků (🌲).</li>
                         <li><strong>Pásmo</strong>: ukazuje šíření na pásmu podle reportů z internetu a hluchou zónu kolem uživatele. Při připojení k internetu se po přepnutí pásma aktualizuje v reálném čase.</li>
                     </ul>
-                    <p>Tlačítka <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> a <strong><span translate="no">Spot</span></strong> mohou blikat; znamená to, že se nepodařilo stáhnout aktualizace.</p>
+                    <p>Tlačítka <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> a <strong><span translate="no">SPOT</span></strong> mohou blikat; znamená to, že se nepodařilo stáhnout aktualizace.</p>
                 </li>
                 <li><strong>Pravá lišta (dosažené výsledky a vrstvy hranic)</strong>:
                     <ul>
@@ -1700,6 +1784,8 @@
                 <li><strong>CQ modifikátor</strong>: volitelný text připojený k vašim voláním <span translate="no">CQ</span> (např. „<span translate="no">SOTA</span>“).</li>
                 <li><strong>Poloha</strong> a <strong>Čas</strong>: váš lokátor Maidenhead a posun hodin, každý s tlačítkem <strong>SYNC</strong>; ozubené kolo vedle nich otevře <strong>Čas a poloha</strong> (<a href="#settings-pages">níže</a>).</li>
                 <li><strong>Transceiver</strong> / <strong>Anténa</strong>: rádio a anténa, se kterými pracujete. Každé QSO, které zapíšete, si je pamatuje (ADIF <code>MY_RIG</code> / <code>MY_ANTENNA</code>) a <span translate="no">PSKReporter</span> je dostává s vašimi spoty. Je-li Rig prázdné, použije se název připojeného rádia.</li>
+                <li><strong>SWL id</strong> (se zapnutými funkcemi SWL): vaše posluchačské ID, zapisované do deníku SWL; prázdné znamená „SWL“.</li>
+                <li><strong>APPLICATION SETTINGS</strong>: a page with, in this order: Application (slow device / low battery mode and, on the computer, confirm before closing), Features (Ham features, SWL features and Awards; on the phone also Radio connection, Log and World map), User interface (orientation, colour palettes, what the lists show, the user interface and font scale, <strong>SPECTROGRAM</strong> and <strong>WORLD MAP</strong>), Logger and Keep running minimized / screen off.</li>
                 <li><strong>Zařízení</strong>: slouží k nastavení a výběru vašeho transceiveru (např. QMX, QDX, řady Kenwood TS-480 / TS-590 / TS-2000 nebo VOX/jen audio) a parametrů připojení. Pod tím:
                     <ul>
                         <li><strong>Předpokládat vysílací výkon N W</strong>: u rádií, která výkon nehlásí, počet wattů zapisovaný do deníku. Výkon rádia nikdy nemění.</li>
@@ -1708,18 +1794,22 @@
                         <li><strong>Reproduktory a mikrofon</strong>: váš vlastní mikrofon a reproduktory či sluchátka pro <span translate="no">SSB</span> a <span translate="no">CW</span> (viz <a href="#audio-setup">Reproduktory a mikrofon</a>, hned pod tím).</li>
                         <li><strong>Generovat tón s hlasitostí</strong> a hlasitost zařízení při vysílání: tytéž dvě volby jako v nastavení zařízení, zde zopakované.</li>
                         <li><strong>KONZOLE CAT</strong>: příkazy rádiu zadáváte sami (viz <a href="#cat-console">Konzole CAT</a>).</li>
+                    <li><strong>Režim I/Q (jen příjem)</strong> (experimental, while a <span translate="no">QMX</span> is the device): the radio sends its raw I and Q over <span translate="no">USB</span> (48 kHz) and qFT8 tunes inside that span, for the spectrum and every decoder. Transmitting is refused while it is on (the <span translate="no">TX</span> button reads <span translate="no">NO TX / I/Q</span>); if the radio stays in audio mode, its firmware may not have I/Q mode.</li>
+                        <li><strong>Síťová radiostanice</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): <strong>Připojit k síťové radiostanici (experimentální)</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>PŘIPOJIT</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                     </ul>
                 </li>
-                <li><strong>Uživatelské rozhraní</strong>: uživatelské rozhraní a velikost písma, <strong>Jazyk</strong> a, když jste některou funkci vypnuli (<a href="#layouts">Rozvržení obrazovky</a>), tlačítka <strong>ZAPNOUT RÁDIOVÉ FUNKCE</strong>, <strong>ZAPNOUT DENÍK QSO</strong> a <strong>ZAPNOUT MAPU SVĚTA</strong>.</li>
-                <li><strong>Synchronizace QSO</strong>: jeden řádek pro každou službu, kam se vaše QSO odesílají, a <strong>Přidat další služby</strong> (viz <a href="#qso-services">Služby pro odesílání QSO</a>).</li>
-                <li><strong>Servery</strong>: co toto zařízení nabízí jiným programům, a <strong>Přidat další servery</strong> (viz <a href="#choosing-services">Výběr služeb a serverů</a>).</li>
-                <li><strong>Hlášení</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> a <a href="#lq8-announce">oznamování vaší aktivity v <span translate="no">LQ8</span></a>.</li>
+                <li><strong>OCENĚNÍ</strong> (the band at the very top of Settings, experimental): <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on) each show how many stars you have earned and open a live diploma (see <a href="#awards">Awards</a>).</li>
+                    </ul>
+                </li>
                 <li><strong>Události</strong>: aktivace <span translate="no">POTA</span> a <span translate="no">SOTA</span> a počítadlo QSO (viz <a href="#events-section">Sekce Události v Nastavení</a>).</li>
+                <li><strong>Soubory deníku</strong>: <strong>IMPORT QSO LOG</strong> and <strong>EXPORT QSO LOG</strong>, your QSO logbook as ADIF (<span translate="no">.adi</span>) files, and the <span translate="no">SWL</span> log's own buttons (see <a href="#swl-services">The SWL log in Settings</a>) (see <a href="#adif-import-export">ADIF Import/Export</a>).</li>
+                <li><strong>Synchronizace QSO</strong>: jeden řádek pro každou službu, kam se vaše QSO odesílají: její přepínač, ikona jejího stavu a její ozubené kolo (viz <a href="#qso-services">Služby pro odesílání QSO</a> a <a href="#choosing-services">Výběr služeb a serverů</a>).</li>
+                <li><strong>Hlášení</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> a <a href="#lq8-announce">oznamování vaší aktivity v <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Komunita</strong>: dvě skupiny na Telegramu (viz <a href="#community">Komunita</a>).</li>
-                <li><strong>Soubory deníku</strong>: <strong>Import deníku</strong> a <strong>Export deníku</strong>, váš deník QSO jako soubory ADIF (<span translate="no">.adi</span>) (viz <a href="#adif-import-export">Import a export ADIF</a>).</li>
                 <li><strong>Soubory nastavení</strong>: <strong>IMPORTOVAT NASTAVENÍ</strong> a <strong>EXPORTOVAT NASTAVENÍ</strong> (viz <a href="#settings-pages">níže</a>).</li>
-                <li><strong>Další nastavení</strong>: stránky <strong>Čas a poloha</strong>, <strong>Aplikace</strong>, <strong>Spektrogram</strong>, <strong>Mapa světa</strong>, <strong>Automatický provoz</strong>, <strong>Digitální módy</strong>, <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong>, <strong>Výběr pásma</strong>, <strong>Zdroje dat</strong> a <strong>Smazat QSO</strong>, každá popsaná v části <a href="#settings-pages">Stránky nastavení</a>.</li>
+                <li><strong>Další nastavení</strong>: <strong>Módy</strong> (stránka s, v tomto pořadí <strong>Automatický provoz</strong>, <strong>Digitální módy</strong> a <strong>Výběr pásma</strong>, potom, pod „Nastavení módů“, jedno tlačítko pro každý režim: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> a ostatní digitální režimy otevřou Digitální módy u daného režimu; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> a <strong><span translate="no">PACKET</span></strong> své vlastní stránky; ZPĚT vrací na Módy), <strong>Zdroje dat</strong>, <strong>Servery</strong> (co toto zařízení nabízí jiným programům, viz <a href="#choosing-services">Výběr služeb a serverů</a>) a <strong>Smazat QSO</strong>, každá popsaná v části <a href="#settings-pages">Stránky nastavení</a>.</li>
                 <li><strong>Při spuštění kontrolovat nové verze</strong> a <strong>Odesílat anonymní denní souhrn výkonu</strong> (viz <a href="#reports-updates">Hlášení problémů a nové verze</a>).</li>
+                <li><strong>Jazyk</strong>: jazyk qFT8, pod čarou na konci seznamu.</li>
                 <li>Úplně dole: verze s odkazy na tuto příručku a zásady ochrany soukromí, oprávnění a připojené zařízení USB a <strong><span translate="no">NAHLÁSIT CHYBU</span></strong> (viz <a href="#report-bug">Nahlášení problému</a>).</li>
             </ul>
 
@@ -1806,7 +1896,7 @@
                     a volbou, zda se při každém spuštění qFT8 aktualizuje z GPS.</li>
             </ul>
 
-            <h4 id="settings-application">Aplikace</h4>
+            <h4 id="settings-application">Nastavení aplikace</h4>
             <ul>
                 <li><strong>Režim pomalého zařízení / slabé baterie</strong>: lehčí vykreslování, dekodér beze změny (viz
                     <a href="#pc-slow">Pomalé počítače</a>; na telefonech stejně).</li>
@@ -2248,7 +2338,8 @@
             </div>
 
             <ol>
-                <li><strong>Značka</strong>: napište značku a stiskněte Enter na klávesnici: QSO se zapíše s aktuálním časem, pole se vyprázdní a můžete psát další. Klávesnice zůstává mezi jednotlivými QSO otevřená.</li>
+                <li><strong>QSO</strong> / <strong>SWL</strong> (the first field, blue for <span translate="no">QSO</span>, red for <span translate="no">SWL</span>): where the entry goes. <span translate="no">SWL</span> writes the station into the <span translate="no">SWL</span> log, never into the <span translate="no">QSO</span> log. The <span translate="no">SWL</span> page of the log opens it on <span translate="no">SWL</span> and the <span translate="no">QSO</span> page on <span translate="no">QSO</span>; anywhere else it starts on <span translate="no">QSO</span> with the Ham features on and on <span translate="no">SWL</span> with them off.</li>
+            <li><strong>Značka</strong>: napište značku a stiskněte Enter na klávesnici: QSO se zapíše s aktuálním časem, pole se vyprázdní a můžete psát další. Klávesnice zůstává mezi jednotlivými QSO otevřená.</li>
                 <li><strong>ZAPSAT</strong>: totéž co Enter.</li>
                 <li><strong><span translate="no">VYMAZAT</span> / <span translate="no">VRÁTIT</span></strong>: je-li napsána značka, je na tlačítku <span translate="no">VYMAZAT</span> a pole vyprázdní. Jinak je na něm <span translate="no">VRÁTIT</span>: vezme poslední QSO této relace z deníku a vrátí ho do formuláře, abyste ho mohli opravit.</li>
                 <li><strong>HOTOVO</strong>: zavře formulář. Je-li značka napsána, ale nezapsána, zeptá se, zda ji zapsat.</li>
@@ -2390,13 +2481,13 @@
 
             <h3 id="choosing-services">Výběr služeb a serverů</h3>
             <p>
-                <strong>Synchronizace QSO</strong> ukazuje QRZ, LoTW a eQSL a každou službu, kterou jste už nastavili. <strong>PŘIDAT DALŠÍ SLUŽBY</strong> pod řádky vypíše všechny služby: zaškrtněte jednu a dostane svůj řádek; odškrtněte ji a úplně se zastaví (žádné nahrávání, žádná potvrzení, přestane se počítat do zelené značky a zmizí z voleb exportu). Účet, klíč i přepínač zůstanou; po opětovném zaškrtnutí se vrátí tak, jak byla.
+                <strong>Synchronizace QSO</strong> uvádí každou službu na jednom řádku: její přepínač, ikonu jejího stavu a její ozubené kolo, které otevře stránku služby. Ikona je šedá, dokud služba není nastavena, zelená fajfka, když odesílá vaše QSO, oranžová pauza, když je nastavena, ale vypnuta, a červený vykřičník „!“, když se nepodařilo připojit; jen tehdy druhý, červený řádek pod řádkem vysvětlí, co se stalo. Programy deníku ve vaší síti mají druhý řádek s názvy programů, se kterými fungují; co nemohou zaručit (UDP, žádné heslo), je vysvětleno na jejich vlastních stránkách.
             </p>
             <p>
-                Hned pod tím <strong>Servery</strong> obsahuje, co toto zařízení poskytuje jiným programům. Políčko řádku, například „Webový server dálkového ovládání na portu 13497“, je stejný přepínač jako na stránce toho serveru a ozubené kolo otevře stránku. Webový server dálkového ovládání a qFT8 bridge jsou tam vždy (iPhone nemá ani jedno); <strong>PŘIDAT DALŠÍ SERVERY</strong> přidá servery Wavelog, Cloudlog a qFT8log a <a href="#lan-loggers">přijímače pro programy deníku ve vaší síti</a>. Odškrtnutý server se ihned zastaví a po opětovném zaškrtnutí se vrátí tak, jak byl.
+                V části Další nastavení &gt; <strong>Servery</strong>, hned pod Zdroje dat, je to, co toto zařízení poskytuje jiným programům: webový server dálkového ovládání a qFT8 bridge (iPhone nemá ani jedno), servery Wavelog, Cloudlog a qFT8log a <a href="#lan-loggers">přijímače pro programy deníku ve vaší síti</a>. Políčko řádku, například „Webový server dálkového ovládání na portu 13497“, je stejný přepínač jako na stránce toho serveru a ozubené kolo otevře stránku; ZPĚT odtud vrací do Servery. Server, který vypnete, se ihned zastaví a po opětovném zapnutí se vrátí tak, jak byl.
             </p>
             <p>
-                Stahování pro mapu je v Další nastavení &gt; <strong>ZDROJE DAT</strong>, hned pod VÝBĚR PÁSMA; vše je ve výchozím stavu zapnuté.
+                Stahování pro mapu je v Další nastavení &gt; <strong>ZDROJE DAT</strong>, hned pod MÓDY; vše je ve výchozím stavu zapnuté. Při vypnuté mapě světa se ZDROJE DAT nezobrazují (pro mapu se pak nic nestahuje).
             </p>
 
             <h3 id="services-list">Všechny služby a servery</h3>
@@ -2405,7 +2496,7 @@
             </p>
             <ul>
                 <li><strong>Synchronizace QSO</strong> (vaše QSO odcházejí): <a href="#qrz-integration"><span translate="no">QRZ</span></a>, <a href="#lotw-integration"><span translate="no">LoTW</span></a>, <a href="#eqsl"><span translate="no">eQSL</span></a>, <a href="#wavelog"><span translate="no">Wavelog</span></a>, <a href="#cloudlog"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log">qFT8log</a> (do jiného qFT8), <a href="#online-logbooks"><span translate="no">HRDLog</span>, <span translate="no">HamQTH</span>, <span translate="no">World Radio League</span> a <span translate="no">Club Log</span></a> a deníkové programy ve vaší síti (<a href="#lan-loggers"><span translate="no">FT8 network log</span> a <span translate="no">ADIF over UDP</span></a>).</li>
-                <li><strong>Servery</strong> (jiné programy se připojují k tomuto qFT8): <a href="#remote-control">webový server pro dálkové ovládání</a>, <a href="#bridge">qFT8 bridge</a>, servery <a href="#wavelog-server"><span translate="no">Wavelog</span></a> a <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log-server">server qFT8log</a> a <a href="#lan-loggers">přijímače pro deníkové programy ve vaší síti</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, rozhraní <span translate="no">AC Log</span> a <span translate="no">DXLab</span>).</li>
+                <li><strong>Servery</strong> (Další nastavení &gt; Servery; jiné programy se připojují k tomuto qFT8): <a href="#remote-control">webový server pro dálkové ovládání</a>, <a href="#bridge">qFT8 bridge</a>, servery <a href="#wavelog-server"><span translate="no">Wavelog</span></a> a <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log-server">server qFT8log</a> a <a href="#lan-loggers">přijímače pro deníkové programy ve vaší síti</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, rozhraní <span translate="no">AC Log</span> a <span translate="no">DXLab</span>).</li>
                 <li><strong>Hlášení</strong> (to, co slyšíte, odchází): <a href="#pskreporter"><span translate="no">PSKReporter</span></a>, <a href="#wspr-reports"><span translate="no">WSPRnet</span></a> a <a href="#lq8-announce">aktivita <span translate="no">LQ8</span> na živé mapě</a>.</li>
                 <li><strong>Události</strong>: <a href="#activation">aktivace <span translate="no">POTA</span> a <span translate="no">SOTA</span></a> a <a href="#event-counter">počítadlo QSO</a>.</li>
             </ul>
@@ -2418,9 +2509,13 @@
                 Každý má svou stránku. HRDLog chce <strong>Kód pro nahrávání HRDLog</strong> z vašeho profilu HRDLog (ne heslo); HamQTH <strong>Značka v HamQTH</strong> a <strong>Heslo HamQTH</strong>; World Radio League <strong>Klíč API WRL</strong>, který si vytvoříte na jeho webu (Integrations &gt; Developer API), a máte-li jich víc, <strong>Deník WRL</strong>; Club Log, <strong>E-mail Club Log</strong> a <strong>Heslo aplikace Club Log</strong>. Pak stiskněte <strong>OVĚŘIT</strong>. qFT8 tam nikdy žádné QSO nemaže; v Club Logu QSO, u kterého jste změnili značku, datum, čas, pásmo nebo druh provozu, nechá starý záznam (smažte ho na webu).
             </p>
 
+            <p id="hamlog-online">
+                <span translate="no">HAMLOG.online</span> je online deník, který používají <span translate="no">RAZA</span>, <span translate="no">RDA</span> a další diplomy. Jeho stránka má jediný řádek, <strong>Připojení</strong>. Klepněte na něj: qFT8 ukáže kartu s kódem velkými písmeny, dobou, po kterou kód platí (odpočítává se), a adresou jako QR kódem, s tlačítky <strong>KOPÍROVAT URL</strong> a <strong>OTEVŘÍT</strong>. Otevřete stránku na tomto zařízení nebo kód naskenujte telefonem, přihlaste se, zaškrtněte svou volací značku a schvalte qFT8 (žádá jen o čtení a nahrávání QSO); karta se po vaší odpovědi zavře sama. Webové dálkové ovládání ukazuje stejný kód, adresu i QR kód, dokud qFT8 čeká. Potom klepněte na <strong>OVĚŘIT</strong> a zaškrtněte políčko. Každé QSO se nahraje při zápisu pod volací značkou z horní části Nastavení (nebo pod vlastní přenosnou značkou QSO, např. /P); úprava změní QSO tam; qFT8 na <span translate="no">HAMLOG.online</span> nikdy nic nemaže. Každé zařízení se připojí samo (připojení se s nastavením nevyváží); starší odstraníte v Connected loggers na webu. <strong>NAHRÁT</strong> aktivace <span translate="no">RAZA</span> také odkazuje na <span translate="no">HAMLOG.online</span>: se zapnutou touto službou už QSO aktivace jsou tam a aktivaci pošlete moderátorovi <span translate="no">RAZA</span> na webu.
+            </p>
+
             <h3 id="lan-loggers">Deníkové programy ve vaší síti</h3>
             <p>
-                qFT8 může každé zapsané spojení posílat deníkovým a mapovým programům ve vaší místní síti. V <strong>PŘIDAT DALŠÍ SLUŽBY</strong> zaškrtněte <span translate="no">FT8 network log</span> (port UDP 2237) nebo <span translate="no">ADIF over UDP</span> (port UDP 2333); jeho řádek se objeví v <strong>Synchronizace QSO</strong>. Na jeho stránce zadejte adresu počítače, na kterém běží druhý program (127.0.0.1 je tento počítač), a port, stiskněte <strong>OVĚŘIT</strong> a pak zaškrtněte políčko. <span translate="no">FT8 network log</span> může posílat i vaše dekódování a stav vaší stanice (<strong>Posílat také moje dekódování a stav mé stanice (pro mapy a upozornění)</strong>), které používá mapa a upozornění druhého programu. Tyto zprávy nemají potvrzení o přijetí, takže takto odeslané spojení se nikdy nepočítá jako nahrané. Nastavení u každého uvádí programy, se kterými bylo vyzkoušeno.
+                qFT8 může každé zapsané spojení posílat deníkovým a mapovým programům ve vaší místní síti. V <strong>Synchronizace QSO</strong> najděte řádek <span translate="no">FT8 network log</span> (port UDP 2237) nebo <span translate="no">ADIF over UDP</span> (port UDP 2333) a otevřete jeho ozubené kolo. Na jeho stránce zadejte adresu počítače, na kterém běží druhý program (127.0.0.1 je tento počítač), a port, stiskněte <strong>OVĚŘIT</strong> a pak zaškrtněte políčko. <span translate="no">FT8 network log</span> může posílat i vaše dekódování a stav vaší stanice (<strong>Posílat také moje dekódování a stav mé stanice (pro mapy a upozornění)</strong>), které používá mapa a upozornění druhého programu. Tyto zprávy nemají potvrzení o přijetí, takže takto odeslané spojení se nikdy nepočítá jako nahrané. Nastavení u každého uvádí programy, se kterými bylo vyzkoušeno.
             </p>
             <p id="lan-n1mm">
                 <span translate="no">N1MM Logger+</span> (Windows, vyzkoušeno s verzí 1.0.11469) přijímá spojení z qFT8 na svém UDP portu 2237. V jeho okně <span translate="no">Config &gt; Configure Ports</span> zaškrtněte <span translate="no">Enable</span> u UDP portu 2237 a restartujte jej; potom v qFT8 přidejte <span translate="no">FT8 network log</span>, nebo <span translate="no">ADIF over UDP</span> s portem změněným na 2237, s adresou toho počítače. Každé spojení se objeví v jeho deníku se značkou, kmitočtem, módem, reporty, lokátorem a časem. Na portu 2333 neposlouchá.
@@ -2438,7 +2533,7 @@
                 <span translate="no">GridTracker2</span> (testováno s verzí 2.261019.5) zobrazuje na mapě a zapisuje, co <span translate="no">FT8 network log</span> posílá na port 2237; se zapnutým příjmem ADIF UDP přijímá i <span translate="no">ADIF over UDP</span> na portu 2333. Jeho přeposílání deníku posílá jeho QSO do přijímačů qFT8.
             </p>
             <p>
-                Opačným směrem může qFT8 přijímat do svého deníku spojení z jiných programů. V <strong>PŘIDAT DALŠÍ SERVERY</strong> zaškrtněte přijímač pro formát, který druhý program posílá: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), rozhraní <span translate="no">AC Log</span> (TCP 1100) nebo rozhraní <span translate="no">DXLab</span> (TCP 52001); pak zaškrtněte jeho řádek v <strong>Servery</strong>. Jeho stránka ukazuje adresu, kterou zadáte do druhého programu, a umožňuje změnit port a přijímat spojení jen z některých adres. Nic takto přijatého nemůže vysílat, měnit rádio ani mazat spojení. Přijímače jsou vypnuté, dokud je nezapnete; na iPhonu běží jen při otevřeném qFT8 a nikdy se nepřipojí ke skupině multicast.
+                Opačným směrem může qFT8 přijímat do svého deníku spojení z jiných programů. V části Další nastavení &gt; <strong>Servery</strong> zaškrtněte řádek přijímače pro formát, který druhý program posílá: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), rozhraní <span translate="no">AC Log</span> (TCP 1100) nebo rozhraní <span translate="no">DXLab</span> (TCP 52001). Jeho stránka ukazuje adresu, kterou zadáte do druhého programu, a umožňuje změnit port a přijímat spojení jen z některých adres. Nic takto přijatého nemůže vysílat, měnit rádio ani mazat spojení. Přijímače jsou vypnuté, dokud je nezapnete; na iPhonu běží jen při otevřeném qFT8 a nikdy se nepřipojí ke skupině multicast.
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -2712,7 +2807,7 @@
         <section id="wavelog-server">
             <h2><span translate="no">qFT8</span> jako server <span translate="no">Wavelog</span></h2>
             <p>
-                V <strong>Nastavení &gt; Servery qFT8 &gt; Server <span translate="no">Wavelog</span></strong> <span translate="no">qFT8</span> odpovídá ve vaší domácí síti, jako by byl <span translate="no">Wavelog</span>: jakýkoli program, který umí posílat <span translate="no">QSOs</span> do <span translate="no">Wavelog</span> (včetně jiného <span translate="no">qFT8</span>), je může místo toho posílat do tohoto <span translate="no">qFT8</span>.
+                V <strong>Nastavení &gt; Další nastavení &gt; Servery &gt; Server <span translate="no">Wavelog</span></strong> <span translate="no">qFT8</span> odpovídá ve vaší domácí síti, jako by byl <span translate="no">Wavelog</span>: jakýkoli program, který umí posílat <span translate="no">QSOs</span> do <span translate="no">Wavelog</span> (včetně jiného <span translate="no">qFT8</span>), je může místo toho posílat do tohoto <span translate="no">qFT8</span>.
             </p>
             <h3>Nastavení</h3>
             <ol>
@@ -2908,6 +3003,45 @@
             </ol>
 
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="multitone">
+            <h2>Vícetón: dva signály najednou</h2>
+            <p>
+                Nastavení má sekci <strong>Vícetón</strong>, přímo nad sekcí <strong>Události</strong>, s jedním políčkem:
+                <strong>Vícetón (2 signály)</strong> (experimentální). Je-li zaškrtnuté, může každé vysílání v
+                <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span> a
+                režimech <span translate="no">LQ</span> nést dva běžné signály vedle sebe, každý s vlastní zprávou
+                pro vlastní stanici: dvakrát tolik oslovených stanic nebo odeslaných zpráv. Cenou je výkon: aby zvuk
+                nepřebuzoval, dostane každý signál poloviční amplitudu, takže každý z nich dorazí k druhé stanici asi
+                o 6 dB slabší (čtvrtina výkonu; oba dohromady polovina). Modrá značka <strong>Vícetón</strong> na
+                spektrogramu vám to připomíná, dokud je zapnutý, a vysílací frekvence je nakreslena jako dva pruhy vedle sebe.
+            </p>
+            <ul>
+                <li><strong>Vaše rádio musí vysílat zvuk lineárně</strong> (obvyklé datové režimy / USB-D
+                    rádií Icom, Yaesu, Kenwood, Elecraft, Xiegu a podobných). Rádia, která vysílají jeden měřený tón
+                    (<span translate="no">QMX</span>, <span translate="no">QMX+</span>, <span translate="no">QDX</span>,
+                    <span translate="no">(tr)uSDX</span>), vysílají jen jeden signál; značka pak ukazuje
+                    <strong>Vícetón: 1 signál</strong>. Držte ALC rádia na nule: dva signály způsobují rušení
+                    na jiných frekvencích mnohem dříve než jeden.</li>
+                <li><strong>Kam jde druhý signál:</strong> 100 Hz nad vaši vysílací frekvenci v
+                    <span translate="no">FT8</span> a <span translate="no">LQ8</span> (150 Hz v <span translate="no">FT4</span>,
+                    250 Hz v <span translate="no">FT2</span> a <span translate="no">LQ2</span>,
+                    50 Hz v <span translate="no">LQ16</span>); pod ni, když nahoře není místo. Stanice si ponechá
+                    signál, na kterém jí bylo odpovězeno, po celé spojení.</li>
+                <li><strong>AUTO</strong> doplní druhý signál samo další stanicí, kterou by zavolalo, podle
+                    všech svých obvyklých pravidel, vždy v opačném slotu. Nikdy nevysílá dvě výzvy CQ; CQ jde na druhý signál
+                    jen tehdy, když běží jedno spojení a nikoho dalšího nelze volat.</li>
+                <li><strong>Ručně:</strong> klepnutím na CALL stanice ji označíte, klepnutím na další označíte i tu; klepnutím na označenou
+                    značku zrušíte. Klepnutí na novou stanici, když je označen maximální počet, nahradí nejstarší značku (dvě v
+                    režimech <span translate="no">FT</span>, čtyři v režimech <span translate="no">LQ</span>, kde dvě
+                    stanice ve stejném kroku sdílejí jednu zprávu s vícenásobným hlášením nebo s vícenásobným 73). Je-li označena více než jedna
+                    stanice, políčko zpráv ukazuje <strong>Zprávy volené automaticky</strong> a qFT8 pošle každé
+                    stanici její další zprávu. Stanice se zruší sama, když je její spojení hotové.</li>
+                <li>Vícetón nikdy nezapne TX, nikdy nezmění výkon vašeho rádia a nemění žádnou zprávu: každý
+                    signál je běžný rámec svého režimu, který dekóduje každá stanice. Časové limity vysílání počítají
+                    vícetónové vysílání přesně jako jeden signál.</li>
+            </ul>
         </section>
 
         <section id="activation">
@@ -3449,6 +3583,50 @@
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
         </section>
 
+        <section id="mode-am">
+            <h2><span translate="no">AM</span>, letecké a námořní pásmo <span translate="no">VHF</span> (hlas)</h2>
+            <p>
+                Seznam režimů má další tři hlasové položky, které otevřou panel <a href="#ssb-mode"><span translate="no">SSB</span></a>
+                s jiným přijímačem za ním: <strong><span translate="no">AM</span></strong> (amatérská pásma, příjem
+                i vysílání), <strong>Letecký hlas</strong> (letadla a věže, 118-137 MHz, jen příjem) a
+                <strong>Námořní <span translate="no">VHF</span></strong> (lodě a pobřežní stanice, jen příjem). Spodní lišta
+                pak nazve režim <span translate="no">AM</span> nebo <span translate="no">FM</span> a volba postranního pásma
+                zmizí: tyto signály žádné nemají.
+            </p>
+            <p class="mode-specs"><strong>Specifikace:</strong> třídy vyzařování ITU A3E (<span translate="no">AM</span>, letecké pásmo) a F3E (námořní <span translate="no">VHF</span>, úzká <span translate="no">FM</span>, kanály 25 kHz); mezinárodní námořní kanály Radiokomunikačního řádu ITU, dodatek 18; letecké pásmo 118-137 MHz s kanály 25 kHz nebo 8,33 kHz (ICAO, příloha 10).</p>
+            <ul>
+                <li><strong>S rádiem ovládaným přes CAT</strong> qFT8 přepne rádio do jeho vlastního režimu <span translate="no">AM</span> nebo <span translate="no">FM</span> (jen příkaz režimu: nikdy nemění výkon) a po odchodu ho vrátí do datového režimu. Displej rádia ukazuje skutečnou frekvenci stanice.</li>
+                <li><strong>S přijímačem SDR</strong> (například klíčenkou RTL-SDR) qFT8 demoduluje samo: synchronní <span translate="no">AM</span>, která zůstává čistá, když nosná slábne, a úzká <span translate="no">FM</span> s squelchem, který drží nečinný kanál potichu.</li>
+                <li><strong>Rádio, které qFT8 nedokáže přepnout na <span translate="no">AM</span></strong>, zůstane v datovém režimu: stanici <span translate="no">AM</span> uslyšíte na horním postranním pásmu (laďte přesně na její nosnou) a qFT8 přes něj <span translate="no">AM</span> nevysílá.</li>
+            </ul>
+            <h3 id="am-transmitting">Mluvení v <span translate="no">AM</span></h3>
+            <p>
+                <span translate="no">AM</span> se vysílá přesně jako <span translate="no">SSB</span>: nejdřív
+                <span translate="no">TX ON</span> od operátora, pak <span translate="no">PTT</span> nebo <span translate="no">VOX</span>,
+                hlasové paměti, limit nepřetržitého vysílání rádia. qFT8 vysílá <span translate="no">AM</span> jen uvnitř
+                amatérského pásma (obě strany nosné se musí vejít) a jen přes rádio, které přepnulo do
+                <span translate="no">AM</span>. Spojení se zapisují jako <span translate="no">AM</span>.
+            </p>
+            <h3 id="airband-marine">Letecké a námořní pásmo <span translate="no">VHF</span></h3>
+            <p>
+                Obojí je jen pro příjem: panel nemá <span translate="no">PTT</span>, <span translate="no">VOX</span> ani
+                tlačítko <span translate="no">QSO</span>. Místo nich ukazuje kanál se dvěma šipkami pro krok dolů a nahoru
+                (kolečko frekvence také krokuje kanály) a pod ním frekvenci. Letecké pásmo krokuje po 8,33 kHz v Evropě, Africe a
+                na Blízkém východě (podle vašeho lokátoru) a po 25 kHz jinde a poprvé se otevře na 121,500 MHz; námořní
+                <span translate="no">VHF</span> se otevře na kanálu 16 a každý duplexní kanál slyší na frekvenci jeho pobřežní stanice.
+                Každé si pamatuje poslední použitou frekvenci. Poslech těchto služeb není všude povolen: zjistěte si pravidla
+                své země.
+            </p>
+            <p>
+                The passband tag on the spectrogram reads <span translate="no">RX</span> there, never <span translate="no">RX/TX</span>: qFT8 does not transmit in these
+                services, and with a radio under <span translate="no">CAT</span> the <span translate="no">TX</span> button reads <span translate="no">NO TX / RX</span> (see
+                <a href="#ui-mode-select">The mode selector</a>). Airband and marine <span translate="no">VHF</span> with an <span translate="no">SDR</span> never ask for a transmitting radio. In <span translate="no">SSB</span> and <span translate="no">AM</span> without one the pane stays
+                usable for listening, and a red line at its bottom, &ldquo;Connect a radio to use SSB.&rdquo; (or &ldquo;...to use AM.&rdquo;), opens Device configuration when tapped. On the computer, with no radio under <span translate="no">CAT</span> (an <span translate="no">SDR</span> or a sound card alone), the mouse wheel over the spectrogram zooms
+                in <span translate="no">SSB</span>, <span translate="no">AM</span>, airband and marine <span translate="no">VHF</span>. Picking an amateur mode or band afterwards goes back to the band you were on before the receiver.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
         <section id="cw-mode">
             <h2><span translate="no">CW</span> (telegrafie)</h2>
             <p>
@@ -3882,6 +4060,207 @@
                 <li><strong>Reference</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
             </ul>
 
+            <h3 id="jt65-settings">Nastavení &gt; <span translate="no">JT65</span></h3>
+            <p>
+                <span translate="no">JT65</span> (řádek <span translate="no">JT65</span> (experimentální) ve výběru režimu) je jednominutový režim pro spojení s 65 tóny a Reedovým–Solomonovým kódem; citlivost asi -25 dB (v 2500 Hz). Spojení se zapisují jako <span translate="no">MODE=JT65</span> s poddruhem (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>) a spoty jdou do <span translate="no">PSKReporter</span> jako <span translate="no">JT65</span>. Obvyklé kmitočty (USB dial): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
+            </p>
+            <ul>
+                <li>Poddruh (A): A, B nebo C, stejně jako ve spodní liště.</li>
+                <li>Dekódovat jen poblíž přijímacího kmitočtu (vypnuto): vypnuto dekóduje celé pásmo; zapnuto jen okolo přijímacího kmitočtu.</li>
+                <li>Tolerance příjmu: šířka v Hz okolo přijímacího kmitočtu (výchozí 100).</li>
+                <li>Reference: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
+            </ul>
+
+            <h3 id="jt9-settings">Nastavení &gt; <span translate="no">JT9</span></h3>
+            <p>
+                <span translate="no">JT9</span> (řádek <span translate="no">JT9</span> (experimentální) ve výběru režimu) je jednominutový režim pro spojení s 9 tóny, široký 16 Hz; citlivost asi -27 dB (v 2500 Hz). Spojení se zapisují jako <span translate="no">MODE=JT9</span> a spoty jdou do <span translate="no">PSKReporter</span> jako <span translate="no">JT9</span>. Obvyklé kmitočty (USB dial): o 2 kHz výše než u <span translate="no">JT65</span> od 160 m do 10 m (20 m <span translate="no">14.078</span> MHz).
+            </p>
+            <ul>
+                <li>Dekódovat jen poblíž přijímacího kmitočtu (vypnuto): vypnuto dekóduje celé pásmo; zapnuto jen okolo přijímacího kmitočtu.</li>
+                <li>Tolerance příjmu: šířka v Hz okolo přijímacího kmitočtu (výchozí 100).</li>
+                <li>Reference: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
+            </ul>
+
+            <h3 id="jt4-settings">Nastavení &gt; <span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> (řádek <span translate="no">JT4</span> (experimentální) ve výběru režimu) je jednominutový režim pro spojení se 4 tóny a konvolučním kódem; citlivost asi -23 dB (v 2500 Hz) u <span translate="no">JT4A</span>. Spojení se zapisují jako <span translate="no">MODE=JT4</span> s poddruhem (<span translate="no">JT4A</span> až <span translate="no">JT4G</span>) a spoty jdou do <span translate="no">PSKReporter</span> jako <span translate="no">JT4</span>. Kmitočty (USB dial): 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span>, 70 cm <span translate="no">432.065</span>, 23 cm <span translate="no">1296.065</span>, 13 cm <span translate="no">2304.065</span> MHz; jakýkoli jiný kmitočet s pásmem Jiné.
+            </p>
+            <ul>
+                <li>Poddruh (A): A až G, stejně jako ve spodní liště.</li>
+                <li>Dekódovat jen poblíž přijímacího kmitočtu (vypnuto): vypnuto dekóduje celé pásmo; zapnuto jen okolo přijímacího kmitočtu.</li>
+                <li>Tolerance příjmu: šířka v Hz okolo přijímacího kmitočtu (výchozí 100).</li>
+                <li>Reference: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT4 protocol description</span>&rdquo; (2007); <span translate="no">J. Layland, W. Lushbaugh</span>: &ldquo;<span translate="no">A Flexible High-Speed Sequential Decoder for Deep Space Channels</span>&rdquo;, <span translate="no">IEEE Trans. Comm. Tech.</span> (1971).</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="psk-mode">
+            <h2><span translate="no">PSK31</span> a <span translate="no">PSK63</span> (experimentální)</h2>
+            <span id="psk31-mode"></span><span id="psk63-mode"></span><span id="psk125-mode"></span><span id="psk250-mode"></span><span id="qpsk31-mode"></span><span id="qpsk63-mode"></span>
+            <p>
+                Pick <strong>PSK</strong> in the mode selector and <span translate="no">PSK31</span> or
+                <span translate="no">PSK63</span> beside the mode in the bottom bar: the same screen
+                opens with the <span translate="no">PSK</span> modem and the mode button reads the mode's name.
+                <span translate="no">PSK31</span> is the classic keyboard-to-keyboard mode: one carrier whose phase turns
+                over to carry the text, about 50 Hz wide, at 31.25 baud; <span translate="no">PSK63</span> is the same at
+                twice the speed and twice the width. Every <span translate="no">PSK</span> signal in the passband is
+                decoded and written along its trace, and the one under the receive bar is always followed.
+                Each mode has its own frequency on every band (on 20 m, 14.070 MHz).
+            </p>
+            <ul>
+                <li>Obrazovka nemá v <span translate="no">PSK</span> tlačítka <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> a <span translate="no">REV</span>.</li>
+                <li>Text zachovává velká a malá písmena. Paměť odejde jako jedno vysílání; text napsaný klávesnicí odchází po řádcích, po stisku Enter.</li>
+                <li>Zápis QSO: zápis QSO se otevře s <span translate="no">PSK31</span> nebo <span translate="no">PSK63</span> (v souborech <span translate="no">ADIF</span> zapsáno jako druh provozu <span translate="no">PSK</span> s tímto poddruhem), na frekvenci vaší vysílané nosné.</li>
+                <li>Faster and stronger variants, in the same picker: <span translate="no">PSK125</span> and
+                    <span translate="no">PSK250</span> (4 and 8 times as fast, as much wider), <span translate="no">QPSK31</span> and
+                    <span translate="no">QPSK63</span> (four phases with error correction: the text survives some noise and
+                    fading that garbles <span translate="no">PSK31</span>; both stations must use the same one). They are
+                    logged by their own names.</li>
+                <li>Používá nastavení Nastavení &gt; <span translate="no">RTTY</span> (dekódování, příposlech, paměti). <span translate="no">PSK</span> je nový a může se ještě změnit.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="olivia-mode">
+            <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> a <span translate="no">DominoEX</span> (experimentální)</h2>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <p>
+                The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
+                (<strong>OLIVIA</strong>, <strong>Rodina MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
+                <span translate="no">DominoEX</span> and <span translate="no">Throb</span>, and so on), each marked experimental. The speed or variant is picked beside the mode in the bottom bar, and each
+                family remembers the last one you used. The variants: <strong><span translate="no">OLIVIA 8/250</span></strong>,
+                <strong><span translate="no">OLIVIA 8/500</span></strong>, <strong><span translate="no">OLIVIA 16/500</span></strong>,
+                <strong><span translate="no">OLIVIA 32/1000</span></strong>, <strong><span translate="no">OLIVIA 4/250</span></strong>,
+                <strong><span translate="no">MFSK8</span></strong>, <strong><span translate="no">MFSK11</span></strong>,
+                <strong><span translate="no">MFSK16</span></strong>, <strong><span translate="no">MFSK22</span></strong>,
+                <strong><span translate="no">MFSK32</span></strong>, <strong><span translate="no">MFSK64</span></strong>,
+                <strong><span translate="no">MFSK128</span></strong>, <strong><span translate="no">DOMINOEX 8</span></strong>,
+                <strong><span translate="no">DOMINOEX 11</span></strong> and <strong><span translate="no">DOMINOEX 16</span></strong>.
+                Picking one opens the <span translate="no">RTTY</span> screen with that modem, and the mode button reads
+                its name.
+            </p>
+            <ul>
+                <li><span translate="no">Olivia</span> (tóny / šířka v Hz): pomalý a velmi odolný, pro slabé a kolísající signály; čím více tónů, tím hlouběji v šumu. <span translate="no">MFSK16</span>: 16 tónů asi v 316 Hz, s opravou chyb, dobrý každodenní režim; <span translate="no">MFSK32</span> a <span translate="no">MFSK64</span> jsou totéž při dvojnásobné a čtyřnásobné rychlosti (širší, vyžadují silnější signál; <span translate="no">MFSK32</span> je běžný v sítích pro nouzový provoz); <span translate="no">MFSK128</span> je opět dvakrát rychlejší a široký 2 kHz. <span translate="no">MFSK8</span> (32 tónů, asi 250 Hz) a <span translate="no">MFSK11</span> jsou pomalejší než <span translate="no">MFSK16</span> a čtou slabší signály; <span translate="no">MFSK22</span> leží mezi <span translate="no">MFSK16</span> a <span translate="no">MFSK32</span>. <span translate="no">DominoEX</span>: 18 tónů, necitlivý na ladění a drift, rychlejší.</li>
+                <li>Dekóduje se signál pod pruhem příjmu (pruh je střed signálu). Nastavte pruh na signál; pár hertzů vedle nevadí.</li>
+                <li>Obrazovka nemá v těchto druzích provozu tlačítka <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> a <span translate="no">REV</span>. Paměť odejde jako jedno vysílání; text napsaný klávesnicí odchází po řádcích, po stisku Enter.</li>
+                <li>Každá rodina má svou frekvenci na pásmech, kde se obvykle používá (na 20 m: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); jinde frekvence <span translate="no">RTTY</span>.</li>
+                <li>Zápis QSO: zápis QSO se otevře s názvem druhu provozu (například <span translate="no">OLIVIA 8/250</span>), v souborech <span translate="no">ADIF</span> zapsaným jako druh provozu <span translate="no">OLIVIA</span>, <span translate="no">MFSK</span> nebo <span translate="no">DOMINO</span> s jeho poddruhem, na frekvenci středu vašeho signálu.</li>
+                <li>Omezení nepřetržitého vysílání platí jako v <span translate="no">RTTY</span>: dlouhý text (<span translate="no">Olivia</span> je pomalá: asi 1,5 znaku za sekundu při 8/250) se na limitu zastaví.</li>
+                <li><span translate="no">IFKP</span> (řádky <span translate="no">IFKP 0.5</span>, <span translate="no">IFKP 1.0</span>,
+                    <span translate="no">IFKP 2.0</span>) a <span translate="no">FSQ</span> (řádky <span translate="no">FSQ 2</span>,
+                    <span translate="no">FSQ 3</span>, <span translate="no">FSQ 4.5</span>, <span translate="no">FSQ 6</span>; číslo
+                    je rychlost v symbolech za sekundu): 33 tónů široké asi 390 Hz (<span translate="no">FSQ</span>: 300 Hz), každý tón
+                    o stupeň výš než předchozí, takže nevadí, když je ladění o pár hertzů vedle. Malá písmena, mezera a
+                    tečka zabírají jeden stupeň, vše ostatní dva: pište malými písmeny, vysíláte rychleji. Nepotřebují dlouhý náběh:
+                    text se objeví od prvních znaků. <span translate="no">FSQ</span> vysílá každý řádek jako jedno vysílání (over) a před něj dává
+                    vaši značku, dvojtečku a dvoupísmennou kontrolu (<span translate="no">ab1cde:5f</span>), jak to dělají stanice
+                    <span translate="no">FSQ</span>. Dva cílené příkazy: napište značku následovanou otazníkem
+                    (<span translate="no">k1abc?</span>) a požádáte tuto stanici o report signálu (odpoví
+                    <span translate="no">k1abc:f3ab1cde snr=12 db</span>), nebo napište <span translate="no">heartbeat</span> a vyšlete
+                    jen své záhlaví, takže vás stanice vedou jako slyšené. Převaděče, schránky a soubory nejsou nabízeny.</li>
+                <li>Používají nastavení Nastavení &gt; <span translate="no">RTTY</span> (dekódování, příposlech, paměti). Tyto druhy provozu jsou nové a mohou se ještě změnit.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="thor-mode">
+            <h2><span translate="no">THOR</span>, <span translate="no">Contestia</span> a <span translate="no">MT63</span> (experimentální)</h2>
+            <span id="contestia-mode"></span><span id="mt63-mode"></span><span id="throb-mode"></span><span id="throbx-mode"></span>
+            <p>
+                Three more keyboard modes are in the HAM tab of the mode selector, one button per family with the variant picked beside the mode in the bottom bar, each marked
+                (experimental): <strong><span translate="no">THOR 8</span></strong>, <strong><span translate="no">THOR 11</span></strong>, <strong><span translate="no">THOR 16</span></strong>, <strong><span translate="no">THOR 22</span></strong>; <strong><span translate="no">CONTESTIA 4/250</span></strong>, <strong><span translate="no">CONTESTIA 8/250</span></strong>, <strong><span translate="no">CONTESTIA 16/500</span></strong>, <strong><span translate="no">CONTESTIA 32/1000</span></strong>; <strong><span translate="no">MT63 1000L</span></strong>, <strong><span translate="no">MT63 2000L</span></strong>, <strong><span translate="no">MT63 500L</span></strong> and <strong><span translate="no">MT63 1000S</span></strong>. They work exactly like
+                <span translate="no">Olivia</span> (see above): the <span translate="no">RTTY</span> screen with that modem, the signal under the receive bar decoded, a memory
+                sent as one transmission, typed text a line at a time.
+            </p>
+            <ul>
+                <li><span translate="no">THOR</span>: tóny <span translate="no">DominoEX</span> (necitlivé na ladění a drift) s opravou chyb <span translate="no">MFSK16</span>; při stejném čísle rychlosti o něco pomalejší než <span translate="no">DominoEX</span>, mnohem odolnější.</li>
+                <li><span translate="no">Contestia</span> (tóny / šířka v Hz): rychlejší příbuzný <span translate="no">Olivia</span>, jen velká písmena, oblíbený v závodech; písmena, číslice a obvyklá interpunkce (ostatní znaky se vysílají jako ?).</li>
+                <li><span translate="no">MT63</span> (šířka v Hz, L = dlouhé, S = krátké prokládání): 64 nosných najednou, široký 500, 1000 nebo 2000 Hz, asi 5 až 20 znaků za sekundu; odolný proti únikům a poruchovým špičkám, používaný v nouzových sítích. Pruh příjmu je střed signálu. Dlouhé prokládání je odolnější, krátké začne tisknout dříve.</li>
+                <li>Kmitočty: na 20 m <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 a <span translate="no">MT63</span> 14,105 MHz; jinde <span translate="no">THOR</span> používá kmitočty <span translate="no">DominoEX</span>, <span translate="no">Contestia</span> kmitočty <span translate="no">Olivia</span> a <span translate="no">MT63</span> široké digitální úseky (například 7,050 MHz). Kmitočet, který si nastavíte sami, má stále přednost.</li>
+                <li>Zápis QSO: zápis QSO se otevře s názvem druhu provozu (například <span translate="no">THOR 16</span>); v souborech <span translate="no">ADIF</span> se <span translate="no">THOR</span> zapisuje jako druh provozu <span translate="no">THOR</span> s poddruhem (<span translate="no">THOR16</span> ...), <span translate="no">Contestia</span> jako druh provozu <span translate="no">CONTESTI</span> a <span translate="no">MT63</span> jako druh provozu <span translate="no">MT63</span> (<span translate="no">ADIF</span> pro tyto dva poddruhy nemá).</li>
+                <li><span translate="no">Throb</span> a <span translate="no">ThrobX</span> (řádky <span translate="no">THROB 1</span>, <span translate="no">THROB 2</span>, <span translate="no">THROB 4</span>, <span translate="no">THROBX 1</span>, <span translate="no">THROBX 2</span>, <span translate="no">THROBX 4</span>; číslo je počet symbolů za sekundu): jeden znak na puls, vysílaný jako jeden nebo dva tóny z 9 (<span translate="no">ThrobX</span>: 11), široký asi 70 až 170 Hz. Pomalý a jednoduchý; velká písmena, číslice a několik interpunkčních znamének (ostatní znaky se vysílají jako mezery). <span translate="no">ThrobX</span> má více interpunkce. Používají kmitočty <span translate="no">DominoEX</span>.</li>
+                <li>Limit nepřetržitého vysílání platí jako u <span translate="no">RTTY</span>. Tyto druhy provozu jsou nové a mohou se ještě změnit.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="hell-mode">
+            <h2><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>, experimentální)</h2>
+            <p>
+                <span translate="no">Hellschreiber</span> vysílá text jako obrázek: každé písmeno se snímá v úzkých sloupcích
+                a přijímač vykresluje, co slyší, takže text <em>čtete</em> z obrazovky -- nic se nedekóduje
+                na písmena a slabý nebo zašuměný signál stále ukazuje písmena, která oko dokáže rozeznat. Vyberte
+                <strong><span translate="no">HELL</span></strong> (experimentální) dole ve volbě režimu: obrazovka
+                <span translate="no">RTTY</span> se otevře s modemem <span translate="no">Hell</span>.
+            </p>
+            <ul>
+                <li>Přijatý obraz běží po pásu pod vodopádem, nejnovější písmena vpravo. Každý
+                    sloupec se tiskne dvakrát, jedna kopie nad druhou, takže jedna kopie každého písmene je vždy celá.</li>
+                <li>Klepnutím na pás zobrazíte obraz složený do řádků, jako přijatý text, na místě vodopádu
+                    (jedna kopie, zarovnaná); klepnutím na malý vodopád v pásu se vrátíte.</li>
+                <li><span translate="no">MODE</span> (na místě <span translate="no">BAUD</span>) prochází
+                    varianty: <span translate="no">FELD</span> (<span translate="no">Feld Hell</span>, nejběžnější),
+                    <span translate="no">SLOW</span>, <span translate="no">X5</span>, <span translate="no">X9</span>,
+                    <span translate="no">FSK</span>, <span translate="no">FSK105</span> a <span translate="no">HELL80</span>.
+                    Obě stanice musí použít stejnou.</li>
+                <li><span translate="no">SLANT</span> (na místě <span translate="no">SHIFT</span>) narovná
+                    nakloněný obraz: zvuková karta druhé stanice běží trochu rychle nebo pomalu. Přepínejte ji, dokud
+                    písmena nestojí rovně.</li>
+                <li>Umístěte přijímací pruh na signál (nosnou, nebo střed dvou tónů variant
+                    <span translate="no">FSK</span>). Paměť se vysílá jako jedno vysílání; text napsaný
+                    na klávesnici se vysílá po řádcích, když stisknete Enter. Lze vysílat písmena, číslice a běžná
+                    interpunkce.</li>
+                <li>Každé pásmo má vlastní frekvenci <span translate="no">Hell</span>, kde se běžně používá (na 20 m
+                    14,063 MHz); jinde frekvenci <span translate="no">RTTY</span>.</li>
+                <li>Zápis: deník se otevře s režimem <span translate="no">HELL</span> (nebo variantou, například
+                    <span translate="no">HELL X5</span>) a do souborů <span translate="no">ADIF</span> se zapíše jako režim
+                    <span translate="no">HELL</span> s podrežimem varianty.</li>
+                <li>Limit nepřetržitého vysílání platí stejně jako v <span translate="no">RTTY</span>:
+                    <span translate="no">Feld Hell</span> vysílá asi 2,5 písmene za sekundu, takže dlouhý text je odmítnut nebo
+                    zastaven na limitu. Tento režim je nový a může se ještě změnit.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="mode-packet">
+            <h2><span translate="no">Packet (APRS)</span> (experimentální)</h2>
+            <p>
+                <span translate="no">Packet</span> vysílá krátké rámce <span translate="no">AX.25</span> jako dva zvukové tóny;
+                <span translate="no">APRS</span> je používá pro polohy, objekty, počasí a krátké zprávy. Vyberte
+                <strong><span translate="no">Packet (APRS)</span></strong> (experimentální) na kartě <span translate="no">HAM</span>
+                ve volbě režimu: obrazovka <span translate="no">RTTY</span> se otevře s modemem packetu a
+                rychlost se volí vedle režimu ve spodní liště.
+            </p>
+            <ul>
+                <li><span translate="no">APRS 1200</span>: 1200 baudů přes rádio <span translate="no">FM</span>, na
+                    2 m (144,800 MHz v Evropě a Africe, 144,390 MHz v Americe, 145,175 MHz v oblasti 3; také
+                    <span translate="no">ISS</span> na 145,825 MHz). Tóny jsou pevné; pruhy nehrají roli.</li>
+                <li><span translate="no">HF PACKET 300</span>: 300 baudů v <span translate="no">USB</span> na KV (30 m:
+                    10,1473 MHz, také 20 m a 40 m). Umístěte přijímací pruh doprostřed dvou tónů.</li>
+                <li>Každý zaslechnutý rámec je jeden řádek přijatého textu ve tvaru <span translate="no">CALL&gt;DEST,PATH:info</span>.
+                    Stanice, objekty a meteostanice, které vysílají polohu, se také objeví na mapě s
+                    vzdáleností od vašeho lokátoru.</li>
+                <li>Každý řádek paměti, nebo každý řádek, který napíšete, je jeden rámec:
+                    <span translate="no">BEACON</span> [komentář] vyšle vaši polohu na stupeň přesně podle vašeho lokátoru
+                    (nikdy přesněji než lokátor); <span translate="no">CALL: text</span> pošle zprávu té
+                    stanici; <span translate="no">STATUS text</span> stav; řádek, který začíná znakem
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>), odejde beze změny.</li>
+                <li>Vaše rámce vycházejí z vaší volací značky s <span translate="no">SSID</span> zvoleným v Nastavení &gt;
+                    <span translate="no">Packet</span> (ozubené kolo na obrazovce), po trase digipeaterů nastavené tam
+                    (ve výchozím stavu <span translate="no">WIDE1-1,WIDE2-1</span>, jen na 2 m).</li>
+                <li>Transmitting needs <span translate="no">TX ON</span> and is refused outside the amateur bands; the
+                    continuous transmission limit applies as in <span translate="no">RTTY</span>. Logged as <span translate="no">PKT</span>. This mode is new and may
+                    still change.</li>
+                <li><strong>AUTO</strong>: with AUTO on and <span translate="no">TX ON</span>, messages sent to you are acknowledged automatically. With AUTO off (the default, every time Packet starts) nothing is acknowledged by itself, and with <span translate="no">TX OFF</span> nothing is ever sent. Tapping a received message addressed to you asks &ldquo;Acknowledge the message from CALL?&rdquo; and sends the acknowledgement by hand.</li>
+                <li><strong>HEARD</strong>: lists the packet stations heard (distance, age, last text) and opens the map.</li>
+                <li>On APRS 1200 qFT8 says once to set the radio to FM by hand: it does not switch a radio to FM yet.</li>
+            </ul>
+
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
         </section>
 
@@ -4059,7 +4438,7 @@
                 <li><strong>Údaje</strong>: šířka, velikost obrázku ve sloupcích a řádcích a rychlost.</li>
                 <li><strong><span translate="no">NAČÍST</span></strong>: „Vyfotit“ nebo „Vybrat obrázek“. Obrázek si ponechá svůj tvar.</li>
                 <li><strong>Obrázek k odeslání</strong>, šedý, vykreslený v barvách vašeho vodopádu: to uvidí ostatní stanice. Během vysílání žlutá čára označuje právě vysílaný řádek spolu s textem „Vysílá se: řádek N z M“.</li>
-                <li><strong>Přidat mou značku</strong> (ve výchozím stavu zapnutý): vaše volací značka velkými písmeny pod obrázkem. Tužka mění text štítku (prázdný = vaše volací značka). <strong>Automatický kontrast</strong> jedním stisknutím udělá nejtmavší část obrázku černou a nejsvětlejší bílou; <strong>Kontrast</strong> a <strong>Jas</strong> si poté nastavíte ručně.</li>
+                <li><strong>Značka</strong> (ve výchozím stavu zapnutý): vaše volací značka velkými písmeny pod obrázkem. Tužka mění text štítku (prázdný = vaše volací značka). <strong>Automatický kontrast</strong> jedním stisknutím udělá nejtmavší část obrázku černou a nejsvětlejší bílou; <strong>Kontrast</strong> a <strong>Jas</strong> si poté nastavíte ručně.</li>
                 <li><strong><span translate="no">ODEBRAT</span></strong> vrátí zpět jen štítek se značkou. <strong><span translate="no">ODESLAT</span></strong> ukazuje, kolik sekund obrázek trvá, a mění se na <strong><span translate="no">ZASTAVIT</span></strong> se zbývajícími sekundami.</li>
                 <li><strong>Červený řádek</strong> říká, proč obrázek teď nelze odeslat, a je skrytý, když nic nebrání: „Stiskněte TX ON pro odesílání obrázků“; „20 s: přes váš limit 15 s“ (obrázek je delší než <a href="#tx-limit">limit nepřetržitého vysílání</a> vašeho rádia); „Na 30 m lze vysílat jen šířku 500 Hz“; „Vysílání by bylo mimo radioamatérská pásma“; nebo, s <span translate="no">QMX</span>, jehož firmware neumí přepnout rádio do <span translate="no">SSB</span> přes <span translate="no">CAT</span>, že obrázky lze jen přijímat.</li>
                 <li><strong><span translate="no">RYCHLOST</span></strong>: 3.125, 6.25 (výchozí: jeden řádek trvá stejně dlouho jako jeden tón <span translate="no">FT8</span>) nebo 12.5 řádku za sekundu. Vedle: kolik z vašeho <a href="#tx-limit">limitu nepřetržitého vysílání</a> obrázek spotřebuje. Seznam ukazuje sekundy obrázku při každé rychlosti; rychlost příliš dlouhá pro váš limit to po klepnutí řekne. Ukazatel zobrazuje například „20 s z vašeho limitu 30 s“.</li>
@@ -4207,6 +4586,301 @@
                     a otáčejte jím, dokud není ukazatel plný. Čára se sama vypne, pokud kompas
                     ztratí kalibraci.</li>
             </ul>
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="bcast-receive">
+            <h2>Rozhlasové vysílání: <span translate="no">FM</span> + <span translate="no">RDS</span> a <span translate="no">AM</span> (experimentální)</h2>
+            <p>
+                S <span translate="no">SDR</span> (například s klíčenkou <span translate="no">RTL-SDR</span>) je qFT8 také
+                rozhlasový přijímač. Na kartě <span translate="no">SWL</span> ve volbě režimu klepněte na <span translate="no">FM + RDS</span>
+                nebo na vysílání <span translate="no">AM</span>: obrazovka rádia se otevře nad aplikací a šipka zpět ji zavře. Provozní
+                režim a TX se nemění: tato obrazovka jen přijímá.
+            </p>
+            <ul>
+                <li><strong>HLEDAT</strong> prohledá pásmo a vypíše stanice, které můžete přijímat, s
+                    názvem stanice vysílaným přes <span translate="no">RDS</span>. Klepnutím na stanici ji posloucháte; hvězdička ji
+                    ponechá v seznamu i po dalším hledání. Šipky posunou o jeden kanál, dvojité šipky přejdou na další stanici seznamu.</li>
+                <li><strong>Tlačítko zvuku</strong>: <span translate="no">FM</span> stereo nebo mono; v <span translate="no">AM</span>
+                    synchronní detektor (stabilnější při únikech), prostý detektor obálky, nebo synchronní na jedno postranní pásmo
+                    (<span translate="no">USB</span> / <span translate="no">LSB</span>, pryč od rušení souseda).</li>
+                <li><strong><span translate="no">50 µs</span> / <span translate="no">75 µs</span></strong>:
+                    deemfáze <span translate="no">FM</span>. qFT8 ji vybere podle vašeho lokátoru (75 µs v Americe); klepnutím ji
+                    změníte.</li>
+                <li><strong><span translate="no">REC</span></strong> nahraje stanici, kterou posloucháte, do zvukového souboru;
+                    <span translate="no">RECORDINGS</span> je vypíše k přehrání, sdílení nebo smazání. Nahrávky zůstávají v tomto zařízení.</li>
+            </ul>
+            <p>
+                Dokud je obrazovka rádia otevřená, používá <span translate="no">SDR</span>; ostatní režimy ho dostanou zpět, když
+                ji zavřete. Rádio bez výstupu I/Q (většina transceiverů) pro tuto obrazovku použít nelze.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="swl">
+            <h2>Použití qFT8 pro <span translate="no">SWL</span> (poslech)</h2>
+            <p>
+                K používání qFT8 nepotřebujete licenci ani vysílač. Jako posluchač krátkých vln (a VKV/UKV), <span translate="no">SWL</span>, můžete přijímat a dekódovat všechny režimy, které qFT8 zná, vidět stanice, které slyšíte, na <a href="#ui-world-map-tab">Mapě světa</a> a vést záznam spojení QSO, která slyšíte mezi jinými stanicemi, připravený k odeslání jako hlášení <span translate="no">SWL</span>. qFT8 je <em>Amatérské rádio a <span translate="no">SWL</span></em>: stejná aplikace v telefonu, v počítači, v iPhonu a ve webovém ovladači.
+            </p>
+
+            <h3 id="swl-receive">Co můžete přijímat a dekódovat</h3>
+            <ul>
+                <li><strong>Každý přijímací režim qFT8</strong>: <span translate="no">FT8, FT4, FT2, LQ8, JS8, WSPR, FST4, FST4W, Q65, MSK144, JT65, JT9, JT4</span>, <span translate="no">CW</span> (Morseovka), <span translate="no">RTTY</span>, <span translate="no">PSK31 / PSK63</span>, <span translate="no">Olivia, MFSK, DominoEX, THOR, Contestia, MT63, Throb, IFKP, FSQ</span>, obrázky <span translate="no">SSTV</span> a hlas <span translate="no">SSB</span> k poslechu. Režim zvolíte jako obvykle ve výběru režimů; obrazovku každého režimu popisuje jeho vlastní část tohoto manuálu.</li>
+                <li><strong>Přes jakýkoli přijímač, který qFT8 umí použít</strong>: <span translate="no">SDR</span> jen pro příjem (viz <a href="#swl-devices">Zařízení pro poslech</a>), nebo běžné rádio připojené obvyklým způsobem. <span translate="no">SDR</span> dává qFT8 stejný zvuk, jaký by dalo rádio v horním (nebo dolním) postranním pásmu, takže na něm všechny režimy fungují přesně jako na rádiu.</li>
+                <li><strong>Na každém pásmu, které přijímač pokrývá</strong>: tlačítka pásem ladí přijímač; <span translate="no">SDR</span>, například <span translate="no">RTL-SDR</span>, dosáhne také na kmitočty digitálních režimů v pásmech <span translate="no">2 m</span> a <span translate="no">70 cm</span>.</li>
+                <li><strong>Spoty a mapa</strong>: každá dekódovaná stanice je uvedena na kartě Stanice a vykreslena na Mapě světa se svou vzdáleností a azimutem, stejně jako při vysílání.</li>
+            </ul>
+            <p>
+                An <span translate="no">SDR</span> never transmits in qFT8: while one is the receiver, the TX button reads
+                <span translate="no">NO TX</span> / <span translate="no">SDR</span> and nothing can key. A receiver that tunes the radio (the marine <span translate="no">VHF</span>, airband and signals receivers) also stops transmitting while it has the radio: the button reads <span translate="no">NO TX</span> / <span translate="no">RX</span> and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span>. With a radio that can
+                transmit, switch on <a href="#swl-mode-howto"><span translate="no">SWL</span> mode</a> and qFT8 will not transmit
+                either.
+            </p>
+
+            <h3 id="swl-devices">Zařízení pro poslech</h3>
+            <p>
+                Přijímač zvolte v <strong>Nastavení &gt; Zařízení</strong>. Řádky <span translate="no">SDR</span> mají v tomto seznamu vlastní skupinu; pod zvoleným řádkem qFT8 ukáže několik nastavení, která přijímač potřebuje, a stavový řádek (&ldquo;Připojování k ...&rdquo;, &ldquo;Připojeno k ... (2.4 MS/s)&rdquo;, nebo proč není připojen).
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt>Klíč <span translate="no">RTL-SDR</span> (<span translate="no">RTL-SDR Blog V3, V4, V4 Lite</span> a další klíče s tunerem <span translate="no">R820T / R820T2 / R828D</span>) zapojený přes <span translate="no">USB</span></dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: RTL-SDR (USB)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> 0.5 MHz - 1.7 GHz (KV u V4 samo o sobě; V3: přímé vzorkování)</dd>
+                    <dd><span class="row-label">Telefon</span> ano (USB OTG)</dd>
+                    <dd><span class="row-label">Počítač</span> Linux</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ne</dd>
+                </div>
+                <div>
+                    <dt>Stejný klíč v jiném počítači nebo v Raspberry Pi, přes jeho síťový server</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: RTL-SDR (network)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> jako výše</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt>Webový přijímač <span translate="no">KiwiSDR</span>, vlastní nebo veřejný</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: KiwiSDR (network)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> 10 kHz - 30 MHz</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Hermes-Lite 2</span>, <span translate="no">Red Pitaya</span>, starší <span translate="no">ANAN</span> (<span translate="no">OpenHPSDR</span>, jen příjem; experimentální)</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: Hermes-Lite 2 / OpenHPSDR (network)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> 0 - 38 MHz</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Airspy</span> (<span translate="no">R2, Mini, HF+</span>) nebo <span translate="no">RTL-SDR</span> sdílený síťovým serverem na portu 5555</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: Airspy / RTL-SDR server (network, port 5555)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> to, co sdílený přijímač pokrývá</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF, Airspy, RTL-SDR</span> ... sdílené vzdáleným hostitelským serverem SDR na portu 55132</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> <span dir="ltr" translate="no">SDR: remote SDR host (network: SDRplay, LimeSDR, Pluto ...)</span></dd>
+                    <dd><span class="row-label">Kmitočty</span> to, co sdílený přijímač pokrývá</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt>Cokoli z toho zprostředkované <a href="#bridge">qFT8 bridge</a> v jiném zařízení</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> bridge</dd>
+                    <dd><span class="row-label">Kmitočty</span> jako přijímač bridge</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ano</dd>
+                </div>
+                <div>
+                    <dt>Běžné rádio (více než 70 modelů přes <span translate="no">USB</span>, nebo jakékoli rádio zvukovým kabelem)</dt>
+                    <dd><span class="row-label">Řádek zařízení</span> řádek rádia, nebo <code>AUTO</code></dd>
+                    <dd><span class="row-label">Kmitočty</span> to, co rádio přijímá</dd>
+                    <dd><span class="row-label">Telefon</span> ano</dd>
+                    <dd><span class="row-label">Počítač</span> ano</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> přes zvuk (viz <a href="#iphone">qFT8 na iPhonu a iPadu</a>)</dd>
+                </div>
+            </dl>
+            <p>
+                Nepodporováno: přijímače <span translate="no">I/Q</span> na zvukové kartě (<span translate="no">SoftRock</span> nebo režim <span translate="no">I/Q</span> rádia <span translate="no">QMX+</span>: používejte <span translate="no">QMX+</span> jako běžné rádio, je plug and play přes <span translate="no">USB</span>) a klíče <span translate="no">RTL</span> s jinými tunery (<span translate="no">E4000, FC0012, FC0013, FC2580</span>).
+            </p>
+
+            <h4 id="swl-rtl-usb">Klíč <span translate="no">RTL-SDR</span> v telefonu nebo v počítači</h4>
+            <p>
+                <strong>Telefon nebo tablet (Android)</strong>: zapojte klíč pomocí adaptéru nebo kabelu <span translate="no">USB OTG</span>. Android nabídne otevření qFT8; povolte oprávnění <span translate="no">USB</span>. Je-li <strong>Nastavení &gt; Zařízení</strong> na <code>AUTO</code> a není zapojeno žádné rádio, qFT8 použije klíč samo (&ldquo;<span translate="no">AUTO - SDR: RTL-SDR (USB)</span>&rdquo;); zapojené rádio má přednost. Odpojení a opětovné zapojení klíče ho znovu převezme. Klíč bere napájení z telefonu: pomůže krátký kabel a nabitá baterie.
+            </p>
+            <p>
+                <strong>Není co instalovat, u žádného klíče.</strong> qFT8 má pro klíč vlastní ovladač zabudovaný v aplikaci: pozná <span translate="no">RTL-SDR Blog V4</span> a použije jeho zabudovaný upkonvertor <span translate="no">KV</span> a přepínání vstupů, takže <span translate="no">KV</span> na V4 funguje bez jakéhokoli nastavení. U <span translate="no">V3</span> (nebo jiného klíče bez upkonvertoru) zaškrtněte <strong>KV bez konvertoru (přímé vzorkování)</strong> pro příjem pod 24 MHz na jeho vstupu <span translate="no">KV</span>. qFT8 nikdy nezapíná bias tee klíče (napájení antény).
+            </p>
+            <p>
+                <strong>Počítač, Linux</strong>: stejný řádek, stejný zabudovaný ovladač. qFT8 si klíč převezme od televizního ovladače, který systém načte sám. Váš uživatel potřebuje oprávnění k otevření klíče; pokud stavový řádek hlásí &ldquo;žádné oprávnění&rdquo;, přidejte jednou soubor s pravidlem (například <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) s řádkem <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code> (<code>2832</code> u některých starších klíčů), spusťte <code dir="ltr">sudo udevadm control --reload-rules</code> a klíč znovu zapojte.
+            </p>
+            <p>
+                <strong>Počítač, Windows a macOS</strong>: klíč zatím qFT8 nemůže otevřít přímo. Spusťte síťový server <span translate="no">RTL-SDR</span> na stejném počítači (nebo na jakémkoli jiném, například na <span translate="no">Raspberry Pi</span>) a zvolte <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> s adresou <code>127.0.0.1</code>, nebo klíč zprostředkujte z telefonu či počítače s Linuxem pomocí <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
+            <h4 id="swl-drivers">Síťový server <span translate="no">RTL-SDR</span> a jeho ovladač</h4>
+            <p>
+                Síťový server (port 1234) je součástí balíčku ovladačů <span translate="no">RTL-SDR</span> vašeho systému. Tento balíček je samostatný ovladač, oddělený od qFT8, a na jeho verzi záleží:
+            </p>
+            <ul>
+                <li><strong><span translate="no">RTL-SDR Blog V4</span></strong>: potřebuje ovladač, který V4 zná. Nainstalujte sestavení ovladače, které zveřejnil výrobce klíče (<span translate="no">RTL-SDR Blog</span>, viz jeho stručný návod k V4); to používáme s V4. Starší ovladač, jaký některé distribuce Linuxu a starší stahování pro Windows stále dodávají, klíč najde, ale nezná zapojení jeho tuneru ani upkonvertor: kmitočty jsou chybné nebo se nic nepřijímá a <span translate="no">KV</span> nefunguje.</li>
+                <li><strong><span translate="no">RTL-SDR Blog V3</span></strong> a běžné klíče <span translate="no">R820T / R820T2</span>: funguje jakákoli verze ovladače. Pro <span translate="no">KV</span> zaškrtněte <strong>KV bez konvertoru (přímé vzorkování)</strong>; qFT8 požádá server o přepnutí klíče na jeho vstup <span translate="no">KV</span>.</li>
+                <li><strong>Linux</strong>: systém načte pro klíč televizní ovladač, který síťovému serveru brání klíč otevřít. Novější balíčky ovladačů ho uvolní samy; jinak ho zablokujte (modul <code>dvb_usb_rtl28xxu</code>) a klíč znovu zapojte. Stejné pravidlo oprávnění jako výše.</li>
+                <li><strong>Windows</strong>: klíč musí používat obecný ovladač <span translate="no">WinUSB</span> místo televizního ovladače, který Windows nainstaluje; jak na to, ukazuje stručný návod výrobce klíče.</li>
+                <li><strong>Raspberry Pi</strong>: dobré místo pro server vedle antény; pro V4 použijte sestavení ovladače <span translate="no">RTL-SDR Blog</span>.</li>
+            </ul>
+            <p>
+                Settings for the network row: <strong>Adresa</strong>, <strong>Port</strong>, <strong>Vzorkovací frekvence</strong> (2.4 MS/s
+                by default; if the status line says the data arrives in bursts, tap it to use the highest rate),
+                <strong>Zisk</strong>, <strong>Korekce kmitočtu (ppm)</strong> and
+                <strong>KV bez konvertoru (přímé vzorkování)</strong> and, for a server that can switch it, <strong>Bias tee (napájení na anténním vstupu)</strong>. Any server that speaks the same
+                <span translate="no">RTL-SDR</span> network protocol works too, including those made for other
+                <span translate="no">SDR</span>s.
+            </p>
+
+            <h4 id="swl-other-sdr">Další <span translate="no">SDR</span></h4>
+            <ul>
+                <li><strong><span translate="no">KiwiSDR</span></strong>: není co instalovat. Zadejte adresu přijímače (ve výchozím stavu port 8073). qFT8 použije jeden z jeho kanálů, v seznamu posluchačů se ukáže jako qFT8 a řídí se limity jeho majitele: když jsou všechny kanály obsazené, zkusí to znovu za 2 minuty; když přijímač odmítne (heslo, jedno spojení na adresu, časový limit), stavový řádek uvede důvod a qFT8 čeká 30 minut nebo dokud nezměníte adresu. Veřejné přijímače jsou sdílené: až skončíte, opusťte je.</li>
+                <li><strong><span translate="no">Hermes-Lite 2 / OpenHPSDR</span></strong>: nechte adresu prázdnou, aby se rádio našlo ve vaší síti. Rádio obsluhuje vždy jeden program: nejdřív zavřete jiný program, který ho používá. qFT8 přes něj jen přijímá.</li>
+                <li><strong><span translate="no">Airspy</span></strong> (a <span translate="no">RTL-SDR</span>) na portu 5555: spusťte síťový server přijímače v počítači, ke kterému je přijímač připojen, s nainstalovaným vlastním ovladačem přijímače. Server volí vzorkovací frekvenci a zisk; pokud ho řídí jiný posluchač, qFT8 může poslouchat jen tam, kde je naladěno.</li>
+                <li><strong><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF</span></strong> a další: v počítači, ke kterému je přijímač připojen, nainstalujte ovladač výrobce (u <span translate="no">SDRplay</span> jeho <span translate="no">API</span>), vzdálený hostitelský server SDR (port 55132) a jeho modul pro daný přijímač. qFT8 použije první přijímač, který server nabídne. Frekvenci a zisk volí server.</li>
+            </ul>
+
+            <h4 id="swl-radio">Běžné rádio</h4>
+            <p>
+                Každé rádio, které qFT8 podporuje, je také dobrým přijímačem: zapojte ho podle popisu v <a href="#quick-setup">Rychlém nastavení</a> (například <span translate="no">QMX</span>, <span translate="no">QMX+</span> nebo <span translate="no">IC-7300</span> jedním kabelem <span translate="no">USB</span>). qFT8 nastaví jeho kmitočet přes <span translate="no">CAT</span>, když stisknete tlačítko pásma. Zapněte režim <span translate="no">SWL</span>, aby nikdy nevysílalo.
+            </p>
+            <h3 id="swl-biastee">Bias tee</h3>
+            <p>
+                The device setup of an <span translate="no">SDR</span> whose driver can switch it (the <span translate="no">RTL-SDR</span> on this device's
+                <span translate="no">USB</span>, <span translate="no">RTL-SDR Blog V3</span> / <span translate="no">V4</span>, and an <span translate="no">RTL-SDR</span> network server)
+                has the check box <strong>Bias tee (napájení na anténním vstupu)</strong>, off by default. It puts DC power on the antenna cable, for an active antenna or a
+                preamplifier. Turning it on first shows a warning that it can damage a radio, filter, splitter or DC-shorted antenna on that cable (<strong>OK</strong> /
+                <strong>CANCEL</strong>). qFT8 never switches it on by itself and switches it off whenever the <span translate="no">SDR</span> is closed.
+            </p>
+
+            <h3 id="swl-mode-howto">Režim <span translate="no">SWL</span> a záznam slyšených</h3>
+            <p>
+                <strong>REŽIM SWL (JEN POSLECH)</strong> na konci Nastavení &gt; <strong>Události</strong> se zeptá na váš identifikátor <span translate="no">SWL</span> (například <span translate="no">R4-123-456</span>) nebo na vaši volací značku. Dokud je zapnutý, qFT8 nikdy nevysílá (tlačítko TX zobrazuje <span translate="no">NO TX</span> / <span translate="no">SWL</span>; TX, TUNE i všechny režimy odmítnou zaklíčovat) a váš vlastní záznam QSO se nemění. Podrobnosti jsou v části <a href="#events-supported">Podporované události</a>.
+            </p>
+            <p>
+                <strong>Záznam slyšených</strong> shromažďuje spojení QSO, která slyšíte mezi dvěma jinými stanicemi:
+            </p>
+            <ul>
+                <li>Vše přijaté přes <span translate="no">SDR</span> (nebo přes qFT8 bridge, který nějaké poskytuje) se do záznamu slyšených zapíše samo, i bez režimu <span translate="no">SWL</span>. S rádiem, které umí vysílat, jen když je režim <span translate="no">SWL</span> zapnutý.</li>
+                <li>V <span translate="no">FT8, FT4, LQ8</span> a dalších časovaných režimech (včetně <span translate="no">JT65, JT9</span>) se QSO započítá, jakmile bylo slyšet jeho potvrzení (<span translate="no">RR73</span>, <span translate="no">RRR</span> nebo <span translate="no">73</span> po hlášení roger). V <span translate="no">CW, RTTY, PSK</span> a <span translate="no">Olivia / MFSK</span> se započítá, když bylo zachyceno jak &ldquo;A DE B&rdquo;, tak &ldquo;B DE A&rdquo;, s hlášeními, pokud byla odeslána.</li>
+                <li>Každé slyšené QSO si uchová obě volací značky, čas, pásmo, kmitočet, režim, obě hlášení, lokátory, případnou slyšenou referenci programu (vrchol <span translate="no">SOTA</span>, park <span translate="no">POTA</span>, <span translate="no">RAZA</span> ...) a přijímač, přes který přišlo (na konci jeho řádku).</li>
+                <li>The list is the <span translate="no">SWL</span> page of the Log tab: switch the <strong>QSO</strong> / <strong>SWL</strong> dropdown at its top to <strong>SWL</strong>. It has the same filter bar as the <span translate="no">QSO</span> page, and a tap on an entry edits or deletes it (nothing is ever deleted on eQSL). The web remote shows it too.</li>
+                <li>The log keeps every entry (no limit) in a file that is only ever added to, so a very long log does not slow the start of the app; the page reads only the newest entries and shows more as you scroll.</li>
+                <li>With the Ham features off, every <span translate="no">FT8, FT4, LQ ...</span> station heard is logged (once an hour per station and mode); with the Ham features on, only the complete QSOs heard are logged. A station you hear for the first time (never in your <span translate="no">SWL</span> log before) has its callsign in cyan in the Stations list when the Ham features are off.</li>
+                <li>The signals receivers write what they identify to the log, once per station per <span translate="no">UTC</span> day: ships (<span translate="no">AIS</span>), aircraft (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, <span translate="no">NAVTEX</span> stations, <span translate="no">DSC</span>, time stations, <span translate="no">NCDXF</span> beacons, <span translate="no">ALE / ARDOP / PACTOR</span> and <span translate="no">APRS</span> callsigns, weather fax and weather-satellite pictures, and <span translate="no">FM</span> stations by their <span translate="no">RDS</span> code and name. They count for the <span translate="no">SWL</span> awards; they are never sent to eQSL and are not in the <span translate="no">ADIF</span> export (the <span translate="no">CSV</span> has them, with the name heard in the last column).</li>
+                <li>Uploads follow one rule: the eQSL <span translate="no">SWL</span> account files every heard station under that account (a ham eQSL account is refused); <span translate="no">PSK Reporter</span> and <span translate="no">WSPRnet</span> report under your callsign, else your <span translate="no">SWL</span> id.</li>
+            </ul>
+
+            <h3 id="swl-exports">Exporty: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> a <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
+            <ul>
+                <li><strong>EXPORTOVAT ADIF</strong>: jeden záznam na slyšenou stanici, dva na QSO, tak jak se posílají hlášení a lístky <span translate="no">SWL</span>: <span translate="no">SWL=Y</span>, váš identifikátor jako operátor, slyšená stanice v <span translate="no">CALL</span> s vaším hlášením, stanice, se kterou pracovala, ve zprávě lístku &ldquo;Heard working ...&rdquo; a v komentáři, odkazy na programy (<span translate="no">SOTA_REF</span>, <span translate="no">POTA_REF</span>, <span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>) a přijímač v <span translate="no">MY_RIG</span>.</li>
+                <li><strong>EXPORTOVAT CSV</strong>: jeden řádek na QSO, přijímač v posledním sloupci.</li>
+                <li><strong>EXPORTOVAT SOTA SWL (CSV)</strong>: zobrazí se, když jste slyšeli aktivátory na vrcholu. Jeden řádek chasera na každého slyšeného aktivátora, s vrcholem, ve formátu, který databáze <span translate="no">SOTA</span> přijímá; nahrajte ho tam jako záznam <span translate="no">SWL</span>.</li>
+                <li><strong>EXPORTOVAT RAZA SWL (CSV)</strong>: zobrazí se, když jste slyšeli aktivátory <span translate="no">RAZA</span>. Jeden řádek na aktivátora s tím, co mu poslat (značka, datum, čas, pásmo, režim, vaše hlášení, stanice, se kterou pracoval, jeho reference a váš identifikátor), například jako elektronický lístek <span translate="no">SWL</span> na <span translate="no">HAMLOG.online</span>.</li>
+                <li><strong>CLEAR SWL LOG</strong> (Settings &gt; Log files) deletes the list from this device after asking and after you type yes; your own QSO log is not touched, and nothing is deleted on eQSL or any online service. It also resets your <span translate="no">SWL</span> awards, so export the log first.</li>
+            </ul>
+
+            <h3 id="swl-services">Deník <span translate="no">SWL</span> v Nastavení a <span translate="no">eQSL</span></h3>
+            <ul>
+                <li>Nastavení &gt; <strong>Soubory deníku</strong> má čtyři tlačítka: <strong>IMPORT DENÍKU QSO</strong> a <strong>EXPORT DENÍKU QSO</strong> (vaše vlastní spojení QSO) a <strong>IMPORT DENÍKU SWL</strong> a <strong>EXPORT DENÍKU SWL</strong> (deník slyšených stanic). <strong>EXPORT DENÍKU SWL</strong> nabízí výše uvedené soubory. <strong>IMPORT DENÍKU SWL</strong> načte soubor <span translate="no">ADIF</span> a do deníku slyšených převezme jen jeho záznamy <span translate="no">SWL</span> (<span translate="no">SWL=Y</span>, formát, který používají jiné deníky a služby <span translate="no">SWL</span>); dva záznamy jednoho slyšeného spojení se opět spojí v jednu položku, položky, které už v deníku jsou, se nezdvojují a každý jiný záznam se přeskočí (nikdy se nedostane do vašeho deníku QSO). Webový dálkový ovladač nabízí <strong>EXPORT DENÍKU SWL</strong> také, stahuje se do prohlížeče.</li>
+                <li><strong>eQSL (ÚČET SWL)</strong>, v deníku slyšených: <span translate="no">eQSL</span> je online služba se skutečným účtem <span translate="no">SWL</span> (účet, jehož profil je nastaven na <span translate="no">SWL</span>; jeho lístky nesou nápis &ldquo;<span translate="no">Confirming SWL Reception</span>&rdquo;). Zadejte uživatelské jméno a heslo tohoto účtu (ne účtu radioamatéra); jakmile je <span translate="no">eQSL</span> přijme, každé slyšené spojení se odešle jako jeden lístek na každou slyšenou stanici, hned jak se zapíše, a již slyšená se odešlou najednou. K dispozici jsou také <strong>ODESLAT NYNÍ</strong>, <strong>ZMĚNIT PŘIHLÁŠENÍ</strong> a <strong>PŘESTAT ODESÍLAT NA eQSL</strong>. Na <span translate="no">eQSL</span> se nikdy nic nemaže. Tyto lístky jsou to, co přijímá mnoho diplomových programů <span translate="no">SWL</span>.</li>
+                <li>Ostatní služby deníků (<span translate="no">LoTW</span>, <span translate="no">QRZ</span>, <span translate="no">Club Log</span>, ...) přijímají jen oboustranná spojení QSO, takže se jim slyšená spojení nikdy neposílají. <span translate="no">SOTA</span> a <span translate="no">RAZA</span> přijímají hlášení <span translate="no">SWL</span> prostřednictvím vlastních souborů (viz výše), které sami nahrajete nebo odešlete.</li>
+            </ul>
+
+            <h3 id="swl-platforms">Krok za krokem</h3>
+            <ol>
+                <li>Pořiďte si přijímač: <span translate="no">RTL-SDR Blog V4</span> s anténou je nejjednodušší začátek (<span translate="no">KV</span> až <span translate="no">UKV</span>, v telefonu ani v Linuxu není třeba ovladač); úplně bez hardwaru použijte veřejný <span translate="no">KiwiSDR</span>.</li>
+                <li>Zvolte ho v <strong>Nastavení &gt; Zařízení</strong> (nebo zapojte klíč při Zařízení nastaveném na <code>AUTO</code>) a počkejte na &ldquo;Připojeno&rdquo; v jeho stavovém řádku.</li>
+                <li>Zvolte režim a pásmo: <span translate="no">FT8</span> na <span translate="no">20 m</span> nebo <span translate="no">40 m</span> je rušné téměř kdykoli a naplní mapu za minutu.</li>
+                <li>Zapněte <strong>REŽIM SWL (JEN POSLECH)</strong>, pokud chcete svůj identifikátor <span translate="no">SWL</span> v exportech (s rádiem, které umí vysílat, také aby TX zůstalo vypnuto).</li>
+                <li>Exportujte záznam slyšených, až budete chtít poslat hlášení.</li>
+            </ol>
+            <p>
+                <strong>Phone</strong>: <span translate="no">USB</span> dongle or any network receiver.
+                <strong>Computer</strong>: the <span translate="no">USB</span> dongle on Linux, network receivers everywhere.
+                <strong>iPhone / iPad</strong>: network receivers, or a receiver served by a <a href="#bridge">qFT8 bridge</a>
+                (the iPhone has no <span translate="no">USB</span> host for a dongle). <strong>Web remote</strong>: shows the
+                receiver's <span translate="no">NO TX</span> / <span translate="no">SDR</span> state and the <span translate="no">SWL</span> log.
+            </p>
+
+            <h3 id="awards">Awards (experimental)</h3>
+            <p>
+                qFT8 makes a diploma itself from your own logs: there is nothing to apply for. The band at the top of Settings, <strong>OCENĚNÍ</strong>, has
+                <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on), each with its number of stars;
+                tap one to open its page, <strong>Ocenění HAM</strong> or <strong>Ocenění SWL</strong>. Settings &gt; Features &gt; <strong>Ocenění</strong> turns them off (nothing is lost).
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: one table with the modes down and the bands across; each mode and each band shows its ten stars, its station count and the next target, and every
+                    cell adds a star for the different stations (counted by base callsign) you worked in that mode on that band. DXCC entities and grid squares have their own boxes.
+                    Only <em>confirmed</em> <span translate="no">QSO</span>s count (LoTW, QRZ, eQSL or confirmed by hand), imported ones too, logged with your callsign as the station callsign.</li>
+                <li><strong>SWL</strong>: the amateur stations you heard (per group of modes) and the other services (broadcast, time, beacons, weather fax, <span translate="no">HF</span> data,
+                    maritime, ships, aircraft), with the <span translate="no">DXCC</span> entities and grids heard. Your <span translate="no">SWL</span> log and your own QSOs both count, each station once.</li>
+                <li>The diploma shows your callsign (or <span translate="no">SWL</span> id), &ldquo;has achieved N stars&rdquo; and the tiles. <strong>FULLSCREEN</strong> zooms it and
+                    <strong>SHARE</strong> sends it as a picture (the web remote downloads it). <strong>Přesně shodovat s mou volací značkou</strong> counts only QSOs logged with exactly your callsign
+                    (otherwise <span translate="no">/P</span>, <span translate="no">/M</span> and the like count too). A <strong>Jazyk diplomu</strong> button picks the language of the diploma
+                    for viewing and sharing; <strong>Výchozí aplikace</strong> follows the app's language.</li>
+            </ul>
+
+            <h3 id="swl-only">Starting without a callsign</h3>
+            <p>
+                The callsign card of the first start has a <strong>JEN SWL</strong> button and the line &ldquo;No callsign? Press SWL ONLY to receive.&rdquo; It asks for an
+                optional <span translate="no">SWL</span> id (one button, <strong>POKRAČOVAT</strong>; an empty box means &ldquo;SWL&rdquo;) and warns when neither a
+                callsign nor a locator is set (Settings &gt; <strong>Time and location</strong> warns the same, and on the computer <strong>PICK ON MAP</strong> picks your locator on a world map).
+                The welcome then says &ldquo;You didn't enter a callsign, but I can guide you through the SWL features of qFT8.&rdquo; and <strong>START TUTORIAL</strong> runs a short
+                <span translate="no">SWL</span> tutorial. Without a callsign only the <span translate="no">SWL</span> features are on and the <span translate="no">TX</span> button
+                reads <span translate="no">NO CALLSIGN</span>; to transmit, press it and then <strong>NASTAVIT</strong>.
+            </p>
+
+            <h3 id="swl-legal">Poslech a zákon</h3>
+            <ul>
+                <li>qFT8 přes <span translate="no">SDR</span> pouze přijímá; přes něj vysílat nemůže.</li>
+                <li>Příjem radioamatérských, rozhlasových a časových stanic je ve většině zemí povolen. Jiné rádiové služby lze v některých zemích přijímat, ale ne zaznamenávat, předávat dál ani využívat, a několik zemí omezuje samotný poslech. Platí pravidla země, ve které posloucháte: zjistěte si je dříve, než budete poslouchat mimo radioamatérská a rozhlasová pásma.</li>
+                <li>Veřejný <span translate="no">KiwiSDR</span> patří svému majiteli: dodržujte limity majitele.</li>
+            </ul>
+            <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
+        </section>
+
+        <section id="map-live">
+            <h2>Co se zobrazuje na mapě</h2>
+            <p>
+                Když qFT8 přijme signál, který nese polohu, nakreslí odesílatele na
+                <a href="#ui-world-map-tab">Mapě světa</a>, jakmile je slyšet, posouvá ho, jak přicházejí nové zprávy, a nechá ho
+                vyblednout, když už nic dalšího neslyší. Každý druh má svůj malý obrázek v barvě mapy:
+            </p>
+            <ul>
+                <li><strong>Letadla</strong> (<span translate="no">ADS-B</span>, 1090 MHz): letadlo při pohledu shora, otočené
+                    ve směru letu. Klepnutím zobrazíte číslo letu, adresu, výšku, rychlost, směr a kód transpondéru
+                    (<em>squawk</em>). Letadla blednou po minutě bez hlášení a mizí po třech.</li>
+                <li><strong>Lodě</strong> (<span translate="no">AIS</span>, 162 MHz): loď při pohledu z boku, vždy
+                    vzpřímená; dívá se na západ, když pluje na západ, a jinak na východ. Klepnutím zobrazíte jméno lodi,
+                    <span translate="no">MMSI</span>, typ, kurz a rychlost. Lodě blednou po 10 minutách a mizí po 30.</li>
+                <li><strong>Meteorologické balony</strong> (radiosondy, 400-406 MHz): balon s nákladem a čára
+                    za ním, která ukazuje, kudy letěl. Klepnutím zobrazíte jeho výšku, kurz a rychlost.</li>
+                <li><strong>Stanice a objekty <span translate="no">APRS</span></strong>: anténní stožár. Klepnutím zobrazíte
+                    výšku, kurz a rychlost stanice, pokud je vysílá.</li>
+                <li><strong>Uzly sítě mesh</strong>: šestiúhelník s uzlem uprostřed.</li>
+                <li><strong>Majáky</strong>, základnové stanice <span translate="no">AIS</span> a pomůcky pro plavbu: kruhy majáků
+                    používané jinde v qFT8.</li>
+            </ul>
+            <p>
+                Zobrazují se tlačítkem <strong><span translate="no">SPOT</span></strong> na mapě: když je zapnuté, vidíte je
+                spolu s ostatními spoty, a když je vypnuté, jsou skryté. Každá karta také říká, kdy byl
+                odesílatel naposledy slyšet, na jaké frekvenci a jak daleko je od vás. Stanice a balony zůstávají
+                na mapě až hodinu a s přibývajícím stářím posledního hlášení slábnou.
+            </p>
             <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
         </section>
 
@@ -4575,7 +5249,7 @@
                 <h4 id="qft8-log-server">Nastavení serveru</h4>
                 <ol>
                     <li>Na qFT8, které má QSO sbírat, otevřete <strong>Nastavení</strong>, přejděte na
-                        <strong>Servery</strong> a otevřete <strong>Server qFT8log</strong>.</li>
+                        Další nastavení &gt; <strong>Servery</strong> a otevřete ozubené kolo <strong>Server qFT8log</strong>.</li>
                     <li>Zadejte heslo. Použijte stejný druh hesla jako pro
                         <a href="#bridge">qFT8 bridge</a>: sedm znaků nebo více.</li>
                     <li>Port nechte na 13510, pokud ho nepoužívá něco jiného, a zapněte server. Stránka ukazuje adresu
@@ -4835,7 +5509,7 @@
                     <li><strong>Orientace</strong>: <strong>Na šířku</strong>, <strong>Na výšku</strong>, nebo <strong>Podle telefonu</strong>. Na výšku je spektrogram nahoře, karta pod ním a v telefonu zabírá dolní lišta dva řádky.</li>
                     <li><strong>Dělicí čára</strong>: tažením tenké čáry mezi spektrogramem a kartou dáte jednomu z nich víc místa. Každá orientace si pamatuje vlastní polohu.</li>
                     <li><strong>Kvadranty</strong> (tablety): spektrogram, stanice, mapa světa a deník QSO najednou; Nastavení se otevírá vpravo.</li>
-                    <li><strong>Funkce</strong>: <strong>Rádiové funkce</strong>, <strong>Deník QSO</strong> a <strong>Mapa světa</strong> lze jednotlivě vypnout, pokud je nepoužíváte, například chcete-li qFT8 používat jen jako deník. Dokud je některá vypnutá, je pro ni v Nastavení tlačítko <strong>ZAPNOUT</strong>. Vypnutí rádiových funkcí vypne i <span translate="no">TX</span>.</li>
+                    <li><strong>Funkce</strong>: <strong>Funkce pro radioamatéry</strong> (callsign, transmitting, the <span translate="no">QSO</span> log, syncing and events), <strong>Funkce SWL</strong> (listening: the <span translate="no">SWL</span> tab, the <span translate="no">SWL</span> log and your <span translate="no">SWL</span> id) and <strong>Ocenění</strong> can each be turned off if you do not use them. On the phone <strong>Radio features</strong>, <strong>QSO log</strong> and <strong>Mapa světa</strong> can be turned off too; while one is off, an <strong>ZAPNOUT</strong> button for it shows in Settings. Turning the Ham or radio features off also switches <span translate="no">TX</span> off.</li>
                     <li><strong>Aplikace zakryje</strong>: dovolí qFT8 kreslit i přes navigační lištu, oblast fotoaparátu a stavový řádek, čímž získá o něco víc místa.</li>
                 </ul>
             </section>
@@ -4853,7 +5527,12 @@
 
             <h3 id="report-offer">„Odeslat o tom hlášení?“</h3>
             <p>
-                Když qFT8 zjistí, že na okamžik přestal reagovat nebo že dekódování na vašem zařízení trvá příliš dlouho, může zobrazit malou kartu s nabídkou odeslat o tom hlášení, s tlačítky <strong>ODESLAT</strong>, <strong>NEODESÍLAT</strong> a <strong>UŽ SE NEPTAT</strong>. Bez vašeho klepnutí se nikdy nic neodešle. Karta se objeví nejvýše jednou denně a <strong>UŽ SE NEPTAT</strong> ji na týden umlčí. Po pádu se qFT8 při příštím spuštění zeptá, zda odeslat hlášení o pádu.
+                When qFT8 notices that it stopped responding for a moment, or that decoding is taking too long on
+                your device, it may show a small card that offers to send a report about it, with
+                <strong>ODESLAT</strong>, <strong>NEODESÍLAT</strong> and
+                <strong>UŽ SE NEPTAT</strong>. Nothing is ever sent without your tap. The
+                card appears at most once a day, and <strong>UŽ SE NEPTAT</strong> silences
+                it until the next version. It also appears when the spectrogram keeps having trouble for minutes (it looks slow, pauses or skips), with a plain question whether to send a report; a healthy slow device never sees it. When your radio is reached through a qFT8 bridge, a report also carries the bridge's own log, fetched over the bridge link. After a crash, qFT8 asks at the next start whether to send a crash report.
             </p>
 
             <h3 id="update-check">Kontrola nových verzí při spuštění</h3>
@@ -4875,6 +5554,14 @@
         <section id="troubleshooting">
             <h2>Řešení potíží</h2>
 
+            <h3 id="trouble-link-lost">&ldquo;radio link lost&rdquo;</h3>
+            <p>
+                On the computer (and with a phone's <span translate="no">USB</span> radio), a radio cable or <span translate="no">USB</span>-serial adapter that stops answering
+                no longer freezes qFT8. When the port has not finished a command for 4 seconds the program shows <strong>radio link lost</strong>, <span translate="no">TX</span> goes
+                <span translate="no">OFF</span>, new commands are dropped instead of piling up, and qFT8 reopens the port by itself a few times and again when the adapter is plugged back in.
+                <span translate="no">TX OFF</span> always goes ahead of everything else waiting for the radio. Check the cable and the adapter, plug it in again, and press
+                <span translate="no">TX ON</span> when the link is back: qFT8 never switches <span translate="no">TX</span> on by itself.
+            </p>
             <h3 id="trouble-not-recognized">Telefon nebo počítač transceiver nerozpozná nebo se spojení přerušuje</h3>
             <p>
                 Téměř vždy jde o potíž s fyzickým připojením nebo o vf rušení. Připojení přes USB je citlivé na otřesy, kvalitu kabelu a chuchvalce z kapsy, které se rády zabydlí v USB konektoru telefonu. V Androidu bývá další častou příčinou to, že <strong>USB OTG může být ve výchozím stavu vypnuté</strong> (zejména když qFT8 signál přijímá, ale nevysílá a příkazy CAT nefungují, přestože je zařízení plně podporováno, je v seznamu zařízení, v režimu AUTO se rozpozná atd., je tohle velmi pravděpodobná příčina).

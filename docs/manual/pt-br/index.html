@@ -123,6 +123,7 @@
                 </li>
                 <li><a href="#pota">Parks On The Air (<span translate="no">POTA</span>)</a>
                 </li>
+                <li><a href="#multitone">Multitom: dois sinais ao mesmo tempo</a></li>
                 <li><a href="#activation">Ativar um parque ou um cume</a></li>
                 <li><a href="#events-supported">Eventos compatíveis</a></li>
                 <li><a href="#js8-chat"><span translate="no">JS8</span> (chat de teclado)</a>
@@ -135,6 +136,7 @@
                 </li>
                 <li><a href="#wspr-mode"><span translate="no">WSPR</span> e <span translate="no">FST4W</span> (balizas)</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span> (voz)</a></li>
+                <li><a href="#mode-am"><span translate="no">AM</span>, banda aeronáutica e <span translate="no">VHF</span> marítimo (voz)</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span> (código Morse)</a>
                     <ul>
                         <li><a href="#cw-keys">Manipular com um adaptador, o teclado ou o mouse</a></li>
@@ -144,9 +146,17 @@
                     </ul>
                 </li>
                 <li><a href="#rtty-mode"><span translate="no">RTTY</span> e <span translate="no">JTTY</span></a></li>
+                <li><a href="#psk-mode"><span translate="no">PSK31</span> e <span translate="no">PSK63</span></a></li>
+                <li><a href="#olivia-mode"><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> e <span translate="no">DominoEX</span></a></li>
+                <li><a href="#thor-mode"><span translate="no">THOR</span>, <span translate="no">Contestia</span> e <span translate="no">MT63</span></a></li>
+                <li><a href="#hell-mode"><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>)</a></li>
+                <li><a href="#mode-packet"><span translate="no">Packet (APRS)</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span> (imagens)</a></li>
                 <li><a href="#draw-mode"><span translate="no">DRAW</span> (imagens na cascata)</a></li>
                 <li><a href="#satellites">Satélites e a bússola do mapa</a></li>
+                <li><a href="#bcast-receive">Rádio de radiodifusão: <span translate="no">FM</span> + <span translate="no">RDS</span> e <span translate="no">AM</span></a></li>
+                <li><a href="#swl">Usando o qFT8 para <span translate="no">SWL</span> (escuta)</a></li>
+                <li><a href="#map-live">O que aparece no mapa</a></li>
                 <li><a href="#features">Documentação dos recursos</a>
                     <ul>
                         <li><a href="#tune-offset">Desvio de sintonia do espectrograma</a></li>
@@ -1264,6 +1274,32 @@
                 As opções estão descritas em <a href="#fst4-settings">Configurações &gt; <span translate="no">FST4</span></a>; a lista de estações no <span translate="no">FST4</span> está descrita em <a href="#stations-fst4">A aba Estações</a>. Seu modo de beacon, <span translate="no">FST4W</span>, funciona como o <span translate="no">WSPR</span>.
             </p>
 
+            <h3 id="mode-jt65"><span translate="no">JT65</span> e <span translate="no">JT9</span></h3>
+            <p id="mode-jt9">
+                <span translate="no">JT65</span> e <span translate="no">JT9</span> são os modos de QSO de sinais fracos mais antigos, com períodos de um minuto. Ambos são experimentais no qFT8:
+            </p>
+            <ul>
+                <li>Slots de um minuto: uma transmissão começa um segundo depois do início de um minuto par ou ímpar em <span translate="no">UTC</span> e dura cerca de 47 s (<span translate="no">JT65</span>) ou 49 s (<span translate="no">JT9</span>); você escolhe par ou ímpar como no <span translate="no">FT8</span>.</li>
+                <li>Mensagens: 72 bits: CQ, dois indicativos com um localizador, um relatório (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> ou até 13 caracteres de texto livre. O QSO segue como no <span translate="no">FT8</span> (<span translate="no">AUTO</span>, a lista de estações, o registro). Um indicativo que precisaria de prefixo e sufixo ao mesmo tempo não pode ser enviado.</li>
+                <li>Submodos do <span translate="no">JT65</span>: A (HF), B e C (VHF e acima, espaçamento de tons maior), escolhidos ao lado do modo na barra inferior ou em Configurações; as duas estações devem usar o mesmo. O <span translate="no">JT9</span> é o <span translate="no">JT9-1</span>, com apenas 16 Hz de largura.</li>
+            </ul>
+            <p>
+                As opções estão descritas em <a href="#jt65-settings">Configurações &gt; <span translate="no">JT65</span></a> e <a href="#jt9-settings">Configurações &gt; <span translate="no">JT9</span></a>.
+            </p>
+
+            <h3 id="mode-jt4"><span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> é o modo de QSO de sinais fracos, com períodos de um minuto, das bandas de <span translate="no">VHF</span>, <span translate="no">UHF</span> e micro-ondas (<span translate="no">EME</span>, balizas de micro-ondas). No qFT8 ele é experimental:
+            </p>
+            <ul>
+                <li>Slots de um minuto, como o <span translate="no">JT65</span>: uma transmissão começa um segundo depois do início de um minuto par ou ímpar em <span translate="no">UTC</span> e dura cerca de 47 s.</li>
+                <li>Mensagens: as mesmas mensagens de 72 bits do <span translate="no">JT65</span> e do <span translate="no">JT9</span>, e o mesmo andamento do QSO do <span translate="no">FT8</span> (<span translate="no">AUTO</span>, a lista de estações, o registro).</li>
+                <li>Submodos de A a G: 4 tons, separados por 4,375 Hz em A e até 72 vezes mais em G (cerca de 950 Hz), para a dispersão Doppler das bandas mais altas. O A é usado em 2 m e 70 cm, os mais largos nas bandas de micro-ondas. Escolhidos ao lado do modo na barra inferior ou em Configurações; as duas estações devem usar o mesmo.</li>
+            </ul>
+            <p>
+                As opções estão descritas em <a href="#jt4-settings">Configurações &gt; <span translate="no">JT4</span></a>.
+            </p>
+
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
         </section>
 
@@ -1301,13 +1337,17 @@
                 <li><strong>O marcador de início do Tx</strong>: o ponto <span style="color: #ff5252; font-weight: bold;">vermelho</span> na parte esquerda da barra indica o momento de início do Tx. Se o Tx está ON (veja o item 4) e a sequência atual é a selecionada (veja o item 6), a transmissão começa nesse ponto.</li>
                 <li><strong>O marcador do momento de decodificação</strong>: o ponto <span style="color: #ffffff; font-weight: bold;">branco</span> na parte direita da barra indica o momento da decodificação, isto é, quando as mensagens são decodificadas a partir dos sinais recebidos e depois processadas.
                 </li>
-                <li><strong>O botão TX</strong>: pode estar desarmado (<span translate="no">OFF</span>) ou armado (<span translate="no">ON</span>). Também mostra quando há transmissão, a potência de transmissão e a <span translate="no">SWR</span>. Com firmwares do <span translate="no">QMX</span> acima de 1_04, este botão mostra "HOLD: TUNE". Manter o botão pressionado ativa o modo de sintonia e mostra a <span translate="no">SWR</span> ao vivo.
+                <li><strong>The TX button</strong>: Can be disarmed
+                    (<span translate="no">OFF</span>) or armed
+                    (<span translate="no">ON</span>). It also shows when transmission
+                    is happening,
+                    and the transmit power and <span translate="no">SWR</span>; while transmitting, the power and the <span translate="no">SWR</span> are the average of the radio's last 2 seconds of readings, so they do not flicker. The button's words stay in English in every language. It reads <span translate="no">NO TX / SDR</span> while a receive-only <span translate="no">SDR</span> is the receiver, <span translate="no">NO TX / I/Q</span> while a <span translate="no">QMX</span> is in I/Q mode, <span translate="no">NO TX / SWL</span> in <span translate="no">SWL</span> mode and <span translate="no">NO TX / RX</span> while a receiver (marine <span translate="no">VHF</span>, airband, a beacon or time-signal receiver ...) has the radio: nothing can transmit then, and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span> again. With the Ham features off it reads <span translate="no">NO CALLSIGN</span> on red; tapping it explains that transmitting needs an amateur licence, a callsign and the Ham features, and <strong>CONFIGURAR</strong> asks for your callsign and switches the Ham features on (<span translate="no">TX</span> stays <span translate="no">OFF</span>). In <span translate="no">QMX</span> firmwares above 1_04, this button will show "HOLD: TUNE". Holding the button will enable tuning mode and report on <span translate="no">SWR</span> live.
                 </li>
                 <li><strong>O seletor de mensagem</strong>: mostra a mensagem selecionada para envio ou em envio (nesse caso, destacada em <span style="color: #ffff00; font-weight: bold;">amarelo</span>). No modo <span translate="no">AUTO</span>, ele é controlado automaticamente. No modo <span translate="no">CALL</span>, por padrão também é automático, mas você pode tocar nele para escolher manualmente a próxima mensagem a enviar.
                 </li>
                 <li><strong>O seletor de sequência</strong>: a linha <span style="color: #ffff00; font-weight: bold;">amarela</span> acima dos botões mostra a sequência atual (0 ou 1). Tocar em 0 ou 1 seleciona essa sequência para as suas transmissões.</li>
-                <li><strong>O seletor de modo</strong>: muda o modo de transmissão usado (por exemplo, <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, <span translate="no">LQ8</span>, <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>, <span translate="no">FST4W</span>, <span translate="no">JS8</span> ou <span translate="no">WSPR</span>), e também <a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a> e <a href="#sstv-mode"><span translate="no">SSTV</span></a>, que mudam a barra inferior e a aba Estações como descrevem as respectivas seções. Passar dos modos digitais para um desses quatro, voltar, ou trocar entre eles coloca o <span translate="no">TX</span> em <span translate="no">OFF</span>: arme-o de novo quando estiver pronto. Trocar entre modos digitais o deixa como está.</li>
-                <li><strong>O seletor de banda</strong>: com um transceptor conectado, muda a banda no transceptor.</li>
+                <li><strong>The mode selector</strong>: It changes the mode (every mode is listed in <a href="#ui-mode-select">The mode selector</a>, below). Changing from the digital modes to a mode with its own pane (<a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a>, <a href="#sstv-mode"><span translate="no">SSTV</span></a>, and the other ones that change the bottom bar and the Stations tab as their sections describe), back, or between them switches <span translate="no">TX</span> <span translate="no">OFF</span>: arm it again when you are ready. Changing between digital modes leaves it as it is.</li>
+                <li><strong>The band selector</strong>: Opens the list of bands with their frequencies and, when a transceiver is connected, changes the band in the transceiver (see <a href="#ui-band-select">The band selector</a>, below).</li>
                 <li><strong>O botão da aba Estações</strong>: abre a aba que lista todas as estações que você ouviu ou com as quais pode se comunicar.</li>
                 <li><strong>O botão da aba Log de QSOs</strong>: abre a aba que lista todos os <span translate="no">QSOs</span> que você fez. Este botão fica marcado com um ponto amarelo quando há QSOs que não foram enviados ao QRZ.
                 </li>
@@ -1567,6 +1607,49 @@
 
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
 
+            <h3 id="ui-mode-select">The mode selector</h3>
+            <p>
+                The button with the mode's name in the bottom bar opens the mode selector. At the top are two tabs, <strong>HAM</strong>
+                and <strong>SWL</strong>, that stay in place while the list scrolls, and at their right the <strong>PROBE</strong> button
+                (see below). The selector opens on the tab you used last, keeps its size when you switch tabs (a taller tab scrolls inside
+                it) and closes when you tap outside it. With only the Ham features on there is no tab row (only <strong>HAM</strong>); with
+                the <span translate="no">SWL</span> features on both tabs show, and with the Ham features off the <strong>HAM</strong> tab
+                stays, for receiving only.
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: numbered sections of equal buttons that adapt to the screen width and the text size: weak signal,
+                    beacons, keyboard and chat, classic radio, images, digital voice and packet. The most used modes (<span translate="no">FT8, LQ8, FT4, FT2, WSPR, JS8, RTTY, JTTY, SSB, CW, SSTV</span> and <span translate="no">Packet (APRS)</span>)
+                    are in a slightly brighter box with a bold name; the mode in use keeps its own look. Experimental modes say so on a second small line.</li>
+                <li><strong>SWL</strong>: the receivers, one button each, with what they decode under the name: broadcast, HF utility and time signals,
+                    air and sea, weather, balloons and satellites, IoT and mesh. They are described in <a href="#swl">Using qFT8 for SWL</a>.</li>
+                <li>Families of modes have <strong>one button</strong>: <strong>PSK</strong> (PSK31, PSK63, PSK125, PSK250, QPSK31, QPSK63) and
+                    <strong>Família MFSK</strong> (MFSK, THOR, DominoEX, Throb); Olivia, Contestia, MT63 and the other keyboard modes too. The variant is
+                    picked in the bottom bar beside the mode, as the sub-modes of <span translate="no">JT65</span> are (A, B, C): the closed picker shows short names
+                    (31, Q63, M16, TH22, 8/250, 32/1K) and the open one the full names. Each family remembers the variant you used last, and every
+                    variant is still logged by its own name.</li>
+                <li>A mode your radio cannot do is hidden. The check box <strong>Mostrar modos que meu rádio não suporta</strong> at the bottom shows them
+                    greyed; tapping one says why (for example &ldquo;Your radio has no I/Q output&rdquo;).</li>
+            </ul>
+            <p>
+                <strong>PROBE</strong> opens the free <strong>AUTO MODE DETECTOR</strong>, whatever is switched on (the bottom bar then reads
+                <span translate="no">PROBE</span>). It names the signals on the spectrogram as you watch; the ones qFT8 decoded get a check mark. Tap a label
+                and qFT8 asks &ldquo;Go to FT8 on 14075.250 kHz?&rdquo; (the mode and the frequency of that signal): <strong>YES</strong> switches to it.
+                It is experimental: it can be wrong, and it never names room noise, voices, music or hum. In Settings &gt; Spectrogram the check box
+                <strong>Nomear outros sinais no espectrograma (detector de modos)</strong> lets it keep listening while you operate.
+            </p>
+
+            <h3 id="ui-band-select">The band selector</h3>
+            <p>
+                The band button of the bottom bar opens the band selector: the bands one per row, each with the frequencies of the current mode (for
+                example FT8 on 20 m: 14.074 Standard and 14.090 DXpedition; on 6 m: 50.313 and 50.323 Alternate). Tap a frequency to go there; the one
+                you pick is remembered for each mode and band. A band in red has no frequency in this mode (60 m in FT4, for example) and cannot be picked.
+                Below the bands are your custom bands A to E (an empty one opens the settings to fill it), a box for any frequency (in
+                <span translate="no">FT8</span> and the other band modes it becomes that band's frequency; in <span translate="no">SSB, CW, RTTY</span> and
+                <span translate="no">SSTV</span> it tunes the radio), a gear to the band settings and the check box <strong>Manter o rádio na frequência escolhida</strong>:
+                on, a radio turned by hand is put back on the frequency you chose; off, qFT8 follows the radio. It closes when you tap outside it. In
+                marine <span translate="no">VHF</span>, airband, the broadcast radio and the signals receivers the button only shows the receiver's frequency (for
+                example 156.8) and does not open the list; pick an amateur mode to change band. In the web remote each band of the list shows the same frequency buttons.
+            </p>
             <h3 id="ui-log-tab">A aba Log de QSOs</h3>
             <p>A aba Log de QSOs mostra os QSOs realizados.</p>
             <div class="phone-mockup">
@@ -1580,7 +1663,8 @@
                 <li><strong>Filtro de texto do indicativo</strong>: filtra os QSOs cujo indicativo contém o texto digitado.</li>
                 <li><strong>Filtro de estado</strong>: um filtro de QSOs que mostra:
                     <ul>
-                        <li><span translate="no">Todos</span>: todos os QSOs registrados.</li>
+                        <li><strong>QSO / SWL</strong>: once something has been heard, or the <span translate="no">SWL</span> features are on, the top of the log has one dropdown, <strong>QSO</strong> / <strong>SWL</strong>, in the colour of the log you are looking at (<span translate="no">QSO</span> blue, <span translate="no">SWL</span> red). <span translate="no">QSO</span>, your own log, is the default; <span translate="no">SWL</span> shows what you heard, newest first, in its place. The choice is remembered. The <span translate="no">SWL</span> page has the same filter bar (<strong>Contém</strong>, <strong>Mostrar</strong>, <strong>recentes</strong>), which searches the whole <span translate="no">SWL</span> log, and a tap on an entry opens it to edit or delete (nothing is ever deleted on eQSL or any online service). Beside the <strong>+</strong> a file button asks <strong>IMPORT QSO LOG</strong> / <strong>EXPORT QSO LOG</strong>, or <strong>IMPORT SWL LOG</strong> / <strong>EXPORT SWL LOG</strong>, for the log shown (the same as Settings &gt; Log files; the web remote only exports).</li>
+            <li><span translate="no">Todos</span>: todos os QSOs registrados.</li>
                         <li><span translate="no">Confirmados</span>: apenas os QSOs que foram confirmados.</li>
                         <li><span translate="no">Caçador POTA</span> / <span translate="no">Caçador SOTA</span>: os QSOs com um parque ou um cume.</li>
                         <li><span translate="no">Não confirmados</span>: os QSOs que ainda não foram confirmados.</li>
@@ -1655,13 +1739,13 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>: liga e desliga os cartões de informação sobrepostos na tela (hora, terminador solar, posição subsolar e coordenadas da mira).</li>
                         <li><strong><span translate="no">MSGs</span></strong>: liga e desliga as rotas e os marcadores de mensagens diretas: em <span style="color: #ff9800; font-weight: bold;">laranja</span> para as mensagens recebidas (endereçadas à sua estação) e em <span style="color: #ffff00; font-weight: bold;">amarelo</span> para as enviadas (transmitidas pela sua estação). Tocar no ponto médio da seta abre o texto da mensagem.</li>
-                        <li><strong><span translate="no">QSOs</span></strong>: liga e desliga os marcadores dos contatos recentes da sessão (<span style="color: #f59e0b; font-weight: bold;">âmbar</span> para os registrados, <span style="color: #10b981; font-weight: bold;">esmeralda</span> para os confirmados). Com <span translate="no">MSGs</span> e <span translate="no">Spot</span> ambos desligados, uma linha fina liga a sua estação a cada estação de <span translate="no">QSO</span> no mapa (sem setas), para você ver de relance para onde foram os seus contatos; a imagem do mapa compartilhada também mostra essas linhas.</li>
-                        <li><strong><span translate="no">Spot</span></strong>: liga e desliga os spots do tráfego decodificado ao vivo na banda, ouvidos pela sua estação (<span style="color: #00ffff; font-weight: bold;">ciano</span> para RX/CQ), e os spotters que informam o seu sinal no PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">losangos vermelhos</span>).</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: liga e desliga os marcadores dos contatos recentes da sessão (<span style="color: #f59e0b; font-weight: bold;">âmbar</span> para os registrados, <span style="color: #10b981; font-weight: bold;">esmeralda</span> para os confirmados). Com <span translate="no">MSGs</span> e <span translate="no">SPOT</span> ambos desligados, uma linha fina liga a sua estação a cada estação de <span translate="no">QSO</span> no mapa (sem setas), para você ver de relance para onde foram os seus contatos; a imagem do mapa compartilhada também mostra essas linhas.</li>
+                        <li><strong><span translate="no">SPOT</span></strong>: liga e desliga os spots do tráfego decodificado ao vivo na banda, ouvidos pela sua estação (<span style="color: #00ffff; font-weight: bold;">ciano</span> para RX/CQ), e os spotters que informam o seu sinal no PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">losangos vermelhos</span>).</li>
                         <li><strong><span translate="no">SOTA</span></strong>: liga e desliga as referências de cumes do Summits On The Air e os ativadores de cumes em atividade (⛰️).</li>
                         <li><strong><span translate="no">POTA</span></strong>: liga e desliga as referências de parques do Parks On The Air e os ativadores de parques em atividade (🌲).</li>
                         <li><strong><span translate="no">Banda</span></strong>: mostra a propagação da banda a partir de relatórios online e uma zona cega ao redor do usuário. Com conexão com a internet, é atualizado em tempo real ao mudar de banda.</li>
                     </ul>
-                    <p>Os botões <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> e <strong><span translate="no">Spot</span></strong> podem ficar piscando; isso significa que não foi possível baixar as atualizações.</p>
+                    <p>Os botões <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> e <strong><span translate="no">SPOT</span></strong> podem ficar piscando; isso significa que não foi possível baixar as atualizações.</p>
                 </li>
                 <li><strong>Barra de ferramentas direita (conquistas e camadas de limites)</strong>:
                     <ul>
@@ -1700,6 +1784,8 @@
                 <li><strong><span translate="no">Modificador de CQ</span></strong>: texto opcional acrescentado às suas chamadas de <span translate="no">CQ</span> (por exemplo, "<span translate="no">SOTA</span>").</li>
                 <li><strong>Localização</strong> e <strong>Hora</strong>: seu localizador Maidenhead e o ajuste do relógio, cada um com um botão <strong>SINCR.</strong>; a engrenagem ao lado abre <strong>HORA E LOCALIZAÇÃO</strong> (<a href="#settings-pages">abaixo</a>).</li>
                 <li><strong>Rádio</strong> / <strong>Antena</strong>: o rádio e a antena com que você opera. Cada QSO registrado os guarda (ADIF <code>MY_RIG</code> / <code>MY_ANTENNA</code>), e o <span translate="no">PSKReporter</span> os recebe junto com seus spots. Com Rádio vazio, é usado o nome do rádio conectado.</li>
+                <li><strong>ID SWL</strong> (com os recursos SWL ativados): seu identificador de ouvinte, gravado no log SWL; vazio significa “SWL”.</li>
+                <li><strong>APPLICATION SETTINGS</strong>: a page with, in this order: Application (slow device / low battery mode and, on the computer, confirm before closing), Features (Ham features, SWL features and Awards; on the phone also Radio connection, Log and World map), User interface (orientation, colour palettes, what the lists show, the user interface and font scale, <strong>SPECTROGRAM</strong> and <strong>WORLD MAP</strong>), Logger and Keep running minimized / screen off.</li>
                 <li><strong>Dispositivo</strong>: serve para selecionar e configurar seu transceptor (por exemplo, QMX, QDX, série Kenwood TS-480 / TS-590 / TS-2000, ou VOX/apenas áudio) e os parâmetros de conexão. Abaixo dele:
                     <ul>
                         <li><strong>Assumir que a potência de transmissão é N W</strong>: para rádios que não informam a potência, os watts gravados no log. Nunca altera a potência do rádio.</li>
@@ -1708,18 +1794,22 @@
                         <li><strong>Alto-falantes e microfone</strong>: seu próprio microfone e alto-falantes ou fones de ouvido, para <span translate="no">SSB</span> e <span translate="no">CW</span> (veja <a href="#audio-setup">Alto-falantes e microfone</a>, logo abaixo).</li>
                         <li><strong>Produzir tom com volume</strong> e o volume do dispositivo durante a transmissão: as mesmas duas configurações de DEVICE CONFIGURATION, repetidas aqui.</li>
                         <li><strong>CONSOLE CAT</strong>: digite comandos para o rádio você mesmo (veja <a href="#cat-console">O console CAT</a>).</li>
+                    <li><strong>Modo I/Q (só recepção)</strong> (experimental, while a <span translate="no">QMX</span> is the device): the radio sends its raw I and Q over <span translate="no">USB</span> (48 kHz) and qFT8 tunes inside that span, for the spectrum and every decoder. Transmitting is refused while it is on (the <span translate="no">TX</span> button reads <span translate="no">NO TX / I/Q</span>); if the radio stays in audio mode, its firmware may not have I/Q mode.</li>
+                        <li><strong>Rádio em rede</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): <strong>Conectar a um rádio em rede (experimental)</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>CONECTAR</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                     </ul>
                 </li>
-                <li><strong>Interface do usuário</strong>: a interface do usuário e a escala da fonte, o <strong>Idioma</strong> e, quando você desligou um deles (<a href="#layouts">Layouts de tela</a>), os botões <strong>ATIVAR RECURSOS DE RÁDIO</strong>, <strong>ATIVAR LOG DE QSOS</strong> e <strong>ATIVAR MAPA MUNDIAL</strong>.</li>
-                <li><strong>Sincronização de QSOs</strong>: uma linha para cada serviço para o qual seus QSOs são enviados, e <strong>ADICIONAR MAIS SERVIÇOS</strong> (veja <a href="#qso-services">Serviços de envio de QSOs</a>).</li>
-                <li><strong>Servidores</strong>: o que este aparelho oferece a outros programas, e <strong>ADICIONAR MAIS SERVIDORES</strong> (veja <a href="#choosing-services">Escolher serviços e servidores</a>).</li>
-                <li><strong>Relatórios</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> e <a href="#lq8-announce">o anúncio da sua atividade <span translate="no">LQ8</span></a>.</li>
+                <li><strong>PRÊMIOS</strong> (the band at the very top of Settings, experimental): <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on) each show how many stars you have earned and open a live diploma (see <a href="#awards">Awards</a>).</li>
+                    </ul>
+                </li>
                 <li><strong>Eventos</strong>: ativações <span translate="no">POTA</span> e <span translate="no">SOTA</span> e o contador de QSOs (veja <a href="#events-section">A seção Eventos das Configurações</a>).</li>
+                <li><strong>Arquivos de log</strong>: <strong>IMPORT QSO LOG</strong> and <strong>EXPORT QSO LOG</strong>, your QSO logbook as ADIF (<span translate="no">.adi</span>) files, and the <span translate="no">SWL</span> log's own buttons (see <a href="#swl-services">The SWL log in Settings</a>) (see <a href="#adif-import-export">ADIF Import/Export</a>).</li>
+                <li><strong>Sincronização de QSOs</strong>: uma linha para cada serviço para o qual seus QSOs são enviados: o interruptor, um ícone do estado e a engrenagem (veja <a href="#qso-services">Serviços de envio de QSOs</a> e <a href="#choosing-services">Escolher serviços e servidores</a>).</li>
+                <li><strong>Relatórios</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> e <a href="#lq8-announce">o anúncio da sua atividade <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Comunidade</strong>: os dois grupos do Telegram (veja <a href="#community">Comunidade</a>).</li>
-                <li><strong>Arquivos de log</strong>: <strong>IMPORTAR LOGS</strong> e <strong>EXPORTAR LOGS</strong>, seu logbook de QSOs como arquivos ADIF (<span translate="no">.adi</span>) (veja <a href="#adif-import-export">Importação/exportação ADIF</a>).</li>
                 <li><strong>Arquivos de configurações</strong>: <strong>IMPORTAR CONFIGURAÇÕES</strong> e <strong>EXPORTAR CONFIGURAÇÕES</strong> (veja <a href="#settings-pages">abaixo</a>).</li>
-                <li><strong>Mais configurações</strong>: as páginas <strong>HORA E LOCALIZAÇÃO</strong>, <strong>APLICATIVO</strong>, <strong>ESPECTROGRAMA</strong>, <strong>MAPA MUNDIAL</strong>, <strong>OPERAÇÃO AUTOMÁTICA</strong>, <strong>MODOS DIGITAIS</strong>, <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong>, <strong>SELEÇÃO DE BANDA</strong>, <strong>FONTES DE DADOS</strong> e <strong>Excluir QSOs</strong>, cada uma descrita em <a href="#settings-pages">As páginas de Configurações</a>.</li>
+                <li><strong>Mais configurações</strong>: <strong>MODOS</strong> (uma página com, nesta ordem <strong>OPERAÇÃO AUTOMÁTICA</strong>, <strong>MODOS DIGITAIS</strong> e <strong>SELEÇÃO DE BANDA</strong>, depois, em “Configurações dos modos”, um botão por modo: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> e os demais modos digitais abrem MODOS DIGITAIS nesse modo; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> e <strong><span translate="no">PACKET</span></strong> as suas próprias páginas; VOLTAR volta a MODOS), <strong>FONTES DE DADOS</strong>, <strong>SERVIDORES</strong> (o que este aparelho oferece a outros programas, veja <a href="#choosing-services">Escolher serviços e servidores</a>) e <strong>Excluir QSOs</strong>, cada uma descrita em <a href="#settings-pages">As páginas de Configurações</a>.</li>
                 <li><strong>Procurar novas versões ao iniciar</strong> e <strong>Enviar um resumo diário anônimo de desempenho</strong> (veja <a href="#reports-updates">Relatos de bugs e novas versões</a>).</li>
+                <li><strong>Idioma</strong>: o idioma do qFT8, abaixo de uma linha no fim da lista.</li>
                 <li>Na parte de baixo: a versão, com links para este manual e para a política de privacidade, as permissões e o dispositivo USB conectado, e <strong><span translate="no">RELATAR ERRO</span></strong> (veja <a href="#report-bug">Relatar um problema</a>).</li>
             </ul>
 
@@ -1806,7 +1896,7 @@
                     e se ele é atualizado pelo GPS toda vez que o qFT8 inicia.</li>
             </ul>
 
-            <h4 id="settings-application">APLICATIVO</h4>
+            <h4 id="settings-application">Configurações do aplicativo</h4>
             <ul>
                 <li><strong>Modo de dispositivo lento / bateria fraca</strong>: desenho mais leve, o decodificador inalterado (veja
                     <a href="#pc-slow">Computadores lentos</a>; o mesmo nos celulares).</li>
@@ -2247,7 +2337,8 @@
             </div>
 
             <ol>
-                <li><strong>Indicativo</strong>: digite o indicativo e pressione Enter no teclado: o QSO é registrado com a hora atual, a caixa esvazia e você pode digitar o próximo. O teclado fica aberto de um QSO para o seguinte.</li>
+                <li><strong>QSO</strong> / <strong>SWL</strong> (the first field, blue for <span translate="no">QSO</span>, red for <span translate="no">SWL</span>): where the entry goes. <span translate="no">SWL</span> writes the station into the <span translate="no">SWL</span> log, never into the <span translate="no">QSO</span> log. The <span translate="no">SWL</span> page of the log opens it on <span translate="no">SWL</span> and the <span translate="no">QSO</span> page on <span translate="no">QSO</span>; anywhere else it starts on <span translate="no">QSO</span> with the Ham features on and on <span translate="no">SWL</span> with them off.</li>
+            <li><strong>Indicativo</strong>: digite o indicativo e pressione Enter no teclado: o QSO é registrado com a hora atual, a caixa esvazia e você pode digitar o próximo. O teclado fica aberto de um QSO para o seguinte.</li>
                 <li><strong><span translate="no">REGISTRAR</span></strong>: o mesmo que Enter.</li>
                 <li><strong><span translate="no">LIMPAR</span> / <span translate="no">DESFAZER</span></strong>: enquanto há um indicativo digitado, o botão diz <span translate="no">LIMPAR</span> e esvazia a caixa. Caso contrário, diz <span translate="no">DESFAZER</span> e tira do log o último QSO desta sessão, devolvendo-o ao formulário para ser corrigido.</li>
                 <li><strong><span translate="no">CONCLUÍDO</span></strong>: fecha o registro manual. Se há um indicativo digitado, mas não registrado, pergunta se deve registrá-lo.</li>
@@ -2392,13 +2483,13 @@
 
             <h3 id="choosing-services">Escolher serviços e servidores</h3>
             <p>
-                <strong>Sincronização de QSOs</strong> mostra QRZ, LoTW e eQSL e cada serviço que você já configurou. <strong>ADICIONAR MAIS SERVIÇOS</strong>, abaixo das linhas, lista todos os serviços: marque um para ele ganhar sua linha; desmarque e ele para por completo (sem envios, sem confirmações, deixa de contar para o visto verde e sai das opções da exportação). Conta, chave e interruptor ficam guardados; marcado de novo, volta como estava.
+                <strong>Sincronização de QSOs</strong> lista cada serviço em uma linha: o interruptor, um ícone do estado e a engrenagem, que abre a página do serviço. O ícone é cinza enquanto o serviço não está configurado, uma marca verde enquanto ele envia seus QSOs, uma pausa âmbar se está configurado mas desligado e um “!” vermelho se não conseguiu conectar; só então uma segunda linha vermelha abaixo da linha diz o que deu errado. Os programas de log da sua rede mantêm uma segunda linha com os programas com os quais funcionam; o que eles não podem prometer (UDP, sem senha) é explicado nas próprias páginas deles.
             </p>
             <p>
-                Logo abaixo, <strong>Servidores</strong> reúne o que este aparelho oferece a outros programas. A caixa de uma linha, por exemplo “Servidor web de controle remoto na porta 13497”, é o mesmo interruptor da página desse servidor, e a engrenagem abre a página. O servidor web de controle remoto e o qFT8 bridge estão sempre lá (o iPhone não tem nenhum dos dois); <strong>ADICIONAR MAIS SERVIDORES</strong> adiciona os servidores Wavelog, Cloudlog e qFT8log e os <a href="#lan-loggers">receptores para programas de log da sua rede</a>. Um servidor desmarcado para na hora e volta como estava quando você o marca de novo.
+                Em Mais configurações &gt; <strong>SERVIDORES</strong>, logo abaixo de FONTES DE DADOS, fica o que este aparelho oferece a outros programas: o servidor web de controle remoto e o qFT8 bridge (o iPhone não tem nenhum dos dois), os servidores Wavelog, Cloudlog e qFT8log e os <a href="#lan-loggers">receptores para programas de log da sua rede</a>. A caixa de uma linha, por exemplo “Servidor web de controle remoto na porta 13497”, é o mesmo interruptor da página desse servidor, e a engrenagem abre a página; VOLTAR a partir dali leva de volta a SERVIDORES. Um servidor que você desliga para na hora e volta como estava quando você o liga de novo.
             </p>
             <p>
-                Os downloads que alimentam o mapa ficam em Mais configurações &gt; <strong>FONTES DE DADOS</strong>, logo abaixo de SELEÇÃO DE BANDA; todos vêm ligados.
+                Os downloads que alimentam o mapa ficam em Mais configurações &gt; <strong>FONTES DE DADOS</strong>, logo abaixo de MODOS; todos vêm ligados. Com o mapa-múndi desligado, FONTES DE DADOS não é exibido (nada é baixado para o mapa nesse caso).
             </p>
 
             <h3 id="services-list">Todos os serviços e servidores</h3>
@@ -2407,7 +2498,7 @@
             </p>
             <ul>
                 <li><strong>Sincronização de QSOs</strong> (os seus QSOs saem): <a href="#qrz-integration"><span translate="no">QRZ</span></a>, <a href="#lotw-integration"><span translate="no">LoTW</span></a>, <a href="#eqsl"><span translate="no">eQSL</span></a>, <a href="#wavelog"><span translate="no">Wavelog</span></a>, <a href="#cloudlog"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log">qFT8log</a> (para outro qFT8), <a href="#online-logbooks"><span translate="no">HRDLog</span>, <span translate="no">HamQTH</span>, <span translate="no">World Radio League</span> e <span translate="no">Club Log</span></a>, e os programas de log da sua rede (<a href="#lan-loggers"><span translate="no">FT8 network log</span> e <span translate="no">ADIF over UDP</span></a>).</li>
-                <li><strong>Servidores</strong> (outros programas se conectam a este qFT8): o <a href="#remote-control">servidor web de controle remoto</a>, o <a href="#bridge">qFT8 bridge</a>, os servidores <a href="#wavelog-server"><span translate="no">Wavelog</span></a> e <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, o <a href="#qft8-log-server">servidor qFT8log</a>, e os <a href="#lan-loggers">receptores para programas de log da sua rede</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, as interfaces <span translate="no">AC Log</span> e <span translate="no">DXLab</span>).</li>
+                <li><strong>Servidores</strong> (Mais configurações &gt; SERVIDORES; outros programas se conectam a este qFT8): o <a href="#remote-control">servidor web de controle remoto</a>, o <a href="#bridge">qFT8 bridge</a>, os servidores <a href="#wavelog-server"><span translate="no">Wavelog</span></a> e <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, o <a href="#qft8-log-server">servidor qFT8log</a>, e os <a href="#lan-loggers">receptores para programas de log da sua rede</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, as interfaces <span translate="no">AC Log</span> e <span translate="no">DXLab</span>).</li>
                 <li><strong>Relatórios</strong> (o que você ouve sai): <a href="#pskreporter"><span translate="no">PSKReporter</span></a>, <a href="#wspr-reports"><span translate="no">WSPRnet</span></a> e <a href="#lq8-announce">atividade de <span translate="no">LQ8</span> no mapa ao vivo</a>.</li>
                 <li><strong>Eventos</strong>: <a href="#activation">ativações de <span translate="no">POTA</span> e <span translate="no">SOTA</span></a> e <a href="#event-counter">o contador de QSOs</a>.</li>
             </ul>
@@ -2420,9 +2511,13 @@
                 Cada um tem sua página. O HRDLog pede o <strong>Código de envio do HRDLog</strong> do seu perfil no HRDLog (não a senha); o HamQTH, <strong>Indicativo no HamQTH</strong> e <strong>Senha do HamQTH</strong>; o World Radio League, a <strong>Chave de API do WRL</strong> que você cria no site (Integrations &gt; Developer API) e, se você tiver vários, o <strong>Logbook do WRL</strong>; o Club Log, <strong>E-mail do Club Log</strong> e <strong>Senha de aplicativo do Club Log</strong>. Depois toque em <strong>VALIDAR</strong>. O qFT8 nunca apaga um QSO neles; no Club Log, um QSO cujo indicativo, data, hora, banda ou modo você mudou deixa lá a entrada antiga (apague-a no site).
             </p>
 
+            <p id="hamlog-online">
+                O <span translate="no">HAMLOG.online</span> é o log online que <span translate="no">RAZA</span>, <span translate="no">RDA</span> e outros diplomas usam. Sua página tem uma linha, <strong>Conexão</strong>. Toque nela: o qFT8 mostra um cartão com o código em letras grandes, o tempo em que o código continua válido (é uma contagem regressiva) e o endereço como código QR, com <strong>COPIAR URL</strong> e <strong>ABRIR</strong>. Abra a página neste dispositivo ou escaneie o código com o celular, entre, marque seu indicativo e aprove o qFT8 (ele pede apenas para ler e enviar QSOs); o cartão se fecha sozinho quando você responde. O controle remoto web mostra o mesmo código, endereço e código QR enquanto o qFT8 espera. Depois toque em <strong>VALIDAR</strong> e marque a caixa. Cada QSO é enviado assim que você o registra, sob o indicativo no topo das Configurações (ou o próprio indicativo portátil do QSO, p. ex. /P); uma edição altera o QSO lá; o qFT8 nunca apaga nada no <span translate="no">HAMLOG.online</span>. Cada dispositivo se conecta sozinho (a conexão não é exportada com as configurações); remova uma antiga em Connected loggers no site. O <strong>ENVIAR</strong> de uma ativação <span translate="no">RAZA</span> também aponta para o <span translate="no">HAMLOG.online</span>: com este serviço ligado, os QSOs da ativação já estão lá, e você envia a ativação ao moderador do <span translate="no">RAZA</span> no site.
+            </p>
+
             <h3 id="lan-loggers">Programas de log na sua rede</h3>
             <p>
-                O qFT8 pode enviar cada QSO que você registra para programas de log e de mapa da sua rede local. Em <strong>ADICIONAR MAIS SERVIÇOS</strong> marque <span translate="no">FT8 network log</span> (porta UDP 2237) ou <span translate="no">ADIF over UDP</span> (porta UDP 2333); a linha aparece em <strong>Sincronização de QSOs</strong>. Na página dele, digite o endereço do computador onde roda o outro programa (127.0.0.1 é este computador) e a porta, toque em <strong>VALIDAR</strong> e depois marque a caixa. O <span translate="no">FT8 network log</span> também pode enviar suas decodificações e o status da sua estação (<strong>Enviar também minhas decodificações e o status da minha estação (para mapas e alertas)</strong>), usados pelo mapa e pelos alertas do outro programa. Essas mensagens não têm confirmação de recebimento, então um QSO enviado assim nunca conta como enviado. As configurações mostram, abaixo de cada um, os programas com que ele foi testado.
+                O qFT8 pode enviar cada QSO que você registra para programas de log e de mapa da sua rede local. Em <strong>Sincronização de QSOs</strong> encontre a linha de <span translate="no">FT8 network log</span> (porta UDP 2237) ou <span translate="no">ADIF over UDP</span> (porta UDP 2333) e abra a engrenagem dela. Na página dele, digite o endereço do computador onde roda o outro programa (127.0.0.1 é este computador) e a porta, toque em <strong>VALIDAR</strong> e depois marque a caixa. O <span translate="no">FT8 network log</span> também pode enviar suas decodificações e o status da sua estação (<strong>Enviar também minhas decodificações e o status da minha estação (para mapas e alertas)</strong>), usados pelo mapa e pelos alertas do outro programa. Essas mensagens não têm confirmação de recebimento, então um QSO enviado assim nunca conta como enviado. As configurações mostram, abaixo de cada um, os programas com que ele foi testado.
             </p>
             <p id="lan-n1mm">
                 O <span translate="no">N1MM Logger+</span> (Windows, testado com a versão 1.0.11469) recebe os QSOs do qFT8 na sua porta UDP 2237. Na janela <span translate="no">Config &gt; Configure Ports</span> dele, marque <span translate="no">Enable</span> ao lado da porta UDP 2237 e reinicie-o; depois, no qFT8 adicione <span translate="no">FT8 network log</span>, ou <span translate="no">ADIF over UDP</span> com a porta alterada para 2237, com o endereço daquele computador. Cada QSO aparece no log dele com o indicativo, a frequência, o modo, os reportes, o locator e a hora. Ele não escuta na porta 2333.
@@ -2440,7 +2535,7 @@
                 <span translate="no">GridTracker2</span> (testado com a versão 2.261019.5) mostra no mapa e registra o que o <span translate="no">FT8 network log</span> envia à porta 2237; com a recepção ADIF UDP ligada, também recebe <span translate="no">ADIF over UDP</span> na porta 2333. Os encaminhamentos de registro dele enviam os QSOs aos receptores do qFT8.
             </p>
             <p>
-                No sentido inverso, o qFT8 pode receber no seu log os QSOs de outros programas. Em <strong>ADICIONAR MAIS SERVIDORES</strong> marque o receptor do formato que o outro programa envia: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), a interface <span translate="no">AC Log</span> (TCP 1100) ou a interface <span translate="no">DXLab</span> (TCP 52001); depois marque a linha dele em <strong>Servidores</strong>. A página dele mostra o endereço a colocar no outro programa e permite mudar a porta e aceitar QSOs só de alguns endereços. Nada recebido assim pode transmitir, mudar o rádio ou apagar um QSO. Os receptores ficam desligados até você ligá-los; no iPhone eles só funcionam enquanto o qFT8 está aberto e nunca entram em um grupo multicast.
+                No sentido inverso, o qFT8 pode receber no seu log os QSOs de outros programas. Em Mais configurações &gt; <strong>SERVIDORES</strong> marque a linha do receptor do formato que o outro programa envia: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), a interface <span translate="no">AC Log</span> (TCP 1100) ou a interface <span translate="no">DXLab</span> (TCP 52001). A página dele mostra o endereço a colocar no outro programa e permite mudar a porta e aceitar QSOs só de alguns endereços. Nada recebido assim pode transmitir, mudar o rádio ou apagar um QSO. Os receptores ficam desligados até você ligá-los; no iPhone eles só funcionam enquanto o qFT8 está aberto e nunca entram em um grupo multicast.
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -2715,7 +2810,7 @@
         <section id="wavelog-server">
             <h2>O <span translate="no">qFT8</span> como servidor <span translate="no">Wavelog</span></h2>
             <p>
-                Em <strong>Configurações &gt; Servidores do qFT8 &gt; Servidor <span translate="no">Wavelog</span></strong>, o <span translate="no">qFT8</span> responde na sua rede doméstica como se fosse um <span translate="no">Wavelog</span>: qualquer programa que consiga enviar <span translate="no">QSOs</span> ao <span translate="no">Wavelog</span> (inclusive outro <span translate="no">qFT8</span>) pode enviá-los a este <span translate="no">qFT8</span>.
+                Em <strong>Configurações &gt; Mais configurações &gt; SERVIDORES &gt; Servidor <span translate="no">Wavelog</span></strong>, o <span translate="no">qFT8</span> responde na sua rede doméstica como se fosse um <span translate="no">Wavelog</span>: qualquer programa que consiga enviar <span translate="no">QSOs</span> ao <span translate="no">Wavelog</span> (inclusive outro <span translate="no">qFT8</span>) pode enviá-los a este <span translate="no">qFT8</span>.
             </p>
             <h3>Como configurar</h3>
             <ol>
@@ -2911,6 +3006,45 @@
             </ol>
 
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="multitone">
+            <h2>Multitom: dois sinais ao mesmo tempo</h2>
+            <p>
+                As Configurações têm uma seção <strong>Multitom</strong>, logo acima de <strong>Eventos</strong>, com uma caixa:
+                <strong>Multitom (2 sinais)</strong> (experimental). Enquanto estiver marcada, cada transmissão em
+                <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span> e nos modos
+                <span translate="no">LQ</span> pode levar dois sinais comuns lado a lado, cada um com sua própria mensagem
+                para sua própria estação: o dobro de estações alcançadas ou de mensagens enviadas. O preço é a potência: para evitar
+                que o áudio sature, cada sinal recebe metade da amplitude, de modo que cada um chega à outra estação cerca de
+                6 dB mais fraco (um quarto da potência; os dois juntos, metade). Um marcador azul <strong>Multitom</strong> no
+                espectrograma lembra você enquanto o recurso está ligado, e a frequência de transmissão é desenhada como duas barras lado a lado.
+            </p>
+            <ul>
+                <li><strong>Seu rádio precisa transmitir o áudio de forma linear</strong> (os modos usuais de dados / USB-D de
+                    rádios Icom, Yaesu, Kenwood, Elecraft, Xiegu e semelhantes). Rádios que enviam um único tom medido
+                    (<span translate="no">QMX</span>, <span translate="no">QMX+</span>, <span translate="no">QDX</span>,
+                    <span translate="no">(tr)uSDX</span>) enviam apenas um sinal; o marcador então mostra
+                    <strong>Multitom: 1 sinal</strong>. Mantenha o ALC do rádio em zero: dois sinais mostram espúrios em
+                    outras frequências muito antes do que um só.</li>
+                <li><strong>Onde vai o segundo sinal:</strong> 100 Hz acima da sua frequência de transmissão em
+                    <span translate="no">FT8</span> e <span translate="no">LQ8</span> (150 Hz em <span translate="no">FT4</span>,
+                    250 Hz em <span translate="no">FT2</span> e <span translate="no">LQ2</span>,
+                    50 Hz em <span translate="no">LQ16</span>); abaixo dela quando não há espaço acima. Uma estação mantém o
+                    sinal em que foi respondida durante todo o QSO.</li>
+                <li><strong>AUTO</strong> preenche o segundo sinal sozinho com a próxima estação que chamaria, seguindo
+                    todas as suas regras habituais, sempre no outro intervalo. Nunca envia dois CQs; um CQ vai no segundo sinal
+                    somente enquanto um QSO está em andamento e ninguém mais pode ser chamado.</li>
+                <li><strong>À mão:</strong> toque no CALL de uma estação para marcá-la, toque em outra para marcá-la também; toque em uma marcada
+                    para desmarcá-la. Tocar em uma nova estação quando o máximo já está marcado substitui a marca mais antiga (duas nos
+                    modos <span translate="no">FT</span>, quatro nos modos <span translate="no">LQ</span>, onde duas
+                    estações no mesmo passo compartilham uma única mensagem de vários reportes ou de vários 73). Com mais de uma estação
+                    marcada, a caixa de mensagem mostra <strong>Mensagens escolhidas automaticamente</strong> e o qFT8 envia a cada
+                    estação a sua próxima mensagem. Uma estação é desmarcada sozinha quando seu QSO termina.</li>
+                <li>O Multitom nunca liga o TX, nunca altera a potência do seu rádio e não muda nenhuma mensagem: cada
+                    sinal é um quadro normal do seu modo, que qualquer estação decodifica. Os limites de tempo de transmissão contam
+                    uma transmissão multitom exatamente como um só sinal.</li>
+            </ul>
         </section>
 
         <section id="activation">
@@ -3453,6 +3587,50 @@
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
         </section>
 
+        <section id="mode-am">
+            <h2><span translate="no">AM</span>, banda aeronáutica e <span translate="no">VHF</span> marítimo (voz)</h2>
+            <p>
+                A lista de modos tem mais três entradas de voz que abrem o painel <a href="#ssb-mode"><span translate="no">SSB</span></a>
+                com outro receptor por trás: <strong><span translate="no">AM</span></strong> (as bandas de radioamador, recepção
+                e transmissão), <strong>Voz aeronáutica</strong> (aeronaves e torres, 118-137 MHz, somente recepção) e
+                <strong><span translate="no">VHF</span> marítimo</strong> (navios e estações costeiras, somente recepção). A barra inferior
+                passa então a nomear o modo <span translate="no">AM</span> ou <span translate="no">FM</span>, e a escolha da banda lateral
+                desaparece: esses sinais não a têm.
+            </p>
+            <p class="mode-specs"><strong>Especificações:</strong> classes de emissão ITU A3E (<span translate="no">AM</span>, banda aeronáutica) e F3E (<span translate="no">VHF</span> marítimo, <span translate="no">FM</span> de faixa estreita, canais de 25 kHz); canais marítimos internacionais do Regulamento de Radiocomunicações da ITU, Apêndice 18; banda aeronáutica de 118-137 MHz com canais de 25 kHz ou 8,33 kHz (ICAO Annex 10).</p>
+            <ul>
+                <li><strong>Com um rádio sob CAT</strong>, o qFT8 coloca o rádio no seu próprio modo <span translate="no">AM</span> ou <span translate="no">FM</span> (apenas um comando de modo: nunca altera a potência) e o devolve ao modo de dados quando você sai. O visor do rádio mostra a frequência real da estação.</li>
+                <li><strong>Com um receptor SDR</strong> (um dongle RTL-SDR, por exemplo), o qFT8 demodula sozinho: <span translate="no">AM</span> síncrono, que permanece limpo quando a portadora desvanece, e <span translate="no">FM</span> estreita com um squelch que mantém silencioso um canal ocioso.</li>
+                <li><strong>Um rádio que o qFT8 não consegue colocar em <span translate="no">AM</span></strong> permanece no modo de dados: você ouve uma estação <span translate="no">AM</span> como sua banda lateral superior (sintonize exatamente na portadora dela), e o qFT8 não transmite <span translate="no">AM</span> por ele.</li>
+            </ul>
+            <h3 id="am-transmitting">Falando em <span translate="no">AM</span></h3>
+            <p>
+                O <span translate="no">AM</span> é enviado exatamente como o <span translate="no">SSB</span>: primeiro o
+                <span translate="no">TX ON</span> do operador, depois <span translate="no">PTT</span> ou <span translate="no">VOX</span>,
+                memórias de voz, o limite de transmissão contínua do rádio. O qFT8 envia <span translate="no">AM</span> apenas dentro de uma
+                banda de radioamador (os dois lados da portadora precisam caber) e apenas por um rádio que ele colocou em
+                <span translate="no">AM</span>. Os QSOs são registrados como <span translate="no">AM</span>.
+            </p>
+            <h3 id="airband-marine">Banda aeronáutica e <span translate="no">VHF</span> marítimo</h3>
+            <p>
+                Ambos são somente recepção: o painel não tem <span translate="no">PTT</span>, nem <span translate="no">VOX</span>, nem
+                botão <span translate="no">QSO</span>. No lugar deles mostra o canal com duas setas para descer e subir
+                (o seletor de frequência também muda de canal) e a frequência abaixo. A banda aeronáutica avança 8,33 kHz na Europa, na África e
+                no Oriente Médio (conforme o seu grid) e 25 kHz nos demais lugares, e abre em 121.500 MHz na primeira vez; o
+                <span translate="no">VHF</span> marítimo abre no canal 16 e ouve cada canal duplex na frequência da sua estação costeira.
+                Cada um guarda a última frequência que você usou. Ouvir esses serviços não é permitido em todo lugar: confira as regras do
+                seu país.
+            </p>
+            <p>
+                The passband tag on the spectrogram reads <span translate="no">RX</span> there, never <span translate="no">RX/TX</span>: qFT8 does not transmit in these
+                services, and with a radio under <span translate="no">CAT</span> the <span translate="no">TX</span> button reads <span translate="no">NO TX / RX</span> (see
+                <a href="#ui-mode-select">The mode selector</a>). Airband and marine <span translate="no">VHF</span> with an <span translate="no">SDR</span> never ask for a transmitting radio. In <span translate="no">SSB</span> and <span translate="no">AM</span> without one the pane stays
+                usable for listening, and a red line at its bottom, &ldquo;Connect a radio to use SSB.&rdquo; (or &ldquo;...to use AM.&rdquo;), opens Device configuration when tapped. On the computer, with no radio under <span translate="no">CAT</span> (an <span translate="no">SDR</span> or a sound card alone), the mouse wheel over the spectrogram zooms
+                in <span translate="no">SSB</span>, <span translate="no">AM</span>, airband and marine <span translate="no">VHF</span>. Picking an amateur mode or band afterwards goes back to the band you were on before the receiver.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
+        </section>
+
         <section id="cw-mode">
             <h2><span translate="no">CW</span> (código Morse)</h2>
             <p>
@@ -3886,7 +4064,230 @@
                 <li><strong>Referências</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
             </ul>
 
+            <h3 id="jt65-settings">Configurações &gt; <span translate="no">JT65</span></h3>
+            <p>
+                <span translate="no">JT65</span> (a linha <span translate="no">JT65</span> (experimental) do seletor de modo) é um modo de QSO com períodos de um minuto, 65 tons e um código Reed-Solomon; sensibilidade de cerca de -25 dB (em 2500 Hz). Os QSOs são registrados como <span translate="no">MODE=JT65</span> com o submodo (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>) e os spots vão para o <span translate="no">PSKReporter</span> como <span translate="no">JT65</span>. Frequências usuais (dial USB): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
+            </p>
+            <ul>
+                <li>Submodo (A): A, B ou C, como na barra inferior.</li>
+                <li>Decodificar só perto da frequência de recepção (desligado): desligado decodifica a banda toda; ligado decodifica só em torno da frequência de recepção.</li>
+                <li>Tolerância de recepção: a largura em Hz ao redor da frequência de recepção (padrão 100).</li>
+                <li>Referências: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
+            </ul>
+
+            <h3 id="jt9-settings">Configurações &gt; <span translate="no">JT9</span></h3>
+            <p>
+                <span translate="no">JT9</span> (a linha <span translate="no">JT9</span> (experimental) do seletor de modo) é um modo de QSO com períodos de um minuto e 9 tons, com 16 Hz de largura; sensibilidade de cerca de -27 dB (em 2500 Hz). Os QSOs são registrados como <span translate="no">MODE=JT9</span> e os spots vão para o <span translate="no">PSKReporter</span> como <span translate="no">JT9</span>. Frequências usuais (dial USB): 2 kHz acima das do <span translate="no">JT65</span>, de 160 m a 10 m (20 m <span translate="no">14.078</span> MHz).
+            </p>
+            <ul>
+                <li>Decodificar só perto da frequência de recepção (desligado): desligado decodifica a banda toda; ligado decodifica só em torno da frequência de recepção.</li>
+                <li>Tolerância de recepção: a largura em Hz ao redor da frequência de recepção (padrão 100).</li>
+                <li>Referências: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
+            </ul>
+
+            <h3 id="jt4-settings">Configurações &gt; <span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> (a linha <span translate="no">JT4</span> (experimental) do seletor de modo) é um modo de QSO com períodos de um minuto, 4 tons e um código convolucional; sensibilidade de cerca de -23 dB (em 2500 Hz) no <span translate="no">JT4A</span>. Os QSOs são registrados como <span translate="no">MODE=JT4</span> com o submodo (<span translate="no">JT4A</span> a <span translate="no">JT4G</span>) e os spots vão para o <span translate="no">PSKReporter</span> como <span translate="no">JT4</span>. Frequências (dial USB): 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span>, 70 cm <span translate="no">432.065</span>, 23 cm <span translate="no">1296.065</span>, 13 cm <span translate="no">2304.065</span> MHz; qualquer outra frequência com a banda Outra.
+            </p>
+            <ul>
+                <li>Submodo (A): de A a G, como na barra inferior.</li>
+                <li>Decodificar só perto da frequência de recepção (desligado): desligado decodifica a banda toda; ligado decodifica só em torno da frequência de recepção.</li>
+                <li>Tolerância de recepção: a largura em Hz ao redor da frequência de recepção (padrão 100).</li>
+                <li>Referências: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT4 protocol description</span>&rdquo; (2007); <span translate="no">J. Layland, W. Lushbaugh</span>: &ldquo;<span translate="no">A Flexible High-Speed Sequential Decoder for Deep Space Channels</span>&rdquo;, <span translate="no">IEEE Trans. Comm. Tech.</span> (1971).</li>
+            </ul>
+
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="psk-mode">
+            <h2><span translate="no">PSK31</span> e <span translate="no">PSK63</span> (experimental)</h2>
+            <span id="psk31-mode"></span><span id="psk63-mode"></span><span id="psk125-mode"></span><span id="psk250-mode"></span><span id="qpsk31-mode"></span><span id="qpsk63-mode"></span>
+            <p>
+                Pick <strong>PSK</strong> in the mode selector and <span translate="no">PSK31</span> or
+                <span translate="no">PSK63</span> beside the mode in the bottom bar: the same screen
+                opens with the <span translate="no">PSK</span> modem and the mode button reads the mode's name.
+                <span translate="no">PSK31</span> is the classic keyboard-to-keyboard mode: one carrier whose phase turns
+                over to carry the text, about 50 Hz wide, at 31.25 baud; <span translate="no">PSK63</span> is the same at
+                twice the speed and twice the width. Every <span translate="no">PSK</span> signal in the passband is
+                decoded and written along its trace, and the one under the receive bar is always followed.
+                Each mode has its own frequency on every band (on 20 m, 14.070 MHz).
+            </p>
+            <ul>
+                <li>A tela não tem os botões <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> e <span translate="no">REV</span> em <span translate="no">PSK</span>.</li>
+                <li>O texto mantém maiúsculas e minúsculas. Uma memória sai como uma única transmissão; o texto digitado no teclado sai uma linha por vez, ao pressionar Enter.</li>
+                <li>Registro: o registro abre com <span translate="no">PSK31</span> ou <span translate="no">PSK63</span> (gravado nos arquivos <span translate="no">ADIF</span> como modo <span translate="no">PSK</span> com esse submodo), na frequência da sua portadora transmitida.</li>
+                <li>Faster and stronger variants, in the same picker: <span translate="no">PSK125</span> and
+                    <span translate="no">PSK250</span> (4 and 8 times as fast, as much wider), <span translate="no">QPSK31</span> and
+                    <span translate="no">QPSK63</span> (four phases with error correction: the text survives some noise and
+                    fading that garbles <span translate="no">PSK31</span>; both stations must use the same one). They are
+                    logged by their own names.</li>
+                <li>Usa as configurações de Configurações &gt; <span translate="no">RTTY</span> (decodificação, monitor, memórias). O <span translate="no">PSK</span> é novo e ainda pode mudar.</li>
+            </ul>
+
+            <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="olivia-mode">
+            <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> e <span translate="no">DominoEX</span> (experimental)</h2>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+                        <p>
+                The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
+                (<strong>OLIVIA</strong>, <strong>Família MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
+                <span translate="no">DominoEX</span> and <span translate="no">Throb</span>, and so on), each marked experimental. The speed or variant is picked beside the mode in the bottom bar, and each
+                family remembers the last one you used. The variants: <strong><span translate="no">OLIVIA 8/250</span></strong>,
+                <strong><span translate="no">OLIVIA 8/500</span></strong>, <strong><span translate="no">OLIVIA 16/500</span></strong>,
+                <strong><span translate="no">OLIVIA 32/1000</span></strong>, <strong><span translate="no">OLIVIA 4/250</span></strong>,
+                <strong><span translate="no">MFSK8</span></strong>, <strong><span translate="no">MFSK11</span></strong>,
+                <strong><span translate="no">MFSK16</span></strong>, <strong><span translate="no">MFSK22</span></strong>,
+                <strong><span translate="no">MFSK32</span></strong>, <strong><span translate="no">MFSK64</span></strong>,
+                <strong><span translate="no">MFSK128</span></strong>, <strong><span translate="no">DOMINOEX 8</span></strong>,
+                <strong><span translate="no">DOMINOEX 11</span></strong> and <strong><span translate="no">DOMINOEX 16</span></strong>.
+                Picking one opens the <span translate="no">RTTY</span> screen with that modem, and the mode button reads
+                its name.
+            </p>
+            <ul>
+                                <li><span translate="no">Olivia</span> (tons / largura em Hz): lento e muito robusto, para sinais fracos e com
+                    desvanecimento; quanto mais tons, mais fundo no ruído. <span translate="no">MFSK16</span>: 16 tons em
+                    cerca de 316 Hz, com correção de erros, um bom modo para o dia a dia; <span translate="no">MFSK32</span> e
+                    <span translate="no">MFSK64</span> são o mesmo com o dobro e o quádruplo da velocidade (mais largos, pedem um
+                    sinal mais forte; <span translate="no">MFSK32</span> é comum em redes de tráfego de emergência);
+                    <span translate="no">MFSK128</span> é outra vez duas vezes mais rápido e tem 2 kHz de largura. <span translate="no">MFSK8</span>
+                    (32 tons, cerca de 250 Hz) e <span translate="no">MFSK11</span> são mais lentos que o
+                    <span translate="no">MFSK16</span> e leem sinais mais fracos; <span translate="no">MFSK22</span> fica
+                    entre o <span translate="no">MFSK16</span> e o <span translate="no">MFSK32</span>.
+                    <span translate="no">DominoEX</span>: 18 tons,
+                    insensível à sintonia e à deriva, mais rápido.</li>
+                <li>O sinal sob a barra de recepção é decodificado (a barra é o centro do sinal). Coloque a barra sobre o sinal; alguns hertz de diferença não importam.</li>
+                <li>A tela não tem os botões <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> e <span translate="no">REV</span> nesses modos. Uma memória sai como uma única transmissão; o texto digitado no teclado sai uma linha por vez, ao pressionar Enter.</li>
+                <li>Cada família tem a sua própria frequência nas bandas em que é comumente usada (em 20 m: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); nas demais, a frequência do <span translate="no">RTTY</span>.</li>
+                <li>Registro: o registro abre com o nome do modo (por exemplo <span translate="no">OLIVIA 8/250</span>), gravado nos arquivos <span translate="no">ADIF</span> como modo <span translate="no">OLIVIA</span>, <span translate="no">MFSK</span> ou <span translate="no">DOMINO</span> com o seu submodo, na frequência do centro do seu sinal.</li>
+                <li>O limite de transmissão contínua vale como no <span translate="no">RTTY</span>: um texto longo (<span translate="no">Olivia</span> é lento: cerca de 1,5 caractere por segundo em 8/250) é interrompido no limite.</li>
+                <li><span translate="no">IFKP</span> (linhas <span translate="no">IFKP 0.5</span>, <span translate="no">IFKP 1.0</span>, <span translate="no">IFKP 2.0</span>) e <span translate="no">FSQ</span> (linhas <span translate="no">FSQ 2</span>,
+                    <span translate="no">FSQ 3</span>, <span translate="no">FSQ 4.5</span>, <span translate="no">FSQ 6</span>; o número é a velocidade em
+                    símbolos por segundo): 33 tons com cerca de 390
+                    Hz (<span translate="no">FSQ</span>: 300 Hz) de largura, cada tom um
+                    degrau acima do anterior, de modo que sintonizar alguns
+                    hertz fora não faz diferença. Letras minúsculas, o espaço
+                    e o ponto final ocupam um degrau, o resto
+                    dois: digite em minúsculas para transmitir mais rápido. Não
+                    precisam de uma partida longa: o texto aparece desde
+                    os primeiros caracteres. O <span translate="no">FSQ</span> envia cada linha como
+                    uma única transmissão e coloca na frente o seu
+                    indicativo, dois-pontos e uma verificação de duas letras (<span translate="no">ab1cde:5f</span>),
+                    como fazem as estações <span translate="no">FSQ</span>. Dois comandos direcionados: digite
+                    um indicativo seguido de ponto de interrogação (<span translate="no">k1abc?</span>) para
+                    pedir àquela estação um relatório de sinal (ela responde
+                    <span translate="no">k1abc:f3ab1cde snr=12 db</span>), ou digite <span translate="no">heartbeat</span> para enviar apenas o seu
+                    cabeçalho, para que as estações o listem como ouvido.
+                    Retransmissões, caixas de correio e arquivos não são oferecidos.</li>
+                <li>Usam as configurações de Configurações &gt; <span translate="no">RTTY</span> (decodificação, monitor, memórias). Esses modos são novos e ainda podem mudar.</li>
+            </ul>
+
+            <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="thor-mode">
+            <h2><span translate="no">THOR</span>, <span translate="no">Contestia</span> e <span translate="no">MT63</span> (experimental)</h2>
+            <span id="contestia-mode"></span><span id="mt63-mode"></span><span id="throb-mode"></span><span id="throbx-mode"></span>
+            <p>
+                Three more keyboard modes are in the HAM tab of the mode selector, one button per family with the variant picked beside the mode in the bottom bar, each marked
+                (experimental): <strong><span translate="no">THOR 8</span></strong>, <strong><span translate="no">THOR 11</span></strong>, <strong><span translate="no">THOR 16</span></strong>, <strong><span translate="no">THOR 22</span></strong>; <strong><span translate="no">CONTESTIA 4/250</span></strong>, <strong><span translate="no">CONTESTIA 8/250</span></strong>, <strong><span translate="no">CONTESTIA 16/500</span></strong>, <strong><span translate="no">CONTESTIA 32/1000</span></strong>; <strong><span translate="no">MT63 1000L</span></strong>, <strong><span translate="no">MT63 2000L</span></strong>, <strong><span translate="no">MT63 500L</span></strong> and <strong><span translate="no">MT63 1000S</span></strong>. They work exactly like
+                <span translate="no">Olivia</span> (see above): the <span translate="no">RTTY</span> screen with that modem, the signal under the receive bar decoded, a memory
+                sent as one transmission, typed text a line at a time.
+            </p>
+            <ul>
+                <li><span translate="no">THOR</span>: os tons do <span translate="no">DominoEX</span> (insensíveis à sintonia e à deriva) com a correção de erros do <span translate="no">MFSK16</span>; um pouco mais lento que o <span translate="no">DominoEX</span> com o mesmo número de velocidade, mas bem mais robusto.</li>
+                <li><span translate="no">Contestia</span> (tons / largura em Hz): um parente mais rápido do <span translate="no">Olivia</span>, só com letras maiúsculas, popular em concursos; letras, números e a pontuação usual (os demais caracteres são enviados como ?).</li>
+                <li><span translate="no">MT63</span> (largura em Hz, L = longo, S = curto entrelaçamento): 64 portadoras ao mesmo tempo, com 500, 1000 ou 2000 Hz de largura, cerca de 5 a 20 caracteres por segundo; robusto contra desvanecimento e rajadas de ruído, usado em redes de emergência. A barra de recepção é o centro do sinal. O entrelaçamento longo é mais robusto, o curto começa a imprimir mais cedo.</li>
+                <li>Frequências: em 20 m, <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 e <span translate="no">MT63</span> 14,105 MHz; nas demais, o <span translate="no">THOR</span> usa as do <span translate="no">DominoEX</span>, o <span translate="no">Contestia</span> as do <span translate="no">Olivia</span> e o <span translate="no">MT63</span> os segmentos digitais largos (por exemplo 7,050 MHz). Uma frequência que você mesmo definir continua valendo.</li>
+                <li>Registro: o registro abre com o nome do modo (por exemplo <span translate="no">THOR 16</span>); nos arquivos <span translate="no">ADIF</span>, o <span translate="no">THOR</span> é gravado como modo <span translate="no">THOR</span> com o seu submodo (<span translate="no">THOR16</span> ...), o <span translate="no">Contestia</span> como modo <span translate="no">CONTESTI</span> e o <span translate="no">MT63</span> como modo <span translate="no">MT63</span> (o <span translate="no">ADIF</span> não tem submodos para esses dois).</li>
+                                <li><span translate="no">Throb</span> e <span translate="no">ThrobX</span> (linhas <span translate="no">THROB 1</span>,
+                    <span translate="no">THROB 2</span>, <span translate="no">THROB 4</span>, <span translate="no">THROBX 1</span>,
+                    <span translate="no">THROBX 2</span>, <span translate="no">THROBX 4</span>; o número é de símbolos por segundo):
+                    um caractere por pulso, enviado como um ou dois tons entre 9 (<span translate="no">ThrobX</span>: 11), com cerca de 70 a
+                    170 Hz de largura. Lento e simples; letras maiúsculas, algarismos e alguns sinais de pontuação (os outros caracteres são enviados
+                    como espaços). O <span translate="no">ThrobX</span> tem mais pontuação. Usam as
+                    frequências do <span translate="no">DominoEX</span>.</li>
+                <li>O limite de transmissão contínua vale como no <span translate="no">RTTY</span>. Estes modos são novos e ainda podem mudar.</li>
+            </ul>
+
+            <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="hell-mode">
+            <h2><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>, experimental)</h2>
+            <p>
+                O <span translate="no">Hellschreiber</span> envia o texto como uma imagem: cada letra é varrida em colunas estreitas
+                e o receptor pinta o que ouve, de modo que você <em>lê</em> o texto na tela -- nada é decodificado
+                em letras, e um sinal fraco ou ruidoso ainda mostra letras que o olho consegue distinguir. Escolha
+                <strong><span translate="no">HELL</span></strong> (experimental) na parte de baixo do seletor de modos: a
+                tela <span translate="no">RTTY</span> abre com o modem <span translate="no">Hell</span>.
+            </p>
+            <ul>
+                <li>A imagem recebida corre ao longo da faixa sob a cachoeira, com as letras mais novas à direita. Cada
+                    coluna é impressa duas vezes, uma cópia acima da outra, de modo que uma cópia de cada letra está sempre inteira.</li>
+                <li>Toque na faixa para ver a imagem dobrada em linhas, como um texto recebido, no lugar da cachoeira
+                    (uma cópia, alinhada); toque na pequena cachoeira da faixa para voltar.</li>
+                <li><span translate="no">MODE</span> (no lugar de <span translate="no">BAUD</span>) percorre as
+                    variantes: <span translate="no">FELD</span> (<span translate="no">Feld Hell</span>, a mais comum),
+                    <span translate="no">SLOW</span>, <span translate="no">X5</span>, <span translate="no">X9</span>,
+                    <span translate="no">FSK</span>, <span translate="no">FSK105</span> e <span translate="no">HELL80</span>.
+                    As duas estações precisam usar a mesma.</li>
+                <li><span translate="no">SLANT</span> (no lugar de <span translate="no">SHIFT</span>) endireita uma
+                    imagem inclinada: a placa de som da outra estação anda um pouco rápida ou lenta. Percorra-o até que as
+                    letras fiquem em pé.</li>
+                <li>Ponha a barra de recepção sobre o sinal (a portadora, ou o meio dos dois tons das variantes
+                    <span translate="no">FSK</span>). Uma memória sai como uma única transmissão;
+                    o texto digitado no teclado sai uma linha por vez, quando você pressiona Enter. Letras, dígitos e pontuação
+                    comum podem ser enviados.</li>
+                <li>Cada banda tem sua própria frequência <span translate="no">Hell</span> onde há uma de uso comum (em 20 m,
+                    14.063 MHz); nas demais, a frequência de <span translate="no">RTTY</span>.</li>
+                <li>Registro: o logger abre com o modo <span translate="no">HELL</span> (ou a variante, por exemplo
+                    <span translate="no">HELL X5</span>), gravado nos arquivos <span translate="no">ADIF</span> como modo
+                    <span translate="no">HELL</span> com o submodo da variante.</li>
+                <li>O limite de transmissão contínua vale como no <span translate="no">RTTY</span>:
+                    o <span translate="no">Feld Hell</span> envia cerca de 2,5 letras por segundo, de modo que um texto longo é recusado ou
+                    interrompido no limite. Este modo é novo e ainda pode mudar.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
+        </section>
+
+        <section id="mode-packet">
+            <h2><span translate="no">Packet (APRS)</span> (experimental)</h2>
+            <p>
+                O <span translate="no">Packet</span> envia pequenos quadros <span translate="no">AX.25</span> como dois tons de áudio;
+                o <span translate="no">APRS</span> os usa para posições, objetos, meteorologia e mensagens curtas. Escolha
+                <strong><span translate="no">Packet (APRS)</span></strong> (experimental) na aba <span translate="no">HAM</span>
+                do seletor de modos: a tela <span translate="no">RTTY</span> abre com o modem packet, e a
+                velocidade é escolhida ao lado do modo, na barra inferior.
+            </p>
+            <ul>
+                <li><span translate="no">APRS 1200</span>: 1200 baud por um rádio <span translate="no">FM</span>, em
+                    2 m (144.800 MHz na Europa e na África, 144.390 MHz nas Américas, 145.175 MHz na região 3; também a
+                    <span translate="no">ISS</span> em 145.825 MHz). Os tons são fixos; as barras não importam.</li>
+                <li><span translate="no">HF PACKET 300</span>: 300 baud em <span translate="no">USB</span> em HF (30 m:
+                    10.1473 MHz, também 20 m e 40 m). Ponha a barra de recepção no meio dos dois tons.</li>
+                <li>Cada quadro ouvido é uma linha do texto recebido, no formato <span translate="no">CALL&gt;DEST,PATH:info</span>.
+                    Estações, objetos e estações meteorológicas que enviam uma posição também aparecem no mapa, com a sua
+                    distância do seu grid.</li>
+                <li>Cada linha de uma memória, ou cada linha que você digita, é um quadro:
+                    <span translate="no">BEACON</span> [comentário] envia a sua posição, ao grau, a partir do seu grid
+                    (nunca mais precisa que o grid); <span translate="no">CALL: text</span> envia uma mensagem para essa
+                    estação; <span translate="no">STATUS text</span> um status; uma linha que começa com um
+                    caractere <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) sai como está.</li>
+                <li>Seus quadros saem do seu indicativo com o <span translate="no">SSID</span> escolhido em Configurações &gt;
+                    <span translate="no">Packet</span> (a engrenagem da tela), pelo caminho de digipeaters definido ali
+                    (<span translate="no">WIDE1-1,WIDE2-1</span> por padrão, somente em 2 m).</li>
+                <li>Transmitting needs <span translate="no">TX ON</span> and is refused outside the amateur bands; the
+                    continuous transmission limit applies as in <span translate="no">RTTY</span>. Logged as <span translate="no">PKT</span>. This mode is new and may
+                    still change.</li>
+                <li><strong>AUTO</strong>: with AUTO on and <span translate="no">TX ON</span>, messages sent to you are acknowledged automatically. With AUTO off (the default, every time Packet starts) nothing is acknowledged by itself, and with <span translate="no">TX OFF</span> nothing is ever sent. Tapping a received message addressed to you asks &ldquo;Acknowledge the message from CALL?&rdquo; and sends the acknowledgement by hand.</li>
+                <li><strong>HEARD</strong>: lists the packet stations heard (distance, age, last text) and opens the map.</li>
+                <li>On APRS 1200 qFT8 says once to set the radio to FM by hand: it does not switch a radio to FM yet.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
         </section>
 
         <section id="sstv-mode">
@@ -4063,7 +4464,7 @@
                 <li><strong>Os dados</strong>: a largura, o tamanho da imagem em colunas e linhas, e a velocidade.</li>
                 <li><strong>CARREGAR</strong>: "Tirar uma foto" ou "Escolher uma imagem". A imagem mantém o seu próprio formato.</li>
                 <li><strong>A imagem a enviar</strong>, em cinza, desenhada nas cores da sua própria cascata: é o que as outras estações vão ver. Enquanto está no ar, uma linha amarela marca a linha que está sendo enviada, com "No ar: linha N de M".</li>
-                <li><strong>Adicionar meu indicativo</strong> (ativada por padrão): o seu indicativo em letras grandes sob a imagem. O lápis muda o texto da placa (vazio = o seu indicativo). <strong>Contraste automático</strong> deixa a parte mais escura da imagem preta e a mais clara branca, com um toque; <strong>Contraste</strong> e <strong>Brilho</strong> ficam por sua conta depois, à mão.</li>
+                <li><strong>Indicativo</strong> (ativada por padrão): o seu indicativo em letras grandes sob a imagem. O lápis muda o texto da placa (vazio = o seu indicativo). <strong>Contraste automático</strong> deixa a parte mais escura da imagem preta e a mais clara branca, com um toque; <strong>Contraste</strong> e <strong>Brilho</strong> ficam por sua conta depois, à mão.</li>
                 <li><strong>REMOVER</strong> volta para a placa de indicativo sozinha. <strong>ENVIAR</strong> mostra quantos segundos a imagem leva e vira <strong>PARAR</strong> com os segundos restantes.</li>
                 <li><strong>A linha vermelha</strong> diz por que a imagem não pode ser enviada agora, e fica oculta quando nada impede: "Pressione TX ON para enviar imagens"; "20 s: acima do seu limite de 15 s" (a imagem é mais longa que o <a href="#tx-limit">limite de transmissão contínua</a> do seu rádio); "Em 30 m só pode ser enviada a largura de 500 Hz"; "A transmissão ficaria fora das bandas de radioamador"; ou, com um <span translate="no">QMX</span> cujo firmware não consegue passar o rádio para <span translate="no">SSB</span> via <span translate="no">CAT</span>, que as imagens só podem ser recebidas.</li>
                 <li><strong>VELOCIDADE</strong>: 3.125, 6.25 (o padrão: uma linha dura o mesmo que um tom do <span translate="no">FT8</span>) ou 12.5 linhas por segundo. Ao lado: quanto do seu <a href="#tx-limit">limite de transmissão contínua</a> a imagem usa. A lista mostra os segundos da imagem em cada velocidade; uma velocidade longa demais para o seu limite avisa quando você a toca. O indicador mostra, por exemplo, "20 s do seu limite de 30 s".</li>
@@ -4213,6 +4614,398 @@
                     perder a calibração.</li>
             </ul>
             <a class="back-to-toc" href="#top">↑ Voltar ao índice</a>
+        </section>
+
+        <section id="bcast-receive">
+            <h2>Rádio de radiodifusão: <span translate="no">FM</span> + <span translate="no">RDS</span> e <span translate="no">AM</span> (experimental)</h2>
+            <p>
+                Com um <span translate="no">SDR</span> (por exemplo, um dongle <span translate="no">RTL-SDR</span>), o qFT8 também é um
+                rádio de radiodifusão. Na aba <span translate="no">SWL</span> do seletor de modos, toque em <span translate="no">FM + RDS</span>
+                ou em <span translate="no">AM</span> broadcast: a tela do rádio abre sobre o aplicativo, e a seta de voltar a fecha. O modo
+                de operação e o TX não são alterados: esta tela só recebe.
+            </p>
+            <ul>
+                <li><strong>BUSCAR</strong> varre a banda e lista as estações que você consegue receber, com
+                    o nome da estação enviado pelo <span translate="no">RDS</span>. Toque em uma estação para ouvi-la; a estrela a mantém na
+                    lista entre as varreduras. As setas avançam um canal, as setas duplas vão para a próxima estação da lista.</li>
+                <li><strong>O botão de som</strong>: <span translate="no">FM</span> estéreo ou mono; em <span translate="no">AM</span>,
+                    o detector síncrono (mais estável com desvanecimento), o detector de envoltória simples, ou o síncrono em uma banda lateral
+                    (<span translate="no">USB</span> / <span translate="no">LSB</span>, longe da interferência de um vizinho).</li>
+                <li><strong><span translate="no">50 µs</span> / <span translate="no">75 µs</span></strong>: a
+                    de-ênfase da <span translate="no">FM</span>. O qFT8 a escolhe pelo seu grid (75 µs nas Américas); toque para
+                    mudá-la.</li>
+                <li><strong><span translate="no">REC</span></strong> grava a estação que você ouve em um arquivo de som;
+                    <span translate="no">RECORDINGS</span> lista as gravações para tocar, compartilhar ou excluir. As gravações ficam neste dispositivo.</li>
+            </ul>
+            <p>
+                Enquanto a tela do rádio está aberta, ela usa o <span translate="no">SDR</span>; os outros modos o recebem de volta quando você
+                a fecha. Um rádio sem saída I/Q (a maioria dos transceptores) não pode ser usado nesta tela.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
+        </section>
+
+                <section id="swl">
+            <h2>Usando o qFT8 para <span translate="no">SWL</span> (escuta)</h2>
+            <p>
+                Você não precisa de licença nem de transmissor para usar o qFT8. Como ouvinte de ondas curtas (e de VHF/UHF),
+                <span translate="no">SWL</span>, você pode receber e decodificar todos os modos que o qFT8 conhece, ver as estações que ouve no
+                <a href="#ui-world-map-tab">Mapa mundial</a> e manter um registro dos QSOs que ouve entre outras estações, pronto para
+                ser enviado como relatórios <span translate="no">SWL</span>. O qFT8 é <em>radioamadorismo e <span translate="no">SWL</span></em>:
+                o mesmo app, no celular, no computador, no iPhone e no controle remoto web.
+            </p>
+
+            <h3 id="swl-receive">O que você pode receber e decodificar</h3>
+            <ul>
+                <li><strong>Todos os modos de recepção do qFT8</strong>: <span translate="no">FT8, FT4, FT2, LQ8, JS8, WSPR, FST4, FST4W, Q65, MSK144, JT65, JT9, JT4</span>,
+                    <span translate="no">CW</span> (Morse), <span translate="no">RTTY</span>, <span translate="no">PSK31 / PSK63</span>,
+                    <span translate="no">Olivia, MFSK, DominoEX, THOR, Contestia, MT63, Throb, IFKP, FSQ</span>, imagens <span translate="no">SSTV</span>
+                    e voz em <span translate="no">SSB</span> para ouvir. Escolha o modo no seletor de modos como de costume; a seção
+                    própria de cada modo neste manual descreve a tela dele.</li>
+                <li><strong>Por qualquer receptor que o qFT8 possa usar</strong>: um <span translate="no">SDR</span> só de recepção
+                    (veja <a href="#swl-devices">Dispositivos para escuta</a>) ou um rádio comum conectado do jeito habitual. Um
+                    <span translate="no">SDR</span> dá ao qFT8 o mesmo áudio que um rádio em banda lateral superior (ou inferior), então todos os
+                    modos funcionam nele exatamente como em um rádio.</li>
+                <li><strong>Em todas as bandas que o receptor cobre</strong>: os botões de banda sintonizam o receptor; um
+                    <span translate="no">SDR</span> como o <span translate="no">RTL-SDR</span> também alcança as
+                    frequências de modos digitais de <span translate="no">2 m</span> e <span translate="no">70 cm</span>.</li>
+                <li><strong>Spots e o mapa</strong>: toda estação decodificada aparece na aba Estações e é desenhada no
+                    Mapa mundial com distância e direção, como quando você transmite.</li>
+            </ul>
+            <p>
+                An <span translate="no">SDR</span> never transmits in qFT8: while one is the receiver, the TX button reads
+                <span translate="no">NO TX</span> / <span translate="no">SDR</span> and nothing can key. A receiver that tunes the radio (the marine <span translate="no">VHF</span>, airband and signals receivers) also stops transmitting while it has the radio: the button reads <span translate="no">NO TX</span> / <span translate="no">RX</span> and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span>. With a radio that can
+                transmit, switch on <a href="#swl-mode-howto"><span translate="no">SWL</span> mode</a> and qFT8 will not transmit
+                either.
+            </p>
+
+            <h3 id="swl-devices">Dispositivos para escuta</h3>
+            <p>
+                Escolha o receptor em <strong>Configurações &gt; Dispositivo</strong>. As linhas <span translate="no">SDR</span> têm
+                um grupo próprio nessa lista; sob a linha escolhida, o qFT8 mostra as poucas configurações de que esse receptor precisa e uma
+                linha de estado (&ldquo;Conectando a ...&rdquo;, &ldquo;Conectado a ... (2,4 MS/s)&rdquo; ou o motivo de não estar conectado).
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt>Dongle <span translate="no">RTL-SDR</span> (<span translate="no">RTL-SDR Blog V3, V4, V4 Lite</span> e outros dongles com sintonizador <span translate="no">R820T / R820T2 / R828D</span>) ligado por <span translate="no">USB</span></dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: RTL-SDR (USB)</span></dd>
+                    <dd><span class="row-label">Frequências</span> 0,5 MHz - 1,7 GHz (HF no V4 sozinho; V3: amostragem direta)</dd>
+                    <dd><span class="row-label">Celular</span> sim (USB OTG)</dd>
+                    <dd><span class="row-label">Computador</span> Linux</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> não</dd>
+                </div>
+                <div>
+                    <dt>O mesmo dongle em outro computador ou num Raspberry Pi, pelo servidor de rede dele</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: RTL-SDR (network)</span></dd>
+                    <dd><span class="row-label">Frequências</span> como acima</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt>Receptor web <span translate="no">KiwiSDR</span>, o seu ou um público</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: KiwiSDR (network)</span></dd>
+                    <dd><span class="row-label">Frequências</span> 10 kHz - 30 MHz</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Hermes-Lite 2</span>, <span translate="no">Red Pitaya</span>, <span translate="no">ANAN</span> mais antigos (<span translate="no">OpenHPSDR</span>, só recepção; experimental)</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: Hermes-Lite 2 / OpenHPSDR (network)</span></dd>
+                    <dd><span class="row-label">Frequências</span> 0 - 38 MHz</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Airspy</span> (<span translate="no">R2, Mini, HF+</span>) ou um <span translate="no">RTL-SDR</span> compartilhado por um servidor de rede na porta 5555</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: Airspy / RTL-SDR server (network, port 5555)</span></dd>
+                    <dd><span class="row-label">Frequências</span> o que o receptor compartilhado cobre</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF, Airspy, RTL-SDR</span> ... compartilhados por um servidor host SDR remoto na porta 55132</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> <span dir="ltr" translate="no">SDR: remote SDR host (network: SDRplay, LimeSDR, Pluto ...)</span></dd>
+                    <dd><span class="row-label">Frequências</span> o que o receptor compartilhado cobre</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt>Qualquer um deles servido por uma <a href="#bridge">qFT8 bridge</a> em outro dispositivo</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> a bridge</dd>
+                    <dd><span class="row-label">Frequências</span> as do receptor da bridge</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> sim</dd>
+                </div>
+                <div>
+                    <dt>Um rádio comum (mais de 70 modelos por <span translate="no">USB</span>, ou qualquer rádio por cabo de áudio)</dt>
+                    <dd><span class="row-label">Linha do dispositivo</span> a linha do rádio, ou <code>AUTO</code></dd>
+                    <dd><span class="row-label">Frequências</span> o que o rádio recebe</dd>
+                    <dd><span class="row-label">Celular</span> sim</dd>
+                    <dd><span class="row-label">Computador</span> sim</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> por áudio (veja <a href="#iphone">iPhone</a>)</dd>
+                </div>
+            </dl>
+            <p>
+                Não são suportados: receptores <span translate="no">I/Q</span> de placa de som (um <span translate="no">SoftRock</span>, ou o
+                modo <span translate="no">I/Q</span> do <span translate="no">QMX+</span>: use o <span translate="no">QMX+</span>
+                como rádio normal, ele é plug and play por <span translate="no">USB</span>) e dongles <span translate="no">RTL</span>
+                com outros sintonizadores (<span translate="no">E4000, FC0012, FC0013, FC2580</span>).
+            </p>
+
+            <h4 id="swl-rtl-usb">Um dongle <span translate="no">RTL-SDR</span> no celular ou no computador</h4>
+            <p>
+                <strong>Celular ou tablet (Android)</strong>: ligue o dongle com um adaptador ou cabo <span translate="no">USB OTG</span>.
+                O Android oferece abrir o qFT8; permita o acesso <span translate="no">USB</span>. Com
+                <strong>Configurações &gt; Dispositivo</strong> em <code>AUTO</code> e sem rádio ligado, o qFT8 usa o dongle sozinho
+                (&ldquo;<span translate="no">AUTO - SDR: RTL-SDR (USB)</span>&rdquo;); um rádio também ligado tem prioridade. Desligar
+                e religar o dongle faz com que seja detectado de novo. O dongle tira energia do celular: um cabo curto e a
+                bateria carregada ajudam.
+            </p>
+            <p>
+                <strong>Nada a instalar, em qualquer dongle.</strong> O qFT8 tem um driver próprio para o dongle, embutido no app:
+                ele reconhece o <span translate="no">RTL-SDR Blog V4</span> e usa o conversor de subida
+                <span translate="no">HF</span> e a comutação de entradas embutidos nele, então o <span translate="no">HF</span> no V4
+                funciona sem nenhuma configuração. Em um <span translate="no">V3</span> (ou outro dongle sem conversor de subida) marque
+                <strong>HF sem conversor (amostragem direta)</strong> para receber abaixo de 24 MHz na entrada
+                <span translate="no">HF</span> dele. O qFT8 nunca liga o bias tee do dongle (alimentação da antena).
+            </p>
+            <p>
+                <strong>Computador, Linux</strong>: a mesma linha, o mesmo driver embutido. O qFT8 toma o dongle do driver de TV
+                que o sistema carrega sozinho para ele. Seu usuário precisa de permissão para abrir o dongle; se a linha de estado disser
+                &ldquo;sem permissão&rdquo;, adicione uma vez um arquivo de regras (por exemplo
+                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) com a linha
+                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
+                (<code>2832</code> para alguns dongles mais antigos), execute
+                <code dir="ltr">sudo udevadm control --reload-rules</code> e ligue o dongle de novo.
+            </p>
+            <p>
+                <strong>Computador, Windows e macOS</strong>: o qFT8 ainda não consegue abrir o dongle diretamente. Execute o
+                servidor de rede do <span translate="no">RTL-SDR</span> no mesmo computador (ou em outro, como um
+                <span translate="no">Raspberry Pi</span>) e escolha <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
+                com o endereço <code>127.0.0.1</code>, ou sirva o dongle a partir de um celular ou de um computador Linux com a
+                <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
+            <h4 id="swl-drivers">O servidor de rede do <span translate="no">RTL-SDR</span> e o driver dele</h4>
+            <p>
+                O servidor de rede (porta 1234) vem com o pacote de drivers <span translate="no">RTL-SDR</span> do seu sistema.
+                Esse pacote é um driver à parte, separado do qFT8, e a versão dele importa:
+            </p>
+            <ul>
+                <li><strong><span translate="no">RTL-SDR Blog V4</span></strong>: precisa de um driver que conheça o V4. Instale a
+                    versão do driver publicada pelo fabricante do dongle (<span translate="no">RTL-SDR Blog</span>, veja o guia de início rápido
+                    do V4); é essa que usamos com o V4. Um driver mais antigo, como alguns Linux e downloads antigos do Windows
+                    ainda trazem, encontra o dongle mas não conhece a ligação do sintonizador nem o conversor de subida:
+                    as frequências saem erradas ou nada é recebido, e o <span translate="no">HF</span> não funciona.</li>
+                <li><strong><span translate="no">RTL-SDR Blog V3</span></strong> e dongles genéricos <span translate="no">R820T / R820T2</span>:
+                    qualquer versão do driver serve. Para <span translate="no">HF</span> marque
+                    <strong>HF sem conversor (amostragem direta)</strong>; o qFT8 pede ao servidor que mude o dongle para a entrada
+                    <span translate="no">HF</span>.</li>
+                <li><strong>Linux</strong>: o sistema carrega um driver de TV para o dongle, o que impede o servidor de rede de
+                    abri-lo. Pacotes de driver recentes o descarregam sozinhos; caso contrário, bloqueie-o (o módulo
+                    <code>dvb_usb_rtl28xxu</code>) e ligue o dongle de novo. Mesma regra de permissão de cima.</li>
+                <li><strong>Windows</strong>: o dongle deve usar o driver genérico <span translate="no">WinUSB</span> em vez do
+                    driver de TV que o Windows instala; o guia de início rápido do fabricante do dongle mostra como.</li>
+                <li><strong>Raspberry Pi</strong>: um bom lugar para o servidor, ao lado da antena; use a
+                    versão do driver da <span translate="no">RTL-SDR Blog</span> para um V4.</li>
+            </ul>
+            <p>
+                Settings for the network row: <strong>Endereço</strong>, <strong>Porta</strong>, <strong>Taxa de amostragem</strong> (2.4 MS/s
+                by default; if the status line says the data arrives in bursts, tap it to use the highest rate),
+                <strong>Ganho</strong>, <strong>Correção de frequência (ppm)</strong> and
+                <strong>HF sem conversor (amostragem direta)</strong> and, for a server that can switch it, <strong>Bias tee (alimentação na entrada de antena)</strong>. Any server that speaks the same
+                <span translate="no">RTL-SDR</span> network protocol works too, including those made for other
+                <span translate="no">SDR</span>s.
+            </p>
+
+            <h4 id="swl-other-sdr">Outros <span translate="no">SDR</span>s</h4>
+            <ul>
+                <li><strong><span translate="no">KiwiSDR</span></strong>: nada a instalar. Digite o endereço do receptor
+                    (porta 8073 por padrão). O qFT8 usa um dos canais, aparece como qFT8 na lista de ouvintes e
+                    respeita os limites do dono: quando todos os canais estão ocupados, tenta de novo após 2 minutos; quando o receptor
+                    recusa (senha, uma conexão por endereço, limite de tempo), a linha de estado informa o motivo e o qFT8 espera
+                    30 minutos ou até você mudar o endereço. Receptores públicos são compartilhados: saia deles quando terminar.</li>
+                <li><strong><span translate="no">Hermes-Lite 2 / OpenHPSDR</span></strong>: deixe o endereço vazio para encontrar o
+                    rádio na sua rede. O rádio atende um programa por vez: feche antes qualquer outro programa que o esteja usando.
+                    O qFT8 só recebe por ele.</li>
+                <li><strong><span translate="no">Airspy</span></strong> (e <span translate="no">RTL-SDR</span>) na porta 5555: execute
+                    o servidor de rede do receptor no computador em que o receptor está ligado, com o driver próprio do receptor
+                    instalado. O servidor escolhe a taxa de amostragem e o ganho; se outro ouvinte o controlar, o qFT8 só pode
+                    ouvir onde ele está sintonizado.</li>
+                <li><strong><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF</span></strong> e outros: no
+                    computador em que o receptor está ligado, instale o driver do fabricante (para o <span translate="no">SDRplay</span>,
+                    a <span translate="no">API</span> dele), o servidor host SDR remoto (porta 55132) e o módulo dele para esse
+                    receptor. O qFT8 usa o primeiro receptor que o servidor oferece. O servidor escolhe a taxa e o ganho.</li>
+            </ul>
+
+            <h4 id="swl-radio">Um rádio comum</h4>
+            <p>
+                Qualquer rádio que o qFT8 suporta também é um ótimo receptor: ligue-o como descrito em
+                <a href="#quick-setup">Configuração rápida</a> (um <span translate="no">QMX</span>, <span translate="no">QMX+</span> ou
+                <span translate="no">IC-7300</span>, por exemplo, com um cabo <span translate="no">USB</span>). O qFT8 ajusta a
+                frequência por <span translate="no">CAT</span> quando você aperta um botão de banda. Ative o modo
+                <span translate="no">SWL</span> para que ele nunca transmita.
+            </p>
+            <h3 id="swl-biastee">Bias tee</h3>
+            <p>
+                The device setup of an <span translate="no">SDR</span> whose driver can switch it (the <span translate="no">RTL-SDR</span> on this device's
+                <span translate="no">USB</span>, <span translate="no">RTL-SDR Blog V3</span> / <span translate="no">V4</span>, and an <span translate="no">RTL-SDR</span> network server)
+                has the check box <strong>Bias tee (alimentação na entrada de antena)</strong>, off by default. It puts DC power on the antenna cable, for an active antenna or a
+                preamplifier. Turning it on first shows a warning that it can damage a radio, filter, splitter or DC-shorted antenna on that cable (<strong>OK</strong> /
+                <strong>CANCEL</strong>). qFT8 never switches it on by itself and switches it off whenever the <span translate="no">SDR</span> is closed.
+            </p>
+
+            <h3 id="swl-mode-howto">Modo <span translate="no">SWL</span> e o registro de ouvidas</h3>
+            <p>
+                <strong>MODO SWL (SÓ ESCUTA)</strong>, no fim de Configurações &gt; <strong>Eventos</strong>, pede seu
+                identificador <span translate="no">SWL</span> (por exemplo <span translate="no">R4-123-456</span>) ou seu indicativo.
+                Enquanto estiver ativo, o qFT8 nunca transmite (o botão TX mostra <span translate="no">NO TX</span> /
+                <span translate="no">SWL</span>; TX, TUNE e todos os modos se recusam a transmitir), e o seu próprio registro de QSOs não é tocado. Os
+                detalhes estão em <a href="#events-supported">Eventos compatíveis</a>.
+            </p>
+            <p>
+                <strong>O registro de ouvidas</strong> reúne os QSOs que você ouve entre duas outras estações:
+            </p>
+            <ul>
+                <li>Tudo o que é recebido por um <span translate="no">SDR</span> (ou por uma qFT8 bridge que sirva um) vai para o
+                    registro de ouvidas sozinho, também sem o modo <span translate="no">SWL</span>. Com um rádio que pode transmitir,
+                    só enquanto o modo <span translate="no">SWL</span> está ativo.</li>
+                <li>Em <span translate="no">FT8, FT4, LQ8</span> e nos outros modos cronometrados (incluindo <span translate="no">JT65, JT9</span>)
+                    um QSO conta quando a confirmação (<span translate="no">RR73</span>, <span translate="no">RRR</span>
+                    ou um <span translate="no">73</span> depois do relatório com roger) foi ouvida. Em <span translate="no">CW, RTTY, PSK</span>
+                    e <span translate="no">Olivia / MFSK</span> conta quando tanto &ldquo;A DE B&rdquo; quanto &ldquo;B DE A&rdquo;
+                    foram copiados, com os relatórios quando foram enviados.</li>
+                <li>Cada QSO ouvido guarda os dois indicativos, hora, banda, frequência, modo, os dois relatórios, os grids, qualquer referência
+                    de programa ouvida (cume <span translate="no">SOTA</span>, parque <span translate="no">POTA</span>,
+                    <span translate="no">RAZA</span> ...) e o receptor por onde veio (no fim da linha).</li>
+                <li>The list is the <span translate="no">SWL</span> page of the Log tab: switch the <strong>QSO</strong> / <strong>SWL</strong> dropdown at its top to <strong>SWL</strong>. It has the same filter bar as the <span translate="no">QSO</span> page, and a tap on an entry edits or deletes it (nothing is ever deleted on eQSL). The web remote shows it too.</li>
+                <li>The log keeps every entry (no limit) in a file that is only ever added to, so a very long log does not slow the start of the app; the page reads only the newest entries and shows more as you scroll.</li>
+                <li>With the Ham features off, every <span translate="no">FT8, FT4, LQ ...</span> station heard is logged (once an hour per station and mode); with the Ham features on, only the complete QSOs heard are logged. A station you hear for the first time (never in your <span translate="no">SWL</span> log before) has its callsign in cyan in the Stations list when the Ham features are off.</li>
+                <li>The signals receivers write what they identify to the log, once per station per <span translate="no">UTC</span> day: ships (<span translate="no">AIS</span>), aircraft (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, <span translate="no">NAVTEX</span> stations, <span translate="no">DSC</span>, time stations, <span translate="no">NCDXF</span> beacons, <span translate="no">ALE / ARDOP / PACTOR</span> and <span translate="no">APRS</span> callsigns, weather fax and weather-satellite pictures, and <span translate="no">FM</span> stations by their <span translate="no">RDS</span> code and name. They count for the <span translate="no">SWL</span> awards; they are never sent to eQSL and are not in the <span translate="no">ADIF</span> export (the <span translate="no">CSV</span> has them, with the name heard in the last column).</li>
+                <li>Uploads follow one rule: the eQSL <span translate="no">SWL</span> account files every heard station under that account (a ham eQSL account is refused); <span translate="no">PSK Reporter</span> and <span translate="no">WSPRnet</span> report under your callsign, else your <span translate="no">SWL</span> id.</li>
+            </ul>
+
+            <h3 id="swl-exports">Exportações: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> e <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
+            <ul>
+                <li><strong>EXPORTAR ADIF</strong>: um registro por estação ouvida, dois por QSO, do jeito como se enviam relatórios e cartões
+                    <span translate="no">SWL</span>: <span translate="no">SWL=Y</span>, seu identificador como operador, a estação ouvida em
+                    <span translate="no">CALL</span> com o seu relatório, a estação com a qual ela trabalhava na mensagem do cartão
+                    &ldquo;Heard working ...&rdquo; e no comentário, as referências de programas (<span translate="no">SOTA_REF</span>,
+                    <span translate="no">POTA_REF</span>, <span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>) e
+                    o receptor em <span translate="no">MY_RIG</span>.</li>
+                <li><strong>EXPORTAR CSV</strong>: uma linha por QSO, com o receptor na última coluna.</li>
+                <li><strong>EXPORTAR SOTA SWL (CSV)</strong>: aparece quando você ouviu ativadores em um cume. Uma linha de chaser por
+                    ativador ouvido, com o cume, no formato que o banco de dados do <span translate="no">SOTA</span> aceita; envie-o
+                    para lá como registro <span translate="no">SWL</span>.</li>
+                <li><strong>EXPORTAR RAZA SWL (CSV)</strong>: aparece quando você ouviu ativadores do <span translate="no">RAZA</span>. Uma
+                    linha por ativador com o que enviar a ele (indicativo, data, hora, banda, modo, seu relatório, a estação que ele trabalhou,
+                    a referência dele e seu identificador), por exemplo como cartão <span translate="no">SWL</span> eletrônico no
+                    <span translate="no">HAMLOG.online</span>.</li>
+                <li><strong>CLEAR SWL LOG</strong> (Settings &gt; Log files) deletes the list from this device after asking and after you type yes; your own QSO log is not touched, and nothing is deleted on eQSL or any online service. It also resets your <span translate="no">SWL</span> awards, so export the log first.</li>
+            </ul>
+
+            <h3 id="swl-services">O log <span translate="no">SWL</span> em Configurações, e <span translate="no">eQSL</span></h3>
+            <ul>
+                <li>Configurações &gt; <strong>Arquivos de log</strong> tem quatro botões: <strong>IMPORTAR LOG DE QSOS</strong> e <strong>EXPORTAR LOG DE QSOS</strong> (seus próprios QSOs) e <strong>IMPORTAR LOG SWL</strong> e <strong>EXPORTAR LOG SWL</strong> (o log do que foi ouvido). <strong>EXPORTAR LOG SWL</strong> oferece os arquivos acima. <strong>IMPORTAR LOG SWL</strong> lê um arquivo <span translate="no">ADIF</span> e leva para o log do que foi ouvido apenas os seus registros <span translate="no">SWL</span> (<span translate="no">SWL=Y</span>, o formato que outros logs e serviços <span translate="no">SWL</span> usam); os dois registros de um mesmo QSO ouvido voltam a ser uma única entrada, as entradas que já estão lá não são duplicadas e todo outro registro é ignorado (nunca vai para o seu log de QSOs). O controle remoto web também oferece <strong>EXPORTAR LOG SWL</strong>, baixado para o navegador.</li>
+                <li><strong>eQSL (CONTA SWL)</strong>, no log do que foi ouvido: <span translate="no">eQSL</span> é o serviço on-line com uma conta <span translate="no">SWL</span> de verdade (uma conta cujo perfil está definido como <span translate="no">SWL</span>; os cartões dela dizem &ldquo;<span translate="no">Confirming SWL Reception</span>&rdquo;). Digite o nome de usuário e a senha dessa conta (não os de uma conta de radioamador); depois que o <span translate="no">eQSL</span> os aceita, cada QSO ouvido é enviado como um cartão por estação ouvida, assim que é registrado, e os já ouvidos são enviados de imediato. <strong>ENVIAR AGORA</strong>, <strong>MUDAR O ACESSO</strong> e <strong>PARAR DE ENVIAR PARA O eQSL</strong> também estão lá. Nada é jamais apagado no <span translate="no">eQSL</span>. Esses cartões são o que muitos programas de diplomas <span translate="no">SWL</span> aceitam.</li>
+                <li>Os outros serviços de livro de registro (<span translate="no">LoTW</span>, <span translate="no">QRZ</span>, <span translate="no">Club Log</span>, ...) aceitam apenas QSOs de mão dupla, então os QSOs ouvidos nunca são enviados a eles. <span translate="no">SOTA</span> e <span translate="no">RAZA</span> aceitam relatórios <span translate="no">SWL</span> por meio dos seus próprios arquivos (acima), enviados por você.</li>
+            </ul>
+
+            <h3 id="swl-platforms">Passo a passo</h3>
+            <ol>
+                <li>Arranje um receptor: um <span translate="no">RTL-SDR Blog V4</span> com antena é o começo mais simples
+                    (de <span translate="no">HF</span> a <span translate="no">UHF</span>, sem driver num celular ou no Linux);
+                    sem hardware nenhum, use um <span translate="no">KiwiSDR</span> público.</li>
+                <li>Escolha-o em <strong>Configurações &gt; Dispositivo</strong> (ou ligue o dongle com Dispositivo em
+                    <code>AUTO</code>) e espere por &ldquo;Conectado&rdquo; na linha de estado.</li>
+                <li>Escolha um modo e uma banda: o <span translate="no">FT8</span> em <span translate="no">20 m</span> ou
+                    <span translate="no">40 m</span> fica movimentado quase a qualquer hora e enche o mapa em um minuto.</li>
+                <li>Ative o <strong>MODO SWL (SÓ ESCUTA)</strong> se quiser seu identificador <span translate="no">SWL</span>
+                    nas exportações (com um rádio que pode transmitir, também para manter o TX desligado).</li>
+                <li>Exporte o registro de ouvidas quando quiser enviar relatórios.</li>
+            </ol>
+            <p>
+                <strong>Phone</strong>: <span translate="no">USB</span> dongle or any network receiver.
+                <strong>Computer</strong>: the <span translate="no">USB</span> dongle on Linux, network receivers everywhere.
+                <strong>iPhone / iPad</strong>: network receivers, or a receiver served by a <a href="#bridge">qFT8 bridge</a>
+                (the iPhone has no <span translate="no">USB</span> host for a dongle). <strong>Web remote</strong>: shows the
+                receiver's <span translate="no">NO TX</span> / <span translate="no">SDR</span> state and the <span translate="no">SWL</span> log.
+            </p>
+
+            <h3 id="awards">Awards (experimental)</h3>
+            <p>
+                qFT8 makes a diploma itself from your own logs: there is nothing to apply for. The band at the top of Settings, <strong>PRÊMIOS</strong>, has
+                <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on), each with its number of stars;
+                tap one to open its page, <strong>Prêmios HAM</strong> or <strong>Prêmios SWL</strong>. Settings &gt; Features &gt; <strong>Prêmios</strong> turns them off (nothing is lost).
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: one table with the modes down and the bands across; each mode and each band shows its ten stars, its station count and the next target, and every
+                    cell adds a star for the different stations (counted by base callsign) you worked in that mode on that band. DXCC entities and grid squares have their own boxes.
+                    Only <em>confirmed</em> <span translate="no">QSO</span>s count (LoTW, QRZ, eQSL or confirmed by hand), imported ones too, logged with your callsign as the station callsign.</li>
+                <li><strong>SWL</strong>: the amateur stations you heard (per group of modes) and the other services (broadcast, time, beacons, weather fax, <span translate="no">HF</span> data,
+                    maritime, ships, aircraft), with the <span translate="no">DXCC</span> entities and grids heard. Your <span translate="no">SWL</span> log and your own QSOs both count, each station once.</li>
+                <li>The diploma shows your callsign (or <span translate="no">SWL</span> id), &ldquo;has achieved N stars&rdquo; and the tiles. <strong>FULLSCREEN</strong> zooms it and
+                    <strong>SHARE</strong> sends it as a picture (the web remote downloads it). <strong>Corresponder exatamente ao meu indicativo</strong> counts only QSOs logged with exactly your callsign
+                    (otherwise <span translate="no">/P</span>, <span translate="no">/M</span> and the like count too). A <strong>Idioma do diploma</strong> button picks the language of the diploma
+                    for viewing and sharing; <strong>Padrão do app</strong> follows the app's language.</li>
+            </ul>
+
+            <h3 id="swl-only">Starting without a callsign</h3>
+            <p>
+                The callsign card of the first start has a <strong>SOMENTE SWL</strong> button and the line &ldquo;No callsign? Press SWL ONLY to receive.&rdquo; It asks for an
+                optional <span translate="no">SWL</span> id (one button, <strong>CONTINUAR</strong>; an empty box means &ldquo;SWL&rdquo;) and warns when neither a
+                callsign nor a locator is set (Settings &gt; <strong>Time and location</strong> warns the same, and on the computer <strong>PICK ON MAP</strong> picks your locator on a world map).
+                The welcome then says &ldquo;You didn't enter a callsign, but I can guide you through the SWL features of qFT8.&rdquo; and <strong>START TUTORIAL</strong> runs a short
+                <span translate="no">SWL</span> tutorial. Without a callsign only the <span translate="no">SWL</span> features are on and the <span translate="no">TX</span> button
+                reads <span translate="no">NO CALLSIGN</span>; to transmit, press it and then <strong>CONFIGURAR</strong>.
+            </p>
+
+            <h3 id="swl-legal">Escuta e a lei</h3>
+            <ul>
+                <li>O qFT8 só recebe por um <span translate="no">SDR</span>; não consegue transmitir por um.</li>
+                <li>Receber estações de radioamador, de radiodifusão e de sinais horários é permitido na maioria dos países. Outros serviços de rádio
+                    podem ser recebidos em alguns países, mas não gravados, repassados nem usados, e alguns países restringem a própria
+                    escuta. Valem as regras do país em que você escuta: confira-as antes de escutar fora das bandas de radioamador e de
+                    radiodifusão.</li>
+                <li>Um <span translate="no">KiwiSDR</span> público pertence ao dono: siga os limites do dono.</li>
+            </ul>
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
+        </section>
+
+        <section id="map-live">
+            <h2>O que aparece no mapa</h2>
+            <p>
+                Quando o qFT8 recebe um sinal que traz uma posição, ele desenha o remetente no
+                <a href="#ui-world-map-tab">Mapa mundial</a> assim que é ouvido, move-o conforme chegam novos reportes e o deixa desaparecer aos poucos
+                quando nada mais é ouvido. Cada tipo tem seu próprio desenho pequeno na cor do mapa:
+            </p>
+            <ul>
+                <li><strong>Aeronaves</strong> (<span translate="no">ADS-B</span>, 1090 MHz): um avião visto de cima, apontando
+                    para onde voa. Toque nele para ver o número do voo, o endereço, a altitude, a velocidade, o rumo e o código do transponder
+                    (<em>squawk</em>). As aeronaves esmaecem após um minuto sem reporte e somem após três.</li>
+                <li><strong>Navios</strong> (<span translate="no">AIS</span>, 162 MHz): um navio visto de lado, sempre
+                    na vertical; ele fica voltado para oeste quando o navio segue para oeste e para leste nos demais casos. Toque nele para ver o nome do navio,
+                    o <span translate="no">MMSI</span>, o tipo, o rumo e a velocidade. Os navios esmaecem após 10 minutos e somem após 30.</li>
+                <li><strong>Balões meteorológicos</strong> (radiossondas, 400-406 MHz): um balão com sua carga e uma linha
+                    atrás dele mostrando por onde passou. Toque nele para ver a altitude, o rumo e a velocidade.</li>
+                <li><strong>Estações e objetos <span translate="no">APRS</span></strong>: um mastro de antena. Toque nele para ver
+                    a altitude, o rumo e a velocidade da estação, quando ela os envia.</li>
+                <li><strong>Nós de rede mesh</strong>: um hexágono com um nó no meio.</li>
+                <li><strong>Balizas</strong>, estações-base <span translate="no">AIS</span> e auxílios à navegação: os anéis de baliza
+                    usados em outras partes do qFT8.</li>
+            </ul>
+            <p>
+                Eles são mostrados pelo botão <strong><span translate="no">SPOT</span></strong> do mapa: quando está ligado, você os vê
+                junto com os outros spots, e quando está desligado eles ficam ocultos. Cada cartão também diz quando o
+                remetente foi ouvido pela última vez, em que frequência e a que distância ele está de você. Estações e balões ficam no
+                mapa por até uma hora, ficando mais fracos à medida que o último reporte envelhece.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Voltar ao índice</a>
         </section>
 
         <section id="features">
@@ -4596,7 +5389,7 @@
                 <h4 id="qft8-log-server">Configurando o servidor</h4>
                 <ol>
                     <li>No qFT8 que deve reunir os QSOs, abra <strong>Configurações</strong>, vá em
-                        <strong>Servidores</strong> e abra <strong>Servidor qFT8log</strong>.</li>
+                        Mais configurações &gt; <strong>SERVIDORES</strong> e abra a engrenagem de <strong>Servidor qFT8log</strong>.</li>
                     <li>Digite uma senha. Use o mesmo tipo de senha do
                         <a href="#bridge">bridge do qFT8</a>: sete caracteres ou mais.</li>
                     <li>Deixe a porta em 13510, a menos que outra coisa a use, e ative o servidor. A página mostra o
@@ -4861,7 +5654,7 @@
                     <li><strong>Orientação</strong>: <strong>Paisagem</strong>, <strong>Retrato</strong> ou <strong>Seguir o celular</strong>. Em retrato o espectrograma fica em cima, a aba embaixo dele, e em um celular a barra inferior ocupa duas linhas.</li>
                     <li><strong>O divisor</strong>: arraste a linha fina entre o espectrograma e a aba para dar mais espaço a um deles. Cada orientação lembra a sua própria posição.</li>
                     <li><strong>Quadrantes</strong> (tablets): o espectrograma, as estações, o mapa mundial e o log de QSOs de uma só vez, com as Configurações abrindo à direita.</li>
-                    <li><strong>Recursos</strong>: <strong>Recursos de rádio</strong>, <strong>Log de QSOs</strong> e <strong>Mapa mundial</strong> podem ser desligados separadamente se você não os usa, por exemplo para usar o qFT8 só como logbook. Enquanto um está desligado, um botão <strong>ATIVAR</strong> para ele aparece nas Configurações. Desligar os recursos de rádio também desliga o <span translate="no">TX</span>.</li>
+                    <li><strong>Recursos</strong>: <strong>Recursos de radioamador</strong> (callsign, transmitting, the <span translate="no">QSO</span> log, syncing and events), <strong>Recursos SWL</strong> (listening: the <span translate="no">SWL</span> tab, the <span translate="no">SWL</span> log and your <span translate="no">SWL</span> id) and <strong>Prêmios</strong> can each be turned off if you do not use them. On the phone <strong>Radio features</strong>, <strong>QSO log</strong> and <strong>Mapa mundial</strong> can be turned off too; while one is off, an <strong>ATIVAR</strong> button for it shows in Settings. Turning the Ham or radio features off also switches <span translate="no">TX</span> off.</li>
                     <li><strong>O aplicativo cobre</strong>: permite que o qFT8 desenhe sobre a barra de navegação, a área da câmera e a barra de status, para ganhar um pouco mais de espaço.</li>
                 </ul>
             </section>
@@ -4879,7 +5672,12 @@
 
             <h3 id="report-offer">"Enviar um relatório sobre isso?"</h3>
             <p>
-                Quando o qFT8 percebe que parou de responder por um momento, ou que a decodificação está demorando demais no seu dispositivo, ele pode mostrar um pequeno cartão que oferece enviar um relatório sobre isso, com <strong><span translate="no">ENVIAR</span></strong>, <strong><span translate="no">NÃO ENVIAR</span></strong> e <strong><span translate="no">NÃO PERGUNTAR DE NOVO</span></strong>. Nada é enviado sem o seu toque. O cartão aparece no máximo uma vez por dia, e <strong><span translate="no">NÃO PERGUNTAR DE NOVO</span></strong> o silencia por uma semana. Depois de um travamento, o qFT8 pergunta na próxima inicialização se deve enviar um relatório de falha.
+                When qFT8 notices that it stopped responding for a moment, or that decoding is taking too long on
+                your device, it may show a small card that offers to send a report about it, with
+                <strong>ENVIAR</strong>, <strong>NÃO ENVIAR</strong> and
+                <strong>NÃO PERGUNTAR DE NOVO</strong>. Nothing is ever sent without your tap. The
+                card appears at most once a day, and <strong>NÃO PERGUNTAR DE NOVO</strong> silences
+                it until the next version. It also appears when the spectrogram keeps having trouble for minutes (it looks slow, pauses or skips), with a plain question whether to send a report; a healthy slow device never sees it. When your radio is reached through a qFT8 bridge, a report also carries the bridge's own log, fetched over the bridge link. After a crash, qFT8 asks at the next start whether to send a crash report.
             </p>
 
             <h3 id="update-check">Procurar novas versões ao iniciar</h3>
@@ -4903,6 +5701,14 @@
         <section id="troubleshooting">
             <h2>Solução de problemas</h2>
 
+            <h3 id="trouble-link-lost">&ldquo;radio link lost&rdquo;</h3>
+            <p>
+                On the computer (and with a phone's <span translate="no">USB</span> radio), a radio cable or <span translate="no">USB</span>-serial adapter that stops answering
+                no longer freezes qFT8. When the port has not finished a command for 4 seconds the program shows <strong>radio link lost</strong>, <span translate="no">TX</span> goes
+                <span translate="no">OFF</span>, new commands are dropped instead of piling up, and qFT8 reopens the port by itself a few times and again when the adapter is plugged back in.
+                <span translate="no">TX OFF</span> always goes ahead of everything else waiting for the radio. Check the cable and the adapter, plug it in again, and press
+                <span translate="no">TX ON</span> when the link is back: qFT8 never switches <span translate="no">TX</span> on by itself.
+            </p>
             <h3 id="trouble-not-recognized">O celular ou o computador não reconhece o transceptor ou ele é desconectado</h3>
             <p>
                 Quase sempre é um problema de conexão física ou de interferência de rádio. As conexões USB são sensíveis à vibração, à qualidade do cabo e à sujeira acumulada na porta USB. No Android, outra causa comum é que o <strong>USB OTG pode estar desativado por padrão</strong> no seu dispositivo (em especial, se você consegue receber sinais no qFT8, mas não transmitir, e os comandos CAT não funcionam mesmo com um dispositivo totalmente compatível, mostrado na lista de dispositivos, reconhecido automaticamente no modo AUTO etc., é muito provável que esta seja a causa).

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <!-- Global Metadata & Configuration -->
+    <script src="../data.js"></script>
+    <script>
+                function onLanguageChange(lang) {
+            if (!supportedLanguages.includes(lang)) return;
+            try { localStorage.setItem('qft8_user_lang', lang); } catch (e) {}
+            const isFile = window.location.protocol === 'file:';
+            if (lang === 'en') {
+                window.location.href = isFile ? '../index.html' : '../';
+            } else {
+                window.location.href = isFile ? '../' + lang + '/index.html' : '../' + lang + '/';
+            }
+        }
+
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qFT8 — Ραδιοερασιτεχνισμός και SWL · Δωρεάν εφαρμογή FT8 για Android, iOS, Windows, macOS και Linux</title>
+    <meta name="description" content="Φορητός ραδιοερασιτεχνισμός και SWL. Το qFT8 είναι μια δωρεάν εφαρμογή FT8 για Android, iOS, Windows, macOS και Linux, χωρίς διαφημίσεις και χωρίς λογαριασμό. Plug and play με περισσότερα από 70 ραδιόφωνα, μεταξύ τους το QMX και το IC-7300. FT8, FT4, FT2, LQ8, JS8, WSPR, CW, RTTY, SSTV και SSB, πλήρες AUTO, ζωντανός παγκόσμιος χάρτης, POTA, SOTA και διαδικτυακά αρχεία καταγραφής, σε 63 γλώσσες.">
+    <meta property="og:title" content="qFT8 — Ραδιοερασιτεχνισμός και SWL · Δωρεάν εφαρμογή FT8 για Android, iOS, Windows, macOS και Linux">
+    <meta property="og:description" content="Φορητός ραδιοερασιτεχνισμός και SWL. Το qFT8 είναι μια δωρεάν εφαρμογή FT8 για Android, iOS, Windows, macOS και Linux, χωρίς διαφημίσεις και χωρίς λογαριασμό. Plug and play με περισσότερα από 70 ραδιόφωνα, μεταξύ τους το QMX και το IC-7300. FT8, FT4, FT2, LQ8, JS8, WSPR, CW, RTTY, SSTV και SSB, πλήρες AUTO, ζωντανός παγκόσμιος χάρτης, POTA, SOTA και διαδικτυακά αρχεία καταγραφής, σε 63 γλώσσες.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="qFT8">
+    <!-- SEO-LLM-1: schema.org data (SoftwareApplication + FAQPage + WebSite), written per language by
+         tools/generate_web_languages.py from the page's own texts (data.js gives the version and date) -->
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://qft8.com/#app",
+   "name": "qFT8",
+   "url": "https://qft8.com/el/",
+   "description": "Φορητός ραδιοερασιτεχνισμός και SWL. Το qFT8 είναι μια δωρεάν εφαρμογή FT8 για Android, iOS, Windows, macOS και Linux, χωρίς διαφημίσεις και χωρίς λογαριασμό. Plug and play με περισσότερα από 70 ραδιόφωνα, μεταξύ τους το QMX και το IC-7300. FT8, FT4, FT2, LQ8, JS8, WSPR, CW, RTTY, SSTV και SSB, πλήρες AUTO, ζωντανός παγκόσμιος χάρτης, POTA, SOTA και διαδικτυακά αρχεία καταγραφής, σε 63 γλώσσες.",
+   "inLanguage": "el",
+   "applicationCategory": "CommunicationApplication",
+   "applicationSubCategory": "Amateur radio and SWL (shortwave listening): digital modes (FT8, FT4, JS8, WSPR, CW, RTTY, SSTV, SSB), SDR receivers",
+   "operatingSystem": "Android 6.0 or newer, iOS, Windows, macOS, Linux",
+   "softwareVersion": "3.23",
+   "dateModified": "2026-10-29",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+   },
+   "featureList": [
+    "Δωρεάν, χωρίς διαφημίσεις, χωρίς λογαριασμό",
+    "Τηλέφωνα και tablet Android, iOS, Windows, macOS και Linux",
+    "Plug and play με 70+ ραδιόφωνα",
+    "Ακρόαση (SWL): δέκτες SDR, αρχείο όσων ακούστηκαν με ADIF SWL, εξαγωγές SOTA και RAZA",
+    "FT8, FT4, FT2, LQ8, Q65, MSK144, FST4, FST4W, JS8, WSPR, CW, RTTY, JTTY, SSTV, DRAW και SSB",
+    "Πλήρες AUTO ή χειροκίνητη κλήση με ένα κλικ",
+    "Δικοί του αποκωδικοποιητές και κωδικοποιητές, γραμμένοι από το μηδέν",
+    "Ζωντανός παγκόσμιος χάρτης με spots σε πραγματικό χρόνο, POTA, SOTA, δραστηριότητα LQ8 και διάδοση μπάντας",
+    "Προγράμματα βραβείων και διαγωνισμοί: POTA, SOTA, WWFF, IOTA, HEMA, GMA και άλλα· ARRL Field Day και άλλοι διαγωνισμοί (πειραματικά)",
+    "Ενσωματώνεται με QRZ, Logbook of the World, Wavelog, Cloudlog, qFT8log, HRDLog, HamQTH, WRL, Club Log και eQSL· ADIF, SOTA και POTA",
+    "Τηλεχειρισμός από οποιονδήποτε περιηγητή",
+    "63 γλώσσες",
+    "Ενσωματωμένα στην εφαρμογή, για ραδιοερασιτέχνες και ακροατές (SWL): αστέρια για τα είδη εκπομπής, τις μπάντες, τις οντότητες DXCC και τα τετράγωνα πλέγματος που κάνετε ή ακούτε, ένα δίπλωμα που γεμίζει με την πρόοδό σας και επιτεύγματα που μπορείτε να μοιραστείτε.",
+    "Η εφαρμογή δημιουργεί το δίπλωμα μόνη της, από το δικό σας ημερολόγιο: τίποτα για αίτηση, τίποτα για αποστολή. Υπάρχουν δύο προγράμματα: HAM (οι επιβεβαιωμένες επαφές σας) και SWL (οι σταθμοί που ακούσατε)."
+   ],
+   "image": "https://qft8.com/qft8.jpg",
+   "screenshot": [
+    "https://qft8.com/media/shot_world_map.jpg",
+    "https://qft8.com/media/shot_cw.jpg",
+    "https://qft8.com/media/shot_events.jpg",
+    "https://qft8.com/media/qft8_pc_loop_poster.jpg",
+    "https://qft8.com/media/qft8_android_loop_poster.jpg"
+   ],
+   "downloadUrl": "https://qft8.com/el/#download",
+   "installUrl": "https://play.google.com/store/apps/details?id=com.ft8.app",
+   "softwareHelp": "https://qft8.com/manual/el/",
+   "author": {
+    "@id": "https://qft8.com/#author"
+   },
+   "publisher": {
+    "@id": "https://qft8.com/#author"
+   },
+   "sameAs": [
+    "https://play.google.com/store/apps/details?id=com.ft8.app",
+    "https://apps.microsoft.com/detail/9NCWHRF48SW9",
+    "https://t.me/qFT8app",
+    "https://github.com/lquesada/qFT8"
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://qft8.com/#author",
+   "name": "Luis Quesada Torres",
+   "alternateName": "HB9IPH",
+   "url": "https://www.luisquesada.com"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://qft8.com/#website",
+   "name": "qFT8",
+   "url": "https://qft8.com/",
+   "inLanguage": "el",
+   "publisher": {
+    "@id": "https://qft8.com/#author"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://qft8.com/el/#faq",
+   "inLanguage": "el",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Τι είναι το qFT8;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Το qFT8 είναι ένα δωρεάν ραδιοερασιτεχνικό πρόγραμμα για ψηφιακά modes ασθενών σημάτων, Μορς, τηλέτυπο, εικόνες και φωνή. Λειτουργεί σε τηλέφωνα και tablet Android, iOS, Windows, macOS και Linux, και μπορεί να ελεγχθεί από οποιονδήποτε περιηγητή. Δεν έχει διαφημίσεις και δεν χρειάζεται λογαριασμό. Έχει γραφτεί από τον Luis Quesada Torres, HB9IPH, με δικούς του αποκωδικοποιητές και κωδικοποιητές γραμμένους από το μηδέν."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ποια είναι μια καλή εφαρμογή FT8 για Android;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Το qFT8 είναι ένας πλήρης σταθμός FT8 για Android 6.0 και νεότερο, σε τηλέφωνα και tablet: συνδέστε το ραδιόφωνο με ένα καλώδιο USB και το qFT8 το αναγνωρίζει και ρυθμίζει μόνο του το CAT και τον ήχο, χωρίς υπολογιστή και χωρίς κουτί διεπαφής. Στέλνει και λαμβάνει FT8, FT4, FT2, LQ8, JS8, WSPR και άλλα, απαντά σε CQ με πλήρες AUTO, κρατά το ρολόι σωστό από το internet ή το GPS, δείχνει κάθε σταθμό σε έναν ζωντανό παγκόσμιο χάρτη και καταγράφει κάθε QSO στις υπηρεσίες που επιλέγετε. Συνεχίζει να λειτουργεί με σβηστή οθόνη. Δωρεάν, χωρίς διαφημίσεις, χωρίς λογαριασμό."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Μπορώ να εκτελέσω FT8 σε υπολογιστή Windows, Mac ή Linux;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ναι. Το qFT8 λειτουργεί σε Windows (64-bit και 32-bit, και από το Microsoft Store), σε κάθε Mac (Apple Silicon και Intel) και σε Linux (Intel/AMD και ARM, συμπεριλαμβανομένου του Raspberry Pi), με τα ίδια modes, ραδιόφωνα και λειτουργίες όπως στο Android. Οι λήψεις σε αυτή τη σελίδα είναι δωρεάν."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Υπάρχει εφαρμογή FT8 για iPhone και iPad;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Το qFT8 λειτουργεί και σε iPhone και iPad (iOS). Ένα iPhone ή iPad δεν μπορεί να ελέγξει ραδιόφωνο μέσω καλωδίου, οπότε ενεργοποιεί το ραδιόφωνο μέσω του VOX του ραδιοφώνου ή μέσω μιας διεπαφής ήχου που ενεργοποιεί το ραδιόφωνο από τον ήχο."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ποια ραδιόφωνα λειτουργούν με το qFT8;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Περισσότερα από 70 μοντέλα ραδιοφώνων είναι plug and play μέσω USB, μεταξύ τους τα QRP Labs QMX, QMX+ και QDX, τα Icom IC-7300, IC-705 και IC-9700, και ραδιόφωνα των Yaesu, Kenwood, Elecraft, Xiegu, Lab599, GuoHe, FlexRadio και (tr)uSDX. Κάθε άλλο ραδιόφωνο λειτουργεί μέσω καλωδίου ήχου VOX ή DigiRig, και δέκτες SDR όπως το RTL-SDR μπορούν να χρησιμοποιηθούν για λήψη."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Μπορώ να χρησιμοποιήσω ένα QRP Labs QMX ή ένα Icom IC-7300 με το τηλέφωνό μου;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ναι. Συνδέστε το QMX, το QMX+ ή το IC-7300 σε τηλέφωνο ή tablet Android με ένα καλώδιο USB: το qFT8 βρίσκει το ραδιόφωνο, διαβάζει και ορίζει τη συχνότητά του μέσω CAT, και στέλνει και λαμβάνει τον ήχο από το ίδιο καλώδιο. Δεν χρειάζεται κάρτα ήχου ή επιπλέον διεπαφή. Το ίδιο λειτουργεί και με υπολογιστή."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Ποια modes υποστηρίζει το qFT8;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "FT8, FT4, FT2, LQ8, JS8, WSPR, CW, RTTY, SSTV και SSB, καθώς και Q65, MSK144, FST4, FST4W, JT65, JT9, JT4, JTTY, PSK31, PSK63 και Olivia ως πειραματικά modes. Το LQ8 είναι ένα mode ασθενών σημάτων που δημιούργησε ο HB9IPH και ολοκληρώνει ένα QSO, με locator και αναφορά σήματος, σε τέσσερα μηνύματα."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Λειτουργεί το qFT8 με POTA, SOTA, διαγωνισμούς και διαδικτυακά αρχεία καταγραφής;",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ναι. Εμφανίζει αναφορές και ζωντανά spots POTA και SOTA στον χάρτη και στη λίστα σταθμών, μετρά τα QSO ενεργοποίησής σας και εξάγει ADIF· τα WWFF, IOTA, HEMA, GMA και άλλα προγράμματα, και διαγωνισμοί όπως το ARRL Field Day, είναι πειραματικά. Κάθε QSO μπορεί να πάει στα QRZ, Logbook of the World, eQSL, Club Log, HRDLog, HamQTH, Wavelog ή Cloudlog καθώς το καταγράφετε, και στα προγράμματα καταγραφής του δικτύου σας."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Μπορώ να χρησιμοποιήσω το qFT8 μόνο για ακρόαση (SWL);",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ναι. Το qFT8 λαμβάνει και αποκωδικοποιεί κάθε mode που γνωρίζει μέσω δέκτη SDR (ένα dongle RTL-SDR σε τηλέφωνο Android ή υπολογιστή Linux, έναν διακομιστή δικτύου RTL-SDR, ένα δικό σας ή δημόσιο KiwiSDR και άλλα SDR δικτύου) ή μέσω ενός συνηθισμένου ραδιοφώνου σε λειτουργία SWL, στην οποία δεν εκπέμπει ποτέ. Τα QSO που ακούτε ανάμεσα σε άλλους σταθμούς πηγαίνουν σε αρχείο ακουσμάτων που εξάγει αρχεία SWL ADIF, CSV, SOTA SWL και RAZA SWL. Η ενότητα SWL του εγχειριδίου χρήσης εξηγεί τους δέκτες και τα προγράμματα οδήγησής τους."
+     }
+    }
+   ]
+  }
+ ]
+}
+    </script>    <!-- End JSON-LD -->
+    <meta property="og:image" content="https://qft8.com/qft8.jpg">
+    <meta property="og:url" content="https://qft8.com/el/">
+    <link rel="alternate" type="text/plain" title="qFT8 summary for language models" href="https://qft8.com/llms.txt">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <!-- SEO Hreflang Tags -->
+    <link rel="canonical" href="https://qft8.com/el/">
+    <link rel="alternate" hreflang="x-default" href="https://qft8.com/">
+    <link rel="alternate" hreflang="en" href="https://qft8.com/">
+    <link rel="alternate" hreflang="es" href="https://qft8.com/es/">
+    <link rel="alternate" hreflang="pt-BR" href="https://qft8.com/pt-br/">
+    <link rel="alternate" hreflang="pt-PT" href="https://qft8.com/pt-pt/">
+    <link rel="alternate" hreflang="fr" href="https://qft8.com/fr/">
+    <link rel="alternate" hreflang="it" href="https://qft8.com/it/">
+    <link rel="alternate" hreflang="de" href="https://qft8.com/de/">
+    <link rel="alternate" hreflang="ru" href="https://qft8.com/ru/">
+    <link rel="alternate" hreflang="zh" href="https://qft8.com/zh/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://qft8.com/zh-hant/">
+    <link rel="alternate" hreflang="ja" href="https://qft8.com/ja/">
+    <link rel="alternate" hreflang="eo" href="https://qft8.com/eo/">
+    <link rel="alternate" hreflang="ro" href="https://qft8.com/ro/">
+    <link rel="alternate" hreflang="hi" href="https://qft8.com/hi/">
+    <link rel="alternate" hreflang="ar" href="https://qft8.com/ar/">
+    <link rel="alternate" hreflang="ca" href="https://qft8.com/ca/">
+    <link rel="alternate" hreflang="eu" href="https://qft8.com/eu/">
+    <link rel="alternate" hreflang="gl" href="https://qft8.com/gl/">
+    <link rel="alternate" hreflang="id" href="https://qft8.com/id/">
+    <link rel="alternate" hreflang="ko" href="https://qft8.com/ko/">
+    <link rel="alternate" hreflang="bn" href="https://qft8.com/bn/">
+    <link rel="alternate" hreflang="ur" href="https://qft8.com/ur/">
+    <link rel="alternate" hreflang="vi" href="https://qft8.com/vi/">
+    <link rel="alternate" hreflang="tr" href="https://qft8.com/tr/">
+    <link rel="alternate" hreflang="nl" href="https://qft8.com/nl/">
+    <link rel="alternate" hreflang="pl" href="https://qft8.com/pl/">
+    <link rel="alternate" hreflang="ha" href="https://qft8.com/ha/">
+    <link rel="alternate" hreflang="cs" href="https://qft8.com/cs/">
+    <link rel="alternate" hreflang="uk" href="https://qft8.com/uk/">
+    <link rel="alternate" hreflang="sv" href="https://qft8.com/sv/">
+    <link rel="alternate" hreflang="fi" href="https://qft8.com/fi/">
+    <link rel="alternate" hreflang="da" href="https://qft8.com/da/">
+    <link rel="alternate" hreflang="he" href="https://qft8.com/he/">
+    <link rel="alternate" hreflang="hu" href="https://qft8.com/hu/">
+    <link rel="alternate" hreflang="no" href="https://qft8.com/no/">
+    <link rel="alternate" hreflang="sk" href="https://qft8.com/sk/">
+    <link rel="alternate" hreflang="th" href="https://qft8.com/th/">
+    <link rel="alternate" hreflang="sr-Latn" href="https://qft8.com/sr-latn/">
+    <link rel="alternate" hreflang="el" href="https://qft8.com/el/">
+    <link rel="alternate" hreflang="hr" href="https://qft8.com/hr/">
+    <link rel="alternate" hreflang="bg" href="https://qft8.com/bg/">
+    <link rel="alternate" hreflang="sl" href="https://qft8.com/sl/">
+    <link rel="alternate" hreflang="lt" href="https://qft8.com/lt/">
+    <link rel="alternate" hreflang="lv" href="https://qft8.com/lv/">
+    <link rel="alternate" hreflang="et" href="https://qft8.com/et/">
+    <link rel="alternate" hreflang="fa" href="https://qft8.com/fa/">
+    <link rel="alternate" hreflang="fil" href="https://qft8.com/fil/">
+    <link rel="alternate" hreflang="mk" href="https://qft8.com/mk/">
+    <link rel="alternate" hreflang="sq" href="https://qft8.com/sq/">
+    <link rel="alternate" hreflang="bs" href="https://qft8.com/bs/">
+    <link rel="alternate" hreflang="be" href="https://qft8.com/be/">
+    <link rel="alternate" hreflang="kk" href="https://qft8.com/kk/">
+    <link rel="alternate" hreflang="ka" href="https://qft8.com/ka/">
+    <link rel="alternate" hreflang="hy" href="https://qft8.com/hy/">
+    <link rel="alternate" hreflang="is" href="https://qft8.com/is/">
+    <link rel="alternate" hreflang="ms" href="https://qft8.com/ms/">
+    <link rel="alternate" hreflang="sw" href="https://qft8.com/sw/">
+    <link rel="alternate" hreflang="ta" href="https://qft8.com/ta/">
+    <link rel="alternate" hreflang="te" href="https://qft8.com/te/">
+    <link rel="alternate" hreflang="mr" href="https://qft8.com/mr/">
+    <link rel="alternate" hreflang="ne" href="https://qft8.com/ne/">
+    <link rel="alternate" hreflang="si" href="https://qft8.com/si/">
+    <link rel="alternate" hreflang="mn" href="https://qft8.com/mn/">
+    <!-- End SEO Hreflang Tags -->
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../pc.css">
+    <script src="../pc_downloads.js"></script>
+</head>
+
+<body>
+    <!-- Language Selector -->
+        <div class="lang-selector-wrapper">
+            <span class="lang-icon"><svg class="lang-icon-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM18.92,8h-2.95c-0.32,-1.25 -0.78,-2.45 -1.38,-3.56 1.84,0.63 3.37,1.91 4.33,3.56zM12,4.04c0.83,1.2 1.48,2.53 1.91,3.96h-3.82c0.43,-1.43 1.08,-2.76 1.91,-3.96zM4.26,14C4.09,13.36 4,12.69 4,12s0.09,-1.36 0.26,-2h3.38c-0.08,0.66 -0.14,1.32 -0.14,2 0,0.68 0.06,1.34 0.14,2H4.26zM5.08,16h2.95c0.32,1.25 0.78,2.45 1.38,3.56 -1.84,-0.63 -3.37,-1.9 -4.33,-3.56zM8.03,8H5.08c0.96,-1.66 2.49,-2.93 4.33,-3.56C8.81,5.55 8.35,6.75 8.03,8zM12,19.96c-0.83,-1.2 -1.48,-2.53 -1.91,-3.96h3.82c-0.43,1.43 -1.08,2.76 -1.91,3.96zM14.34,14H9.66c-0.09,-0.66 -0.16,-1.32 -0.16,-2 0,-0.68 0.07,-1.34 0.16,-2h4.68c0.09,0.66 0.16,1.32 0.16,2 0,0.68 -0.07,1.34 -0.16,2zM14.59,19.56c0.6,-1.11 1.06,-2.31 1.38,-3.56h2.95c-0.96,1.65 -2.49,2.93 -4.33,3.56zM16.36,14c0.08,-0.66 0.14,-1.32 0.14,-2 0,-0.68 -0.06,-1.34 -0.14,-2h3.38c0.17,0.64 0.26,1.31 0.26,2s-0.09,1.36 -0.26,2h-3.38z"/></svg></span>
+            <select id="lang-select" class="lang-dropdown" onchange="onLanguageChange(this.value)" aria-label="Select Language">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="pt-pt">Português (Portugal)</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+                <option value="de">Deutsch</option>
+                <option value="ru">Русский</option>
+                <option value="zh">简体中文</option>
+                <option value="zh-hant">繁體中文</option>
+                <option value="ja">日本語</option>
+                <option value="eo">Esperanto</option>
+                <option value="ro">Română</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ar">العربية</option>
+                <option value="ca">Català</option>
+                <option value="eu">Euskara</option>
+                <option value="gl">Galego</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="ko">한국어</option>
+                <option value="bn">বাংলা</option>
+                <option value="ur">اردو</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="tr">Türkçe</option>
+                <option value="nl">Nederlands</option>
+                <option value="pl">Polski</option>
+                <option value="ha">Hausa</option>
+                <option value="cs">Čeština</option>
+                <option value="uk">Українська</option>
+                <option value="sv">Svenska</option>
+                <option value="fi">Suomi</option>
+                <option value="da">Dansk</option>
+                <option value="he">עברית</option>
+                <option value="hu">Magyar</option>
+                <option value="no">Norsk</option>
+                <option value="sk">Slovenčina</option>
+                <option value="th">ไทย</option>
+                <option value="sr-latn">Srpski (latinica)</option>
+                <option value="el" selected>Ελληνικά</option>
+                <option value="hr">Hrvatski</option>
+                <option value="bg">Български</option>
+                <option value="sl">Slovenščina</option>
+                <option value="lt">Lietuvių</option>
+                <option value="lv">Latviešu</option>
+                <option value="et">Eesti</option>
+                <option value="fa">فارسی</option>
+                <option value="fil">Filipino</option>
+                <option value="mk">Македонски</option>
+                <option value="sq">Shqip</option>
+                <option value="bs">Bosanski</option>
+                <option value="be">Беларуская</option>
+                <option value="kk">Қазақ тілі</option>
+                <option value="ka">ქართული</option>
+                <option value="hy">Հայերեն</option>
+                <option value="is">Íslenska</option>
+                <option value="ms">Bahasa Melayu</option>
+                <option value="sw">Kiswahili</option>
+                <option value="ta">தமிழ்</option>
+                <option value="te">తెలుగు</option>
+                <option value="mr">मराठी</option>
+                <option value="ne">नेपाली</option>
+                <option value="si">සිංහල</option>
+                <option value="mn">Монгол</option>
+            </select>
+        </div>
+        <!-- End Language Selector -->
+
+    <div class="container">
+        <img src="../qft8.jpg" alt="Λογότυπο qFT8" class="logo" width="781" height="781" data-i18n="LOGO_ALT">
+
+        <p class="main-title" data-i18n="MAIN_TITLE_PC">Φορητός ραδιοερασιτεχνισμός και SWL για Android, iOS, Windows, macOS και Linux</p>
+
+        <p class="intro-text" data-i18n="INTRO_PC">Μετατρέψτε το τηλέφωνο ή το tablet Android, το iPhone ή το iPad, ή τον υπολογιστή σας Windows, macOS ή Linux σε έναν πλήρη ραδιοερασιτεχνικό σταθμό ψηφιακών modes. Συνδέστε το ραδιόφωνό σας, καλέστε CQ και επικοινωνήστε με όλο τον κόσμο.</p>
+
+        <!-- WEB-BUTTONS-TOP-1 (user 2026-10-02): Download, User Manual and the Telegram group on one line, above the computer -->
+        <div class="buttons buttons-top">
+            <a href="#download" class="btn btn-secondary btn-download-top" data-i18n="BTN_DOWNLOAD_PC">Λήψη</a>
+            <a href="../manual/el/" id="manual-link" class="btn btn-secondary" data-i18n="BTN_USER_MANUAL">Εγχειρίδιο χρήσης</a>
+            <a href="https://t.me/qFT8app" target="_blank" rel="noopener noreferrer" class="btn-telegram">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="12" fill="#ffffff"/>
+                    <path d="M16.944 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#1f7fc0"/>
+                </svg>
+                <span data-i18n="TELEGRAM_BTN">Συμμετοχή στην ομάδα Telegram του qFT8</span>
+            </a>
+        </div>
+        <div class="showcase">
+            <div class="monitor-wrapper">
+                <div class="monitor">
+                    <div class="monitor-screen">
+                        <video class="monitor-img" data-i18n-aria="PC_SCREENSHOT_ALT" autoplay muted loop playsinline preload="metadata" poster="../media/qft8_pc_loop_poster.jpg" width="1024" height="576" aria-label="Το qFT8 σε υπολογιστή: φασματογράφημα, σταθμοί, παγκόσμιος χάρτης και αρχείο QSO"><source src="../media/qft8_pc_loop.webm" type="video/webm"><source src="../media/qft8_pc_loop.mp4" type="video/mp4"></video>
+                    </div>
+                </div>
+                <div class="monitor-neck"></div>
+                <div class="monitor-base"></div>
+            </div>
+            <div class="phone-wrapper" id="phoneWrapper">
+                <div class="phone-chassis" id="phoneMockup">
+                    <div class="phone-screen-recess">
+                        <div class="phone-screen-content">
+                            <img src="../phonecamera.jpg" alt="" aria-hidden="true" class="camera" width="132" height="1080">
+                            <video class="screen" data-i18n-aria="ANDROID_LOOP_ALT" autoplay muted loop playsinline preload="metadata" poster="../media/qft8_android_loop_poster.jpg" width="950" height="450" aria-label="Το qFT8 σε τηλέφωνο Android: καταρράκτης FT8, αποκωδικοποιήσεις και λίστα σταθμών"><source src="../media/qft8_android_loop.webm" type="video/webm"><source src="../media/qft8_android_loop.mp4" type="video/mp4"></video>
+                            <div class="screen-glare"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- WEB-FEATURES-FULL-1 (user 2026-10-28): the complete list -- every mode, radio brand, SDR, award programme,
+             contest, online logbook and logging program. Names of modes, programmes, services, brands and programs are
+             never translated (translate="no"); only the headings and the sentences are. A new mode, service or programme
+             goes into its group here in the same change. -->
+        <div class="features about feature-catalog" id="features">
+            <h2 data-i18n="FEATURES_TITLE">Χαρακτηριστικά</h2>
+            <ul class="fc-pills">
+                <li><span data-i18n="FEAT2_FREE">Δωρεάν, χωρίς διαφημίσεις, χωρίς λογαριασμό</span></li>
+                <li><span data-i18n="FEAT2_PLATFORMS">Τηλέφωνα και tablet Android, iOS, Windows, macOS και Linux</span></li>
+                <li><span data-i18n="FEAT2_RADIOS">Plug and play με 70+ ραδιόφωνα</span></li>
+                <li><span data-i18n="FEAT2_SWL">Ακρόαση (SWL): δέκτες SDR, αρχείο όσων ακούστηκαν με ADIF SWL, εξαγωγές SOTA και RAZA</span></li>
+                <li><span data-i18n="FEAT2_AUTO">Πλήρες AUTO ή χειροκίνητη κλήση με ένα κλικ</span></li>
+                <li><span data-i18n="FEAT2_REMOTE">Τηλεχειρισμός από οποιονδήποτε περιηγητή</span></li>
+                <li><span data-i18n="FEAT2_OWN">Δικοί του αποκωδικοποιητές και κωδικοποιητές, γραμμένοι από το μηδέν</span></li>
+                <li><span data-i18n="FEAT2_LANGS">63 γλώσσες</span></li>
+            </ul>
+            <!-- MEDIA SLOT: looping animation (about 30 s, muted, PC + Android). Put ONE <video autoplay muted loop
+                 playsinline> (or <img>) inside this div; while it is empty the slot takes no space. -->
+            <div class="fc-media fc-media-two" id="feature-animation"></div>
+            <div class="fc-grid">
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l2-6 3 12 3-9 2 5 2-2h5"/></svg><span data-i18n="FEATX_MODES_T">Modes</span></h3>
+                    <p data-i18n="FEATX_MODES_D">Ψηφιακά modes ασθενών σημάτων, συνομιλία από πληκτρολόγιο, Μορς, τηλέτυπο, εικόνες και φωνή. Τα Q65, MSK144, FST4, FST4W και JTTY είναι πειραματικά.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>FT8</li><li>FT4</li><li>FT2</li><li>LQ8</li><li>JS8</li><li>WSPR</li><li class="exp">Q65</li><li class="exp">MSK144</li><li class="exp">FST4</li><li class="exp">FST4W</li><li class="exp">JT65</li><li class="exp">JT9</li><li class="exp">JT4</li><li>CW</li><li>RTTY</li><li class="exp">JTTY</li><li class="exp">PSK31</li><li class="exp">PSK63</li><li class="exp">PSK125</li><li class="exp">PSK250</li><li class="exp">QPSK31</li><li class="exp">QPSK63</li><li class="exp">Olivia</li><li class="exp">MFSK16</li><li class="exp">MFSK32</li><li class="exp">MFSK64</li><li class="exp">MFSK8</li><li class="exp">MFSK11</li><li class="exp">MFSK22</li><li class="exp">MFSK128</li><li class="exp">DominoEX</li><li class="exp">Feld Hell</li><li class="exp">THOR</li><li class="exp">Contestia</li><li class="exp">MT63</li><li class="exp">Throb</li><li class="exp">IFKP</li><li class="exp">FSQ</li><li>SSTV</li><li>DRAW</li><li>SSB</li><li>AM</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="8" width="20" height="12" rx="2"/><circle cx="16" cy="14" r="3"/><path d="M5 12h6M5 16h6M7 8l10-5"/></svg><span data-i18n="FEATX_RADIOS_T">Ραδιόφωνα</span></h3>
+                    <p data-i18n="FEATX_RADIOS_D">Plug and play μέσω USB με περισσότερα από 70 μοντέλα ραδιοφώνων: το qFT8 αναγνωρίζει το ραδιόφωνο και ρυθμίζει μόνο του το CAT και τον ήχο. Κάθε άλλο ραδιόφωνο λειτουργεί μέσω καλωδίου ήχου VOX ή DigiRig.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>QRP Labs</li><li>Icom</li><li>Yaesu</li><li>Kenwood</li><li>Elecraft</li><li>Xiegu</li><li>Lab599</li><li>GuoHe</li><li>FlexRadio</li><li>(tr)uSDX</li><li>FX-4CR</li><li>KN990</li><li>mcHF</li><li>Wolf SDR</li><li>QuantumSDR</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13v8M8 21h8"/><path d="M8.5 9.5a5 5 0 0 1 7 0M5.5 6.5a9 9 0 0 1 13 0"/><circle cx="12" cy="13" r="1.5"/></svg><span data-i18n="FEATX_SDR_T">Δέκτες SDR και ακρόαση (SWL)</span></h3>
+                    <p data-i18n="FEATX_SDR_D">Ακούστε χωρίς να εκπέμπετε: ένα dongle RTL-SDR συνδεδεμένο στο τηλέφωνό σας ή σε υπολογιστή Linux (χωρίς πρόγραμμα οδήγησης για εγκατάσταση, συμπεριλαμβανομένου του V4), ή μέσω δικτύου έναν διακομιστή RTL-SDR, έναν web δέκτη KiwiSDR, ένα Hermes-Lite 2, ένα Airspy, ένα SDRplay και άλλα. Κάθε mode αποκωδικοποιείται όπως από ραδιόφωνο, και τα QSO που ακούτε πηγαίνουν σε αρχείο SWL με εξαγωγές ADIF, SOTA SWL και RAZA SWL. Μόνο λήψη.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>RTL-SDR</li><li>KiwiSDR</li><li>OpenHPSDR</li><li>Hermes-Lite 2</li><li>Red Pitaya</li><li>Airspy / RTL-SDR server</li><li>remote SDR host</li><li>SWL</li><li>Airband (AM)</li><li>Marine VHF (FM)</li><li class="exp">FM + RDS</li><li class="exp">AM broadcast</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg><span data-i18n="FEATX_OPERATE_T">Λειτουργία</span></h3>
+                    <p data-i18n="FEATX_OPERATE_D">Το πλήρες AUTO απαντά σε CQ, διεξάγει το QSO και το καταγράφει, με όρια επανάληψης που ορίζετε εσείς· ή καλέστε σταθμούς μόνοι σας με ένα πάτημα. CW με πλήκτρα οθόνης, πληκτρολόγιο και μνήμες, SSB με φωνητικές μνήμες και όρια χρόνου μετάδοσης που προστατεύουν το ραδιόφωνό σας.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li class="exp">Multi-tone (2 signals)</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"/><path d="M15 4v6M15 4h4l-1 1.5 1 1.5h-4"/></svg><span data-i18n="FEATX_AWARDS_T">Προγράμματα βραβείων</span></h3>
+                    <p data-i18n="FEATX_AWARDS_D">Κυνηγήστε και ενεργοποιήστε: αναφορές στον χάρτη και στη λίστα σταθμών, ζωντανά spots, μετρητής QSO και εξαγωγές ADIF. Τα POTA και SOTA είναι ενεργά από την αρχή· τα υπόλοιπα είναι πειραματικά.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>POTA</li><li>SOTA</li><li class="exp">WWFF</li><li class="exp">WWBOTA</li><li class="exp">IOTA</li><li class="exp">SiOTA</li><li class="exp">HEMA</li><li class="exp">LLOTA</li><li class="exp">WWTOTA</li><li class="exp"><a href="https://razaward.online/" rel="noopener">RAZA</a></li><li class="exp"><a href="https://www.gma.rocks/" rel="noopener">GMA</a></li><li class="exp"><a href="https://cqhota.app/" rel="noopener">HOTA</a></li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg><span data-i18n="FEATX_SWL_T">Υποστήριξη SWL</span></h3>
+                    <p data-i18n="FEATX_SWL_D">Δεν χρειάζεται διακριτικό: πατήστε SWL ONLY στην πρώτη εκκίνηση. Ό,τι ακούτε καταγράφεται αυτόματα σε ημερολόγιο ακρόασης (SWL), μαζί με τον δέκτη από τον οποίο ήρθε. Εισαγωγή και εξαγωγή σε ADIF ή CSV, με αρχεία SOTA και RAZA SWL, αποστολή αναφορών στο eQSL (λογαριασμός SWL), στο PSK Reporter και στο WSPRnet, και ενσωματωμένος οδηγός SWL. Μόνο λήψη.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>ADIF</li><li>CSV</li><li>eQSL</li><li>PSK Reporter</li><li>WSPRnet</li><li>SOTA SWL</li><li>RAZA SWL</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg><span data-i18n="FEATX_LAB_T">Δέκτες σημάτων (SWL)</span></h3>
+                    <p data-i18n="FEATX_LAB_D">Δέκτες στην καρτέλα SWL για τα σήματα γύρω σας, με SDR ή τον πομποδέκτη σας: αεροσκάφη (ADS-B) και πλοία (AIS) ζωντανά στον παγκόσμιο χάρτη, LoRa και Meshtastic, δεδομένα ψηφιακής φωνής (DMR, D-STAR, Fusion), δεδομένα HF (ALE, ARDOP, PACTOR-I), FM με RDS και AM, μετεωρολογικοί και ερασιτεχνικοί δορυφόροι, ραδιοβολίδες, κώδικες ώρας, μετεωρολογικό φαξ και άλλα. Το PROBE, ο αυτόματος ανιχνευτής λειτουργίας, δείχνει τι υπάρχει στον αέρα. Μόνο λήψη.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li class="exp">ADS-B</li><li class="exp">AIS</li><li class="exp">LoRa</li><li class="exp">Meshtastic</li><li class="exp">ALE</li><li class="exp">ARDOP</li><li class="exp">PACTOR-I</li><li class="exp">FM RDS</li><li class="exp">AM</li><li class="exp">DMR</li><li class="exp">D-STAR</li><li class="exp">Fusion</li><li class="exp">APT</li><li class="exp">Meteor LRPT</li><li class="exp">Horus</li><li class="exp">RS41</li><li class="exp">DCF77</li><li class="exp">WWV</li><li class="exp">NAVTEX</li><li class="exp">DSC</li><li class="exp">APRS</li><li class="exp">VOR</li><li class="exp">ILS</li>
+                    </ul>
+                </section>
+                <section class="fc-card fc-wide" id="qft8-awards">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.4 5 5.4.7-4 3.7 1 5.4-4.8-2.7-4.8 2.7 1-5.4-4-3.7 5.4-.7z"/><path d="M8.5 17.5L7 22l5-2.5 5 2.5-1.5-4.5"/></svg><span data-i18n="FEATX_QAW_T">Βραβεία qFT8</span></h3>
+                    <p data-i18n="FEATX_QAW_D">Ενσωματωμένα στην εφαρμογή, για ραδιοερασιτέχνες και ακροατές (SWL): αστέρια για τα είδη εκπομπής, τις μπάντες, τις οντότητες DXCC και τα τετράγωνα πλέγματος που κάνετε ή ακούτε, ένα δίπλωμα που γεμίζει με την πρόοδό σας και επιτεύγματα που μπορείτε να μοιραστείτε.</p>
+                    <p data-i18n="FEATX_QAW_GEN">Η εφαρμογή δημιουργεί το δίπλωμα μόνη της, από το δικό σας ημερολόγιο: τίποτα για αίτηση, τίποτα για αποστολή. Υπάρχουν δύο προγράμματα: HAM (οι επιβεβαιωμένες επαφές σας) και SWL (οι σταθμοί που ακούσατε).</p>
+                    <p data-i18n="FEATX_QAW_HAM">Αστέρια HAM: κάθε ένα από τα 14 είδη εκπομπής (FT8, LQ8, FT4, JS8, JT65, Q65, CW, SSB, FM, RTTY, PSK, SSTV, DV, JTTY) και κάθε μία από τις 13 μπάντες (160 m έως 70 cm) δίνει έως 10 αστέρια, με 1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000 διαφορετικούς σταθμούς. Το DXCC δίνει έως 10 αστέρια, από 1 έως 300 τρέχουσες οντότητες (υπάρχουν 340), και τα τετράγωνα πλέγματος έως 10, από 1 έως 2000. Κάθε συνδυασμός είδους εκπομπής και μπάντας που δουλεύετε προσθέτει ένα ακόμη αστέρι: 472 συνολικά.</p>
+                    <p data-i18n="FEATX_QAW_SWL">SWL: τα ίδια αστέρια για τους σταθμούς που ακούτε, σε ομάδες ερασιτεχνικών ειδών εκπομπής, σε υπηρεσίες (ραδιοφωνία, σήματα ώρας, φάροι, ναυτιλιακά, αεροπορικά, καιρός) και σε οντότητες DXCC και τετράγωνα πλέγματος.</p>
+                    <figure class="fc-example"><button type="button" class="fc-zoom" aria-haspopup="dialog" aria-label="Enlarge: example diploma"><img src="../media/shot_awards_example.webp" alt="Ένα δείγμα διπλώματος που δημιούργησε η εφαρμογή (102 αστέρια). Τα διπλώματα μπορούν να κοινοποιηθούν και υπάρχουν στις γλώσσες της εφαρμογής." data-i18n="FEATX_QAW_CAP" width="1400" height="990" loading="lazy" decoding="async"></button><figcaption data-i18n="FEATX_QAW_CAP">Ένα δείγμα διπλώματος που δημιούργησε η εφαρμογή (102 αστέρια). Τα διπλώματα μπορούν να κοινοποιηθούν και υπάρχουν στις γλώσσες της εφαρμογής.</figcaption></figure>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6"/></svg><span data-i18n="FEATX_CONTESTS_T">Διαγωνισμοί (πειραματικά)</span></h3>
+                    <p data-i18n="FEATX_CONTESTS_D">Η ανταλλαγή, έλεγχοι διπλοτύπων, η βαθμολογία και εξαγωγή Cabrillo. Το AUTO απενεργοποιείται στους διαγωνισμούς των οποίων οι κανόνες απαγορεύουν τα αυτοματοποιημένα QSO.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li class="exp">ARRL Field Day</li><li class="exp">Winter Field Day</li><li class="exp">ARRL RTTY Roundup</li><li class="exp">ARRL International Digital Contest</li><li class="exp">FT Challenge</li><li class="exp">EU VHF</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 7 18z"/><path d="M12 15V10M9.5 12.5L12 10l2.5 2.5"/></svg><span data-i18n="FEATX_ONLINE_T">Διαδικτυακά αρχεία καταγραφής</span></h3>
+                    <p data-i18n="FEATX_ONLINE_D">Κάθε QSO πηγαίνει στις υπηρεσίες που επιλέγετε καθώς το καταγράφετε. Το qFT8log μοιράζεται ένα αρχείο ανάμεσα στα δικά σας qFT8. Εισαγωγή και εξαγωγή ADIF.</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>QRZ</li><li>Logbook of the World</li><li>eQSL</li><li>Club Log</li><li>HRDLog</li><li>HamQTH</li><li>World Radio League</li><li>HAMLOG.online</li><li>Wavelog</li><li>Cloudlog</li><li>qFT8log</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/><path d="M7 10h3l1.5-2 2 4 1.5-2h2"/></svg><span data-i18n="FEATX_LAN_T">Προγράμματα καταγραφής στο δίκτυό σας</span></h3>
+                    <p data-i18n="FEATX_LAN_D">Αρχείο δικτύου FT8 και ADIF μέσω UDP, και προς τις δύο κατευθύνσεις, καθώς και οι διεπαφές AC Log και DXLab (πειραματικά). Δοκιμασμένο με:</p>
+                    <ul class="fc-chips" translate="no">
+                        <li>N1MM Logger+</li><li>Log4OM 2</li><li>N3FJP AC Log</li><li>CQRLOG</li><li>GridTracker</li><li>Wavelog</li><li>Cloudlog</li><li>qFT8log</li>
+                    </ul>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span data-i18n="FEATX_MAP_T">Χάρτης και spots</span></h3>
+                    <p data-i18n="FEATX_MAP_D">Ζωντανός παγκόσμιος χάρτης κάθε σταθμού που ακούτε, με απόσταση και διεύθυνση· spots από PSK Reporter και WSPRnet, δραστηριότητα LQ8, ενεργοποιήσεις POTA και SOTA, διάδοση μπάντας, τροχιές δορυφόρων και πυξίδα χάρτη. Οι δικές σας αποκωδικοποιήσεις αναφέρονται στο PSK Reporter και στο WSPRnet.</p>
+                </section>
+                <section class="fc-card">
+                    <h3><svg class="fc-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="12" height="9" rx="1.5"/><rect x="16" y="9" width="5" height="11" rx="1"/><path d="M6 18h6M9 14v4"/></svg><span data-i18n="FEATX_ANYWHERE_T">Οπουδήποτε</span></h3>
+                    <p data-i18n="FEATX_ANYWHERE_D">Τηλεχειρισμός από οποιονδήποτε περιηγητή: ακούστε το ραδιόφωνο και μιλήστε σε SSB, πίσω από ιδιωτικό σύνδεσμο και κωδικό. Ώρα από το internet ή το GPS, και λειτουργεί με σβηστή οθόνη.</p>
+                </section>
+            </div>
+            <!-- MEDIA SLOT: new screenshots (a row of <figure><img ...><figcaption>...</figcaption></figure>). While it is
+                 empty the slot takes no space. -->
+            <div class="fc-shots" id="feature-screenshots"><img src="../media/shot_world_map.jpg" alt="Παγκόσμιος χάρτης qFT8 με τους σταθμούς που ακούστηκαν, αναφορές βραβείων και τη γραμμή ημέρας και νύχτας" data-i18n="SHOT_MAP_ALT" width="1140" height="540" loading="lazy"><img src="../media/shot_events.jpg" alt="Το qFT8 σε Android: καταρράκτης FT8 με αποκωδικοποιήσεις δίπλα στις ρυθμίσεις προγραμμάτων βραβείων" data-i18n="SHOT_EVENTS_ALT" width="1140" height="540" loading="lazy"><img src="../media/shot_cw.jpg" alt="Το qFT8 σε CW: καταρράκτης με αποκωδικοποιημένο κείμενο Μορς, μνήμες, πλήκτρα και ρυθμίσεις keyer" data-i18n="SHOT_CW_ALT" width="1140" height="540" loading="lazy"></div>
+        </div>
+
+        <div id="download" class="features download-box">
+            <h2 data-i18n="DOWNLOAD_TITLE">Λήψη</h2>
+            <div class="download-meta">
+                <span class="meta-badge"><strong data-i18n="DOWNLOAD_VERSION">Έκδοση:</strong> <span id="latest-version">3.23</span></span>
+                <span class="meta-badge"><strong data-i18n="DOWNLOAD_DATE">Ημερομηνία:</strong> <span id="latest-date">2026-10-29</span></span>
+            </div>
+            <!-- WEB-OTHER-VERSIONS-1 / WEB-DL-ONE-TABLE-1: ONE list, a row per version: its name, its store button (if it has
+                 one), the direct download. pc_downloads.js moves the visitor's own rows to the top, marks them "For this
+                 device" and greys out the others. -->
+            <ul id="dl-table" class="dl-list dl-all">
+                <li class="dl-row dl-has-store" data-dl="android" id="dl-android"><span class="dl-name">Android</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-store" href="https://play.google.com/store/apps/details?id=com.ft8.app"><img src="../googleplay.png" alt="Διαθέσιμο στο Google Play" class="dl-store-img" width="1024" height="304" loading="lazy" decoding="async" data-i18n="BTN_GOOGLE_PLAY_ALT"></a><a id="latest-download-link" class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23.apk"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .apk: <span id="latest-size">5.93MB</span></a></span></li>
+                <li class="dl-row dl-has-store" data-dl="win64"><span class="dl-name" data-i18n="DL_WIN64">Windows (64-bit)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Κατεβάστε το από τη Microsoft" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-windows-64bits.zip"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .zip: <span class="dl-size" data-pc-file="windows-64bits.zip">40.12MB</span></a></span></li>
+                <li class="dl-row dl-has-store" data-dl="win32"><span class="dl-name" data-i18n="DL_WIN32">Windows (32-bit)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-store dl-store-ms" href="https://apps.microsoft.com/detail/9NCWHRF48SW9"><img src="../stores/msstore.svg" alt="Κατεβάστε το από τη Microsoft" class="dl-store-img dl-store-badge" width="161" height="44" data-i18n="BTN_MSSTORE_ALT"></a><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-windows-32bits.zip"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .zip: <span class="dl-size" data-pc-file="windows-32bits.zip">47.53MB</span></a></span></li>
+                <li class="dl-row" data-dl="mac-universal"><span class="dl-name" data-i18n="DL_MAC_ALL">macOS (κάθε Mac: Apple Silicon και Intel)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-macos-universal.dmg"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .dmg: <span class="dl-size" data-pc-file="macos-universal.dmg">88.48MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux64"><span class="dl-name" data-i18n="DL_LINUX64">Linux (64-bit, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-64bits.tar.gz"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .tar.gz: <span class="dl-size" data-pc-file="linux-64bits.tar.gz">51.73MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux32"><span class="dl-name" data-i18n="DL_LINUX32">Linux (32-bit, Intel/AMD)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-32bits.tar.gz"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .tar.gz: <span class="dl-size" data-pc-file="linux-32bits.tar.gz">74.80MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux-arm64"><span class="dl-name" data-i18n="DL_LINUX_ARM64">Linux (ARM 64-bit, Raspberry Pi 4/5)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-arm64.tar.gz"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .tar.gz: <span class="dl-size" data-pc-file="linux-arm64.tar.gz">71.76MB</span></a></span></li>
+                <li class="dl-row" data-dl="linux-armv7"><span class="dl-name" data-i18n="DL_LINUX_ARMV7">Linux (ARM 32-bit, Raspberry Pi 2/3)</span><span class="dl-mine-tag" data-i18n="DL_FOR_YOU">Για αυτή τη συσκευή</span><span class="dl-actions"><a class="dl-direct" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23-linux-armv7l.tar.gz"><span data-i18n="DL_DIRECT">Άμεση λήψη</span> .tar.gz: <span class="dl-size" data-pc-file="linux-armv7l.tar.gz">67.13MB</span></a></span></li>
+            </ul>
+            <script>detectAndShowDownloads();</script>
+            <p class="dl-note" data-i18n="DL_APK_NOTE">Η άμεση λήψη Android (.apk) εγκαθίσταται εκτός Play Store: το Android μπορεί να σας ζητήσει να επιτρέψετε την εγκατάσταση εφαρμογών από τον περιηγητή ή τον διαχειριστή αρχείων σας.</p>
+            <p class="dl-manual"><a href="../manual/el/" class="dl-manual-link" data-i18n="DL_MANUAL_ONLINE">Διαβάστε το εγχειρίδιο χρήσης</a></p>
+            <p class="dl-manual"><a id="manual-zip-link" class="dl-direct dl-manual-btn" href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-manual-v3.23.zip"><span data-i18n="DL_MANUAL_DOWNLOAD">Λήψη εγχειριδίου χρήσης</span><span class="dl-size" data-pc-file="manual.zip">10.16MB</span></a></p>
+            <!-- The program's jar (user 2026-10-17): ONE small line offering the multi-OS jar, for a computer without
+                 one of the packages above (it needs an installed Java 21 or newer). Kept only when
+                 tools/deploy/build_website.sh found qFT8-v<version>.jar in the release folder (its size in docs/data.js:
+                 const JAR_SIZE). The link stays on this ONE line: build_website.sh checks that the jar is linked only here. -->
+            <p id="dl-jar" class="dl-jar"><strong data-i18n="DL_JAR_DESC">Οποιοσδήποτε υπολογιστής με Java 21 ή νεότερη (για παράδειγμα ένα Raspberry Pi)</strong>: <a href="https://github.com/lquesada/qFT8/releases/download/main/qFT8-v3.23.jar">.jar: <span class="dl-size" data-jar-size="jar">15.22MB</span></a></p>
+        </div>
+
+
+        <!-- SEO-LLM-1 (user 2026-10-30): questions people ask about FT8 apps, answered with plain facts about qFT8. The same
+             questions and answers go into the page's FAQPage data (tools/generate_web_languages.py). -->
+        <div class="features faq" id="faq">
+            <h2 data-i18n="FAQ_TITLE">Ερωτήσεις και απαντήσεις</h2>
+            <details class="faq-item" open><summary data-i18n="FAQ_Q1">Τι είναι το qFT8;</summary><p data-i18n="FAQ_A1">Το qFT8 είναι ένα δωρεάν ραδιοερασιτεχνικό πρόγραμμα για ψηφιακά modes ασθενών σημάτων, Μορς, τηλέτυπο, εικόνες και φωνή. Λειτουργεί σε τηλέφωνα και tablet Android, iOS, Windows, macOS και Linux, και μπορεί να ελεγχθεί από οποιονδήποτε περιηγητή. Δεν έχει διαφημίσεις και δεν χρειάζεται λογαριασμό. Έχει γραφτεί από τον Luis Quesada Torres, HB9IPH, με δικούς του αποκωδικοποιητές και κωδικοποιητές γραμμένους από το μηδέν.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q2">Ποια είναι μια καλή εφαρμογή FT8 για Android;</summary><p data-i18n="FAQ_A2">Το qFT8 είναι ένας πλήρης σταθμός FT8 για Android 6.0 και νεότερο, σε τηλέφωνα και tablet: συνδέστε το ραδιόφωνο με ένα καλώδιο USB και το qFT8 το αναγνωρίζει και ρυθμίζει μόνο του το CAT και τον ήχο, χωρίς υπολογιστή και χωρίς κουτί διεπαφής. Στέλνει και λαμβάνει FT8, FT4, FT2, LQ8, JS8, WSPR και άλλα, απαντά σε CQ με πλήρες AUTO, κρατά το ρολόι σωστό από το internet ή το GPS, δείχνει κάθε σταθμό σε έναν ζωντανό παγκόσμιο χάρτη και καταγράφει κάθε QSO στις υπηρεσίες που επιλέγετε. Συνεχίζει να λειτουργεί με σβηστή οθόνη. Δωρεάν, χωρίς διαφημίσεις, χωρίς λογαριασμό.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q3">Μπορώ να εκτελέσω FT8 σε υπολογιστή Windows, Mac ή Linux;</summary><p data-i18n="FAQ_A3">Ναι. Το qFT8 λειτουργεί σε Windows (64-bit και 32-bit, και από το Microsoft Store), σε κάθε Mac (Apple Silicon και Intel) και σε Linux (Intel/AMD και ARM, συμπεριλαμβανομένου του Raspberry Pi), με τα ίδια modes, ραδιόφωνα και λειτουργίες όπως στο Android. Οι λήψεις σε αυτή τη σελίδα είναι δωρεάν.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q4">Υπάρχει εφαρμογή FT8 για iPhone και iPad;</summary><p data-i18n="FAQ_A4">Το qFT8 λειτουργεί και σε iPhone και iPad (iOS). Ένα iPhone ή iPad δεν μπορεί να ελέγξει ραδιόφωνο μέσω καλωδίου, οπότε ενεργοποιεί το ραδιόφωνο μέσω του VOX του ραδιοφώνου ή μέσω μιας διεπαφής ήχου που ενεργοποιεί το ραδιόφωνο από τον ήχο.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q5">Ποια ραδιόφωνα λειτουργούν με το qFT8;</summary><p data-i18n="FAQ_A5">Περισσότερα από 70 μοντέλα ραδιοφώνων είναι plug and play μέσω USB, μεταξύ τους τα QRP Labs QMX, QMX+ και QDX, τα Icom IC-7300, IC-705 και IC-9700, και ραδιόφωνα των Yaesu, Kenwood, Elecraft, Xiegu, Lab599, GuoHe, FlexRadio και (tr)uSDX. Κάθε άλλο ραδιόφωνο λειτουργεί μέσω καλωδίου ήχου VOX ή DigiRig, και δέκτες SDR όπως το RTL-SDR μπορούν να χρησιμοποιηθούν για λήψη.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q6">Μπορώ να χρησιμοποιήσω ένα QRP Labs QMX ή ένα Icom IC-7300 με το τηλέφωνό μου;</summary><p data-i18n="FAQ_A6">Ναι. Συνδέστε το QMX, το QMX+ ή το IC-7300 σε τηλέφωνο ή tablet Android με ένα καλώδιο USB: το qFT8 βρίσκει το ραδιόφωνο, διαβάζει και ορίζει τη συχνότητά του μέσω CAT, και στέλνει και λαμβάνει τον ήχο από το ίδιο καλώδιο. Δεν χρειάζεται κάρτα ήχου ή επιπλέον διεπαφή. Το ίδιο λειτουργεί και με υπολογιστή.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q7">Ποια modes υποστηρίζει το qFT8;</summary><p data-i18n="FAQ_A7">FT8, FT4, FT2, LQ8, JS8, WSPR, CW, RTTY, SSTV και SSB, καθώς και Q65, MSK144, FST4, FST4W, JT65, JT9, JT4, JTTY, PSK31, PSK63 και Olivia ως πειραματικά modes. Το LQ8 είναι ένα mode ασθενών σημάτων που δημιούργησε ο HB9IPH και ολοκληρώνει ένα QSO, με locator και αναφορά σήματος, σε τέσσερα μηνύματα.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q8">Λειτουργεί το qFT8 με POTA, SOTA, διαγωνισμούς και διαδικτυακά αρχεία καταγραφής;</summary><p data-i18n="FAQ_A8">Ναι. Εμφανίζει αναφορές και ζωντανά spots POTA και SOTA στον χάρτη και στη λίστα σταθμών, μετρά τα QSO ενεργοποίησής σας και εξάγει ADIF· τα WWFF, IOTA, HEMA, GMA και άλλα προγράμματα, και διαγωνισμοί όπως το ARRL Field Day, είναι πειραματικά. Κάθε QSO μπορεί να πάει στα QRZ, Logbook of the World, eQSL, Club Log, HRDLog, HamQTH, Wavelog ή Cloudlog καθώς το καταγράφετε, και στα προγράμματα καταγραφής του δικτύου σας.</p></details>
+            <details class="faq-item"><summary data-i18n="FAQ_Q9">Μπορώ να χρησιμοποιήσω το qFT8 μόνο για ακρόαση (SWL);</summary><p data-i18n="FAQ_A9">Ναι. Το qFT8 λαμβάνει και αποκωδικοποιεί κάθε mode που γνωρίζει μέσω δέκτη SDR (ένα dongle RTL-SDR σε τηλέφωνο Android ή υπολογιστή Linux, έναν διακομιστή δικτύου RTL-SDR, ένα δικό σας ή δημόσιο KiwiSDR και άλλα SDR δικτύου) ή μέσω ενός συνηθισμένου ραδιοφώνου σε λειτουργία SWL, στην οποία δεν εκπέμπει ποτέ. Τα QSO που ακούτε ανάμεσα σε άλλους σταθμούς πηγαίνουν σε αρχείο ακουσμάτων που εξάγει αρχεία SWL ADIF, CSV, SOTA SWL και RAZA SWL. Η ενότητα SWL του εγχειριδίου χρήσης εξηγεί τους δέκτες και τα προγράμματα οδήγησής τους.</p></details>
+        </div>
+
+        <div class="music-box">
+            <p data-i18n="WINDLEREYE_SUPPORT">Υποστηρίξτε με ακούγοντας το μουσικό μου project <a href="https://www.windlereye.com" target="_blank">Windlereye</a></p>
+            <a href="https://www.windlereye.com" target="_blank" class="img-link">
+                <img src="../windlereye.jpg" alt="Μουσικό project Windlereye" width="333" height="592" loading="lazy" decoding="async" data-i18n="WINDLEREYE_ALT">
+            </a>
+        </div>
+
+        <div class="features contributors-box">
+            <h2 style="text-align: center; margin-bottom: 24px;" data-i18n="CONTRIBUTORS_TITLE">Ιδιαίτερες ευχαριστίες &amp; κορυφαίοι συντελεστές</h2>
+            <div class="contributor-item">
+                <p data-i18n="CONTRIBUTOR_EA3ISA"><strong>Roger Ribes González (<a href="https://www.qrz.com/db/EA3ISA" target="_blank">EA3ISA</a>)</strong> &mdash; Ανεκτίμητη καθοδήγηση, στενή συνεργασία και εκτενείς δοκιμές beta στο πεδίο από τα πρώτα στάδια ανάπτυξης του qFT8, συμβάλλοντας ουσιαστικά στη διαμόρφωση των λειτουργιών SOTA και POTA.</p>
+            </div>
+            <div class="contributor-item">
+                <p data-i18n="CONTRIBUTOR_UR4LBR"><strong>Andriy Dinets (<a href="https://www.qrz.com/db/UR4LBR" target="_blank">UR4LBR</a>)</strong> &mdash; Εκτενείς δοκιμές beta και ζωτική βοήθεια στην επίλυση περίπλοκων ζητημάτων σχετικά με την απόδοση του φασματογραφήματος, την ψηφιακή επεξεργασία σήματος, την ακρίβεια του SNR, καθώς και στην προώθηση των δυνατοτήτων SOTA και POTA.</p>
+            </div>
+            <div class="contributor-item">
+                <p data-i18n="CONTRIBUTOR_GW8RDI"><strong>Rob Colclough (<a href="https://www.qrz.com/db/GW8RDI" target="_blank">GW8RDI</a>)</strong> &mdash; Δημιουργός και προγραμματιστής των projects <a href="https://quantumsdr.com" target="_blank">QuantumSDR</a> και <a href="https://www.facebook.com/groups/219627530721541" target="_blank">uSDX Open</a>. Καθοριστικός ρόλος ώστε το qFT8 να υποστηρίζει πολλούς πομποδέκτες και ποικίλες συσκευές Android, προσφέροντας βαθιά τεχνική συμβουλευτική και αφοσιωμένες δοκιμές.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p data-i18n="FOOTER_COPYRIGHT">Copyright &copy; 2026, <a href="https://www.luisquesada.com">Luis Quesada Torres</a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Με επιφύλαξη παντός δικαιώματος.</p>
+        <p data-i18n="FOOTER_ATTRIBUTION">Περιλαμβάνει τμήματα από τα usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, OFL-1.1), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), Big CTY (Copyright &copy; Jim Reisert AD1C), SatNOGS DB (CC BY-SA 4.0), CelesTrak και Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Κανένας από αυτούς τους τρίτους δημιουργούς ή τα έργα τους δεν εγκρίνει ούτε σχετίζεται με το qFT8.</p>
+        <div class="footer-links">
+            <a href="../manual/el/" id="manual-link-footer" data-i18n="BTN_USER_MANUAL">Εγχειρίδιο χρήσης</a> - <a href="../privacy/">Privacy Policy</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">License</a>
+        </div>
+    </div>
+
+<script>
+(function () {
+    var b = document.querySelector('.fc-zoom');
+    if (!b) return;
+    var box = null, last = null;
+    function close() {
+        if (!box) return;
+        document.removeEventListener('keydown', onKey, true);
+        box.remove(); box = null;
+        document.documentElement.classList.remove('fc-lb-open');
+        if (last) last.focus();
+    }
+    function onKey(e) {
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        else if (e.key === 'Tab' && box) { e.preventDefault(); box.querySelector('button').focus(); }
+    }
+    b.addEventListener('click', function () {
+        var src = b.querySelector('img');
+        last = b;
+        box = document.createElement('div');
+        box.className = 'fc-lightbox';
+        box.setAttribute('role', 'dialog');
+        box.setAttribute('aria-modal', 'true');
+        box.setAttribute('aria-label', src.alt);
+        var x = document.createElement('button');
+        x.type = 'button'; x.className = 'fc-lb-close'; x.setAttribute('aria-label', 'Close');
+        x.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>';
+        var im = document.createElement('img');
+        im.src = src.currentSrc || src.src; im.alt = src.alt;
+        box.appendChild(x); box.appendChild(im);
+        box.addEventListener('click', function (e) { if (e.target !== im) close(); });
+        document.documentElement.classList.add('fc-lb-open');
+        document.body.appendChild(box);
+        document.addEventListener('keydown', onKey, true);
+        x.focus();
+    });
+})();
+</script>
+</body>
+
+</html>

@@ -126,6 +126,7 @@
                 </li>
                 <li><a href="#pota">Parks On The Air (<span translate="no">POTA</span>)</a>
                 </li>
+                <li><a href="#multitone">Багатотональний режим: два сигнали одночасно</a></li>
                 <li><a href="#activation">Активація парку або вершини</a></li>
                 <li><a href="#events-supported">Підтримувані події</a></li>
                 <li><a href="#js8-chat"><span translate="no">JS8</span> (чат з клавіатури)</a>
@@ -138,6 +139,7 @@
                 </li>
                 <li><a href="#wspr-mode"><span translate="no">WSPR</span> і <span translate="no">FST4W</span> (маяки)</a></li>
                 <li><a href="#ssb-mode"><span translate="no">SSB</span> (телефонія)</a></li>
+                <li><a href="#mode-am"><span translate="no">AM</span>, авіаційний діапазон і морський <span translate="no">VHF</span> (мовлення)</a></li>
                 <li><a href="#cw-mode"><span translate="no">CW</span> (телеграф)</a>
                     <ul>
                         <li><a href="#cw-keys">Маніпуляція через адаптер, з клавіатури або мишею</a></li>
@@ -147,9 +149,17 @@
                     </ul>
                 </li>
                 <li><a href="#rtty-mode"><span translate="no">RTTY</span> і <span translate="no">JTTY</span></a></li>
+                <li><a href="#psk-mode"><span translate="no">PSK31</span> і <span translate="no">PSK63</span></a></li>
+                <li><a href="#olivia-mode"><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> і <span translate="no">DominoEX</span></a></li>
+                <li><a href="#thor-mode"><span translate="no">THOR</span>, <span translate="no">Contestia</span> і <span translate="no">MT63</span></a></li>
+                <li><a href="#hell-mode"><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>)</a></li>
+                <li><a href="#mode-packet"><span translate="no">Packet (APRS)</span></a></li>
                 <li><a href="#sstv-mode"><span translate="no">SSTV</span> (зображення)</a></li>
                 <li><a href="#draw-mode"><span translate="no">DRAW</span> (зображення на водоспаді)</a></li>
                 <li><a href="#satellites">Супутники й компас на карті</a></li>
+                <li><a href="#bcast-receive">Мовне радіо: <span translate="no">FM</span> + <span translate="no">RDS</span> і <span translate="no">AM</span></a></li>
+                <li><a href="#swl">Використання qFT8 для <span translate="no">SWL</span> (прослуховування)</a></li>
+                <li><a href="#map-live">Що показано на карті</a></li>
                 <li><a href="#features">Опис функцій</a>
                     <ul>
                         <li><a href="#tune-offset">Зсув настроювання спектрограми</a></li>
@@ -1022,6 +1032,32 @@
                 Параметри описано в розділі <a href="#fst4-settings">Налаштування &gt; <span translate="no">FST4</span></a>; список станцій у <span translate="no">FST4</span> описано в розділі <a href="#stations-fst4">Вкладка «Станції»</a>. Його маяковий варіант, <span translate="no">FST4W</span>, працює як <span translate="no">WSPR</span>.
             </p>
 
+            <h3 id="mode-jt65"><span translate="no">JT65</span> і <span translate="no">JT9</span></h3>
+            <p id="mode-jt9">
+                <span translate="no">JT65</span> і <span translate="no">JT9</span> — давніші хвилинні види зв'язку для QSO слабкими сигналами. Обидва в qFT8 експериментальні:
+            </p>
+            <ul>
+                <li>Хвилинні слоти: передача починається за одну секунду після початку парної або непарної хвилини <span translate="no">UTC</span> і триває близько 47 с (<span translate="no">JT65</span>) або 49 с (<span translate="no">JT9</span>); парну чи непарну ви обираєте, як у <span translate="no">FT8</span>.</li>
+                <li>Повідомлення: 72 біти: CQ, два позивні з локатором, рапорт (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> або вільний текст до 13 символів. QSO проходить так само, як у <span translate="no">FT8</span> (<span translate="no">AUTO</span>, список станцій, журнал). Позивний, якому потрібні і префікс, і суфікс, передати не можна.</li>
+                <li>Підвиди <span translate="no">JT65</span>: A (КХ), B і C (УКХ і вище, більший інтервал між тонами); обираються поруч із видом зв'язку в нижній панелі або в Налаштуваннях; обидві станції мають використовувати той самий. <span translate="no">JT9</span> — це <span translate="no">JT9-1</span>, завширшки лише 16 Гц.</li>
+            </ul>
+            <p>
+                Параметри описано в розділах <a href="#jt65-settings">Налаштування &gt; <span translate="no">JT65</span></a> і <a href="#jt9-settings">Налаштування &gt; <span translate="no">JT9</span></a>.
+            </p>
+
+            <h3 id="mode-jt4"><span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> — хвилинний вид зв'язку для QSO слабкими сигналами на діапазонах <span translate="no">VHF</span>, <span translate="no">UHF</span> і мікрохвиль (<span translate="no">EME</span>, мікрохвильові маяки). У qFT8 він експериментальний:
+            </p>
+            <ul>
+                <li>Хвилинні слоти, як у <span translate="no">JT65</span>: передача починається за одну секунду після початку парної або непарної хвилини <span translate="no">UTC</span> і триває близько 47 с.</li>
+                <li>Повідомлення: ті самі 72-бітні повідомлення, що в <span translate="no">JT65</span> і <span translate="no">JT9</span>, і той самий перебіг QSO, що в <span translate="no">FT8</span> (<span translate="no">AUTO</span>, список станцій, журнал).</li>
+                <li>Підвиди від A до G: 4 тони, на відстані 4.375 Гц один від одного в A і до 72 разів ширше в G (близько 950 Гц), для доплерівського розширення вищих діапазонів. A застосовується на 2 м і 70 см, ширші — на мікрохвильових діапазонах. Обирається поруч із видом зв'язку в нижній панелі або в Налаштуваннях; обидві станції мають використовувати той самий.</li>
+            </ul>
+            <p>
+                Параметри описано в розділі <a href="#jt4-settings">Налаштування &gt; <span translate="no">JT4</span></a>.
+            </p>
+
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
         </section>
 
@@ -1062,14 +1098,18 @@
                 <li><strong>Позначка часу декодування</strong>: <span
                         style="color: #ffffff; font-weight: bold;">біла</span> крапка у правій частині смуги показує момент декодування, тобто коли з прийнятих сигналів декодуються повідомлення, які потім обробляються.
                 </li>
-                <li><strong>Кнопка TX</strong>: може бути вимкнена (<span translate="no">OFF</span>) або ввімкнена (<span translate="no">ON</span>). Вона також показує, коли триває передача, потужність передавання та <span translate="no">SWR</span>. З прошивками <span translate="no">QMX</span> новішими за 1_04 на цій кнопці є напис «HOLD: TUNE». Якщо утримувати кнопку, вмикається режим настроювання й <span translate="no">SWR</span> показується наживо.
+                <li><strong>The TX button</strong>: Can be disarmed
+                    (<span translate="no">OFF</span>) or armed
+                    (<span translate="no">ON</span>). It also shows when transmission
+                    is happening,
+                    and the transmit power and <span translate="no">SWR</span>; while transmitting, the power and the <span translate="no">SWR</span> are the average of the radio's last 2 seconds of readings, so they do not flicker. The button's words stay in English in every language. It reads <span translate="no">NO TX / SDR</span> while a receive-only <span translate="no">SDR</span> is the receiver, <span translate="no">NO TX / I/Q</span> while a <span translate="no">QMX</span> is in I/Q mode, <span translate="no">NO TX / SWL</span> in <span translate="no">SWL</span> mode and <span translate="no">NO TX / RX</span> while a receiver (marine <span translate="no">VHF</span>, airband, a beacon or time-signal receiver ...) has the radio: nothing can transmit then, and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span> again. With the Ham features off it reads <span translate="no">NO CALLSIGN</span> on red; tapping it explains that transmitting needs an amateur licence, a callsign and the Ham features, and <strong>НАЛАШТУВАТИ</strong> asks for your callsign and switches the Ham features on (<span translate="no">TX</span> stays <span translate="no">OFF</span>). In <span translate="no">QMX</span> firmwares above 1_04, this button will show "HOLD: TUNE". Holding the button will enable tuning mode and report on <span translate="no">SWR</span> live.
                 </li>
                 <li><strong>Вибір повідомлення</strong>: показує повідомлення, вибране для передачі або таке, що передається (тоді воно виділене <span style="color: #ffff00; font-weight: bold;">жовтим</span>). У режимі <span translate="no">AUTO</span> ним керує автоматика. У режимі <span translate="no">CALL</span> типово теж, але на нього можна натиснути й вручну вибрати наступне повідомлення.
                 </li>
                 <li><strong>Вибір послідовності</strong>: <span
                         style="color: #ffff00; font-weight: bold;">жовта</span> лінія над кнопками показує поточну послідовність (0 або 1). Натискання на 0 чи 1 вибирає цю послідовність для ваших передач.</li>
-                <li><strong>Вибір режиму</strong>: змінює режим роботи (наприклад, <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span>, <span translate="no">LQ8</span>, <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>, <span translate="no">FST4W</span>, <span translate="no">JS8</span> або <span translate="no">WSPR</span>), а також <a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a> і <a href="#sstv-mode"><span translate="no">SSTV</span></a>, які змінюють нижню панель і вкладку «Станції», як описано у їхніх розділах. Перехід від цифрових режимів до одного з цих чотирьох, назад або між ними перемикає <span translate="no">TX</span> в <span translate="no">OFF</span>: увімкніть його знову, коли будете готові. Перехід між цифровими режимами залишає його як є.</li>
-                <li><strong>Вибір діапазону</strong>: коли трансивер підключено, змінює діапазон на трансивері.</li>
+                <li><strong>The mode selector</strong>: It changes the mode (every mode is listed in <a href="#ui-mode-select">The mode selector</a>, below). Changing from the digital modes to a mode with its own pane (<a href="#ssb-mode"><span translate="no">SSB</span></a>, <a href="#cw-mode"><span translate="no">CW</span></a>, <a href="#rtty-mode"><span translate="no">RTTY</span></a>, <a href="#sstv-mode"><span translate="no">SSTV</span></a>, and the other ones that change the bottom bar and the Stations tab as their sections describe), back, or between them switches <span translate="no">TX</span> <span translate="no">OFF</span>: arm it again when you are ready. Changing between digital modes leaves it as it is.</li>
+                <li><strong>The band selector</strong>: Opens the list of bands with their frequencies and, when a transceiver is connected, changes the band in the transceiver (see <a href="#ui-band-select">The band selector</a>, below).</li>
                 <li><strong>Кнопка вкладки «Станції»</strong>: відкриває вкладку зі списком усіх станцій, які ви чули або з якими можете зв'язатися.</li>
                 <li><strong>Кнопка вкладки «Журнал»</strong>: відкриває вкладку зі списком усіх проведених вами <span translate="no">QSO</span>. На кнопці з'являється жовта крапка, якщо є QSO, не надіслані на QRZ.
                 </li>
@@ -1340,6 +1380,49 @@
 
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
 
+            <h3 id="ui-mode-select">The mode selector</h3>
+            <p>
+                The button with the mode's name in the bottom bar opens the mode selector. At the top are two tabs, <strong>HAM</strong>
+                and <strong>SWL</strong>, that stay in place while the list scrolls, and at their right the <strong>PROBE</strong> button
+                (see below). The selector opens on the tab you used last, keeps its size when you switch tabs (a taller tab scrolls inside
+                it) and closes when you tap outside it. With only the Ham features on there is no tab row (only <strong>HAM</strong>); with
+                the <span translate="no">SWL</span> features on both tabs show, and with the Ham features off the <strong>HAM</strong> tab
+                stays, for receiving only.
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: numbered sections of equal buttons that adapt to the screen width and the text size: weak signal,
+                    beacons, keyboard and chat, classic radio, images, digital voice and packet. The most used modes (<span translate="no">FT8, LQ8, FT4, FT2, WSPR, JS8, RTTY, JTTY, SSB, CW, SSTV</span> and <span translate="no">Packet (APRS)</span>)
+                    are in a slightly brighter box with a bold name; the mode in use keeps its own look. Experimental modes say so on a second small line.</li>
+                <li><strong>SWL</strong>: the receivers, one button each, with what they decode under the name: broadcast, HF utility and time signals,
+                    air and sea, weather, balloons and satellites, IoT and mesh. They are described in <a href="#swl">Using qFT8 for SWL</a>.</li>
+                <li>Families of modes have <strong>one button</strong>: <strong>PSK</strong> (PSK31, PSK63, PSK125, PSK250, QPSK31, QPSK63) and
+                    <strong>Родина MFSK</strong> (MFSK, THOR, DominoEX, Throb); Olivia, Contestia, MT63 and the other keyboard modes too. The variant is
+                    picked in the bottom bar beside the mode, as the sub-modes of <span translate="no">JT65</span> are (A, B, C): the closed picker shows short names
+                    (31, Q63, M16, TH22, 8/250, 32/1K) and the open one the full names. Each family remembers the variant you used last, and every
+                    variant is still logged by its own name.</li>
+                <li>A mode your radio cannot do is hidden. The check box <strong>Показувати види випромінювання, які моя радіостанція не підтримує</strong> at the bottom shows them
+                    greyed; tapping one says why (for example &ldquo;Your radio has no I/Q output&rdquo;).</li>
+            </ul>
+            <p>
+                <strong>PROBE</strong> opens the free <strong>AUTO MODE DETECTOR</strong>, whatever is switched on (the bottom bar then reads
+                <span translate="no">PROBE</span>). It names the signals on the spectrogram as you watch; the ones qFT8 decoded get a check mark. Tap a label
+                and qFT8 asks &ldquo;Go to FT8 on 14075.250 kHz?&rdquo; (the mode and the frequency of that signal): <strong>YES</strong> switches to it.
+                It is experimental: it can be wrong, and it never names room noise, voices, music or hum. In Settings &gt; Spectrogram the check box
+                <strong>Називати інші сигнали на спектрограмі (детектор режимів)</strong> lets it keep listening while you operate.
+            </p>
+
+            <h3 id="ui-band-select">The band selector</h3>
+            <p>
+                The band button of the bottom bar opens the band selector: the bands one per row, each with the frequencies of the current mode (for
+                example FT8 on 20 m: 14.074 Standard and 14.090 DXpedition; on 6 m: 50.313 and 50.323 Alternate). Tap a frequency to go there; the one
+                you pick is remembered for each mode and band. A band in red has no frequency in this mode (60 m in FT4, for example) and cannot be picked.
+                Below the bands are your custom bands A to E (an empty one opens the settings to fill it), a box for any frequency (in
+                <span translate="no">FT8</span> and the other band modes it becomes that band's frequency; in <span translate="no">SSB, CW, RTTY</span> and
+                <span translate="no">SSTV</span> it tunes the radio), a gear to the band settings and the check box <strong>Тримати радіо на вибраній частоті</strong>:
+                on, a radio turned by hand is put back on the frequency you chose; off, qFT8 follows the radio. It closes when you tap outside it. In
+                marine <span translate="no">VHF</span>, airband, the broadcast radio and the signals receivers the button only shows the receiver's frequency (for
+                example 156.8) and does not open the list; pick an amateur mode to change band. In the web remote each band of the list shows the same frequency buttons.
+            </p>
             <h3 id="ui-log-tab">Вкладка «Журнал»</h3>
             <p>На вкладці «Журнал» показано проведені QSO.</p>
             <div class="phone-mockup">
@@ -1353,7 +1436,8 @@
                 <li><strong>Текстовий фільтр за позивним</strong>: залишає QSO, позивний яких містить уведений текст.</li>
                 <li><strong>Фільтр за станом</strong>: показує такі QSO:
                     <ul>
-                        <li><span translate="no">Всі</span>: усі записані QSO.</li>
+                        <li><strong>QSO / SWL</strong>: once something has been heard, or the <span translate="no">SWL</span> features are on, the top of the log has one dropdown, <strong>QSO</strong> / <strong>SWL</strong>, in the colour of the log you are looking at (<span translate="no">QSO</span> blue, <span translate="no">SWL</span> red). <span translate="no">QSO</span>, your own log, is the default; <span translate="no">SWL</span> shows what you heard, newest first, in its place. The choice is remembered. The <span translate="no">SWL</span> page has the same filter bar (<strong>Містить</strong>, <strong>Показати</strong>, <strong>недавні</strong>), which searches the whole <span translate="no">SWL</span> log, and a tap on an entry opens it to edit or delete (nothing is ever deleted on eQSL or any online service). Beside the <strong>+</strong> a file button asks <strong>IMPORT QSO LOG</strong> / <strong>EXPORT QSO LOG</strong>, or <strong>IMPORT SWL LOG</strong> / <strong>EXPORT SWL LOG</strong>, for the log shown (the same as Settings &gt; Log files; the web remote only exports).</li>
+            <li><span translate="no">Всі</span>: усі записані QSO.</li>
                         <li><span translate="no">Підтверджені</span>: лише підтверджені QSO.</li>
                         <li><span translate="no">Мисливець POTA</span> / <span translate="no">Мисливець SOTA</span>: QSO з парком або вершиною.</li>
                         <li><span translate="no">Не підтверджені</span>: QSO, які ще не підтверджено.</li>
@@ -1428,13 +1512,13 @@
                     <ul>
                         <li><strong><span translate="no">INFO</span></strong>: вмикає й вимикає інформаційні картки на екрані (час, термінатор, підсонячна точка, координати перехрестя).</li>
                         <li><strong><span translate="no">MSGs</span></strong>: вмикає й вимикає траси та позначки адресних повідомлень: <span style="color: #ff9800; font-weight: bold;">помаранчевим</span> — прийняті (адресовані вашій станції), <span style="color: #ffff00; font-weight: bold;">жовтим</span> — передані (з вашої станції). Дотик до середини стрілки відкриває текст повідомлення.</li>
-                        <li><strong><span translate="no">QSOs</span></strong>: вмикає й вимикає позначки ваших недавніх зв'язків за сеанс (<span style="color: #f59e0b; font-weight: bold;">бурштинові</span> — записані, <span style="color: #10b981; font-weight: bold;">смарагдові</span> — підтверджені). Коли вимкнено і <span translate="no">MSGs</span>, і <span translate="no">Spot</span>, тонка лінія з'єднує вашу станцію з кожною станцією <span translate="no">QSO</span> на мапі (без стрілок), і одразу видно, куди пройшли ваші зв'язки; ці лінії є й на зображенні мапи, яким ви ділитеся.</li>
-                        <li><strong><span translate="no">Spot</span></strong>: вмикає й вимикає споти декодованого трафіку на діапазоні, який чує ваша станція (<span style="color: #00ffff; font-weight: bold;">блакитні</span> — RX/CQ), і станції, які повідомляють про ваш сигнал на PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">червоні ромби</span>).</li>
+                        <li><strong><span translate="no">QSOs</span></strong>: вмикає й вимикає позначки ваших недавніх зв'язків за сеанс (<span style="color: #f59e0b; font-weight: bold;">бурштинові</span> — записані, <span style="color: #10b981; font-weight: bold;">смарагдові</span> — підтверджені). Коли вимкнено і <span translate="no">MSGs</span>, і <span translate="no">SPOT</span>, тонка лінія з'єднує вашу станцію з кожною станцією <span translate="no">QSO</span> на мапі (без стрілок), і одразу видно, куди пройшли ваші зв'язки; ці лінії є й на зображенні мапи, яким ви ділитеся.</li>
+                        <li><strong><span translate="no">SPOT</span></strong>: вмикає й вимикає споти декодованого трафіку на діапазоні, який чує ваша станція (<span style="color: #00ffff; font-weight: bold;">блакитні</span> — RX/CQ), і станції, які повідомляють про ваш сигнал на PSKReporter / WSPRnet (<span style="color: #ff5252; font-weight: bold;">червоні ромби</span>).</li>
                         <li><strong><span translate="no">SOTA</span></strong>: вмикає й вимикає референси вершин Summits On The Air та активних активаторів вершин (⛰️).</li>
                         <li><strong><span translate="no">POTA</span></strong>: вмикає й вимикає референси парків Parks On The Air та активних активаторів парків (🌲).</li>
                         <li><strong><span translate="no">Діапазон</span></strong>: показує проходження на діапазоні за звітами з мережі та мертву зону навколо користувача. Якщо є інтернет, оновлюється в реальному часі під час зміни діапазону.</li>
                     </ul>
-                    <p>Кнопки <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> та <strong><span translate="no">Spot</span></strong> можуть блимати: це означає, що оновлення завантажити не вдалося.</p>
+                    <p>Кнопки <strong><span translate="no">SOTA</span></strong>, <strong><span translate="no">POTA</span></strong>, <strong><span translate="no">STATS</span></strong> та <strong><span translate="no">SPOT</span></strong> можуть блимати: це означає, що оновлення завантажити не вдалося.</p>
                 </li>
                 <li><strong>Права панель інструментів (шари досягнень і меж)</strong>:
                     <ul>
@@ -1473,6 +1557,8 @@
                 <li><strong><span translate="no">Модифікатор CQ</span></strong>: необов'язковий текст, що додається до ваших викликів <span translate="no">CQ</span> (напр., "<span translate="no">SOTA</span>").</li>
                 <li><strong>Місцезнаходження</strong> і <strong>Час</strong>: ваш локатор Maidenhead і зсув годинника, кожен із кнопкою <strong>СИНХР.</strong>; шестірня поруч відкриває <strong>ЧАС І МІСЦЕЗНАХОДЖЕННЯ</strong> (<a href="#settings-pages">нижче</a>).</li>
                 <li><strong>Трансивер</strong> / <strong>Антена</strong>: радіостанція й антена, з якими ви працюєте. Кожне записане QSO зберігає їх (ADIF <code>MY_RIG</code> / <code>MY_ANTENNA</code>), а <span translate="no">PSKReporter</span> отримує їх разом із вашими спотами. Якщо поле «Трансивер» порожнє, використовується назва підключеної радіостанції.</li>
+                <li><strong>SWL id</strong> (за ввімкнених функцій SWL): ваш ідентифікатор слухача, який записується в журнал SWL; порожнє означає «SWL».</li>
+                <li><strong>APPLICATION SETTINGS</strong>: a page with, in this order: Application (slow device / low battery mode and, on the computer, confirm before closing), Features (Ham features, SWL features and Awards; on the phone also Radio connection, Log and World map), User interface (orientation, colour palettes, what the lists show, the user interface and font scale, <strong>SPECTROGRAM</strong> and <strong>WORLD MAP</strong>), Logger and Keep running minimized / screen off.</li>
                 <li><strong>Пристрій</strong>: використовується для налаштування й вибору вашого трансивера (напр., QMX, QDX, Kenwood серій TS-480 / TS-590 / TS-2000 або VOX/лише аудіо) та параметрів з'єднання. Під ним:
                     <ul>
                         <li><strong>Вважати потужність передачі N Вт</strong>: для радіостанцій, що не повідомляють свою потужність, ват у журналі. Потужність радіостанції це ніколи не змінює.</li>
@@ -1481,18 +1567,22 @@
                         <li><strong>Динаміки та мікрофон</strong>: ваші власні мікрофон і динаміки або навушники для <span translate="no">SSB</span> і <span translate="no">CW</span> (див. <a href="#audio-setup">Динаміки та мікрофон</a>, одразу нижче).</li>
                         <li><strong>Генерувати тон із гучністю</strong> і гучність пристрою під час передачі: ті самі два параметри, що й у КОНФІГУРАЦІЇ ПРИСТРОЮ, повторені тут.</li>
                         <li><strong>КОНСОЛЬ CAT</strong>: вводьте команди радіостанції самі (див. <a href="#cat-console">Консоль CAT</a>).</li>
+                    <li><strong>Режим I/Q (лише прийом)</strong> (experimental, while a <span translate="no">QMX</span> is the device): the radio sends its raw I and Q over <span translate="no">USB</span> (48 kHz) and qFT8 tunes inside that span, for the spectrum and every decoder. Transmitting is refused while it is on (the <span translate="no">TX</span> button reads <span translate="no">NO TX / I/Q</span>); if the radio stays in audio mode, its firmware may not have I/Q mode.</li>
+                        <li><strong>Мережева радіостанція</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): <strong>Підключитися до мережевої радіостанції (експериментально)</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>ПІДКЛЮЧИТИ</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                     </ul>
                 </li>
-                <li><strong>Інтерфейс</strong>: інтерфейс і масштаб шрифту, <strong>Мова</strong> та, якщо ви вимкнули одне з них (<a href="#layouts">Компонування екрана</a>), кнопки <strong>УВІМКНУТИ РАДІОФУНКЦІЇ</strong>, <strong>УВІМКНУТИ ЖУРНАЛ QSO</strong> і <strong>УВІМКНУТИ КАРТУ СВІТУ</strong>.</li>
-                <li><strong>Синхронізація QSO</strong>: по одному рядку на кожен сервіс, на який вантажаться ваші QSO, і <strong>ДОДАТИ СЕРВІСИ</strong> (див. <a href="#qso-services">Служби завантаження QSO</a>).</li>
-                <li><strong>Сервери</strong>: що цей пристрій надає іншим програмам, і <strong>ДОДАТИ СЕРВЕРИ</strong> (див. <a href="#choosing-services">Вибір сервісів і серверів</a>).</li>
-                <li><strong>Звіти</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> і <a href="#lq8-announce">оголошення вашої активності <span translate="no">LQ8</span></a>.</li>
+                <li><strong>НАГОРОДИ</strong> (the band at the very top of Settings, experimental): <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on) each show how many stars you have earned and open a live diploma (see <a href="#awards">Awards</a>).</li>
+                    </ul>
+                </li>
                 <li><strong>Події</strong>: активації <span translate="no">POTA</span> і <span translate="no">SOTA</span> та лічильник QSO (див. <a href="#events-section">Розділ «Події» в Налаштуваннях</a>).</li>
+                <li><strong>Файли журналу</strong>: <strong>IMPORT QSO LOG</strong> and <strong>EXPORT QSO LOG</strong>, your QSO logbook as ADIF (<span translate="no">.adi</span>) files, and the <span translate="no">SWL</span> log's own buttons (see <a href="#swl-services">The SWL log in Settings</a>) (see <a href="#adif-import-export">ADIF Import/Export</a>).</li>
+                <li><strong>Синхронізація QSO</strong>: по одному рядку на кожен сервіс, на який вантажаться ваші QSO: його перемикач, значок стану та шестірня (див. <a href="#qso-services">Служби завантаження QSO</a> і <a href="#choosing-services">Вибір сервісів і серверів</a>).</li>
+                <li><strong>Звіти</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> і <a href="#lq8-announce">оголошення вашої активності <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Спільнота</strong>: дві групи Telegram (див. <a href="#community">Спільнота</a>).</li>
-                <li><strong>Файли журналу</strong>: <strong>ІМПОРТ ЖУРНАЛУ</strong> і <strong>ЕКСПОРТ ЖУРНАЛУ</strong>, ваш журнал QSO у файлах ADIF (<span translate="no">.adi</span>) (див. <a href="#adif-import-export">Імпорт та експорт ADIF</a>).</li>
                 <li><strong>Файли налаштувань</strong>: <strong>ІМПОРТ НАЛАШТУВАНЬ</strong> і <strong>ЕКСПОРТ НАЛАШТУВАНЬ</strong> (див. <a href="#settings-pages">нижче</a>).</li>
-                <li><strong>Інші налаштування</strong>: сторінки <strong>ЧАС І МІСЦЕЗНАХОДЖЕННЯ</strong>, <strong>ЗАСТОСУНОК</strong>, <strong>СПЕКТРОГРАМА</strong>, <strong>КАРТА СВІТУ</strong>, <strong>АВТОМАТИЧНИЙ РЕЖИМ</strong>, <strong>ЦИФРОВІ РЕЖИМИ</strong>, <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong>, <strong>ВИБІР ДІАПАЗОНУ</strong>, <strong>ДЖЕРЕЛА ДАНИХ</strong> і <strong>ВИДАЛИТИ QSO</strong>, кожна описана в розділі <a href="#settings-pages">Сторінки налаштувань</a>.</li>
+                <li><strong>Інші налаштування</strong>: <strong>ВИДИ ЗВ'ЯЗКУ</strong> (сторінка з, у такому порядку <strong>АВТОМАТИЧНИЙ РЕЖИМ</strong>, <strong>ЦИФРОВІ РЕЖИМИ</strong> і <strong>ВИБІР ДІАПАЗОНУ</strong>, потім, під «Налаштування видів зв'язку», по одній кнопці на режим: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> а решта цифрових режимів відкривають ЦИФРОВІ РЕЖИМИ на цьому режимі; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> і <strong><span translate="no">PACKET</span></strong> власні сторінки; НАЗАД повертає до ВИДИ ЗВ'ЯЗКУ), <strong>ДЖЕРЕЛА ДАНИХ</strong>, <strong>СЕРВЕРИ</strong> (що цей пристрій надає іншим програмам, див. <a href="#choosing-services">Вибір сервісів і серверів</a>) і <strong>ВИДАЛИТИ QSO</strong>, кожна описана в розділі <a href="#settings-pages">Сторінки налаштувань</a>.</li>
                 <li><strong>Перевіряти нові версії під час запуску</strong> і <strong>Надсилати анонімний щоденний звіт про продуктивність</strong> (див. <a href="#reports-updates">Звіти про помилки та нові версії</a>).</li>
+                <li><strong>Мова</strong>: мова qFT8, під лінією в кінці списку.</li>
                 <li>Унизу: версія з посиланнями на цей посібник і політику конфіденційності, дозволи та підключений USB-пристрій, а також <strong><span translate="no">ПОВІДОМИТИ ПРО ПОМИЛКУ</span></strong> (див. <a href="#report-bug">Як повідомити про проблему</a>).</li>
             </ul>
 
@@ -1580,7 +1670,7 @@
                     і вибір, чи оновлювати його з GPS щоразу під час запуску qFT8.</li>
             </ul>
 
-            <h4 id="settings-application">ЗАСТОСУНОК</h4>
+            <h4 id="settings-application">Налаштування застосунку</h4>
             <ul>
                 <li><strong>Режим повільного пристрою / слабкої батареї</strong>: легше малювання, декодер без змін (див.
                     <a href="#pc-slow">Повільні комп'ютери</a>; на телефонах так само).</li>
@@ -2026,7 +2116,8 @@
             </div>
 
             <ol>
-                <li><strong>Позивний</strong>: введіть позивний і натисніть Enter на клавіатурі: QSO записується з поточним часом, поле очищається, і можна вводити наступний. Клавіатура лишається відкритою від одного QSO до наступного.</li>
+                <li><strong>QSO</strong> / <strong>SWL</strong> (the first field, blue for <span translate="no">QSO</span>, red for <span translate="no">SWL</span>): where the entry goes. <span translate="no">SWL</span> writes the station into the <span translate="no">SWL</span> log, never into the <span translate="no">QSO</span> log. The <span translate="no">SWL</span> page of the log opens it on <span translate="no">SWL</span> and the <span translate="no">QSO</span> page on <span translate="no">QSO</span>; anywhere else it starts on <span translate="no">QSO</span> with the Ham features on and on <span translate="no">SWL</span> with them off.</li>
+            <li><strong>Позивний</strong>: введіть позивний і натисніть Enter на клавіатурі: QSO записується з поточним часом, поле очищається, і можна вводити наступний. Клавіатура лишається відкритою від одного QSO до наступного.</li>
                 <li><strong><span translate="no">ЗАПИСАТИ</span></strong>: те саме, що Enter.</li>
                 <li><strong><span translate="no">ОЧИСТИТИ</span> / <span translate="no">СКАСУВАТИ</span></strong>: поки позивний уведено, на кнопці написано <span translate="no">ОЧИСТИТИ</span> й вона очищає поле. В інших випадках на ній <span translate="no">СКАСУВАТИ</span>: вона забирає останнє QSO цього сеансу з журналу назад у форму, щоб його виправити.</li>
                 <li><strong><span translate="no">ГОТОВО</span></strong>: закриває ручний запис. Якщо позивний уведено, але не записано, запитає, чи записати його.</li>
@@ -2169,13 +2260,13 @@
 
             <h3 id="choosing-services">Вибір сервісів і серверів</h3>
             <p>
-                Розділ <strong>Синхронізація QSO</strong> показує QRZ, LoTW і eQSL, а також усі сервіси, які ви вже налаштували. Кнопка <strong>ДОДАТИ СЕРВІСИ</strong> під рядками показує всі сервіси: позначте сервіс, щоб він отримав свій рядок; зніміть позначку, і він повністю зупиниться (без завантажень і підтверджень, перестане враховуватися для зеленої позначки та зникне з варіантів експорту). Обліковий запис, ключ і перемикач зберігаються; позначений знову, він повертається таким, яким був.
+                <strong>Синхронізація QSO</strong> показує кожен сервіс в одному рядку: його перемикач, значок стану та шестірню, яка відкриває сторінку сервісу. Значок сірий, доки сервіс не налаштовано, зелена галочка, доки він надсилає ваші QSO, бурштинова пауза, якщо його налаштовано, але вимкнено, і червоний «!», якщо не вдалося підключитися; лише тоді другий, червоний рядок під рядком повідомляє, що пішло не так. Програми ведення журналу у вашій мережі мають другий рядок із назвами програм, з якими вони працюють; те, що вони не можуть обіцяти (UDP, без пароля), пояснено на їхніх власних сторінках.
             </p>
             <p>
-                Одразу нижче <strong>Сервери</strong> містить те, що цей пристрій надає іншим програмам. Прапорець рядка, наприклад «Remote Control Web Server on port 13497», — це той самий перемикач, що й на сторінці цього сервера, а його шестірня відкриває сторінку. Веб-сервер віддаленого керування та qFT8 bridge є завжди (на iPhone немає жодного з них); <strong>ДОДАТИ СЕРВЕРИ</strong> додає сервери Wavelog, Cloudlog і qFT8log та <a href="#lan-loggers">приймачі для програм ведення журналу у вашій мережі</a>. Сервер, з якого ви зняли позначку, зупиняється одразу й повертається таким, як був, коли ви позначите його знову.
+                У розділі Інші налаштування &gt; <strong>СЕРВЕРИ</strong>, одразу під ДЖЕРЕЛА ДАНИХ, міститься те, що цей пристрій надає іншим програмам: веб-сервер віддаленого керування та qFT8 bridge (на iPhone немає жодного з них), сервери Wavelog, Cloudlog і qFT8log та <a href="#lan-loggers">приймачі для програм ведення журналу у вашій мережі</a>. Прапорець рядка, наприклад «Remote Control Web Server on port 13497», — це той самий перемикач, що й на сторінці цього сервера, а його шестірня відкриває сторінку; НАЗАД звідти повертає до СЕРВЕРИ. Сервер, який ви вимикаєте, зупиняється одразу й повертається таким, як був, коли ви вмикаєте його знову.
             </p>
             <p>
-                Завантаження для мапи містяться в Інші налаштування &gt; <strong>ДЖЕРЕЛА ДАНИХ</strong>, одразу під ВИБІР ДІАПАЗОНУ; типово всі ввімкнені.
+                Завантаження для мапи містяться в Інші налаштування &gt; <strong>ДЖЕРЕЛА ДАНИХ</strong>, одразу під ВИДИ ЗВ'ЯЗКУ; типово всі ввімкнені. Коли світову мапу вимкнено, ДЖЕРЕЛА ДАНИХ не показуються (тоді для мапи нічого не завантажується).
             </p>
 
             <h3 id="services-list">Усі сервіси та сервери</h3>
@@ -2184,7 +2275,7 @@
             </p>
             <ul>
                 <li><strong>Синхронізація QSO</strong> (ваші QSO йдуть): <a href="#qrz-integration"><span translate="no">QRZ</span></a>, <a href="#lotw-integration"><span translate="no">LoTW</span></a>, <a href="#eqsl"><span translate="no">eQSL</span></a>, <a href="#wavelog"><span translate="no">Wavelog</span></a>, <a href="#cloudlog"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log">qFT8log</a> (на інший qFT8), <a href="#online-logbooks"><span translate="no">HRDLog</span>, <span translate="no">HamQTH</span>, <span translate="no">World Radio League</span> і <span translate="no">Club Log</span></a>, а також програми журналу у вашій мережі (<a href="#lan-loggers"><span translate="no">FT8 network log</span> і <span translate="no">ADIF over UDP</span></a>).</li>
-                <li><strong>Сервери</strong> (інші програми підключаються до цього qFT8): <a href="#remote-control">Веб-сервер віддаленого керування</a>, <a href="#bridge">qFT8 bridge</a>, сервери <a href="#wavelog-server"><span translate="no">Wavelog</span></a> і <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log-server">сервер qFT8log</a> та <a href="#lan-loggers">приймачі для програм журналу у вашій мережі</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, інтерфейси <span translate="no">AC Log</span> і <span translate="no">DXLab</span>).</li>
+                <li><strong>Сервери</strong> (Інші налаштування &gt; СЕРВЕРИ; інші програми підключаються до цього qFT8): <a href="#remote-control">Веб-сервер віддаленого керування</a>, <a href="#bridge">qFT8 bridge</a>, сервери <a href="#wavelog-server"><span translate="no">Wavelog</span></a> і <a href="#cloudlog-server"><span translate="no">Cloudlog</span></a>, <a href="#qft8-log-server">сервер qFT8log</a> та <a href="#lan-loggers">приймачі для програм журналу у вашій мережі</a> (<span translate="no">FT8 network log</span>, <span translate="no">ADIF over UDP</span>, інтерфейси <span translate="no">AC Log</span> і <span translate="no">DXLab</span>).</li>
                 <li><strong>Звіти</strong> (те, що ви чуєте, іде): <a href="#pskreporter"><span translate="no">PSKReporter</span></a>, <a href="#wspr-reports"><span translate="no">WSPRnet</span></a> і <a href="#lq8-announce">активність <span translate="no">LQ8</span> на живій мапі</a>.</li>
                 <li><strong>Події</strong>: <a href="#activation">активації <span translate="no">POTA</span> і <span translate="no">SOTA</span></a> та <a href="#event-counter">лічильник QSO</a>.</li>
             </ul>
@@ -2197,9 +2288,13 @@
                 Кожен має свою сторінку. HRDLog просить <strong>Код завантаження HRDLog</strong> з вашого профілю HRDLog (не пароль); HamQTH — <strong>Позивний у HamQTH</strong> і <strong>Пароль HamQTH</strong>; World Radio League — <strong>Ключ API WRL</strong>, який ви створюєте на його сайті (Integrations &gt; Developer API), і, якщо їх кілька, <strong>Журнал WRL</strong>; Club Log, <strong>E-mail Club Log</strong> і <strong>Пароль застосунку Club Log</strong>. Потім натисніть <strong>ПЕРЕВІРИТИ</strong>. qFT8 ніколи не видаляє там QSO; у Club Log QSO, у якого ви змінили позивний, дату, час, діапазон або вид роботи, залишає старий запис (видаліть його на сайті).
             </p>
 
+            <p id="hamlog-online">
+                <span translate="no">HAMLOG.online</span> — це онлайн-журнал, який використовують <span translate="no">RAZA</span>, <span translate="no">RDA</span> та інші дипломи. На його сторінці один рядок, <strong>Підключення</strong>. Торкніться його: qFT8 покаже картку з кодом великими літерами, часом, доки код дійсний (іде зворотний відлік), і адресою у вигляді QR-коду, з кнопками <strong>КОПІЮВАТИ URL</strong> та <strong>ВІДКРИТИ</strong>. Відкрийте сторінку на цьому пристрої або відскануйте код телефоном, увійдіть, позначте свій позивний і схваліть qFT8 (він просить лише читати й завантажувати QSO); картка закриється сама, щойно ви дасте відповідь. Веб-пульт показує той самий код, адресу й QR-код, поки qFT8 чекає. Потім торкніться <strong>ПЕРЕВІРИТИ</strong> і поставте позначку. Кожне QSO завантажується, щойно ви його записуєте, під позивним угорі Налаштувань (або під власним портативним позивним QSO, напр. /P); редагування змінює QSO там; qFT8 ніколи нічого не видаляє на <span translate="no">HAMLOG.online</span>. Кожен пристрій підключається сам (підключення не експортується разом із налаштуваннями); старе видаліть у розділі Connected loggers на сайті. <strong>ЗАВАНТАЖИТИ</strong> активації <span translate="no">RAZA</span> теж вказує на <span translate="no">HAMLOG.online</span>: коли ця служба ввімкнена, QSO активації вже там, а активацію ви надсилаєте модератору <span translate="no">RAZA</span> на сайті.
+            </p>
+
             <h3 id="lan-loggers">Програми журналу у вашій мережі</h3>
             <p>
-                qFT8 може надсилати кожен записаний зв'язок програмам журналу та мап у вашій локальній мережі. У <strong>ДОДАТИ СЕРВІСИ</strong> позначте <span translate="no">FT8 network log</span> (порт UDP 2237) або <span translate="no">ADIF over UDP</span> (порт UDP 2333); його рядок з'явиться в <strong>Синхронізація QSO</strong>. На його сторінці введіть адресу комп'ютера, на якому працює інша програма (127.0.0.1 — цей комп'ютер), і порт, натисніть <strong>ПЕРЕВІРИТИ</strong>, потім позначте прапорець. <span translate="no">FT8 network log</span> може також надсилати ваші декодування та стан вашої станції (<strong>Також надсилати мої декодування та стан моєї станції (для мап і сповіщень)</strong>), які використовують мапа й сповіщення іншої програми. Ці повідомлення не мають підтвердження отримання, тож надісланий так зв'язок ніколи не вважається завантаженим. Налаштування вказують під кожним програми, з якими його перевірено.
+                qFT8 може надсилати кожен записаний зв'язок програмам журналу та мап у вашій локальній мережі. У <strong>Синхронізація QSO</strong> знайдіть рядок <span translate="no">FT8 network log</span> (порт UDP 2237) або <span translate="no">ADIF over UDP</span> (порт UDP 2333) і відкрийте його шестірню. На його сторінці введіть адресу комп'ютера, на якому працює інша програма (127.0.0.1 — цей комп'ютер), і порт, натисніть <strong>ПЕРЕВІРИТИ</strong>, потім позначте прапорець. <span translate="no">FT8 network log</span> може також надсилати ваші декодування та стан вашої станції (<strong>Також надсилати мої декодування та стан моєї станції (для мап і сповіщень)</strong>), які використовують мапа й сповіщення іншої програми. Ці повідомлення не мають підтвердження отримання, тож надісланий так зв'язок ніколи не вважається завантаженим. Налаштування вказують під кожним програми, з якими його перевірено.
             </p>
             <p id="lan-n1mm">
                 <span translate="no">N1MM Logger+</span> (Windows, перевірено з версією 1.0.11469) приймає QSO з qFT8 на своєму UDP-порту 2237. У його вікні <span translate="no">Config &gt; Configure Ports</span> позначте <span translate="no">Enable</span> біля UDP-порту 2237 і перезапустіть програму; потім у qFT8 додайте <span translate="no">FT8 network log</span> або <span translate="no">ADIF over UDP</span> з портом 2237, вказавши адресу цього комп'ютера. Кожне QSO з'являється в його журналі з позивним, частотою, видом випромінювання, рапортами, локатором і часом. На порту 2333 він не слухає.
@@ -2217,7 +2312,7 @@
                 <span translate="no">GridTracker2</span> (перевірено з версією 2.261019.5) показує на мапі й записує те, що <span translate="no">FT8 network log</span> надсилає на порт 2237; з увімкненим прийомом ADIF UDP він також приймає <span translate="no">ADIF over UDP</span> на порту 2333. Його пересилання журналу надсилають його QSO до приймачів qFT8.
             </p>
             <p>
-                У зворотний бік qFT8 може приймати у свій журнал зв'язки з інших програм. У <strong>ДОДАТИ СЕРВЕРИ</strong> позначте приймач формату, який надсилає інша програма: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), інтерфейс <span translate="no">AC Log</span> (TCP 1100) або інтерфейс <span translate="no">DXLab</span> (TCP 52001); потім позначте його рядок у <strong>Сервери</strong>. Його сторінка показує адресу, яку треба ввести в іншій програмі, і дозволяє змінити порт та приймати зв'язки лише з деяких адрес. Ніщо отримане так не може вмикати передачу, змінювати радіо чи видаляти зв'язок. Приймачі вимкнені, доки ви їх не ввімкнете; на iPhone вони працюють, лише поки відкрито qFT8, і ніколи не входять до групи multicast.
+                У зворотний бік qFT8 може приймати у свій журнал зв'язки з інших програм. У Інші налаштування &gt; <strong>СЕРВЕРИ</strong> позначте рядок приймача формату, який надсилає інша програма: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), інтерфейс <span translate="no">AC Log</span> (TCP 1100) або інтерфейс <span translate="no">DXLab</span> (TCP 52001). Його сторінка показує адресу, яку треба ввести в іншій програмі, і дозволяє змінити порт та приймати зв'язки лише з деяких адрес. Ніщо отримане так не може вмикати передачу, змінювати радіо чи видаляти зв'язок. Приймачі вимкнені, доки ви їх не ввімкнете; на iPhone вони працюють, лише поки відкрито qFT8, і ніколи не входять до групи multicast.
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -2498,7 +2593,7 @@
         <section id="wavelog-server">
             <h2><span translate="no">qFT8</span> як сервер <span translate="no">Wavelog</span></h2>
             <p>
-                У <strong>Налаштування &gt; Сервери qFT8 &gt; Сервер <span translate="no">Wavelog</span></strong> <span translate="no">qFT8</span> відповідає у вашій домашній мережі так, ніби він — <span translate="no">Wavelog</span>: будь-яка програма, що вміє надсилати <span translate="no">QSOs</span> до <span translate="no">Wavelog</span> (зокрема інший <span translate="no">qFT8</span>), може надсилати їх до цього <span translate="no">qFT8</span>.
+                У <strong>Налаштування &gt; Інші налаштування &gt; СЕРВЕРИ &gt; Сервер <span translate="no">Wavelog</span></strong> <span translate="no">qFT8</span> відповідає у вашій домашній мережі так, ніби він — <span translate="no">Wavelog</span>: будь-яка програма, що вміє надсилати <span translate="no">QSOs</span> до <span translate="no">Wavelog</span> (зокрема інший <span translate="no">qFT8</span>), може надсилати їх до цього <span translate="no">qFT8</span>.
             </p>
             <h3>Налаштування</h3>
             <ol>
@@ -2694,6 +2789,45 @@
             </ol>
 
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="multitone">
+            <h2>Багатотональний режим: два сигнали одночасно</h2>
+            <p>
+                У Налаштуваннях є розділ <strong>Багатотональний</strong>, безпосередньо над <strong>Події</strong>, з одним полем:
+                <strong>Багатотональний (2 сигнали)</strong> (експериментально). Поки його позначено, кожна передача в
+                <span translate="no">FT8</span>, <span translate="no">FT4</span>, <span translate="no">FT2</span> і
+                режимах <span translate="no">LQ</span> може нести два звичайні сигнали поруч, кожен зі своїм повідомленням
+                для своєї станції: вдвічі більше станцій, до яких ви достукалися, або повідомлень. Ціна — потужність: щоб не допустити
+                кліпінгу звуку, кожен сигнал отримує половину амплітуди, тож кожен доходить до іншої станції приблизно на
+                6 dB слабшим (чверть потужності; обидва разом — половина). Синя позначка <strong>Багатотональний</strong> на
+                спектрограмі нагадує про це, поки режим ввімкнено, а частота передачі малюється як дві смужки поруч.
+            </p>
+            <ul>
+                <li><strong>Ваше радіо має передавати звук лінійно</strong> (звичайні режими даних / USB-D
+                    радіо Icom, Yaesu, Kenwood, Elecraft, Xiegu та подібних). Радіо, що надсилають один виміряний тон
+                    (<span translate="no">QMX</span>, <span translate="no">QMX+</span>, <span translate="no">QDX</span>,
+                    <span translate="no">(tr)uSDX</span>), надсилають лише один сигнал; тоді позначка показує
+                    <strong>Багатотональний: 1 сигнал</strong>. Тримайте ALC радіо на нулі: два сигнали дають розширення спектра (сплаттер) на
+                    інших частотах значно швидше, ніж один.</li>
+                <li><strong>Куди йде другий сигнал:</strong> на 100 Hz вище за вашу частоту передачі в
+                    <span translate="no">FT8</span> і <span translate="no">LQ8</span> (150 Hz у <span translate="no">FT4</span>,
+                    250 Hz у <span translate="no">FT2</span> і <span translate="no">LQ2</span>,
+                    50 Hz у <span translate="no">LQ16</span>); нижче, коли зверху немає місця. Станція зберігає
+                    сигнал, на якому їй відповіли, протягом усього QSO.</li>
+                <li><strong>AUTO</strong> сам заповнює другий сигнал наступною станцією, яку він викликав би, за
+                    всіма своїми звичайними правилами, завжди в іншому слоті. Він ніколи не надсилає два CQ; CQ іде на другий сигнал
+                    лише поки триває одне QSO і нікого більше викликати не можна.</li>
+                <li><strong>Вручну:</strong> торкніться CALL станції, щоб позначити її, торкніться іншої, щоб позначити й її; торкніться позначеної,
+                    щоб зняти позначку. Торкання нової станції, коли позначено максимум, замінює найстарішу позначку (дві у
+                    режимах <span translate="no">FT</span>, чотири в режимах <span translate="no">LQ</span>, де дві
+                    станції на одному кроці ділять одне повідомлення з кількома звітами або кількома 73). Коли позначено
+                    більше однієї станції, у полі повідомлення стоїть <strong>Повідомлення обираються автоматично</strong>, і qFT8 надсилає кожній
+                    станції її наступне повідомлення. Станція знімається з позначки сама, коли її QSO завершено.</li>
+                <li>Багатотональний режим ніколи не вмикає TX, ніколи не змінює потужність вашого радіо й не змінює жодного повідомлення: кожен
+                    сигнал — звичайний кадр свого режиму, який розкодує будь-яка станція. Обмеження часу передачі враховують
+                    багатотональну передачу точно так само, як один сигнал.</li>
+            </ul>
         </section>
 
         <section id="activation">
@@ -3235,6 +3369,50 @@
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
         </section>
 
+        <section id="mode-am">
+            <h2><span translate="no">AM</span>, авіаційний діапазон і морський <span translate="no">VHF</span> (мовлення)</h2>
+            <p>
+                У списку режимів є ще три голосові пункти, що відкривають панель <a href="#ssb-mode"><span translate="no">SSB</span></a>
+                з іншим приймачем позаду: <strong><span translate="no">AM</span></strong> (аматорські діапазони, прийом
+                і передача), <strong>Авіаційний голос</strong> (літаки та вежі, 118-137 MHz, лише прийом) і
+                <strong>Морський <span translate="no">VHF</span></strong> (кораблі та берегові станції, лише прийом). Нижня панель
+                тоді називає режим <span translate="no">AM</span> або <span translate="no">FM</span>, а вибір бічної смуги
+                зникає: ці сигнали її не мають.
+            </p>
+            <p class="mode-specs"><strong>Специфікації:</strong> класи випромінювання ITU A3E (<span translate="no">AM</span>, авіаційний діапазон) і F3E (морський <span translate="no">VHF</span>, вузький <span translate="no">FM</span>, канали 25 kHz); міжнародні морські канали Регламенту радіозв'язку ITU, Додаток 18; авіаційний діапазон 118-137 MHz з каналами 25 kHz або 8,33 kHz (ICAO Annex 10).</p>
+            <ul>
+                <li><strong>З радіо під керуванням CAT</strong> qFT8 переводить радіо в його власний режим <span translate="no">AM</span> або <span translate="no">FM</span> (лише команда режиму: потужність вона ніколи не змінює) і повертає в режим даних, коли ви виходите. Дисплей радіо показує справжню частоту станції.</li>
+                <li><strong>З приймачем SDR</strong> (наприклад, донглом RTL-SDR) qFT8 демодулює сама: синхронний <span translate="no">AM</span>, що залишається чистим, коли несуча завмирає, і вузький <span translate="no">FM</span> із шумоподавлювачем (squelch), який тримає вільний канал тихим.</li>
+                <li><strong>Радіо, яке qFT8 не може перемкнути на <span translate="no">AM</span></strong>, залишається в режимі даних: ви чуєте станцію <span translate="no">AM</span> як її верхню бічну смугу (налаштуйтеся точно на її несучу), а qFT8 не передає через нього <span translate="no">AM</span>.</li>
+            </ul>
+            <h3 id="am-transmitting">Розмова в <span translate="no">AM</span></h3>
+            <p>
+                <span translate="no">AM</span> передається точно так, як <span translate="no">SSB</span>: спершу
+                <span translate="no">TX ON</span> оператора, потім <span translate="no">PTT</span> або <span translate="no">VOX</span>,
+                голосові пам'яті, обмеження безперервної передачі радіо. qFT8 передає <span translate="no">AM</span> лише всередині
+                аматорського діапазону (обидві сторони від несучої мають вміститися) і лише через радіо, яке сама перевела в
+                <span translate="no">AM</span>. QSO заносяться в журнал як <span translate="no">AM</span>.
+            </p>
+            <h3 id="airband-marine">Авіаційний діапазон і морський <span translate="no">VHF</span></h3>
+            <p>
+                Обидва лише для прийому: на панелі немає <span translate="no">PTT</span>, немає <span translate="no">VOX</span> і немає кнопки
+                <span translate="no">QSO</span>. Замість них вона показує канал із двома стрілками для кроку вниз і вгору
+                (колесо частоти теж перемикає канали), а під ним частоту. Авіаційний діапазон крокує по 8,33 kHz в Європі, Африці та
+                на Близькому Сході (за вашим локатором) і по 25 kHz в інших місцях, а вперше відкривається на 121,500 MHz; морський
+                <span translate="no">VHF</span> відкривається на каналі 16 і чує кожен дуплексний канал на частоті його берегової станції.
+                Кожен запам'ятовує останню використану вами частоту. Слухати ці служби дозволено не скрізь: перевірте правила
+                вашої країни.
+            </p>
+            <p>
+                The passband tag on the spectrogram reads <span translate="no">RX</span> there, never <span translate="no">RX/TX</span>: qFT8 does not transmit in these
+                services, and with a radio under <span translate="no">CAT</span> the <span translate="no">TX</span> button reads <span translate="no">NO TX / RX</span> (see
+                <a href="#ui-mode-select">The mode selector</a>). Airband and marine <span translate="no">VHF</span> with an <span translate="no">SDR</span> never ask for a transmitting radio. In <span translate="no">SSB</span> and <span translate="no">AM</span> without one the pane stays
+                usable for listening, and a red line at its bottom, &ldquo;Connect a radio to use SSB.&rdquo; (or &ldquo;...to use AM.&rdquo;), opens Device configuration when tapped. On the computer, with no radio under <span translate="no">CAT</span> (an <span translate="no">SDR</span> or a sound card alone), the mouse wheel over the spectrogram zooms
+                in <span translate="no">SSB</span>, <span translate="no">AM</span>, airband and marine <span translate="no">VHF</span>. Picking an amateur mode or band afterwards goes back to the band you were on before the receiver.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
         <section id="cw-mode">
             <h2><span translate="no">CW</span> (телеграф)</h2>
             <p>
@@ -3672,6 +3850,207 @@
                 <li><strong>Джерела</strong>: <span translate="no">S. Franke K9AN, B. Somerville G4WJS, J. Taylor K1JT</span>: &ldquo;<span translate="no">The FST4 and FST4W Protocols for Weak Signal Communication on LF, MF and HF</span>&rdquo;, <span translate="no">QEX</span> (2021).</li>
             </ul>
 
+            <h3 id="jt65-settings">Налаштування &gt; <span translate="no">JT65</span></h3>
+            <p>
+                <span translate="no">JT65</span> (рядок <span translate="no">JT65</span> (експериментальний) у виборі виду зв'язку) — хвилинний вид зв'язку для QSO з 65 тонами та кодом Ріда — Соломона; чутливість приблизно -25 дБ (у смузі 2500 Гц). QSO записуються як <span translate="no">MODE=JT65</span> з підвидом (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>), а споти йдуть до <span translate="no">PSKReporter</span> як <span translate="no">JT65</span>. Звичайні частоти (USB, частота налаштування): 160 м <span translate="no">1.838</span>, 80 м <span translate="no">3.570</span>, 40 м <span translate="no">7.076</span>, 30 м <span translate="no">10.138</span>, 20 м <span translate="no">14.076</span>, 17 м <span translate="no">18.102</span>, 15 м <span translate="no">21.076</span>, 12 м <span translate="no">24.917</span>, 10 м <span translate="no">28.076</span>, 6 м <span translate="no">50.276</span>, 2 м <span translate="no">144.120</span> МГц.
+            </p>
+            <ul>
+                <li>Підвид (A): A, B або C, як у нижній панелі.</li>
+                <li>Декодувати лише біля частоти прийому (вимкнено): вимкнено — декодує весь діапазон; увімкнено — лише навколо частоти прийому.</li>
+                <li>Допуск приймання: ширина в Гц навколо частоти прийому (типово 100).</li>
+                <li>Джерела: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
+            </ul>
+
+            <h3 id="jt9-settings">Налаштування &gt; <span translate="no">JT9</span></h3>
+            <p>
+                <span translate="no">JT9</span> (рядок <span translate="no">JT9</span> (експериментальний) у виборі виду зв'язку) — хвилинний вид зв'язку для QSO з 9 тонами, завширшки 16 Гц; чутливість приблизно -27 дБ (у смузі 2500 Гц). QSO записуються як <span translate="no">MODE=JT9</span>, а споти йдуть до <span translate="no">PSKReporter</span> як <span translate="no">JT9</span>. Звичайні частоти (USB, частота налаштування): на 2 кГц вище, ніж у <span translate="no">JT65</span>, від 160 м до 10 м (20 м <span translate="no">14.078</span> МГц).
+            </p>
+            <ul>
+                <li>Декодувати лише біля частоти прийому (вимкнено): вимкнено — декодує весь діапазон; увімкнено — лише навколо частоти прийому.</li>
+                <li>Допуск приймання: ширина в Гц навколо частоти прийому (типово 100).</li>
+                <li>Джерела: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
+            </ul>
+
+            <h3 id="jt4-settings">Налаштування &gt; <span translate="no">JT4</span></h3>
+            <p>
+                <span translate="no">JT4</span> (рядок <span translate="no">JT4</span> (експериментальний) у виборі виду зв'язку) — хвилинний вид зв'язку для QSO з 4 тонами та згортковим кодом; чутливість приблизно -23 дБ (у смузі 2500 Гц) у <span translate="no">JT4A</span>. QSO записуються як <span translate="no">MODE=JT4</span> з підвидом (від <span translate="no">JT4A</span> до <span translate="no">JT4G</span>), а споти йдуть до <span translate="no">PSKReporter</span> як <span translate="no">JT4</span>. Частоти (USB, частота налаштування): 6 м <span translate="no">50.276</span>, 2 м <span translate="no">144.120</span>, 70 см <span translate="no">432.065</span>, 23 см <span translate="no">1296.065</span>, 13 см <span translate="no">2304.065</span> МГц; будь-яка інша частота — з діапазоном «Інший».
+            </p>
+            <ul>
+                <li>Підвид (A): від A до G, як у нижній панелі.</li>
+                <li>Декодувати лише біля частоти прийому (вимкнено): вимкнено — декодує весь діапазон; увімкнено — лише навколо частоти прийому.</li>
+                <li>Допуск приймання: ширина в Гц навколо частоти прийому (типово 100).</li>
+                <li>Джерела: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT4 protocol description</span>&rdquo; (2007); <span translate="no">J. Layland, W. Lushbaugh</span>: &ldquo;<span translate="no">A Flexible High-Speed Sequential Decoder for Deep Space Channels</span>&rdquo;, <span translate="no">IEEE Trans. Comm. Tech.</span> (1971).</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="psk-mode">
+            <h2><span translate="no">PSK31</span> і <span translate="no">PSK63</span> (експериментальний)</h2>
+            <span id="psk31-mode"></span><span id="psk63-mode"></span><span id="psk125-mode"></span><span id="psk250-mode"></span><span id="qpsk31-mode"></span><span id="qpsk63-mode"></span>
+            <p>
+                Pick <strong>PSK</strong> in the mode selector and <span translate="no">PSK31</span> or
+                <span translate="no">PSK63</span> beside the mode in the bottom bar: the same screen
+                opens with the <span translate="no">PSK</span> modem and the mode button reads the mode's name.
+                <span translate="no">PSK31</span> is the classic keyboard-to-keyboard mode: one carrier whose phase turns
+                over to carry the text, about 50 Hz wide, at 31.25 baud; <span translate="no">PSK63</span> is the same at
+                twice the speed and twice the width. Every <span translate="no">PSK</span> signal in the passband is
+                decoded and written along its trace, and the one under the receive bar is always followed.
+                Each mode has its own frequency on every band (on 20 m, 14.070 MHz).
+            </p>
+            <ul>
+                <li>На екрані немає кнопок <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> і <span translate="no">REV</span> у <span translate="no">PSK</span>.</li>
+                <li>Текст зберігає регістр. Комірка пам'яті йде однією передачею; текст, набраний на клавіатурі, йде по одному рядку, коли ви натискаєте Enter.</li>
+                <li>Журнал: ручний запис відкривається з <span translate="no">PSK31</span> або <span translate="no">PSK63</span> (у файлах <span translate="no">ADIF</span> записується як вид зв'язку <span translate="no">PSK</span> з цим підвидом) на частоті вашої переданої несучої.</li>
+                <li>Faster and stronger variants, in the same picker: <span translate="no">PSK125</span> and
+                    <span translate="no">PSK250</span> (4 and 8 times as fast, as much wider), <span translate="no">QPSK31</span> and
+                    <span translate="no">QPSK63</span> (four phases with error correction: the text survives some noise and
+                    fading that garbles <span translate="no">PSK31</span>; both stations must use the same one). They are
+                    logged by their own names.</li>
+                <li>Використовуються налаштування Налаштування &gt; <span translate="no">RTTY</span> (декодування, монітор, комірки пам'яті). <span translate="no">PSK</span> — новинка і може ще змінитися.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="olivia-mode">
+            <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> і <span translate="no">DominoEX</span> (експериментальний)</h2>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <p>
+                The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
+                (<strong>OLIVIA</strong>, <strong>Родина MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
+                <span translate="no">DominoEX</span> and <span translate="no">Throb</span>, and so on), each marked experimental. The speed or variant is picked beside the mode in the bottom bar, and each
+                family remembers the last one you used. The variants: <strong><span translate="no">OLIVIA 8/250</span></strong>,
+                <strong><span translate="no">OLIVIA 8/500</span></strong>, <strong><span translate="no">OLIVIA 16/500</span></strong>,
+                <strong><span translate="no">OLIVIA 32/1000</span></strong>, <strong><span translate="no">OLIVIA 4/250</span></strong>,
+                <strong><span translate="no">MFSK8</span></strong>, <strong><span translate="no">MFSK11</span></strong>,
+                <strong><span translate="no">MFSK16</span></strong>, <strong><span translate="no">MFSK22</span></strong>,
+                <strong><span translate="no">MFSK32</span></strong>, <strong><span translate="no">MFSK64</span></strong>,
+                <strong><span translate="no">MFSK128</span></strong>, <strong><span translate="no">DOMINOEX 8</span></strong>,
+                <strong><span translate="no">DOMINOEX 11</span></strong> and <strong><span translate="no">DOMINOEX 16</span></strong>.
+                Picking one opens the <span translate="no">RTTY</span> screen with that modem, and the mode button reads
+                its name.
+            </p>
+            <ul>
+                <li><span translate="no">Olivia</span> (тони / ширина в Гц): повільний і дуже стійкий, для слабких сигналів із завмиранням; чим більше тонів, тим глибше в шумі. <span translate="no">MFSK16</span>: 16 тонів приблизно в 316 Гц, із виправленням помилок, хороший щоденний режим; <span translate="no">MFSK32</span> і <span translate="no">MFSK64</span> — те саме вдвічі та вчетверо швидше (ширші, потребують сильнішого сигналу; <span translate="no">MFSK32</span> поширений в мережах аварійного зв'язку); <span translate="no">MFSK128</span> ще вдвічі швидший і має ширину 2 кГц. <span translate="no">MFSK8</span> (32 тони, близько 250 Гц) і <span translate="no">MFSK11</span> повільніші за <span translate="no">MFSK16</span> і приймають слабші сигнали; <span translate="no">MFSK22</span> — між <span translate="no">MFSK16</span> і <span translate="no">MFSK32</span>. <span translate="no">DominoEX</span>: 18 тонів, нечутливий до налаштування та дрейфу, швидший.</li>
+                <li>Декодується сигнал під смугою прийому (смуга — середина сигналу). Поставте смугу на сигнал; розбіжність у кілька герців не страшна.</li>
+                <li>На екрані немає кнопок <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> і <span translate="no">REV</span> у цих режимах. Комірка пам'яті йде однією передачею; текст, набраний на клавіатурі, йде по одному рядку, коли ви натискаєте Enter.</li>
+                <li>Кожна родина має свою частоту на діапазонах, де вона зазвичай використовується (на 20 м: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 МГц); на решті — частота <span translate="no">RTTY</span>.</li>
+                <li>Журнал: ручний запис відкривається з назвою виду зв'язку (наприклад, <span translate="no">OLIVIA 8/250</span>), у файлах <span translate="no">ADIF</span> записується як вид зв'язку <span translate="no">OLIVIA</span>, <span translate="no">MFSK</span> або <span translate="no">DOMINO</span> з його підвидом, на частоті середини вашого сигналу.</li>
+                <li>Ліміт безперервного передавання діє як у <span translate="no">RTTY</span>: довгий текст (<span translate="no">Olivia</span> повільний: близько 1,5 символу за секунду на 8/250) обривається на ліміті.</li>
+                <li><span translate="no">IFKP</span> (рядки <span translate="no">IFKP 0.5</span>, <span translate="no">IFKP 1.0</span>,
+                    <span translate="no">IFKP 2.0</span>) і <span translate="no">FSQ</span> (рядки <span translate="no">FSQ 2</span>,
+                    <span translate="no">FSQ 3</span>, <span translate="no">FSQ 4.5</span>, <span translate="no">FSQ 6</span>; число
+                    це швидкість у символах за секунду): 33 тони завширшки близько 390 Гц (<span translate="no">FSQ</span>: 300 Гц), кожен тон
+                    на сходинку вищий за попередній, тож налаштування з похибкою в кілька герц не має значення. Малі літери, пропуск і
+                    крапка займають одну сходинку, усе інше дві: пишіть малими літерами, щоб передавати швидше. Вони не потребують довгого запуску:
+                    текст з'являється від перших символів. <span translate="no">FSQ</span> передає кожен рядок як один овер і ставить
+                    перед ним ваш позивний, двокрапку й дволітерну перевірку (<span translate="no">ab1cde:5f</span>), як це роблять станції
+                    <span translate="no">FSQ</span>. Дві адресні команди: введіть позивний і знак питання
+                    (<span translate="no">k1abc?</span>), щоб запитати в тієї станції звіт про сигнал (вона відповість
+                    <span translate="no">k1abc:f3ab1cde snr=12 db</span>), або введіть <span translate="no">heartbeat</span>, щоб передати
+                    лише ваш заголовок, і станції занесуть вас у список почутих. Ретранслятори, поштові скриньки та файли не пропонуються.</li>
+                <li>Використовують налаштування Налаштування &gt; <span translate="no">RTTY</span> (декодування, монітор, комірки пам'яті). Ці режими нові й можуть ще змінитися.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="thor-mode">
+            <h2><span translate="no">THOR</span>, <span translate="no">Contestia</span> і <span translate="no">MT63</span> (експериментальний)</h2>
+            <span id="contestia-mode"></span><span id="mt63-mode"></span><span id="throb-mode"></span><span id="throbx-mode"></span>
+            <p>
+                Three more keyboard modes are in the HAM tab of the mode selector, one button per family with the variant picked beside the mode in the bottom bar, each marked
+                (experimental): <strong><span translate="no">THOR 8</span></strong>, <strong><span translate="no">THOR 11</span></strong>, <strong><span translate="no">THOR 16</span></strong>, <strong><span translate="no">THOR 22</span></strong>; <strong><span translate="no">CONTESTIA 4/250</span></strong>, <strong><span translate="no">CONTESTIA 8/250</span></strong>, <strong><span translate="no">CONTESTIA 16/500</span></strong>, <strong><span translate="no">CONTESTIA 32/1000</span></strong>; <strong><span translate="no">MT63 1000L</span></strong>, <strong><span translate="no">MT63 2000L</span></strong>, <strong><span translate="no">MT63 500L</span></strong> and <strong><span translate="no">MT63 1000S</span></strong>. They work exactly like
+                <span translate="no">Olivia</span> (see above): the <span translate="no">RTTY</span> screen with that modem, the signal under the receive bar decoded, a memory
+                sent as one transmission, typed text a line at a time.
+            </p>
+            <ul>
+                <li><span translate="no">THOR</span>: тони <span translate="no">DominoEX</span> (нечутливі до налаштування і дрейфу) з виправленням помилок <span translate="no">MFSK16</span>; трохи повільніший за <span translate="no">DominoEX</span> за того самого номера швидкості, значно стійкіший.</li>
+                <li><span translate="no">Contestia</span> (тонів / ширина в Гц): швидший родич <span translate="no">Olivia</span>, лише з великими літерами, популярний у змаганнях; літери, цифри та звичайні розділові знаки (інші символи передаються як ?).</li>
+                <li><span translate="no">MT63</span> (ширина в Гц, L — довге, S — коротке перемежування): 64 несучі одночасно, шириною 500, 1000 або 2000 Гц, близько 5–20 символів за секунду; стійкий до завмирань і сплесків шуму, використовується в аварійних мережах. Смуга прийому — середина сигналу. Довге перемежування стійкіше, коротке починає друкувати раніше.</li>
+                <li>Частоти: на 20 м <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 і <span translate="no">MT63</span> 14,105 МГц; на решті <span translate="no">THOR</span> використовує частоти <span translate="no">DominoEX</span>, <span translate="no">Contestia</span> — частоти <span translate="no">Olivia</span>, а <span translate="no">MT63</span> — широкі цифрові ділянки (наприклад, 7,050 МГц). Частота, яку ви задали самі, завжди має перевагу.</li>
+                <li>Журнал: ручний запис відкривається з назвою виду зв'язку (наприклад, <span translate="no">THOR 16</span>); у файлах <span translate="no">ADIF</span> <span translate="no">THOR</span> записується як вид зв'язку <span translate="no">THOR</span> з підвидом (<span translate="no">THOR16</span> ...), <span translate="no">Contestia</span> — як <span translate="no">CONTESTI</span>, а <span translate="no">MT63</span> — як <span translate="no">MT63</span> (в <span translate="no">ADIF</span> для цих двох підвидів немає).</li>
+                <li><span translate="no">Throb</span> і <span translate="no">ThrobX</span> (рядки <span translate="no">THROB 1</span>, <span translate="no">THROB 2</span>, <span translate="no">THROB 4</span>, <span translate="no">THROBX 1</span>, <span translate="no">THROBX 2</span>, <span translate="no">THROBX 4</span>; число — кількість символів за секунду): один символ на імпульс, що передається одним або двома тонами з 9 (<span translate="no">ThrobX</span>: 11), шириною приблизно від 70 до 170 Гц. Повільні й прості; великі літери, цифри та кілька розділових знаків (інші символи передаються як пробіли). У <span translate="no">ThrobX</span> розділових знаків більше. Вони використовують частоти <span translate="no">DominoEX</span>.</li>
+                <li>Ліміт безперервного передавання діє як у <span translate="no">RTTY</span>. Ці режими нові й можуть ще змінитися.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="hell-mode">
+            <h2><span translate="no">Hellschreiber</span> (<span translate="no">Feld Hell</span>, експериментально)</h2>
+            <p>
+                <span translate="no">Hellschreiber</span> передає текст як картинку: кожна літера сканується вузькими стовпчиками,
+                а приймач малює те, що чує, тож текст ви <em>читаєте</em> з екрана -- нічого не розкодовується
+                в літери, а слабкий чи шумний сигнал усе одно показує літери, які розрізнить око. Виберіть
+                <strong><span translate="no">HELL</span></strong> (експериментально) унизу вибору режиму:
+                екран <span translate="no">RTTY</span> відкриється з модемом <span translate="no">Hell</span>.
+            </p>
+            <ul>
+                <li>Прийнята картинка біжить уздовж смужки під водоспадом, найновіші літери праворуч. Кожен
+                    стовпчик друкується двічі, одна копія над другою, тож одна копія кожної літери завжди ціла.</li>
+                <li>Торкніться смужки, щоб побачити картинку, згорнуту в рядки, як прийнятий текст, на місці водоспаду
+                    (одна копія, вирівняна); торкніться маленького водоспаду в смужці, щоб повернутися.</li>
+                <li><span translate="no">MODE</span> (на місці <span translate="no">BAUD</span>) перебирає
+                    варіанти: <span translate="no">FELD</span> (<span translate="no">Feld Hell</span>, найпоширеніший),
+                    <span translate="no">SLOW</span>, <span translate="no">X5</span>, <span translate="no">X9</span>,
+                    <span translate="no">FSK</span>, <span translate="no">FSK105</span> і <span translate="no">HELL80</span>.
+                    Обидві станції мають використовувати один і той самий.</li>
+                <li><span translate="no">SLANT</span> (на місці <span translate="no">SHIFT</span>) вирівнює
+                    нахилену картинку: звукова карта іншої станції трохи поспішає або відстає. Крутіть крок за кроком, доки
+                    літери не стануть прямо.</li>
+                <li>Поставте смужку прийому на сигнал (несучу або середину двох тонів варіантів
+                    <span translate="no">FSK</span>). Пам'ять іде як одна передача; текст, набраний
+                    на клавіатурі, іде по рядку за раз, коли ви натискаєте Enter. Можна надсилати літери, цифри
+                    та поширені розділові знаки.</li>
+                <li>Кожен діапазон має власну частоту <span translate="no">Hell</span>, де така зазвичай використовується (на 20 m
+                    14.063 MHz); в інших місцях — частоту <span translate="no">RTTY</span>.</li>
+                <li>Журнал: журнал відкривається з режимом <span translate="no">HELL</span> (або варіантом, наприклад
+                    <span translate="no">HELL X5</span>) і записується у файли <span translate="no">ADIF</span> як режим
+                    <span translate="no">HELL</span> з підрежимом варіанта.</li>
+                <li>Обмеження безперервної передачі діє так само, як у <span translate="no">RTTY</span>:
+                    <span translate="no">Feld Hell</span> передає близько 2,5 літери на секунду, тому довгий текст відхиляється або
+                    зупиняється на ліміті. Цей режим новий і ще може змінитися.</li>
+            </ul>
+
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="mode-packet">
+            <h2><span translate="no">Packet (APRS)</span> (експериментально)</h2>
+            <p>
+                <span translate="no">Packet</span> передає короткі кадри <span translate="no">AX.25</span> як два звукові тони;
+                <span translate="no">APRS</span> використовує їх для позицій, об'єктів, погоди та коротких повідомлень.
+                <strong><span translate="no">Packet (APRS)</span></strong> (експериментально) вибирають на вкладці
+                <span translate="no">HAM</span> вибору режиму: екран <span translate="no">RTTY</span> відкривається з пакетним модемом,
+                а швидкість вибирається поруч із режимом на нижній панелі.
+            </p>
+            <ul>
+                <li><span translate="no">APRS 1200</span>: 1200 baud через радіо <span translate="no">FM</span>, на
+                    2 m (144.800 MHz в Європі та Африці, 144.390 MHz в Америці, 145.175 MHz в регіоні 3; також
+                    <span translate="no">ISS</span> на 145.825 MHz). Тони фіксовані; смужки не мають значення.</li>
+                <li><span translate="no">HF PACKET 300</span>: 300 baud в <span translate="no">USB</span> на HF (30 m:
+                    10.1473 MHz, також 20 m і 40 m). Поставте смужку прийому на середину двох тонів.</li>
+                <li>Кожен почутий кадр — це один рядок прийнятого тексту у вигляді <span translate="no">CALL&gt;DEST,PATH:info</span>.
+                    Станції, об'єкти та метеостанції, що передають позицію, також з'являються на карті з
+                    відстанню від вашого локатора.</li>
+                <li>Кожен рядок пам'яті або кожен рядок, що ви набираєте, — це один кадр:
+                    <span translate="no">BEACON</span> [коментар] передає вашу позицію з точністю до градуса за вашим локатором
+                    (ніколи точніше за локатор); <span translate="no">CALL: text</span> надсилає повідомлення тій станції;
+                    <span translate="no">STATUS text</span> — статус; рядок, що починається із символу
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>), іде як є.</li>
+                <li>Ваші кадри йдуть від вашого позивного з <span translate="no">SSID</span>, вибраним у
+                    Налаштування &gt; <span translate="no">Packet</span> (шестерня екрана), через шлях диджипітера, заданий там
+                    (за замовчуванням <span translate="no">WIDE1-1,WIDE2-1</span>, лише 2 m).</li>
+                <li>Transmitting needs <span translate="no">TX ON</span> and is refused outside the amateur bands; the
+                    continuous transmission limit applies as in <span translate="no">RTTY</span>. Logged as <span translate="no">PKT</span>. This mode is new and may
+                    still change.</li>
+                <li><strong>AUTO</strong>: with AUTO on and <span translate="no">TX ON</span>, messages sent to you are acknowledged automatically. With AUTO off (the default, every time Packet starts) nothing is acknowledged by itself, and with <span translate="no">TX OFF</span> nothing is ever sent. Tapping a received message addressed to you asks &ldquo;Acknowledge the message from CALL?&rdquo; and sends the acknowledgement by hand.</li>
+                <li><strong>HEARD</strong>: lists the packet stations heard (distance, age, last text) and opens the map.</li>
+                <li>On APRS 1200 qFT8 says once to set the radio to FM by hand: it does not switch a radio to FM yet.</li>
+            </ul>
+
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
         </section>
 
@@ -3849,7 +4228,7 @@
                 <li><strong>Основні дані</strong>: ширина, розмір зображення в стовпцях і рядках та швидкість.</li>
                 <li><strong>ЗАВАНТАЖИТИ</strong>: «Зробити фото» або «Вибрати зображення». Зображення зберігає власну форму.</li>
                 <li><strong>Зображення для передавання</strong>, сіре, намальоване кольорами вашого власного водоспаду: саме це побачать інші станції. Поки воно в ефірі, жовта лінія позначає рядок, що передається, з написом «В ефірі: рядок N з M».</li>
-                <li><strong>Додати мій позивний</strong> (за замовчуванням увімкнена): ваш позивний великими літерами під зображенням. Олівець змінює текст таблички (порожньо = ваш позивний). <strong>Автоконтраст</strong> одним натисканням робить найтемнішу частину зображення чорною, а найсвітлішу білою; <strong>Контраст</strong> і <strong>Яскравість</strong> далі налаштовуєте самі.</li>
+                <li><strong>Позивний</strong> (за замовчуванням увімкнена): ваш позивний великими літерами під зображенням. Олівець змінює текст таблички (порожньо = ваш позивний). <strong>Автоконтраст</strong> одним натисканням робить найтемнішу частину зображення чорною, а найсвітлішу білою; <strong>Контраст</strong> і <strong>Яскравість</strong> далі налаштовуєте самі.</li>
                 <li><strong>ПРИБРАТИ</strong> повертає до самої таблички з позивним. <strong>НАДІСЛАТИ</strong> показує, скільки секунд триває зображення, і стає <strong>ЗУПИНИТИ</strong> із секундами, що лишилися.</li>
                 <li><strong>Червоний рядок</strong> каже, чому зображення зараз не можна надіслати, і прихований, коли ніщо не заважає: «Натисніть TX ON для передавання зображень»; «20 с: понад вашу межу 15 с» (зображення довше, ніж <a href="#tx-limit">межа безперервної передачі</a> вашого трансивера); «На 30 m можна передавати лише ширину 500 Hz»; «Передавання вийшло б за межі аматорських діапазонів»; або, з <span translate="no">QMX</span>, прошивка якого не може перемкнути трансивер у <span translate="no">SSB</span> через <span translate="no">CAT</span>, що зображення можна лише приймати.</li>
                 <li><strong>ШВИДКІСТЬ</strong>: 3,125, 6,25 (за замовчуванням: один рядок триває стільки, скільки один тон <span translate="no">FT8</span>) або 12,5 рядка на секунду. Поруч: яку частку вашої <a href="#tx-limit">межі безперервної передачі</a> займає зображення. Список показує секунди зображення на кожній швидкості; швидкість, задовга для вашої межі, каже про це при натисканні. Індикатор показує, наприклад, «20 с із вашої межі 30 с».</li>
@@ -3997,6 +4376,314 @@
                     натискання відкриває <strong>Калібрування компаса</strong> замість лінії: рухайте телефон вісімкою,
                     повертаючи його, доки шкала не заповниться. Лінія вимикається сама, якщо компас втрачає калібрування.</li>
             </ul>
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="bcast-receive">
+            <h2>Мовне радіо: <span translate="no">FM</span> + <span translate="no">RDS</span> і <span translate="no">AM</span> (експериментально)</h2>
+            <p>
+                З <span translate="no">SDR</span> (наприклад, донглом <span translate="no">RTL-SDR</span>) qFT8 є також
+                мовним радіо. На вкладці <span translate="no">SWL</span> вибору режиму торкніться <span translate="no">FM + RDS</span>
+                або мовлення <span translate="no">AM</span>: екран радіо відкривається поверх застосунку, а стрілка «назад» закриває його. Робочий
+                режим і TX не чіпаються: цей екран лише приймає.
+            </p>
+            <ul>
+                <li><strong>ПОШУК</strong> сканує діапазон і виводить список станцій, які ви можете приймати, з
+                    назвою станції, яку передає <span translate="no">RDS</span>. Торкніться станції, щоб слухати; зірочка залишає її
+                    у списку між скануваннями. Стрілки роблять крок на один канал, подвійні стрілки переходять до наступної станції списку.</li>
+                <li><strong>Кнопка звуку</strong>: <span translate="no">FM</span> стерео або моно; в <span translate="no">AM</span> —
+                    синхронний детектор (стабільніший при завмираннях), простий детектор огинаючої або синхронний по одній бічній смузі
+                    (<span translate="no">USB</span> / <span translate="no">LSB</span>, подалі від сплаттера сусіда).</li>
+                <li><strong><span translate="no">50 µs</span> / <span translate="no">75 µs</span></strong>:
+                    деемфазис <span translate="no">FM</span>. qFT8 вибирає його за вашим локатором (75 µs в Америці); торкніться, щоб
+                    змінити.</li>
+                <li><strong><span translate="no">REC</span></strong> записує станцію, яку ви слухаєте, у звуковий файл;
+                    <span translate="no">RECORDINGS</span> виводить їх списком, щоб відтворити, поділитися або видалити. Записи залишаються на цьому пристрої.</li>
+            </ul>
+            <p>
+                Поки екран радіо відкритий, він використовує <span translate="no">SDR</span>; інші режими отримують його назад, коли ви
+                закриєте екран. Радіо без виходу I/Q (більшість трансиверів) не можна використовувати для цього екрана.
+            </p>
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="swl">
+            <h2>Використання qFT8 для <span translate="no">SWL</span> (прослуховування)</h2>
+            <p>
+                Щоб користуватися qFT8, не потрібні ні ліцензія, ні передавач. Як слухач на коротких хвилях (і на УКХ), <span translate="no">SWL</span>, ви можете приймати й декодувати кожен режим, який знає qFT8, бачити станції, які ви чуєте, на
+                <a href="#ui-world-map-tab">Карті світу</a>і вести журнал QSO, які ви чуєте між іншими станціями, готовий до надсилання як звіти <span translate="no">SWL</span>. qFT8 — це <em>радіоаматорство та <span translate="no">SWL</span></em>: той самий застосунок на телефоні, комп'ютері, iPhone та у веб-пульті.
+            </p>
+
+            <h3 id="swl-receive">Що можна приймати й декодувати</h3>
+            <ul>
+                <li><strong>Кожен режим прийому qFT8</strong>: <span translate="no">FT8, FT4, FT2, LQ8, JS8, WSPR, FST4, FST4W, Q65, MSK144, JT65, JT9, JT4</span>, <span translate="no">CW</span> (Морзе), <span translate="no">RTTY</span>, <span translate="no">PSK31 / PSK63</span>, <span translate="no">Olivia, MFSK, DominoEX, THOR, Contestia, MT63, Throb, IFKP, FSQ</span>, зображення <span translate="no">SSTV</span> та мовлення <span translate="no">SSB</span> для прослуховування. Режим вибирається у вікні вибору режимів, як завжди; екран кожного режиму описано в його власному розділі цього посібника.</li>
+                <li><strong>Через будь-який приймач, який може використовувати qFT8</strong>: <span translate="no">SDR</span> лише для прийому (див. <a href="#swl-devices">Пристрої для прослуховування</a>) або звичайний трансивер, підключений звичайним способом. <span translate="no">SDR</span> дає qFT8 той самий звук, що й трансивер на верхній (або нижній) бічній смузі, тому кожен режим працює з ним так само, як із трансивером.</li>
+                <li><strong>На кожному діапазоні, який охоплює приймач</strong>: кнопки діапазонів налаштовують приймач; <span translate="no">SDR</span>, такий як <span translate="no">RTL-SDR</span>, також охоплює частоти цифрових режимів <span translate="no">2 m</span> і <span translate="no">70 cm</span>.</li>
+                <li><strong>Споти й карта</strong>: кожна декодована станція вказується на вкладці «Станції» та малюється на Карті світу з відстанню й азимутом, як і під час передачі.</li>
+            </ul>
+            <p>
+                An <span translate="no">SDR</span> never transmits in qFT8: while one is the receiver, the TX button reads
+                <span translate="no">NO TX</span> / <span translate="no">SDR</span> and nothing can key. A receiver that tunes the radio (the marine <span translate="no">VHF</span>, airband and signals receivers) also stops transmitting while it has the radio: the button reads <span translate="no">NO TX</span> / <span translate="no">RX</span> and <span translate="no">TX</span> stays <span translate="no">OFF</span> afterwards until you press <span translate="no">TX ON</span>. With a radio that can
+                transmit, switch on <a href="#swl-mode-howto"><span translate="no">SWL</span> mode</a> and qFT8 will not transmit
+                either.
+            </p>
+
+            <h3 id="swl-devices">Пристрої для прослуховування</h3>
+            <p>
+                Виберіть приймач у <strong>Налаштування &gt; Пристрій</strong>. Рядки <span translate="no">SDR</span> мають власну групу в цьому списку; під вибраним рядком qFT8 показує кілька налаштувань, потрібних цьому приймачу, і рядок стану (&ldquo;Підключення до ...&rdquo;, &ldquo;Підключено до ... (2,4 MS/s)&rdquo; або причину, чому підключення немає).
+            </p>
+            <dl class="rows">
+                <div>
+                    <dt>Донгл <span translate="no">RTL-SDR</span> (<span translate="no">RTL-SDR Blog V3, V4, V4 Lite</span> та інші донгли з тюнером <span translate="no">R820T / R820T2 / R828D</span>), підключений через <span translate="no">USB</span></dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: RTL-SDR (USB)</span></dd>
+                    <dd><span class="row-label">Частоти</span> 0,5 МГц - 1,7 ГГц (КХ на V4 самостійно; V3: пряма оцифровка)</dd>
+                    <dd><span class="row-label">Телефон</span> так (USB OTG)</dd>
+                    <dd><span class="row-label">Комп'ютер</span> Linux</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> ні</dd>
+                </div>
+                <div>
+                    <dt>Той самий донгл на іншому комп'ютері або Raspberry Pi, через його мережевий сервер</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: RTL-SDR (network)</span></dd>
+                    <dd><span class="row-label">Частоти</span> як вище</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt>Веб-приймач <span translate="no">KiwiSDR</span>, власний або публічний</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: KiwiSDR (network)</span></dd>
+                    <dd><span class="row-label">Частоти</span> 10 кГц - 30 МГц</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Hermes-Lite 2</span>, <span translate="no">Red Pitaya</span>, старіший <span translate="no">ANAN</span> (<span translate="no">OpenHPSDR</span>, лише прийом; експериментально)</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: Hermes-Lite 2 / OpenHPSDR (network)</span></dd>
+                    <dd><span class="row-label">Частоти</span> 0 - 38 МГц</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">Airspy</span> (<span translate="no">R2, Mini, HF+</span>) або <span translate="no">RTL-SDR</span>, спільний через мережевий сервер на порту 5555</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: Airspy / RTL-SDR server (network, port 5555)</span></dd>
+                    <dd><span class="row-label">Частоти</span> те, що охоплює спільний приймач</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF, Airspy, RTL-SDR</span> ... спільні через віддалений сервер SDR-хоста на порту 55132</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> <span dir="ltr" translate="no">SDR: remote SDR host (network: SDRplay, LimeSDR, Pluto ...)</span></dd>
+                    <dd><span class="row-label">Частоти</span> те, що охоплює спільний приймач</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt>Будь-що з цього, що надається через <a href="#bridge">qFT8 bridge</a> на іншому пристрої</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> bridge</dd>
+                    <dd><span class="row-label">Частоти</span> як у приймача bridge</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> так</dd>
+                </div>
+                <div>
+                    <dt>Звичайний трансивер (понад 70 моделей через <span translate="no">USB</span> або будь-який трансивер через аудіокабель)</dt>
+                    <dd><span class="row-label">Рядок пристрою</span> рядок трансивера або <code>AUTO</code></dd>
+                    <dd><span class="row-label">Частоти</span> те, що приймає трансивер</dd>
+                    <dd><span class="row-label">Телефон</span> так</dd>
+                    <dd><span class="row-label">Комп'ютер</span> так</dd>
+                    <dd><span class="row-label">iPhone / iPad</span> через аудіо (див. <a href="#iphone">iPhone</a>)</dd>
+                </div>
+            </dl>
+            <p>
+                Не підтримуються: приймачі <span translate="no">I/Q</span> на звуковій карті (<span translate="no">SoftRock</span> або режим <span translate="no">I/Q</span> у <span translate="no">QMX+</span>: використовуйте <span translate="no">QMX+</span> як звичайний трансивер, він працює без налаштувань через <span translate="no">USB</span>) та донгли <span translate="no">RTL</span> з іншими тюнерами (<span translate="no">E4000, FC0012, FC0013, FC2580</span>).
+            </p>
+
+            <h4 id="swl-rtl-usb">Донгл <span translate="no">RTL-SDR</span> на телефоні або комп'ютері</h4>
+            <p>
+                <strong>Телефон або планшет (Android)</strong>: підключіть донгл через перехідник або кабель <span translate="no">USB OTG</span>. Android запропонує відкрити qFT8; дозвольте доступ до <span translate="no">USB</span>. Якщо
+                <strong>Налаштування &gt; Пристрій</strong> має значення <code>AUTO</code> і жодного трансивера не підключено, qFT8 використовує донгл самостійно (&ldquo;<span translate="no">AUTO - SDR: RTL-SDR (USB)</span>&rdquo;); якщо підключено ще й трансивер, він має пріоритет. Якщо відключити й знову підключити донгл, його буде підхоплено знову. Донгл живиться від телефону: короткий кабель і заряджена батарея допоможуть.
+            </p>
+            <p>
+                <strong>Нічого встановлювати не потрібно, для жодного донгла.</strong> qFT8 має власний драйвер донгла, вбудований у застосунок: він розпізнає <span translate="no">RTL-SDR Blog V4</span> і використовує його вбудований підвищувальний конвертер <span translate="no">HF</span> та перемикання входів, тому <span translate="no">HF</span> на V4 працює без жодних налаштувань. На <span translate="no">V3</span> (або іншому донглі без конвертера) позначте
+                <strong>КХ без конвертера (пряма оцифровка)</strong> , щоб приймати нижче 24 МГц на його вході <span translate="no">HF</span>. qFT8 ніколи не вмикає bias tee донгла (живлення антени).
+            </p>
+            <p>
+                <strong>Комп'ютер, Linux</strong>: той самий рядок, той самий вбудований драйвер. qFT8 забирає донгл у ТБ-драйвера, якого система сама завантажує для нього. Вашому користувачеві потрібен дозвіл відкривати донгл; якщо рядок стану показує &ldquo;немає дозволу&rdquo;, один раз додайте файл правил (наприклад
+                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) із рядком
+                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
+                (<code>2832</code> для деяких старіших донглів), виконайте
+                <code dir="ltr">sudo udevadm control --reload-rules</code> і знову підключіть донгл.
+            </p>
+            <p>
+                <strong>Комп'ютер, Windows і macOS</strong>: qFT8 поки що не може відкрити донгл напряму. Запустіть мережевий сервер <span translate="no">RTL-SDR</span> на тому самому комп'ютері (або на будь-якому іншому, наприклад <span translate="no">Raspberry Pi</span>) і виберіть <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
+                з адресою <code>127.0.0.1</code>, або надайте донгл із телефону чи комп'ютера Linux за допомогою
+                <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
+            <h4 id="swl-drivers">Мережевий сервер <span translate="no">RTL-SDR</span> та його драйвер</h4>
+            <p>
+                Мережевий сервер (порт 1234) постачається з пакетом драйвера <span translate="no">RTL-SDR</span> вашої системи. Цей пакет — окремий драйвер, незалежний від qFT8, і його версія має значення:
+            </p>
+            <ul>
+                <li><strong><span translate="no">RTL-SDR Blog V4</span></strong>: потрібен драйвер, що знає V4. Встановіть збірку драйвера, опубліковану виробником донгла (<span translate="no">RTL-SDR Blog</span>, див. його короткий посібник для V4); саме її ми використовуємо з V4. Старіший драйвер, який ще постачають деякі дистрибутиви Linux і старіші завантаження для Windows, знаходить донгл, але не знає розводки його тюнера й конвертера: частоти неправильні або нічого не приймається, а <span translate="no">HF</span> не працює.</li>
+                <li><strong><span translate="no">RTL-SDR Blog V3</span></strong> і звичайні донгли <span translate="no">R820T / R820T2</span>: підійде будь-яка версія драйвера. Для <span translate="no">HF</span> позначте
+                    <strong>КХ без конвертера (пряма оцифровка)</strong>; qFT8 просить сервер перемкнути донгл на вхід <span translate="no">HF</span>.</li>
+                <li><strong>Linux</strong>: система завантажує для донгла ТБ-драйвер, через який мережевий сервер не може його відкрити. Нові пакети драйверів вивантажують його самі; інакше заблокуйте його (модуль
+                    <code>dvb_usb_rtl28xxu</code>) і знову підключіть донгл. Правило дозволів те саме, що вище.</li>
+                <li><strong>Windows</strong>: донгл має використовувати універсальний драйвер <span translate="no">WinUSB</span> замість ТБ-драйвера, який встановлює Windows; як це зробити, показано в короткому посібнику виробника донгла.</li>
+                <li><strong>Raspberry Pi</strong>: зручне місце для сервера поруч з антеною; для V4 використовуйте збірку драйвера <span translate="no">RTL-SDR Blog</span>.</li>
+            </ul>
+            <p>
+                Settings for the network row: <strong>Адреса</strong>, <strong>Порт</strong>, <strong>Частота дискретизації</strong> (2.4 MS/s
+                by default; if the status line says the data arrives in bursts, tap it to use the highest rate),
+                <strong>Підсилення</strong>, <strong>Корекція частоти (ppm)</strong> and
+                <strong>КХ без конвертера (пряма оцифровка)</strong> and, for a server that can switch it, <strong>Bias-T (живлення на антенному вході)</strong>. Any server that speaks the same
+                <span translate="no">RTL-SDR</span> network protocol works too, including those made for other
+                <span translate="no">SDR</span>s.
+            </p>
+
+            <h4 id="swl-other-sdr">Інші <span translate="no">SDR</span></h4>
+            <ul>
+                <li><strong><span translate="no">KiwiSDR</span></strong>: нічого встановлювати не потрібно. Введіть адресу приймача (типово порт 8073). qFT8 займає один з його каналів, показується у списку слухачів як qFT8 і дотримується обмежень власника: коли всі канали зайняті, він повторює спробу через 2 хвилини; коли приймач відмовляє (пароль, одне підключення на адресу, ліміт часу), рядок стану вказує причину, і qFT8 чекає 30 хвилин або доки ви не зміните адресу. Публічні приймачі спільні: коли закінчите, залиште їх.</li>
+                <li><strong><span translate="no">Hermes-Lite 2 / OpenHPSDR</span></strong>: залиште адресу порожньою, щоб знайти трансивер у вашій мережі. Трансивер обслуговує одну програму за раз: спочатку закрийте будь-яку іншу програму, що ним користується. qFT8 лише приймає через нього.</li>
+                <li><strong><span translate="no">Airspy</span></strong> (і <span translate="no">RTL-SDR</span>) на порту 5555: запустіть мережевий сервер приймача на комп'ютері, до якого підключено приймач, зі встановленим власним драйвером приймача. Сервер вибирає частоту дискретизації та підсилення; якщо ним керує інший слухач, qFT8 може лише слухати там, куди він налаштований.</li>
+                <li><strong><span translate="no">SDRplay, LimeSDR, ADALM-Pluto, HackRF</span></strong> та інші: на комп'ютері, до якого підключено приймач, встановіть драйвер виробника (для <span translate="no">SDRplay</span> його <span translate="no">API</span>), сервер віддаленого SDR-хоста (порт 55132) та його модуль для цього приймача. qFT8 використовує перший приймач, який пропонує сервер. Частоту й підсилення вибирає сервер.</li>
+            </ul>
+
+            <h4 id="swl-radio">Звичайний трансивер</h4>
+            <p>
+                Будь-який трансивер, що його підтримує qFT8, також є чудовим приймачем: підключіть його, як описано в розділі
+                <a href="#quick-setup">Швидке налаштування</a> (наприклад, <span translate="no">QMX</span>, <span translate="no">QMX+</span> або <span translate="no">IC-7300</span> одним кабелем <span translate="no">USB</span>). qFT8 встановлює його частоту через <span translate="no">CAT</span>, коли ви натискаєте кнопку діапазону. Увімкніть режим <span translate="no">SWL</span>, щоб він ніколи не передавав.
+            </p>
+            <h3 id="swl-biastee">Bias tee</h3>
+            <p>
+                The device setup of an <span translate="no">SDR</span> whose driver can switch it (the <span translate="no">RTL-SDR</span> on this device's
+                <span translate="no">USB</span>, <span translate="no">RTL-SDR Blog V3</span> / <span translate="no">V4</span>, and an <span translate="no">RTL-SDR</span> network server)
+                has the check box <strong>Bias-T (живлення на антенному вході)</strong>, off by default. It puts DC power on the antenna cable, for an active antenna or a
+                preamplifier. Turning it on first shows a warning that it can damage a radio, filter, splitter or DC-shorted antenna on that cable (<strong>OK</strong> /
+                <strong>CANCEL</strong>). qFT8 never switches it on by itself and switches it off whenever the <span translate="no">SDR</span> is closed.
+            </p>
+
+            <h3 id="swl-mode-howto">Режим <span translate="no">SWL</span> і журнал почутого</h3>
+            <p>
+                <strong>РЕЖИМ SWL (ЛИШЕ ПРИЙОМ)</strong>, наприкінці Налаштування &gt; <strong>Події</strong>, запитує ваш ідентифікатор <span translate="no">SWL</span> (наприклад <span translate="no">R4-123-456</span>) або ваш позивний. Поки його ввімкнено, qFT8 ніколи не передає (кнопка TX показує <span translate="no">NO TX</span> / <span translate="no">SWL</span>; TX, TUNE і кожен режим відмовляються вмикати передачу), а ваш власний журнал QSO не чіпається. Подробиці — у розділі <a href="#events-supported">Підтримувані події</a>.
+            </p>
+            <p>
+                <strong>Журнал почутого</strong> збирає QSO, які ви чуєте між двома іншими станціями:
+            </p>
+            <ul>
+                <li>Усе, що прийнято через <span translate="no">SDR</span> (або через qFT8 bridge, що його надає), потрапляє в журнал почутого самостійно, навіть без режиму <span translate="no">SWL</span>. З трансивером, який може передавати, — лише поки ввімкнено режим <span translate="no">SWL</span>.</li>
+                <li>У <span translate="no">FT8, FT4, LQ8</span> та інших режимах із часовими інтервалами (включно з <span translate="no">JT65, JT9</span>) QSO зараховується, щойно почуто його підтвердження (<span translate="no">RR73</span>, <span translate="no">RRR</span> або <span translate="no">73</span> після звіту з підтвердженням). У <span translate="no">CW, RTTY, PSK</span> та <span translate="no">Olivia / MFSK</span> воно зараховується, коли прийнято і &ldquo;A DE B&rdquo;, і &ldquo;B DE A&rdquo;, зі звітами, якщо їх було передано.</li>
+                <li>Кожне почуте QSO зберігає обидва позивні, час, діапазон, частоту, режим, обидва звіти, локатори, будь-яке почуте посилання на програму (вершина <span translate="no">SOTA</span>, парк <span translate="no">POTA</span>, <span translate="no">RAZA</span> ...) і приймач, через який воно прийшло (в кінці рядка).</li>
+                <li>The list is the <span translate="no">SWL</span> page of the Log tab: switch the <strong>QSO</strong> / <strong>SWL</strong> dropdown at its top to <strong>SWL</strong>. It has the same filter bar as the <span translate="no">QSO</span> page, and a tap on an entry edits or deletes it (nothing is ever deleted on eQSL). The web remote shows it too.</li>
+                <li>The log keeps every entry (no limit) in a file that is only ever added to, so a very long log does not slow the start of the app; the page reads only the newest entries and shows more as you scroll.</li>
+                <li>With the Ham features off, every <span translate="no">FT8, FT4, LQ ...</span> station heard is logged (once an hour per station and mode); with the Ham features on, only the complete QSOs heard are logged. A station you hear for the first time (never in your <span translate="no">SWL</span> log before) has its callsign in cyan in the Stations list when the Ham features are off.</li>
+                <li>The signals receivers write what they identify to the log, once per station per <span translate="no">UTC</span> day: ships (<span translate="no">AIS</span>), aircraft (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, <span translate="no">NAVTEX</span> stations, <span translate="no">DSC</span>, time stations, <span translate="no">NCDXF</span> beacons, <span translate="no">ALE / ARDOP / PACTOR</span> and <span translate="no">APRS</span> callsigns, weather fax and weather-satellite pictures, and <span translate="no">FM</span> stations by their <span translate="no">RDS</span> code and name. They count for the <span translate="no">SWL</span> awards; they are never sent to eQSL and are not in the <span translate="no">ADIF</span> export (the <span translate="no">CSV</span> has them, with the name heard in the last column).</li>
+                <li>Uploads follow one rule: the eQSL <span translate="no">SWL</span> account files every heard station under that account (a ham eQSL account is refused); <span translate="no">PSK Reporter</span> and <span translate="no">WSPRnet</span> report under your callsign, else your <span translate="no">SWL</span> id.</li>
+            </ul>
+
+            <h3 id="swl-exports">Експорт: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> та <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
+            <ul>
+                <li><strong>ЕКСПОРТ ADIF</strong>: один запис на почуту станцію, два на QSO, так, як надсилаються звіти й картки <span translate="no">SWL</span>: <span translate="no">SWL=Y</span>, ваш ідентифікатор як оператор, почута станція в <span translate="no">CALL</span> з вашим звітом, станція, з якою вона працювала, в повідомленні картки &ldquo;Heard working ...&rdquo; і в коментарі, посилання на програми (<span translate="no">SOTA_REF</span>, <span translate="no">POTA_REF</span>, <span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>) та приймач у <span translate="no">MY_RIG</span>.</li>
+                <li><strong>ЕКСПОРТ CSV</strong>: один рядок на QSO, приймач в останньому стовпці.</li>
+                <li><strong>ЕКСПОРТ SOTA SWL (CSV)</strong>: показується, коли ви чули активаторів на вершині. Один рядок мисливця на кожного почутого активатора, з вершиною, у форматі, який приймає база даних <span translate="no">SOTA</span>; завантажте його туди як журнал <span translate="no">SWL</span>.</li>
+                <li><strong>ЕКСПОРТ RAZA SWL (CSV)</strong>: показується, коли ви чули активаторів <span translate="no">RAZA</span>. Один рядок на активатора з тим, що йому надіслати (позивний, дата, час, діапазон, режим, ваш звіт, станція, з якою він працював, його посилання та ваш ідентифікатор), наприклад як електронну картку <span translate="no">SWL</span> на <span translate="no">HAMLOG.online</span>.</li>
+                <li><strong>CLEAR SWL LOG</strong> (Settings &gt; Log files) deletes the list from this device after asking and after you type yes; your own QSO log is not touched, and nothing is deleted on eQSL or any online service. It also resets your <span translate="no">SWL</span> awards, so export the log first.</li>
+            </ul>
+
+            <h3 id="swl-services">Журнал <span translate="no">SWL</span> у Налаштуваннях і <span translate="no">eQSL</span></h3>
+            <ul>
+                <li>У розділі Налаштування &gt; <strong>Файли журналу</strong> чотири кнопки: <strong>ІМПОРТ ЖУРНАЛУ QSO</strong> і <strong>ЕКСПОРТ ЖУРНАЛУ QSO</strong> (ваші власні QSO), а також <strong>ІМПОРТ ЖУРНАЛУ SWL</strong> і <strong>ЕКСПОРТ ЖУРНАЛУ SWL</strong> (журнал почутого). <strong>ЕКСПОРТ ЖУРНАЛУ SWL</strong> пропонує файли, наведені вище. <strong>ІМПОРТ ЖУРНАЛУ SWL</strong> читає файл <span translate="no">ADIF</span> і переносить до журналу почутого лише його записи <span translate="no">SWL</span> (<span translate="no">SWL=Y</span>, формат, який використовують інші журнали та сервіси <span translate="no">SWL</span>); два записи одного почутого QSO знову стають одним записом, наявні записи не дублюються, а всі інші записи пропускаються (до вашого журналу QSO вони не потрапляють ніколи). Вебпульт також пропонує <strong>ЕКСПОРТ ЖУРНАЛУ SWL</strong>, файл завантажується в браузер.</li>
+                <li><strong>eQSL (ОБЛІКОВИЙ ЗАПИС SWL)</strong>, у журналі почутого: <span translate="no">eQSL</span> — онлайн-сервіс зі справжнім обліковим записом <span translate="no">SWL</span> (обліковий запис, у профілі якого вказано <span translate="no">SWL</span>; на його листівках написано &ldquo;<span translate="no">Confirming SWL Reception</span>&rdquo;). Введіть ім&rsquo;я користувача й пароль цього облікового запису (не радіоаматорського); після того як <span translate="no">eQSL</span> їх прийме, кожне почуте QSO надсилається як одна листівка на кожну почуту станцію одразу після запису в журнал, а вже почуті надсилаються негайно. Є також <strong>НАДІСЛАТИ ЗАРАЗ</strong>, <strong>ЗМІНИТИ ДАНІ ВХОДУ</strong> і <strong>ПРИПИНИТИ НАДСИЛАННЯ В eQSL</strong>. На <span translate="no">eQSL</span> ніколи нічого не видаляється. Саме такі листівки приймають багато програм дипломів <span translate="no">SWL</span>.</li>
+                <li>Інші сервіси журналів (<span translate="no">LoTW</span>, <span translate="no">QRZ</span>, <span translate="no">Club Log</span>, ...) приймають лише двосторонні QSO, тому почуті QSO їм ніколи не надсилаються. <span translate="no">SOTA</span> і <span translate="no">RAZA</span> приймають звіти <span translate="no">SWL</span> через власні файли (вище), які ви завантажуєте або надсилаєте самі.</li>
+            </ul>
+
+            <h3 id="swl-platforms">Крок за кроком</h3>
+            <ol>
+                <li>Придбайте приймач: <span translate="no">RTL-SDR Blog V4</span> з антеною — найпростіший початок (від <span translate="no">HF</span> до <span translate="no">UHF</span>, на телефоні чи Linux драйвер не потрібен); якщо обладнання немає зовсім, скористайтеся публічним <span translate="no">KiwiSDR</span>.</li>
+                <li>Виберіть його в <strong>Налаштування &gt; Пристрій</strong> (або підключіть донгл, коли Пристрій має значення
+                    <code>AUTO</code>) і дочекайтеся &ldquo;Підключено&rdquo; у його рядку стану.</li>
+                <li>Виберіть режим і діапазон: <span translate="no">FT8</span> на <span translate="no">20 m</span> або <span translate="no">40 m</span> активний майже в будь-який час і заповнює карту за хвилину.</li>
+                <li>Увімкніть <strong>РЕЖИМ SWL (ЛИШЕ ПРИЙОМ)</strong> , якщо хочете бачити свій ідентифікатор <span translate="no">SWL</span> в експорті (із трансивером, який може передавати, також щоб тримати TX вимкненим).</li>
+                <li>Експортуйте журнал почутого, коли захочете надіслати звіти.</li>
+            </ol>
+            <p>
+                <strong>Phone</strong>: <span translate="no">USB</span> dongle or any network receiver.
+                <strong>Computer</strong>: the <span translate="no">USB</span> dongle on Linux, network receivers everywhere.
+                <strong>iPhone / iPad</strong>: network receivers, or a receiver served by a <a href="#bridge">qFT8 bridge</a>
+                (the iPhone has no <span translate="no">USB</span> host for a dongle). <strong>Web remote</strong>: shows the
+                receiver's <span translate="no">NO TX</span> / <span translate="no">SDR</span> state and the <span translate="no">SWL</span> log.
+            </p>
+
+            <h3 id="awards">Awards (experimental)</h3>
+            <p>
+                qFT8 makes a diploma itself from your own logs: there is nothing to apply for. The band at the top of Settings, <strong>НАГОРОДИ</strong>, has
+                <strong>HAM</strong> (with the Ham features on) and <strong>SWL</strong> (with <span translate="no">SWL</span> on), each with its number of stars;
+                tap one to open its page, <strong>Нагороди HAM</strong> or <strong>Нагороди SWL</strong>. Settings &gt; Features &gt; <strong>Нагороди</strong> turns them off (nothing is lost).
+            </p>
+            <ul>
+                <li><strong>HAM</strong>: one table with the modes down and the bands across; each mode and each band shows its ten stars, its station count and the next target, and every
+                    cell adds a star for the different stations (counted by base callsign) you worked in that mode on that band. DXCC entities and grid squares have their own boxes.
+                    Only <em>confirmed</em> <span translate="no">QSO</span>s count (LoTW, QRZ, eQSL or confirmed by hand), imported ones too, logged with your callsign as the station callsign.</li>
+                <li><strong>SWL</strong>: the amateur stations you heard (per group of modes) and the other services (broadcast, time, beacons, weather fax, <span translate="no">HF</span> data,
+                    maritime, ships, aircraft), with the <span translate="no">DXCC</span> entities and grids heard. Your <span translate="no">SWL</span> log and your own QSOs both count, each station once.</li>
+                <li>The diploma shows your callsign (or <span translate="no">SWL</span> id), &ldquo;has achieved N stars&rdquo; and the tiles. <strong>FULLSCREEN</strong> zooms it and
+                    <strong>SHARE</strong> sends it as a picture (the web remote downloads it). <strong>Точний збіг із моїм позивним</strong> counts only QSOs logged with exactly your callsign
+                    (otherwise <span translate="no">/P</span>, <span translate="no">/M</span> and the like count too). A <strong>Мова диплома</strong> button picks the language of the diploma
+                    for viewing and sharing; <strong>Як у застосунку</strong> follows the app's language.</li>
+            </ul>
+
+            <h3 id="swl-only">Starting without a callsign</h3>
+            <p>
+                The callsign card of the first start has a <strong>ЛИШЕ SWL</strong> button and the line &ldquo;No callsign? Press SWL ONLY to receive.&rdquo; It asks for an
+                optional <span translate="no">SWL</span> id (one button, <strong>ПРОДОВЖИТИ</strong>; an empty box means &ldquo;SWL&rdquo;) and warns when neither a
+                callsign nor a locator is set (Settings &gt; <strong>Time and location</strong> warns the same, and on the computer <strong>PICK ON MAP</strong> picks your locator on a world map).
+                The welcome then says &ldquo;You didn't enter a callsign, but I can guide you through the SWL features of qFT8.&rdquo; and <strong>START TUTORIAL</strong> runs a short
+                <span translate="no">SWL</span> tutorial. Without a callsign only the <span translate="no">SWL</span> features are on and the <span translate="no">TX</span> button
+                reads <span translate="no">NO CALLSIGN</span>; to transmit, press it and then <strong>НАЛАШТУВАТИ</strong>.
+            </p>
+
+            <h3 id="swl-legal">Прослуховування і закон</h3>
+            <ul>
+                <li>qFT8 лише приймає через <span translate="no">SDR</span>; передавати через нього він не може.</li>
+                <li>Прийом радіоаматорських, мовних станцій і станцій сигналів часу дозволений у більшості країн. Інші радіослужби в деяких країнах можна приймати, але не записувати, не передавати далі й не використовувати, а кілька країн обмежують саме прослуховування. Діють правила країни, де ви слухаєте: перевірте їх, перш ніж слухати поза радіоаматорськими й мовними діапазонами.</li>
+                <li>Публічний <span translate="no">KiwiSDR</span> належить його власнику: дотримуйтесь обмежень власника.</li>
+            </ul>
+            <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
+        </section>
+
+        <section id="map-live">
+            <h2>Що показано на карті</h2>
+            <p>
+                Коли qFT8 приймає сигнал, що несе позицію, він малює відправника на
+                <a href="#ui-world-map-tab">карті світу</a> під час прийому, пересуває його, коли надходять нові звіти, і дає йому
+                згаснути, коли більше нічого не чути. Кожен вид має свій маленький малюнок у кольорі карти:
+            </p>
+            <ul>
+                <li><strong>Літаки</strong> (<span translate="no">ADS-B</span>, 1090 MHz): літак, побачений згори, спрямований
+                    у бік польоту. Торкніться його, щоб побачити номер рейсу, адресу, висоту, швидкість, курс і код транспондера
+                    (<em>squawk</em>). Літаки тьмяніють через хвилину без звіту й зникають через три.</li>
+                <li><strong>Кораблі</strong> (<span translate="no">AIS</span>, 162 MHz): корабель, побачений збоку, завжди
+                    у вертикальному положенні; він дивиться на захід, коли корабель пливе на захід, і на схід в інших випадках. Торкніться його, щоб побачити назву корабля,
+                    <span translate="no">MMSI</span>, тип, курс і швидкість. Кораблі тьмяніють через 10 хвилин і зникають через 30.</li>
+                <li><strong>Метеозонди</strong> (радіозонди, 400-406 MHz): куля з вантажем і лінія
+                    позаду неї, що показує, де вона була. Торкніться її, щоб побачити висоту, курс і швидкість.</li>
+                <li><strong>Станції та об'єкти <span translate="no">APRS</span></strong>: щогла антени. Торкніться її, щоб побачити
+                    висоту, курс і швидкість станції, якщо вона їх передає.</li>
+                <li><strong>Вузли ячеїстої (mesh) мережі</strong>: шестикутник із вузлом посередині.</li>
+                <li><strong>Маяки</strong>, базові станції <span translate="no">AIS</span> та засоби навігаційного обладнання: кільця маяків,
+                    що використовуються в інших місцях qFT8.</li>
+            </ul>
+            <p>
+                Їх показує кнопка карти <strong><span translate="no">SPOT</span></strong>: коли вона ввімкнена, ви бачите
+                їх разом з іншими спотами, а коли вимкнена, вони приховані. Кожна картка також повідомляє, коли
+                відправника чули востаннє, на якій частоті й як далеко він від вас. Станції та зонди залишаються
+                на карті до години, ставши блідішими в міру того, як їхній останній звіт старіє.
+            </p>
             <a href="#top" class="back-to-toc">&uarr; Назад до змісту</a>
         </section>
 
@@ -4373,7 +5060,7 @@
                 <h4 id="qft8-log-server">Налаштування сервера</h4>
                 <ol>
                     <li>На qFT8, який має збирати QSO, відкрийте <strong>Налаштування</strong>, перейдіть до
-                        <strong>Сервери</strong> і відкрийте <strong>Сервер qFT8log</strong>.</li>
+                        Інші налаштування &gt; <strong>СЕРВЕРИ</strong> і відкрийте шестірню <strong>Сервер qFT8log</strong>.</li>
                     <li>Введіть пароль. Використовуйте такий самий пароль, як для
                         <a href="#bridge">qFT8 bridge</a>: сім символів або більше.</li>
                     <li>Залиште порт 13510, якщо його не використовує щось інше, і увімкніть сервер. Сторінка показує
@@ -4633,7 +5320,7 @@
                     <li><strong>Орієнтація</strong>: <strong>Альбомна</strong>, <strong>Портретна</strong> або <strong>Як у телефона</strong>. У портретній орієнтації спектрограма вгорі, вкладка під нею, а на телефоні нижня панель займає два рядки.</li>
                     <li><strong>Роздільник</strong>: перетягніть тонку лінію між спектрограмою й вкладкою, щоб дати одній із них більше місця. Кожна орієнтація пам'ятає своє положення.</li>
                     <li><strong>Квадранти</strong> (планшети): спектрограма, станції, карта світу й журнал QSO одночасно; налаштування відкриваються праворуч.</li>
-                    <li><strong>Функції</strong>: <strong>Радіофункції</strong>, <strong>Журнал QSO</strong> та <strong>Карта світу</strong> можна вимкнути окремо, якщо ви ними не користуєтеся, — наприклад, щоб використовувати qFT8 лише як журнал. Поки щось вимкнено, у налаштуваннях для нього є кнопка <strong>УВІМКНУТИ</strong>. Вимкнення радіофункцій також вимикає <span translate="no">TX</span>.</li>
+                    <li><strong>Функції</strong>: <strong>Функції радіоаматора</strong> (callsign, transmitting, the <span translate="no">QSO</span> log, syncing and events), <strong>Функції SWL</strong> (listening: the <span translate="no">SWL</span> tab, the <span translate="no">SWL</span> log and your <span translate="no">SWL</span> id) and <strong>Нагороди</strong> can each be turned off if you do not use them. On the phone <strong>Radio features</strong>, <strong>QSO log</strong> and <strong>Карта світу</strong> can be turned off too; while one is off, an <strong>УВІМКНУТИ</strong> button for it shows in Settings. Turning the Ham or radio features off also switches <span translate="no">TX</span> off.</li>
                     <li><strong>Застосунок закриває</strong>: дозволяє qFT8 малювати поверх панелі навігації, ділянки камери й рядка стану — заради трохи більшого місця.</li>
                 </ul>
             </section>
@@ -4651,7 +5338,12 @@
 
             <h3 id="report-offer">«Надіслати звіт про це?»</h3>
             <p>
-                Коли qFT8 помічає, що на мить перестав відповідати або що декодування на вашому пристрої триває надто довго, він може показати невелику картку з пропозицією надіслати про це звіт — із кнопками <strong><span translate="no">НАДІСЛАТИ</span></strong>, <strong><span translate="no">НЕ НАДСИЛАТИ</span></strong> та <strong><span translate="no">БІЛЬШЕ НЕ ПИТАТИ</span></strong>. Без вашого дотику ніколи нічого не надсилається. Картка з'являється щонайбільше раз на добу, а <strong><span translate="no">БІЛЬШЕ НЕ ПИТАТИ</span></strong> вимикає її на тиждень. Після аварійного завершення qFT8 під час наступного запуску запитає, чи надіслати звіт про збій.
+                When qFT8 notices that it stopped responding for a moment, or that decoding is taking too long on
+                your device, it may show a small card that offers to send a report about it, with
+                <strong>НАДІСЛАТИ</strong>, <strong>НЕ НАДСИЛАТИ</strong> and
+                <strong>БІЛЬШЕ НЕ ПИТАТИ</strong>. Nothing is ever sent without your tap. The
+                card appears at most once a day, and <strong>БІЛЬШЕ НЕ ПИТАТИ</strong> silences
+                it until the next version. It also appears when the spectrogram keeps having trouble for minutes (it looks slow, pauses or skips), with a plain question whether to send a report; a healthy slow device never sees it. When your radio is reached through a qFT8 bridge, a report also carries the bridge's own log, fetched over the bridge link. After a crash, qFT8 asks at the next start whether to send a crash report.
             </p>
 
             <h3 id="update-check">Перевіряти нові версії під час запуску</h3>
@@ -4680,6 +5372,14 @@
         <section id="troubleshooting">
             <h2>Усунення несправностей</h2>
 
+            <h3 id="trouble-link-lost">&ldquo;radio link lost&rdquo;</h3>
+            <p>
+                On the computer (and with a phone's <span translate="no">USB</span> radio), a radio cable or <span translate="no">USB</span>-serial adapter that stops answering
+                no longer freezes qFT8. When the port has not finished a command for 4 seconds the program shows <strong>radio link lost</strong>, <span translate="no">TX</span> goes
+                <span translate="no">OFF</span>, new commands are dropped instead of piling up, and qFT8 reopens the port by itself a few times and again when the adapter is plugged back in.
+                <span translate="no">TX OFF</span> always goes ahead of everything else waiting for the radio. Check the cable and the adapter, plug it in again, and press
+                <span translate="no">TX ON</span> when the link is back: qFT8 never switches <span translate="no">TX</span> on by itself.
+            </p>
             <h3 id="trouble-not-recognized">Телефон чи комп'ютер не розпізнає трансивер або трансивер відключається</h3>
             <p>
                 Майже завжди це проблема апаратного з'єднання або радіозавад. З'єднання USB чутливі до вібрації, якості кабелю й до пухнастих єнотів, які полюбляють селитися в порту USB телефона. На Android ще одна поширена причина — <strong>USB OTG може бути типово вимкнено</strong> у вашому пристрої (зокрема, якщо qFT8 приймає сигнал, але не передає, а команди CAT не працюють, хоча пристрій повністю підтримується, є у списку пристроїв, розпізнається в режимі AUTO тощо, причина, найімовірніше, саме в цьому).
