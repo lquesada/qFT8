@@ -1,7 +1,7 @@
 // qFT8 Multi-Language Support Script
 
-const supportedLanguages = ['en', 'es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th', 'sr-latn', 'el', 'hr', 'bg', 'sl', 'lt', 'lv', 'et', 'fa', 'fil', 'mk', 'sq', 'bs', 'be', 'kk', 'ka', 'hy', 'is', 'ms', 'sw', 'ta', 'te', 'mr', 'ne', 'si', 'mn'];
-const manualLanguages = ['es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th', 'sr-latn', 'el', 'hr', 'bg', 'sl', 'lt', 'lv', 'et', 'fa', 'fil', 'mk', 'sq', 'bs', 'be', 'kk', 'ka', 'hy', 'is', 'ms', 'sw', 'ta', 'te', 'mr', 'ne', 'si', 'mn'];
+const supportedLanguages = ['en', 'es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
+const manualLanguages = ['es', 'pt-br', 'pt-pt', 'fr', 'it', 'de', 'ru', 'zh', 'zh-hant', 'ja', 'eo', 'ro', 'hi', 'ar', 'ca', 'eu', 'gl', 'id', 'ko', 'bn', 'ur', 'vi', 'tr', 'nl', 'pl', 'ha', 'cs', 'uk', 'sv', 'fi', 'da', 'he', 'hu', 'no', 'sk', 'th'];
 
 function getLanguage() {
     // Check for query parameter override
@@ -18,8 +18,6 @@ function getLanguage() {
     const base = tag.split('-')[0];
     const browserLang = base === 'pt' ? ((tag === 'pt' || tag === 'pt-br') ? 'pt-br' : 'pt-pt')
         : base === 'zh' ? (/^zh-hans\b/.test(tag) ? 'zh' : (/^zh-(tw|hk|mo|hant)\b/.test(tag) ? 'zh-hant' : 'zh'))
-        : base === 'sr' ? 'sr-latn'   // the one Serbian the site has (Latin alphabet)
-        : base === 'tl' ? 'fil'
         : base;
     if (supportedLanguages.includes(browserLang)) {
         return browserLang;
