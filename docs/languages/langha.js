@@ -107,6 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / iPad ba tare da Apple silicon ba",
     "DL_IOS_VOX": "VOX kawai: waɗannan na'urori ba za su iya sarrafa rediyo ta USB ba (babu CAT), don haka rediyo yana watsawa ta VOX ɗinsa.",
     "DL_IPAD_HOWTO": "Wane iPad kake da shi? Settings > General > About yana nuna samfurin: iPad Pro daga 2021 da iPad Air daga 2022 suna da Apple silicon.",
+    "DL_IOS_IPA_ADV": "Na gaba: shigar da .ipa da kanka (sideload)",
     "DL_IOS_SIDELOAD": "Fayil ɗin .ipa na sanyawa ta gefe ne (iOS 17 ko sabo): sanya shi da kayan aikin sanyawa ta gefe da ke sa hannu da Apple ID ɗinku. Da Apple ID kyauta, manhajar ta daina buɗewa bayan kwanaki 7 har sai kun sake sa hannu kuma ku sake sanya ta, kuma iOS zai nemi ku kunna Yanayin Mai Haɓakawa.",
     "DL_WIN_OLD": "Windows ɗinku ya girmi abin da sigar Store ke bukata: yi amfani da wannan saukewa. qFT8 yana goyon bayan Windows 10 ko sabo a hukumance; ba ma gwada tsofaffin Windows.",
     "BTN_MSSTORE_ALT": "Samu daga Microsoft",

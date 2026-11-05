@@ -107,6 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / iPad fără Apple silicon",
     "DL_IOS_VOX": "Doar VOX: aceste dispozitive nu pot controla o stație prin USB (fără CAT), așa că stația emite prin VOX-ul ei.",
     "DL_IPAD_HOWTO": "Ce iPad aveți? Configurări > General > Despre arată modelul: iPad Pro din 2021 și iPad Air din 2022 încoace au Apple silicon.",
+    "DL_IOS_IPA_ADV": "Avansat: instalați singur fișierul .ipa (sideload)",
     "DL_IOS_SIDELOAD": "Fișierul .ipa este pentru instalare laterală (iOS 17 sau mai nou): instalează-l cu un instrument de instalare laterală care îl semnează cu propriul tău ID Apple. Cu un ID Apple gratuit aplicația nu se mai deschide după 7 zile până când o semnezi și o instalezi din nou, iar iOS îți cere să activezi Modul dezvoltator.",
     "DL_WIN_OLD": "Windows-ul dumneavoastră este mai vechi decât cere versiunea din magazin: folosiți această descărcare. qFT8 acceptă oficial Windows 10 sau mai nou; Windows mai vechi nu testăm.",
     "BTN_MSSTORE_ALT": "Obține de la Microsoft",

@@ -107,6 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / Apple silicon nélküli iPad",
     "DL_IOS_VOX": "Csak VOX: ezek az eszközök nem tudják USB-n vezérelni a rádiót (nincs CAT), ezért a rádió a saját VOX-ával ad.",
     "DL_IPAD_HOWTO": "Milyen iPadje van? A Beállítások > Általános > Névjegy mutatja a modellt: a 2021-től kiadott iPad Pro és a 2022-től kiadott iPad Air Apple siliconos.",
+    "DL_IOS_IPA_ADV": "Haladó: telepítse saját maga az .ipa fájlt (sideload)",
     "DL_IOS_SIDELOAD": "Az .ipa oldaltelepítéshez való (iOS 17 vagy újabb): telepítsd egy oldaltelepítő eszközzel, amely a saját Apple ID-ddal írja alá. Ingyenes Apple ID-val az app 7 nap után nem nyílik meg, amíg újra alá nem írod és fel nem telepíted, és az iOS kéri a fejlesztői mód bekapcsolását.",
     "DL_WIN_OLD": "A Windowsa régebbi, mint amit az áruházi verzió igényel: használja ezt a letöltést. A qFT8 hivatalosan a Windows 10-et vagy újabbat támogatja; a régebbi Windowst nem teszteljük.",
     "BTN_MSSTORE_ALT": "Beszerzés a Microsofttól",

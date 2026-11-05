@@ -107,6 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / Apple シリコン非搭載の iPad",
     "DL_IOS_VOX": "VOX のみ：これらのデバイスは USB で無線機を制御できない（CAT なし）ため、無線機は VOX で送信します。",
     "DL_IPAD_HOWTO": "お使いの iPad は？「設定 > 一般 > 情報」でモデルを確認できます。2021 年以降の iPad Pro と 2022 年以降の iPad Air は Apple シリコン搭載です。",
+    "DL_IOS_IPA_ADV": "上級者向け：.ipa を自分でインストール（サイドロード）",
     "DL_IOS_SIDELOAD": ".ipa はサイドロード用です（iOS 17 以降）：ご自分の Apple ID で署名するサイドロードツールでインストールしてください。無料の Apple ID では 7 日後にアプリが開かなくなり、署名し直して再インストールが必要です。また iOS でデベロッパモードをオンにするよう求められます。",
     "DL_WIN_OLD": "お使いの Windows はストア版の必要条件より古いため、こちらのダウンロードをご利用ください。qFT8 は公式には Windows 10 以降に対応しており、それより古い Windows は当方で検証していません。",
     "BTN_MSSTORE_ALT": "Microsoft から入手",

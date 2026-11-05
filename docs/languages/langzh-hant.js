@@ -107,6 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / 未搭載 Apple 晶片的 iPad",
     "DL_IOS_VOX": "僅限 VOX：這些裝置無法透過 USB 控制電台（無 CAT），電台以本身的 VOX 發射。",
     "DL_IPAD_HOWTO": "您的 iPad 是哪一款？「設定 > 一般 > 關於本機」會顯示型號：2021 年起的 iPad Pro 和 2022 年起的 iPad Air 搭載 Apple 晶片。",
+    "DL_IOS_IPA_ADV": "進階：自行安裝 .ipa（側載）",
     "DL_IOS_SIDELOAD": ".ipa 用於側載（iOS 17 或更新版本）：用側載工具以您自己的 Apple ID 簽署後安裝。使用免費 Apple ID 時，App 在 7 天後無法開啟，需要重新簽署並安裝；iOS 也會要求開啟開發者模式。",
     "DL_WIN_OLD": "您的 Windows 比應用程式商店版本所需的更舊：請使用此下載。qFT8 正式支援 Windows 10 或更新版本；更舊的 Windows 我們未做測試。",
     "BTN_MSSTORE_ALT": "從 Microsoft 取得",
