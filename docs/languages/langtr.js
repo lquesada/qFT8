@@ -107,7 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / Apple silicon olmayan iPad",
     "DL_IOS_VOX": "Yalnızca VOX: bu cihazlar telsizi USB üzerinden kontrol edemez (CAT yok), bu yüzden telsiz kendi VOX'u ile yayın yapar.",
     "DL_IPAD_HOWTO": "Hangi iPad'iniz var? Ayarlar > Genel > Hakkında modeli gösterir: 2021'den itibaren iPad Pro ve 2022'den itibaren iPad Air Apple silicon içerir.",
-    "DL_IOS_IPA_ADV": "İleri düzey: .ipa dosyasını kendiniz yükleyin (sideload)",
+    "DL_IOS_IPA_ADV": "iPhone / iPad (i̇leri düzey): .ipa dosyasını kendiniz yükleyin (sideload)",
     "DL_IOS_SIDELOAD": ".ipa yan yükleme içindir (iOS 17 veya daha yeni): kendi Apple Kimliğinizle imzalayan bir yan yükleme aracıyla kurun. Ücretsiz bir Apple Kimliği ile uygulama 7 gün sonra açılmaz; yeniden imzalayıp kurmanız gerekir. iOS ayrıca Geliştirici Modu'nu açmanızı ister.",
     "DL_WIN_OLD": "Windows sürümünüz Mağaza sürümünün gerektirdiğinden eski: bu indirmeyi kullanın. qFT8 resmen Windows 10 veya daha yenisini destekler; daha eski Windows'u biz test etmiyoruz.",
     "BTN_MSSTORE_ALT": "Microsoft'tan edinin",

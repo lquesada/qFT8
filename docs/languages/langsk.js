@@ -107,7 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / iPad bez Apple silicon",
     "DL_IOS_VOX": "Len VOX: tieto zariadenia nemôžu ovládať stanicu cez USB (bez CAT), takže stanica vysiela pomocou svojho VOX.",
     "DL_IPAD_HOWTO": "Aký máte iPad? Nastavenia > Všeobecné > Informácie ukazuje model: iPad Pro od roku 2021 a iPad Air od roku 2022 majú Apple silicon.",
-    "DL_IOS_IPA_ADV": "Pokročilé: nainštalujte si .ipa sami (sideload)",
+    "DL_IOS_IPA_ADV": "iPhone / iPad (pokročilé): nainštalujte si .ipa sami (sideload)",
     "DL_IOS_SIDELOAD": "Súbor .ipa slúži na inštaláciu mimo App Store (iOS 17 alebo novší): nainštalujte ho nástrojom na sideloading, ktorý ho podpíše vaším vlastným Apple ID. S bezplatným Apple ID sa aplikácia po 7 dňoch prestane otvárať, kým ju znova nepodpíšete a nenainštalujete, a iOS požiada o zapnutie režimu vývojára.",
     "DL_WIN_OLD": "Váš Windows je starší, než vyžaduje verzia z obchodu: použite toto stiahnutie. qFT8 oficiálne podporuje Windows 10 alebo novší; staršie Windowsy netestujeme.",
     "BTN_MSSTORE_ALT": "Získať od Microsoftu",

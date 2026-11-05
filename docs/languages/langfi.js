@@ -107,7 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / iPad ilman Apple siliconia",
     "DL_IOS_VOX": "Vain VOX: nämä laitteet eivät voi ohjata radiota USB:n kautta (ei CAT:tia), joten radio lähettää VOXinsa avulla.",
     "DL_IPAD_HOWTO": "Mikä iPad sinulla on? Asetukset > Yleiset > Tietoja näyttää mallin: vuodesta 2021 iPad Pro ja vuodesta 2022 iPad Air sisältävät Apple siliconin.",
-    "DL_IOS_IPA_ADV": "Edistyneille: asenna .ipa itse (sideload)",
+    "DL_IOS_IPA_ADV": "iPhone / iPad (edistyneille): asenna .ipa itse (sideload)",
     "DL_IOS_SIDELOAD": ".ipa on sivulatausta varten (iOS 17 tai uudempi): asenna se sivulataustyökalulla, joka allekirjoittaa sen omalla Apple ID:lläsi. Ilmaisella Apple ID:llä appi lakkaa avautumasta 7 päivän jälkeen, kunnes allekirjoitat ja asennat sen uudelleen, ja iOS pyytää laittamaan kehittäjätilan päälle.",
     "DL_WIN_OLD": "Windowsisi on vanhempi kuin kauppaversio vaatii: käytä tätä latausta. qFT8 tukee virallisesti Windows 10:tä tai uudempaa; vanhempaa Windowsia emme testaa.",
     "BTN_MSSTORE_ALT": "Hanki Microsoftilta",

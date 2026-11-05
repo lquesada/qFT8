@@ -107,7 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / iPad uden Apple silicon",
     "DL_IOS_VOX": "Kun VOX: disse enheder kan ikke styre en radio via USB (ingen CAT), så radioen sender via sin VOX.",
     "DL_IPAD_HOWTO": "Hvilken iPad har du? Indstillinger > Generelt > Om viser modellen: iPad Pro fra 2021 og iPad Air fra 2022 har Apple silicon.",
-    "DL_IOS_IPA_ADV": "Avanceret: installer .ipa-filen selv (sideload)",
+    "DL_IOS_IPA_ADV": "iPhone / iPad (avanceret): installer .ipa-filen selv (sideload)",
     "DL_IOS_SIDELOAD": ".ipa-filen er til sideloading (iOS 17 eller nyere): installer den med et sideloading-værktøj, der signerer den med dit eget Apple-id. Med et gratis Apple-id holder appen op med at åbne efter 7 dage, indtil du signerer og installerer den igen, og iOS beder dig slå udviklertilstand til.",
     "DL_WIN_OLD": "Din Windows er ældre, end butiksversionen kræver: brug denne download. qFT8 understøtter officielt Windows 10 eller nyere; ældre Windows tester vi ikke.",
     "BTN_MSSTORE_ALT": "Hent den fra Microsoft",

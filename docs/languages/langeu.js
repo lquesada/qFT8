@@ -107,7 +107,7 @@ const langData = {
     "DL_IOS_OTHER": "iPhone / Apple silicon gabeko iPad",
     "DL_IOS_VOX": "VOX bakarrik: gailu hauek ezin dute irratia USB bidez kontrolatu (CATik ez), beraz irratiak bere VOX bidez igortzen du.",
     "DL_IPAD_HOWTO": "Zein iPad duzu? Ezarpenak > Orokorra > Honi buruz atalean ageri da modeloa: 2021etik aurrerako iPad Pro eta 2022tik aurrerako iPad Air gailuek Apple silicon dute.",
-    "DL_IOS_IPA_ADV": "Aurreratua: instalatu .ipa zeuk (sideload)",
+    "DL_IOS_IPA_ADV": "iPhone / iPad (aurreratua): instalatu .ipa zeuk (sideload)",
     "DL_IOS_SIDELOAD": ".ipa fitxategia alboko instalaziorako da (iOS 17 edo berriagoa): instalatu zure Apple IDarekin sinatzen duen alboko instalazio-tresna batekin. Doako Apple ID batekin, aplikazioa 7 egunen buruan ez da irekitzen berriro sinatu eta instalatu arte, eta iOSek garatzaile modua aktibatzeko eskatzen du.",
     "DL_WIN_OLD": "Zure Windows dendako bertsioak behar duena baino zaharragoa da: erabili deskarga hau. qFT8-k ofizialki Windows 10 edo berriagoa onartzen du; Windows zaharragoak ez ditugu probatzen.",
     "BTN_MSSTORE_ALT": "Lortu Microsoft-en",

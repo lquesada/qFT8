@@ -13,7 +13,7 @@
 //            (iosPadPick): Apple silicon -> the "iPad with Apple silicon" row (ios-ipad-m); an A-chip iPad -> ios-iphone;
 //            can't tell -> both, and the "which iPad?" hint under the first (IOS-STORE-3231-1, user 11-05). Nothing is
 //            sent anywhere: the size is read in the page only. (An absent row simply marks nothing.)
-//            Every iPhone/iPad also gets the sideload row (ios-ipa, the .ipa) after its App Store row(s).
+//            The sideload row (ios-ipa, the .ipa) is NEVER picked: it stays a plain row in the list (user 11-05).
 //   Anything else: nothing first (the whole list).
 // info = { ua, platform, arch, bitness, touchPoints }; arch/bitness come from userAgentData when the browser has it.
 // IOS-STORE-3231-1: screen sizes (CSS points, short x long side) that only ONE kind of iPad has. Apple silicon only: iPad
@@ -26,9 +26,9 @@ const IPAD_A_SIZES = ['768x1024', '810x1080', '744x1133', '834x1112'];
 function iosPadPick(info) {
     const w = info.screenW | 0, h = info.screenH | 0;
     const size = (w && h) ? Math.min(w, h) + 'x' + Math.max(w, h) : '';
-    if (IPAD_M_SIZES.indexOf(size) >= 0) return ['ios-ipad-m', 'ios-ipa'];
-    if (IPAD_A_SIZES.indexOf(size) >= 0) return ['ios-iphone', 'ios-ipa'];
-    return ['ios-ipad-m', 'ios-iphone', 'ios-ipa'];
+    if (IPAD_M_SIZES.indexOf(size) >= 0) return ['ios-ipad-m'];
+    if (IPAD_A_SIZES.indexOf(size) >= 0) return ['ios-iphone'];
+    return ['ios-ipad-m', 'ios-iphone'];
 }
 
 // the "which iPad?" hint: only when an iPad gets both iPad rows (its chip unknown)
@@ -43,7 +43,7 @@ function pickDownloads(info) {
     const arch = (info.arch || '').toLowerCase();
     const bitness = String(info.bitness || '');
     if (/Android/i.test(ua)) return ['android'];
-    if (/iPhone|iPod/i.test(ua)) return ['ios-iphone', 'ios-ipa'];
+    if (/iPhone|iPod/i.test(ua)) return ['ios-iphone'];
     if (/iPad/i.test(ua)) return iosPadPick(info);
     if (/Mac/i.test(plat) || /Mac OS X|Macintosh/i.test(ua)) {
         if ((info.touchPoints || 0) > 1) return iosPadPick(info);  // an iPad asking for the desktop site
