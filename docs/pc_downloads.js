@@ -8,19 +8,44 @@
 //            Intel, MAC-UNIVERSAL-1013-1 / MAC-ONE-DOWNLOAD); so the CPU does not matter (Safari never tells it anyway).
 //   Linux:   64-bit, unless the browser says 32-bit or ARM.
 //   Android: the Android row (Google Play + .apk).
-//   iPhone/iPad (also an iPad asking for the desktop site): the iPhone/iPad row (IOS-WEB-MANUAL-321-1; the page has it
-//            only when the App Store address or the sideload .ipa is there -- otherwise nothing is marked).
+//   iPhone:  the "iPhone / iPad without Apple silicon" row (ios-iphone: VOX only, no USB radio control).
+//   iPad (also one asking for the desktop site): its chip from the screen size where only one kind of iPad has that size
+//            (iosPadPick): Apple silicon -> the "iPad with Apple silicon" row (ios-ipad-m); an A-chip iPad -> ios-iphone;
+//            can't tell -> both, and the "which iPad?" hint under the first (IOS-STORE-3231-1, user 11-05). Nothing is
+//            sent anywhere: the size is read in the page only. (An absent row simply marks nothing.)
 //   Anything else: nothing first (the whole list).
 // info = { ua, platform, arch, bitness, touchPoints }; arch/bitness come from userAgentData when the browser has it.
+// IOS-STORE-3231-1: screen sizes (CSS points, short x long side) that only ONE kind of iPad has. Apple silicon only: iPad
+// Pro 11" and 13" (M4 and later). A-chip only: the 9.7"/7.9" iPads and minis (768x1024), iPad 10.2" (810x1080), iPad
+// mini 8.3" (744x1133), iPad Air 3 / Pro 10.5" (834x1112). Every other size (820x1180, 834x1194, 1024x1366) is shared by
+// A-chip and M-chip models: we cannot tell, so both rows are offered with the hint.
+const IPAD_M_SIZES = ['834x1210', '1032x1376'];
+const IPAD_A_SIZES = ['768x1024', '810x1080', '744x1133', '834x1112'];
+
+function iosPadPick(info) {
+    const w = info.screenW | 0, h = info.screenH | 0;
+    const size = (w && h) ? Math.min(w, h) + 'x' + Math.max(w, h) : '';
+    if (IPAD_M_SIZES.indexOf(size) >= 0) return ['ios-ipad-m'];
+    if (IPAD_A_SIZES.indexOf(size) >= 0) return ['ios-iphone'];
+    return ['ios-ipad-m', 'ios-iphone'];
+}
+
+// the "which iPad?" hint: only when an iPad gets both iPad rows (its chip unknown)
+function markIpadHint(ids) {
+    const el = document.getElementById('dl-ipad-howto');
+    if (el) el.hidden = !(ids.indexOf('ios-ipad-m') >= 0 && ids.indexOf('ios-iphone') >= 0);
+}
+
 function pickDownloads(info) {
     const ua = info.ua || '';
     const plat = info.platform || '';
     const arch = (info.arch || '').toLowerCase();
     const bitness = String(info.bitness || '');
     if (/Android/i.test(ua)) return ['android'];
-    if (/iPhone|iPad|iPod/i.test(ua)) return ['ios'];
+    if (/iPhone|iPod/i.test(ua)) return ['ios-iphone'];
+    if (/iPad/i.test(ua)) return iosPadPick(info);
     if (/Mac/i.test(plat) || /Mac OS X|Macintosh/i.test(ua)) {
-        if ((info.touchPoints || 0) > 1) return ['ios'];          // an iPad asking for the desktop site
+        if ((info.touchPoints || 0) > 1) return iosPadPick(info);  // an iPad asking for the desktop site
         return ['mac-universal'];
     }
     if (/Win/i.test(plat) || /Windows/i.test(ua)) {
@@ -101,9 +126,13 @@ function detectAndShowDownloads() {
     const info = {
         ua: nav.userAgent || '',
         platform: (nav.userAgentData && nav.userAgentData.platform) || nav.platform || '',
-        touchPoints: nav.maxTouchPoints || 0
+        touchPoints: nav.maxTouchPoints || 0,
+        screenW: (typeof screen !== 'undefined' && screen.width) || 0,
+        screenH: (typeof screen !== 'undefined' && screen.height) || 0
     };
-    if (!showDownloadsFirst(pickDownloads(info))) return false;
+    const first = pickDownloads(info);
+    if (!showDownloadsFirst(first)) return false;
+    markIpadHint(first);
     markOldWindows(isOldWindows(info));
     const uad = nav.userAgentData;
     if (uad && typeof uad.getHighEntropyValues === 'function') {
@@ -122,5 +151,5 @@ if (typeof document !== 'undefined') {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { pickDownloads, isOldWindows, STORE_MIN_WIN_API };
+    module.exports = { pickDownloads, iosPadPick, isOldWindows, STORE_MIN_WIN_API };
 }
