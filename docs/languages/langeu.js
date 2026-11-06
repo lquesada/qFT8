@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa fitxategia alboko instalaziorako da (iOS 17 edo berriagoa): instalatu zure Apple IDarekin sinatzen duen alboko instalazio-tresna batekin. Doako Apple ID batekin, aplikazioa 7 egunen buruan ez da irekitzen berriro sinatu eta instalatu arte, eta iOSek garatzaile modua aktibatzeko eskatzen du.",
     "DL_WIN_OLD": "Zure Windows dendako bertsioak behar duena baino zaharragoa da: erabili deskarga hau. qFT8-k ofizialki Windows 10 edo berriagoa onartzen du; Windows zaharragoak ez ditugu probatzen.",
     "BTN_MSSTORE_ALT": "Lortu Microsoft-en",
+    "DL_MSSTORE_ALSO": "Microsoft Storen ere bai",
     "BTN_MACSTORE_ALT": "Deskargatu Mac App Store-n",
     "BTN_APPSTORE_ALT": "Deskargatu App Store-n",
     "FEAT2_OWN": "Dekodetzaile eta kodetzaile propioak, hutsetik idatziak",

@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "Fayil ɗin .ipa na sanyawa ta gefe ne (iOS 17 ko sabo): sanya shi da kayan aikin sanyawa ta gefe da ke sa hannu da Apple ID ɗinku. Da Apple ID kyauta, manhajar ta daina buɗewa bayan kwanaki 7 har sai kun sake sa hannu kuma ku sake sanya ta, kuma iOS zai nemi ku kunna Yanayin Mai Haɓakawa.",
     "DL_WIN_OLD": "Windows ɗinku ya girmi abin da sigar Store ke bukata: yi amfani da wannan saukewa. qFT8 yana goyon bayan Windows 10 ko sabo a hukumance; ba ma gwada tsofaffin Windows.",
     "BTN_MSSTORE_ALT": "Samu daga Microsoft",
+    "DL_MSSTORE_ALSO": "Hakanan a Microsoft Store",
     "BTN_MACSTORE_ALT": "Sauke a Mac App Store",
     "BTN_APPSTORE_ALT": "Sauke a App Store",
     "FEAT2_OWN": "Na'urorin fassara da rubuta sigina nata, an rubuta su daga tushe",

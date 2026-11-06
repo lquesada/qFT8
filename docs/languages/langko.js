@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa는 사이드로딩용입니다(iOS 17 이상): 본인의 Apple ID로 서명하는 사이드로딩 도구로 설치하세요. 무료 Apple ID를 쓰면 7일 후 앱이 열리지 않으므로 다시 서명하고 설치해야 하며, iOS에서 개발자 모드를 켜라고 요청합니다.",
     "DL_WIN_OLD": "사용 중인 Windows가 스토어 버전의 요구 사항보다 오래되었습니다. 이 다운로드를 사용하세요. qFT8은 공식적으로 Windows 10 이상을 지원하며, 더 오래된 Windows는 저희가 테스트하지 않습니다.",
     "BTN_MSSTORE_ALT": "Microsoft에서 다운로드",
+    "DL_MSSTORE_ALSO": "Microsoft Store에서도 받을 수 있습니다",
     "BTN_MACSTORE_ALT": "Mac App Store에서 다운로드",
     "BTN_APPSTORE_ALT": "App Store에서 다운로드",
     "FEAT2_OWN": "처음부터 직접 작성한 자체 디코더와 인코더",

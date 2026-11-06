@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "El .ipa és per a instal·lació lateral (iOS 17 o posterior): instal·la'l amb una eina d'instal·lació lateral que el signi amb el teu propi Apple ID. Amb un Apple ID gratuït l'app deixa d'obrir-se al cap de 7 dies fins que la tornis a signar i instal·lar, i l'iOS et demana activar el mode de desenvolupador.",
     "DL_WIN_OLD": "El vostre Windows és més antic del que necessita la versió de la botiga: feu servir aquesta baixada. qFT8 admet oficialment Windows 10 o posterior; els Windows més antics no els provem.",
     "BTN_MSSTORE_ALT": "Aconsegueix-la a Microsoft",
+    "DL_MSSTORE_ALSO": "També a la Microsoft Store",
     "BTN_MACSTORE_ALT": "Descarrega-la al Mac App Store",
     "BTN_APPSTORE_ALT": "Descarrega-la a l'App Store",
     "FEAT2_OWN": "Descodificadors i codificadors propis, escrits des de zero",

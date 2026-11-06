@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "⁧קובץ ה-.ipa מיועד להתקנה צדדית (iOS 17 ומעלה): התקינו אותו בכלי התקנה צדדית שחותם עליו עם ה-Apple ID שלכם. עם Apple ID חינמי האפליקציה מפסיקה להיפתח אחרי 7 ימים עד שחותמים ומתקינים אותה שוב, ו-iOS מבקש להפעיל את מצב המפתחים.⁩",
     "DL_WIN_OLD": "גרסת ה-Windows שלך ישנה ממה שגרסת החנות דורשת: השתמשו בהורדה הזו. qFT8 תומך רשמית ב-Windows 10 ומעלה; גרסאות Windows ישנות יותר אינן נבדקות על ידינו.",
     "BTN_MSSTORE_ALT": "⁧קבלו אותה מ-Microsoft⁩",
+    "DL_MSSTORE_ALSO": "זמין גם ב-Microsoft Store",
     "BTN_MACSTORE_ALT": "⁧הורידו מ-Mac App Store⁩",
     "BTN_APPSTORE_ALT": "⁧הורידו מ-App Store⁩",
     "FEAT2_OWN": "מפענחים ומקודדים משלה, שנכתבו מאפס",

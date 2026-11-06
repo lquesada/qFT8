@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa はサイドロード用です（iOS 17 以降）：ご自分の Apple ID で署名するサイドロードツールでインストールしてください。無料の Apple ID では 7 日後にアプリが開かなくなり、署名し直して再インストールが必要です。また iOS でデベロッパモードをオンにするよう求められます。",
     "DL_WIN_OLD": "お使いの Windows はストア版の必要条件より古いため、こちらのダウンロードをご利用ください。qFT8 は公式には Windows 10 以降に対応しており、それより古い Windows は当方で検証していません。",
     "BTN_MSSTORE_ALT": "Microsoft から入手",
+    "DL_MSSTORE_ALSO": "Microsoft Store でも入手できます",
     "BTN_MACSTORE_ALT": "Mac App Store からダウンロード",
     "BTN_APPSTORE_ALT": "App Store からダウンロード",
     "FEAT2_OWN": "独自のデコーダとエンコーダをゼロから開発",

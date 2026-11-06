@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa yan yükleme içindir (iOS 17 veya daha yeni): kendi Apple Kimliğinizle imzalayan bir yan yükleme aracıyla kurun. Ücretsiz bir Apple Kimliği ile uygulama 7 gün sonra açılmaz; yeniden imzalayıp kurmanız gerekir. iOS ayrıca Geliştirici Modu'nu açmanızı ister.",
     "DL_WIN_OLD": "Windows sürümünüz Mağaza sürümünün gerektirdiğinden eski: bu indirmeyi kullanın. qFT8 resmen Windows 10 veya daha yenisini destekler; daha eski Windows'u biz test etmiyoruz.",
     "BTN_MSSTORE_ALT": "Microsoft'tan edinin",
+    "DL_MSSTORE_ALSO": "Microsoft Store'da da var",
     "BTN_MACSTORE_ALT": "Mac App Store'dan indirin",
     "BTN_APPSTORE_ALT": "App Store'dan indirin",
     "FEAT2_OWN": "Sıfırdan yazılmış kendi çözücüleri ve kodlayıcıları",

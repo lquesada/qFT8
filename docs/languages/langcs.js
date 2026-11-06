@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "Soubor .ipa slouží k instalaci mimo App Store (iOS 17 nebo novější): nainstalujte ho nástrojem pro sideloading, který ho podepíše vaším vlastním Apple ID. S bezplatným Apple ID se aplikace po 7 dnech přestane otevírat, dokud ji znovu nepodepíšete a nenainstalujete, a iOS požádá o zapnutí režimu vývojáře.",
     "DL_WIN_OLD": "Váš Windows je starší, než vyžaduje verze z obchodu: použijte toto stažení. qFT8 oficiálně podporuje Windows 10 nebo novější; starší Windows netestujeme.",
     "BTN_MSSTORE_ALT": "Získat od Microsoftu",
+    "DL_MSSTORE_ALSO": "Také v obchodě Microsoft Store",
     "BTN_MACSTORE_ALT": "Stáhnout v Mac App Store",
     "BTN_APPSTORE_ALT": "Stáhnout v App Store",
     "FEAT2_OWN": "Vlastní dekodéry a kodéry napsané od základů",

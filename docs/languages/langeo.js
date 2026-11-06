@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "La .ipa estas por flanka instalado (iOS 17 aŭ pli nova): instalu ĝin per flankinstala ilo, kiu subskribas ĝin per via propra Apple ID. Kun senpaga Apple ID la apo ne plu malfermiĝas post 7 tagoj, ĝis vi denove subskribas kaj instalas ĝin, kaj iOS petas vin ŝalti la Programistan reĝimon.",
     "DL_WIN_OLD": "Via Windows estas pli malnova ol la vendeja versio postulas: uzu ĉi tiun elŝuton. qFT8 oficiale subtenas Windows 10 aŭ pli novan; pli malnovan Windows ni ne testas.",
     "BTN_MSSTORE_ALT": "Akiru ĝin de Microsoft",
+    "DL_MSSTORE_ALSO": "Ankaŭ en la Microsoft Store",
     "BTN_MACSTORE_ALT": "Elŝutu en Mac App Store",
     "BTN_APPSTORE_ALT": "Elŝutu en App Store",
     "FEAT2_OWN": "Propraj malkodiloj kaj kodiloj, skribitaj de nulo",

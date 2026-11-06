@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa on sivulatausta varten (iOS 17 tai uudempi): asenna se sivulataustyökalulla, joka allekirjoittaa sen omalla Apple ID:lläsi. Ilmaisella Apple ID:llä appi lakkaa avautumasta 7 päivän jälkeen, kunnes allekirjoitat ja asennat sen uudelleen, ja iOS pyytää laittamaan kehittäjätilan päälle.",
     "DL_WIN_OLD": "Windowsisi on vanhempi kuin kauppaversio vaatii: käytä tätä latausta. qFT8 tukee virallisesti Windows 10:tä tai uudempaa; vanhempaa Windowsia emme testaa.",
     "BTN_MSSTORE_ALT": "Hanki Microsoftilta",
+    "DL_MSSTORE_ALSO": "Myös Microsoft Storessa",
     "BTN_MACSTORE_ALT": "Lataa Mac App Storesta",
     "BTN_APPSTORE_ALT": "Lataa App Storesta",
     "FEAT2_OWN": "Omat dekooderit ja enkooderit, kirjoitettu alusta alkaen",

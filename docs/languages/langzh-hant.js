@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa 用於側載（iOS 17 或更新版本）：用側載工具以您自己的 Apple ID 簽署後安裝。使用免費 Apple ID 時，App 在 7 天後無法開啟，需要重新簽署並安裝；iOS 也會要求開啟開發者模式。",
     "DL_WIN_OLD": "您的 Windows 比應用程式商店版本所需的更舊：請使用此下載。qFT8 正式支援 Windows 10 或更新版本；更舊的 Windows 我們未做測試。",
     "BTN_MSSTORE_ALT": "從 Microsoft 取得",
+    "DL_MSSTORE_ALSO": "也可在 Microsoft Store 取得",
     "BTN_MACSTORE_ALT": "在 Mac App Store 下載",
     "BTN_APPSTORE_ALT": "在 App Store 下載",
     "FEAT2_OWN": "自有的解碼器和編碼器，全部從零編寫",

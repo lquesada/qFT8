@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "Az .ipa oldaltelepítéshez való (iOS 17 vagy újabb): telepítsd egy oldaltelepítő eszközzel, amely a saját Apple ID-ddal írja alá. Ingyenes Apple ID-val az app 7 nap után nem nyílik meg, amíg újra alá nem írod és fel nem telepíted, és az iOS kéri a fejlesztői mód bekapcsolását.",
     "DL_WIN_OLD": "A Windowsa régebbi, mint amit az áruházi verzió igényel: használja ezt a letöltést. A qFT8 hivatalosan a Windows 10-et vagy újabbat támogatja; a régebbi Windowst nem teszteljük.",
     "BTN_MSSTORE_ALT": "Beszerzés a Microsofttól",
+    "DL_MSSTORE_ALSO": "A Microsoft Store-ban is",
     "BTN_MACSTORE_ALT": "Letöltés a Mac App Store-ból",
     "BTN_APPSTORE_ALT": "Letöltés az App Store-ból",
     "FEAT2_OWN": "Saját dekóderek és enkóderek, a nulláról megírva",

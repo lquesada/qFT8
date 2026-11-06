@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": ".ipa-filen är för sidladdning (iOS 17 eller senare): installera den med ett sidladdningsverktyg som signerar den med ditt eget Apple-ID. Med ett gratis Apple-ID slutar appen öppnas efter 7 dagar tills du signerar och installerar den igen, och iOS ber dig slå på utvecklarläget.",
     "DL_WIN_OLD": "Din Windows är äldre än butiksversionen kräver: använd den här nedladdningen. qFT8 stöder officiellt Windows 10 eller senare; äldre Windows testar vi inte.",
     "BTN_MSSTORE_ALT": "Hämta från Microsoft",
+    "DL_MSSTORE_ALSO": "Även i Microsoft Store",
     "BTN_MACSTORE_ALT": "Hämta på Mac App Store",
     "BTN_APPSTORE_ALT": "Hämta på App Store",
     "FEAT2_OWN": "Egna avkodare och kodare, skrivna från grunden",

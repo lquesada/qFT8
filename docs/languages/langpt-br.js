@@ -111,6 +111,7 @@ const langData = {
     "DL_IOS_SIDELOAD": "O .ipa é para sideload (iOS 17 ou mais recente): instale-o com uma ferramenta de sideload que o assine com o seu próprio Apple ID. Com um Apple ID gratuito o app deixa de abrir após 7 dias até você assiná-lo e instalá-lo de novo, e o iOS pede para ativar o Modo de desenvolvedor.",
     "DL_WIN_OLD": "Seu Windows é mais antigo do que a versão da loja exige: use este download. O qFT8 oferece suporte oficial ao Windows 10 ou mais recente; não testamos Windows mais antigos.",
     "BTN_MSSTORE_ALT": "Baixe na Microsoft",
+    "DL_MSSTORE_ALSO": "Também na Microsoft Store",
     "BTN_MACSTORE_ALT": "Baixar na Mac App Store",
     "BTN_APPSTORE_ALT": "Baixar na App Store",
     "FEAT2_OWN": "Decodificadores e codificadores próprios, escritos do zero",
