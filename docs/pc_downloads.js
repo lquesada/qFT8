@@ -71,7 +71,7 @@ function pickDownloads(info) {
 // Windows reports it as its major number (1809 = 7, 1903/1909 = 8, 2004..21H2 = 10, Windows 11 = 13 or more; Windows 10
 // before 1809 reports 0). Windows 7/8/8.1 say "Windows NT 6.x" in the user agent. Unknown version (Firefox, Safari: no
 // hints): not old, the layout stays as it was.
-const STORE_MIN_WIN_API = 10; // LIVE STORE PACKAGE: Windows 10 2004 (19041) until the 1809 refresh is published, then 7
+const STORE_MIN_WIN_API = 7;
 
 function isOldWindows(info) {
     const ua = info.ua || '';

@@ -275,6 +275,15 @@
     color: #e0f2fe;
 }
 
+.dl-soon {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px dashed rgba(148, 163, 184, 0.6);
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
 .dl-has-mine li.dl-row:not(.dl-mine) {
     opacity: 0.45;
     transition: opacity 0.2s;
@@ -544,6 +553,28 @@
     padding: 18px 20px 16px 20px;
     transition: border-color 0.2s ease, background 0.2s ease;
 }
+.feature-catalog .fc-card.fc-wide {
+    grid-column: 1 / -1;
+}
+.feature-catalog ul.fc-chips + p {
+    margin-top: 12px;
+}
+.feature-catalog .fc-example {
+    margin: 14px 0 0 0;
+}
+.feature-catalog .fc-example img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--surface-border);
+}
+.feature-catalog .fc-example figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
 .feature-catalog .fc-card:hover {
     border-color: var(--surface-border-hover);
     background: var(--card-item-hover);
@@ -611,9 +642,8 @@
 .feature-catalog ul.fc-chips li a:hover {
     text-decoration: underline;
 }
-/* the two media slots (animation, screenshots) take no space until another change fills them */
-.feature-catalog .fc-media:empty,
-.feature-catalog .fc-shots:empty {
+/* the media slot (animation) takes no space until another change fills it */
+.feature-catalog .fc-media:empty {
     display: none;
 }
 .feature-catalog .fc-media {
@@ -640,18 +670,6 @@
 .feature-catalog .fc-media.fc-media-two video {
     border-radius: 12px;
     border: 1px solid var(--surface-border);
-}
-.feature-catalog .fc-shots {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-    margin-top: 22px;
-}
-.feature-catalog .fc-shots img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
 }
 @media (max-width: 760px) {
     .features.feature-catalog {
@@ -692,6 +710,174 @@
     padding: 0 18px 16px 18px;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+.feature-catalog .fc-zoom {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+}
+.feature-catalog .fc-zoom:focus-visible {
+    outline: 2px solid var(--text-secondary);
+    outline-offset: 3px;
+}
+.feature-catalog .fc-zoom img {
+    cursor: zoom-in;
+}
+html.fc-lb-open {
+    overflow: hidden;
+}
+.fc-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.88);
+    overflow: auto;
+    touch-action: pan-x pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    cursor: zoom-out;
+}
+.fc-lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    border-radius: 8px;
+    cursor: default;
+}
+.fc-lb-close {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fc-lb-close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* WEB-AWARDS-FEATURE-1: the awards card's "get your diploma" steps and the three screenshots */
+.feature-catalog .fc-subhead {
+    margin: 16px 0 8px 0;
+    font-size: 1rem;
+    color: #ffffff;
+}
+.feature-catalog ol.fc-steps {
+    margin: 0 0 12px 0;
+    padding-left: 1.4em;
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+.feature-catalog ol.fc-steps li {
+    margin-bottom: 6px;
+}
+.feature-catalog .fc-more a {
+    color: var(--accent-color);
+}
+.feature-catalog .fc-shots {
+    display: grid;
+    max-width: 640px;
+    margin: 14px auto 0 auto;
+    align-items: start;
+}
+.feature-catalog .fc-shot {
+    margin: 0;
+}
+.feature-catalog .fc-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--surface-border);
+}
+.feature-catalog .fc-shot figcaption {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* WEB-COUNTS-LLMS-1 (user 2026-11-05): the counts row and the full mode / radio lists (one <details> each, closed by default) */
+.feature-catalog ul.fc-counts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 28px;
+    margin: 0 0 26px 0;
+    padding: 0;
+    list-style: none;
+}
+.feature-catalog ul.fc-counts li {
+    text-align: center;
+    color: var(--text-secondary);
+}
+.feature-catalog ul.fc-counts li::before {
+    content: none;
+    display: none;
+}
+.feature-catalog ul.fc-counts strong {
+    display: block;
+    font-size: 1.9rem;
+    line-height: 1.1;
+    color: var(--accent-color);
+}
+.feature-catalog details.fc-all {
+    margin-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 10px;
+}
+.feature-catalog details.fc-all summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 4px 0;
+}
+.feature-catalog details.fc-all summary:hover {
+    color: var(--accent-color);
+}
+.feature-catalog details.fc-all .fc-n {
+    margin-inline-start: 6px;
+    padding: 1px 9px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.12);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.feature-catalog details.fc-all .fc-sec {
+    margin: 14px 0 6px 0;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+.feature-catalog details.fc-all h4.fc-tab {
+    margin: 16px 0 0 0;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-color);
+}
+.feature-catalog details.fc-all .fc-note {
+    margin: 8px 0 0 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 /* WEB-WIN-ZIP-MAIN-1 (user 2026-11-06: "make the zip one the main download for win 32 and 64 and make it preferred ... make the
