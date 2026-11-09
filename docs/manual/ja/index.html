@@ -601,7 +601,7 @@
                 <li><strong>プロファイルフォルダーごとに 1 つのコピー。</strong>同じフォルダーを使う別のコピーが動いているときに qFT8 を起動すると、<strong>既に実行中です</strong>と表示され、<strong>再試行</strong>または<strong>終了</strong>が提案されます。1 つのフォルダーで 2 つのコピーを動かすと、設定とログが壊れるおそれがあるためです。複数のコピーを同時に動かすには（たとえば無線機ごとに 1 つ）、起動するときにそれぞれ専用のフォルダーを指定します。<code>qFT8 --qft8_profile D:\qft8-radio2</code>（Windows では <code>qFT8.exe</code>）。そのフォルダーに書き込めない場合、qFT8 はエラーで停止します。</li>
                 <li><strong>Web リモコン。</strong>パソコン版には、Android と同じ<a href="#remote-control">リモートコントロール Web サーバー</a>があり（初期設定ではオフ、ポート 13497）、音量スライダーを含め、同じページを表示します。ネットワーク上のスマートフォンや別のパソコンから操作するのに使います。</li>
                 <li><strong>bridge。</strong>パソコンは、よく使われる <a href="#bridge">bridge</a> です。無線機をパソコンにつなぎ、スマートフォン、iPhone、または別のパソコンの qFT8 から操作します。ほかに用途のないパソコンでは、ウィンドウなしで動かすこともできます（<code>qFT8 --bridge</code>）。</li>
-                <li><strong>コマンドライン。</strong><code>qFT8 --help</code> でオプションの一覧が表示されます（Windows では小さなウィンドウに表示されます）。<code>--list-devices</code> は、qFT8 が認識しているすべてのシリアルポートとサウンドデバイスを一覧表示して終了します。<code>--port &lt;デバイス&gt;</code> は既定のシリアルポート（<code>COM3</code>、<code>/dev/ttyACM0</code>）を設定します。<code>--qft8_profile &lt;フォルダー&gt;</code> はプロファイルフォルダーを選びます。<code>--bridge</code> は bridge を起動します。<code>--opengl</code> はウィンドウを OpenGL で描画します（<a href="#pc-trouble">うまく動かないとき</a>をご覧ください）。</li>
+                <li><strong>コマンドライン。</strong><code>qFT8 --help</code> でオプションの一覧が表示されます（Windows では小さなウィンドウに表示されます）。<code>--list-devices</code> は、qFT8 が認識しているすべてのシリアルポートとサウンドデバイスを一覧表示して終了します。<code>--port &lt;デバイス&gt;</code> は既定のシリアルポート（<code>COM3</code>、<code>/dev/ttyACM0</code>）を設定します。<code>--qft8_profile &lt;フォルダー&gt;</code> はプロファイルフォルダーを選びます。<code>--bridge</code> は bridge を起動します。<code>--video-mode=&lt;mode&gt;</code> はその起動に限りウィンドウを別の方法で描画します。qFT8 が設定で<strong>ビデオモード</strong>を変更できるところまで開けない場合にも使えます（Windows: <code>default</code>、<code>d3d</code>、<code>gdi</code>、Linux: <code>default</code>、<code>xrender</code>、<code>opengl</code>、<code>x11</code>）。<code>--opengl</code> はウィンドウを OpenGL で描画します（<a href="#pc-trouble">うまく動かないとき</a>をご覧ください）。</li>
             </ul>
 
             <h3 id="pc-slow">低速なパソコン</h3>
@@ -643,7 +643,7 @@
                 <li><strong>無線機の音が小さすぎる、大きすぎる、またはバーの代わりに 2 つの点が出る</strong>（QMX）: デバイス音量スライダー（<a href="#pc-volumes">音量</a>）を動かしてください。パソコン自身のそのデバイスの音量がミュートになっていないかも確認してください。</li>
                 <li><strong>パソコンの音が電波に乗る。</strong>既定の出力が無線機のサウンドカードになっています。<em>出力が無線機へ</em>のバッジに答えるか、システムで別の既定の出力を選んでください。</li>
                 <li><strong>「既に実行中です」。</strong>別のコピーがプロファイルフォルダーを使っています。それを閉じるか、このコピーを専用の <code>--qft8_profile</code> フォルダーで起動してください。</li>
-                <li><strong>ウィンドウが真っ黒、または表示が乱れる</strong>（古いグラフィックドライバー、仮想マシン、リモートデスクトップ）: グラフィックドライバーを更新してください。直らない場合は、qFT8 を <code>--opengl</code>（<code>qFT8 --opengl</code>）で起動してください。ウィンドウを別の方法で描画します。それでも直らない場合は、お使いのシステムとグラフィックカードを添えて、（設定の）<strong>バグを報告</strong>から報告してください。</li>
+                <li><strong>ウィンドウが真っ黒、または表示が乱れる</strong>（古いグラフィックドライバー、仮想マシン、リモートデスクトップ）: グラフィックドライバーを更新してください。直らない場合は、設定 &gt; アプリケーションで別の<strong>ビデオモード</strong>を選ぶか、qFT8 を <code>--video-mode=gdi</code>（Windows）または <code>--video-mode=x11</code>（Linux）で起動してください。ウィンドウを別の方法で描画します。それでも直らない場合は、お使いのシステムとグラフィックカードを添えて、（設定の）<strong>バグを報告</strong>から報告してください。</li>
                 <li><strong>ウィンドウが画面の外にある</strong>（画面が取り外された）: qFT8 は、ウィンドウを開くときに各ウィンドウの保存された位置を確認し、その画面がなくなっている場合や、大部分が画面の外に出てしまう場合は、メイン画面の中央で開きます。それでもウィンドウに手が届かない場合は、下部バーのボタンでそのペインを閉じてからもう一度開くか、qFT8 を再起動してください。</li>
                 <li><strong>ウォーターフォールが固まる、音が途切れる、1 コアまたは 2 コアのパソコンで負荷が高い:</strong> <a href="#pc-slow">低速なパソコン</a>をご覧になり、ほかのプログラムを閉じてください。続く場合は<strong>バグを報告</strong>で報告してください。</li>
             </ul>
@@ -1680,6 +1680,8 @@
                 <li>qFT8 は、お住まいの地域（ITU 第 1、2、3 地域）のアマチュアバンドの外では無線機を送信状態にせず、その旨を表示します。<span translate="no">TX</span> ボタンには <span translate="no">NO HAM BAND</span> と表示されます。</li>
                 <li>国によっては、バンドの一部しか許可されていなかったり、特別な許可や事前の届出が必要だったりします。そのようなバンド（第 3 地域の 160 m、80 m、40 m、2 m、および 23 cm、70 cm、13 cm を含む）では、qFT8 はバンドごとに一度、たとえば &ldquo;一部の国では60mの一部しか使えないか、事前に特別な許可または届出が必要です。免許を確認してください。&rdquo; という通知を表示します。この通知のために送信が止められることはありません。</li>
                 <li>qFT8 がお住まいの国を把握すると（<a href="#swl-legal">受信と法律</a>を参照）、その国独自のバンドプランが地域のものより狭い場合は、それにも従います。現在は フランス、ドイツ、イギリス、スイス、イタリア、スペイン、オランダ、ベルギー、オーストリア、アメリカ合衆国、オーストラリア、日本 について組み込まれています。国のプランがその周波数をはっきり除外している場合（たとえば ドイツ の 5351.5&ndash;5366.5 kHz 以外の 60 m、日本 の 7200 kHz を超える 40 m、アメリカ合衆国 の 13 cm 2310&ndash;2390 MHz）、<span translate="no">TX</span> は待機状態のままで何も送信されず、ボタンには <span translate="no">NO HAM BAND</span> と表示されます。プランがあまり確実でない場合は、免許に関する通知だけが表示されます。</li>
+                <li>11 m（市民バンド、CB、27 MHz 付近）はアマチュアバンドではありません。qFT8 がそこで送信するのは、お住まいの国（コールサインまたは位置による）が、使用するモードでの CB を認めている場合だけです。音声（AM、FM、SSB）は qFT8 が CB の規則を把握している国（アメリカ合衆国、カナダ、フランス、ドイツ、イギリス、スペイン、オーストリア、チェコ、ポーランド、スウェーデン、エストニア、ベルギー、オランダ、アイルランド、デンマーク、フィンランド、ノルウェー、スロバキア、クロアチア、スイス、ポルトガル（AM と FM）、オーストラリア、ニュージーランド）で、FT8 などのデータモードは国が明示的にデータに開放しているチャンネルだけです（ドイツとポルトガルはチャンネル 6、7、24、25、チェコはチャンネル 24、25）。それ以外の場所や CB チャンネルの外（たとえば 27.700 MHz）では、ボタンに <span translate="no">NO HAM BAND</span> と表示され、理由が通知されます。</li>
+                <li>11 m で初めて <span translate="no">TX</span> をオンにしたとき、または <span translate="no">TX</span> がオンのまま 11 m に移ったとき、qFT8 は、CB のチャンネル、モード、出力、機器は自己責任であることに同意するよう、一度だけ確認します（qFT8 が無線機の出力を変更することはありません）。答えるまで何も送信されません。同意すると記憶されて <span translate="no">TX</span> がオンになり、キャンセルすると <span translate="no">TX</span> がオフになります。Web リモートにも同じ確認が表示されます。</li>
                 <li>免許と、運用する場所のバンドプランについての責任は、常にご自身にあります。</li>
             </ul>
 
@@ -1726,6 +1728,7 @@
 
             <h4 id="settings-application">アプリケーション設定</h4>
             <ul>
+                <li>パソコン（Windows と Linux）: <strong>ビデオモード</strong>。ウィンドウの描画方法で、次回の起動から有効になります。Windows では<strong>既定</strong>は Direct3D を使い、ウィンドウが固まり続けるときは自動で GDI に切り替わります。<strong>Direct3D</strong> と <strong>GDI</strong> はどちらか一方に固定します。Linux では<strong>既定</strong>、<strong>XRender</strong>、<strong>OpenGL</strong>、<strong>X11</strong>。</li>
                 <li><strong>低速デバイス / 低バッテリーモード</strong>: 描画を軽くします。デコーダーは変わりません（<a href="#pc-slow">低速なパソコン</a>を参照。スマートフォンでも同じです）。</li>
                 <li>パソコンでは: <strong>閉じる前に確認する</strong>（メインウィンドウを閉じて qFT8 を終了する前に確認します）と、
                     設定とログを保存するフォルダー。</li>
@@ -5000,6 +5003,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 気象ファクスの行は、<span translate="no">USB</span> の任意の <span translate="no">HF</span> 無線機または <span translate="no">SDR</span> で、気象機関や海軍の <span translate="no">HF</span> 無線ファクス天気図を受信します。周波数ボタンは公開されている世界の無線ファクス放送スケジュール（70 周波数と放送時間）を順に切り替え、今の時間に放送していないもの（<span translate="no">UTC</span>）を飛ばします。無線機は一覧の周波数より 1.9 kHz 下に同調します。速度（毎分 60、90、120、240 ライン）は図の位相合わせの線から判定され、すでに放送中の図は数ラインで自動的に始まります。画像は停止信号で、または図が雑音になると自動で終わります。受信専用です。
+            </p>
+
+            <p>
+                気象ファクス、気象衛星（<span translate="no">APT</span>、Meteor <span translate="no">LRPT</span>）、気球（<span translate="no">SSDV</span>）の受信機が終えた画像はすべて、確認なしで即座に、<span translate="no">SSTV</span> の画像と同じフォルダーに保存されます。スマートフォンではギャラリーの <code>Pictures/qFT8 SSTV</code>、パソコンでは「ピクチャ」フォルダー内の <code>qFT8 SSTV</code>、iPhone ではアプリの <code>qFT8 SSTV</code> フォルダーと「写真」です。名前から内容が分かります（<span translate="no">UTC</span>）: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code>（受信機、日付、時刻、周波数、局）。受信機を止めたために途中で終わった画像は <code>_partial</code> で終わります。画像の下の行に保存先が表示されます。<strong>共有</strong>（スマートフォン、iPhone）は別のアプリに渡し、<strong>フォルダーを開く</strong>（パソコン）はそのフォルダーで表示し、<strong>ダウンロード</strong>（Web リモート）はブラウザーが動いているデバイスにコピーを保存します。画像は受信したままの状態で保存され、<strong>ネガ</strong>表示のようには保存されません。
             </p>
 
             <h3 id="swl-dv-internet">インターネット経由のデジタル音声データ</h3>

@@ -776,7 +776,7 @@
                     le mostra): <code>--list-devices</code> elenca ogni porta seriale e dispositivo audio che qFT8 vede e termina;
                     <code>--port &lt;dispositivo&gt;</code> imposta la porta seriale predefinita (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;cartella&gt;</code> sceglie la cartella del profilo;
-                    <code>--bridge</code> avvia un bridge; <code>--opengl</code> disegna la finestra tramite OpenGL (vedi
+                    <code>--bridge</code> avvia un bridge; <code>--video-mode=&lt;mode&gt;</code> disegna la finestra in un altro modo per quell'esecuzione, anche quando qFT8 non riesce ad aprirsi abbastanza da cambiare <strong>Modalità video</strong> nelle Impostazioni (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> disegna la finestra tramite OpenGL (vedi
                     <a href="#pc-trouble">Se qualcosa non funziona</a>).</li>
             </ul>
 
@@ -844,8 +844,7 @@
                 <li><strong>"Già in esecuzione".</strong> Un'altra copia usa la cartella del profilo. Chiudila, oppure avvia questa con
                     una cartella <code>--qft8_profile</code> tutta sua.</li>
                 <li><strong>La finestra è nera o confusa</strong> (driver grafici vecchi, una macchina virtuale, desktop
-                    remoto): aggiorna il driver grafico. Se resta così, avvia qFT8 con <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), che disegna la finestra in un altro modo; se neanche questo aiuta, segnalalo con <strong>SEGNALA BUG</strong> (Impostazioni),
+                    remoto): aggiorna il driver grafico. Se resta così, scegli un'altra <strong>Modalità video</strong> in Impostazioni &gt; Applicazione, oppure avvia qFT8 con <code>--video-mode=gdi</code> (Windows) o <code>--video-mode=x11</code> (Linux), che disegna la finestra in un altro modo; se neanche questo aiuta, segnalalo con <strong>SEGNALA BUG</strong> (Impostazioni),
                     indicando quale sistema e quale scheda grafica hai.</li>
                 <li><strong>Una finestra è fuori dallo schermo</strong> (uno schermo è stato scollegato): qFT8 controlla la posizione salvata di ogni finestra
                     quando la apre, e quella il cui schermo non c'è più, o che sarebbe in gran parte fuori dallo schermo, si apre al
@@ -1883,6 +1882,8 @@
                 <li>qFT8 non attiva la trasmissione della radio fuori dalle bande radioamatoriali della tua regione (regione ITU 1, 2 o 3), e lo dice; il pulsante <span translate="no">TX</span> mostra <span translate="no">NO HAM BAND</span>.</li>
                 <li>Alcuni paesi consentono solo una parte di una banda, oppure richiedono un permesso speciale o una notifica preventiva. Su quelle bande (comprese 160 m, 80 m, 40 m e 2 m nella regione 3, 23 cm, 70 cm e 13 cm) qFT8 mostra un avviso una volta per banda, per esempio &ldquo;Alcuni paesi consentono solo una parte di 60m, o richiedono prima un permesso speciale o una notifica. Controlla la tua licenza.&rdquo;; non ti ferma mai per quell'avviso.</li>
                 <li>Quando qFT8 conosce il tuo paese (vedi <a href="#swl-legal">L'ascolto e la legge</a>), segue anche il piano di banda proprio di quel paese dove è più stretto di quello della tua regione. Per ora è integrato per Francia, Germania, Regno Unito, Svizzera, Italia, Spagna, Paesi Bassi, Belgio, Austria, Stati Uniti, Australia e Giappone. Dove il piano del paese esclude chiaramente una frequenza (per esempio i 60 m fuori da 5351.5&ndash;5366.5 kHz in Germania, i 40 m sopra 7200 kHz in Giappone, i 13 cm 2310&ndash;2390 MHz in Stati Uniti) <span translate="no">TX</span> resta armato, non viene inviato nulla e il pulsante mostra <span translate="no">NO HAM BAND</span>; dove il piano è meno certo vedi solo l'avviso sulla licenza.</li>
+                <li>Gli 11 m (la Citizens Band, CB, intorno a 27 MHz) non sono una banda radioamatoriale. qFT8 trasmette lì solo dove il tuo paese (in base al tuo nominativo o alla tua posizione) consente la CB nel modo che usi: voce (AM, FM, SSB) nei paesi di cui qFT8 conosce le regole CB (Stati Uniti, Canada, Francia, Germania, Regno Unito, Spagna, Austria, Repubblica Ceca, Polonia, Svezia, Estonia, Belgio, Paesi Bassi, Irlanda, Danimarca, Finlandia, Norvegia, Slovacchia, Croazia, Svizzera, Portogallo (AM e FM), Australia, Nuova Zelanda); modi dati come FT8 solo sui canali che un paese apre esplicitamente ai dati (Germania e Portogallo canali 6, 7, 24, 25; Repubblica Ceca canali 24, 25). Altrove, e fuori dai canali CB (per esempio 27.700 MHz), il pulsante mostra <span translate="no">NO HAM BAND</span> e un avviso ne spiega il motivo.</li>
+                <li>La prima volta che attivi <span translate="no">TX</span> sugli 11 m, o passi sugli 11 m con <span translate="no">TX</span> attivo, qFT8 ti chiede una sola volta di accettare che canali, modi, potenza e apparecchiature CB sono una tua responsabilità (qFT8 non cambia mai la potenza della tua radio). Finché non rispondi non viene inviato nulla; l'accettazione viene ricordata e <span translate="no">TX</span> si attiva, annullando <span translate="no">TX</span> si disattiva. Il telecomando web mostra la stessa domanda.</li>
                 <li>Resti sempre responsabile della tua licenza e del piano di banda del luogo in cui operi.</li>
             </ul>
 
@@ -1913,6 +1914,7 @@
 
             <h4 id="settings-application">Impostazioni dell'applicazione</h4>
             <ul>
+            <li>Sul computer (Windows e Linux): <strong>Modalità video</strong>, come viene disegnata la finestra, usata dal prossimo avvio. Su Windows <strong>Predefinita</strong> usa Direct3D e passa da sola a GDI se la finestra continua a bloccarsi; <strong>Direct3D</strong> e <strong>GDI</strong> ne mantengono uno solo. Su Linux <strong>Predefinita</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> o <strong>X11</strong>.</li>
             <li><strong>Modalità dispositivo lento / batteria scarica</strong>: disegno più leggero, decodificatore invariato (vedi <a href="#pc-slow">Computer lenti</a>; lo stesso sui telefoni).</li>
             <li>Sul computer: <strong>Conferma prima di chiudere</strong> (chiede conferma prima che la finestra principale chiuda qFT8) e la cartella in cui sono conservati le impostazioni e i log.</li>
             <li><strong>Interfaccia utente</strong>: <strong>Orientamento</strong>, <strong>Forza l'orientamento verticale in modalità logger</strong> (telefoni), <strong>Quadranti</strong> (tablet), le <strong>Funzioni</strong> e <strong>L'app copre</strong> (tutto in <a href="#layouts">Disposizioni dello schermo</a>).</li>
@@ -5270,6 +5272,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 La riga del fax meteo riceve le carte radiofax <span translate="no">HF</span> dei servizi meteorologici e navali con qualsiasi radio <span translate="no">HF</span> in <span translate="no">USB</span>, o un <span translate="no">SDR</span>. Il suo pulsante di frequenza scorre le trasmissioni dell'orario pubblico mondiale del radiofax (70 frequenze, con i loro orari di trasmissione), saltando quelle fuori onda a quest'ora (<span translate="no">UTC</span>); la radio viene sintonizzata 1,9 kHz sotto la frequenza elencata. La velocità (60, 90, 120 o 240 righe al minuto) si ricava dalle righe di fasatura della carta, e una carta già in onda parte da sola dopo alcune righe; un'immagine termina al segnale di stop, o da sola quando la carta diventa rumore. Solo ricezione.
+            </p>
+
+            <p>
+                Ogni immagine che i ricevitori di fax meteo, satelliti meteo (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) e palloni (<span translate="no">SSDV</span>) terminano viene salvata subito, senza chiedere, nella stessa cartella delle immagini <span translate="no">SSTV</span>: sul telefono <code>Pictures/qFT8 SSTV</code> della galleria, sul computer <code>qFT8 SSTV</code> nella tua cartella Immagini, su iPhone la cartella <code>qFT8 SSTV</code> dell'app e Foto. Il nome dice di che cosa si tratta, in <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (ricevitore, data, ora, frequenza, stazione); un'immagine interrotta perché hai fermato il ricevitore termina con <code>_partial</code>. La riga sotto l'immagine dice dove è finita; <strong>Condividi</strong> (telefono, iPhone) la passa a un'altra app, <strong>Apri cartella</strong> (computer) la mostra nella sua cartella e <strong>SCARICA</strong> (telecomando web) ne salva una copia sul dispositivo in cui gira il browser. L'immagine viene salvata come ricevuta, non come la mostra la vista <strong>NEGATIVO</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Dati vocali digitali via internet</h3>

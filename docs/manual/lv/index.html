@@ -791,7 +791,7 @@
                     logs): <code>--list-devices</code> uzskaita katru seriālo portu un skaņas ierīci, ko qFT8 redz, un beidz darbu;
                     <code>--port &lt;device&gt;</code> iestata noklusējuma seriālo portu (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> izvēlas profila mapi;
-                    <code>--bridge</code> startē tiltu; <code>--opengl</code> zīmē logu ar OpenGL (skatiet
+                    <code>--bridge</code> startē tiltu; <code>--video-mode=&lt;mode&gt;</code> šai palaišanas reizei zīmē logu citādi, pat ja qFT8 nevar atvērt tik tālu, lai iestatījumos mainītu <strong>Video režīms</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> zīmē logu ar OpenGL (skatiet
                     <a href="#pc-trouble">Ja kaut kas nedarbojas</a>).</li>
             </ul>
 
@@ -859,8 +859,7 @@
                 <li><strong>“Jau darbojas”.</strong> Cita kopija lieto profila mapi. Aizveriet to vai startējiet šo ar
                     savu <code>--qft8_profile</code> mapi.</li>
                 <li><strong>Logs ir melns vai sagrozīts</strong> (vecs grafikas draiveris, virtuālā iekārta, attālā
-                    darbvirsma): atjauniniet grafikas draiveri. Ja tas nepalīdz, startējiet qFT8 ar <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), kas zīmē logu citādi; ja arī tas nepalīdz, ziņojiet ar <strong>ZIŅOT PAR KĻŪDU</strong> (Iestatījumi),
+                    darbvirsma): atjauniniet grafikas draiveri. Ja tas nepalīdz, sadaļā Iestatījumi &gt; Lietotne izvēlieties citu <strong>Video režīms</strong> vērtību vai startējiet qFT8 ar <code>--video-mode=gdi</code> (Windows) vai <code>--video-mode=x11</code> (Linux), kas zīmē logu citādi; ja arī tas nepalīdz, ziņojiet ar <strong>ZIŅOT PAR KĻŪDU</strong> (Iestatījumi),
                     norādot, kāda ir jūsu sistēma un grafikas karte.</li>
                 <li><strong>Logs ir ārpus ekrāna</strong> (ekrāns tika atvienots): qFT8 pārbauda katra loga saglabāto vietu,
                     kad atver logu, un logs, kura ekrāna vairs nav vai kas būtu lielākoties ārpus ekrāna, tā vietā atveras
@@ -2287,6 +2286,8 @@
                 <li>qFT8 neieslēdz raidīšanu ārpus jūsu reģiona amatieru joslām (ITU 1., 2. vai 3. reģions) un par to paziņo; <span translate="no">TX</span> poga rāda <span translate="no">NO HAM BAND</span>.</li>
                 <li>Dažas valstis atļauj tikai daļu joslas vai vispirms prasa īpašu atļauju vai paziņojumu. Šajās joslās (tostarp 160 m, 80 m, 40 m un 2 m 3. reģionā, 23 cm, 70 cm un 13 cm) qFT8 vienu reizi uz joslu parāda paziņojumu, piemēram, &ldquo;Dažas valstis atļauj tikai daļu no 60m diapazona vai vispirms prasa īpašu atļauju vai paziņojumu. Pārbaudiet savu licenci.&rdquo;; šī paziņojuma dēļ jūs nekad netiekat apturēts.</li>
                 <li>Kad qFT8 zina jūsu valsti (skatiet <a href="#swl-legal">Klausīšanās un likums</a>), tā ievēro arī šīs valsts joslu plānu, ja tas ir šaurāks par jūsu reģiona plānu. Pagaidām tas ir iebūvēts šādām valstīm: Francija, Vācija, Apvienotā Karaliste, Šveice, Itālija, Spānija, Nīderlande, Beļģija, Austrija, Amerikas Savienotās Valstis, Austrālija un Japāna. Ja valsts plāns skaidri izslēdz frekvenci (piemēram, 60 m ārpus 5351.5&ndash;5366.5 kHz valstī Vācija, 40 m virs 7200 kHz valstī Japāna, 13 cm 2310&ndash;2390 MHz valstī Amerikas Savienotās Valstis), <span translate="no">TX</span> paliek ieslēgts, nekas netiek sūtīts un poga rāda <span translate="no">NO HAM BAND</span>; ja plāns ir mazāk drošs, redzat tikai licences paziņojumu.</li>
+                <li>11 m (pilsoņu josla, CB, ap 27 MHz) nav amatieru josla. qFT8 tur raida tikai tur, kur jūsu valsts (pēc jūsu izsaukuma zīmes vai atrašanās vietas) atļauj CB jūsu izmantotajā režīmā: balss (AM, FM, SSB) valstīs, kuru CB noteikumus qFT8 zina (Amerikas Savienotās Valstis, Kanāda, Francija, Vācija, Apvienotā Karaliste, Spānija, Austrija, Čehija, Polija, Zviedrija, Igaunija, Beļģija, Nīderlande, Īrija, Dānija, Somija, Norvēģija, Slovākija, Horvātija, Šveice, Portugāle (AM un FM), Austrālija, Jaunzēlande); datu režīmi, piemēram, FT8, tikai tajos kanālos, ko valsts skaidri atver datiem (Vācija un Portugāle – kanāli 6, 7, 24, 25; Čehija – kanāli 24, 25). Citur un ārpus CB kanāliem (piemēram, 27.700 MHz) poga rāda <span translate="no">NO HAM BAND</span>, un paziņojums pasaka, kāpēc.</li>
+                <li>Pirmoreiz ieslēdzot <span translate="no">TX</span> uz 11 m vai pārejot uz 11 m ar ieslēgtu <span translate="no">TX</span>, qFT8 vienreiz lūdz piekrist, ka CB kanāli, režīmi, jauda un aprīkojums ir jūsu atbildība (qFT8 nekad nemaina jūsu radio jaudu). Kamēr neatbildat, nekas netiek sūtīts; piekrišana tiek atcerēta un <span translate="no">TX</span> ieslēdzas, atcelšana <span translate="no">TX</span> izslēdz. Tīmekļa tālvadība rāda to pašu jautājumu.</li>
                 <li>Jūs vienmēr paliekat atbildīgs par savu licenci un joslu plānu vietā, kur strādājat.</li>
             </ul>
 
@@ -2337,6 +2338,7 @@
 
             <h4 id="settings-application">Lietotnes iestatījumi</h4>
             <ul>
+                <li>Datorā (Windows un Linux): <strong>Video režīms</strong>, kā logs tiek zīmēts, spēkā no nākamās startēšanas. Windows sistēmā <strong>Noklusējums</strong> izmanto Direct3D un pats pārslēdzas uz GDI, ja logs pastāvīgi iesalst; <strong>Direct3D</strong> un <strong>GDI</strong> patur vienu no tiem. Linux sistēmā <strong>Noklusējums</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> vai <strong>X11</strong>.</li>
                 <li><strong>Lēnas ierīces / zema akumulatora režīms</strong>: vieglāka zīmēšana, dekodētājs nemainīts (skatiet
                     <a href="#pc-slow">Lēni datori</a>; tas pats tālruņos).</li>
                 <li>Datorā: <strong>Apstiprināt pirms aizvēršanas</strong> (jautā, pirms galvenais logs aizver qFT8),
@@ -6666,6 +6668,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Laika faksimila rinda uztver meteoroloģisko un jūras dienestu <span translate="no">HF</span> radiofaksimila kartes caur jebkuru <span translate="no">HF</span> radio <span translate="no">USB</span> vai <span translate="no">SDR</span>. Tās frekvences poga iet cauri publiskās pasaules radiofaksimila saraksta raidījumiem (70 frekvences ar to raidīšanas stundām), izlaižot tos, kas šajā stundā nav ēterā (<span translate="no">UTC</span>); radio tiek noskaņots 1,9 kHz zem norādītās frekvences. Ātrums (60, 90, 120 vai 240 rindas minūtē) tiek atrasts no kartes fāzēšanas rindām, un karte, kas jau ir ēterā, sākas pati pēc dažām rindām; attēls beidzas ar apturēšanas signālu vai pats, kad karte pārvēršas par troksni. Tikai uztveršana.
+            </p>
+
+            <p>
+                Katrs attēls, ko pabeidz laika faksimila, laika pavadoņu (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) un balonu (<span translate="no">SSDV</span>) uztvērēji, tiek saglabāts uzreiz, nejautājot, tajā pašā mapē kā <span translate="no">SSTV</span> attēli: tālrunī galerijas <code>Pictures/qFT8 SSTV</code>, datorā <code>qFT8 SSTV</code> jūsu mapē Attēli, iPhone lietotnes mape <code>qFT8 SSTV</code> un Photos. Tā nosaukums pasaka, kas tas ir, pēc <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (uztvērējs, datums, laiks, frekvence, stacija); attēls, kas pārtraukts, jo apturējāt uztvērēju, beidzas ar <code>_partial</code>. Rinda zem attēla norāda, kur tas nonācis; <strong>Kopīgot</strong> (tālrunis, iPhone) nodod to citai lietotnei, <strong>Atvērt mapi</strong> (dators) parāda to tā mapē, bet <strong>LEJUPIELĀDĒT</strong> (tīmekļa tālvadība) saglabā kopiju ierīcē, kurā darbojas pārlūks. Attēls tiek saglabāts tāds, kāds saņemts, nevis tāds, kādu rāda <strong>NEGATĪVS</strong> skats.
             </p>
 
             <h3 id="swl-dv-internet">Digitālie balss dati internetā</h3>

@@ -774,7 +774,7 @@
                     <code>--list-devices</code> listează fiecare port serial și dispozitiv de sunet pe care le vede qFT8 și iese;
                     <code>--port &lt;device&gt;</code> setează portul serial implicit (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> alege dosarul de profil;
-                    <code>--bridge</code> pornește o punte; <code>--opengl</code> desenează fereastra prin OpenGL (vedeți
+                    <code>--bridge</code> pornește o punte; <code>--video-mode=&lt;mode&gt;</code> desenează fereastra altfel pentru acea rulare, chiar și când qFT8 nu poate fi deschis suficient pentru a schimba <strong>Mod video</strong> în Setări (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> desenează fereastra prin OpenGL (vedeți
                     <a href="#pc-trouble">Dacă ceva nu funcționează</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Deja pornit".</strong> O altă copie folosește dosarul de profil. Închideți-o sau porniți-o pe aceasta cu
                     propriul dosar <code>--qft8_profile</code>.</li>
                 <li><strong>Fereastra este neagră sau deformată</strong> (drivere grafice vechi, o mașină virtuală, desktop
-                    la distanță): actualizați driverul grafic. Dacă rămâne, porniți qFT8 cu <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), care desenează fereastra altfel; dacă nici asta nu ajută, raportați cu <strong>RAPORTEAZĂ EROARE</strong> (Setări),
+                    la distanță): actualizați driverul grafic. Dacă rămâne, alegeți alt <strong>Mod video</strong> în Setări &gt; Aplicație sau porniți qFT8 cu <code>--video-mode=gdi</code> (Windows) ori <code>--video-mode=x11</code> (Linux), care desenează fereastra altfel; dacă nici asta nu ajută, raportați cu <strong>RAPORTEAZĂ EROARE</strong> (Setări),
                     spunând ce sistem și ce placă grafică aveți.</li>
                 <li><strong>O fereastră este în afara ecranului</strong> (un ecran a fost deconectat): qFT8 verifică locul salvat al fiecărei ferestre
                     când o deschide, iar una al cărei ecran a dispărut sau care ar fi în mare parte în afara ecranului se deschide în
@@ -1894,6 +1893,8 @@
                 <li>qFT8 nu pornește emisia radioului în afara benzilor de radioamator ale regiunii dumneavoastră (Regiunea ITU 1, 2 sau 3) și vă anunță; butonul <span translate="no">TX</span> afișează <span translate="no">NO HAM BAND</span>.</li>
                 <li>Unele țări permit doar o parte dintr-o bandă sau cer mai întâi o permisiune specială ori o notificare. Pe aceste benzi (inclusiv 160 m, 80 m, 40 m și 2 m în Regiunea 3, 23 cm, 70 cm și 13 cm) qFT8 afișează o notă o dată pe bandă, de exemplu &ldquo;Unele țări permit doar o parte din 60m sau cer mai întâi o permisiune specială ori o notificare. Verificați-vă licența.&rdquo;; nota nu vă oprește niciodată.</li>
                 <li>Odată ce qFT8 știe țara dumneavoastră (vezi <a href="#swl-legal">Ascultarea și legea</a>), urmează și planul de benzi al țării respective, acolo unde este mai îngust decât cel al regiunii. Până acum acest lucru este integrat pentru Franța, Germania, Regatul Unit, Elveția, Italia, Spania, Țările de Jos, Belgia, Austria, Statele Unite ale Americii, Australia și Japonia. Unde planul țării exclude clar o frecvență (de exemplu 60 m în afara 5351.5&ndash;5366.5 kHz în Germania, 40 m peste 7200 kHz în Japonia, 13 cm 2310&ndash;2390 MHz în Statele Unite ale Americii) <span translate="no">TX</span> rămâne armat, nu se trimite nimic, iar butonul afișează <span translate="no">NO HAM BAND</span>; unde planul este mai puțin sigur, vedeți doar nota despre licență.</li>
+                <li>11 m (Banda Cetățenească, CB, în jur de 27 MHz) nu este o bandă de radioamatori. qFT8 transmite acolo doar unde țara dumneavoastră (după indicativ sau după locație) permite CB în modul pe care îl folosiți: voce (AM, FM, SSB) în țările ale căror reguli CB le cunoaște qFT8 (Statele Unite, Canada, Franța, Germania, Regatul Unit, Spania, Austria, Cehia, Polonia, Suedia, Estonia, Belgia, Țările de Jos, Irlanda, Danemarca, Finlanda, Norvegia, Slovacia, Croația, Elveția, Portugalia (AM și FM), Australia, Noua Zeelandă); modurile de date precum FT8 doar pe canalele pe care o țară le deschide explicit pentru date (Germania și Portugalia canalele 6, 7, 24, 25; Cehia canalele 24, 25). În orice alt loc, și în afara canalelor CB (de exemplu 27.700 MHz), butonul arată <span translate="no">NO HAM BAND</span>, iar o notificare spune de ce.</li>
+                <li>Prima dată când porniți <span translate="no">TX</span> pe 11 m sau treceți pe 11 m cu <span translate="no">TX</span> pornit, qFT8 vă cere o singură dată să acceptați că canalele CB, modurile, puterea și echipamentul sunt responsabilitatea dumneavoastră (qFT8 nu schimbă niciodată puterea radioului dumneavoastră). Până răspundeți, nu se trimite nimic; acceptarea este reținută și <span translate="no">TX</span> se pornește, anularea oprește <span translate="no">TX</span>. Controlul web la distanță arată aceeași întrebare.</li>
                 <li>Rămâneți mereu responsabil pentru licența dumneavoastră și pentru planul de benzi din locul unde operați.</li>
             </ul>
 
@@ -1937,6 +1938,7 @@
 
             <h4 id="settings-application">Setările aplicației</h4>
             <ul>
+                <li>Pe computer (Windows și Linux): <strong>Mod video</strong>, cum este desenată fereastra, folosit de la următoarea pornire. Pe Windows <strong>Implicit</strong> folosește Direct3D și trece singur la GDI dacă fereastra continuă să înghețe; <strong>Direct3D</strong> și <strong>GDI</strong> păstrează unul dintre ele. Pe Linux <strong>Implicit</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> sau <strong>X11</strong>.</li>
                 <li><strong>Mod dispozitiv lent / baterie descărcată</strong>: desenare mai ușoară, decodorul neschimbat (vedeți
                     <a href="#pc-slow">Calculatoare lente</a>; la fel pe telefoane).</li>
                 <li>Pe calculator: <strong>Confirmare înainte de închidere</strong> (întreabă înainte ca fereastra principală să închidă qFT8)
@@ -5221,6 +5223,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Rândul de fax meteo recepționează hărțile de radiofax <span translate="no">HF</span> ale serviciilor meteorologice și navale prin orice radio <span translate="no">HF</span> în <span translate="no">USB</span>, sau un <span translate="no">SDR</span>. Butonul său de frecvență parcurge emisiunile orarului public mondial de radiofax (70 de frecvențe, cu orele lor de emisie), sărind peste cele care nu sunt în emisie la această oră (<span translate="no">UTC</span>); radioul este acordat cu 1,9 kHz sub frecvența listată. Viteza (60, 90, 120 sau 240 de linii pe minut) este aflată din liniile de fazare ale hărții, iar o hartă care este deja în emisie pornește singură după câteva linii; o imagine se termină la semnalul de oprire, sau de la sine când harta devine zgomot. Doar recepție.
+            </p>
+
+            <p>
+                Fiecare imagine pe care receptoarele de fax meteo, de satelit meteo (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) și de baloane (<span translate="no">SSDV</span>) o încheie este salvată imediat, fără întrebare, în același dosar cu imaginile <span translate="no">SSTV</span>: pe telefon <code>Pictures/qFT8 SSTV</code> din galerie, pe computer <code>qFT8 SSTV</code> în dosarul Imagini, pe iPhone dosarul <code>qFT8 SSTV</code> al aplicației și Fotografii. Numele spune ce este, în <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (receptor, dată, oră, frecvență, stație); o imagine întreruptă pentru că ați oprit receptorul se termină cu <code>_partial</code>. Linia de sub imagine spune unde a ajuns; <strong>Partajează</strong> (telefon, iPhone) o dă altei aplicații, <strong>Deschide dosarul</strong> (computer) o arată în dosarul ei, iar <strong>DESCARCĂ</strong> (controlul web la distanță) salvează o copie pe dispozitivul pe care rulează browserul. Imaginea este salvată așa cum a fost primită, nu așa cum o arată vizualizarea <strong>NEGATIV</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Date vocale digitale prin internet</h3>

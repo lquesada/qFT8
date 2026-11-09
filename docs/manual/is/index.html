@@ -790,7 +790,7 @@
                     með þeim): <code>--list-devices</code> sýnir hvert raðtengi og hljóðtæki sem qFT8 sér og hættir;
                     <code>--port &lt;device&gt;</code> stillir sjálfgefið raðtengi (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> velur notandamöppuna;
-                    <code>--bridge</code> ræsir brú; <code>--opengl</code> teiknar gluggann í gegnum OpenGL (sjá
+                    <code>--bridge</code> ræsir brú; <code>--video-mode=&lt;mode&gt;</code> teiknar gluggann á annan hátt í þeirri keyrslu, jafnvel þegar ekki er hægt að opna qFT8 nógu langt til að breyta <strong>Myndhamur</strong> í Stillingum (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> teiknar gluggann í gegnum OpenGL (sjá
                     <a href="#pc-trouble">Ef eitthvað virkar ekki</a>).</li>
             </ul>
 
@@ -858,8 +858,7 @@
                 <li><strong>„Þegar í gangi“.</strong> Annað afrit notar notandamöppuna. Lokaðu því, eða ræstu þetta með
                     sinni eigin <code>--qft8_profile</code> möppu.</li>
                 <li><strong>Glugginn er svartur eða brenglaður</strong> (gamlir skjákortsreklar, sýndarvél, fjarskjáborð):
-                    uppfærðu skjákortsrekilinn. Ef það breytist ekki skaltu ræsa qFT8 með <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), sem teiknar gluggann á annan hátt; ef það hjálpar ekki heldur skaltu tilkynna það með <strong>TILKYNNA VILLU</strong> (Stillingar)
+                    uppfærðu skjákortsrekilinn. Ef það breytist ekki skaltu velja annan <strong>Myndhamur</strong> í Stillingum &gt; Forrit eða ræsa qFT8 með <code>--video-mode=gdi</code> (Windows) eða <code>--video-mode=x11</code> (Linux), sem teiknar gluggann á annan hátt; ef það hjálpar ekki heldur skaltu tilkynna það með <strong>TILKYNNA VILLU</strong> (Stillingar)
                     og segja hvaða kerfi og skjákort þú ert með.</li>
                 <li><strong>Gluggi er utan skjásins</strong> (skjár var tekinn úr sambandi): qFT8 athugar vistaða staðsetningu hvers glugga
                     þegar það opnar gluggann, og gluggi sem skjárinn hans er horfinn, eða sem væri að mestu utan skjásins, opnast í
@@ -2286,6 +2285,8 @@
                 <li>qFT8 lyklar ekki talstöðina utan radíóamatörabanda svæðisins þíns (ITU-svæði 1, 2 eða 3) og lætur vita af því; á <span translate="no">TX</span>-hnappnum stendur <span translate="no">NO HAM BAND</span>.</li>
                 <li>Sum lönd leyfa aðeins hluta af bandi eða krefjast fyrst sérstaks leyfis eða tilkynningar. Á þessum böndum (þar á meðal 160 m, 80 m, 40 m og 2 m á svæði 3, 23 cm, 70 cm og 13 cm) sýnir qFT8 tilkynningu einu sinni fyrir hvert band, til dæmis &ldquo;Sum lönd leyfa aðeins hluta af 60m eða krefjast fyrst sérstaks leyfis eða tilkynningar. Athugaðu leyfið þitt.&rdquo;; það stöðvar þig aldrei vegna þessarar tilkynningar.</li>
                 <li>Þegar qFT8 veit í hvaða landi þú ert (sjá <a href="#swl-legal">Hlustun og lögin</a>) fylgir það líka bandaskipulagi þess lands þar sem það er þrengra en skipulag svæðisins þíns. Enn sem komið er er þetta innbyggt fyrir þessi lönd: Frakkland, Þýskaland, Bretland, Sviss, Ítalía, Spánn, Holland, Belgía, Austurríki, Bandaríkin, Ástralía og Japan. Þar sem skipulag landsins útilokar tíðni greinilega (til dæmis Þýskaland: 60 m utan 5351.5&ndash;5366.5 kHz; Japan: 40 m yfir 7200 kHz; Bandaríkin: 13 cm 2310&ndash;2390 MHz) helst <span translate="no">TX</span> virkt, ekkert er sent og á hnappnum stendur <span translate="no">NO HAM BAND</span>; þar sem skipulagið er óvissara sérðu aðeins tilkynninguna um leyfi.</li>
+                <li>11 m (borgarabylgjan, CB, um 27 MHz) er ekki radíóamatörband. qFT8 sendir þar aðeins þar sem landið þitt (samkvæmt kallmerkinu eða staðsetningunni) leyfir CB í þeim ham sem þú notar: tal (AM, FM, SSB) í þeim löndum sem qFT8 þekkir CB-reglur fyrir (Bandaríkin, Kanada, Frakkland, Þýskaland, Bretland, Spánn, Austurríki, Tékkland, Pólland, Svíþjóð, Eistland, Belgía, Holland, Írland, Danmörk, Finnland, Noregur, Slóvakía, Króatía, Sviss, Portúgal (AM og FM), Ástralía, Nýja-Sjáland); gagnahamir eins og FT8 aðeins á þeim rásum sem land opnar sérstaklega fyrir gögn (Þýskaland og Portúgal rásir 6, 7, 24, 25; Tékkland rásir 24, 25). Annars staðar, og utan CB-rásanna (til dæmis 27.700 MHz), stendur <span translate="no">NO HAM BAND</span> á hnappnum og tilkynning segir af hverju.</li>
+                <li>Í fyrsta skipti sem þú kveikir á <span translate="no">TX</span> á 11 m, eða ferð á 11 m með <span translate="no">TX</span> á, biður qFT8 þig einu sinni um að samþykkja að CB-rásirnar, hamirnir, aflið og búnaðurinn séu á þinni ábyrgð (qFT8 breytir aldrei afli talstöðvarinnar). Þar til þú svarar er ekkert sent; samþykki er munað og <span translate="no">TX</span> kveikir, ef hætt er við slekkur <span translate="no">TX</span>. Vefstýringin sýnir sömu spurningu.</li>
                 <li>Þú berð alltaf ábyrgð á leyfinu þínu og bandaskipulaginu þar sem þú starfar.</li>
             </ul>
 
@@ -2336,6 +2337,7 @@
 
             <h4 id="settings-application">Stillingar forrits</h4>
             <ul>
+                <li>Í tölvunni (Windows og Linux): <strong>Myndhamur</strong>, hvernig glugginn er teiknaður, tekið í notkun við næstu ræsingu. Í Windows notar <strong>Sjálfgefið</strong> Direct3D og skiptir sjálfkrafa yfir í GDI ef glugginn heldur áfram að frjósa; <strong>Direct3D</strong> og <strong>GDI</strong> halda öðru þeirra. Í Linux <strong>Sjálfgefið</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> eða <strong>X11</strong>.</li>
                 <li><strong>Hægt tæki / lítil rafhlaða</strong>: léttari teikning, afkóðarinn óbreyttur (sjá
                     <a href="#pc-slow">Hægar tölvur</a>; eins í símum).</li>
                 <li>Í tölvunni: <strong>Staðfesta áður en lokað er</strong> (spyr áður en aðalglugginn lokar qFT8),
@@ -6647,6 +6649,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Veðurfaxröðin tekur á móti <span translate="no">HF</span>-útvarpsfaxkortum frá veður- og sjóherþjónustum í gegnum hvaða <span translate="no">HF</span>-talstöð sem er í <span translate="no">USB</span>, eða <span translate="no">SDR</span>. Tíðnihnappur hennar stígur í gegnum útsendingar opinberu heimsvíðu útvarpsfaxáætlunarinnar (70 tíðnir, með útsendingartímum þeirra) og sleppir þeim sem eru ekki í loftinu á þessari stundu (<span translate="no">UTC</span>); talstöðin er stillt 1,9 kHz undir uppgefinni tíðni. Hraðinn (60, 90, 120 eða 240 línur á mínútu) er fundinn út frá fösunarlínum kortsins, og kort sem er þegar í loftinu byrjar af sjálfu sér eftir nokkrar línur; mynd endar við stöðvunarmerkið, eða af sjálfu sér þegar kortið verður að suði. Aðeins móttaka.
+            </p>
+
+            <p>
+                Hver mynd sem veðurfax-, veðurtungla- (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) og blöðrumóttakararnir (<span translate="no">SSDV</span>) ljúka er vistuð strax, án þess að spyrja, í sömu möppu og <span translate="no">SSTV</span>-myndirnar: í símanum <code>Pictures/qFT8 SSTV</code> í myndasafninu, í tölvunni <code>qFT8 SSTV</code> í Myndamöppunni þinni, í iPhone möppu appsins <code>qFT8 SSTV</code> og í Myndum. Nafnið segir hvað hún er, í <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (móttakari, dagsetning, tími, tíðni, stöð); mynd sem var stytt vegna þess að þú stöðvaðir móttakarann endar á <code>_partial</code>. Línan undir myndinni segir hvert hún fór; <strong>Deila</strong> (sími, iPhone) afhendir hana öðru forriti, <strong>Opna möppu</strong> (tölva) sýnir hana í möppunni sinni og <strong>SÆKJA</strong> (vefstýring) vistar afrit á tækinu sem vafrinn keyrir á. Myndin er vistuð eins og hún barst, ekki eins og <strong>NEGATÍFA</strong>-sýnin sýnir hana.
             </p>
 
             <h3 id="swl-dv-internet">Stafræn talgögn yfir internetið</h3>

@@ -774,7 +774,7 @@
                     <code>--list-devices</code> vypíše každý sériový port a zvukové zariadenie, ktoré qFT8 vidí, a skončí;
                     <code>--port &lt;device&gt;</code> nastaví predvolený sériový port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> zvolí priečinok profilu;
-                    <code>--bridge</code> spustí most; <code>--opengl</code> vykresľuje okno cez OpenGL (pozrite
+                    <code>--bridge</code> spustí most; <code>--video-mode=&lt;mode&gt;</code> vykreslí okno inak pre dané spustenie, aj keď sa qFT8 nedá otvoriť natoľko, aby sa dal zmeniť <strong>Režim videa</strong> v Nastaveniach (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vykresľuje okno cez OpenGL (pozrite
                     <a href="#pc-trouble">Keď niečo nefunguje</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Už je spustené".</strong> Priečinok profilu používa iná kópia. Zatvorte ju alebo spustite túto s
                     vlastným priečinkom <code>--qft8_profile</code>.</li>
                 <li><strong>Okno je čierne alebo porušené</strong> (staré ovládače grafiky, virtuálny počítač, vzdialená
-                    plocha): aktualizujte ovládač grafiky. Ak to nepomôže, spustite qFT8 s <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), ktoré okno vykresľuje iným spôsobom; ak ani to nepomôže, nahláste to cez <strong>NAHLÁSIŤ CHYBU</strong> (Nastavenia)
+                    plocha): aktualizujte ovládač grafiky. Ak to nepomôže, vyberte iný <strong>Režim videa</strong> v Nastavenia &gt; APLIKÁCIA alebo spustite qFT8 s <code>--video-mode=gdi</code> (Windows) alebo <code>--video-mode=x11</code> (Linux), ktoré okno vykresľuje iným spôsobom; ak ani to nepomôže, nahláste to cez <strong>NAHLÁSIŤ CHYBU</strong> (Nastavenia)
                     a uveďte, aký máte systém a grafickú kartu.</li>
                 <li><strong>Okno je mimo obrazovky</strong> (obrazovka bola odpojená): qFT8 pri otváraní každého okna kontroluje jeho uloženú
                     polohu a okno, ktorého obrazovka zmizla alebo ktoré by bolo prevažne mimo obrazovky, sa otvorí
@@ -1879,6 +1878,8 @@
                 <li>qFT8 nevysiela rádiom mimo amatérskych pásiem vášho regiónu (región ITU 1, 2 alebo 3) a oznámi to; tlačidlo <span translate="no">TX</span> ukazuje <span translate="no">NO HAM BAND</span>.</li>
                 <li>Niektoré krajiny povoľujú len časť pásma alebo vyžadujú osobitné povolenie či predchádzajúce oznámenie. Na týchto pásmach (vrátane 160 m, 80 m, 40 m a 2 m v regióne 3, 23 cm, 70 cm a 13 cm) qFT8 raz za pásmo zobrazí upozornenie, napríklad &ldquo;Niektoré krajiny povoľujú len časť pásma 60m alebo vopred vyžadujú osobitné povolenie či ohlásenie. Skontrolujte si licenciu.&rdquo;; kvôli tomuto upozorneniu vás nikdy nezastaví.</li>
                 <li>Keď qFT8 pozná vašu krajinu (pozri <a href="#swl-legal">Počúvanie a zákon</a>), riadi sa aj pásmovým plánom tejto krajiny, ak je užší ako plán vášho regiónu. Zatiaľ je to zabudované pre Francúzsko, Nemecko, Spojené kráľovstvo, Švajčiarsko, Taliansko, Španielsko, Holandsko, Belgicko, Rakúsko, Spojené štáty, Austrália a Japonsko. Ak plán krajiny jasne vylučuje frekvenciu (napríklad 60 m mimo 5351.5&ndash;5366.5 kHz v Nemecko, 40 m nad 7200 kHz v Japonsko, 13 cm 2310&ndash;2390 MHz v Spojené štáty), <span translate="no">TX</span> zostane aktívne, nič sa neodošle a tlačidlo ukazuje <span translate="no">NO HAM BAND</span>; ak je plán menej istý, uvidíte len upozornenie na licenciu.</li>
+                <li>11 m (občianske pásmo, CB, okolo 27 MHz) nie je rádioamatérske pásmo. qFT8 tam vysiela, iba ak vaša krajina (podľa volacej značky alebo polohy) povoľuje CB v používanom režime: hlas (AM, FM, SSB) v krajinách, ktorých pravidlá CB qFT8 pozná (Spojené štáty, Kanada, Francúzsko, Nemecko, Spojené kráľovstvo, Španielsko, Rakúsko, Česko, Poľsko, Švédsko, Estónsko, Belgicko, Holandsko, Írsko, Dánsko, Fínsko, Nórsko, Slovensko, Chorvátsko, Švajčiarsko, Portugalsko (AM a FM), Austrália, Nový Zéland); dátové režimy ako FT8 iba na kanáloch, ktoré krajina výslovne otvára pre dáta (Nemecko a Portugalsko kanály 6, 7, 24, 25; Česko kanály 24, 25). Inde a mimo kanálov CB (napríklad 27.700 MHz) tlačidlo ukáže <span translate="no">NO HAM BAND</span> a oznam vysvetlí prečo.</li>
+                <li>Keď prvýkrát zapnete <span translate="no">TX</span> na 11 m alebo prejdete na 11 m so zapnutým <span translate="no">TX</span>, qFT8 sa vás raz opýta, či súhlasíte, že kanály CB, režimy, výkon a zariadenie sú vašou zodpovednosťou (qFT8 nikdy nemení výkon vášho rádia). Kým neodpoviete, nič sa nevysiela; súhlas sa zapamätá a <span translate="no">TX</span> sa zapne, zrušenie vypne <span translate="no">TX</span>. Webové diaľkové ovládanie ukáže tú istú otázku.</li>
                 <li>Za svoju licenciu a pásmový plán tam, kde vysielate, ste vždy zodpovední sami.</li>
             </ul>
 
@@ -1922,6 +1923,7 @@
 
             <h4 id="settings-application">Nastavenia aplikácie</h4>
             <ul>
+                <li>Na počítači (Windows a Linux): <strong>Režim videa</strong>, ako sa okno vykresľuje, platí od ďalšieho spustenia. V systéme Windows <strong>Predvolený</strong> používa Direct3D a sám prepne na GDI, ak okno stále zamŕza; <strong>Direct3D</strong> a <strong>GDI</strong> ponechajú jedno z nich. V systéme Linux <strong>Predvolený</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> alebo <strong>X11</strong>.</li>
                 <li><strong>Režim pomalého zariadenia / slabej batérie</strong>: ľahšie kreslenie, dekodér nezmenený (pozri
                     <a href="#pc-slow">Pomalé počítače</a>; to isté na telefónoch).</li>
                 <li>Na počítači: <strong>Potvrdiť pred zatvorením</strong> (opýta sa, kým hlavné okno zatvorí qFT8)
@@ -5199,6 +5201,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Riadok faxu počasia prijíma rádiofaxové mapy <span translate="no">HF</span> meteorologických a námorných služieb cez ľubovoľné rádio <span translate="no">HF</span> v <span translate="no">USB</span> alebo <span translate="no">SDR</span>. Jeho tlačidlo frekvencie prechádza vysielaniami verejného svetového rozpisu rádiofaxu (70 frekvencií s hodinami vysielania) a preskakuje tie, ktoré v túto hodinu nevysielajú (<span translate="no">UTC</span>); rádio sa ladí 1,9 kHz pod uvedenú frekvenciu. Rýchlosť (60, 90, 120 alebo 240 riadkov za minútu) sa zistí z fázovacích riadkov mapy a mapa, ktorá už vysiela, začne sama po niekoľkých riadkoch; obrázok končí stopsignálom alebo sám, keď sa mapa zmení na šum. Iba príjem.
+            </p>
+
+            <p>
+                Každý obraz, ktorý prijímače meteorologického faxu, meteorologických družíc (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) a balónov (<span translate="no">SSDV</span>) dokončia, sa ihneď, bez pýtania, uloží do rovnakého priečinka ako obrazy <span translate="no">SSTV</span>: v telefóne <code>Pictures/qFT8 SSTV</code> v galérii, v počítači <code>qFT8 SSTV</code> v priečinku Obrázky, v iPhone priečinok <code>qFT8 SSTV</code> aplikácie a Fotky. Názov hovorí, čo to je, v <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (prijímač, dátum, čas, frekvencia, stanica); obraz prerušený tým, že ste zastavili prijímač, končí na <code>_partial</code>. Riadok pod obrazom hovorí, kam sa dostal; <strong>Zdieľať</strong> (telefón, iPhone) ho odovzdá inej aplikácii, <strong>Otvoriť priečinok</strong> (počítač) ho ukáže v jeho priečinku a <strong>STIAHNUŤ</strong> (webové diaľkové ovládanie) uloží kópiu do zariadenia, na ktorom beží prehliadač. Obraz sa uloží tak, ako bol prijatý, nie tak, ako ho ukazuje zobrazenie <strong>NEGATÍV</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Digitálne hlasové dáta cez internet</h3>

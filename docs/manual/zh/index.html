@@ -615,7 +615,7 @@
                 <li><strong>每个配置文件夹一个副本。</strong>如果您在另一个副本正在使用同一文件夹时启动 qFT8，它会显示<strong>已在运行</strong>并提供<strong>重试</strong>或<strong>退出</strong>：同一文件夹上的两个副本可能损坏您的设置和日志。要同时运行多个副本，例如每台电台一个，启动时请给每个副本指定各自的文件夹：<code>qFT8 --qft8_profile D:\qft8-radio2</code>（Windows：<code>qFT8.exe</code>）。如果无法写入该文件夹，qFT8 会报错并停止。</li>
                 <li><strong>网页遥控。</strong>电脑程序拥有与 Android 相同的<a href="#remote-control">远程控制网络服务器</a>（默认关闭，端口 13497），显示同样的页面，包括音量滑块。可用它从手机或网络上的另一台电脑操作。</li>
                 <li><strong>桥接。</strong>电脑是常见的<a href="#bridge">桥接</a>：电台插在它上面，手机、iPhone 或另一台电脑上的 qFT8 对其进行操作。它也可以不带窗口运行（<code>qFT8 --bridge</code>），用于没有其他用途的电脑。</li>
-                <li><strong>命令行。</strong><code>qFT8 --help</code> 列出各选项（在 Windows 中会弹出一个小窗口显示）：<code>--list-devices</code> 列出 qFT8 看到的所有串行端口和声音设备并退出；<code>--port &lt;device&gt;</code> 设置默认串行端口（<code>COM3</code>、<code>/dev/ttyACM0</code>）；<code>--qft8_profile &lt;folder&gt;</code> 选择配置文件夹；<code>--bridge</code> 启动桥接；<code>--opengl</code> 通过 OpenGL 绘制窗口（见<a href="#pc-trouble">出现问题时</a>）。</li>
+                <li><strong>命令行。</strong><code>qFT8 --help</code> 列出各选项（在 Windows 中会弹出一个小窗口显示）：<code>--list-devices</code> 列出 qFT8 看到的所有串行端口和声音设备并退出；<code>--port &lt;device&gt;</code> 设置默认串行端口（<code>COM3</code>、<code>/dev/ttyACM0</code>）；<code>--qft8_profile &lt;folder&gt;</code> 选择配置文件夹；<code>--bridge</code> 启动桥接；<code>--video-mode=&lt;mode&gt;</code> 在该次运行中以另一种方式绘制窗口，即使 qFT8 无法打开到足以在设置中更改<strong>视频模式</strong>的程度（Windows：<code>default</code>、<code>d3d</code>、<code>gdi</code>；Linux：<code>default</code>、<code>xrender</code>、<code>opengl</code>、<code>x11</code>）；<code>--opengl</code> 通过 OpenGL 绘制窗口（见<a href="#pc-trouble">出现问题时</a>）。</li>
             </ul>
 
             <h3 id="pc-slow">运行缓慢的电脑</h3>
@@ -656,7 +656,7 @@
                 <li><strong>电台声音太小、太大，或显示两个点而不是横条</strong>（QMX）：移动设备音量滑块（<a href="#pc-volumes">音量</a>）。检查电脑自身对该设备的音量没有静音。</li>
                 <li><strong>电脑的声音被发射到空中。</strong>默认输出是电台的声卡：请回应<em>输出到电台</em>标记，或在系统中选择另一个默认输出。</li>
                 <li><strong>“已在运行”。</strong>另一个副本正在使用该配置文件夹。关闭它，或用它自己的 <code>--qft8_profile</code> 文件夹启动本副本。</li>
-                <li><strong>窗口是黑的或显示混乱</strong>（旧的显卡驱动、虚拟机、远程桌面）：更新显卡驱动程序。如果仍然如此，请用 <code>--opengl</code>（<code>qFT8 --opengl</code>）启动 qFT8，它会以另一种方式绘制窗口；如果这样也没有帮助，请用<strong>报告错误</strong>（设置）报告，并说明您的系统和显卡。</li>
+                <li><strong>窗口是黑的或显示混乱</strong>（旧的显卡驱动、虚拟机、远程桌面）：更新显卡驱动程序。如果仍然如此，请在设置 &gt; 应用 中选择另一种<strong>视频模式</strong>，或用 <code>--video-mode=gdi</code>（Windows）或 <code>--video-mode=x11</code>（Linux）启动 qFT8，它会以另一种方式绘制窗口；如果这样也没有帮助，请用<strong>报告错误</strong>（设置）报告，并说明您的系统和显卡。</li>
                 <li><strong>窗口跑到屏幕之外</strong>（拔掉了一块屏幕）：qFT8 在打开每个窗口时会检查其保存的位置，如果它所在的屏幕已不存在，或窗口大部分会落在屏幕之外，就会改在主屏幕中央打开。如果某个窗口仍然够不着，请用其底部栏按钮关闭该面板再重新打开，或重新启动 qFT8。</li>
                 <li><strong>单核或双核电脑上瀑布图冻结、音频中断或负载很高：</strong>见<a href="#pc-slow">运行缓慢的电脑</a>，关闭其他程序，如果仍然持续，请用<strong>报告错误</strong>发送报告。</li>
             </ul>
@@ -1695,6 +1695,8 @@
                 <li>qFT8 不会在你所在地区的业余频段之外让电台发射（ITU 1 区、2 区或 3 区），并会提示这一点；<span translate="no">TX</span> 按钮显示 <span translate="no">NO HAM BAND</span>。</li>
                 <li>有些国家只允许使用频段的一部分，或需要特别许可或事先通知。在这些频段上（包括 3 区的 160 m、80 m、40 m 和 2 m，以及 23 cm、70 cm 和 13 cm），qFT8 每个频段显示一次提示，例如&ldquo;部分国家只允许使用 60m 的一部分，或须事先取得特别许可或通知。请查看您的执照。&rdquo;；它不会因这条提示而阻止你。</li>
                 <li>一旦 qFT8 知道你的国家（见<a href="#swl-legal">收听与法律</a>），在该国自己的频段规划比你所在地区更窄时，它也会遵循该国的规划。目前内置了 法国、德国、英国、瑞士、意大利、西班牙、荷兰、比利时、奥地利、美国、澳大利亚 和 日本。当该国规划明确排除某个频率时（例如 德国 的 60 m 在 5351.5&ndash;5366.5 kHz 之外、日本 的 40 m 在 7200 kHz 以上、美国 的 13 cm 2310&ndash;2390 MHz），<span translate="no">TX</span> 保持待发状态，不发送任何内容，按钮显示 <span translate="no">NO HAM BAND</span>；规划不太确定时，你只会看到执照提示。</li>
+                <li>11 m（公民频段，CB，约 27 MHz）不是业余频段。只有在你所在的国家（依据你的呼号或位置）允许你所用模式的 CB 时，qFT8 才会在该频段发射：在 qFT8 了解其 CB 规则的国家可用语音（AM、FM、SSB）（美国、加拿大、法国、德国、英国、西班牙、奥地利、捷克、波兰、瑞典、爱沙尼亚、比利时、荷兰、爱尔兰、丹麦、芬兰、挪威、斯洛伐克、克罗地亚、瑞士、葡萄牙（AM 和 FM）、澳大利亚、新西兰）；FT8 等数据模式仅限某国明确向数据开放的信道（德国和葡萄牙为 6、7、24、25 信道；捷克为 24、25 信道）。其他任何地方，以及 CB 信道之外（例如 27.700 MHz），按钮显示 <span translate="no">NO HAM BAND</span>，并有提示说明原因。</li>
+                <li>你第一次在 11 m 上打开 <span translate="no">TX</span>，或在 <span translate="no">TX</span> 已打开时切换到 11 m，qFT8 会询问一次，要求你接受 CB 信道、模式、功率和设备由你自己负责（qFT8 从不更改你电台的功率）。在你回答之前不会发送任何内容；接受会被记住，<span translate="no">TX</span> 随即打开，取消则关闭 <span translate="no">TX</span>。网页遥控器显示同样的问题。</li>
                 <li>你始终要对自己的执照以及所在地的频段规划负责。</li>
             </ul>
 
@@ -1743,6 +1745,7 @@
 
             <h4 id="settings-application">应用设置</h4>
             <ul>
+                <li>在电脑上（Windows 和 Linux）：<strong>视频模式</strong>，即窗口的绘制方式，从下次启动起生效。在 Windows 上，<strong>默认</strong> 使用 Direct3D，如果窗口持续卡死会自动切换到 GDI；<strong>Direct3D</strong> 和 <strong>GDI</strong> 则固定使用其中一种。在 Linux 上为 <strong>默认</strong>、<strong>XRender</strong>、<strong>OpenGL</strong> 或 <strong>X11</strong>。</li>
                 <li><strong>慢速设备 / 低电量模式</strong>：更轻的绘制，解码器不变（见
                     <a href="#pc-slow">运行缓慢的电脑</a>；手机上相同）。</li>
                 <li>在电脑上：<strong>关闭前确认</strong>（主窗口关闭 qFT8 之前先询问），
@@ -4951,6 +4954,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 气象传真行通过任意 <span translate="no">USB</span> 模式的 <span translate="no">HF</span> 电台或 <span translate="no">SDR</span>，接收气象和海军部门的 <span translate="no">HF</span> 无线电传真图。其频率按钮按公开的全球无线电传真时间表逐个切换广播（70 个频率及其广播时段），跳过此时不在播的频率（<span translate="no">UTC</span>）；电台调谐到列出频率以下 1.9 kHz。速度（每分钟 60、90、120 或 240 行）从图的同步线中自动识别，已经在播的图在几行后会自动开始；图片在停止信号处结束，或在图变成噪声时自动结束。仅接收。
+            </p>
+
+            <p>
+                气象传真、气象卫星（<span translate="no">APT</span>、Meteor <span translate="no">LRPT</span>）和气球（<span translate="no">SSDV</span>）接收器完成的每一幅图像都会立即保存，无需询问，保存在与 <span translate="no">SSTV</span> 图片相同的文件夹中：在手机上是图库的 <code>Pictures/qFT8 SSTV</code>，在电脑上是你的图片文件夹中的 <code>qFT8 SSTV</code>，在 iPhone 上是应用的 <code>qFT8 SSTV</code> 文件夹和“照片”。文件名说明它是什么，时间为 <span translate="no">UTC</span>：<code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code>（接收器、日期、时间、频率、电台）；因你停止接收器而被截断的图像以 <code>_partial</code> 结尾。图像下方的一行说明它保存到了哪里；<strong>分享</strong>（手机、iPhone）把它交给另一个应用，<strong>打开文件夹</strong>（电脑）在其文件夹中显示它，<strong>下载</strong>（网页遥控器）在浏览器所在的设备上保存一份副本。图像按接收时的样子保存，而不是按<strong>负片</strong>视图显示的样子。
             </p>
 
             <h3 id="swl-dv-internet">通过互联网的数字语音数据</h3>

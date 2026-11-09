@@ -776,7 +776,7 @@
                     dem): <code>--list-devices</code> viser alle serielle porte og lydenheder, qFT8 ser, og afslutter;
                     <code>--port &lt;device&gt;</code> sætter standardporten (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> vælger profilmappen;
-                    <code>--bridge</code> starter en bridge; <code>--opengl</code> tegner vinduet via OpenGL (se
+                    <code>--bridge</code> starter en bridge; <code>--video-mode=&lt;mode&gt;</code> tegner vinduet på en anden måde for den kørsel, også når qFT8 ikke kan åbnes langt nok til at ændre <strong>Videotilstand</strong> i Indstillinger (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tegner vinduet via OpenGL (se
                     <a href="#pc-trouble">Hvis noget ikke virker</a>).</li>
             </ul>
 
@@ -843,8 +843,7 @@
                 <li><strong>"Allerede i gang".</strong> En anden kopi bruger profilmappen. Luk den, eller start denne med
                     sin egen <code>--qft8_profile</code>-mappe.</li>
                 <li><strong>Vinduet er sort eller forvansket</strong> (gamle grafikdrivere, en virtuel maskine, fjern-
-                    skrivebord): opdater grafikdriveren. Hvis det fortsætter, start qFT8 med <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), som tegner vinduet på en anden måde; hjælper det heller ikke, så rapportér det med <strong>RAPPORTER FEJL</strong> (Indstillinger)
+                    skrivebord): opdater grafikdriveren. Hvis det fortsætter, vælg en anden <strong>Videotilstand</strong> i Indstillinger &gt; APPLIKATION, eller start qFT8 med <code>--video-mode=gdi</code> (Windows) eller <code>--video-mode=x11</code> (Linux), som tegner vinduet på en anden måde; hjælper det heller ikke, så rapportér det med <strong>RAPPORTER FEJL</strong> (Indstillinger)
                     og oplys, hvilket system og grafikkort du har.</li>
                 <li><strong>Et vindue er uden for skærmen</strong> (en skærm blev taget ud): qFT8 tjekker hvert vindues gemte placering,
                     når det åbner vinduet, og et vindue, hvis skærm er væk, eller som for størstedelens vedkommende ville ligge uden for skærmen, åbner i
@@ -1889,6 +1888,8 @@
                 <li>qFT8 tænder ikke for senderen uden for amatørbåndene i din region (ITU-region 1, 2 eller 3) og siger det; <span translate="no">TX</span>-knappen viser <span translate="no">NO HAM BAND</span>.</li>
                 <li>Nogle lande tillader kun en del af et bånd, eller kræver først en særlig tilladelse eller en anmeldelse. På de bånd (herunder 160 m, 80 m, 40 m og 2 m i region 3, 23 cm, 70 cm og 13 cm) viser qFT8 en meddelelse én gang pr. bånd, for eksempel &ldquo;Nogle lande tillader kun en del af 60m eller kræver først en særlig tilladelse eller en anmeldelse. Tjek din licens.&rdquo;; den stopper dig aldrig på grund af den meddelelse.</li>
                 <li>Når qFT8 kender dit land (se <a href="#swl-legal">Lytning og loven</a>), følger den også landets eget båndplan, hvor det er smallere end din regions. Det er indtil videre indbygget for Frankrig, Tyskland, Storbritannien, Schweiz, Italien, Spanien, Nederlandene, Belgien, Østrig, USA, Australien og Japan. Hvor landets plan tydeligt udelukker en frekvens (for eksempel 60 m uden for 5351.5&ndash;5366.5 kHz i Tyskland, 40 m over 7200 kHz i Japan, 13 cm 2310&ndash;2390 MHz i USA) forbliver <span translate="no">TX</span> aktiv, intet sendes, og knappen viser <span translate="no">NO HAM BAND</span>; hvor planen er mindre sikker, ser du kun licensmeddelelsen.</li>
+                <li>11 m (Citizens Band, CB, omkring 27 MHz) er ikke et amatørbånd. qFT8 sender kun der, hvor dit land (efter dit kaldesignal eller din placering) tillader CB i den driftsart, du bruger: tale (AM, FM, SSB) i de lande, hvis CB-regler qFT8 kender (USA, Canada, Frankrig, Tyskland, Storbritannien, Spanien, Østrig, Tjekkiet, Polen, Sverige, Estland, Belgien, Nederlandene, Irland, Danmark, Finland, Norge, Slovakiet, Kroatien, Schweiz, Portugal (AM og FM), Australien, New Zealand); datadriftsarter som FT8 kun på de kanaler, et land udtrykkeligt åbner for data (Tyskland og Portugal kanal 6, 7, 24, 25; Tjekkiet kanal 24, 25). Alle andre steder og uden for CB-kanalerne (for eksempel 27.700 MHz) viser knappen <span translate="no">NO HAM BAND</span>, og en meddelelse siger hvorfor.</li>
+                <li>Første gang du slår <span translate="no">TX</span> til på 11 m, eller går til 11 m med <span translate="no">TX</span> slået til, spørger qFT8 dig én gang, om du accepterer, at CB-kanaler, driftsarter, effekt og udstyr er dit ansvar (qFT8 ændrer aldrig din radios effekt). Indtil du svarer, sendes intet; accepten huskes, og <span translate="no">TX</span> slås til, mens annullering slår <span translate="no">TX</span> fra. Webfjernbetjeningen viser det samme spørgsmål.</li>
                 <li>Du er altid selv ansvarlig for din licens og båndplanen, hvor du opererer.</li>
             </ul>
 
@@ -1939,6 +1940,7 @@
 
             <h4 id="settings-application">Applikationsindstillinger</h4>
             <ul>
+                <li>På computeren (Windows og Linux): <strong>Videotilstand</strong>, hvordan vinduet tegnes, bruges fra næste start. I Windows bruger <strong>Standard</strong> Direct3D og skifter af sig selv til GDI, hvis vinduet bliver ved med at fryse; <strong>Direct3D</strong> og <strong>GDI</strong> holder fast i den ene. I Linux <strong>Standard</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> eller <strong>X11</strong>.</li>
                 <li><strong>Tilstand for langsom enhed / lavt batteri</strong>: lettere tegning, afkoderen uændret (se
                     <a href="#pc-slow">Langsomme computere</a>; det samme på telefoner).</li>
                 <li>På computeren: <strong>Bekræft før lukning</strong> (spørger, før hovedvinduet lukker qFT8)
@@ -5167,6 +5169,9 @@
                 Vejrfax-rækken modtager <span translate="no">HF</span>-radiofaxkortene fra meteorologiske og flådens tjenester gennem en vilkårlig <span translate="no">HF</span>-radio i <span translate="no">USB</span>, eller en <span translate="no">SDR</span>. Dens frekvensknap træder gennem udsendelserne i den offentlige verdensomspændende radiofaxplan (70 frekvenser med deres udsendelsestider) og springer dem over, der er ude af luften på dette tidspunkt (<span translate="no">UTC</span>); radioen tunes 1,9 kHz under den listede frekvens. Hastigheden (60, 90, 120 eller 240 linjer i minuttet) findes ud fra kortets fasningslinjer, og et kort, der allerede er i luften, starter af sig selv efter nogle få linjer; et billede slutter ved stopsignalet eller af sig selv, når kortet bliver til støj. Kun modtagelse.
             </p>
 
+            <p>
+                Hvert billede, som vejrfax-, vejrsatellit- (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) og ballonmodtagerne (<span translate="no">SSDV</span>) afslutter, gemmes med det samme uden at spørge i samme mappe som <span translate="no">SSTV</span>-billederne: på telefonen galleriets <code>Pictures/qFT8 SSTV</code>, på computeren <code>qFT8 SSTV</code> i din Pictures-mappe, på iPhone appens mappe <code>qFT8 SSTV</code> og Fotos. Dets navn fortæller, hvad det er, i <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (modtager, dato, tid, frekvens, station); et billede, der er afbrudt, fordi du stoppede modtageren, ender på <code>_partial</code>. Linjen under billedet siger, hvor det blev af; <strong>Del</strong> (telefon, iPhone) giver det videre til en anden app, <strong>Åbn mappe</strong> (computer) viser det i sin mappe, og <strong>HENT</strong> (webfjernbetjening) gemmer en kopi på den enhed, browseren kører på. Billedet gemmes, som det blev modtaget, ikke som visningen <strong>NEGATIV</strong> viser det.
+            </p>
             <h3 id="swl-dv-internet">Digitale taledata over internettet</h3>
             <p>
                 Datarækkerne <span translate="no">DMR</span>, <span translate="no">D-STAR</span>, Fusion og <span translate="no">M17</span> kan også lytte over internettet (deres sidste valg): hvem der taler, til hvilken talegruppe eller reflektor, deres tekst og position, fra <span translate="no">BrandMeister</span>-aktivitetsstrømmen og de åbne reflektorer (<span translate="no">XLX</span>, <span translate="no">XRF</span>, <span translate="no">DCS</span>, <span translate="no">YSF</span>, <span translate="no">M17</span>). Kun data og kun modtagelse: qFT8 sender aldrig ind i et netværk, forbinder aldrig to af dem og afspiller aldrig <span translate="no">DMR</span>-, <span translate="no">D-STAR</span>- eller Fusion-tale. Reflektorerne ser dig som en lytter under dit eget kaldesignal. Når netværket falder ud, forbinder en kanal igen af sig selv inden for omkring 15 sekunder. Eksperimentel.

@@ -775,7 +775,7 @@
                     ne): <code>--list-devices</code> luettelee jokaisen sarjaportin ja äänilaitteen, jonka qFT8 näkee, ja lopettaa;
                     <code>--port &lt;device&gt;</code> asettaa oletussarjaportin (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> valitsee profiilikansion;
-                    <code>--bridge</code> käynnistää sillan; <code>--opengl</code> piirtää ikkunan OpenGL:llä (katso
+                    <code>--bridge</code> käynnistää sillan; <code>--video-mode=&lt;mode&gt;</code> piirtää ikkunan toisella tavalla kyseiseksi ajoksi, vaikka qFT8:aa ei saada auki niin pitkälle, että voisi vaihtaa <strong>Videotila</strong> Asetuksissa (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> piirtää ikkunan OpenGL:llä (katso
                     <a href="#pc-trouble">Jos jokin ei toimi</a>).</li>
             </ul>
 
@@ -842,8 +842,7 @@
                 <li><strong>"Jo käynnissä".</strong> Toinen kopio käyttää profiilikansiota. Sulje se tai käynnistä tämä
                     omalla <code>--qft8_profile</code>-kansiollaan.</li>
                 <li><strong>Ikkuna on musta tai sekava</strong> (vanhat näytönohjaimen ajurit, virtuaalikone, etä-
-                    työpöytä): päivitä näytönohjaimen ajuri. Jos vika jää, käynnistä qFT8 valitsimella <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), joka piirtää ikkunan toisella tavalla; jos sekään ei auta, ilmoita siitä painikkeella <strong>ILMOITA VIRHEESTÄ</strong> (Asetukset)
+                    työpöytä): päivitä näytönohjaimen ajuri. Jos vika jää, valitse Asetukset &gt; Sovellus -kohdasta toinen <strong>Videotila</strong> tai käynnistä qFT8 valitsimella <code>--video-mode=gdi</code> (Windows) tai <code>--video-mode=x11</code> (Linux), joka piirtää ikkunan toisella tavalla; jos sekään ei auta, ilmoita siitä painikkeella <strong>ILMOITA VIRHEESTÄ</strong> (Asetukset)
                     ja kerro, mikä järjestelmä ja näytönohjain sinulla on.</li>
                 <li><strong>Ikkuna on näytön ulkopuolella</strong> (näyttö irrotettiin): qFT8 tarkistaa kunkin ikkunan tallennetun paikan,
                     kun se avaa ikkunan, ja ikkuna, jonka näyttö on poissa tai joka olisi suureksi osaksi näytön ulkopuolella, avautuu
@@ -1889,6 +1888,8 @@
                 <li>qFT8 ei kytke radiota lähetykseen alueesi (ITU-alue 1, 2 tai 3) radioamatöörikaistojen ulkopuolella, ja kertoo siitä; <span translate="no">TX</span>-painikkeessa lukee <span translate="no">NO HAM BAND</span>.</li>
                 <li>Joissakin maissa kaistasta sallitaan vain osa, tai tarvitaan erityislupa tai ennakkoilmoitus. Näillä kaistoilla (mukaan lukien 160 m, 80 m, 40 m ja 2 m alueella 3, 23 cm, 70 cm ja 13 cm) qFT8 näyttää ilmoituksen kerran kaistaa kohden, esimerkiksi &ldquo;Jotkin maat sallivat vain osan taajuusalueesta 60m tai vaativat ensin erityisluvan tai ilmoituksen. Tarkista lupasi.&rdquo;; se ei koskaan estä lähettämistä tämän ilmoituksen vuoksi.</li>
                 <li>Kun qFT8 tietää maasi (katso <a href="#swl-legal">Kuuntelu ja laki</a>), se noudattaa myös kyseisen maan omaa kaistasuunnitelmaa, jos se on alueesi suunnitelmaa suppeampi. Tämä on toistaiseksi sisäänrakennettu maille Ranska, Saksa, Iso-Britannia, Sveitsi, Italia, Espanja, Alankomaat, Belgia, Itävalta, Yhdysvallat, Australia ja Japani. Kun maan suunnitelma selvästi sulkee taajuuden pois (esimerkiksi 60 m alueen 5351.5&ndash;5366.5 kHz ulkopuolella maassa Saksa, 40 m yli 7200 kHz maassa Japani, 13 cm 2310&ndash;2390 MHz maassa Yhdysvallat), <span translate="no">TX</span> pysyy valmiina, mitään ei lähetetä ja painikkeessa lukee <span translate="no">NO HAM BAND</span>; kun suunnitelma on epävarmempi, näet vain lupailmoituksen.</li>
+                <li>11 m (kansalaisradiokaista, CB, noin 27 MHz) ei ole radioamatöörikaista. qFT8 lähettää siellä vain, jos maasi (kutsusignaalisi tai sijaintisi perusteella) sallii CB:n käyttämässäsi lähetelajissa: puhe (AM, FM, SSB) maissa, joiden CB-säännöt qFT8 tuntee (Yhdysvallat, Kanada, Ranska, Saksa, Iso-Britannia, Espanja, Itävalta, Tšekki, Puola, Ruotsi, Viro, Belgia, Alankomaat, Irlanti, Tanska, Suomi, Norja, Slovakia, Kroatia, Sveitsi, Portugali (AM ja FM), Australia, Uusi-Seelanti); datalajit kuten FT8 vain kanavilla, jotka maa on nimenomaisesti avannut datalle (Saksa ja Portugali kanavat 6, 7, 24, 25; Tšekki kanavat 24, 25). Muualla ja CB-kanavien ulkopuolella (esimerkiksi 27.700 MHz) painikkeessa lukee <span translate="no">NO HAM BAND</span> ja ilmoitus kertoo syyn.</li>
+                <li>Kun kytket <span translate="no">TX</span>:n päälle 11 m:llä ensimmäisen kerran tai siirryt 11 m:lle <span translate="no">TX</span> päällä, qFT8 pyytää sinua kerran hyväksymään, että CB-kanavat, lähetelajit, teho ja laitteet ovat sinun vastuullasi (qFT8 ei koskaan muuta radiosi tehoa). Kunnes vastaat, mitään ei lähetetä; hyväksyminen muistetaan ja <span translate="no">TX</span> menee päälle, peruutus kytkee <span translate="no">TX</span>:n pois. Verkkokauko-ohjain näyttää saman kysymyksen.</li>
                 <li>Vastaat aina itse luvastasi ja kaistasuunnitelmasta siellä, missä toimit.</li>
             </ul>
 
@@ -1939,6 +1940,7 @@
 
             <h4 id="settings-application">Sovelluksen asetukset</h4>
             <ul>
+                <li>Tietokoneella (Windows ja Linux): <strong>Videotila</strong>, miten ikkuna piirretään, käytössä seuraavasta käynnistyksestä. Windowsissa <strong>Oletus</strong> käyttää Direct3D:tä ja vaihtaa itse GDI:hin, jos ikkuna jumittuu toistuvasti; <strong>Direct3D</strong> ja <strong>GDI</strong> pitävät toisen niistä. Linuxissa <strong>Oletus</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> tai <strong>X11</strong>.</li>
                 <li><strong>Hitaan laitteen / vähäisen akun tila</strong>: kevyempi piirtäminen, dekooderi ennallaan (katso
                     <a href="#pc-slow">Hitaat tietokoneet</a>; sama puhelimissa).</li>
                 <li>Tietokoneella: <strong>Vahvista ennen sulkemista</strong> (kysyy ennen kuin pääikkuna sulkee qFT8:n),
@@ -5296,6 +5298,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Sääfaksirivi vastaanottaa meteorologisten ja merivoimien palvelujen <span translate="no">HF</span>-radiofaksikarttoja millä tahansa <span translate="no">HF</span>-radiolla tilassa <span translate="no">USB</span> tai <span translate="no">SDR</span>:lla. Sen taajuuspainike käy läpi julkisen maailmanlaajuisen radiofaksiaikataulun lähetykset (70 taajuutta lähetystunteineen) ohittaen ne, jotka eivät ole tähän aikaan ilmassa (<span translate="no">UTC</span>); radio viritetään 1,9 kHz listattua taajuutta alemmas. Nopeus (60, 90, 120 tai 240 riviä minuutissa) löytyy kartan vaiheistusriveistä, ja kartta, joka on jo ilmassa, alkaa itsestään muutaman rivin jälkeen; kuva päättyy lopetussignaaliin tai itsestään, kun kartta muuttuu kohinaksi. Vain vastaanotto.
+            </p>
+
+            <p>
+                Jokainen kuva, jonka sääfaksin, sääsatelliittien (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) ja ilmapallojen (<span translate="no">SSDV</span>) vastaanottimet saavat valmiiksi, tallennetaan heti kysymättä samaan kansioon kuin <span translate="no">SSTV</span>-kuvat: puhelimessa gallerian <code>Pictures/qFT8 SSTV</code>, tietokoneessa Kuvat-kansion <code>qFT8 SSTV</code>, iPhonessa sovelluksen <code>qFT8 SSTV</code>-kansio ja Kuvat. Sen nimi kertoo, mikä se on, <span translate="no">UTC</span>-ajassa: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (vastaanotin, päivä, aika, taajuus, asema); kuva, joka katkesi, koska pysäytit vastaanottimen, päättyy tunnisteeseen <code>_partial</code>. Kuvan alla oleva rivi kertoo, minne se meni; <strong>Jaa</strong> (puhelin, iPhone) antaa sen toiselle sovellukselle, <strong>AVAA KANSIO</strong> (tietokone) näyttää sen kansiossaan ja <strong>LATAA</strong> (verkkokauko-ohjain) tallentaa kopion laitteelle, jolla selain on käynnissä. Kuva tallennetaan sellaisena kuin se vastaanotettiin, ei sellaisena kuin <strong>NEGATIIVI</strong>-näkymä sen näyttää.
             </p>
 
             <h3 id="swl-dv-internet">Digitaalinen puhedata internetin yli</h3>

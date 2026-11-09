@@ -774,7 +774,7 @@
                     mutatja őket): a <code>--list-devices</code> kilistáz minden soros portot és hangeszközt, amelyet a qFT8 lát, majd kilép;
                     a <code>--port &lt;device&gt;</code> beállítja az alapértelmezett soros portot (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); a <code>--qft8_profile &lt;folder&gt;</code> kiválasztja a profilmappát;
-                    a <code>--bridge</code> hidat indít; az <code>--opengl</code> az ablakot OpenGL-en keresztül rajzolja (lásd
+                    a <code>--bridge</code> hidat indít; a <code>--video-mode=&lt;mód&gt;</code> másképp rajzolja az ablakot arra a futásra, még akkor is, ha a qFT8-at nem lehet addig megnyitni, hogy a Beállításokban módosítható legyen a <strong>Videómód</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); az <code>--opengl</code> az ablakot OpenGL-en keresztül rajzolja (lásd
                     <a href="#pc-trouble">Ha valami nem működik</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Már fut".</strong> Egy másik példány használja a profilmappát. Zárja be, vagy indítsa ezt
                     saját <code>--qft8_profile</code> mappával.</li>
                 <li><strong>Az ablak fekete vagy szétesett</strong> (régi grafikus illesztőprogramok, virtuális gép, távoli
-                    asztal): frissítse a grafikus illesztőprogramot. Ha ez marad, indítsa a qFT8-at az <code>--opengl</code> kapcsolóval
-                    (<code>qFT8 --opengl</code>), amely másképp rajzolja az ablakot; ha ez sem segít, jelentse a <strong>HIBA BEJELENTÉSE</strong> gombbal (Beállítások),
+                    asztal): frissítse a grafikus illesztőprogramot. Ha ez marad, válasszon másik <strong>Videómód</strong> értéket a Beállítások &gt; Alkalmazás részben, vagy indítsa a qFT8-at a <code>--video-mode=gdi</code> (Windows) vagy a <code>--video-mode=x11</code> (Linux) kapcsolóval, amely másképp rajzolja az ablakot; ha ez sem segít, jelentse a <strong>HIBA BEJELENTÉSE</strong> gombbal (Beállítások),
                     megadva, milyen rendszere és grafikus kártyája van.</li>
                 <li><strong>Egy ablak a képernyőn kívül van</strong> (egy képernyőt kihúztak): a qFT8 az ablak megnyitásakor ellenőrzi minden ablak mentett
                     helyét, és az az ablak, amelynek a képernyője eltűnt, vagy amely nagyrészt a képernyőn kívülre esne, a
@@ -1880,6 +1879,8 @@
                 <li>A qFT8 nem kapcsolja adásra a rádiót a régiója (ITU 1., 2. vagy 3. régió) amatőrsávjain kívül, és ezt közli is; a <span translate="no">TX</span> gombon a <span translate="no">NO HAM BAND</span> felirat látszik.</li>
                 <li>Egyes országok a sávnak csak egy részét engedik, vagy külön engedélyt vagy előzetes bejelentést kérnek. Ezeken a sávokon (beleértve a 160 m-t, 80 m-t, 40 m-t és a 2 m-t a 3. régióban, valamint a 23 cm-t, 70 cm-t és 13 cm-t) a qFT8 sávonként egyszer közleményt mutat, például &ldquo;Egyes országok a(z) 60m sávnak csak egy részét engedik, vagy előbb külön engedélyt vagy bejelentést kérnek. Ellenőrizze az engedélyét.&rdquo;; e közlemény miatt soha nem állítja meg Önt.</li>
                 <li>Amint a qFT8 ismeri az országát (lásd: <a href="#swl-legal">Hallgatás és a törvény</a>), az adott ország saját sávtervét is követi, ahol az szűkebb a régióénál. Ez egyelőre a következőkhöz van beépítve: Franciaország, Németország, Egyesült Királyság, Svájc, Olaszország, Spanyolország, Hollandia, Belgium, Ausztria, Egyesült Államok, Ausztrália és Japán. Ahol az ország terve egyértelműen kizár egy frekvenciát (például a 60 m-t 5351.5&ndash;5366.5 kHz-en kívül Németország esetén, a 40 m-t 7200 kHz felett Japán esetén, a 13 cm-t 2310&ndash;2390 MHz-en Egyesült Államok esetén), a <span translate="no">TX</span> élesítve marad, nem megy ki semmi, és a gombon a <span translate="no">NO HAM BAND</span> látszik; ahol a terv kevésbé biztos, csak az engedélyre vonatkozó közleményt látja.</li>
+                <li>A 11 m (a polgári sáv, CB, 27 MHz körül) nem amatőrsáv. A qFT8 ott csak akkor ad, ha az Ön országa (a hívójele vagy a helye alapján) engedélyezi a CB-t az Ön által használt módban: beszéd (AM, FM, SSB) azokban az országokban, amelyek CB-szabályait a qFT8 ismeri (Egyesült Államok, Kanada, Franciaország, Németország, Egyesült Királyság, Spanyolország, Ausztria, Csehország, Lengyelország, Svédország, Észtország, Belgium, Hollandia, Írország, Dánia, Finnország, Norvégia, Szlovákia, Horvátország, Svájc, Portugália (AM és FM), Ausztrália, Új-Zéland); az olyan adatmódok, mint az FT8, csak azokon a csatornákon, amelyeket egy ország kifejezetten megnyit az adatok előtt (Németország és Portugália 6, 7, 24, 25. csatorna; Csehország 24, 25. csatorna). Máshol, valamint a CB-csatornákon kívül (például 27.700 MHz) a gombon a <span translate="no">NO HAM BAND</span> látszik, és egy közlemény megmondja az okot.</li>
+                <li>Amikor először kapcsolja be a <span translate="no">TX</span>-et 11 m-en, vagy bekapcsolt <span translate="no">TX</span> mellett átvált 11 m-re, a qFT8 egyszer megkérdezi, elfogadja-e, hogy a CB-csatornák, módok, teljesítmény és berendezések az Ön felelősségei (a qFT8 soha nem változtatja a rádió teljesítményét). Amíg nem válaszol, semmi sem megy ki; az elfogadást megjegyzi, és a <span translate="no">TX</span> bekapcsol, a mégse kikapcsolja a <span translate="no">TX</span>-et. A webes távirányító ugyanezt a kérdést mutatja.</li>
                 <li>Az engedélyéért és a működési helyén érvényes sávtervért mindig Ön felel.</li>
             </ul>
 
@@ -1910,6 +1911,7 @@
 
             <h4 id="settings-application">Alkalmazásbeállítások</h4>
             <ul>
+            <li>A számítógépen (Windows és Linux): <strong>Videómód</strong>, hogyan rajzolódjon az ablak, a következő indítástól érvényes. Windowson az <strong>Alapértelmezett</strong> a Direct3D-t használja, és magától GDI-re vált, ha az ablak folyton lefagy; a <strong>Direct3D</strong> és a <strong>GDI</strong> megtartja az egyiket. Linuxon <strong>Alapértelmezett</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> vagy <strong>X11</strong>.</li>
             <li><strong>Lassú eszköz / gyenge akkumulátor mód</strong>: könnyebb rajzolás, a dekóder változatlan (lásd: <a href="#pc-slow">Lassú számítógépek</a>; telefonon ugyanez).</li>
             <li>Számítógépen: <strong>Megerősítés bezárás előtt</strong> (rákérdez, mielőtt a főablak bezárja a qFT8-at), valamint a mappa, ahol a beállításait és naplóit tárolja.</li>
             <li><strong>Felhasználói felület</strong>: <strong>Tájolás</strong>, <strong>Álló tájolás kényszerítése napló módban</strong> (telefonok), <strong>Negyedek</strong> (táblagépek), a <strong>Funkciók</strong> és az <strong>Az alkalmazás eltakarja</strong> (mind a <a href="#layouts">Képernyő-elrendezések</a> részben).</li>
@@ -5263,6 +5265,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Az időjárásifax-sor a meteorológiai és haditengerészeti szolgálatok <span translate="no">HF</span> rádiófax-térképeit veszi bármely <span translate="no">HF</span> rádióval a(z) <span translate="no">USB</span> módban vagy <span translate="no">SDR</span>-mal. A frekvenciagombja végigmegy a nyilvános világméretű rádiófax-menetrend adásain (70 frekvencia, az adási óráikkal), kihagyva azokat, amelyek ebben az órában nincsenek adásban (<span translate="no">UTC</span>); a rádió 1,9 kHz-cel a felsorolt frekvencia alá hangol. A sebesség (60, 90, 120 vagy 240 sor percenként) a térkép fázissoraiból derül ki, és az a térkép, amely már adásban van, néhány sor után magától indul; a kép a stopjelnél véget ér, vagy magától, amikor a térkép zajba fordul. Csak vétel.
+            </p>
+
+            <p>
+                Minden képet, amelyet az időjárási fax-, az időjárási műhold- (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) és a ballonvevők (<span translate="no">SSDV</span>) befejeznek, azonnal elment, kérdés nélkül, ugyanabba a mappába, mint az <span translate="no">SSTV</span>-képeket: telefonon a galéria <code>Pictures/qFT8 SSTV</code> mappája, számítógépen a Képek mappa <code>qFT8 SSTV</code> mappája, iPhone-on az alkalmazás <code>qFT8 SSTV</code> mappája és a Fotók. A neve megmondja, mi az, <span translate="no">UTC</span>-ben: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (vevő, dátum, idő, frekvencia, állomás); a megszakadt kép, mert leállította a vevőt, <code>_partial</code>-ra végződik. A kép alatti sor megmondja, hová került; a <strong>Megosztás</strong> (telefon, iPhone) átadja egy másik alkalmazásnak, a <strong>Mappa megnyitása</strong> (számítógép) megmutatja a mappájában, a <strong>LETÖLTÉS</strong> (webes távirányító) pedig másolatot ment arra az eszközre, amelyen a böngésző fut. A kép úgy van elmentve, ahogy érkezett, nem úgy, ahogy a <strong>NEGATÍV</strong> nézet mutatja.
             </p>
 
             <h3 id="swl-dv-internet">Digitális hangadatok az interneten</h3>

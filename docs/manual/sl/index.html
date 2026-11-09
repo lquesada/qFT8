@@ -789,7 +789,7 @@
                     <code>--list-devices</code> našteje vsa serijska vrata in zvočne naprave, ki jih qFT8 vidi, in se konča;
                     <code>--port &lt;device&gt;</code> nastavi privzeta serijska vrata (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> izbere mapo profila;
-                    <code>--bridge</code> zažene most; <code>--opengl</code> nariše okno prek OpenGL (glejte
+                    <code>--bridge</code> zažene most; <code>--video-mode=&lt;mode&gt;</code> okno za ta zagon nariše na drug način, tudi kadar qFT8 ni mogoče odpreti dovolj daleč, da bi spremenili <strong>Video način</strong> v Nastavitvah (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> nariše okno prek OpenGL (glejte
                     <a href="#pc-trouble">Če kaj ne deluje</a>).</li>
             </ul>
 
@@ -857,8 +857,7 @@
                 <li><strong>»Already Running«.</strong> Drug izvod uporablja mapo profila. Zaprite ga ali pa ta izvod zaženite z
                     lastno mapo <code>--qft8_profile</code>.</li>
                 <li><strong>Okno je črno ali popačeno</strong> (stari grafični gonilniki, navidezni stroj, oddaljeno
-                    namizje): posodobite grafični gonilnik. Če ostane, zaženite qFT8 z <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), kar okno nariše na drug način; če tudi to ne pomaga, to prijavite z <strong>JAVI NAPAKO</strong> (Nastavitve),
+                    namizje): posodobite grafični gonilnik. Če ostane, izberite drug <strong>Video način</strong> v Nastavitve &gt; Aplikacija ali zaženite qFT8 z <code>--video-mode=gdi</code> (Windows) oziroma <code>--video-mode=x11</code> (Linux), kar okno nariše na drug način; če tudi to ne pomaga, to prijavite z <strong>JAVI NAPAKO</strong> (Nastavitve),
                     pri čemer navedite sistem in grafično kartico.</li>
                 <li><strong>Okno je izven zaslona</strong> (zaslon je bil odklopljen): qFT8 ob odpiranju okna preveri shranjeno mesto
                     vsakega okna; okno, katerega zaslona ni več ali bi bilo večinoma izven zaslona, se odpre
@@ -2282,6 +2281,8 @@
                 <li>qFT8 ne vklopi oddajanja radia zunaj radioamaterskih pasov vaše regije (regija ITU 1, 2 ali 3) in to sporoči; gumb <span translate="no">TX</span> prikaže <span translate="no">NO HAM BAND</span>.</li>
                 <li>Nekatere države dovoljujejo le del pasu ali zahtevajo posebno dovoljenje oziroma predhodno obvestilo. Na teh pasovih (vključno s 160 m, 80 m, 40 m in 2 m v regiji 3, 23 cm, 70 cm in 13 cm) qFT8 enkrat na pas prikaže obvestilo, na primer &ldquo;Nekatere države dovoljujejo le del pasu 60m ali najprej zahtevajo posebno dovoljenje ali prijavo. Preverite svoje dovoljenje.&rdquo;; zaradi tega obvestila vas nikoli ne ustavi.</li>
                 <li>Ko qFT8 pozna vašo državo (glejte <a href="#swl-legal">Poslušanje in zakon</a>), upošteva tudi bandplan te države, kjer je ožji od bandplana vaše regije. Zaenkrat je to vgrajeno za Francija, Nemčija, Združeno kraljestvo, Švica, Italija, Španija, Nizozemska, Belgija, Avstrija, Združene države Amerike, Avstralija in Japonska. Kjer bandplan države jasno izključuje frekvenco (na primer 60 m zunaj 5351.5&ndash;5366.5 kHz v Nemčija, 40 m nad 7200 kHz v Japonska, 13 cm 2310&ndash;2390 MHz v Združene države Amerike), <span translate="no">TX</span> ostane vklopljen, nič se ne pošlje in gumb prikaže <span translate="no">NO HAM BAND</span>; kjer je bandplan manj gotov, vidite le obvestilo o licenci.</li>
+                <li>11 m (državljanski pas, CB, okoli 27 MHz) ni radioamaterski pas. qFT8 tam oddaja le, kjer vaša država (po klicnem znaku ali lokaciji) dovoljuje CB v načinu, ki ga uporabljate: govor (AM, FM, SSB) v državah, katerih pravila za CB qFT8 pozna (Združene države, Kanada, Francija, Nemčija, Združeno kraljestvo, Španija, Avstrija, Češka, Poljska, Švedska, Estonija, Belgija, Nizozemska, Irska, Danska, Finska, Norveška, Slovaška, Hrvaška, Švica, Portugalska (AM in FM), Avstralija, Nova Zelandija); podatkovni načini, kot je FT8, le na kanalih, ki jih država izrecno odpre za podatke (Nemčija in Portugalska kanali 6, 7, 24, 25; Češka kanala 24, 25). Drugje in zunaj kanalov CB (na primer 27.700 MHz) gumb pokaže <span translate="no">NO HAM BAND</span>, obvestilo pa pove, zakaj.</li>
+                <li>Ko prvič vklopite <span translate="no">TX</span> na 11 m ali preidete na 11 m z vklopljenim <span translate="no">TX</span>, vas qFT8 enkrat vpraša, ali sprejemate, da so kanali CB, načini, moč in oprema vaša odgovornost (qFT8 nikoli ne spremeni moči vašega radia). Dokler ne odgovorite, se nič ne odda; sprejem se zapomni in <span translate="no">TX</span> se vklopi, preklic <span translate="no">TX</span> izklopi. Spletni daljinec pokaže isto vprašanje.</li>
                 <li>Za svojo licenco in bandplan tam, kjer delate, ste vedno odgovorni sami.</li>
             </ul>
 
@@ -2331,6 +2332,7 @@
 
             <h4 id="settings-application">Nastavitve aplikacije</h4>
             <ul>
+                <li>Na računalniku (Windows in Linux): <strong>Video način</strong>, kako se okno nariše, velja od naslednjega zagona. V sistemu Windows <strong>Privzeto</strong> uporablja Direct3D in samo preklopi na GDI, če se okno še naprej zamrzne; <strong>Direct3D</strong> in <strong>GDI</strong> obdržita enega od njiju. V sistemu Linux <strong>Privzeto</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> ali <strong>X11</strong>.</li>
                 <li><strong>Način počasne naprave / nizke baterije</strong>: lažje risanje, dekoder nespremenjen (glejte
                     <a href="#pc-slow">Počasni računalniki</a>; enako na telefonih).</li>
                 <li>Na računalniku: <strong>Potrdi pred zaprtjem</strong> (vpraša, preden glavno okno zapre qFT8),
@@ -6671,6 +6673,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Vrstica vremenskega faksa sprejema radiofaksimilne zemljevide <span translate="no">HF</span> meteoroloških in pomorskih služb prek katerega koli radia <span translate="no">HF</span> v <span translate="no">USB</span> ali <span translate="no">SDR</span>. Njen gumb frekvence gre skozi oddaje javnega svetovnega urnika radiofaksa (70 frekvenc z njihovimi urami oddajanja), pri čemer preskoči tiste, ki ob tej uri niso v etru (<span translate="no">UTC</span>); radio se uglasi 1,9 kHz pod navedeno frekvenco. Hitrost (60, 90, 120 ali 240 vrstic na minuto) se ugotovi iz fazirnih vrstic zemljevida, zemljevid, ki je že v etru, pa se začne sam po nekaj vrsticah; slika se konča s signalom za konec ali sama, ko zemljevid preide v šum. Samo sprejem.
+            </p>
+
+            <p>
+                Vsaka slika, ki jo zaključijo sprejemniki vremenskega faksa, vremenskih satelitov (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) in balonov (<span translate="no">SSDV</span>), se takoj, brez vprašanja, shrani v isto mapo kot slike <span translate="no">SSTV</span>: v telefonu <code>Pictures/qFT8 SSTV</code> v galeriji, v računalniku <code>qFT8 SSTV</code> v vaši mapi Slike, v iPhonu mapa <code>qFT8 SSTV</code> aplikacije in Fotografije. Ime pove, kaj je, v <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (sprejemnik, datum, čas, frekvenca, postaja); slika, prekinjena, ker ste ustavili sprejemnik, se konča z <code>_partial</code>. Vrstica pod sliko pove, kam je šla; <strong>Deli</strong> (telefon, iPhone) jo preda drugi aplikaciji, <strong>Odpri mapo</strong> (računalnik) jo pokaže v njeni mapi, <strong>PRENESI</strong> (spletni daljinec) pa shrani kopijo na napravo, na kateri teče brskalnik. Slika se shrani, kot je bila prejeta, ne kot jo prikazuje pogled <strong>NEGATIV</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Digitalni govorni podatki prek interneta</h3>

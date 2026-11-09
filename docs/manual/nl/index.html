@@ -777,7 +777,7 @@
                     ze): <code>--list-devices</code> toont elke seriële poort en elk geluidsapparaat dat qFT8 ziet en stopt dan;
                     <code>--port &lt;device&gt;</code> stelt de standaard seriële poort in (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> kiest de profielmap;
-                    <code>--bridge</code> start een bridge; <code>--opengl</code> tekent het venster via OpenGL (zie
+                    <code>--bridge</code> start een bridge; <code>--video-mode=&lt;mode&gt;</code> tekent het venster voor die keer op een andere manier, ook als qFT8 niet ver genoeg opent om de <strong>Videomodus</strong> in Instellingen te wijzigen (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tekent het venster via OpenGL (zie
                     <a href="#pc-trouble">Als iets niet werkt</a>).</li>
             </ul>
 
@@ -844,8 +844,7 @@
                 <li><strong>"Al actief".</strong> Een andere kopie gebruikt de profielmap. Sluit die, of start deze met
                     een eigen map via <code>--qft8_profile</code>.</li>
                 <li><strong>Het venster is zwart of vervormd</strong> (oude grafische stuurprogramma's, een virtuele machine, extern
-                    bureaublad): werk het grafische stuurprogramma bij. Blijft het, start qFT8 dan met <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), waarmee het venster op een andere manier wordt getekend; helpt ook dat niet, meld het dan met <strong>PROBLEEM MELDEN</strong> (Instellingen)
+                    bureaublad): werk het grafische stuurprogramma bij. Blijft het, kies dan een andere <strong>Videomodus</strong> in Instellingen &gt; APPLICATIE, of start qFT8 met <code>--video-mode=gdi</code> (Windows) of <code>--video-mode=x11</code> (Linux), waarmee het venster op een andere manier wordt getekend; helpt ook dat niet, meld het dan met <strong>PROBLEEM MELDEN</strong> (Instellingen)
                     en vermeld welk systeem en welke grafische kaart je hebt.</li>
                 <li><strong>Een venster staat buiten beeld</strong> (een scherm is losgekoppeld): qFT8 controleert de bewaarde plaats van elk venster
                     als het dat venster opent, en een venster waarvan het scherm weg is, of dat grotendeels buiten het scherm zou vallen, opent in
@@ -1904,6 +1903,8 @@
                 <li>qFT8 zet de zender niet aan buiten de amateurbanden van uw regio (ITU-regio 1, 2 of 3) en meldt dat; de <span translate="no">TX</span>-knop toont <span translate="no">NO HAM BAND</span>.</li>
                 <li>Sommige landen staan maar een deel van een band toe, of vereisen eerst een speciale toestemming of melding. Op die banden (waaronder 160 m, 80 m, 40 m en 2 m in regio 3, 23 cm, 70 cm en 13 cm) toont qFT8 één keer per band een bericht, bijvoorbeeld &ldquo;Sommige landen staan maar een deel van 60m toe, of vragen eerst een speciale vergunning of een melding. Controleer uw machtiging.&rdquo;; dat bericht houdt u nooit tegen.</li>
                 <li>Zodra qFT8 uw land kent (zie <a href="#swl-legal">Luisteren en de wet</a>), volgt het ook het eigen bandplan van dat land als dat smaller is dan dat van uw regio. Tot nu toe is dit ingebouwd voor Frankrijk, Duitsland, Verenigd Koninkrijk, Zwitserland, Italië, Spanje, Nederland, België, Oostenrijk, Verenigde Staten, Australië en Japan. Als het plan van het land een frequentie duidelijk uitsluit (bijvoorbeeld 60 m buiten 5351.5&ndash;5366.5 kHz in Duitsland, 40 m boven 7200 kHz in Japan, 13 cm 2310&ndash;2390 MHz in Verenigde Staten) blijft <span translate="no">TX</span> ingeschakeld, wordt er niets verzonden en toont de knop <span translate="no">NO HAM BAND</span>; als het plan minder zeker is, ziet u alleen het vergunningsbericht.</li>
+                <li>11 m (de Citizens Band, CB, rond 27 MHz) is geen amateurband. qFT8 zendt daar alleen uit waar uw land (op basis van uw roepletters of uw locatie) CB toestaat in de modus die u gebruikt: spraak (AM, FM, SSB) in de landen waarvan qFT8 de CB-regels kent (Verenigde Staten, Canada, Frankrijk, Duitsland, Verenigd Koninkrijk, Spanje, Oostenrijk, Tsjechië, Polen, Zweden, Estland, België, Nederland, Ierland, Denemarken, Finland, Noorwegen, Slowakije, Kroatië, Zwitserland, Portugal (AM en FM), Australië, Nieuw-Zeeland); datamodi zoals FT8 alleen op de kanalen die een land uitdrukkelijk voor data openstelt (Duitsland en Portugal kanalen 6, 7, 24, 25; Tsjechië kanalen 24, 25). Overal elders, en buiten de CB-kanalen (bijvoorbeeld 27.700 MHz), toont de knop <span translate="no">NO HAM BAND</span> en een melding zegt waarom.</li>
+                <li>De eerste keer dat u <span translate="no">TX</span> inschakelt op 11 m, of naar 11 m gaat terwijl <span translate="no">TX</span> aan staat, vraagt qFT8 u eenmalig te accepteren dat de CB-kanalen, modi, het vermogen en de apparatuur uw eigen verantwoordelijkheid zijn (qFT8 wijzigt nooit het vermogen van uw radio). Tot u antwoordt wordt er niets verzonden; accepteren wordt onthouden en <span translate="no">TX</span> gaat aan, annuleren zet <span translate="no">TX</span> uit. De webbediening toont dezelfde vraag.</li>
                 <li>U blijft altijd zelf verantwoordelijk voor uw vergunning en het bandplan van de plaats waar u werkt.</li>
             </ul>
 
@@ -1953,6 +1954,7 @@
 
             <h4 id="settings-application">Applicatie-instellingen</h4>
             <ul>
+                <li>Op de computer (Windows en Linux): <strong>Videomodus</strong>, hoe het venster wordt getekend, gebruikt vanaf de volgende start. Op Windows gebruikt <strong>Standaard</strong> Direct3D en schakelt zelf over op GDI als het venster blijft vastlopen; <strong>Direct3D</strong> en <strong>GDI</strong> houden een van beide vast. Op Linux <strong>Standaard</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> of <strong>X11</strong>.</li>
                 <li><strong>Modus voor trage apparaten / lage batterij</strong>: lichter tekenen, de decoder ongewijzigd (zie
                     <a href="#pc-slow">Trage computers</a>; hetzelfde op telefoons).</li>
                 <li>Op de computer: <strong>Bevestigen voor het sluiten</strong> (vraagt het voordat het hoofdvenster qFT8 sluit),
@@ -5315,6 +5317,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 De weerfaxrij ontvangt de <span translate="no">HF</span>-radiofaxkaarten van de meteorologische en marinediensten via elke <span translate="no">HF</span>-radio in <span translate="no">USB</span>, of een <span translate="no">SDR</span>. De frequentieknop stapt door de uitzendingen van het openbare wereldwijde radiofaxschema (70 frequenties, met hun uitzenduren) en slaat de over die op dit uur niet in de lucht zijn (<span translate="no">UTC</span>); de radio wordt 1,9 kHz onder de vermelde frequentie afgestemd. De snelheid (60, 90, 120 of 240 regels per minuut) wordt gevonden uit de fasering-regels van de kaart, en een kaart die al in de lucht is begint vanzelf na enkele regels; een beeld eindigt bij het stopsignaal, of vanzelf als de kaart ruis wordt. Alleen ontvangen.
+            </p>
+
+            <p>
+                Elk beeld dat de weerfax-, weersatelliet- (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) en ballonontvangers (<span translate="no">SSDV</span>) afronden wordt meteen, zonder te vragen, opgeslagen in dezelfde map als de <span translate="no">SSTV</span>-beelden: op de telefoon <code>Pictures/qFT8 SSTV</code> van de galerij, op de computer <code>qFT8 SSTV</code> in uw map Afbeeldingen, op de iPhone de map <code>qFT8 SSTV</code> van de app en Foto's. De naam zegt wat het is, in <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (ontvanger, datum, tijd, frequentie, station); een beeld dat is afgebroken omdat u de ontvanger stopte eindigt op <code>_partial</code>. De regel onder het beeld zegt waar het naartoe is gegaan; <strong>Delen</strong> (telefoon, iPhone) geeft het aan een andere app, <strong>Map openen</strong> (computer) toont het in zijn map en <strong>DOWNLOADEN</strong> (webbediening) slaat een kopie op op het apparaat waarop de browser draait. Het beeld wordt opgeslagen zoals ontvangen, niet zoals de weergave <strong>NEGATIEF</strong> het toont.
             </p>
 
             <h3 id="swl-dv-internet">Digitale spraakdata via internet</h3>

@@ -776,7 +776,7 @@
                     amósaas): <code>--list-devices</code> lista todos os portos serie e dispositivos de son que ve qFT8 e sae;
                     <code>--port &lt;dispositivo&gt;</code> fixa o porto serie por defecto (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;cartafol&gt;</code> escolle o cartafol de perfil;
-                    <code>--bridge</code> inicia un bridge; <code>--opengl</code> debuxa a xanela mediante OpenGL (mira
+                    <code>--bridge</code> inicia un bridge; <code>--video-mode=&lt;modo&gt;</code> debuxa a xanela doutro xeito nesa execución, mesmo cando qFT8 non se pode abrir o suficiente para cambiar <strong>Modo de vídeo</strong> en Axustes (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> debuxa a xanela mediante OpenGL (mira
                     <a href="#pc-trouble">Se algo non funciona</a>).</li>
             </ul>
 
@@ -844,8 +844,7 @@
                 <li><strong>"Xa está en execución".</strong> Outra copia usa o cartafol de perfil. Péchaa, ou inicia esta co
                     seu propio cartafol <code>--qft8_profile</code>.</li>
                 <li><strong>A xanela está negra ou distorsionada</strong> (controladores gráficos antigos, unha máquina virtual, escritorio
-                    remoto): actualiza o controlador gráfico. Se segue igual, inicia qFT8 con <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), que debuxa a xanela doutro xeito; se iso tampouco axuda, infórmao con <strong>INFORMAR DE ERRO</strong> (Axustes),
+                    remoto): actualiza o controlador gráfico. Se segue igual, escolle outro <strong>Modo de vídeo</strong> en Axustes &gt; Aplicación, ou inicia qFT8 con <code>--video-mode=gdi</code> (Windows) ou <code>--video-mode=x11</code> (Linux), que debuxa a xanela doutro xeito; se iso tampouco axuda, infórmao con <strong>INFORMAR DE ERRO</strong> (Axustes),
                     dicindo que sistema e que tarxeta gráfica tes.</li>
                 <li><strong>Unha xanela está fóra da pantalla</strong> (desconectouse unha pantalla): qFT8 comproba o lugar gardado de cada xanela
                     cando a abre, e a que ten a pantalla desaparecida, ou que quedaría en boa parte fóra da pantalla, ábrese no
@@ -1890,6 +1889,8 @@
                 <li>qFT8 non activa a emisión da radio fóra das bandas de afeccionado da túa rexión (rexión UIT 1, 2 ou 3), e dío; o botón <span translate="no">TX</span> mostra <span translate="no">NO HAM BAND</span>.</li>
                 <li>Algúns países só permiten unha parte dunha banda, ou esixen un permiso especial ou unha notificación previa. Nesas bandas (incluídas 160 m, 80 m, 40 m e 2 m na rexión 3, 23 cm, 70 cm e 13 cm) qFT8 mostra un aviso unha vez por banda, por exemplo &ldquo;Algúns países só permiten unha parte de 60m, ou esixen antes un permiso especial ou unha notificación. Comprobe a súa licenza.&rdquo;; nunca te detén por ese aviso.</li>
                 <li>Cando qFT8 coñece o teu país (ver <a href="#swl-legal">A escoita e a lei</a>), tamén segue o plan de bandas propio dese país onde sexa máis estreito que o da túa rexión. Por agora está integrado para Francia, Alemaña, Reino Unido, Suíza, Italia, España, Países Baixos, Bélxica, Austria, Estados Unidos, Australia e Xapón. Cando o plan do país exclúe claramente unha frecuencia (por exemplo 60 m fóra de 5351.5&ndash;5366.5 kHz en Alemaña, 40 m por riba de 7200 kHz en Xapón, 13 cm 2310&ndash;2390 MHz en Estados Unidos) <span translate="no">TX</span> segue armado, non se envía nada e o botón mostra <span translate="no">NO HAM BAND</span>; cando o plan é menos seguro só ves o aviso de licenza.</li>
+                <li>11 m (a Banda Cidadá, CB, arredor de 27 MHz) non é unha banda de radioafeccionados. qFT8 só transmite aí onde o teu país (polo teu indicativo ou pola túa localización) permite a CB no modo que usas: voz (AM, FM, SSB) nos países cuxas regras de CB coñece qFT8 (Estados Unidos, Canadá, Francia, Alemaña, Reino Unido, España, Austria, República Checa, Polonia, Suecia, Estonia, Bélxica, Países Baixos, Irlanda, Dinamarca, Finlandia, Noruega, Eslovaquia, Croacia, Suíza, Portugal (AM e FM), Australia, Nova Zelandia); os modos de datos como FT8 só nas canles que un país abre expresamente aos datos (Alemaña e Portugal canles 6, 7, 24, 25; República Checa canles 24, 25). En calquera outro lugar, e fóra das canles CB (por exemplo 27.700 MHz), o botón mostra <span translate="no">NO HAM BAND</span> e un aviso explica o motivo.</li>
+                <li>A primeira vez que activas <span translate="no">TX</span> en 11 m, ou pasas a 11 m co <span translate="no">TX</span> activado, qFT8 pídeche unha vez que aceptes que as canles CB, os modos, a potencia e o equipo son responsabilidade túa (qFT8 nunca cambia a potencia da túa radio). Ata que respondas non se envía nada; aceptar queda lembrado e <span translate="no">TX</span> actívase, cancelar desactiva <span translate="no">TX</span>. O control remoto web amosa a mesma pregunta.</li>
                 <li>Ti segues sendo sempre o responsable da túa licenza e do plan de bandas do lugar onde operas.</li>
             </ul>
 
@@ -1940,6 +1941,7 @@
 
             <h4 id="settings-application">Axustes da aplicación</h4>
             <ul>
+                <li>No ordenador (Windows e Linux): <strong>Modo de vídeo</strong>, como se debuxa a xanela, usado desde o seguinte inicio. En Windows <strong>Predeterminado</strong> usa Direct3D e cambia sozinho a GDI se a xanela non deixa de conxelarse; <strong>Direct3D</strong> e <strong>GDI</strong> manteñen un dos dous. En Linux <strong>Predeterminado</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> ou <strong>X11</strong>.</li>
                 <li><strong>Modo de dispositivo lento / batería baixa</strong>: debuxo máis lixeiro, co descodificador sen cambios (ver
                     <a href="#pc-slow">Ordenadores lentos</a>; igual nos teléfonos).</li>
                 <li>No ordenador: <strong>Confirmar antes de pechar</strong> (pregunta antes de que a xanela principal peche qFT8),
@@ -5352,6 +5354,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 A fila de fax meteorolóxico recibe as cartas de radiofax <span translate="no">HF</span> dos servizos meteorolóxicos e navais con calquera radio <span translate="no">HF</span> en <span translate="no">USB</span>, ou un <span translate="no">SDR</span>. O seu botón de frecuencia percorre as emisións do horario público mundial de radiofax (70 frecuencias, coas súas horas de emisión), saltando as que non emiten a esta hora (<span translate="no">UTC</span>); a radio sintonízase 1,9 kHz por debaixo da frecuencia listada. A velocidade (60, 90, 120 ou 240 liñas por minuto) obtense das liñas de fase da carta, e unha carta que xa está no aire comeza por si soa tras unhas liñas; unha imaxe remata co sinal de parada, ou por si soa cando a carta se converte en ruído. Só recepción.
+            </p>
+
+            <p>
+                Cada imaxe que rematan os receptores de fax meteorolóxico, de satélites meteorolóxicos (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) e de globos (<span translate="no">SSDV</span>) gárdase ao momento, sen preguntar, no mesmo cartafol que as imaxes <span translate="no">SSTV</span>: no teléfono <code>Pictures/qFT8 SSTV</code> da galería, no ordenador <code>qFT8 SSTV</code> no teu cartafol de Imaxes, no iPhone o cartafol <code>qFT8 SSTV</code> da app e Fotos. O seu nome di o que é, en <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (receptor, data, hora, frecuencia, estación); unha imaxe cortada porque paraches o receptor remata en <code>_partial</code>. A liña baixo a imaxe di onde foi parar; <strong>Compartir</strong> (teléfono, iPhone) pásaa a outra app, <strong>ABRIR O CARTAFOL</strong> (ordenador) móstraa no seu cartafol e <strong>DESCARGAR</strong> (control remoto web) garda unha copia no dispositivo onde corre o navegador. A imaxe gárdase tal como se recibiu, non como a amosa a vista <strong>NEGATIVO</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Datos de voz dixital por internet</h3>

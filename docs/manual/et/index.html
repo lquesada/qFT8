@@ -790,7 +790,7 @@
                     <code>--list-devices</code> loetleb iga jadapordi ja heliseadme, mida qFT8 näeb, ning lõpetab;
                     <code>--port &lt;device&gt;</code> määrab vaikimisi jadapordi (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> valib profiilikausta;
-                    <code>--bridge</code> käivitab silla; <code>--opengl</code> joonistab akna OpenGL-i kaudu (vaata
+                    <code>--bridge</code> käivitab silla; <code>--video-mode=&lt;mode&gt;</code> joonistab akna selleks käivituseks teisiti, isegi kui qFT8 ei õnnestu avada nii kaugele, et Seadetes <strong>Videorežiim</strong> muuta (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> joonistab akna OpenGL-i kaudu (vaata
                     <a href="#pc-trouble">Kui miski ei tööta</a>).</li>
             </ul>
 
@@ -858,8 +858,7 @@
                 <li><strong>&bdquo;Juba töötab&ldquo;.</strong> Teine koopia kasutab profiilikausta. Sulge see või käivita see
                     oma <code>--qft8_profile</code> kaustaga.</li>
                 <li><strong>Aken on must või moonutatud</strong> (vanad graafikadraiverid, virtuaalmasin, kaug-
-                    töölaud): uuenda graafikadraiverit. Kui see jääb, käivita qFT8 valikuga <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), mis joonistab akna teisiti; kui ka see ei aita, teata sellest nupuga <strong>TEATA VEAST</strong> (Seaded),
+                    töölaud): uuenda graafikadraiverit. Kui see jääb, vali Seaded &gt; Rakendus alt mõni teine <strong>Videorežiim</strong> või käivita qFT8 valikuga <code>--video-mode=gdi</code> (Windows) või <code>--video-mode=x11</code> (Linux), mis joonistab akna teisiti; kui ka see ei aita, teata sellest nupuga <strong>TEATA VEAST</strong> (Seaded),
                     öeldes, milline süsteem ja graafikakaart sul on.</li>
                 <li><strong>Aken on ekraanist väljas</strong> (ekraan ühendati lahti): qFT8 kontrollib iga akna salvestatud kohta
                     akna avamisel ja aken, mille ekraan on kadunud või mis oleks suuremalt jaolt ekraanist väljas, avatakse
@@ -2284,6 +2283,8 @@
                 <li>qFT8 ei lülita raadiot saatma väljaspool teie piirkonna amatöörsagedusalasid (ITU piirkond 1, 2 või 3) ja ütleb seda; <span translate="no">TX</span> nupp näitab <span translate="no">NO HAM BAND</span>.</li>
                 <li>Mõned riigid lubavad ainult osa sagedusalast või nõuavad enne erilist luba või teavitust. Nendel sagedusaladel (sealhulgas 160 m, 80 m, 40 m ja 2 m piirkonnas 3, 23 cm, 70 cm ja 13 cm) näitab qFT8 teadet üks kord sagedusala kohta, näiteks &ldquo;Mõned riigid lubavad ainult osa 60m sagedusalast või nõuavad enne eriluba või teavitamist. Kontrollige oma litsentsi.&rdquo;; selle teate pärast ei peata ta teid kunagi.</li>
                 <li>Kui qFT8 teab teie riiki (vt <a href="#swl-legal">Kuulamine ja seadus</a>), järgib ta ka selle riigi enda sagedusplaani, kui see on kitsam kui teie piirkonna oma. Praegu on see sisse ehitatud riikidele Prantsusmaa, Saksamaa, Ühendkuningriik, Šveits, Itaalia, Hispaania, Holland, Belgia, Austria, Ameerika Ühendriigid, Austraalia ja Jaapan. Kus riigi plaan selgelt välistab sageduse (näiteks 60 m väljaspool 5351.5&ndash;5366.5 kHz riigis Saksamaa, 40 m üle 7200 kHz riigis Jaapan, 13 cm 2310&ndash;2390 MHz riigis Ameerika Ühendriigid), jääb <span translate="no">TX</span> valmis, midagi ei saadeta ja nupp näitab <span translate="no">NO HAM BAND</span>; kus plaan on vähem kindel, näete ainult litsentsiteadet.</li>
+                <li>11 m (kodanikuraadio ehk CB, umbes 27 MHz) ei ole amatöörsagedusala. qFT8 saadab seal ainult siis, kui sinu riik (kutsungi või asukoha järgi) lubab CB-d sinu kasutatavas tööliigis: kõne (AM, FM, SSB) riikides, mille CB-reegleid qFT8 tunneb (Ameerika Ühendriigid, Kanada, Prantsusmaa, Saksamaa, Ühendkuningriik, Hispaania, Austria, Tšehhi, Poola, Rootsi, Eesti, Belgia, Holland, Iirimaa, Taani, Soome, Norra, Slovakkia, Horvaatia, Šveits, Portugal (AM ja FM), Austraalia, Uus-Meremaa); andmeliigid nagu FT8 ainult kanalitel, mille riik on andmetele selgesõnaliselt avanud (Saksamaa ja Portugal kanalid 6, 7, 24, 25; Tšehhi kanalid 24, 25). Mujal ja väljaspool CB-kanaleid (näiteks 27.700 MHz) näitab nupp <span translate="no">NO HAM BAND</span> ja teade ütleb, miks.</li>
+                <li>Kui lülitad <span translate="no">TX</span> esimest korda 11 m-l sisse või liigud 11 m-le sisselülitatud <span translate="no">TX</span>-iga, küsib qFT8 sinult ühe korra, kas nõustud, et CB-kanalid, tööliigid, võimsus ja seadmed on sinu vastutusel (qFT8 ei muuda kunagi sinu raadio võimsust). Kuni sa ei vasta, ei saadeta midagi; nõustumine jäetakse meelde ja <span translate="no">TX</span> lülitub sisse, tühistamine lülitab <span translate="no">TX</span> välja. Veebipult näitab sama küsimust.</li>
                 <li>Vastutate alati ise oma litsentsi ja selle koha sagedusplaani eest, kus töötate.</li>
             </ul>
 
@@ -2334,6 +2335,7 @@
 
             <h4 id="settings-application">Rakenduse seaded</h4>
             <ul>
+                <li>Arvutis (Windows ja Linux): <strong>Videorežiim</strong>, kuidas akent joonistatakse, kehtib järgmisest käivitamisest. Windowsis kasutab <strong>Vaikimisi</strong> Direct3D-d ja lülitub ise GDI-le, kui aken hangub pidevalt; <strong>Direct3D</strong> ja <strong>GDI</strong> jätavad ühe neist. Linuxis <strong>Vaikimisi</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> või <strong>X11</strong>.</li>
                 <li><strong>Aeglase seadme / madala aku režiim</strong>: kergem joonistamine, dekooder jääb samaks (vt
                     <a href="#pc-slow">Aeglased arvutid</a>; telefonides sama).</li>
                 <li>Arvutis: <strong>Kinnita enne sulgemist</strong> (küsib enne, kui peaaken qFT8 sulgeb),
@@ -6639,6 +6641,9 @@
                 Ilmafaksi rida võtab vastu meteoroloogia- ja mereteenistuste <span translate="no">HF</span> raadiofaksikaarte mis tahes <span translate="no">HF</span> raadioga režiimis <span translate="no">USB</span> või <span translate="no">SDR</span>-ga. Selle sagedusenupp käib läbi avaliku ülemaailmse raadiofaksi ajakava saated (70 sagedust nende saateaegadega), jättes vahele need, mis sel tunnil õhus pole (<span translate="no">UTC</span>); raadio häälestatakse 1,9 kHz loetletud sagedusest allapoole. Kiirus (60, 90, 120 või 240 rida minutis) leitakse kaardi faasimisridadest ja kaart, mis on juba õhus, algab ise mõne rea järel; pilt lõpeb stoppsignaaliga või ise, kui kaart muutub müraks. Ainult vastuvõtt.
             </p>
 
+            <p>
+                Iga pilt, mille ilmafaksi, ilmasatelliitide (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) ja õhupallide (<span translate="no">SSDV</span>) vastuvõtjad lõpetavad, salvestatakse kohe ja küsimata samasse kausta kui <span translate="no">SSTV</span>-pildid: telefonis galerii <code>Pictures/qFT8 SSTV</code>, arvutis <code>qFT8 SSTV</code> sinu kaustas Pictures, iPhone'is rakenduse kaust <code>qFT8 SSTV</code> ja Fotod. Selle nimi ütleb, mis see on, ajas <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (vastuvõtja, kuupäev, kellaaeg, sagedus, jaam); pilt, mis katkes, sest sa peatasid vastuvõtja, lõpeb tähisega <code>_partial</code>. Pildi all olev rida ütleb, kuhu see läks; <strong>Jaga</strong> (telefon, iPhone) annab selle teisele rakendusele, <strong>Ava kaust</strong> (arvuti) näitab seda tema kaustas ja <strong>LAADI ALLA</strong> (veebipult) salvestab koopia seadmesse, kus brauser töötab. Pilt salvestatakse sellisena, nagu see võeti vastu, mitte nii, nagu vaade <strong>NEGATIIV</strong> seda näitab.
+            </p>
             <h3 id="swl-dv-internet">Digitaalhääle andmed internetis</h3>
             <p>
                 <span translate="no">DMR</span>, <span translate="no">D-STAR</span>, Fusioni ja <span translate="no">M17</span> andmeread võivad kuulata ka internetis (nende viimane valik): kes räägib, millises grupis või reflektoris, nende tekst ja asukoht, <span translate="no">BrandMeister</span> aktiivsuse voost ja avatud reflektoritest (<span translate="no">XLX</span>, <span translate="no">XRF</span>, <span translate="no">DCS</span>, <span translate="no">YSF</span>, <span translate="no">M17</span>). Ainult andmed ja ainult vastuvõtt: qFT8 ei saada kunagi võrku, ei ühenda kunagi kaht neist ega mängi kunagi <span translate="no">DMR</span>, <span translate="no">D-STAR</span> ega Fusioni häält. Reflektorid näevad sind kuulajana sinu enda kutsungi all. Kui võrk katkeb, ühendub kanal ise uuesti umbes 15 sekundi jooksul. Eksperimentaalne.

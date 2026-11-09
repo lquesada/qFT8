@@ -770,7 +770,7 @@
                     chúng): <code>--list-devices</code> liệt kê mọi cổng nối tiếp và thiết bị âm thanh qFT8 thấy rồi thoát;
                     <code>--port &lt;thiết bị&gt;</code> đặt cổng nối tiếp mặc định (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;thư mục&gt;</code> chọn thư mục hồ sơ;
-                    <code>--bridge</code> khởi động một bridge; <code>--opengl</code> vẽ cửa sổ qua OpenGL (xem
+                    <code>--bridge</code> khởi động một bridge; <code>--video-mode=&lt;mode&gt;</code> vẽ cửa sổ theo kiểu khác cho lần chạy đó, kể cả khi qFT8 không mở được đủ để đổi <strong>Chế độ video</strong> trong Cài đặt (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vẽ cửa sổ qua OpenGL (xem
                     <a href="#pc-trouble">Khi có gì đó không hoạt động</a>).</li>
             </ul>
 
@@ -837,10 +837,7 @@
                     bạn.</li>
                 <li><strong>"Đã đang chạy".</strong> Một bản khác đang dùng thư mục hồ sơ. Đóng nó, hoặc khởi động bản này với
                     thư mục <code>--qft8_profile</code> riêng.</li>
-                <li><strong>Cửa sổ đen hoặc bị méo hình</strong> (trình điều khiển đồ họa cũ, máy ảo, màn hình từ xa): cập nhật
-                    trình điều khiển đồ họa. Nếu vẫn vậy, khởi động qFT8 với <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), cách này vẽ cửa sổ theo kiểu khác; nếu vẫn không được, hãy báo cáo bằng
-                    <strong>BÁO CÁO LỖI</strong> (Cài đặt), nói rõ bạn dùng hệ thống và card đồ họa nào.</li>
+                <li><strong>Cửa sổ đen hoặc bị méo hình</strong> (trình điều khiển đồ họa cũ, máy ảo, màn hình từ xa): cập nhật trình điều khiển đồ họa. Nếu vẫn vậy, chọn một <strong>Chế độ video</strong> khác trong Cài đặt &gt; Ứng dụng, hoặc khởi động qFT8 với <code>--video-mode=gdi</code> (Windows) hoặc <code>--video-mode=x11</code> (Linux), cách này vẽ cửa sổ theo kiểu khác; nếu vẫn không được, hãy báo cáo bằng <strong>BÁO CÁO LỖI</strong> (Cài đặt), nói rõ bạn dùng hệ thống và card đồ họa nào.</li>
                 <li><strong>Một cửa sổ nằm ngoài màn hình</strong> (một màn hình đã bị rút ra): qFT8 kiểm tra vị trí đã lưu của
                     từng cửa sổ khi mở nó, và cửa sổ nào có màn hình đã mất, hoặc phần lớn sẽ nằm ngoài màn hình, sẽ mở ở giữa
                     màn hình chính. Nếu một cửa sổ vẫn ngoài tầm với, hãy đóng ngăn của nó bằng nút trên thanh dưới cùng rồi mở
@@ -1894,6 +1891,8 @@
                 <li>qFT8 không phát bằng máy vô tuyến ngoài các băng tần nghiệp dư của khu vực của bạn (Khu vực ITU 1, 2 hoặc 3) và sẽ báo điều đó; nút <span translate="no">TX</span> hiển thị <span translate="no">NO HAM BAND</span>.</li>
                 <li>Một số quốc gia chỉ cho phép một phần của băng tần, hoặc cần giấy phép đặc biệt hay thông báo trước. Trên các băng tần đó (gồm 160 m, 80 m, 40 m và 2 m ở Khu vực 3, 23 cm, 70 cm và 13 cm), qFT8 hiển thị một thông báo mỗi băng tần một lần, ví dụ &ldquo;Một số quốc gia chỉ cho phép một phần của 60m, hoặc yêu cầu giấy phép đặc biệt hay thông báo trước. Hãy kiểm tra giấy phép của bạn.&rdquo;; nó không bao giờ chặn bạn vì thông báo này.</li>
                 <li>Khi qFT8 biết quốc gia của bạn (xem <a href="#swl-legal">Nghe và pháp luật</a>), nó cũng làm theo quy hoạch băng tần riêng của quốc gia đó nếu quy hoạch ấy hẹp hơn quy hoạch của khu vực bạn. Hiện tính năng này được tích hợp sẵn cho Pháp, Đức, Vương quốc Anh, Thụy Sĩ, Italy, Tây Ban Nha, Hà Lan, Bỉ, Áo, Hoa Kỳ, Australia và Nhật Bản. Khi quy hoạch của quốc gia loại trừ rõ ràng một tần số (ví dụ 60 m ngoài 5351.5&ndash;5366.5 kHz ở Đức, 40 m trên 7200 kHz ở Nhật Bản, 13 cm 2310&ndash;2390 MHz ở Hoa Kỳ), <span translate="no">TX</span> vẫn ở trạng thái sẵn sàng, không gửi gì và nút hiển thị <span translate="no">NO HAM BAND</span>; khi quy hoạch kém chắc chắn hơn, bạn chỉ thấy thông báo về giấy phép.</li>
+                <li>11 m (băng tần công dân, CB, khoảng 27 MHz) không phải là băng tần nghiệp dư. qFT8 chỉ phát ở đó khi quốc gia của bạn (theo hô hiệu hoặc vị trí của bạn) cho phép CB ở chế độ bạn dùng: thoại (AM, FM, SSB) ở những nước mà qFT8 biết quy định CB (Hoa Kỳ, Canada, Pháp, Đức, Vương quốc Anh, Tây Ban Nha, Áo, Cộng hòa Séc, Ba Lan, Thụy Điển, Estonia, Bỉ, Hà Lan, Ireland, Đan Mạch, Phần Lan, Na Uy, Slovakia, Croatia, Thụy Sĩ, Bồ Đào Nha (AM và FM), Úc, New Zealand); các chế độ dữ liệu như FT8 chỉ trên những kênh mà một nước mở rõ ràng cho dữ liệu (Đức và Bồ Đào Nha kênh 6, 7, 24, 25; Cộng hòa Séc kênh 24, 25). Ở mọi nơi khác, và ngoài các kênh CB (ví dụ 27.700 MHz), nút hiển thị <span translate="no">NO HAM BAND</span> và một thông báo cho biết lý do.</li>
+                <li>Lần đầu bạn bật <span translate="no">TX</span> trên 11 m, hoặc chuyển sang 11 m khi <span translate="no">TX</span> đang bật, qFT8 hỏi bạn một lần để chấp nhận rằng các kênh CB, chế độ, công suất và thiết bị là trách nhiệm của bạn (qFT8 không bao giờ thay đổi công suất của radio bạn). Cho đến khi bạn trả lời sẽ không có gì được gửi; việc chấp nhận được ghi nhớ và <span translate="no">TX</span> bật, việc hủy sẽ tắt <span translate="no">TX</span>. Điều khiển từ xa qua web hiển thị cùng câu hỏi.</li>
                 <li>Bạn luôn tự chịu trách nhiệm về giấy phép của mình và quy hoạch băng tần nơi bạn hoạt động.</li>
             </ul>
 
@@ -1944,6 +1943,7 @@
 
             <h4 id="settings-application">Cài đặt ứng dụng</h4>
             <ul>
+                <li>Trên máy tính (Windows và Linux): <strong>Chế độ video</strong>, cách cửa sổ được vẽ, áp dụng từ lần khởi động sau. Trên Windows, <strong>Mặc định</strong> dùng Direct3D và tự chuyển sang GDI nếu cửa sổ cứ bị treo; <strong>Direct3D</strong> và <strong>GDI</strong> giữ nguyên một trong hai. Trên Linux có <strong>Mặc định</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> hoặc <strong>X11</strong>.</li>
                 <li><strong>Chế độ thiết bị chậm / pin yếu</strong>: vẽ nhẹ hơn, bộ giải mã không đổi (xem
                     <a href="#pc-slow">Máy tính chậm</a>; trên điện thoại cũng vậy).</li>
                 <li>Trên máy tính: <strong>Xác nhận trước khi đóng</strong> (hỏi trước khi cửa sổ chính đóng qFT8),
@@ -5188,6 +5188,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Hàng fax thời tiết thu các bản đồ radiofax <span translate="no">HF</span> của các cơ quan khí tượng và hải quân qua bất kỳ radio <span translate="no">HF</span> nào trong <span translate="no">USB</span>, hoặc một <span translate="no">SDR</span>. Nút tần số của nó đi qua các chương trình phát của lịch radiofax toàn cầu công khai (70 tần số, kèm giờ phát), bỏ qua những chương trình không phát vào giờ này (<span translate="no">UTC</span>); radio được chỉnh thấp hơn tần số niêm yết 1,9 kHz. Tốc độ (60, 90, 120 hoặc 240 dòng một phút) được tìm từ các dòng đồng pha của bản đồ, và một bản đồ đang phát sẵn sẽ tự bắt đầu sau vài dòng; một bức ảnh kết thúc ở tín hiệu dừng, hoặc tự kết thúc khi bản đồ chuyển thành nhiễu. Chỉ thu.
+            </p>
+
+            <p>
+                Mọi hình ảnh mà các bộ thu fax thời tiết, vệ tinh thời tiết (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) và bóng thám không (<span translate="no">SSDV</span>) hoàn tất đều được lưu ngay, không hỏi, trong cùng thư mục với ảnh <span translate="no">SSTV</span>: trên điện thoại là <code>Pictures/qFT8 SSTV</code> của thư viện ảnh, trên máy tính là <code>qFT8 SSTV</code> trong thư mục Pictures của bạn, trên iPhone là thư mục <code>qFT8 SSTV</code> của ứng dụng và Ảnh. Tên tệp cho biết đó là gì, theo giờ <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (bộ thu, ngày, giờ, tần số, đài); ảnh bị cắt ngang vì bạn dừng bộ thu sẽ kết thúc bằng <code>_partial</code>. Dòng bên dưới ảnh cho biết ảnh đã được lưu ở đâu; <strong>Chia sẻ</strong> (điện thoại, iPhone) chuyển ảnh cho ứng dụng khác, <strong>Mở thư mục</strong> (máy tính) hiển thị ảnh trong thư mục của nó và <strong>TẢI XUỐNG</strong> (điều khiển từ xa qua web) lưu một bản sao vào thiết bị mà trình duyệt đang chạy. Ảnh được lưu như lúc nhận, không phải như chế độ xem <strong>ÂM BẢN</strong> hiển thị.
             </p>
 
             <h3 id="swl-dv-internet">Dữ liệu thoại số qua internet</h3>

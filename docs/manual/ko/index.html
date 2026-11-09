@@ -759,7 +759,7 @@
                     표시됩니다). <code>--list-devices</code>는 qFT8이 보는 모든 시리얼 포트와 사운드 장치를 나열하고
                     종료합니다. <code>--port &lt;device&gt;</code>는 기본 시리얼 포트(<code>COM3</code>,
                     <code>/dev/ttyACM0</code>)를 정합니다. <code>--qft8_profile &lt;folder&gt;</code>는 프로필 폴더를
-                    고릅니다. <code>--bridge</code>는 bridge를 시작합니다. <code>--opengl</code>은 창을 OpenGL로
+                    고릅니다. <code>--bridge</code>는 bridge를 시작합니다. <code>--video-mode=&lt;mode&gt;</code>는 그 실행에 한해 창을 다른 방식으로 그립니다. qFT8이 설정에서 <strong>비디오 모드</strong>를 바꿀 수 있을 만큼 열리지 않을 때도 쓸 수 있습니다(Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>). <code>--opengl</code>은 창을 OpenGL로
                     그립니다(<a href="#pc-trouble">문제가 생겼을 때</a> 참조).</li>
             </ul>
 
@@ -829,8 +829,7 @@
                 <li><strong>"이미 실행 중".</strong> 다른 사본이 프로필 폴더를 쓰고 있습니다. 그것을 닫거나, 이 사본을 자신의
                     <code>--qft8_profile</code> 폴더로 시작하세요.</li>
                 <li><strong>창이 검게 나오거나 깨져 보입니다</strong>(오래된 그래픽 드라이버, 가상 머신, 원격 데스크톱):
-                    그래픽 드라이버를 업데이트하세요. 그래도 안 되면 qFT8을 <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>)로 시작하세요. 창을 다른 방식으로 그립니다. 그래도 안 되면
+                    그래픽 드라이버를 업데이트하세요. 그래도 안 되면 설정 &gt; 애플리케이션에서 다른 <strong>비디오 모드</strong>를 고르거나 qFT8을 <code>--video-mode=gdi</code>(Windows) 또는 <code>--video-mode=x11</code>(Linux)로 시작하세요. 창을 다른 방식으로 그립니다. 그래도 안 되면
                     <strong>버그 신고</strong>(설정)로 어떤 시스템과 그래픽 카드를 쓰는지 알려 주세요.</li>
                 <li><strong>창이 화면 밖에 있습니다</strong>(화면 하나를 뽑았을 때): qFT8은 창을 열 때 각 창의 저장된
                     위치를 확인하며, 화면이 없어졌거나 대부분 화면 밖이 될 창은 대신 주 화면의 가운데에 열립니다. 그래도
@@ -1872,6 +1871,8 @@
                 <li>qFT8은 사용자 지역(ITU 1, 2 또는 3지역)의 아마추어 밴드 밖에서는 무전기를 송신 상태로 만들지 않으며, 그렇다고 알려 줍니다. <span translate="no">TX</span> 버튼에 <span translate="no">NO HAM BAND</span>가 표시됩니다.</li>
                 <li>일부 국가는 밴드의 일부만 허용하거나, 먼저 특별 허가나 신고를 요구합니다. 이러한 밴드(3지역의 160 m, 80 m, 40 m, 2 m, 그리고 23 cm, 70 cm, 13 cm 포함)에서는 qFT8이 밴드마다 한 번 안내를 표시합니다. 예: &ldquo;일부 국가는 60m의 일부만 허용하거나, 먼저 특별 허가나 신고를 요구합니다. 면허를 확인하십시오.&rdquo;. 이 안내 때문에 송신이 막히지는 않습니다.</li>
                 <li>qFT8이 사용자 국가를 알면(<a href="#swl-legal">청취와 법</a> 참조), 그 국가의 밴드 플랜이 지역 플랜보다 좁은 경우 국가 플랜도 따릅니다. 현재 프랑스, 독일, 영국, 스위스, 이탈리아, 스페인, 네덜란드, 벨기에, 오스트리아, 미국, 오스트레일리아, 일본에 대해 내장되어 있습니다. 국가 플랜이 어떤 주파수를 분명히 배제하는 경우(예: 독일의 5351.5&ndash;5366.5 kHz 밖 60 m, 일본의 7200 kHz 위 40 m, 미국의 13 cm 2310&ndash;2390 MHz) <span translate="no">TX</span>는 켜진 상태로 유지되고, 아무것도 송신되지 않으며, 버튼에 <span translate="no">NO HAM BAND</span>가 표시됩니다. 플랜이 덜 확실한 경우에는 면허 안내만 표시됩니다.</li>
+                <li>11 m(시민 밴드, CB, 27 MHz 부근)는 아마추어 밴드가 아닙니다. qFT8은 사용자 국가(호출부호나 위치에 따라)가 사용 중인 모드로 CB를 허용하는 곳에서만 송신합니다. 음성(AM, FM, SSB)은 qFT8이 CB 규정을 아는 국가(미국, 캐나다, 프랑스, 독일, 영국, 스페인, 오스트리아, 체코, 폴란드, 스웨덴, 에스토니아, 벨기에, 네덜란드, 아일랜드, 덴마크, 핀란드, 노르웨이, 슬로바키아, 크로아티아, 스위스, 포르투갈(AM과 FM), 오스트레일리아, 뉴질랜드)에서, FT8 같은 데이터 모드는 국가가 데이터용으로 명시적으로 연 채널에서만 가능합니다(독일과 포르투갈은 채널 6, 7, 24, 25, 체코는 채널 24, 25). 그 밖의 곳이나 CB 채널 밖(예: 27.700 MHz)에서는 버튼에 NO HAM BAND가 표시되고 이유를 알리는 안내가 나옵니다.</li>
+                <li>11 m에서 처음 TX를 켜거나 TX가 켜진 채 11 m로 옮기면, qFT8은 CB 채널, 모드, 출력, 장비가 사용자의 책임임을 받아들이는지 한 번 묻습니다(qFT8은 무전기의 출력을 절대 바꾸지 않습니다). 답하기 전에는 아무것도 송신되지 않습니다. 동의는 기억되고 TX가 켜지며, 취소하면 TX가 꺼집니다. 웹 리모컨에도 같은 질문이 표시됩니다.</li>
                 <li>면허와 운용하는 곳의 밴드 플랜에 대한 책임은 항상 사용자에게 있습니다.</li>
             </ul>
 
@@ -1918,6 +1919,7 @@
 
             <h4 id="settings-application">애플리케이션 설정</h4>
             <ul>
+                <li>컴퓨터(Windows와 Linux): <strong>비디오 모드</strong>, 창을 그리는 방식이며 다음 시작부터 적용됩니다. Windows에서 <strong>기본값</strong>는 Direct3D를 쓰고 창이 계속 멈추면 스스로 GDI로 바꿉니다. <strong>Direct3D</strong>와 <strong>GDI</strong>는 둘 중 하나를 고정합니다. Linux에서는 <strong>기본값</strong>, <strong>XRender</strong>, <strong>OpenGL</strong>, <strong>X11</strong> 중에서 고릅니다.</li>
                 <li><strong>느린 기기 / 배터리 부족 모드</strong>: 더 가벼운 그리기, 디코더는 그대로입니다(<a href="#pc-slow">느린 컴퓨터</a> 참고, 휴대전화에서도 같습니다).</li>
                 <li>컴퓨터에서는 <strong>닫기 전에 확인</strong>(메인 창을 닫아 qFT8을 끝내기 전에 묻습니다)와
                     설정과 로그를 보관하는 폴더.</li>
@@ -5192,6 +5194,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 기상 팩스 행은 <span translate="no">USB</span>의 아무 <span translate="no">HF</span> 무선기나 <span translate="no">SDR</span>(으)로 기상 기관과 해군의 <span translate="no">HF</span> 무선 팩스 일기도를 수신합니다. 주파수 버튼은 공개된 세계 무선 팩스 방송 일정(70개 주파수와 방송 시간)을 차례로 넘기며, 지금 시간에 방송하지 않는 것(<span translate="no">UTC</span>)은 건너뜁니다. 무선기는 목록의 주파수보다 1.9 kHz 아래로 동조됩니다. 속도(분당 60, 90, 120, 240줄)는 일기도의 위상 맞춤 선에서 찾아내고, 이미 방송 중인 일기도는 몇 줄 뒤에 저절로 시작합니다. 사진은 정지 신호에서, 또는 일기도가 잡음으로 바뀌면 저절로 끝납니다. 수신 전용입니다.
+            </p>
+
+            <p>
+                기상 팩스, 기상 위성(<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>), 기구(<span translate="no">SSDV</span>) 수신기가 끝낸 모든 그림은 묻지 않고 즉시 <span translate="no">SSTV</span> 그림과 같은 폴더에 저장됩니다. 휴대전화에서는 갤러리의 <code>Pictures/qFT8 SSTV</code>, 컴퓨터에서는 사진 폴더의 <code>qFT8 SSTV</code>, iPhone에서는 앱의 <code>qFT8 SSTV</code> 폴더와 사진 앱입니다. 이름은 무엇인지 알려 줍니다(<span translate="no">UTC</span>): <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code>(수신기, 날짜, 시각, 주파수, 방송국). 수신기를 멈춰서 중간에 끊긴 그림은 <code>_partial</code>로 끝납니다. 그림 아래 줄에 저장된 위치가 나옵니다. <strong>공유</strong>(휴대전화, iPhone)는 다른 앱에 넘기고, <strong>폴더 열기</strong>(컴퓨터)는 해당 폴더에서 보여 주며, <strong>다운로드</strong>(웹 리모컨)는 브라우저가 실행 중인 기기에 사본을 저장합니다. 그림은 수신된 그대로 저장되며, <strong>네거티브</strong> 보기가 보여 주는 모습으로 저장되지 않습니다.
             </p>
 
             <h3 id="swl-dv-internet">인터넷을 통한 디지털 음성 데이터</h3>

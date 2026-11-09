@@ -790,7 +790,7 @@
                     menampilkannya): <code>--list-devices</code> mendaftar setiap port serial dan perangkat suara yang
                     dilihat qFT8 lalu keluar; <code>--port &lt;perangkat&gt;</code> mengatur port serial bawaan
                     (<code>COM3</code>, <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> memilih
-                    folder profil; <code>--bridge</code> memulai bridge; <code>--opengl</code> menggambar jendela lewat
+                    folder profil; <code>--bridge</code> memulai bridge; <code>--video-mode=&lt;mode&gt;</code> menggambar jendela dengan cara lain untuk satu kali jalan itu, bahkan saat qFT8 tidak bisa dibuka sampai cukup jauh untuk mengubah <strong>Mode video</strong> di Pengaturan (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> menggambar jendela lewat
                     OpenGL (lihat <a href="#pc-trouble">Jika ada yang tidak berfungsi</a>).</li>
             </ul>
 
@@ -860,8 +860,7 @@
                 <li><strong>"Sudah Berjalan".</strong> Salinan lain memakai folder profil. Tutup, atau jalankan yang ini
                     dengan folder <code>--qft8_profile</code> miliknya sendiri.</li>
                 <li><strong>Jendela hitam atau kacau</strong> (driver grafis lama, mesin virtual, desktop jarak jauh):
-                    perbarui driver grafis. Jika tetap begitu, jalankan qFT8 dengan <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), yang menggambar jendela dengan cara lain; jika itu pun tidak membantu,
+                    perbarui driver grafis. Jika tetap begitu, pilih <strong>Mode video</strong> lain di Pengaturan &gt; Aplikasi, atau jalankan qFT8 dengan <code>--video-mode=gdi</code> (Windows) atau <code>--video-mode=x11</code> (Linux), yang menggambar jendela dengan cara lain; jika itu pun tidak membantu,
                     laporkan dengan <strong>LAPORKAN BUG</strong> (Pengaturan), sebutkan sistem dan kartu grafis yang Anda
                     pakai.</li>
                 <li><strong>Sebuah jendela berada di luar layar</strong> (sebuah layar dicabut): qFT8 memeriksa posisi
@@ -1910,6 +1909,8 @@
                 <li>qFT8 tidak memancarkan radio di luar pita amatir wilayah Anda (ITU Region 1, 2, atau 3), dan memberi tahu hal itu; tombol <span translate="no">TX</span> menampilkan <span translate="no">NO HAM BAND</span>.</li>
                 <li>Beberapa negara hanya mengizinkan sebagian pita, atau memerlukan izin khusus atau pemberitahuan lebih dulu. Pada pita tersebut (termasuk 160 m, 80 m, 40 m, dan 2 m di Region 3, 23 cm, 70 cm, dan 13 cm) qFT8 menampilkan pemberitahuan sekali per pita, misalnya &ldquo;Beberapa negara hanya mengizinkan sebagian dari 60m, atau memerlukan izin khusus atau pemberitahuan terlebih dahulu. Periksa lisensi Anda.&rdquo;; qFT8 tidak pernah menghentikan Anda karena pemberitahuan itu.</li>
                 <li>Setelah qFT8 mengetahui negara Anda (lihat <a href="#swl-legal">Mendengarkan dan hukum</a>), qFT8 juga mengikuti rencana pita milik negara itu jika lebih sempit daripada rencana wilayah Anda. Saat ini sudah tertanam untuk Prancis, Jerman, Inggris Raya, Swiss, Italia, Spanyol, Belanda, Belgia, Austria, Amerika Serikat, Australia, dan Jepang. Jika rencana negara jelas melarang suatu frekuensi (misalnya 60 m di luar 5351.5&ndash;5366.5 kHz di Jerman, 40 m di atas 7200 kHz di Jepang, 13 cm 2310&ndash;2390 MHz di Amerika Serikat) <span translate="no">TX</span> tetap siap, tidak ada yang dikirim, dan tombol menampilkan <span translate="no">NO HAM BAND</span>; jika rencananya kurang pasti, Anda hanya melihat pemberitahuan lisensi.</li>
+                <li>11 m (Citizens Band, CB, sekitar 27 MHz) bukan pita amatir. qFT8 memancar di sana hanya jika negara Anda (menurut tanda panggil atau lokasi Anda) mengizinkan CB pada mode yang Anda pakai: suara (AM, FM, SSB) di negara yang aturan CB-nya diketahui qFT8 (Amerika Serikat, Kanada, Prancis, Jerman, Inggris Raya, Spanyol, Austria, Republik Ceko, Polandia, Swedia, Estonia, Belgia, Belanda, Irlandia, Denmark, Finlandia, Norwegia, Slovakia, Kroasia, Swiss, Portugal (AM dan FM), Australia, Selandia Baru); mode data seperti FT8 hanya pada kanal yang secara tegas dibuka suatu negara untuk data (Jerman dan Portugal kanal 6, 7, 24, 25; Republik Ceko kanal 24, 25). Di tempat lain, dan di luar kanal CB (misalnya 27.700 MHz), tombol menampilkan <span translate="no">NO HAM BAND</span> dan sebuah pemberitahuan menjelaskan alasannya.</li>
+                <li>Saat pertama kali Anda menyalakan <span translate="no">TX</span> di 11 m, atau berpindah ke 11 m dengan <span translate="no">TX</span> menyala, qFT8 meminta sekali agar Anda menerima bahwa kanal, mode, daya, dan peralatan CB adalah tanggung jawab Anda (qFT8 tidak pernah mengubah daya radio Anda). Sebelum Anda menjawab, tidak ada yang dikirim; persetujuan diingat dan <span translate="no">TX</span> menyala, pembatalan mematikan <span translate="no">TX</span>. Remote web menampilkan pertanyaan yang sama.</li>
                 <li>Anda tetap bertanggung jawab atas lisensi Anda dan rencana pita di tempat Anda beroperasi.</li>
             </ul>
 
@@ -1940,6 +1941,7 @@
 
             <h4 id="settings-application">Pengaturan aplikasi</h4>
             <ul>
+            <li>Di komputer (Windows dan Linux): <strong>Mode video</strong>, cara jendela digambar, berlaku mulai peluncuran berikutnya. Di Windows <strong>Bawaan</strong> memakai Direct3D dan beralih sendiri ke GDI jika jendela terus membeku; <strong>Direct3D</strong> dan <strong>GDI</strong> mempertahankan salah satunya. Di Linux <strong>Bawaan</strong>, <strong>XRender</strong>, <strong>OpenGL</strong>, atau <strong>X11</strong>.</li>
             <li><strong>Mode perangkat lambat / baterai lemah</strong>: gambar lebih ringan, dekoder tidak berubah (lihat <a href="#pc-slow">Komputer yang lambat</a>; sama di ponsel).</li>
             <li>Di komputer: <strong>Konfirmasi sebelum menutup</strong> (bertanya sebelum jendela utama menutup qFT8), dan folder tempat pengaturan serta lognya disimpan.</li>
             <li><strong>Antarmuka Pengguna</strong>: <strong>Orientasi</strong>, <strong>Paksa orientasi potret dalam mode pencatat</strong> (ponsel), <strong>Kuadran</strong> (tablet), <strong>Fitur</strong> dan <strong>Aplikasi menutupi</strong> (semuanya di <a href="#layouts">Tata letak layar</a>).</li>
@@ -5296,6 +5298,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Baris faks cuaca menerima peta radiofaks <span translate="no">HF</span> dari layanan meteorologi dan angkatan laut lewat radio <span translate="no">HF</span> apa pun di <span translate="no">USB</span>, atau <span translate="no">SDR</span>. Tombol frekuensinya melangkah melalui siaran dalam jadwal radiofaks dunia yang terbuka untuk umum (70 frekuensi, beserta jam siarannya), melewati yang tidak mengudara pada jam ini (<span translate="no">UTC</span>); radio disetel 1,9 kHz di bawah frekuensi yang tercantum. Kecepatan (60, 90, 120 atau 240 baris per menit) ditemukan dari garis fasa peta, dan peta yang sudah mengudara mulai sendiri setelah beberapa baris; gambar berakhir pada sinyal berhenti, atau sendiri saat peta berubah menjadi derau. Hanya menerima.
+            </p>
+
+            <p>
+                Setiap gambar yang diselesaikan penerima faks cuaca, satelit cuaca (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) dan balon (<span translate="no">SSDV</span>) langsung disimpan, tanpa bertanya, di folder yang sama dengan gambar <span translate="no">SSTV</span>: di ponsel <code>Pictures/qFT8 SSTV</code> di galeri, di komputer <code>qFT8 SSTV</code> di folder Pictures Anda, di iPhone folder <code>qFT8 SSTV</code> milik aplikasi dan Foto. Namanya menyebutkan isinya, dalam <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (penerima, tanggal, waktu, frekuensi, stasiun); gambar yang terpotong karena Anda menghentikan penerima berakhiran <code>_partial</code>. Baris di bawah gambar menyebutkan ke mana gambar itu disimpan; <strong>Bagikan</strong> (ponsel, iPhone) menyerahkannya ke aplikasi lain, <strong>Buka folder</strong> (komputer) menampilkannya di foldernya dan <strong>UNDUH</strong> (remote web) menyimpan salinan di perangkat tempat browser berjalan. Gambar disimpan sebagaimana diterima, bukan seperti tampilan <strong>NEGATIF</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Data suara digital lewat internet</h3>

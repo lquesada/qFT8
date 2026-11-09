@@ -795,7 +795,10 @@
                     shows them): <code>--list-devices</code> lists every serial port and sound device qFT8 sees and quits;
                     <code>--port &lt;device&gt;</code> sets the default serial port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> chooses the profile folder;
-                    <code>--bridge</code> starts a bridge; <code>--opengl</code> draws the window through OpenGL (see
+                    <code>--bridge</code> starts a bridge; <code>--video-mode=&lt;mode&gt;</code> draws the window another way for that
+                    run, even when qFT8 cannot be opened far enough to change <strong>Video mode</strong> in Settings
+                    (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>,
+                    <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> draws the window through OpenGL (see
                     <a href="#pc-trouble">If something does not work</a>).</li>
             </ul>
 
@@ -863,8 +866,9 @@
                 <li><strong>"Already Running".</strong> Another copy uses the profile folder. Close it, or start this one with
                     its own <code>--qft8_profile</code> folder.</li>
                 <li><strong>The window is black or garbled</strong> (old graphics drivers, a virtual machine, remote
-                    desktop): update the graphics driver. If it stays, start qFT8 with <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), which draws the window another way; if that does not help either, report it with <strong>REPORT BUG</strong> (Settings),
+                    desktop): update the graphics driver. If it stays, choose another <strong>Video mode</strong> in Settings
+                    &gt; Application, or start qFT8 with <code>--video-mode=gdi</code> (Windows) or
+                    <code>--video-mode=x11</code> (Linux), which draws the window another way; if that does not help either, report it with <strong>REPORT BUG</strong> (Settings),
                     saying which system and graphics card you have.</li>
                 <li><strong>A window is off screen</strong> (a screen was unplugged): qFT8 checks each window's saved place
                     when it opens the window, and one whose screen is gone, or that would be mostly off the screen, opens in
@@ -2349,6 +2353,8 @@
                 <li>qFT8 does not key the radio outside the amateur bands of your region (ITU Region 1, 2 or 3), and says so; the <span translate="no">TX</span> button reads <span translate="no">NO HAM BAND</span>.</li>
                 <li>Some countries allow only part of a band, or need a special permission or a notification first. On those bands (including 160 m, 80 m, 40 m and 2 m in Region 3, 23 cm, 70 cm and 13 cm) qFT8 shows a notice once per band, for example &ldquo;Some countries allow only part of 60m, or need a special permission or a notification first. Check your licence.&rdquo;; it never stops you for that notice.</li>
                 <li>Once qFT8 knows your country (see <a href="#swl-legal">Listening and the law</a>), it also follows that country's own band plan where it is narrower than your region's. This is so far built in for France, Germany, United Kingdom, Switzerland, Italy, Spain, Netherlands, Belgium, Austria, United States, Australia and Japan. Where the country's plan clearly rules a frequency out (for example 60 m outside 5351.5&ndash;5366.5 kHz in Germany, 40 m above 7200 kHz in Japan, 13 cm 2310&ndash;2390 MHz in United States) <span translate="no">TX</span> stays armed, nothing is sent and the button reads <span translate="no">NO HAM BAND</span>; where the plan is less certain you only see the licence notice.</li>
+                <li>11 m (the Citizens Band, CB, around 27 MHz) is not an amateur band. qFT8 transmits there only where your country (by your callsign or your location) allows CB in the mode you use: voice (AM, FM, SSB) in the countries whose CB rules qFT8 knows (United States, Canada, France, Germany, United Kingdom, Spain, Austria, Czech Republic, Poland, Sweden, Estonia, Belgium, Netherlands, Ireland, Denmark, Finland, Norway, Slovakia, Croatia, Switzerland, Portugal (AM and FM), Australia, New Zealand); data modes such as FT8 only on the channels a country explicitly opens to data (Germany and Portugal channels 6, 7, 24, 25; Czech Republic channels 24, 25). Anywhere else, and outside the CB channels (for example 27.700 MHz), the button reads <span translate="no">NO HAM BAND</span> and a notice says why.</li>
+                <li>The first time you switch <span translate="no">TX</span> on on 11 m, or move onto 11 m with <span translate="no">TX</span> on, qFT8 asks you once to accept that the CB channels, modes, power and equipment are your responsibility (qFT8 never changes your radio's power). Until you answer nothing is sent; accepting is remembered and <span translate="no">TX</span> goes on, cancelling turns <span translate="no">TX</span> off. The web remote shows the same question.</li>
                 <li>You always remain responsible for your licence and the band plan where you operate.</li>
             </ul>
 
@@ -2400,6 +2406,10 @@
 
             <h4 id="settings-application">APPLICATION SETTINGS</h4>
             <ul>
+                <li>On the computer (Windows and Linux): <strong>Video mode</strong>, how the window is drawn, used from the
+                    next start. On Windows <strong>Default</strong> uses Direct3D and switches to GDI by itself if the window
+                    keeps freezing; <strong>Direct3D</strong> and <strong>GDI</strong> keep one of them. On Linux
+                    <strong>Default</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> or <strong>X11</strong>.</li>
                 <li><strong>Slow device / low battery mode</strong>: lighter drawing, the decoder unchanged (see
                     <a href="#pc-slow">Slow computers</a>; the same on phones).</li>
                 <li>On the computer: <strong>Confirm before closing</strong> (asks before the main window closes qFT8),
@@ -2592,7 +2602,8 @@
                 <li>Voice and broadcast text (<span translate="no">FreeDV</span>'s text channel, FM and AM radio text,
                     DAB+ and DRM text): <code>FREEDV.tsv</code> and <code>BROADCAST.tsv</code>, one line when the text is
                     stable and again when it changes. Pictures (<span translate="no">SSTV</span>, weather fax, satellite
-                    images) and voice audio are not logged.</li>
+                    images) and voice audio are not logged here (the pictures are saved as pictures, see
+                    <a href="#swl-wefax">Weather fax</a>).</li>
             </ul>
             <p>
                 A busy <span translate="no">FT8</span> band fills about 3 to 6 MB a day. Delete old day folders yourself
@@ -6983,6 +6994,19 @@
                 (60, 90, 120 or 240 lines a minute) is found from the chart's phasing lines, and a chart that is already on
                 the air starts by itself after a few lines; a picture ends at the stop signal, or by itself when the chart
                 turns into noise. Receive only.
+            </p>
+            <p>
+                Every picture the weather-fax, weather-satellite (<span translate="no">APT</span>, Meteor
+                <span translate="no">LRPT</span>) and balloon (<span translate="no">SSDV</span>) receivers end is saved at
+                once, without asking, in the same folder as the <span translate="no">SSTV</span> pictures: on the phone the
+                gallery's <code>Pictures/qFT8 SSTV</code>, on the computer <code>qFT8 SSTV</code> in your Pictures folder, on
+                the iPhone the app's <code>qFT8 SSTV</code> folder and Photos. Its name says what it is, in
+                <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (receiver, date, time,
+                frequency, station); a picture cut short because you stopped the receiver ends in <code>_partial</code>. The
+                line under the picture says where it went; <strong>SHARE</strong> (phone, iPhone) hands it to another app,
+                <strong>OPEN FOLDER</strong> (computer) shows it in its folder and <strong>DOWNLOAD</strong> (web remote)
+                saves a copy on the device the browser runs on. The picture is saved as received, not as the
+                <strong>NEGATIVE</strong> view shows it.
             </p>
 
             <h3 id="swl-dv-internet">Digital voice data over the internet</h3>

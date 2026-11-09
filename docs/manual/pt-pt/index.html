@@ -773,7 +773,7 @@
                     mostra-as): <code>--list-devices</code> lista todas as portas série e dispositivos de som que o qFT8 vê e termina;
                     <code>--port &lt;dispositivo&gt;</code> define a porta série predefinida (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;pasta&gt;</code> escolhe a pasta de perfil;
-                    <code>--bridge</code> inicia uma bridge; <code>--opengl</code> desenha a janela através do OpenGL (veja
+                    <code>--bridge</code> inicia uma bridge; <code>--video-mode=&lt;mode&gt;</code> desenha a janela de outro modo nessa execução, mesmo quando o qFT8 não consegue abrir o suficiente para alterar o <strong>Modo de vídeo</strong> nas Definições (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> desenha a janela através do OpenGL (veja
                     <a href="#pc-trouble">Se algo não funciona</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Já em execução".</strong> Outra cópia usa a pasta de perfil. Feche-a, ou inicie esta com
                     uma pasta <code>--qft8_profile</code> própria.</li>
                 <li><strong>A janela está preta ou baralhada</strong> (controladores gráficos antigos, uma máquina virtual, ambiente de trabalho
-                    remoto): atualize o controlador gráfico. Se continuar, inicie o qFT8 com <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), que desenha a janela de outro modo; se isso também não ajudar, comunique-o com <strong>COMUNICAR ERRO</strong> (Definições),
+                    remoto): atualize o controlador gráfico. Se continuar, escolha outro <strong>Modo de vídeo</strong> em Definições &gt; APLICAÇÃO, ou inicie o qFT8 com <code>--video-mode=gdi</code> (Windows) ou <code>--video-mode=x11</code> (Linux), que desenha a janela de outro modo; se isso também não ajudar, comunique-o com <strong>COMUNICAR ERRO</strong> (Definições),
                     indicando que sistema e que placa gráfica tem.</li>
                 <li><strong>Uma janela está fora do ecrã</strong> (um monitor foi desligado): o qFT8 verifica a posição guardada de cada janela
                     quando a abre, e uma cujo monitor desapareceu, ou que ficaria em grande parte fora do ecrã, abre no
@@ -1879,6 +1878,8 @@
                 <li>O qFT8 não aciona o rádio fora das bandas de radioamador da sua região (Região 1, 2 ou 3 da ITU) e avisa disso; o botão <span translate="no">TX</span> mostra <span translate="no">NO HAM BAND</span>.</li>
                 <li>Alguns países permitem apenas parte de uma banda, ou exigem primeiro uma autorização especial ou uma notificação. Nessas bandas (incluindo 160 m, 80 m, 40 m e 2 m na Região 3, 23 cm, 70 cm e 13 cm) o qFT8 mostra um aviso uma vez por banda, por exemplo &ldquo;Alguns países permitem apenas uma parte de 60m, ou exigem antes uma autorização especial ou uma notificação. Verifique a sua licença.&rdquo;; esse aviso nunca o impede de transmitir.</li>
                 <li>Quando o qFT8 conhece o seu país (veja <a href="#swl-legal">Escuta e a lei</a>), também segue o plano de bandas do próprio país onde este for mais estreito do que o da sua região. Até agora isto está incorporado para França, Alemanha, Reino Unido, Suíça, Itália, Espanha, Países Baixos, Bélgica, Áustria, Estados Unidos, Austrália e Japão. Quando o plano do país exclui claramente uma frequência (por exemplo 60 m fora de 5351.5&ndash;5366.5 kHz em Alemanha, 40 m acima de 7200 kHz em Japão, 13 cm 2310&ndash;2390 MHz em Estados Unidos) o <span translate="no">TX</span> continua armado, nada é enviado e o botão mostra <span translate="no">NO HAM BAND</span>; quando o plano é menos certo, vê apenas o aviso de licença.</li>
+                <li>11 m (a Banda do Cidadão, CB, em torno de 27 MHz) não é uma banda de radioamador. O qFT8 só transmite ali onde o seu país (pelo seu indicativo ou pela sua localização) permite CB no modo que utiliza: voz (AM, FM, SSB) nos países cujas regras de CB o qFT8 conhece (Estados Unidos, Canadá, França, Alemanha, Reino Unido, Espanha, Áustria, República Checa, Polónia, Suécia, Estónia, Bélgica, Países Baixos, Irlanda, Dinamarca, Finlândia, Noruega, Eslováquia, Croácia, Suíça, Portugal (AM e FM), Austrália, Nova Zelândia); modos de dados como o FT8 apenas nos canais que um país abre expressamente para dados (Alemanha e Portugal canais 6, 7, 24, 25; República Checa canais 24, 25). Em qualquer outro lugar, e fora dos canais de CB (por exemplo 27.700 MHz), o botão mostra <span translate="no">NO HAM BAND</span> e um aviso explica o motivo.</li>
+                <li>Na primeira vez que ligar o <span translate="no">TX</span> nos 11 m, ou passar para os 11 m com o <span translate="no">TX</span> ligado, o qFT8 pede uma única vez que aceite que os canais de CB, os modos, a potência e o equipamento são da sua responsabilidade (o qFT8 nunca altera a potência do seu rádio). Até responder, nada é enviado; aceitar fica memorizado e o <span translate="no">TX</span> é ligado, cancelar desliga o <span translate="no">TX</span>. O controlo remoto web mostra a mesma pergunta.</li>
                 <li>Continua sempre responsável pela sua licença e pelo plano de bandas do local onde opera.</li>
             </ul>
 
@@ -1922,6 +1923,7 @@
 
             <h4 id="settings-application">Definições da aplicação</h4>
             <ul>
+                <li>No computador (Windows e Linux): <strong>Modo de vídeo</strong>, como a janela é desenhada, utilizado a partir do próximo arranque. No Windows, <strong>Predefinido</strong> utiliza o Direct3D e muda sozinho para o GDI se a janela continuar a bloquear; <strong>Direct3D</strong> e <strong>GDI</strong> mantêm um dos dois. No Linux, <strong>Predefinido</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> ou <strong>X11</strong>.</li>
                 <li><strong>Modo de dispositivo lento / bateria fraca</strong>: desenho mais leve, com o descodificador inalterado (veja
                     <a href="#pc-slow">Computadores lentos</a>; o mesmo nos telemóveis).</li>
                 <li>No computador: <strong>Confirmar antes de fechar</strong> (pergunta antes de a janela principal fechar o qFT8)
@@ -5326,6 +5328,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 A linha de fax meteorológico recebe as cartas de radiofax <span translate="no">HF</span> dos serviços meteorológicos e navais por qualquer rádio <span translate="no">HF</span> em <span translate="no">USB</span>, ou um <span translate="no">SDR</span>. O seu botão de frequência percorre as transmissões do horário público mundial de radiofax (70 frequências, com os seus horários de transmissão), saltando as que estão fora do ar nesta hora (<span translate="no">UTC</span>); o rádio é sintonizado 1,9 kHz abaixo da frequência listada. A velocidade (60, 90, 120 ou 240 linhas por minuto) é obtida das linhas de fase da carta, e uma carta que já está no ar começa sozinha após algumas linhas; uma imagem termina no sinal de parada, ou sozinha quando a carta se torna ruído. Apenas recepção.
+            </p>
+
+            <p>
+                Todas as imagens que os recetores de fax meteorológico, de satélite meteorológico (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) e de balão (<span translate="no">SSDV</span>) terminam são guardadas de imediato, sem perguntar, na mesma pasta das imagens <span translate="no">SSTV</span>: no telemóvel, <code>Pictures/qFT8 SSTV</code> da galeria; no computador, <code>qFT8 SSTV</code> na sua pasta Imagens; no iPhone, a pasta <code>qFT8 SSTV</code> da aplicação e Fotos. O nome diz o que é, em <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (recetor, data, hora, frequência, estação); uma imagem interrompida porque parou o recetor termina em <code>_partial</code>. A linha por baixo da imagem diz para onde foi; <strong>Partilhar</strong> (telemóvel, iPhone) entrega-a a outra aplicação, <strong>Abrir pasta</strong> (computador) mostra-a na sua pasta e <strong>TRANSFERIR</strong> (controlo remoto web) guarda uma cópia no dispositivo onde o navegador corre. A imagem é guardada como foi recebida, não como a vista <strong>NEGATIVO</strong> a mostra.
             </p>
 
             <h3 id="swl-dv-internet">Dados de voz digital pela internet</h3>

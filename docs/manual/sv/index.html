@@ -775,7 +775,7 @@
                     dem): <code>--list-devices</code> listar alla seriella portar och ljudenheter som qFT8 ser och avslutar;
                     <code>--port &lt;device&gt;</code> anger standardporten (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> väljer profilmappen;
-                    <code>--bridge</code> startar en bridge; <code>--opengl</code> ritar fönstret via OpenGL (se
+                    <code>--bridge</code> startar en bridge; <code>--video-mode=&lt;mode&gt;</code> ritar fönstret på ett annat sätt för den körningen, även när qFT8 inte går att öppna tillräckligt långt för att ändra <strong>Videoläge</strong> i Inställningar (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> ritar fönstret via OpenGL (se
                     <a href="#pc-trouble">Om något inte fungerar</a>).</li>
             </ul>
 
@@ -841,10 +841,7 @@
                     märkningen <em>Utgång till radion</em>, eller välj en annan standardutgång i ditt system.</li>
                 <li><strong>"Körs redan".</strong> En annan kopia använder profilmappen. Stäng den, eller starta den här med
                     sin egen <code>--qft8_profile</code>-mapp.</li>
-                <li><strong>Fönstret är svart eller förvrängt</strong> (gamla grafikdrivrutiner, en virtuell maskin, fjärr-
-                    skrivbord): uppdatera grafikdrivrutinen. Om det kvarstår, starta qFT8 med <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), som ritar fönstret på ett annat sätt; hjälper inte det heller, rapportera det med <strong>RAPPORTERA FEL</strong> (Inställningar)
-                    och ange vilket system och vilket grafikkort du har.</li>
+                <li><strong>Fönstret är svart eller förvrängt</strong> (gamla grafikdrivrutiner, en virtuell maskin, fjärrskrivbord): uppdatera grafikdrivrutinen. Om det kvarstår, välj ett annat <strong>Videoläge</strong> i Inställningar &gt; Applikation, eller starta qFT8 med <code>--video-mode=gdi</code> (Windows) eller <code>--video-mode=x11</code> (Linux), som ritar fönstret på ett annat sätt; hjälper inte det heller, rapportera det med <strong>RAPPORTERA FEL</strong> (Inställningar) och ange vilket system och vilket grafikkort du har.</li>
                 <li><strong>Ett fönster ligger utanför skärmen</strong> (en skärm kopplades bort): qFT8 kontrollerar varje fönsters sparade plats
                     när det öppnar fönstret, och ett fönster vars skärm är borta, eller som till största delen skulle hamna utanför skärmen, öppnas i
                     mitten av huvudskärmen i stället. Om ett fönster fortfarande är utom räckhåll, stäng dess ruta med dess
@@ -1881,6 +1878,8 @@
                 <li>qFT8 sänder inte med radion utanför amatörbanden i din region (ITU-region 1, 2 eller 3) och säger till om det; <span translate="no">TX</span>-knappen visar <span translate="no">NO HAM BAND</span>.</li>
                 <li>Vissa länder tillåter bara en del av ett band, eller kräver särskilt tillstånd eller en anmälan i förväg. På de banden (bland annat 160 m, 80 m, 40 m och 2 m i region 3, 23 cm, 70 cm och 13 cm) visar qFT8 ett meddelande en gång per band, till exempel &ldquo;Vissa länder tillåter bara en del av 60m eller kräver först särskilt tillstånd eller en anmälan. Kontrollera ditt tillstånd.&rdquo;; det stoppar dig aldrig på grund av det meddelandet.</li>
                 <li>När qFT8 känner till ditt land (se <a href="#swl-legal">Lyssning och lagen</a>) följer det också det landets egen bandplan där den är snävare än din regions. Hittills är detta inbyggt för Frankrike, Tyskland, Storbritannien, Schweiz, Italien, Spanien, Nederländerna, Belgien, Österrike, USA, Australien och Japan. Där landets plan tydligt utesluter en frekvens (till exempel 60 m utanför 5351.5&ndash;5366.5 kHz i Tyskland, 40 m över 7200 kHz i Japan, 13 cm 2310&ndash;2390 MHz i USA) förblir <span translate="no">TX</span> aktiverad, inget skickas och knappen visar <span translate="no">NO HAM BAND</span>; där planen är mindre säker ser du bara licensmeddelandet.</li>
+                <li>11 m (medborgarbandet, CB, kring 27 MHz) är inte ett amatörband. qFT8 sänder där bara om ditt land (efter din anropssignal eller din plats) tillåter CB i det driftsätt du använder: tal (AM, FM, SSB) i de länder vars CB-regler qFT8 känner till (USA, Kanada, Frankrike, Tyskland, Storbritannien, Spanien, Österrike, Tjeckien, Polen, Sverige, Estland, Belgien, Nederländerna, Irland, Danmark, Finland, Norge, Slovakien, Kroatien, Schweiz, Portugal (AM och FM), Australien, Nya Zeeland); datadriftsätt som FT8 bara på de kanaler som ett land uttryckligen öppnar för data (Tyskland och Portugal kanal 6, 7, 24, 25; Tjeckien kanal 24, 25). Överallt annars, och utanför CB-kanalerna (till exempel 27.700 MHz), visar knappen <span translate="no">NO HAM BAND</span> och ett meddelande säger varför.</li>
+                <li>Första gången du slår på <span translate="no">TX</span> på 11 m, eller flyttar till 11 m med <span translate="no">TX</span> påslaget, ber qFT8 dig en gång att godkänna att CB-kanalerna, driftsätten, effekten och utrustningen är ditt eget ansvar (qFT8 ändrar aldrig din radios effekt). Tills du svarar skickas ingenting; ett godkännande kommer ihåg och <span translate="no">TX</span> slås på, avbryter du stängs <span translate="no">TX</span> av. Webbfjärrstyrningen visar samma fråga.</li>
                 <li>Du är alltid själv ansvarig för din licens och bandplanen där du sänder.</li>
             </ul>
 
@@ -1924,6 +1923,7 @@
 
             <h4 id="settings-application">Applikationsinställningar</h4>
             <ul>
+                <li>På datorn (Windows och Linux): <strong>Videoläge</strong>, hur fönstret ritas, används från nästa start. I Windows använder <strong>Standard</strong> Direct3D och byter själv till GDI om fönstret fortsätter att hänga sig; <strong>Direct3D</strong> och <strong>GDI</strong> behåller ett av dem. I Linux <strong>Standard</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> eller <strong>X11</strong>.</li>
                 <li><strong>Läge för långsam enhet / lågt batteri</strong>: lättare ritning, avkodaren oförändrad (se
                     <a href="#pc-slow">Långsamma datorer</a>; likadant på telefoner).</li>
                 <li>På datorn: <strong>Bekräfta innan stängning</strong> (frågar innan huvudfönstret stänger qFT8)
@@ -5204,6 +5204,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Vaderfax-raden tar emot <span translate="no">HF</span>-radiofaxkartorna från meteorologiska och marina tjänster genom vilken <span translate="no">HF</span>-radio som helst i <span translate="no">USB</span>, eller en <span translate="no">SDR</span>. Frekvensknappen stegar genom sändningarna i den offentliga världsomspännande radiofaxplanen (70 frekvenser, med sina sändningstider) och hoppar över de som är i otid just nu (<span translate="no">UTC</span>); radion ställs in 1,9 kHz under den listade frekvensen. Hastigheten (60, 90, 120 eller 240 rader per minut) hittas ur kartans faslinjer, och en karta som redan sänds startar av sig själv efter några rader; en bild slutar vid stoppsignalen, eller av sig själv när kartan blir brus. Endast mottagning.
+            </p>
+
+            <p>
+                Varje bild som mottagarna för vaderfax, väderssatelliter (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) och ballonger (<span translate="no">SSDV</span>) avslutar sparas direkt, utan att fråga, i samma mapp som <span translate="no">SSTV</span>-bilderna: på telefonen galleriets <code>Pictures/qFT8 SSTV</code>, på datorn <code>qFT8 SSTV</code> i din Bilder-mapp, på iPhone appens mapp <code>qFT8 SSTV</code> och Bilder. Namnet säger vad det är, i <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (mottagare, datum, tid, frekvens, station); en bild som avbrutits för att du stoppade mottagaren slutar på <code>_partial</code>. Raden under bilden säger vart den tog vägen; <strong>Dela</strong> (telefon, iPhone) lämnar över den till en annan app, <strong>Öppna mapp</strong> (dator) visar den i sin mapp och <strong>LADDA NER</strong> (webbfjärrstyrning) sparar en kopia på enheten där webbläsaren körs. Bilden sparas som den togs emot, inte som vyn <strong>NEGATIV</strong> visar den.
             </p>
 
             <h3 id="swl-dv-internet">Digitala taldata över internet</h3>

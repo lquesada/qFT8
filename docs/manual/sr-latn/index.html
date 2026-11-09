@@ -791,7 +791,7 @@
                     <code>--list-devices</code> izlistava svaki serijski port i zvučni uređaj koji qFT8 vidi i izlazi;
                     <code>--port &lt;device&gt;</code> postavlja podrazumevani serijski port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> bira fasciklu profila;
-                    <code>--bridge</code> pokreće most; <code>--opengl</code> iscrtava prozor preko OpenGL-a (pogledajte
+                    <code>--bridge</code> pokreće most; <code>--video-mode=&lt;mode&gt;</code> iscrtava prozor na drugi način za to pokretanje, čak i kada se qFT8 ne može otvoriti dovoljno da se promeni <strong>Video režim</strong> u Podešavanjima (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> iscrtava prozor preko OpenGL-a (pogledajte
                     <a href="#pc-trouble">Ako nešto ne radi</a>).</li>
             </ul>
 
@@ -858,10 +858,7 @@
                     oznaku <em>Output to radio</em> ili izaberite drugi podrazumevani izlaz u sistemu.</li>
                 <li><strong>„Already Running“.</strong> Druga kopija koristi fasciklu profila. Zatvorite je ili pokrenite ovu sa
                     sopstvenom fasciklom <code>--qft8_profile</code>.</li>
-                <li><strong>Prozor je crn ili izobličen</strong> (stari grafički drajveri, virtuelna mašina, udaljena
-                    radna površina): ažurirajte grafički drajver. Ako ostane, pokrenite qFT8 sa <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), što iscrtava prozor na drugi način; ako ni to ne pomogne, prijavite to pomoću <strong>PRIJAVI GREŠKU</strong> (Podešavanja),
-                    navodeći koji sistem i grafičku karticu imate.</li>
+                <li><strong>Prozor je crn ili izobličen</strong> (stari grafički drajveri, virtuelna mašina, udaljena radna površina): ažurirajte grafički drajver. Ako ostane, izaberite drugi <strong>Video režim</strong> u Podešavanja &gt; Aplikacija ili pokrenite qFT8 sa <code>--video-mode=gdi</code> (Windows) ili <code>--video-mode=x11</code> (Linux), što iscrtava prozor na drugi način; ako ni to ne pomogne, prijavite to pomoću <strong>PRIJAVI GREŠKU</strong> (Podešavanja), navodeći koji sistem i grafičku karticu imate.</li>
                 <li><strong>Prozor je van ekrana</strong> (ekran je isključen): qFT8 proverava sačuvani položaj svakog prozora
                     kada ga otvara, a prozor čiji ekran više ne postoji ili koji bi većim delom bio van ekrana otvara se u
                     sredini glavnog ekrana. Ako je prozor i dalje nedostupan, zatvorite njegovo okno dugmetom
@@ -2291,6 +2288,8 @@
                 <li>qFT8 ne uključuje radio na emitovanje izvan radio-amaterskih opsega vašeg regiona (ITU region 1, 2 ili 3) i to kaže; dugme <span translate="no">TX</span> prikazuje <span translate="no">NO HAM BAND</span>.</li>
                 <li>Neke zemlje dozvoljavaju samo deo opsega ili traže posebnu dozvolu ili prethodno obaveštenje. Na tim opsezima (uključujući 160 m, 80 m, 40 m i 2 m u regionu 3, 23 cm, 70 cm i 13 cm) qFT8 jednom po opsegu prikazuje napomenu, na primer &ldquo;Neke zemlje dozvoljavaju samo deo opsega 60m ili prethodno traže posebnu dozvolu ili prijavu. Proverite svoju licencu.&rdquo;; zbog te napomene vas nikada ne zaustavlja.</li>
                 <li>Kada qFT8 zna vašu zemlju (pogledajte <a href="#swl-legal">Slušanje i zakon</a>), prati i bend plan te zemlje tamo gde je uži od plana vašeg regiona. Za sada je to ugrađeno za Francuska, Nemačka, Ujedinjeno Kraljevstvo, Švajcarska, Italija, Španija, Holandija, Belgija, Austrija, Sjedinjene Države, Australija i Japan. Tamo gde plan zemlje jasno isključuje frekvenciju (na primer 60 m izvan 5351.5&ndash;5366.5 kHz u Nemačka, 40 m iznad 7200 kHz u Japan, 13 cm 2310&ndash;2390 MHz u Sjedinjene Države) <span translate="no">TX</span> ostaje uključen, ništa se ne šalje, a dugme prikazuje <span translate="no">NO HAM BAND</span>; tamo gde je plan manje siguran vidite samo napomenu o licenci.</li>
+                <li>11 m (građanski opseg, CB, oko 27 MHz) nije radioamaterski opseg. qFT8 tamo šalje samo ako vaša zemlja (prema pozivnom znaku ili lokaciji) dozvoljava CB u režimu koji koristite: govor (AM, FM, SSB) u zemljama čija CB pravila qFT8 poznaje (Sjedinjene Države, Kanada, Francuska, Nemačka, Ujedinjeno Kraljevstvo, Španija, Austrija, Češka, Poljska, Švedska, Estonija, Belgija, Holandija, Irska, Danska, Finska, Norveška, Slovačka, Hrvatska, Švajcarska, Portugal (AM i FM), Australija, Novi Zeland); digitalni režimi kao što je FT8 samo na kanalima koje zemlja izričito otvara za podatke (Nemačka i Portugal kanali 6, 7, 24, 25; Češka kanali 24, 25). Svuda drugde, i van CB kanala (na primer 27.700 MHz), dugme prikazuje <span translate="no">NO HAM BAND</span> i obaveštenje kaže zašto.</li>
+                <li>Kada prvi put uključite <span translate="no">TX</span> na 11 m, ili pređete na 11 m sa uključenim <span translate="no">TX</span>, qFT8 vas jednom pita da prihvatite da su CB kanali, režimi, snaga i oprema vaša odgovornost (qFT8 nikada ne menja snagu vašeg radija). Dok ne odgovorite, ništa se ne šalje; prihvatanje se pamti i <span translate="no">TX</span> se uključuje, otkazivanje isključuje <span translate="no">TX</span>. Veb daljinski upravljač prikazuje isto pitanje.</li>
                 <li>Uvek ste sami odgovorni za svoju licencu i bend plan tamo gde radite.</li>
             </ul>
 
@@ -2341,6 +2340,7 @@
 
             <h4 id="settings-application">Podešavanja aplikacije</h4>
             <ul>
+                <li>Na računaru (Windows i Linux): <strong>Video režim</strong>, način na koji se prozor iscrtava, koristi se od sledećeg pokretanja. Na Windowsu <strong>Podrazumevano</strong> koristi Direct3D i sam prelazi na GDI ako se prozor stalno zamrzava; <strong>Direct3D</strong> i <strong>GDI</strong> zadržavaju jedan od njih. Na Linuxu <strong>Podrazumevano</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> ili <strong>X11</strong>.</li>
                 <li><strong>Režim za spori uređaj / slabu bateriju</strong>: lakše crtanje, dekoder nepromenjen (vidi
                     <a href="#pc-slow">Spori računari</a>; isto na telefonima).</li>
                 <li>Na računaru: <strong>Potvrdi pre zatvaranja</strong> (pita pre nego što glavni prozor zatvori qFT8),
@@ -6677,6 +6677,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Red vremenskog faksa prima <span translate="no">HF</span> radiofaks karte meteoroloških i mornaričkih službi preko bilo kojeg <span translate="no">HF</span> radija u <span translate="no">USB</span> ili <span translate="no">SDR</span>. Njegovo dugme frekvencije prolazi kroz emitovanja javnog svetskog rasporeda radiofaksa (70 frekvencija, s njihovim satima emitovanja), preskačući ona koja u ovo doba nisu u eteru (<span translate="no">UTC</span>); radeo se podešava 1,9 kHz ispod navedene frekvencije. Brzina (60, 90, 120 ili 240 redova u minuti) nalazi se iz faznih redova karte, a karta koja je već u eteru počinje sama nakon nekoliko redova; slika završava signalom za kraj ili sama, kad karta pređe u šum. Samo prijem.
+            </p>
+
+            <p>
+                Svaka slika koju prijemnici vremenskog faksa, vremenskih satelita (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) i balona (<span translate="no">SSDV</span>) završe čuva se odmah, bez pitanja, u istoj fascikli kao <span translate="no">SSTV</span> slike: na telefonu u <code>Pictures/qFT8 SSTV</code> galerije, na računaru u <code>qFT8 SSTV</code> u fascikli Pictures, na iPhone-u u fascikli aplikacije <code>qFT8 SSTV</code> i u Photos. Njeno ime kaže šta je, u <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (prijemnik, datum, vreme, frekvencija, stanica); slika prekinuta zato što ste zaustavili prijemnik završava sa <code>_partial</code>. Red ispod slike kaže gde je otišla; <strong>Podeli</strong> (telefon, iPhone) je predaje drugoj aplikaciji, <strong>Otvori fasciklu</strong> (računar) je prikazuje u njenoj fascikli, a <strong>PREUZMI</strong> (veb daljinski upravljač) čuva kopiju na uređaju na kom radi pregledač. Slika se čuva onako kako je primljena, a ne onako kako je prikazuje prikaz <strong>NEGATIV</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Digitalni glasovni podaci preko interneta</h3>

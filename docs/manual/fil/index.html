@@ -789,7 +789,7 @@
                     ang nagpapakita sa mga ito): inililista ng <code>--list-devices</code> ang bawat serial port at sound device na nakikita ng qFT8 at lumalabas;
                     itinatakda ng <code>--port &lt;device&gt;</code> ang default na serial port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); pinipili ng <code>--qft8_profile &lt;folder&gt;</code> ang profile folder;
-                    sinisimulan ng <code>--bridge</code> ang isang bridge; iginuguhit ng <code>--opengl</code> ang window sa pamamagitan ng OpenGL (tingnan ang
+                    sinisimulan ng <code>--bridge</code> ang isang bridge; iginuguhit ng <code>--video-mode=&lt;mode&gt;</code> ang window sa ibang paraan para sa takbong iyon, kahit hindi mabuksan nang sapat ang qFT8 para baguhin ang <strong>Video mode</strong> sa Settings (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); iginuguhit ng <code>--opengl</code> ang window sa pamamagitan ng OpenGL (tingnan ang
                     <a href="#pc-trouble">Kung may hindi gumagana</a>).</li>
             </ul>
 
@@ -857,8 +857,7 @@
                 <li><strong>"Already Running".</strong> May ibang kopyang gumagamit ng profile folder. Isara ito, o simulan ang isang ito gamit ang
                     sarili nitong folder na <code>--qft8_profile</code>.</li>
                 <li><strong>Itim o magulo ang window</strong> (lumang graphics driver, virtual machine, remote
-                    desktop): i-update ang graphics driver. Kung nananatili, simulan ang qFT8 gamit ang <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), na iginuguhit ang window sa ibang paraan; kung hindi rin iyon makatulong, i-report ito gamit ang <strong>MAG-REPORT NG BUG</strong> (Settings),
+                    desktop): i-update ang graphics driver. Kung nananatili, pumili ng ibang <strong>Video mode</strong> sa Settings &gt; Application, o simulan ang qFT8 gamit ang <code>--video-mode=gdi</code> (Windows) o <code>--video-mode=x11</code> (Linux), na iginuguhit ang window sa ibang paraan; kung hindi rin iyon makatulong, i-report ito gamit ang <strong>MAG-REPORT NG BUG</strong> (Settings),
                     at sabihin kung anong system at graphics card ang mayroon ka.</li>
                 <li><strong>Nasa labas ng screen ang isang window</strong> (may inalis na screen): sinusuri ng qFT8 ang naka-save na lugar ng bawat window
                     kapag binubuksan ito, at ang window na wala na ang screen, o halos nasa labas ng screen, ay bumubukas sa
@@ -2281,6 +2280,8 @@
                 <li>Hindi ina-key ng qFT8 ang radyo sa labas ng mga amateur band ng iyong rehiyon (ITU Region 1, 2 o 3), at sinasabi nito iyon; ang button na <span translate="no">TX</span> ay nagpapakita ng <span translate="no">NO HAM BAND</span>.</li>
                 <li>Ang ilang bansa ay pinapayagan lamang ang bahagi ng isang band, o nangangailangan ng espesyal na pahintulot o paunang abiso. Sa mga band na iyon (kasama ang 160 m, 80 m, 40 m at 2 m sa Region 3, 23 cm, 70 cm at 13 cm) nagpapakita ang qFT8 ng paunawa nang isang beses bawat band, halimbawa &ldquo;Ilang bansa ay pumapayag lamang sa bahagi ng 60m, o nangangailangan muna ng espesyal na pahintulot o abiso. Suriin ang iyong lisensiya.&rdquo;; hindi ka nito kailanman pipigilan dahil sa paunawang iyon.</li>
                 <li>Kapag alam na ng qFT8 ang iyong bansa (tingnan ang <a href="#swl-legal">Pakikinig at ang batas</a>), sinusunod din nito ang sariling band plan ng bansang iyon kung mas makitid ito kaysa sa iyong rehiyon. Sa ngayon ay built in ito para sa France, Germany, United Kingdom, Switzerland, Italy, Spain, Netherlands, Belgium, Austria, Estados Unidos, Australia at Japan. Kung malinaw na hindi pinapayagan ng plano ng bansa ang isang frequency (halimbawa 60 m sa labas ng 5351.5&ndash;5366.5 kHz sa Germany, 40 m na higit sa 7200 kHz sa Japan, 13 cm 2310&ndash;2390 MHz sa Estados Unidos), nananatiling armado ang <span translate="no">TX</span>, walang ipinapadala at ang button ay nagpapakita ng <span translate="no">NO HAM BAND</span>; kung hindi gaanong tiyak ang plano, paunawa lang tungkol sa lisensya ang makikita mo.</li>
+                <li>Ang 11 m (ang Citizens Band, CB, sa paligid ng 27 MHz) ay hindi amateur band. Nagta-transmit lang ang qFT8 doon kung saan pinapayagan ng iyong bansa (batay sa iyong callsign o lokasyon) ang CB sa mode na ginagamit mo: boses (AM, FM, SSB) sa mga bansang alam ng qFT8 ang mga patakaran sa CB (Estados Unidos, Canada, France, Germany, United Kingdom, Spain, Austria, Czech Republic, Poland, Sweden, Estonia, Belgium, Netherlands, Ireland, Denmark, Finland, Norway, Slovakia, Croatia, Switzerland, Portugal (AM at FM), Australia, New Zealand); ang mga data mode tulad ng FT8 ay sa mga channel lang na tahasang binuksan ng bansa para sa data (Germany at Portugal channel 6, 7, 24, 25; Czech Republic channel 24, 25). Saanman ito hindi pinapayagan, at sa labas ng mga CB channel (halimbawa 27.700 MHz), ang button ay nagpapakita ng <span translate="no">NO HAM BAND</span> at may paunawang nagsasabi kung bakit.</li>
+                <li>Sa unang beses na i-on mo ang <span translate="no">TX</span> sa 11 m, o lumipat ka sa 11 m nang naka-on ang <span translate="no">TX</span>, minsan kang tatanungin ng qFT8 kung tinatanggap mong ikaw ang responsable sa mga CB channel, mode, power at kagamitan (hindi kailanman binabago ng qFT8 ang power ng iyong radyo). Hangga't hindi ka sumasagot, walang ipinapadala; ang pagtanggap ay naaalala at bumubukas ang <span translate="no">TX</span>, ang pagkansela ay nag-o-off ng <span translate="no">TX</span>. Ipinapakita rin ng web remote ang parehong tanong.</li>
                 <li>Ikaw pa rin ang responsable sa iyong lisensya at sa band plan sa lugar kung saan ka nagpapatakbo.</li>
             </ul>
 
@@ -2331,6 +2332,7 @@
 
             <h4 id="settings-application">Mga setting ng application</h4>
             <ul>
+                <li>Sa computer (Windows at Linux): <strong>Video mode</strong>, kung paano iginuguhit ang window, ginagamit mula sa susunod na pagsisimula. Sa Windows, gumagamit ang <strong>Default</strong> ng Direct3D at kusang lumilipat sa GDI kung patuloy na nagfa-freeze ang window; pinananatili ng <strong>Direct3D</strong> at <strong>GDI</strong> ang isa sa dalawa. Sa Linux, <strong>Default</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> o <strong>X11</strong>.</li>
                 <li><strong>Mabagal na device / mode na mababang baterya</strong>: mas magaan na pagguhit, hindi nagbabago ang decoder (tingnan ang
                     <a href="#pc-slow">Mabagal na computer</a>; pareho sa mga telepono).</li>
                 <li>Sa computer: <strong>Kumpirmahin bago isara</strong> (nagtatanong bago isara ng pangunahing window ang qFT8),
@@ -6630,6 +6632,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Tumatanggap ang weather-fax row ng mga <span translate="no">HF</span> radiofax chart ng mga meteorological at naval na serbisyo sa pamamagitan ng anumang <span translate="no">HF</span> radyo sa <span translate="no">USB</span>, o isang <span translate="no">SDR</span>. Ang frequency button nito ay dumadaan sa mga broadcast ng pampublikong pandaigdigang iskedyul ng radiofax (70 frequency, kasama ang oras ng kanilang broadcast), nilalaktawan ang mga wala sa ere sa oras na ito (<span translate="no">UTC</span>); itinu-tune ang radyo nang 1.9 kHz sa ibaba ng nakalistang frequency. Natutukoy ang bilis (60, 90, 120 o 240 linya bawat minuto) mula sa mga phasing line ng chart, at ang chart na nasa ere na ay kusang nagsisimula pagkatapos ng ilang linya; nagtatapos ang larawan sa stop signal, o kusa kapag naging ingay na ang chart. Tumatanggap lamang.
+            </p>
+
+            <p>
+                Bawat larawang natatapos ng mga receiver ng weather fax, weather satellite (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) at balloon (<span translate="no">SSDV</span>) ay agad na sine-save, nang hindi nagtatanong, sa parehong folder ng mga larawang <span translate="no">SSTV</span>: sa telepono ang <code>Pictures/qFT8 SSTV</code> ng gallery, sa computer ang <code>qFT8 SSTV</code> sa iyong Pictures folder, sa iPhone ang folder na <code>qFT8 SSTV</code> ng app at Photos. Sinasabi ng pangalan nito kung ano ito, sa <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (receiver, petsa, oras, frequency, istasyon); ang larawang naputol dahil pinatigil mo ang receiver ay nagtatapos sa <code>_partial</code>. Sinasabi ng linya sa ilalim ng larawan kung saan ito napunta; ipinapasa ito ng <strong>Ibahagi</strong> (telepono, iPhone) sa ibang app, ipinapakita ito ng <strong>BUKSAN ANG FOLDER</strong> (computer) sa folder nito at nagse-save ang <strong>I-DOWNLOAD</strong> (web remote) ng kopya sa device kung saan tumatakbo ang browser. Sine-save ang larawan ayon sa natanggap, hindi ayon sa ipinapakita ng <strong>NEGATIBO</strong> na view.
             </p>
 
             <h3 id="swl-dv-internet">Digital voice data sa internet</h3>

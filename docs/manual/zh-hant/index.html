@@ -604,7 +604,7 @@
                 <li><strong>每個設定檔資料夾一個副本。</strong>如果您啟動 qFT8 時，另一個副本正在使用同一個資料夾，它會顯示<strong>已在執行</strong>，並提供<strong>重試</strong>或<strong>結束</strong>：兩個副本使用同一個資料夾可能會損壞您的設定和日誌。若要同時執行多個副本，例如每台電台一個，請在啟動時為每個副本指定各自的資料夾：<code>qFT8 --qft8_profile D:\qft8-radio2</code>（Windows：<code>qFT8.exe</code>）。如果 qFT8 無法寫入該資料夾，就會顯示錯誤並停止。</li>
                 <li><strong>網頁遙控。</strong>電腦版程式具有與 Android 相同的<a href="#remote-control">遠端控制 Web 伺服器</a>（預設關閉，連接埠 13497），並顯示相同的頁面，包括音量滑桿。可用來在您網路上的手機或另一台電腦上操作。</li>
                 <li><strong>Bridge。</strong>電腦是常見的 <a href="#bridge">bridge</a>：電台插在它上面，由手機、iPhone 或另一台電腦上的 qFT8 來操作。它也可以不開視窗執行（<code>qFT8 --bridge</code>），適合沒有其他用途的電腦。</li>
-                <li><strong>命令列。</strong><code>qFT8 --help</code> 會列出各個選項（在 Windows 中會以小視窗顯示）：<code>--list-devices</code> 列出 qFT8 看到的所有序列埠和音效裝置，然後結束；<code>--port &lt;device&gt;</code> 設定預設序列埠（<code>COM3</code>、<code>/dev/ttyACM0</code>）；<code>--qft8_profile &lt;folder&gt;</code> 選擇設定檔資料夾；<code>--bridge</code> 啟動 bridge；<code>--opengl</code> 透過 OpenGL 繪製視窗（見<a href="#pc-trouble">如果某些功能無法運作</a>）。</li>
+                <li><strong>命令列。</strong><code>qFT8 --help</code> 會列出各個選項（在 Windows 中會以小視窗顯示）：<code>--list-devices</code> 列出 qFT8 看到的所有序列埠和音效裝置，然後結束；<code>--port &lt;device&gt;</code> 設定預設序列埠（<code>COM3</code>、<code>/dev/ttyACM0</code>）；<code>--qft8_profile &lt;folder&gt;</code> 選擇設定檔資料夾；<code>--bridge</code> 啟動 bridge；<code>--video-mode=&lt;mode&gt;</code> 在該次執行中以另一種方式繪製視窗，即使 qFT8 無法開啟到足以在設定中更改<strong>視訊模式</strong>的程度（Windows：<code>default</code>、<code>d3d</code>、<code>gdi</code>；Linux：<code>default</code>、<code>xrender</code>、<code>opengl</code>、<code>x11</code>）；<code>--opengl</code> 透過 OpenGL 繪製視窗（見<a href="#pc-trouble">如果某些功能無法運作</a>）。</li>
             </ul>
 
             <h3 id="pc-slow">速度較慢的電腦</h3>
@@ -645,7 +645,7 @@
                 <li><strong>電台太小聲、太大聲，或顯示兩個點而不是長條</strong>（QMX）：移動裝置音量滑桿（<a href="#pc-volumes">音量</a>）。請檢查電腦自己對該裝置的音量沒有被靜音。</li>
                 <li><strong>電腦的聲音被發射出去了。</strong>預設輸出是電台的音效卡：請回應<em>輸出到電台</em>標記，或在您的系統中選擇另一個預設輸出。</li>
                 <li><strong>「已在執行」。</strong>另一個副本正在使用設定檔資料夾。請關閉它，或用它自己的 <code>--qft8_profile</code> 資料夾來啟動這一個。</li>
-                <li><strong>視窗是黑的或亂碼</strong>（舊的顯示驅動程式、虛擬機器、遠端桌面）：請更新顯示驅動程式。如果仍然如此，請用 <code>--opengl</code> 啟動 qFT8（<code>qFT8 --opengl</code>），它會用另一種方式繪製視窗；如果這樣也沒有幫助，請用<strong>回報錯誤</strong>（設定）回報，並說明您的系統和顯示卡。</li>
+                <li><strong>視窗是黑的或亂碼</strong>（舊的顯示驅動程式、虛擬機器、遠端桌面）：請更新顯示驅動程式。如果仍然如此，請在設定 &gt; 應用程式 中選擇另一種<strong>視訊模式</strong>，或用 <code>--video-mode=gdi</code>（Windows）或 <code>--video-mode=x11</code>（Linux）啟動 qFT8，它會用另一種方式繪製視窗；如果這樣也沒有幫助，請用<strong>回報錯誤</strong>（設定）回報，並說明您的系統和顯示卡。</li>
                 <li><strong>視窗跑到螢幕外了</strong>（拔掉了某個螢幕）：qFT8 在開啟每個視窗時會檢查它儲存的位置，如果該位置的螢幕已不存在，或視窗大部分會在螢幕之外，就會改在主螢幕中央開啟。如果視窗仍然拿不到，請用它在底部列的按鈕關閉其窗格再重新開啟，或重新啟動 qFT8。</li>
                 <li><strong>在只有一個或兩個核心的電腦上，瀑布圖凍結、音訊中斷或負載很高：</strong>請見<a href="#pc-slow">速度較慢的電腦</a>，關閉其他程式；如果仍然如此，請用<strong>回報錯誤</strong>寄送報告。</li>
             </ul>
@@ -1684,6 +1684,8 @@
                 <li>qFT8 不會在你所在地區的業餘頻段之外讓電台發射（ITU 1 區、2 區或 3 區），並會提示這一點；<span translate="no">TX</span> 按鈕顯示 <span translate="no">NO HAM BAND</span>。</li>
                 <li>有些國家只允許使用頻段的一部分，或需要特別許可或事先通知。在這些頻段上（包括 3 區的 160 m、80 m、40 m 和 2 m，以及 23 cm、70 cm 和 13 cm），qFT8 每個頻段顯示一次提示，例如&ldquo;部分國家只允許使用 60m 的一部分，或須事先取得特別許可或通知。請查看您的執照。&rdquo;；它不會因這則提示而阻止你。</li>
                 <li>一旦 qFT8 知道你的國家（見<a href="#swl-legal">收聽與法律</a>），在該國自己的頻段規劃比你所在地區更窄時，它也會遵循該國的規劃。目前內建了 法國、德國、英國、瑞士、義大利、西班牙、荷蘭、比利時、奧地利、美國、澳洲 和 日本。當該國規劃明確排除某個頻率時（例如 德國 的 60 m 在 5351.5&ndash;5366.5 kHz 之外、日本 的 40 m 在 7200 kHz 以上、美國 的 13 cm 2310&ndash;2390 MHz），<span translate="no">TX</span> 保持待發狀態，不傳送任何內容，按鈕顯示 <span translate="no">NO HAM BAND</span>；規劃不太確定時，你只會看到執照提示。</li>
+                <li>11 m（公民頻段，CB，約 27 MHz）不是業餘頻段。只有在你所在的國家（依據你的呼號或位置）允許你所用模式的 CB 時，qFT8 才會在該頻段發射：在 qFT8 了解其 CB 規則的國家可用語音（AM、FM、SSB）（美國、加拿大、法國、德國、英國、西班牙、奧地利、捷克、波蘭、瑞典、愛沙尼亞、比利時、荷蘭、愛爾蘭、丹麥、芬蘭、挪威、斯洛伐克、克羅埃西亞、瑞士、葡萄牙（AM 和 FM）、澳洲、紐西蘭）；FT8 等資料模式僅限某國明確向資料開放的頻道（德國和葡萄牙為 6、7、24、25 頻道；捷克為 24、25 頻道）。其他任何地方，以及 CB 頻道之外（例如 27.700 MHz），按鈕顯示 <span translate="no">NO HAM BAND</span>，並有提示說明原因。</li>
+                <li>你第一次在 11 m 上開啟 <span translate="no">TX</span>，或在 <span translate="no">TX</span> 已開啟時切換到 11 m，qFT8 會詢問一次，要求你接受 CB 頻道、模式、功率和設備由你自己負責（qFT8 從不更改你電台的功率）。在你回答之前不會發送任何內容；接受會被記住，<span translate="no">TX</span> 隨即開啟，取消則關閉 <span translate="no">TX</span>。網頁遙控器顯示同樣的問題。</li>
                 <li>你始終要對自己的執照以及所在地的頻段規劃負責。</li>
             </ul>
 
@@ -1732,6 +1734,7 @@
 
             <h4 id="settings-application">應用程式設定</h4>
             <ul>
+                <li>在電腦上（Windows 和 Linux）：<strong>視訊模式</strong>，即視窗的繪製方式，從下次啟動起生效。在 Windows 上，<strong>預設</strong> 使用 Direct3D，如果視窗持續當掉會自動切換到 GDI；<strong>Direct3D</strong> 和 <strong>GDI</strong> 則固定使用其中一種。在 Linux 上為 <strong>預設</strong>、<strong>XRender</strong>、<strong>OpenGL</strong> 或 <strong>X11</strong>。</li>
                 <li><strong>慢速裝置 / 低電量模式</strong>：更輕的繪製，解碼器不變（見
                     <a href="#pc-slow">速度較慢的電腦</a>；手機上相同）。</li>
                 <li>在電腦上：<strong>關閉前確認</strong>（主視窗關閉 qFT8 之前先詢問），
@@ -4940,6 +4943,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 氣象傳真列透過任何 <span translate="no">USB</span> 模式的 <span translate="no">HF</span> 電台或 <span translate="no">SDR</span>，接收氣象和海軍單位的 <span translate="no">HF</span> 無線電傳真圖。其頻率按鈕依公開的全球無線電傳真時間表逐一切換廣播（70 個頻率及其廣播時段），跳過此時不在播出的頻率（<span translate="no">UTC</span>）；電台調諧到列出頻率以下 1.9 kHz。速度（每分鐘 60、90、120 或 240 行）從圖的同步線中自動識別，已經在播出的圖在幾行後會自動開始；圖片在停止訊號處結束，或在圖變成雜訊時自動結束。僅接收。
+            </p>
+
+            <p>
+                氣象傳真、氣象衛星（<span translate="no">APT</span>、Meteor <span translate="no">LRPT</span>）和氣球（<span translate="no">SSDV</span>）接收器完成的每一張影像都會立即儲存，無需詢問，儲存在與 <span translate="no">SSTV</span> 圖片相同的資料夾中：在手機上是相簿的 <code>Pictures/qFT8 SSTV</code>，在電腦上是你的圖片資料夾中的 <code>qFT8 SSTV</code>，在 iPhone 上是 App 的 <code>qFT8 SSTV</code> 資料夾和「照片」。檔名說明它是什麼，時間為 <span translate="no">UTC</span>：<code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code>（接收器、日期、時間、頻率、電台）；因你停止接收器而被截斷的影像以 <code>_partial</code> 結尾。影像下方的一行說明它儲存到了哪裡；<strong>分享</strong>（手機、iPhone）把它交給另一個 App，<strong>開啟資料夾</strong>（電腦）在其資料夾中顯示它，<strong>下載</strong>（網頁遙控器）在瀏覽器所在的裝置上儲存一份副本。影像按接收時的樣子儲存，而不是按<strong>負片</strong>檢視顯示的樣子。
             </p>
 
             <h3 id="swl-dv-internet">透過網際網路的數位語音資料</h3>

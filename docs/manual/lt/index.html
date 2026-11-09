@@ -791,7 +791,7 @@
                     mažas langas): <code>--list-devices</code> išvardija visus qFT8 matomus nuosekliuosius prievadus ir garso įrenginius ir išeina;
                     <code>--port &lt;device&gt;</code> nustato numatytąjį nuosekliąjį prievadą (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> parenka profilio aplanką;
-                    <code>--bridge</code> paleidžia tiltą; <code>--opengl</code> piešia langą per OpenGL (žr.
+                    <code>--bridge</code> paleidžia tiltą; <code>--video-mode=&lt;mode&gt;</code> tame paleidime langą piešia kitaip, net kai qFT8 neįmanoma atidaryti tiek, kad nustatymuose pakeistumėte <strong>Vaizdo režimas</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> piešia langą per OpenGL (žr.
                     <a href="#pc-trouble">Jei kas nors neveikia</a>).</li>
             </ul>
 
@@ -859,8 +859,7 @@
                 <li><strong>„Jau veikia“.</strong> Kita kopija naudoja profilio aplanką. Uždarykite ją arba paleiskite šią su
                     savo <code>--qft8_profile</code> aplanku.</li>
                 <li><strong>Langas juodas arba iškraipytas</strong> (senos grafikos tvarkyklės, virtuali mašina, nuotolinis
-                    darbalaukis): atnaujinkite grafikos tvarkyklę. Jei nepadeda, paleiskite qFT8 su <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), kuris langą piešia kitaip; jei ir tai nepadeda, praneškite per <strong>PRANEŠTI APIE KLAIDĄ</strong> (Nustatymai),
+                    darbalaukis): atnaujinkite grafikos tvarkyklę. Jei nepadeda, per Nustatymai &gt; Programa pasirinkite kitą <strong>Vaizdo režimas</strong> reikšmę arba paleiskite qFT8 su <code>--video-mode=gdi</code> („Windows“) ar <code>--video-mode=x11</code> („Linux“), kuris langą piešia kitaip; jei ir tai nepadeda, praneškite per <strong>PRANEŠTI APIE KLAIDĄ</strong> (Nustatymai),
                     nurodydami, kokią sistemą ir grafikos plokštę turite.</li>
                 <li><strong>Langas už ekrano ribų</strong> (atjungtas ekranas): qFT8 patikrina kiekvieno lango išsaugotą vietą,
                     kai atidaro langą, o langas, kurio ekrano nebėra arba kuris būtų daugiausia už ekrano ribų, atsidaro
@@ -2288,6 +2287,8 @@
                 <li>qFT8 neįjungia radijo siuntimo už jūsų regiono radijo mėgėjų juostų ribų (ITU 1, 2 ar 3 regionas) ir apie tai praneša; <span translate="no">TX</span> mygtukas rodo <span translate="no">NO HAM BAND</span>.</li>
                 <li>Kai kurios šalys leidžia tik dalį juostos arba pirmiausia reikalauja ypatingo leidimo ar pranešimo. Šiose juostose (įskaitant 160 m, 80 m, 40 m ir 2 m 3 regione, 23 cm, 70 cm ir 13 cm) qFT8 vieną kartą per juostą parodo pranešimą, pavyzdžiui &ldquo;Kai kurios šalys leidžia tik dalį 60m ruožo arba iš anksto reikalauja specialaus leidimo ar pranešimo. Patikrinkite savo licenciją.&rdquo;; dėl šio pranešimo jūsų niekada nesustabdo.</li>
                 <li>Kai qFT8 žino jūsų šalį (žr. <a href="#swl-legal">Klausymasis ir įstatymai</a>), ji taip pat laikosi tos šalies juostų plano, kai jis siauresnis nei jūsų regiono. Kol kas tai įdiegta šalims: Prancūzija, Vokietija, Jungtinė Karalystė, Šveicarija, Italija, Ispanija, Nyderlandai, Belgija, Austrija, Jungtinės Valstijos, Australija ir Japonija. Kai šalies planas aiškiai neleidžia dažnio (pavyzdžiui, 60 m už 5351.5&ndash;5366.5 kHz ribų šalyje Vokietija, 40 m virš 7200 kHz šalyje Japonija, 13 cm 2310&ndash;2390 MHz šalyje Jungtinės Valstijos), <span translate="no">TX</span> lieka įjungtas, nieko nesiunčiama, o mygtukas rodo <span translate="no">NO HAM BAND</span>; kai planas mažiau tikras, matote tik licencijos pranešimą.</li>
+                <li>11 m (piliečių juosta, CB, apie 27 MHz) nėra mėgėjų juosta. qFT8 ten perduoda tik ten, kur jūsų šalis (pagal šaukinį ar buvimo vietą) leidžia CB naudojamu režimu: balsas (AM, FM, SSB) šalyse, kurių CB taisykles qFT8 žino (Jungtinės Valstijos, Kanada, Prancūzija, Vokietija, Jungtinė Karalystė, Ispanija, Austrija, Čekija, Lenkija, Švedija, Estija, Belgija, Nyderlandai, Airija, Danija, Suomija, Norvegija, Slovakija, Kroatija, Šveicarija, Portugalija (AM ir FM), Australija, Naujoji Zelandija); duomenų režimai, pavyzdžiui, FT8, tik tuose kanaluose, kuriuos šalis aiškiai atveria duomenims (Vokietija ir Portugalija – kanalai 6, 7, 24, 25; Čekija – kanalai 24, 25). Kitur ir už CB kanalų ribų (pavyzdžiui, 27.700 MHz) mygtukas rodo <span translate="no">NO HAM BAND</span>, o pranešimas paaiškina kodėl.</li>
+                <li>Pirmą kartą įjungus <span translate="no">TX</span> 11 m juostoje arba pereinant į 11 m su įjungtu <span translate="no">TX</span>, qFT8 vieną kartą paprašo sutikti, kad CB kanalai, režimai, galia ir įranga yra jūsų atsakomybė (qFT8 niekada nekeičia jūsų radijo galios). Kol neatsakote, nieko nesiunčiama; sutikimas įsimenamas ir <span translate="no">TX</span> įsijungia, atšaukus <span translate="no">TX</span> išsijungia. Interneto pultas rodo tą patį klausimą.</li>
                 <li>Visada patys atsakote už savo licenciją ir juostų planą ten, kur dirbate.</li>
             </ul>
 
@@ -2338,6 +2339,7 @@
 
             <h4 id="settings-application">Programos nustatymai</h4>
             <ul>
+                <li>Kompiuteryje („Windows“ ir „Linux“): <strong>Vaizdo režimas</strong> – kaip piešiamas langas, galioja nuo kito paleidimo. „Windows“ <strong>Numatytasis</strong> naudoja Direct3D ir pats persijungia į GDI, jei langas nuolat stringa; <strong>Direct3D</strong> ir <strong>GDI</strong> palieka vieną iš jų. „Linux“ – <strong>Numatytasis</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> arba <strong>X11</strong>.</li>
                 <li><strong>Lėto įrenginio / mažos baterijos režimas</strong>: lengvesnis piešimas, dekoderis nepakitęs (žr.
                     <a href="#pc-slow">Lėti kompiuteriai</a>; telefonuose tas pats).</li>
                 <li>Kompiuteryje: <strong>Patvirtinti prieš uždarant</strong> (paklausia, kol pagrindinis langas
@@ -6650,6 +6652,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Orų faksimilės eilutė priima meteorologijos ir jūrų tarnybų <span translate="no">HF</span> radiofaksimilės žemėlapius per bet kurį <span translate="no">HF</span> radiją <span translate="no">USB</span> arba <span translate="no">SDR</span>. Jos dažnio mygtukas eina per viešo pasaulinio radiofaksimilės tvarkaraščio transliacijas (70 dažnių su jų transliavimo valandomis), praleisdamas tas, kurios šią valandą neeteryje (<span translate="no">UTC</span>); radijas derinamas 1,9 kHz žemiau nurodyto dažnio. Greitis (60, 90, 120 ar 240 eilučių per minutę) randamas pagal žemėlapio fazavimo eilutes, o žemėlapis, kuris jau eteryje, prasideda pats po kelių eilučių; paveikslėlis baigiasi sustabdymo signalu arba pats, kai žemėlapis virsta triukšmu. Tik priėmimas.
+            </p>
+
+            <p>
+                Kiekvienas paveikslėlis, kurį baigia orų faksimilės, orų palydovų (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) ir balionų (<span translate="no">SSDV</span>) imtuvai, išsaugomas iš karto, neklausiant, tame pačiame aplanke kaip <span translate="no">SSTV</span> paveikslėliai: telefone galerijos <code>Pictures/qFT8 SSTV</code>, kompiuteryje <code>qFT8 SSTV</code> jūsų aplanke Paveikslėliai, „iPhone“ programos aplankas <code>qFT8 SSTV</code> ir Nuotraukos. Jo pavadinimas pasako, kas tai yra, pagal <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (imtuvas, data, laikas, dažnis, stotis); paveikslėlis, nutrauktas, nes sustabdėte imtuvą, baigiasi <code>_partial</code>. Eilutė po paveikslėliu nurodo, kur jis pateko; <strong>Bendrinti</strong> (telefonas, iPhone) perduoda jį kitai programai, <strong>Atverti aplanką</strong> (kompiuteris) parodo jį jo aplanke, o <strong>ATSISIŲSTI</strong> (interneto pultas) išsaugo kopiją įrenginyje, kuriame veikia naršyklė. Paveikslėlis išsaugomas taip, kaip gautas, o ne taip, kaip rodo <strong>NEGATYVAS</strong> vaizdas.
             </p>
 
             <h3 id="swl-dv-internet">Skaitmeniniai balso duomenys internetu</h3>

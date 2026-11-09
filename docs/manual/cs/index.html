@@ -774,7 +774,7 @@
                     <code>--list-devices</code> vypíše každý sériový port a zvukové zařízení, které qFT8 vidí, a skončí;
                     <code>--port &lt;device&gt;</code> nastaví výchozí sériový port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> zvolí složku profilu;
-                    <code>--bridge</code> spustí most; <code>--opengl</code> vykresluje okno přes OpenGL (viz
+                    <code>--bridge</code> spustí most; <code>--video-mode=&lt;mode&gt;</code> vykreslí okno pro tento běh jiným způsobem, i když qFT8 nejde otevřít natolik, aby se v Nastavení dal změnit <strong>Režim videa</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vykresluje okno přes OpenGL (viz
                     <a href="#pc-trouble">Když něco nefunguje</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Již spuštěno".</strong> Složku profilu používá jiná kopie. Zavřete ji nebo spusťte tuto s
                     vlastní složkou <code>--qft8_profile</code>.</li>
                 <li><strong>Okno je černé nebo porušené</strong> (staré ovladače grafiky, virtuální počítač, vzdálená
-                    plocha): aktualizujte ovladač grafiky. Pokud to nepomůže, spusťte qFT8 s <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), které okno vykresluje jiným způsobem; pokud ani to nepomůže, nahlaste to přes <strong>NAHLÁSIT CHYBU</strong> (Nastavení)
+                    plocha): aktualizujte ovladač grafiky. Pokud to nepomůže, zvolte jiný <strong>Režim videa</strong> v Nastavení &gt; APLIKACE, nebo spusťte qFT8 s <code>--video-mode=gdi</code> (Windows) či <code>--video-mode=x11</code> (Linux), které okno vykresluje jiným způsobem; pokud ani to nepomůže, nahlaste to přes <strong>NAHLÁSIT CHYBU</strong> (Nastavení)
                     a uveďte, jaký máte systém a grafickou kartu.</li>
                 <li><strong>Okno je mimo obrazovku</strong> (obrazovka byla odpojena): qFT8 při otevírání každého okna kontroluje jeho uloženou
                     polohu a okno, jehož obrazovka zmizela nebo které by bylo převážně mimo obrazovku, se otevře
@@ -1886,6 +1885,8 @@
                 <li>qFT8 nepřepíná rádio na vysílání mimo amatérská pásma vaší oblasti (oblast ITU 1, 2 nebo 3) a řekne to; tlačítko <span translate="no">TX</span> ukazuje <span translate="no">NO HAM BAND</span>.</li>
                 <li>Některé země povolují jen část pásma nebo předem vyžadují zvláštní povolení či oznámení. Na těchto pásmech (včetně 160 m, 80 m, 40 m a 2 m v oblasti 3, 23 cm, 70 cm a 13 cm) qFT8 jednou za pásmo zobrazí upozornění, například &ldquo;Některé země povolují jen část pásma 60m nebo předem vyžadují zvláštní povolení či ohlášení. Zkontrolujte svou licenci.&rdquo;; kvůli tomuto upozornění vás nikdy nezastaví.</li>
                 <li>Jakmile qFT8 zná vaši zemi (viz <a href="#swl-legal">Poslech a zákon</a>), řídí se také pásmovým plánem této země, pokud je užší než plán vaší oblasti. Zatím je zabudován pro Francie, Německo, Spojené království, Švýcarsko, Itálie, Španělsko, Nizozemsko, Belgie, Rakousko, Spojené státy, Austrálie a Japonsko. Kde plán země jasně vylučuje kmitočet (například 60 m mimo 5351.5&ndash;5366.5 kHz v Německo, 40 m nad 7200 kHz v Japonsko, 13 cm 2310&ndash;2390 MHz v Spojené státy), zůstane <span translate="no">TX</span> připravené, nic se neodešle a tlačítko ukazuje <span translate="no">NO HAM BAND</span>; kde je plán méně jistý, uvidíte jen upozornění na licenci.</li>
+                <li>Pásmo 11 m (občanské pásmo, CB, kolem 27 MHz) není radioamatérské. qFT8 tam vysílá, jen když vaše země (podle značky nebo polohy) dovoluje CB ve druhu provozu, který používáte: hlas (AM, FM, SSB) v zemích, jejichž pravidla CB qFT8 zná (Spojené státy, Kanada, Francie, Německo, Spojené království, Španělsko, Rakousko, Česko, Polsko, Švédsko, Estonsko, Belgie, Nizozemsko, Irsko, Dánsko, Finsko, Norsko, Slovensko, Chorvatsko, Švýcarsko, Portugalsko (AM a FM), Austrálie, Nový Zéland); datové druhy provozu jako FT8 jen na kanálech, které země výslovně otevřela datům (Německo a Portugalsko kanály 6, 7, 24, 25; Česko kanály 24, 25). Jinde a mimo kanály CB (například 27.700 MHz) tlačítko ukazuje <span translate="no">NO HAM BAND</span> a upozornění říká proč.</li>
+                <li>Když poprvé zapnete <span translate="no">TX</span> na 11 m nebo přejdete na 11 m se zapnutým <span translate="no">TX</span>, qFT8 se vás jednou zeptá, zda přijímáte, že kanály CB, druhy provozu, výkon i zařízení jsou vaše odpovědnost (qFT8 nikdy nemění výkon vašeho rádia). Dokud neodpovíte, nic se nevysílá; souhlas se zapamatuje a <span translate="no">TX</span> se zapne, zrušení <span translate="no">TX</span> vypne. Webový dálkový ovladač ukáže stejnou otázku.</li>
                 <li>Za svou licenci a pásmový plán v místě, kde pracujete, jste vždy odpovědní sami.</li>
             </ul>
 
@@ -1936,6 +1937,7 @@
 
             <h4 id="settings-application">Nastavení aplikace</h4>
             <ul>
+                <li>Na počítači (Windows a Linux): <strong>Režim videa</strong>, jak se okno vykresluje, platí od příštího spuštění. Ve Windows <strong>Výchozí</strong> používá Direct3D a samo přejde na GDI, pokud okno stále zamrzá; <strong>Direct3D</strong> a <strong>GDI</strong> ponechají jedno z nich. V Linuxu <strong>Výchozí</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> nebo <strong>X11</strong>.</li>
                 <li><strong>Režim pomalého zařízení / slabé baterie</strong>: lehčí vykreslování, dekodér beze změny (viz
                     <a href="#pc-slow">Pomalé počítače</a>; na telefonech stejně).</li>
                 <li>Na počítači: <strong>Potvrdit před zavřením</strong> (zeptá se, než hlavní okno qFT8 zavře)
@@ -5160,6 +5162,9 @@
                 Řádek faxu počasí přijímá radiofaxové mapy <span translate="no">HF</span> meteorologických a námořních služeb přes libovolné rádio <span translate="no">HF</span> v <span translate="no">USB</span> nebo <span translate="no">SDR</span>. Jeho tlačítko kmitočtu prochází vysíláními veřejného světového rozpisu radiofaxu (70 kmitočtů s hodinami vysílání) a přeskakuje ta, která v tuto hodinu nevysílají (<span translate="no">UTC</span>); rádio se ladí 1,9 kHz pod uvedený kmitočet. Rychlost (60, 90, 120 nebo 240 řádků za minutu) se zjistí z fázovacích řádků mapy a mapa, která už vysílá, začne sama po několika řádcích; obrázek končí stopsignálem nebo sám, když se mapa změní v šum. Pouze příjem.
             </p>
 
+            <p>
+                Každý obrázek, který dokončí přijímače meteorologického faxu, meteorologických družic (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) a balonů (<span translate="no">SSDV</span>), se hned uloží, bez ptaní, do stejné složky jako obrázky <span translate="no">SSTV</span>: v telefonu <code>Pictures/qFT8 SSTV</code> v galerii, v počítači <code>qFT8 SSTV</code> ve vaší složce Pictures, v iPhonu složka <code>qFT8 SSTV</code> aplikace a Fotky. Jeho název říká, co to je, v čase <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (přijímač, datum, čas, kmitočet, stanice); obrázek přerušený tím, že jste zastavili přijímač, končí na <code>_partial</code>. Řádek pod obrázkem říká, kam se uložil; <strong>Sdílet</strong> (telefon, iPhone) ho předá jiné aplikaci, <strong>Otevřít složku</strong> (počítač) ho ukáže v jeho složce a <strong>STÁHNOUT</strong> (webový dálkový ovladač) uloží kopii do zařízení, na kterém běží prohlížeč. Obrázek se uloží tak, jak byl přijat, ne tak, jak ho ukazuje pohled <strong>NEGATIV</strong>.
+            </p>
             <h3 id="swl-dv-internet">Digitální hlasová data přes internet</h3>
             <p>
                 Řádky dat <span translate="no">DMR</span>, <span translate="no">D-STAR</span>, Fusion a <span translate="no">M17</span> mohou také poslouchat přes internet (jejich poslední volba): kdo mluví, do které skupiny nebo reflektoru, jejich text a poloha, z přehledu aktivity <span translate="no">BrandMeister</span> a otevřených reflektorů (<span translate="no">XLX</span>, <span translate="no">XRF</span>, <span translate="no">DCS</span>, <span translate="no">YSF</span>, <span translate="no">M17</span>). Jen data a jen příjem: qFT8 nikdy nevysílá do sítě, nikdy nespojuje dvě z nich a nikdy nepřehrává hlas <span translate="no">DMR</span>, <span translate="no">D-STAR</span> ani Fusion. Reflektory vás vidí jako posluchače pod vaší volací značkou. Když síť vypadne, kanál se znovu spojí sám asi do 15 sekund. Experimentální.

@@ -774,7 +774,7 @@
                     <code>--list-devices</code> wypisuje każdy port szeregowy i urządzenie dźwiękowe, które widzi qFT8, i kończy działanie;
                     <code>--port &lt;device&gt;</code> ustawia domyślny port szeregowy (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> wybiera folder profilu;
-                    <code>--bridge</code> uruchamia most; <code>--opengl</code> rysuje okno przez OpenGL (zobacz
+                    <code>--bridge</code> uruchamia most; <code>--video-mode=&lt;mode&gt;</code> rysuje okno w inny sposób podczas tego uruchomienia, nawet gdy qFT8 nie da się otworzyć na tyle, by zmienić <strong>Tryb wideo</strong> w Ustawieniach (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> rysuje okno przez OpenGL (zobacz
                     <a href="#pc-trouble">Gdy coś nie działa</a>).</li>
             </ul>
 
@@ -841,8 +841,7 @@
                 <li><strong>"Już uruchomiono".</strong> Inna kopia używa folderu profilu. Zamknij ją albo uruchom tę z
                     własnym folderem <code>--qft8_profile</code>.</li>
                 <li><strong>Okno jest czarne lub zniekształcone</strong> (stare sterowniki grafiki, maszyna wirtualna, pulpit
-                    zdalny): zaktualizuj sterownik grafiki. Jeśli to nie pomaga, uruchom qFT8 z opcją <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), która rysuje okno w inny sposób; jeśli i to nie pomoże, zgłoś to przez <strong>ZGŁOŚ BŁĄD</strong> (Ustawienia),
+                    zdalny): zaktualizuj sterownik grafiki. Jeśli to nie pomaga, wybierz inny <strong>Tryb wideo</strong> w Ustawienia &gt; APLIKACJA albo uruchom qFT8 z opcją <code>--video-mode=gdi</code> (Windows) lub <code>--video-mode=x11</code> (Linux), która rysuje okno w inny sposób; jeśli i to nie pomoże, zgłoś to przez <strong>ZGŁOŚ BŁĄD</strong> (Ustawienia),
                     podając, jaki masz system i kartę graficzną.</li>
                 <li><strong>Okno jest poza ekranem</strong> (odłączono ekran): qFT8 sprawdza zapisane położenie każdego okna,
                     gdy je otwiera, a okno, którego ekranu już nie ma lub które w większości znalazłoby się poza ekranem, otwiera się w
@@ -1886,6 +1885,8 @@
                 <li>qFT8 nie włącza nadawania poza pasmami amatorskimi Twojego regionu (region ITU 1, 2 lub 3) i informuje o tym; przycisk <span translate="no">TX</span> pokazuje <span translate="no">NO HAM BAND</span>.</li>
                 <li>Niektóre kraje zezwalają tylko na część pasma albo wymagają wcześniej specjalnego zezwolenia lub zgłoszenia. Na tych pasmach (w tym 160 m, 80 m, 40 m i 2 m w regionie 3, 23 cm, 70 cm i 13 cm) qFT8 pokazuje uwagę raz na pasmo, na przykład &ldquo;Niektóre kraje zezwalają tylko na część pasma 60m albo wymagają najpierw specjalnego pozwolenia lub zgłoszenia. Sprawdź swoje pozwolenie.&rdquo;; nigdy nie blokuje Cię z jej powodu.</li>
                 <li>Gdy qFT8 zna Twój kraj (zobacz <a href="#swl-legal">Nasłuch a prawo</a>), stosuje też plan pasm tego kraju, jeśli jest węższy niż planu Twojego regionu. Jak dotąd jest to wbudowane dla: Francja, Niemcy, Wielka Brytania, Szwajcaria, Włochy, Hiszpania, Holandia, Belgia, Austria, Stany Zjednoczone, Australia i Japonia. Gdy plan kraju wyraźnie wyklucza daną częstotliwość (na przykład 60 m poza 5351.5&ndash;5366.5 kHz w Niemcy, 40 m powyżej 7200 kHz w Japonia, 13 cm 2310&ndash;2390 MHz w Stany Zjednoczone), <span translate="no">TX</span> pozostaje włączony, nic nie jest wysyłane, a przycisk pokazuje <span translate="no">NO HAM BAND</span>; gdy plan jest mniej pewny, widzisz tylko uwagę o licencji.</li>
+                <li>11 m (pasmo obywatelskie, CB, około 27 MHz) nie jest pasmem amatorskim. qFT8 nadaje tam tylko wtedy, gdy twój kraj (według znaku wywoławczego lub lokalizacji) zezwala na CB w używanym przez ciebie emisji: głos (AM, FM, SSB) w krajach, których przepisy CB qFT8 zna (Stany Zjednoczone, Kanada, Francja, Niemcy, Wielka Brytania, Hiszpania, Austria, Czechy, Polska, Szwecja, Estonia, Belgia, Holandia, Irlandia, Dania, Finlandia, Norwegia, Słowacja, Chorwacja, Szwajcaria, Portugalia (AM i FM), Australia, Nowa Zelandia); emisje cyfrowe, takie jak FT8, tylko na kanałach, które dany kraj wyraźnie otwiera dla transmisji danych (Niemcy i Portugalia kanały 6, 7, 24, 25; Czechy kanały 24, 25). Gdziekolwiek indziej oraz poza kanałami CB (na przykład 27.700 MHz) przycisk pokazuje <span translate="no">NO HAM BAND</span>, a komunikat wyjaśnia dlaczego.</li>
+                <li>Gdy po raz pierwszy włączysz <span translate="no">TX</span> na 11 m albo przejdziesz na 11 m przy włączonym <span translate="no">TX</span>, qFT8 jednorazowo poprosi o potwierdzenie, że kanały CB, emisje, moc i sprzęt są twoją odpowiedzialnością (qFT8 nigdy nie zmienia mocy twojego radia). Dopóki nie odpowiesz, nic nie jest nadawane; zgoda jest zapamiętywana i <span translate="no">TX</span> się włącza, anulowanie wyłącza <span translate="no">TX</span>. Zdalny panel WWW pokazuje to samo pytanie.</li>
                 <li>Zawsze sam odpowiadasz za swoją licencję i plan pasm w miejscu, w którym pracujesz.</li>
             </ul>
 
@@ -1936,6 +1937,7 @@
 
             <h4 id="settings-application">Ustawienia aplikacji</h4>
             <ul>
+                <li>Na komputerze (Windows i Linux): <strong>Tryb wideo</strong>, sposób rysowania okna, stosowany od następnego uruchomienia. W Windows <strong>Domyślny</strong> używa Direct3D i sam przełącza się na GDI, jeśli okno stale się zawiesza; <strong>Direct3D</strong> i <strong>GDI</strong> utrzymują jedno z nich. W Linuksie <strong>Domyślny</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> lub <strong>X11</strong>.</li>
                 <li><strong>Tryb wolnego urządzenia / słabej baterii</strong>: lżejsze rysowanie, dekoder bez zmian (zob.
                     <a href="#pc-slow">Wolne komputery</a>; tak samo w telefonach).</li>
                 <li>Na komputerze: <strong>Potwierdzaj przed zamknięciem</strong> (pyta, zanim zamknięcie głównego okna zakończy qFT8)
@@ -5294,6 +5296,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Wiersz faksu pogodowego odbiera mapy radiofaksu <span translate="no">HF</span> służb meteorologicznych i morskich przez dowolne radio <span translate="no">HF</span> w <span translate="no">USB</span> lub <span translate="no">SDR</span>. Jego przycisk częstotliwości przechodzi przez nadawania publicznego światowego rozkładu radiofaksu (70 częstotliwości z godzinami nadawania), pomijając te, które o tej porze nie nadają (<span translate="no">UTC</span>); radio jest stroione 1,9 kHz poniżej podanej częstotliwości. Szybkość (60, 90, 120 lub 240 wierszy na minutę) jest ustalana z wierszy fazujących mapy, a mapa, która już nadaje, zaczyna się sama po kilku wierszach; obraz kończy się sygnałem stopu albo sam, gdy mapa zamienia się w szum. Tylko odbiór.
+            </p>
+
+            <p>
+                Każdy obraz, który zakończą odbiorniki faksu pogodowego, satelitów pogodowych (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) i balonów (<span translate="no">SSDV</span>), jest zapisywany od razu, bez pytania, w tym samym folderze co obrazy <span translate="no">SSTV</span>: w telefonie w galerii <code>Pictures/qFT8 SSTV</code>, na komputerze <code>qFT8 SSTV</code> w folderze Obrazy, w iPhonie folder aplikacji <code>qFT8 SSTV</code> i Zdjęcia. Nazwa mówi, co to jest, w <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (odbiornik, data, godzina, częstotliwość, stacja); obraz przerwany, bo zatrzymano odbiornik, kończy się na <code>_partial</code>. Wiersz pod obrazem mówi, gdzie trafił; <strong>Udostępnij</strong> (telefon, iPhone) przekazuje go innej aplikacji, <strong>Otwórz folder</strong> (komputer) pokazuje go w jego folderze, a <strong>POBIERZ</strong> (zdalny panel WWW) zapisuje kopię na urządzeniu, na którym działa przeglądarka. Obraz jest zapisywany tak, jak został odebrany, a nie tak, jak pokazuje go widok <strong>NEGATYW</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Cyfrowe dane głosowe przez internet</h3>

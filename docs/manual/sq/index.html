@@ -787,7 +787,7 @@
                     i shfaq): <code>--list-devices</code> liston çdo portë serike dhe pajisje zëri që sheh qFT8 dhe del;
                     <code>--port &lt;device&gt;</code> cakton portën serike të parazgjedhur (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> zgjedh dosjen e profilit;
-                    <code>--bridge</code> nis një urë; <code>--opengl</code> vizaton dritaren përmes OpenGL (shih
+                    <code>--bridge</code> nis një urë; <code>--video-mode=&lt;mode&gt;</code> e vizaton dritaren në një mënyrë tjetër për atë nisje, edhe kur qFT8 nuk hapet aq sa të ndryshosh <strong>Modaliteti i videos</strong> te Cilësimet (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vizaton dritaren përmes OpenGL (shih
                     <a href="#pc-trouble">Nëse diçka nuk funksionon</a>).</li>
             </ul>
 
@@ -854,10 +854,7 @@
                     distinktivit <em>Output to radio</em>, ose zgjidh një dalje tjetër të parazgjedhur në sistemin tënd.</li>
                 <li><strong>"Tashmë në punë".</strong> Një kopje tjetër përdor dosjen e profilit. Mbylle, ose nise këtë me
                     dosjen e vet <code>--qft8_profile</code>.</li>
-                <li><strong>Dritarja është e zezë ose e shtrembëruar</strong> (drajverë grafikë të vjetër, një makinë virtuale, desktop
-                    në distancë): përditëso drajverin grafik. Nëse mbetet, nise qFT8 me <code>--opengl</code>
-                    (<code>qFT8 --opengl</code>), që e vizaton dritaren në një mënyrë tjetër; nëse as kjo nuk ndihmon, raportoje me <strong>RAPORTO NJË GABIM</strong> (Cilësimet),
-                    duke thënë cilin sistem dhe cilën kartë grafike ke.</li>
+                <li><strong>Dritarja është e zezë ose e shtrembëruar</strong> (drajverë grafikë të vjetër, një makinë virtuale, desktop në distancë): përditëso drajverin grafik. Nëse mbetet, zgjidh një tjetër <strong>Modaliteti i videos</strong> te Cilësimet &gt; Aplikacioni, ose nise qFT8 me <code>--video-mode=gdi</code> (Windows) ose <code>--video-mode=x11</code> (Linux), që e vizaton dritaren në një mënyrë tjetër; nëse as kjo nuk ndihmon, raportoje me <strong>RAPORTO NJË GABIM</strong> (Cilësimet), duke thënë cilin sistem dhe cilën kartë grafike ke.</li>
                 <li><strong>Një dritare është jashtë ekranit</strong> (një ekran u shkëput): qFT8 kontrollon vendin e ruajtur të çdo dritareje
                     kur e hap dritaren, dhe ajo që ka ekranin e humbur, ose që do të ishte kryesisht jashtë ekranit, hapet në
                     mes të ekranit kryesor. Nëse një dritare është ende e paarritshme, mbyll panelin e saj me
@@ -2283,6 +2280,8 @@
                 <li>qFT8 nuk e çon radion në transmetim jashtë brezave amatorë të rajonit tuaj (Rajoni 1, 2 ose 3 i ITU) dhe e thotë këtë; butoni <span translate="no">TX</span> shfaq <span translate="no">NO HAM BAND</span>.</li>
                 <li>Disa vende lejojnë vetëm një pjesë të brezit, ose kërkojnë leje të veçantë ose njoftim paraprak. Në ata breza (përfshirë 160 m, 80 m, 40 m dhe 2 m në Rajonin 3, 23 cm, 70 cm dhe 13 cm) qFT8 shfaq një njoftim një herë për çdo brez, për shembull &ldquo;Disa vende lejojnë vetëm një pjesë të 60m, ose kërkojnë më parë leje të veçantë ose njoftim. Kontrolloni licencën tuaj.&rdquo;; nuk ju ndalon kurrë për shkak të këtij njoftimi.</li>
                 <li>Pasi qFT8 e di vendin tuaj (shihni <a href="#swl-legal">Dëgjimi dhe ligji</a>), ndjek edhe planin e brezave të atij vendi aty ku është më i ngushtë se ai i rajonit tuaj. Deri tani kjo është e integruar për Francë, Gjermani, Mbretëria e Bashkuar, Zvicër, Itali, Spanjë, Holandë, Belgjikë, Austri, SHBA, Australi dhe Japoni. Aty ku plani i vendit e përjashton qartë një frekuencë (për shembull 60 m jashtë 5351.5&ndash;5366.5 kHz në Gjermani, 40 m mbi 7200 kHz në Japoni, 13 cm 2310&ndash;2390 MHz në SHBA) <span translate="no">TX</span> mbetet i armatosur, nuk dërgohet asgjë dhe butoni shfaq <span translate="no">NO HAM BAND</span>; aty ku plani është më pak i sigurt shihni vetëm njoftimin e licencës.</li>
+                <li>11 m (Brezi Qytetar, CB, rreth 27 MHz) nuk është brez amator. qFT8 transmeton aty vetëm ku vendi juaj (sipas shenjës së thirrjes ose vendndodhjes) lejon CB në mënyrën që përdorni: zë (AM, FM, SSB) në vendet rregullat CB të të cilave i njeh qFT8 (Shtetet e Bashkuara, Kanadaja, Franca, Gjermania, Mbretëria e Bashkuar, Spanja, Austria, Republika Çeke, Polonia, Suedia, Estonia, Belgjika, Holanda, Irlanda, Danimarka, Finlanda, Norvegjia, Sllovakia, Kroacia, Zvicra, Portugalia (AM dhe FM), Australia, Zelanda e Re); mënyra të të dhënave si FT8 vetëm në kanalet që një vend i hap shprehimisht për të dhëna (Gjermania dhe Portugalia kanalet 6, 7, 24, 25; Republika Çeke kanalet 24, 25). Kudo tjetër, dhe jashtë kanaleve CB (për shembull 27.700 MHz), butoni shfaq <span translate="no">NO HAM BAND</span> dhe një njoftim e shpjegon pse.</li>
+                <li>Herën e parë që ndez <span translate="no">TX</span> në 11 m, ose kalon në 11 m me <span translate="no">TX</span> të ndezur, qFT8 të kërkon një herë të pranosh që kanalet CB, mënyrat, fuqia dhe pajisjet janë përgjegjësia jote (qFT8 nuk e ndryshon kurrë fuqinë e radios tënde). Derisa të përgjigjesh nuk dërgohet asgjë; pranimi mbahet mend dhe <span translate="no">TX</span> ndizet, anulimi e fik <span translate="no">TX</span>. Telekomanda në web shfaq të njëjtën pyetje.</li>
                 <li>Ju mbeteni gjithmonë vetë përgjegjës për licencën tuaj dhe për planin e brezave aty ku punoni.</li>
             </ul>
 
@@ -2333,6 +2332,7 @@
 
             <h4 id="settings-application">Cilësimet e aplikacionit</h4>
             <ul>
+                <li>Në kompjuter (Windows dhe Linux): <strong>Modaliteti i videos</strong>, mënyra se si vizatohet dritarja, përdoret nga nisja e radhës. Në Windows <strong>Parazgjedhje</strong> përdor Direct3D dhe kalon vetë në GDI nëse dritarja vazhdon të ngrijë; <strong>Direct3D</strong> dhe <strong>GDI</strong> mbajnë njërin prej tyre. Në Linux <strong>Parazgjedhje</strong>, <strong>XRender</strong>, <strong>OpenGL</strong> ose <strong>X11</strong>.</li>
                 <li><strong>Mënyra për pajisje të ngadalta / bateri të ulët</strong>: vizatim më i lehtë, dekoderi i pandryshuar (shih
                     <a href="#pc-slow">Kompjuterët e ngadaltë</a>; e njëjta gjë në telefona).</li>
                 <li>Në kompjuter: <strong>Konfirmo para mbylljes</strong> (pyet para se dritarja kryesore ta mbyllë qFT8),
@@ -6676,6 +6676,10 @@
                 <h3 id="swl-wefax">Weather fax</h3>
             <p>
                 Rreshti i faksit të motit merr hartat e radiofaksit <span translate="no">HF</span> të shërbimeve meteorologjike dhe detare përmes çdo radioje <span translate="no">HF</span> në <span translate="no">USB</span>, ose një <span translate="no">SDR</span>. Butoni i frekuencës së tij kalon nëpër transmetimet e orarit publik botëror të radiofaksit (70 frekuenca, me orët e transmetimit të tyre), duke kapërcyer ato që nuk janë në ajër në këtë orë (<span translate="no">UTC</span>); radio akordohet 1,9 kHz poshtë frekuencës së listuar. Shpejtësia (60, 90, 120 ose 240 rreshta në minutë) gjendet nga rreshtat e fazimit të hartës, dhe një hartë që është tashmë në ajër fillon vetë pas disa rreshtash; një figurë mbaron me sinjalin e ndalimit, ose vetë kur harta kthehet në zhurmë. Vetëm marrje.
+            </p>
+
+            <p>
+                Çdo foto që marrësit e faksit të motit, të satelitëve të motit (<span translate="no">APT</span>, Meteor <span translate="no">LRPT</span>) dhe të balonave (<span translate="no">SSDV</span>) e përfundojnë ruhet menjëherë, pa pyetur, në të njëjtën dosje me fotot <span translate="no">SSTV</span>: në telefon <code>Pictures/qFT8 SSTV</code> e galerisë, në kompjuter <code>qFT8 SSTV</code> në dosjen Pictures, në iPhone dosja <code>qFT8 SSTV</code> e aplikacionit dhe Photos. Emri i saj thotë çfarë është, në <span translate="no">UTC</span>: <code>WEFAX_20261108_1530Z_7880kHz_DDK3.png</code> (marrësi, data, ora, frekuenca, stacioni); një foto e ndërprerë sepse ndalove marrësin mbaron me <code>_partial</code>. Rreshti nën foto thotë ku shkoi; <strong>Ndaj</strong> (telefon, iPhone) ia jep një aplikacioni tjetër, <strong>Hap dosjen</strong> (kompjuter) e shfaq në dosjen e saj dhe <strong>SHKARKO</strong> (telekomanda në web) ruan një kopje në pajisjen ku funksionon shfletuesi. Fotoja ruhet siç u mor, jo siç e shfaq pamja <strong>NEGATIV</strong>.
             </p>
 
             <h3 id="swl-dv-internet">Të dhëna dixhitale zëri përmes internetit</h3>
