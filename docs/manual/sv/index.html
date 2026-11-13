@@ -275,6 +275,7 @@
                 <li><strong>Elecraft K2 (kräver KIO2-modulen)</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (experimentellt)</li>
                 <li><strong>Kenwood TS-480 / TS-590 / TS-2000 series</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -1995,10 +1996,16 @@
                     och <span translate="no">FST4W</span>, beskrivna vid varje trafiksätt.</li>
             </ul>
             <p id="decode-focus">
-                <strong>Fokusera avkodningen på stationen du kör med (AUTO-läge)</strong> och <strong>Fokusera avkodningen på stationen du kör med (manuell CALL)</strong> är två reglage, från 0 till 30 %: den andel av avkodarens tid som först går till stationen du kör med; resten går till alla andra stationer. De verkar bara medan du anropar eller kör med en station med TX på; utan kontakt får alla stationer hela avkodningstiden. Det första gäller när <span translate="no">AUTO</span> valde stationen, det andra när du själv valde den med <span translate="no">CALL</span> på fliken Stationer. Vid 0 % arbetar avkodaren precis som utan dem. Som standard har <span translate="no">AUTO</span> 5 % och en station du anropar med <span translate="no">CALL</span> 10 %. Om flera stationer är markerade med <span translate="no">CALL</span> samtidigt delar de på den enda procentsatsen. Procentsatsen är ett tak: tid som din kontakt inte behöver går tillbaka till de andra stationerna. För en station räcker omkring 2 %; högre värden hjälper när flera stationer är markerade med <span translate="no">CALL</span> samtidigt, i <span translate="no">LQ8</span> och på långsammare telefoner och datorer, där samma arbete tar en större del av tiden. Det kostar ungefär en avkodning av en annan station per 2 000. Värdet visas bredvid varje reglage; tryck på det för att skriva in ett värde. De fungerar tills vidare i <span translate="no">FT8</span> och <span translate="no">LQ8</span>; i de andra lägena är de gråade och visar <strong>Inte än för detta läge</strong>.
+                <strong>Fokusera avkodningen på stationen du kör med (AUTO-läge)</strong> och <strong>Fokusera avkodningen på stationen du kör med (manuell CALL)</strong> är två reglage, från 0 till 30 %: den andel av avkodarens tid som först går till stationen du kör med; resten går till alla andra stationer. De verkar bara medan du anropar eller kör med en station med TX på; utan kontakt får alla stationer hela avkodningstiden. Det första gäller när <span translate="no">AUTO</span> valde stationen, det andra när du själv valde den med <span translate="no">CALL</span> på fliken Stationer. Vid 0 % arbetar avkodaren precis som utan dem. Som standard har <span translate="no">AUTO</span> 5 % och en station du anropar med <span translate="no">CALL</span> 10 %. Om flera stationer är markerade med <span translate="no">CALL</span> samtidigt delar de på den enda procentsatsen. Procentsatsen är ett tak: tid som din kontakt inte behöver går tillbaka till de andra stationerna. För en station räcker omkring 2 %; högre värden hjälper när flera stationer är markerade med <span translate="no">CALL</span> samtidigt, i <span translate="no">LQ8</span> och på långsammare telefoner och datorer, där samma arbete tar en större del av tiden. Det kostar ungefär en avkodning av en annan station per 2 000. Värdet visas bredvid varje reglage; tryck på det för att skriva in ett värde. De fungerar tills vidare i <span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span>; i de andra lägena är de gråade och visar <strong>Inte än för detta läge</strong>.
+            </p>
+            <p id="wanted-stations">
+                Stationer som du lägger till för hand med <strong>+</strong> på fliken Stationer (de 10 senast tillagda) söks i varje period var som helst i bandet, även innan de har hörts, inom samma andel (<span translate="no">AUTO</span>-andelen när TX är av eller du inte kör någon; vid 0 % är sökningen av). När en sådan station har hörts söks den där den hördes.
             </p>
             <p id="late-decode">
                 <strong>Fortsätt avkoda efter cykelns slut</strong> (på som standard i datorprogrammet, av på telefonen och iPhone) låter avkodaren fortsätta arbeta med en period efter att qFT8 har bestämt vad som ska sändas härnäst, tills avkodningen av nästa period börjar. Det den hittar då är en sen avkodning. På en telefon eller surfplatta håller detta processorn sysselsatt under största delen av varje period, så enheten använder mer batteri och kan bli varm: det är därför det är avstängt som standard där. En sen avkodning ändrar aldrig en sändning som redan är bestämd, och nästa period avkodas alltid först. Vattenfallet märker varje sen avkodning så snart den hittas, på dess egen period och frekvens, även under en sändning. <strong>Uppdatera stationer så snart sen avkodning är klar</strong> (nedtonad medan kryssrutan är av) anger när sena avkodningar når fliken Stationer, kartan, loggen och <span translate="no">AUTO</span>: <strong>Nej</strong> behåller dem och lägger till dem alla tillsammans med nästa periods avkodningar, strax innan qFT8 bestämmer sig igen, så att listan inte ändras under fingret; <strong>I AUTO-läge</strong> (standard) lägger till dem så fort de kommer medan <span translate="no">AUTO</span> är valt, och behåller dem som vid <strong>Nej</strong> medan du själv anropar <span translate="no">CALL</span> en station; <strong>Alltid</strong> lägger till dem så fort de kommer. Medan du sänder väntar de alltid tills sändningen är slut. Varje sen avkodning behåller tiden för sin egen period. Sen avkodning fortsätter medan du sänder, med lägsta prioritet, så din sändning kommer alltid först. På en telefon eller iPhone som blir varm pausar sen avkodning tills den har svalnat. Det fungerar tills vidare i <span translate="no">FT8</span> och <span translate="no">LQ8</span>.
+            </p>
+            <p id="late-bind">
+                <strong>Meddelandet väljs en gång till när din sändning startar</strong> (<span translate="no">FT8</span> och <span translate="no">LQ8</span>, i <span translate="no">AUTO</span>; inget att ställa in). Den första sekunden av varje <span translate="no">FT8</span>- och <span translate="no">LQ8</span>-sändning är densamma oavsett meddelande (synkroniseringen), så medan den spelas fortsätter qFT8 att avkoda perioden före den, och <span translate="no">AUTO</span> väljer meddelandet en gång till strax före den första datasymbolen: ett svar som först hittas då besvaras i den här sändningen i stället för i nästa. De andra stationerna tar emot exakt det slutliga meddelandet. Om du sänder avgörs fortfarande vid den vanliga tidpunkten; ett meddelande som du väljer själv vinner alltid; skärmen visar meddelandet när det är slutgiltigt. Detta är det enda sättet något avkodat efter beslutet kan ändra det som sänds, och bara innan datasymbolerna börjar. På en enhet som har mycket ljud i kö finns det ingen tid för det, och det första valet sänds, som förut.
             </p>
 
             <h4 id="settings-band-selection">BANDVAL</h4>
@@ -3254,6 +3261,10 @@
             </p>
             <p>
                 Om du vill anmäla med andra band eller moder, eller se när det senast anmäldes, tryck på <em><span translate="no">ANMÄL</span></em> på aktiveringens kort (tryck på den blå markören) eller i aktiveringens QSO-vy. Dialogen erbjuder då också <em><span translate="no">SLUTA ANMÄLA IGEN</span></em>. När du byter mod under en anmäld aktivering frågar qFT8 om den nya moden också ska anmälas.
+            </p>
+
+            <p>
+                Rutan <em>Kommentar</em> under lägena är det som varje anmälan säger. Den börjar med qFT8:s egen text (det verkliga läget, för ett läge som anmäls som <span translate="no">DATA</span>) och du kan ändra den, till exempel för att lägga till <code translate="no">QRP 5 W</code>. När aktiveringen har anmälts erbjuder lägena också <em><span translate="no">QRT</span></em>: kryssa i det när du slutar, så skickar <em><span translate="no">ANNOUNCE</span></em> en sista anmälan om att du är <span translate="no">QRT</span>, med kommentaren (till exempel ditt tack). Banden blir nedtonade, ny anmälan upphör och den skickas bara en gång. När du avslutar en anmäld aktivering frågar qFT8 också om programmet ska få veta att du är <span translate="no">QRT</span>.
             </p>
 
             <h3 id="activation-chip">Medan den är öppen: den blå markeringen</h3>
@@ -4635,6 +4646,7 @@
             <ul>
                 <li><strong>Spara varje mottagen bild automatiskt på enheten</strong> (av på telefoner och iPhone, på på datorn).</li>
                 <li><strong>Mottagna bilder som appen behåller</strong>: 25, 50, 100 (standard), 200 eller 500.</li>
+                <li><strong>Korrigering av ljudkortets klocka</strong>: <strong>Automatisk</strong> (standard), <strong>Manuell</strong> eller <strong>Av</strong>. Ett ljudkort vars klocka går lite för fort eller för långsamt skevar varje bild du tar emot och varje bild du skickar. Automatisk lär sig hur mycket ditt kort avviker utifrån bilderna du tar emot (från den tredje bra bilden; raden under valet visar värdet) och tar bort det från båda: mottagna bilder blir raka, och dina kommer fram raka även hos stationer vars program inte räta upp bilder. <strong>Manuell korrigering</strong> (-10000 till +10000 ppm, + = kortet går fort) används när du väljer <strong>Manuell</strong>; flyttar du den väljs <strong>Manuell</strong>, och väljer du <strong>Manuell</strong> startar den från det inlärda värdet. Varje bild rätas också upp av sig själv, upp till 2000 ppm mellan de två stationernas klockor.</li>
             </ul>
             <p><strong>Sändning</strong>:</p>
             <ul>
@@ -5057,7 +5069,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> ja</dd>
                 </div>
                 <div>
-                    <dt>En vanlig radio (<span data-radio-count>155</span> modeller via <span translate="no">USB</span>, eller vilken radio som helst med ljudkabel)</dt>
+                    <dt>En vanlig radio (<span data-radio-count>156</span> modeller via <span translate="no">USB</span>, eller vilken radio som helst med ljudkabel)</dt>
                     <dd><span class="row-label">Enhetsrad</span> radions rad, eller <code>AUTO</code></dd>
                     <dd><span class="row-label">Frekvenser</span> det radion tar emot</dd>
                     <dd><span class="row-label">Telefon</span> ja</dd>

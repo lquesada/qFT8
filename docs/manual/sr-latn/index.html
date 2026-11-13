@@ -293,6 +293,7 @@
                 <li><strong>Elecraft K2 (zahteva KIO2 modul)</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (eksperimentalno)</li>
                 <li><strong>Kenwood TS-480 / TS-590 / TS-2000 serije</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -2420,10 +2421,16 @@
                     i <span translate="no">FST4W</span>, opisana uz svaki mod.</li>
             </ul>
             <p id="decode-focus">
-                <strong>Usmeri dekodiranje na stanicu sa kojom radite (AUTO režim)</strong> i <strong>Usmeri dekodiranje na stanicu sa kojom radite (ručni CALL)</strong> su dva klizača, od 0 do 30 %: udeo vremena dekodera koji prvo ide stanici sa kojom radite; ostatak ide svim ostalim stanicama. Deluju samo dok pozivate stanicu ili radite sa njom uz uključen TX; bez veze sve stanice dobijaju svo vreme dekodiranja. Prvi se primenjuje kada je stanicu izabrao <span translate="no">AUTO</span>, drugi kada ste je sami izabrali tasterom <span translate="no">CALL</span> u kartici Stanice. Pri 0 % dekoder radi potpuno kao bez njih. Podrazumevano <span translate="no">AUTO</span> ima 5 %, a stanica koju pozivate tasterom <span translate="no">CALL</span> ima 10 %. Ako je više stanica istovremeno označeno sa <span translate="no">CALL</span>, dele jedan procenat. Procenat je gornja granica: vreme koje vaša veza ne treba vraća se ostalim stanicama. Za jednu stanicu dovoljno je oko 2 %; veće vrednosti pomažu kada je više stanica istovremeno označeno sa <span translate="no">CALL</span>, u <span translate="no">LQ8</span> i na sporijim telefonima i računarima, gde isti posao zauzima veći deo vremena. To košta otprilike jedno dekodiranje druge stanice na 2.000. Vrednost je prikazana pored svakog klizača; dodirnite je da upišete vrednost. Za sada rade u <span translate="no">FT8</span> i <span translate="no">LQ8</span>; u ostalim režimima su zasivljeni i prikazuju <strong>Još nije za ovaj režim</strong>.
+                <strong>Usmeri dekodiranje na stanicu sa kojom radite (AUTO režim)</strong> i <strong>Usmeri dekodiranje na stanicu sa kojom radite (ručni CALL)</strong> su dva klizača, od 0 do 30 %: udeo vremena dekodera koji prvo ide stanici sa kojom radite; ostatak ide svim ostalim stanicama. Deluju samo dok pozivate stanicu ili radite sa njom uz uključen TX; bez veze sve stanice dobijaju svo vreme dekodiranja. Prvi se primenjuje kada je stanicu izabrao <span translate="no">AUTO</span>, drugi kada ste je sami izabrali tasterom <span translate="no">CALL</span> u kartici Stanice. Pri 0 % dekoder radi potpuno kao bez njih. Podrazumevano <span translate="no">AUTO</span> ima 5 %, a stanica koju pozivate tasterom <span translate="no">CALL</span> ima 10 %. Ako je više stanica istovremeno označeno sa <span translate="no">CALL</span>, dele jedan procenat. Procenat je gornja granica: vreme koje vaša veza ne treba vraća se ostalim stanicama. Za jednu stanicu dovoljno je oko 2 %; veće vrednosti pomažu kada je više stanica istovremeno označeno sa <span translate="no">CALL</span>, u <span translate="no">LQ8</span> i na sporijim telefonima i računarima, gde isti posao zauzima veći deo vremena. To košta otprilike jedno dekodiranje druge stanice na 2.000. Vrednost je prikazana pored svakog klizača; dodirnite je da upišete vrednost. Za sada rade u <span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span>; u ostalim režimima su zasivljeni i prikazuju <strong>Još nije za ovaj režim</strong>.
+            </p>
+            <p id="wanted-stations">
+                Stanice koje ručno dodate sa <strong>+</strong> na kartici Stanice (10 poslednje dodatih) traže se u svakom slotu bilo gde u opsegu, čak i pre nego što su čute, u okviru istog udela (udela za <span translate="no">AUTO</span> kada je TX isključen ili se ni sa kim ne radi; na 0 % ova pretraga je isključena). Kada se takva stanica čuje, traži se tamo gde je čuta.
             </p>
             <p id="late-decode">
                 <strong>Nastavi dekodiranje nakon kraja ciklusa</strong> (podrazumevano uključeno u računarskom programu, isključeno na telefonu i iPhoneu) dozvoljava dekoderu da nastavi da radi na periodu nakon što je qFT8 odlučio šta će dalje da šalje, do početka dekodiranja sledećeg perioda. Ono što tada pronađe je kasno dekodiranje. Na telefonu ili tabletu ovo drži procesor zauzetim veći deo svakog perioda, pa uređaj troši više baterije i može da se zagreje: zato je tamo podrazumevano isključeno. Kasno dekodiranje nikada ne menja već odlučeno emitovanje, a sledeći period se uvek dekodira prvi. Vodopad označava svako kasno dekodiranje čim se pronađe, na njegovom periodu i frekvenciji, i tokom emitovanja. <strong>Ažuriraj stanice čim se završi kasno dekodiranje</strong> (zasivljeno dok je kvačica isključena) kaže kada kasna dekodiranja stižu u karticu Stanice, na mapu, u dnevnik i u <span translate="no">AUTO</span>: <strong>Ne</strong> ih čuva i dodaje sva zajedno sa dekodiranjima sledećeg perioda, neposredno pre nego što qFT8 ponovo odluči, tako da se lista ne menja pod prstom; <strong>U AUTO režimu</strong> (podrazumevano) ih dodaje čim stignu dok je izabran <span translate="no">AUTO</span>, a čuva ih kao <strong>Ne</strong> dok sami upućujete <span translate="no">CALL</span> stanici; <strong>Uvek</strong> ih dodaje čim stignu. Dok emitujete, uvek čekaju do kraja emitovanja. Svako kasno dekodiranje zadržava vreme sopstvenog perioda. Kasno dekodiranje se nastavlja dok emitujete, sa najnižim prioritetom, tako da vaše emitovanje uvek ima prednost. Na telefonu ili iPhone-u koji se zagreva kasno dekodiranje se pauzira dok se ne ohladi. Za sada radi u <span translate="no">FT8</span> i <span translate="no">LQ8</span>.
+            </p>
+            <p id="late-bind">
+                <strong>Poruka se bira još jednom kada počne vaš prenos</strong> (<span translate="no">FT8</span> i <span translate="no">LQ8</span>, u režimu <span translate="no">AUTO</span>; ništa se ne podešava). Prva sekunda svakog <span translate="no">FT8</span> i <span translate="no">LQ8</span> prenosa ista je bez obzira na poruku (sinhronizacija), pa dok ona svira qFT8 nastavlja da dekodira prethodni period, a <span translate="no">AUTO</span> bira poruku još jednom neposredno pre prvog simbola podataka: odgovor pronađen tek tada dobija odgovor u ovom prenosu umesto u sledećem. Ostale stanice primaju upravo konačnu poruku. Hoćete li da šaljete, i dalje se odlučuje u uobičajenom trenutku; poruka koju sami izaberete uvek ima prednost; ekran prikazuje poruku kada postane konačna. Ovo je jedini način na koji nešto dekodirano posle odluke može da promeni ono što se šalje, i to samo pre početka simbola podataka. Na uređaju koji drži mnogo zvuka u redu za to nema vremena, pa se šalje prvi izbor, kao i ranije.
             </p>
             <h4 id="settings-band-selection">IZBOR OPSEGA</h4>
             <ul>
@@ -4065,6 +4072,10 @@
                 prikazu QSO veza aktivacije. Dijalog tada nudi i
                 <em><span translate="no">STOP RE-ANNOUNCING</span></em>. Kada promenite mod tokom najavljene
                 aktivacije, qFT8 pita da li da najavi i novi mod.
+            </p>
+
+            <p>
+                Polje <em>Komentar</em> ispod režima je ono što kaže svako obaveštenje. Počinje qFT8-ovim sopstvenim tekstom (pravi režim, za režim koji se najavljuje kao <span translate="no">DATA</span>) i možete ga promeniti, na primer da dodate <code translate="no">QRP 5 W</code>. Kada je aktivacija najavljena, režimi nude i <em><span translate="no">QRT</span></em>: označite ga kada završite, a <em><span translate="no">ANNOUNCE</span></em> šalje jedno poslednje obaveštenje da ste <span translate="no">QRT</span>, sa komentarom (na primer vašom zahvalnošću). Opsezi se zasive, ponovno najavljivanje prestaje i šalje se samo jednom. Završetak najavljene aktivacije takođe pita da li želite da obavestite program da ste <span translate="no">QRT</span>.
             </p>
 
             <h3 id="activation-chip">Dok je otvorena: plavi marker</h3>
@@ -5934,6 +5945,7 @@
                 <li><strong>Automatski sačuvaj svaku primljenu sliku na uređaj</strong> (isključeno na telefonima i iPhone-u, uključeno
                     na računaru).</li>
                 <li><strong>Primljene slike koje se čuvaju u aplikaciji</strong>: 25, 50, 100 (podrazumevano), 200 ili 500.</li>
+                <li><strong>Korekcija sata zvučne kartice</strong>: <strong>Automatski</strong> (podrazumevano), <strong>Ručno</strong> ili <strong>Isključeno</strong>. Zvučna kartica čiji sat ide malo brže ili sporije iskrivljuje svaku sliku koju primate i svaku sliku koju šaljete. Opcija Automatski uči koliko vaša kartica odstupa iz slika koje primate (od treće dobre slike nadalje; red ispod izbora prikazuje vrednost) i uklanja to iz obe: primljene slike izlaze ravne, a vaše stižu ravne i kod stanica čiji program ne ispravlja slike. <strong>Ručna korekcija</strong> (od -10000 do +10000 ppm, + = kartica ide brzo) koristi se kada izaberete <strong>Ručno</strong>; pomeranjem se bira <strong>Ručno</strong>, a izbor <strong>Ručno</strong> počinje od naučene vrednosti. Svaka slika se takođe sama ispravlja, do 2000 ppm između satova dveju stanica.</li>
             </ul>
             <p><strong>Slanje</strong>:</p>
             <ul>
@@ -6421,7 +6433,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> da</dd>
                 </div>
                 <div>
-                    <dt>Običan radio (<span data-radio-count>155</span> modela preko <span translate="no">USB</span> ili bilo koji radio preko audio kabla)</dt>
+                    <dt>Običan radio (<span data-radio-count>156</span> modela preko <span translate="no">USB</span> ili bilo koji radio preko audio kabla)</dt>
                     <dd><span class="row-label">Red uređaja</span> red tog radija ili <code>AUTO</code></dd>
                     <dd><span class="row-label">Frekvencije</span> ono što radio prima</dd>
                     <dd><span class="row-label">Telefon</span> da</dd>

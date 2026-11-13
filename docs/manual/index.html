@@ -293,6 +293,7 @@
                 <li><strong>Elecraft K2 (requires KIO2 module)</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (experimental): over USB or over Bluetooth (its Bluetooth name XG-BT-G7250 picks it); keyed by its <span translate="no">CAT</span> PTT command. Set the radio to DIG-ON for USB audio.</li>
                 <li><strong>Kenwood TS-480 / TS-590 / TS-2000 series</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -2271,7 +2272,7 @@
                         <li><strong>Network radio</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Network radio (experimental)</strong> in <strong>Radio connection</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>CONNECT</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Method</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Audio stream port</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Sound card</strong> under <strong>Audio</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Method</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Address</strong>, the <strong>Radio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>User name</strong> and <strong>Password</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Radio</strong> says which radio, <strong>As chosen in Device</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimental)</strong> in <strong>Radio connection</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Pick a device</strong> under <strong>Bluetooth device</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>As chosen in Device</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>CONNECT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimental)</strong> in <strong>Radio connection</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Pick a device</strong> under <strong>Bluetooth device</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>As chosen in Device</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>CONNECT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Bluetooth carries no <span translate="no">RTS</span> / <span translate="no">DTR</span> lines: a radio whose PTT method is <span translate="no">RTS</span> or <span translate="no">DTR</span> is keyed with its <span translate="no">CAT</span> PTT command instead, and qFT8 says so under the Bluetooth help and when you press <span translate="no">TX ON</span>. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2509,9 +2510,11 @@
                 help when several stations are marked <span translate="no">CALL</span> at once, in
                 <span translate="no">LQ8</span>, and on slower phones and computers, where the same work takes a bigger part
                 of the time. It costs about one decode of another station in 2,000. The value is shown next to
-                each slider; tap it to type a value. They work in <span translate="no">FT8</span> and
-                <span translate="no">LQ8</span> for now; in the other modes they are greyed out and say
+                each slider; tap it to type a value. They work in <span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span> for now; in the other modes they are greyed out and say
                 <strong>Not yet for this mode</strong>.
+            </p>
+            <p id="wanted-stations">
+                Stations you add by hand with <strong>+</strong> in the Stations tab (the 10 most recently added) are looked for in every slot anywhere in the band, even before they have been heard, within the same share (the <span translate="no">AUTO</span> one when TX is off or nobody is being worked; at 0 % this search is off). Once such a station has been heard, it is looked for where it was heard.
             </p>
             <p id="late-decode">
                 <strong>Continue decoding after the end of the cycle</strong> (on by default in the computer program, off on
@@ -2529,6 +2532,19 @@
                 yourself; <strong>Always</strong> adds them as soon as they arrive. While you transmit they always wait
                 until the transmission ends. Each late decode keeps the time of its own period. Late decoding goes on while you transmit, at the lowest priority, so your transmission always comes first. On a phone or iPhone that is getting warm, late decoding pauses until it cools down. It works in
                 <span translate="no">FT8</span> and <span translate="no">LQ8</span> for now.
+            </p>
+
+            <p id="late-bind">
+                <strong>The message is chosen once more as your transmission starts</strong> (<span translate="no">FT8</span>
+                and <span translate="no">LQ8</span>, in <span translate="no">AUTO</span>; nothing to set). The first second of
+                every <span translate="no">FT8</span> and <span translate="no">LQ8</span> transmission is the same whatever its
+                message (the sync), so while it plays qFT8 keeps decoding the period before it, and <span translate="no">AUTO</span>
+                chooses the message once more just before the first data symbol: a reply found only then is answered in this
+                transmission instead of the next one. The other stations receive exactly the final message. Whether you
+                transmit is still decided at the usual moment; a message you pick yourself always wins; the screen shows the
+                message once it is final. This is the only way something decoded after the decision can change what is sent,
+                and only before the data symbols start. On a device that keeps a lot of audio queued there is no time for it,
+                and the first choice is sent, as before.
             </p>
 
             <h4 id="settings-band-selection">BAND SELECTION</h4>
@@ -4199,6 +4215,17 @@
                 activation's QSO view. The dialog then also offers
                 <em><span translate="no">STOP RE-ANNOUNCING</span></em>. When you change mode during an announced
                 activation, qFT8 asks whether to announce the new mode too.
+            </p>
+
+            <p>
+                The <em>Comment</em> box under the modes is what every announcement says. It starts with qFT8's own
+                text (the real mode, for a mode announced as <span translate="no">DATA</span>) and you can change it,
+                for example to add <code translate="no">QRP 5 W</code>. Once the activation has been announced, the modes
+                also offer <em><span translate="no">QRT</span></em>: tick it when you stop, and
+                <em><span translate="no">ANNOUNCE</span></em> sends one last announcement saying you are
+                <span translate="no">QRT</span>, with the comment (your thanks, for example). The bands are greyed out,
+                re-announcing stops, and it is sent only once. Finishing an announced activation also asks whether to
+                tell the programme you are <span translate="no">QRT</span>.
             </p>
 
             <h3 id="activation-chip">While it is open: the blue marker</h3>
@@ -6145,6 +6172,15 @@
                 <li><strong>Auto-save every received image to the device</strong> (off on phones and the iPhone, on
                     on the computer).</li>
                 <li><strong>Received pictures kept in the app</strong>: 25, 50, 100 (the default), 200 or 500.</li>
+                <li><strong>Sound card clock correction</strong>: <strong>Automatic</strong> (the default),
+                    <strong>Manual</strong> or <strong>Off</strong>. A sound card whose clock runs a little fast or slow
+                    slants every picture you receive and every picture you send. Automatic learns how far your card is
+                    off from the pictures you receive (from the third good picture on; the line under the choice shows
+                    the value) and takes it out of both: received pictures come out straight, and yours arrive straight
+                    also at stations whose program does not straighten pictures. <strong>Manual correction</strong>
+                    (-10000 to +10000 ppm, + = the card runs fast) is used when you choose Manual; moving it chooses
+                    Manual, and choosing Manual starts it from the learned value. Every picture is also straightened on
+                    its own, up to 2000 ppm between the two stations' clocks.</li>
             </ul>
             <p><strong>Sending</strong>:</p>
             <ul>
@@ -6759,7 +6795,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> yes</dd>
                 </div>
                 <div>
-                    <dt>An ordinary radio (<span data-radio-count>155</span> models over <span translate="no">USB</span>, or any radio by audio cable)</dt>
+                    <dt>An ordinary radio (<span data-radio-count>156</span> models over <span translate="no">USB</span>, or any radio by audio cable)</dt>
                     <dd><span class="row-label">Device row</span> the radio's row, or <code>AUTO</code></dd>
                     <dd><span class="row-label">Frequencies</span> what the radio receives</dd>
                     <dd><span class="row-label">Phone</span> yes</dd>

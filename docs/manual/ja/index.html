@@ -269,6 +269,7 @@
                 <li><strong>Elecraft K2（KIO2 モジュールが必要）</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (実験的)</li>
                 <li><strong>Kenwood TS-480 / TS-590 / TS-2000 シリーズ</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -1799,10 +1800,16 @@
                     <span translate="no">FST4W</span> の設定は、各モードの章で説明します。</li>
             </ul>
             <p id="decode-focus">
-                <strong>交信中の局にデコードを集中する (AUTOモード)</strong>と<strong>交信中の局にデコードを集中する (手動CALL)</strong>は、0〜30 %の2本のスライダーです。デコーダーの時間のうち、まず交信中の局に割り当てる割合で、残りはその他のすべての局に回ります。TXをオンにして局を呼んでいる間、または交信している間だけ働き、交信がないときはすべての局がデコード時間をすべて使います。1つ目は<span translate="no">AUTO</span>が局を選んだとき、2つ目は「ステーション」タブでご自分で<span translate="no">CALL</span>して選んだときに適用されます。0 %ならデコーダーはこれらがない場合とまったく同じ動作をします。既定では<span translate="no">AUTO</span>が5 %、<span translate="no">CALL</span>した局が10 %です。複数の局を同時に<span translate="no">CALL</span>にした場合は、1つの割合を共有します。この割合は上限です。交信に必要のない時間は他の局に戻ります。1局なら約2 %で十分です。複数の局を同時に<span translate="no">CALL</span>にした場合、<span translate="no">LQ8</span>、そして同じ処理が時間の大きな部分を占める低速なスマートフォンやコンピューターでは、高い値が役立ちます。代償は、他の局のデコードが約2000回に1回減る程度です。値は各スライダーの横に表示され、タップすると値を入力できます。現在は<span translate="no">FT8</span>と<span translate="no">LQ8</span>で動作し、他のモードではグレー表示になり「<strong>このモードにはまだ対応していません</strong>」と表示されます。
+                <strong>交信中の局にデコードを集中する (AUTOモード)</strong>と<strong>交信中の局にデコードを集中する (手動CALL)</strong>は、0〜30 %の2本のスライダーです。デコーダーの時間のうち、まず交信中の局に割り当てる割合で、残りはその他のすべての局に回ります。TXをオンにして局を呼んでいる間、または交信している間だけ働き、交信がないときはすべての局がデコード時間をすべて使います。1つ目は<span translate="no">AUTO</span>が局を選んだとき、2つ目は「ステーション」タブでご自分で<span translate="no">CALL</span>して選んだときに適用されます。0 %ならデコーダーはこれらがない場合とまったく同じ動作をします。既定では<span translate="no">AUTO</span>が5 %、<span translate="no">CALL</span>した局が10 %です。複数の局を同時に<span translate="no">CALL</span>にした場合は、1つの割合を共有します。この割合は上限です。交信に必要のない時間は他の局に戻ります。1局なら約2 %で十分です。複数の局を同時に<span translate="no">CALL</span>にした場合、<span translate="no">LQ8</span>、そして同じ処理が時間の大きな部分を占める低速なスマートフォンやコンピューターでは、高い値が役立ちます。代償は、他の局のデコードが約2000回に1回減る程度です。値は各スライダーの横に表示され、タップすると値を入力できます。現在は<span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span>で動作し、他のモードではグレー表示になり「<strong>このモードにはまだ対応していません</strong>」と表示されます。
+            </p>
+            <p id="wanted-stations">
+                局タブの <strong>+</strong> で手動で追加した局（最近追加した 10 局）は、まだ受信していなくても、毎周期バンド内のどこでも探されます。使う時間は同じ割合の中です（TX がオフのときや交信中の局がないときは <span translate="no">AUTO</span> の割合。0 % ではこの探索はオフ）。そのような局を一度受信すると、受信した周波数で探されます。
             </p>
             <p id="late-decode">
                 <strong>周期後もデコード</strong>（パソコン版では初期設定でオン、スマートフォンと iPhone ではオフ）は、qFT8 が次に送信する内容を決めた後も、次の期間のデコードが始まるまで、その期間のデコードを続けさせます。そのとき見つかったものが遅延デコードです。スマートフォンやタブレットでは、各期間のほとんどの間プロセッサが動き続けるため、バッテリーの消費が増え、端末が熱を持つことがあります。そのため、これらの端末では初期設定でオフになっています。遅延デコードは、すでに決まった送信を変更することはなく、次の期間は常に先にデコードされます。ウォーターフォールは、遅延デコードを見つけ次第、そのデコード自身の期間と周波数の位置にラベル表示します。送信中も同様です。<strong>遅延デコードの完了後すぐにステーションを更新</strong>（チェックボックスがオフの間はグレー表示）は、遅延デコードがステーションタブ、地図、ログ、<span translate="no">AUTO</span> に反映されるタイミングを決めます。<strong>しない</strong>は、遅延デコードを保持し、次の期間のデコードと一緒に、qFT8 が再び判断する直前にまとめて追加するので、操作中にリストが動きません。<strong>AUTO モードのとき</strong>（初期設定）は、<span translate="no">AUTO</span> が選ばれている間は届き次第すぐに追加し、自分でステーションに <span translate="no">CALL</span> している間は<strong>しない</strong>と同様に保持します。<strong>常に</strong>は、届き次第すぐに追加します。送信中は、常に送信が終わるまで待ちます。各遅延デコードは自分の期間の時刻を保持します。遅延デコードは送信中も続きますが、優先度は最も低く、送信が常に最優先されます。熱を持ってきたスマートフォンや iPhone では、冷えるまで遅延デコードが一時停止します。現在は <span translate="no">FT8</span> と <span translate="no">LQ8</span> で動作します。
+            </p>
+            <p id="late-bind">
+                <strong>送信開始時にメッセージをもう一度選択</strong>（<span translate="no">FT8</span> と <span translate="no">LQ8</span>、<span translate="no">AUTO</span> のとき。設定は不要）。<span translate="no">FT8</span> と <span translate="no">LQ8</span> の送信の最初の 1 秒は、メッセージが何であっても同じです（同期部分）。そのため、その間も qFT8 は直前の期間のデコードを続け、<span translate="no">AUTO</span> は最初のデータシンボルの直前にメッセージをもう一度選びます。そのときになって初めて見つかった返信には、次の送信ではなく今回の送信で応答します。ほかの局が受信するのは、まさに最終的なメッセージです。送信するかどうかは、これまでどおり通常のタイミングで決まります。自分で選んだメッセージは常に優先されます。画面にはメッセージが確定してから表示されます。これは、決定後にデコードされたものが送信内容を変えられる唯一の方法で、データシンボルが始まる前に限られます。音声を大量にキューに入れている端末ではその時間がなく、従来どおり最初の選択が送信されます。
             </p>
 
             <h4 id="settings-band-selection">バンド選択</h4>
@@ -3022,6 +3029,10 @@
             </p>
             <p>
                 別のバンドやモードで告知したい場合や、最後に告知した時刻を確認したい場合は、アクティベーションのカード（青いマーカーをタップ）またはアクティベーションの QSO ビューで <em><span translate="no">告知する</span></em> を押します。このダイアログには <em><span translate="no">再告知を停止</span></em> も表示されます。告知済みのアクティベーション中にモードを変えると、新しいモードも告知するかどうか qFT8 が尋ねます。
+            </p>
+
+            <p>
+                モードの下にある<em>コメント</em>欄は、すべての告知に載る内容です。最初は qFT8 自身の文面（<span translate="no">DATA</span>として告知されるモードでは実際のモード）が入っており、変更できます（例えば <code translate="no">QRP 5 W</code> を追加するなど）。アクティベーションを告知した後は、モードに <em><span translate="no">QRT</span></em> も表示されます。終了するときにチェックを入れると、<em><span translate="no">ANNOUNCE</span></em> が <span translate="no">QRT</span> であることを伝える最後の告知を、コメント（例えばお礼の言葉）付きで送信します。バンドはグレー表示になり、再告知は停止し、送信は一度だけです。告知済みのアクティベーションを終了するときは、<span translate="no">QRT</span> になったことをプログラムに伝えるかどうかも確認されます。
             </p>
 
             <h3 id="activation-chip">開いている間: 青いマーカー</h3>
@@ -4391,6 +4402,7 @@
             <ul>
                 <li><strong>受信した画像をすべて端末に自動保存</strong>（スマートフォンと iPhone ではオフ、コンピューターではオン）。</li>
                 <li><strong>アプリに保持する受信画像の数</strong>：25、50、100（既定）、200、500。</li>
+                <li><strong>サウンドカードのクロック補正</strong>：<strong>自動</strong>（デフォルト）、<strong>手動</strong>、または<strong>オフ</strong>。クロックがわずかに速い、または遅いサウンドカードは、受信するすべての画像と送信するすべての画像を傾けてしまいます。自動は、受信した画像からカードのずれの大きさを学習し（3枚目の良好な画像から。選択肢の下の行に値が表示されます）、受信と送信の両方からそれを取り除きます。受信画像はまっすぐに出力され、あなたの画像も、画像を補正しないプログラムの局でまっすぐに届きます。<strong>手動補正</strong>（-10000～+10000 ppm、＋＝カードが速い）は<strong>手動</strong>を選んだときに使われます。動かすと<strong>手動</strong>が選ばれ、<strong>手動</strong>を選ぶと学習した値から始まります。また、各画像は単独でも補正され、2局のクロック間で最大2000 ppmまで対応します。</li>
             </ul>
             <p><strong>送信</strong>：</p>
             <ul>
@@ -4760,7 +4772,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> 可</dd>
                 </div>
                 <div>
-                    <dt>普通の無線機（<span translate="no">USB</span>接続で <span data-radio-count>155</span> 機種、またはオーディオケーブルで接続するあらゆる無線機）</dt>
+                    <dt>普通の無線機（<span translate="no">USB</span>接続で <span data-radio-count>156</span> 機種、またはオーディオケーブルで接続するあらゆる無線機）</dt>
                     <dd><span class="row-label">デバイス項目</span> その無線機の項目、または <code>AUTO</code></dd>
                     <dd><span class="row-label">周波数</span> その無線機が受信できる範囲</dd>
                     <dd><span class="row-label">スマートフォン</span> 可</dd>

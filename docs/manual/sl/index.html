@@ -290,6 +290,7 @@
                 <li><strong>Elecraft K2 (zahteva modul KIO2)</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (eksperimentalno)</li>
                 <li><strong>Kenwood TS-480 / TS-590 / TS-2000 series</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -2418,10 +2419,16 @@
                     in <span translate="no">FST4W</span>, opisane pri posameznem načinu.</li>
             </ul>
             <p id="decode-focus">
-                <strong>Osredotoči dekodiranje na postajo, s katero delate (način AUTO)</strong> in <strong>Osredotoči dekodiranje na postajo, s katero delate (ročni CALL)</strong> sta dva drsnika od 0 do 30 %: delež časa dekoderja, ki gre najprej postaji, s katero delate; ostalo dobijo vse druge postaje. Delujeta le, medtem ko kličete postajo ali delate z njo z vklopljenim TX; brez zveze vse postaje dobijo ves čas dekodiranja. Prvi velja, kadar je postajo izbral <span translate="no">AUTO</span>, drugi, kadar ste jo izbrali sami s <span translate="no">CALL</span> v zavihku Postaje. Pri 0 % dekoder dela popolnoma enako kot brez njiju. Privzeto ima <span translate="no">AUTO</span> 5 %, postaja, ki jo pokličete s <span translate="no">CALL</span>, pa 10 %. Če je več postaj hkrati označenih s <span translate="no">CALL</span>, si delijo en sam odstotek. Odstotek je zgornja meja: čas, ki ga vaša zveza ne potrebuje, se vrne drugim postajam. Za eno postajo zadošča približno 2 %; višje vrednosti pomagajo, kadar je hkrati označenih več postaj z <span translate="no">CALL</span>, v <span translate="no">LQ8</span> ter na počasnejših telefonih in računalnikih, kjer isto delo zavzame večji del časa. To stane približno eno dekodiranje druge postaje na 2000. Vrednost je prikazana ob vsakem drsniku; tapnite jo, da vnesete vrednost. Zaenkrat delujeta v <span translate="no">FT8</span> in <span translate="no">LQ8</span>; v drugih načinih sta zatemnjena in prikazujeta <strong>Za ta način še ni na voljo</strong>.
+                <strong>Osredotoči dekodiranje na postajo, s katero delate (način AUTO)</strong> in <strong>Osredotoči dekodiranje na postajo, s katero delate (ročni CALL)</strong> sta dva drsnika od 0 do 30 %: delež časa dekoderja, ki gre najprej postaji, s katero delate; ostalo dobijo vse druge postaje. Delujeta le, medtem ko kličete postajo ali delate z njo z vklopljenim TX; brez zveze vse postaje dobijo ves čas dekodiranja. Prvi velja, kadar je postajo izbral <span translate="no">AUTO</span>, drugi, kadar ste jo izbrali sami s <span translate="no">CALL</span> v zavihku Postaje. Pri 0 % dekoder dela popolnoma enako kot brez njiju. Privzeto ima <span translate="no">AUTO</span> 5 %, postaja, ki jo pokličete s <span translate="no">CALL</span>, pa 10 %. Če je več postaj hkrati označenih s <span translate="no">CALL</span>, si delijo en sam odstotek. Odstotek je zgornja meja: čas, ki ga vaša zveza ne potrebuje, se vrne drugim postajam. Za eno postajo zadošča približno 2 %; višje vrednosti pomagajo, kadar je hkrati označenih več postaj z <span translate="no">CALL</span>, v <span translate="no">LQ8</span> ter na počasnejših telefonih in računalnikih, kjer isto delo zavzame večji del časa. To stane približno eno dekodiranje druge postaje na 2000. Vrednost je prikazana ob vsakem drsniku; tapnite jo, da vnesete vrednost. Zaenkrat delujeta v <span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span>; v drugih načinih sta zatemnjena in prikazujeta <strong>Za ta način še ni na voljo</strong>.
+            </p>
+            <p id="wanted-stations">
+                Postaje, ki jih ročno dodate z <strong>+</strong> na zavihku Postaje (10 nazadnje dodanih), se iščejo v vsakem slotu kjer koli v pasu, celo preden so bile slišane, znotraj istega deleža (deleža <span translate="no">AUTO</span>, ko je TX izklopljen ali ne delate z nikomer; pri 0 % je to iskanje izklopljeno). Ko je taka postaja slišana, se išče tam, kjer je bila slišana.
             </p>
             <p id="late-decode">
                 <strong>Nadaljuj z dekodiranjem po koncu cikla</strong> (v računalniškem programu privzeto vklopljeno, v telefonu in na iPhonu izklopljeno) dovoli dekodirniku, da nadaljuje delo na obdobju, potem ko se je qFT8 odločil, kaj bo oddajal naprej, do začetka dekodiranja naslednjega obdobja. Kar takrat najde, je pozno dekodiranje. Na telefonu ali tablici to procesor zaseda večji del vsakega obdobja, zato naprava porabi več baterije in se lahko segreje: zato je tam privzeto izklopljeno. Pozno dekodiranje nikoli ne spremeni že odločenega oddajanja, naslednje obdobje pa se vedno dekodira prvo. Slap označi vsako pozno dekodiranje takoj, ko je najdeno, na njegovem lastnem obdobju in frekvenci, tudi med oddajanjem. <strong>Posodobi postaje takoj, ko je pozno dekodiranje končano</strong> (sivo, dokler je potrditveno polje izklopljeno) določa, kdaj pozna dekodiranja pridejo na zavihek Postaje, na zemljevid, v dnevnik in v <span translate="no">AUTO</span>: <strong>Ne</strong> jih shrani in doda vsa skupaj z dekodiranji naslednjega obdobja, tik preden se qFT8 ponovno odloči, da se seznam ne spreminja pod prstom; <strong>V načinu AUTO</strong> (privzeto) jih doda takoj, ko prispejo, medtem ko je izbran <span translate="no">AUTO</span>, in jih shrani kot pri <strong>Ne</strong>, medtem ko sami kličete <span translate="no">CALL</span> postajo; <strong>Vedno</strong> jih doda takoj, ko prispejo. Med oddajanjem vedno počakajo do konca oddajanja. Vsako pozno dekodiranje obdrži čas svojega obdobja. Pozno dekodiranje se nadaljuje, medtem ko oddajate, z najnižjo prioriteto, tako da ima vaše oddajanje vedno prednost. Na telefonu ali iPhonu, ki se segreva, se pozno dekodiranje začasno ustavi, dokler se ne ohladi. Za zdaj deluje v <span translate="no">FT8</span> in <span translate="no">LQ8</span>.
+            </p>
+            <p id="late-bind">
+                <strong>Sporočilo se izbere še enkrat, ko se začne vaše oddajanje</strong> (<span translate="no">FT8</span> in <span translate="no">LQ8</span>, v načinu <span translate="no">AUTO</span>; ničesar ni treba nastaviti). Prva sekunda vsake oddaje <span translate="no">FT8</span> in <span translate="no">LQ8</span> je enaka ne glede na sporočilo (sinhronizacija), zato med njenim predvajanjem qFT8 še naprej dekodira prejšnje obdobje, <span translate="no">AUTO</span> pa sporočilo izbere še enkrat tik pred prvim podatkovnim simbolom: odgovor, najden šele takrat, dobi odgovor v tej oddaji namesto v naslednji. Druge postaje prejmejo natanko končno sporočilo. Ali boste oddajali, se še vedno odloči v običajnem trenutku; sporočilo, ki ga izberete sami, vedno prevlada; zaslon prikaže sporočilo, ko je dokončno. To je edini način, na katerega lahko nekaj, dekodiranega po odločitvi, spremeni to, kar se pošlje, in to le preden se začnejo podatkovni simboli. Na napravi, ki ima v čakalni vrsti veliko zvoka, za to ni časa in se pošlje prva izbira, kot prej.
             </p>
             <h4 id="settings-band-selection">IZBIRA PASOV</h4>
             <ul>
@@ -4063,6 +4070,10 @@
                 pogledu QSO aktivacije. Pogovor tedaj ponuja tudi
                 <em><span translate="no">STOP RE-ANNOUNCING</span></em>. Ko med objavljeno
                 aktivacijo zamenjate način, qFT8 vpraša, ali naj objavi tudi novi način.
+            </p>
+
+            <p>
+                Polje <em>Komentar</em> pod načini je tisto, kar pove vsaka objava. Začne se z lastnim besedilom qFT8 (pravi način, pri načinu, objavljenem kot <span translate="no">DATA</span>) in ga lahko spremenite, na primer da dodate <code translate="no">QRP 5 W</code>. Ko je aktivacija objavljena, načini ponujajo tudi <em><span translate="no">QRT</span></em>: označite ga, ko končate, in <em><span translate="no">ANNOUNCE</span></em> pošlje eno zadnjo objavo, da ste <span translate="no">QRT</span>, s komentarjem (na primer vašo zahvalo). Pasovi se osivijo, ponovno objavljanje se ustavi in se pošlje le enkrat. Ob končanju objavljene aktivacije se vpraša tudi, ali naj programu sporočite, da ste <span translate="no">QRT</span>.
             </p>
 
             <h3 id="activation-chip">Medtem ko je odprta: moder označevalnik</h3>
@@ -5930,6 +5941,7 @@
                 <li><strong>Samodejno shrani vsako prejeto sliko v napravo</strong> (izklopljeno na telefonih in iPhonu, vklopljeno
                     na računalniku).</li>
                 <li><strong>Prejete slike, ohranjene v aplikaciji</strong>: 25, 50, 100 (privzeto), 200 ali 500.</li>
+                <li><strong>Popravek ure zvočne kartice</strong>: <strong>Samodejno</strong> (privzeto), <strong>Ročno</strong> ali <strong>Izklopljeno</strong>. Zvočna kartica, katere ura gre nekoliko prehitro ali prepočasi, nagne vsako sliko, ki jo prejmete, in vsako sliko, ki jo oddate. Možnost Samodejno se iz prejetih slik nauči, koliko vaša kartica odstopa (od tretje dobre slike naprej; vrstica pod izbiro prikazuje vrednost), in to odstrani pri obeh: prejete slike pridejo ravne, vaše pa ravne prispejo tudi do postaj, katerih program slik ne poravna. <strong>Ročni popravek</strong> (od -10000 do +10000 ppm, + = kartica gre hitro) se uporabi, ko izberete <strong>Ročno</strong>; z premikom se izbere <strong>Ročno</strong>, izbira <strong>Ročno</strong> pa se začne pri naučeni vrednosti. Vsaka slika se poravna tudi sama, do 2000 ppm med urama obeh postaj.</li>
             </ul>
             <p><strong>Pošiljanje</strong>:</p>
             <ul>
@@ -6417,7 +6429,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> da</dd>
                 </div>
                 <div>
-                    <dt>Običajen radio (<span data-radio-count>155</span> modelov prek <span translate="no">USB</span> ali katerikoli radio prek avdio kabla)</dt>
+                    <dt>Običajen radio (<span data-radio-count>156</span> modelov prek <span translate="no">USB</span> ali katerikoli radio prek avdio kabla)</dt>
                     <dd><span class="row-label">Vrstica naprave</span> vrstica radia ali <code>AUTO</code></dd>
                     <dd><span class="row-label">Frekvence</span> kar radio sprejema</dd>
                     <dd><span class="row-label">Telefon</span> da</dd>

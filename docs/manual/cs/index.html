@@ -275,6 +275,7 @@
                 <li><strong>Elecraft K2 (vyžaduje modul KIO2)</strong></li>
                 <li><strong>Xiegu X6100</strong></li>
                 <li><strong>Xiegu X6200</strong></li>
+                <li><strong>Xiegu G7250</strong> (experimentální)</li>
                 <li><strong>Kenwood řady TS-480 / TS-590 / TS-2000</strong></li>
                 <li><strong>FX-4CR</strong></li>
                 <li><strong>QuantumSDR</strong></li>
@@ -2017,10 +2018,16 @@
                     a <span translate="no">FST4W</span>, popsaná u jednotlivých módů.</li>
             </ul>
             <p id="decode-focus">
-                <strong>Zaměřit dekódování na stanici, se kterou pracujete (režim AUTO)</strong> a <strong>Zaměřit dekódování na stanici, se kterou pracujete (ruční CALL)</strong> jsou dva posuvníky od 0 do 30 %: podíl času dekodéru, který jde nejdřív stanici, se kterou pracujete; zbytek jde všem ostatním stanicím. Působí jen tehdy, když stanici voláte nebo s ní pracujete se zapnutým TX; bez spojení dostanou všechny stanice veškerý čas dekódování. První platí, když stanici vybral <span translate="no">AUTO</span>, druhý, když jste ji vybrali sami tlačítkem <span translate="no">CALL</span> na kartě Stanice. Při 0 % dekodér pracuje přesně jako bez nich. Ve výchozím nastavení má <span translate="no">AUTO</span> 5 % a stanice, kterou voláte tlačítkem <span translate="no">CALL</span>, 10 %. Je-li několik stanic označeno <span translate="no">CALL</span> současně, dělí se o jediné procento. Procento je strop: čas, který vaše spojení nepotřebuje, se vrací ostatním stanicím. Pro jednu stanici stačí asi 2 %; vyšší hodnoty pomáhají, když je současně označeno <span translate="no">CALL</span> více stanic, v <span translate="no">LQ8</span> a na pomalejších telefonech a počítačích, kde stejná práce zabere větší část času. Stojí to přibližně jedno dekódování jiné stanice z 2 000. Hodnota je zobrazena vedle každého posuvníku; klepnutím na ni zadáte hodnotu. Zatím fungují ve <span translate="no">FT8</span> a <span translate="no">LQ8</span>; v ostatních režimech jsou zašedlé a zobrazují <strong>Pro tento režim zatím není</strong>.
+                <strong>Zaměřit dekódování na stanici, se kterou pracujete (režim AUTO)</strong> a <strong>Zaměřit dekódování na stanici, se kterou pracujete (ruční CALL)</strong> jsou dva posuvníky od 0 do 30 %: podíl času dekodéru, který jde nejdřív stanici, se kterou pracujete; zbytek jde všem ostatním stanicím. Působí jen tehdy, když stanici voláte nebo s ní pracujete se zapnutým TX; bez spojení dostanou všechny stanice veškerý čas dekódování. První platí, když stanici vybral <span translate="no">AUTO</span>, druhý, když jste ji vybrali sami tlačítkem <span translate="no">CALL</span> na kartě Stanice. Při 0 % dekodér pracuje přesně jako bez nich. Ve výchozím nastavení má <span translate="no">AUTO</span> 5 % a stanice, kterou voláte tlačítkem <span translate="no">CALL</span>, 10 %. Je-li několik stanic označeno <span translate="no">CALL</span> současně, dělí se o jediné procento. Procento je strop: čas, který vaše spojení nepotřebuje, se vrací ostatním stanicím. Pro jednu stanici stačí asi 2 %; vyšší hodnoty pomáhají, když je současně označeno <span translate="no">CALL</span> více stanic, v <span translate="no">LQ8</span> a na pomalejších telefonech a počítačích, kde stejná práce zabere větší část času. Stojí to přibližně jedno dekódování jiné stanice z 2 000. Hodnota je zobrazena vedle každého posuvníku; klepnutím na ni zadáte hodnotu. Zatím fungují ve <span translate="no">FT8, FT4, FT2, LQ8, LQ4, LQ2, LQ16</span>; v ostatních režimech jsou zašedlé a zobrazují <strong>Pro tento režim zatím není</strong>.
+            </p>
+            <p id="wanted-stations">
+                Stanice, které ručně přidáte tlačítkem <strong>+</strong> na kartě Stanice (10 naposledy přidaných), se hledají v každém slotu kdekoli v pásmu, i předtím, než byly slyšet, v rámci stejného podílu (podílu <span translate="no">AUTO</span>, když je TX vypnuté nebo se s nikým nepracuje; při 0 % je toto hledání vypnuté). Jakmile je taková stanice slyšet, hledá se tam, kde byla slyšet.
             </p>
             <p id="late-decode">
                 <strong>Pokračovat v dekódování po konci cyklu</strong> (ve výchozím stavu zapnuto v počítačovém programu, vypnuto v telefonu a na iPhonu) nechá dekodér pracovat na periodě i poté, co qFT8 rozhodl, co vysílat dál, až do začátku dekódování další periody. To, co přitom najde, je pozdní dekódování. V telefonu nebo tabletu to udržuje procesor zaneprázdněný po většinu každé periody, takže zařízení spotřebuje více baterie a může se zahřívat: proto je to tam ve výchozím nastavení vypnuto. Pozdní dekódování nikdy nemění už rozhodnuté vysílání a další perioda se vždy dekóduje jako první. Vodopád popíše každé pozdní dekódování, jakmile je nalezeno, na jeho vlastní periodě a frekvenci, i během vysílání. <strong>Aktualizovat stanice ihned po dokončení pozdního dekódování</strong> (zašedlé, dokud je políčko vypnuté) určuje, kdy se pozdní dekódování dostanou do karty Stanice, na mapu, do deníku a do <span translate="no">AUTO</span>: <strong>Ne</strong> je uchová a přidá je všechna najednou, spolu s dekódováními příštího období, těsně předtím, než se qFT8 znovu rozhodne, takže se seznam nemění pod prstem; <strong>V režimu AUTO</strong> (výchozí) je přidá hned, jak přijdou, dokud je vybrán <span translate="no">AUTO</span>, a uchová je jako u <strong>Ne</strong>, když sami voláte <span translate="no">CALL</span> stanici; <strong>Vždy</strong> je přidá hned, jak přijdou. Když vysíláte, vždy počkají do konce vysílání. Každé pozdní dekódování si ponechá čas své periody. Pozdní dekódování pokračuje, když vysíláte, s nejnižší prioritou, takže vaše vysílání má vždy přednost. Na telefonu nebo iPhonu, který se zahřívá, se pozdní dekódování pozastaví, dokud nevychladne. Zatím funguje v <span translate="no">FT8</span> a <span translate="no">LQ8</span>.
+            </p>
+            <p id="late-bind">
+                <strong>Zpráva se vybírá ještě jednou při začátku vašeho vysílání</strong> (<span translate="no">FT8</span> a <span translate="no">LQ8</span>, v režimu <span translate="no">AUTO</span>; není co nastavovat). První sekunda každého vysílání <span translate="no">FT8</span> a <span translate="no">LQ8</span> je stejná bez ohledu na zprávu (synchronizace), takže zatímco zní, qFT8 dál dekóduje předchozí periodu a <span translate="no">AUTO</span> vybere zprávu ještě jednou těsně před prvním datovým symbolem: odpověď nalezená teprve tehdy je zodpovězena v tomto vysílání místo v dalším. Ostatní stanice přijímají přesně konečnou zprávu. O tom, zda vysíláte, se stále rozhoduje v obvyklém okamžiku; zpráva, kterou vyberete sami, vždy vyhrává; obrazovka zobrazí zprávu, až je konečná. Je to jediný způsob, jak může něco dekódovaného po rozhodnutí změnit, co se vysílá, a to jen před začátkem datových symbolů. Na zařízení, které drží ve frontě hodně zvuku, na to není čas a odešle se první volba jako dříve.
             </p>
 
             <h4 id="settings-band-selection">Výběr pásma</h4>
@@ -3244,6 +3251,10 @@
             </p>
             <p>
                 Chcete-li oznamovat s jinými pásmy nebo módy, nebo zjistit, kdy bylo naposledy oznámeno, stiskněte <em><span translate="no">OZNÁMIT</span></em> na kartě aktivace (klepněte na modrou značku) nebo v QSO zobrazení aktivace. Dialog pak nabídne i <em><span translate="no">ZASTAVIT OPAKOVÁNÍ</span></em>. Když během oznámené aktivace změníte mód, qFT8 se zeptá, zda oznámit i nový mód.
+            </p>
+
+            <p>
+                Pole <em>Komentář</em> pod režimy je to, co říká každé oznámení. Začíná vlastním textem qFT8 (skutečný režim u režimu oznamovaného jako <span translate="no">DATA</span>) a můžete jej změnit, například přidat <code translate="no">QRP 5 W</code>. Jakmile je aktivace oznámena, režimy nabízejí také <em><span translate="no">QRT</span></em>: zaškrtněte jej, když skončíte, a <em><span translate="no">ANNOUNCE</span></em> odešle poslední oznámení, že jste <span translate="no">QRT</span>, s komentářem (například vašimi díky). Pásma zešednou, opakované oznamování se zastaví a odešle se jen jednou. Ukončení oznámené aktivace se také zeptá, zda programu sdělit, že jste <span translate="no">QRT</span>.
             </p>
 
             <h3 id="activation-chip">Dokud je otevřená: modrá značka</h3>
@@ -4609,6 +4620,7 @@
             <ul>
                 <li><strong>Automaticky ukládat každý přijatý obrázek do zařízení</strong> (vypnuto na telefonech a iPhonu, zapnuto na počítači).</li>
                 <li><strong>Přijaté obrázky uchovávané v aplikaci</strong>: 25, 50, 100 (výchozí), 200 nebo 500.</li>
+                <li><strong>Korekce hodin zvukové karty</strong>: <strong>Automatická</strong> (výchozí), <strong>Ruční</strong> nebo <strong>Vyp.</strong>. Zvuková karta, jejíž hodiny jdou trochu rychle nebo pomalu, naklání každý obrázek, který přijímáte, i každý, který vysíláte. Režim Automatická se z přijatých obrázků naučí, o kolik se vaše karta odchyluje (od třetího dobrého obrázku; řádek pod volbou ukazuje hodnotu), a odstraní to u obou: přijaté obrázky vycházejí rovně a vaše dorazí rovně i ke stanicím, jejichž program obrázky nenarovnává. <strong>Ruční korekce</strong> (od -10000 do +10000 ppm, + = karta jde rychle) se použije, když zvolíte <strong>Ruční</strong>; jeho posunutím se zvolí <strong>Ruční</strong> a volba <strong>Ruční</strong> začne od naučené hodnoty. Každý obrázek se také narovná sám, až do 2000 ppm mezi hodinami obou stanic.</li>
             </ul>
             <p><strong>Vysílání</strong>:</p>
             <ul>
@@ -4992,7 +5004,7 @@
                     <dd><span class="row-label">iPhone / iPad</span> ano</dd>
                 </div>
                 <div>
-                    <dt>Běžné rádio (<span data-radio-count>155</span> modelů přes <span translate="no">USB</span>, nebo jakékoli rádio zvukovým kabelem)</dt>
+                    <dt>Běžné rádio (<span data-radio-count>156</span> modelů přes <span translate="no">USB</span>, nebo jakékoli rádio zvukovým kabelem)</dt>
                     <dd><span class="row-label">Řádek zařízení</span> řádek rádia, nebo <code>AUTO</code></dd>
                     <dd><span class="row-label">Kmitočty</span> to, co rádio přijímá</dd>
                     <dd><span class="row-label">Telefon</span> ano</dd>
