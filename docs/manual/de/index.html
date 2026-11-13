@@ -2008,8 +2008,9 @@
 
             <h4 id="settings-digital-modes">Digitale Betriebsarten</h4>
             <ul>
+                <li><strong>Dekodierung nach Zyklusende fortsetzen</strong> und <strong>Stationen aktualisieren, sobald die späte Dekodierung fertig ist</strong> (siehe <a href="#late-decode">unten</a>).</li>
+                <li><strong>Dekodierung auf die Gegenstation konzentrieren, mit der Sie arbeiten (AUTO-Modus)</strong> und <strong>Dekodierung auf die Gegenstation konzentrieren, mit der Sie arbeiten (manueller CALL)</strong> (siehe <a href="#decode-focus">unten</a>).</li>
                 <li><strong>Tiefe Dekodierung</strong> und wie viele Threads das Dekodieren nutzen darf, für alle Betriebsarten.</li>
-                <li><strong>Dekodierkapazität</strong> (siehe <a href="#decode-capacity">unten</a>).</li>
                 <li><strong>Für besondere Rufzeichen</strong>: in einem QSO mit einem zusammengesetzten Rufzeichen (zum Beispiel
                     <span translate="no">I8/ON8SGA</span>) <strong>Rapport senden bevorzugen (kürzeres Rufzeichen senden)</strong>
                     oder <strong>Vollständige Rufzeichen bevorzugen (Rapport überspringen)</strong>.</li>
@@ -2022,14 +2023,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     und <span translate="no">FST4W</span>, bei der jeweiligen Betriebsart beschrieben.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Dekodierkapazität</strong> zeigt, wie viel seiner Zeit der Decoder in der letzten Periode der
-                aktuellen Betriebsart genutzt hat. Der Balken hat zwei Teile, die schnelle und die tiefe Dekodierung, und der Text darüber nennt
-                beide Zeiten und die erlaubte Zeit. Daneben: <strong>Fertig</strong> (beide rechtzeitig fertig),
-                <strong>Tief gekappt</strong> (die tiefe Dekodierung wurde am Zeitlimit gestoppt: auf langsameren Geräten normal)
-                oder <strong>Schnell gekappt</strong> (nicht einmal die schnelle Dekodierung wurde fertig, und einige Signale wurden nicht dekodiert). Um
-                dem Decoder mehr Zeit zu geben, stellen Sie <strong>Tiefe Dekodierung</strong> auf weniger Zeit oder eine frühere
-                <strong>Dekodierstartzeit</strong> ein.
+            <p id="decode-focus">
+                <strong>Dekodierung auf die Gegenstation konzentrieren, mit der Sie arbeiten (AUTO-Modus)</strong> und <strong>Dekodierung auf die Gegenstation konzentrieren, mit der Sie arbeiten (manueller CALL)</strong> sind zwei Regler von 0 bis 30 %: der Anteil der Dekodierzeit, der zuerst an die Station geht, mit der Sie arbeiten; der Rest geht an alle anderen Stationen. Sie wirken nur, solange Sie eine Station rufen oder mit ihr arbeiten und TX an ist; ohne Kontakt bekommen alle Stationen die ganze Dekodierzeit. Der erste gilt, wenn <span translate="no">AUTO</span> die Station gewählt hat, der zweite, wenn Sie sie selbst mit <span translate="no">CALL</span> in der Registerkarte „Stationen“ gewählt haben. Bei 0 % dekodiert der Dekoder genau wie ohne sie. Voreingestellt sind <span translate="no">AUTO</span> 5 % und eine Station, die Sie mit <span translate="no">CALL</span> rufen, 10 %. Sind mehrere Stationen gleichzeitig mit <span translate="no">CALL</span> markiert, teilen sie sich den einen Prozentsatz. Der Prozentsatz ist eine Obergrenze: Zeit, die Ihr Kontakt nicht braucht, geht an die anderen Stationen zurück. Für eine Station reichen etwa 2 %; höhere Werte helfen, wenn mehrere Stationen gleichzeitig mit <span translate="no">CALL</span> markiert sind, in <span translate="no">LQ8</span> sowie auf langsameren Telefonen und Computern, wo dieselbe Arbeit einen größeren Teil der Zeit beansprucht. Das kostet etwa eine Dekodierung einer anderen Station pro 2.000. Der Wert steht neben jedem Regler; tippen Sie darauf, um einen Wert einzugeben. Vorerst funktionieren sie in <span translate="no">FT8</span> und <span translate="no">LQ8</span>; in den anderen Modi sind sie ausgegraut und zeigen <strong>Für diesen Modus noch nicht</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Dekodierung nach Zyklusende fortsetzen</strong> (im Computerprogramm standardmäßig an, auf dem Telefon und dem iPhone aus) lässt den Decoder an einer Periode weiterarbeiten, nachdem qFT8 entschieden hat, was als Nächstes gesendet wird, bis die Dekodierung der nächsten Periode beginnt. Was er dann findet, ist eine späte Dekodierung. Auf einem Telefon oder Tablet hält dies den Prozessor während des größten Teils jeder Periode beschäftigt, sodass das Gerät mehr Akku verbraucht und warm werden kann: Deshalb ist es dort standardmäßig aus. Eine späte Dekodierung ändert nie eine bereits beschlossene Sendung, und die nächste Periode wird immer zuerst dekodiert. Das Wasserfall beschriftet jede späte Dekodierung, sobald sie gefunden wird, auf ihrer eigenen Periode und Frequenz, auch während einer Sendung. <strong>Stationen aktualisieren, sobald die späte Dekodierung fertig ist</strong> (ausgegraut, solange das Kontrollkästchen aus ist) legt fest, wann späte Dekodierungen in den Tab Stationen, die Karte, das Log und <span translate="no">AUTO</span> gelangen: <strong>Nein</strong> behält sie und fügt sie alle gemeinsam hinzu, zusammen mit den Dekodierungen der nächsten Periode, kurz bevor qFT8 wieder entscheidet, damit sich die Liste nicht unter dem Finger ändert; <strong>Im AUTO-Modus</strong> (Standard) fügt sie sofort hinzu, sobald sie eintreffen, solange <span translate="no">AUTO</span> gewählt ist, und behält sie wie bei <strong>Nein</strong>, während Sie selbst eine Station mit <span translate="no">CALL</span> rufen; <strong>Immer</strong> fügt sie sofort hinzu, sobald sie eintreffen. Während Sie senden, warten sie immer, bis die Sendung zu Ende ist. Jede späte Dekodierung behält die Zeit ihrer eigenen Periode. Die späte Dekodierung läuft weiter, während Sie senden, mit niedrigster Priorität, sodass Ihre Sendung immer Vorrang hat. Auf einem Telefon oder iPhone, das warm wird, pausiert die späte Dekodierung, bis es abgekühlt ist. Es funktioniert vorerst in <span translate="no">FT8</span> und <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">Bandauswahl</h4>
@@ -4030,6 +4028,9 @@
             </p>
             <p>
                 Unter <strong>Töne</strong> wählen Sie außerdem <strong>Monitor-Tonhöhe</strong> (dieselbe Tonhöhe wie das empfangene Signal), <strong>Mithörton-Anstieg / -Abfall</strong>, <strong>Mithörton-Wellenform</strong> und <strong>Mithörton-Klang</strong> (<strong>Ton</strong> oder <strong>Klicks (Klopfer)</strong>). Das ändert nur, was Sie hören: In der Luft ist <span translate="no">CW</span> immer ein sauberer Ton mit weichen Flanken. <strong>Lautsprecher wach halten</strong> hält Telefone und Bluetooth-Kopfhörer zwischen den Tastendrücken wach, damit der erste Punkt nicht abgeschnitten wird; erhöhen Sie es, wenn der Anfang eines Punktes fehlt. Um den Mithörton oder das empfangene Signal auszuschalten, nutzen Sie <strong>Wiedergeben, was Sie senden (Mithörton)</strong> und <strong>Empfangenes Signal über den Lautsprecher wiedergeben</strong> unter <strong>Monitor (Lautsprecher)</strong>.
+            </p>
+            <p>
+                <strong>Ton des Funkgeräts beim Senden stummschalten</strong> (<strong>Töne</strong>, standardmäßig aus): während qFT8 sendet, bleibt der Ton des Funkgeräts auf dem Telefon oder Computer stumm. Auch einen Moment nach jedem Durchgang, solange der Mithörton des Funkgeräts noch zurückkommt. Ihr eigener Mithörton spielt weiter. qFT8 erkennt nicht, wann Sie mit dem Paddle am Funkgerät selbst geben: dann über die Kopfhörerbuchse des Funkgeräts hören.
             </p>
             <p>
                 Auf dem iPhone gibt es keinen Mithörton und keine Schaltfläche <span translate="no">SIDETONE</span>.

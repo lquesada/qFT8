@@ -1974,8 +1974,9 @@
 
             <h4 id="settings-digital-modes">디지털 모드</h4>
             <ul>
+                <li><strong>사이클 종료 후에도 디코딩 계속</strong> 및 <strong>늦은 디코딩이 끝나는 즉시 무선국 갱신</strong> (<a href="#late-decode">아래</a> 참조).</li>
+                <li><strong>교신 중인 국에 디코딩 집중 (AUTO 모드)</strong>과 <strong>교신 중인 국에 디코딩 집중 (수동 CALL)</strong>(<a href="#decode-focus">아래</a> 참고).</li>
                 <li><strong>딥 디코딩</strong>와 디코딩이 쓸 수 있는 스레드 수(모든 모드 공통).</li>
-                <li><strong>디코딩 용량</strong>(<a href="#decode-capacity">아래</a> 참고).</li>
                 <li><strong>특수 호출부호의 경우</strong>: 복합 호출부호(예:
                     <span translate="no">I8/ON8SGA</span>)와의 QSO에서 <strong>리포트 전송 우선 (더 짧은 호출부호 전송)</strong>
                     또는 <strong>전체 호출부호 우선 (신호 리포트 생략)</strong>.</li>
@@ -1988,14 +1989,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>,
                     <span translate="no">FST4W</span>의 설정은 각 모드에서 설명합니다.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>디코딩 용량</strong>는 현재 모드의 마지막 주기에서 디코더가 시간을 얼마나 썼는지 보여 줍니다.
-                막대는 빠른 디코딩과 깊은 디코딩의 두 부분으로 나뉘고, 그 위의 글자는 두 시간과 허용된 시간을 알려 줍니다.
-                옆에는 <strong>완료</strong>(둘 다 제때 끝남),
-                <strong>딥 중단</strong>(깊은 디코딩이 제한 시간에 중단됨: 느린 기기에서는 정상),
-                <strong>빠른 중단</strong>(빠른 디코딩조차 끝나지 못해 일부 신호가 디코딩되지 않음) 중 하나가 표시됩니다.
-                디코더에 시간을 더 주려면 <strong>딥 디코딩</strong>를 더 적은 시간으로 설정하거나
-                <strong>디코딩 시작 시점</strong>을 더 일찍으로 하세요.
+            <p id="decode-focus">
+                <strong>교신 중인 국에 디코딩 집중 (AUTO 모드)</strong>과 <strong>교신 중인 국에 디코딩 집중 (수동 CALL)</strong>은(는) 0~30 %의 슬라이더 두 개입니다. 디코더 시간 중 먼저 교신 중인 국에 주어지는 비율이며, 나머지는 다른 모든 국에 돌아갑니다. TX를 켠 채 국을 호출하거나 교신하는 동안에만 작동하며, 교신이 없으면 모든 국이 디코딩 시간을 전부 사용합니다. 첫 번째는 <span translate="no">AUTO</span>가 국을 골랐을 때, 두 번째는 무선국 탭에서 직접 <span translate="no">CALL</span>로 골랐을 때 적용됩니다. 0 %이면 디코더는 이 슬라이더가 없을 때와 똑같이 동작합니다. 기본값은 <span translate="no">AUTO</span> 5 %, <span translate="no">CALL</span>한 국 10 %입니다. 여러 국을 동시에 <span translate="no">CALL</span>로 표시하면 하나의 비율을 나눠 씁니다. 이 비율은 상한입니다. 교신에 필요하지 않은 시간은 다른 스테이션으로 돌아갑니다. 스테이션 하나에는 약 2 %로 충분합니다. 여러 스테이션을 동시에 <span translate="no">CALL</span>로 표시했을 때, <span translate="no">LQ8</span>에서, 그리고 같은 작업이 시간의 더 큰 부분을 차지하는 느린 휴대폰과 컴퓨터에서는 더 높은 값이 도움이 됩니다. 비용은 다른 스테이션의 디코딩 약 2000건 중 1건입니다. 값은 각 슬라이더 옆에 표시되며, 누르면 값을 입력할 수 있습니다. 현재는 <span translate="no">FT8</span>과 <span translate="no">LQ8</span>에서 작동하며, 다른 모드에서는 회색으로 표시되고 「<strong>이 모드에서는 아직 지원되지 않음</strong>」이라고 나옵니다.
+            </p>
+            <p id="late-decode">
+                <strong>사이클 종료 후에도 디코딩 계속</strong>(컴퓨터 프로그램에서는 기본값이 켜짐, 휴대폰과 iPhone에서는 꺼짐)은 qFT8이 다음에 보낼 내용을 정한 뒤에도, 다음 주기의 디코딩이 시작될 때까지 디코더가 한 주기에 대한 작업을 계속하게 합니다. 이때 찾은 것이 늦은 디코딩입니다. 휴대폰이나 태블릿에서는 매 주기의 대부분 동안 프로세서가 계속 작동하므로 기기가 배터리를 더 많이 쓰고 뜨거워질 수 있습니다. 그래서 그곳에서는 기본적으로 꺼져 있습니다. 늦은 디코딩은 이미 정해진 송신을 바꾸지 않으며, 다음 주기는 항상 먼저 디코딩됩니다. 워터폴은 늦은 디코딩을 찾는 즉시 그 디코딩 자신의 주기와 주파수 위치에 라벨로 표시하며, 송신 중에도 마찬가지입니다. <strong>늦은 디코딩이 끝나는 즉시 무선국 갱신</strong>(체크박스가 꺼져 있는 동안 회색)은 늦은 디코딩이 무선국 탭, 지도, 로그, <span translate="no">AUTO</span>에 반영되는 시점을 정합니다. <strong>아니요</strong>는 늦은 디코딩을 보관했다가 다음 주기의 디코딩과 함께 qFT8이 다시 판단하기 직전에 한꺼번에 추가하므로, 손가락 아래에서 목록이 바뀌지 않습니다. <strong>AUTO 모드에서</strong>(기본값)는 <span translate="no">AUTO</span>가 선택된 동안에는 도착하는 즉시 추가하고, 직접 무선국에 <span translate="no">CALL</span>하는 동안에는 <strong>아니요</strong>처럼 보관합니다. <strong>항상</strong>은 도착하는 즉시 추가합니다. 송신 중에는 항상 송신이 끝날 때까지 기다립니다. 늦은 디코딩은 자신의 주기 시각을 유지합니다. 늦은 디코딩은 직접 송신하는 동안에도 가장 낮은 우선순위로 계속되므로, 송신이 항상 먼저입니다. 뜨거워지는 휴대폰이나 iPhone에서는 식을 때까지 늦은 디코딩이 일시 중지됩니다. 현재는 <span translate="no">FT8</span>와 <span translate="no">LQ8</span>에서 동작합니다.
             </p>
 
             <h4 id="settings-band-selection">밴드 선택</h4>
@@ -3983,6 +3981,9 @@
             </p>
             <p>
                 <strong>톤</strong>에서는 <strong>모니터 음높이</strong>(수신 신호와 같은 높이), <strong>사이드톤 상승 / 하강</strong>, <strong>사이드톤 파형</strong>, <strong>사이드톤 소리</strong>(<strong>톤</strong> 또는 <strong>클릭(사운더)</strong>)도 고릅니다. 이것들은 내가 듣는 소리만 바꿉니다. 전파로 나가는 <span translate="no">CW</span>는 언제나 가장자리가 부드러운 깨끗한 톤입니다. <strong>스피커 깨우기 유지</strong>는 누르는 사이에도 휴대폰과 블루투스 헤드폰을 깨어 있게 해 첫 단점이 잘리지 않게 합니다. 단점의 시작이 빠지면 올리세요. 사이드톤이나 수신 신호를 끄려면 <strong>보내는 내용 재생(사이드톤)</strong>과 <strong>수신 신호를 스피커로 재생</strong>를 사용하세요(<strong>모니터(스피커)</strong>에 있습니다).
+            </p>
+            <p>
+                <strong>송신 중 무전기 소리 음소거</strong> (<strong>톤</strong>, 기본값은 꺼짐): qFT8이 송신하는 동안 전화기나 컴퓨터에서 들리는 무전기 소리가 음소거됩니다. 각 송신 직후 무전기의 사이드톤이 아직 돌아오는 잠시 동안에도 음소거합니다. 내 사이드톤은 계속 들립니다. 무전기 자체의 패들로 키잉할 때는 qFT8이 알 수 없습니다: 그때는 무전기의 헤드폰 단자로 들으세요.
             </p>
             <p>
                 iPhone에는 사이드톤도 <span translate="no">SIDETONE</span> 버튼도 없습니다.

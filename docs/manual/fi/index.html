@@ -2004,8 +2004,9 @@
 
             <h4 id="settings-digital-modes">DIGITAALISET MODET</h4>
             <ul>
+                <li><strong>Jatka dekoodausta jakson päätyttyä</strong> ja <strong>Päivitä asemat heti, kun myöhäinen dekoodaus on valmis</strong> (katso <a href="#late-decode">alla</a>).</li>
+                <li><strong>Keskitä dekoodaus asemaan, jonka kanssa olet yhteydessä (AUTO-tila)</strong> ja <strong>Keskitä dekoodaus asemaan, jonka kanssa olet yhteydessä (manuaalinen CALL)</strong> (katso <a href="#decode-focus">alla</a>).</li>
                 <li><strong>Syvä dekoodaus</strong> ja kuinka monta säiettä dekoodaus saa käyttää, kaikille lähetelajeille.</li>
-                <li><strong>Dekoodauskapasiteetti</strong> (katso <a href="#decode-capacity">alla</a>).</li>
                 <li><strong>Erikoiskutsumerkeille</strong>: QSO:ssa, jossa on yhdistelmäkutsumerkki (esimerkiksi
                     <span translate="no">I8/ON8SGA</span>), <strong>Suosi raportin lähettämistä (lähetä lyhyempi kutsumerkki)</strong>
                     tai <strong>Suosi täydellisiä kutsumerkkejä (ohita signaaliraportti)</strong>.</li>
@@ -2018,14 +2019,11 @@
                     <span translate="no">Q65</span>-, <span translate="no">MSK144</span>-, <span translate="no">FST4</span>-
                     ja <span translate="no">FST4W</span>-asetukset, kuvattu kunkin lähetelajin yhteydessä.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Dekoodauskapasiteetti</strong> näyttää, kuinka suuren osan ajastaan dekooderi käytti sen lähetelajin
-                viimeisessä jaksossa, jolla olet. Palkissa on kaksi osaa, nopea dekoodaus ja syvä dekoodaus, ja sen päällä oleva teksti kertoo
-                molemmat ajat sekä sallitun ajan. Sen vieressä: <strong>Valmis</strong> (molemmat valmistuivat ajoissa),
-                <strong>Syvä kesken</strong> (syvä dekoodaus keskeytettiin aikarajalla: normaalia hitaammilla laitteilla) tai
-                <strong>Nopea kesken</strong> (nopeakaan dekoodaus ei ehtinyt valmistua, ja joitakin signaaleja ei dekoodattu). Antaaksesi
-                dekooderille enemmän aikaa aseta <strong>Syvä dekoodaus</strong> käyttämään vähemmän aikaa tai aiempi
-                <strong>Dekoodauksen aloitusaika</strong>.
+            <p id="decode-focus">
+                <strong>Keskitä dekoodaus asemaan, jonka kanssa olet yhteydessä (AUTO-tila)</strong> ja <strong>Keskitä dekoodaus asemaan, jonka kanssa olet yhteydessä (manuaalinen CALL)</strong> ovat kaksi liukusäädintä, 0–30 %: osuus dekooderin ajasta, joka menee ensin asemalle, jonka kanssa olet yhteydessä; loput menee kaikille muille asemille. Ne vaikuttavat vain, kun kutsut asemaa tai olet yhteydessä siihen TX päällä; ilman yhteyttä kaikki asemat saavat koko dekoodausajan. Ensimmäinen pätee, kun <span translate="no">AUTO</span> valitsi aseman, toinen, kun valitsit sen itse <span translate="no">CALL</span>-painikkeella Asemat-välilehdellä. Kun arvo on 0 %, dekooderi toimii täsmälleen kuten ilman niitä. Oletuksena <span translate="no">AUTO</span> saa 5 % ja asema, jota kutsut <span translate="no">CALL</span>-painikkeella, 10 %. Jos useita asemia on merkitty <span translate="no">CALL</span>-painikkeella yhtä aikaa, ne jakavat saman prosenttiosuuden. Prosentti on yläraja: aika, jota yhteytesi ei tarvitse, palaa muille asemille. Yhdelle asemalle riittää noin 2 %; suuremmat arvot auttavat, kun useita asemia on merkitty <span translate="no">CALL</span>-painikkeella yhtä aikaa, tilassa <span translate="no">LQ8</span> sekä hitaammilla puhelimilla ja tietokoneilla, joilla sama työ vie suuremman osan ajasta. Se maksaa noin yhden toisen aseman dekoodauksen 2 000:sta. Arvo näkyy kunkin säätimen vieressä; napauta sitä kirjoittaaksesi arvon. Ne toimivat toistaiseksi <span translate="no">FT8</span>- ja <span translate="no">LQ8</span>-lajeissa; muissa lajeissa ne ovat harmaina ja näyttävät <strong>Ei vielä tälle lajille</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Jatka dekoodausta jakson päätyttyä</strong> (tietokoneohjelmassa oletuksena päällä, puhelimessa ja iPhonessa pois) antaa dekooderin jatkaa työtä jakson parissa sen jälkeen, kun qFT8 on päättänyt, mitä lähetetään seuraavaksi, kunnes seuraavan jakson dekoodaus alkaa. Se, mitä dekooderi silloin löytää, on myöhäinen dekoodaus. Puhelimessa tai tabletissa tämä pitää suorittimen kiireisenä suurimman osan jokaisesta jaksosta, joten laite kuluttaa enemmän akkua ja voi lämmetä: siksi se on siellä oletuksena pois päältä. Myöhäinen dekoodaus ei koskaan muuta jo päätettyä lähetystä, ja seuraava jakso dekoodataan aina ensin. Vesiputous merkitsee jokaisen myöhäisen dekoodauksen heti, kun se löytyy, sen omalle jaksolle ja taajuudelle, myös lähetyksen aikana. <strong>Päivitä asemat heti, kun myöhäinen dekoodaus on valmis</strong> (harmaana, kun valintaruutu on pois) kertoo, milloin myöhäiset dekoodaukset tulevat Asemat-välilehdelle, kartalle, lokiin ja <span translate="no">AUTO</span>-tilaan: <strong>Ei</strong> säilyttää ne ja lisää ne kaikki yhdessä seuraavan jakson dekoodausten kanssa, juuri ennen kuin qFT8 päättää uudelleen, jotta luettelo ei muutu sormen alla; <strong>AUTO-tilassa</strong> (oletus) lisää ne heti niiden saapuessa, kun <span translate="no">AUTO</span> on valittuna, ja säilyttää ne kuten <strong>Ei</strong>, kun kutsut itse asemaa <span translate="no">CALL</span>; <strong>Aina</strong> lisää ne heti niiden saapuessa. Kun lähetät, ne odottavat aina lähetyksen päättymiseen. Jokainen myöhäinen dekoodaus säilyttää oman jaksonsa ajan. Myöhäinen dekoodaus jatkuu, kun lähetät, alimmalla prioriteetilla, joten lähetyksesi on aina etusijalla. Lämpenevällä puhelimella tai iPhonella myöhäinen dekoodaus keskeytyy, kunnes laite on jäähtynyt. Toistaiseksi se toimii tiloissa <span translate="no">FT8</span> ja <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">BANDIEN VALINTA</h4>
@@ -4095,6 +4093,9 @@
             </p>
             <p>
                 Kohdassa <strong>Äänet</strong> valitset myös <strong>Monitorin äänenkorkeus</strong> (sama korkeus kuin vastaanotetulla signaalilla), <strong>Myötäkuuntelun nousu / lasku</strong>, <strong>Myötäkuuntelun aaltomuoto</strong> ja <strong>Myötäkuuntelun ääni</strong> (<strong>Ääni</strong> tai <strong>Naksut (sounder)</strong>). Ne muuttavat vain sitä, mitä kuulet: lähetyksessä <span translate="no">CW</span> on aina puhdas, pehmeäreunainen ääni. <strong>Kaiuttimen hereillä pito</strong> pitää puhelimet ja Bluetooth-kuulokkeet hereillä painallusten välillä, jotta ensimmäinen piste ei katkea; nosta sitä, jos pisteen alku puuttuu. Sivuäänen tai vastaanotetun signaalin voi kytkeä pois asetuksilla <strong>Toista lähettämäsi (myötäkuuntelu)</strong> ja <strong>Toista vastaanotettu signaali kaiuttimesta</strong> kohdassa <strong>Monitori (kaiutin)</strong>.
+            </p>
+            <p>
+                <strong>Mykistä radion ääni lähetyksen ajaksi</strong> (<strong>Äänet</strong>, oletuksena pois): kun qFT8 lähettää, radion ääni puhelimessa tai tietokoneessa on mykistetty. Myös hetkeksi jokaisen lähetyksen jälkeen, kun radion sivuääni vielä palaa. Oma sivuäänesi soi edelleen. qFT8 ei voi tietää, milloin sähkötät radion omalla avaimella: kuuntele silloin radion kuulokeliitännästä.
             </p>
             <p>
                 iPhonessa ei ole sivuääntä eikä <span translate="no">SIDETONE</span>-painiketta.

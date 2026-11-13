@@ -2000,8 +2000,9 @@
 
             <h4 id="settings-digital-modes">EMISJE CYFROWE</h4>
             <ul>
+                <li><strong>Kontynuuj dekodowanie po końcu cyklu</strong> i <strong>Aktualizuj stacje zaraz po zakończeniu późnego dekodowania</strong> (zob. <a href="#late-decode">poniżej</a>).</li>
+                <li><strong>Skup dekodowanie na stacji, z którą pracujesz (tryb AUTO)</strong> i <strong>Skup dekodowanie na stacji, z którą pracujesz (ręczne CALL)</strong> (zob. <a href="#decode-focus">niżej</a>).</li>
                 <li><strong>Głębokie dekodowanie</strong> i ile wątków może używać dekodowanie, dla każdej emisji.</li>
-                <li><strong>Wydajność dekodowania</strong> (zob. <a href="#decode-capacity">niżej</a>).</li>
                 <li><strong>Dla znaków specjalnych</strong>: w QSO ze znakiem złożonym (na przykład
                     <span translate="no">I8/ON8SGA</span>) <strong>Preferuj wysłanie raportu (wyślij krótszy znak)</strong>
                     albo <strong>Preferuj pełne znaki (pomiń raport sygnału)</strong>.</li>
@@ -2014,14 +2015,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     i <span translate="no">FST4W</span>, opisane przy każdej emisji.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Wydajność dekodowania</strong> pokazuje, ile swojego czasu dekoder wykorzystał w ostatnim okresie
-                emisji, w której jesteś. Pasek ma dwie części, szybkie dekodowanie i głębokie dekodowanie, a tekst nad nim podaje
-                oba czasy oraz dozwolony czas. Obok: <strong>Ukończono</strong> (oba skończyły się na czas),
-                <strong>Głębokie ucięte</strong> (głębokie dekodowanie przerwano na limicie czasu: normalne na wolniejszych urządzeniach) albo
-                <strong>Szybkie ucięte</strong> (nawet szybkie dekodowanie nie zdążyło i niektóre sygnały nie zostały zdekodowane). Aby
-                dać dekoderowi więcej czasu, ustaw <strong>Głębokie dekodowanie</strong> na krótszy czas albo wybierz wcześniejszy
-                <strong>Czas rozpoczęcia dekodowania</strong>.
+            <p id="decode-focus">
+                <strong>Skup dekodowanie na stacji, z którą pracujesz (tryb AUTO)</strong> i <strong>Skup dekodowanie na stacji, z którą pracujesz (ręczne CALL)</strong> to dwa suwaki, od 0 do 30 %: część czasu dekodera, która trafia najpierw do stacji, z którą pracujesz; reszta trafia do wszystkich pozostałych stacji. Działają tylko wtedy, gdy wołasz stację lub pracujesz z nią przy włączonym TX; bez łączności wszystkie stacje dostają cały czas dekodowania. Pierwszy działa, gdy stację wybrał <span translate="no">AUTO</span>, drugi, gdy wybrałeś ją sam przyciskiem <span translate="no">CALL</span> na karcie Stacje. Przy 0 % dekoder działa dokładnie tak, jak bez nich. Domyślnie <span translate="no">AUTO</span> ma 5 %, a stacja wołana przez <span translate="no">CALL</span> ma 10 %. Jeśli kilka stacji jest jednocześnie oznaczonych <span translate="no">CALL</span>, dzielą jeden procent. Procent to górny limit: czas, którego Twoja łączność nie potrzebuje, wraca do pozostałych stacji. Dla jednej stacji wystarczy około 2 %; wyższe wartości pomagają, gdy kilka stacji jest oznaczonych <span translate="no">CALL</span> jednocześnie, w <span translate="no">LQ8</span> oraz na wolniejszych telefonach i komputerach, gdzie ta sama praca zajmuje większą część czasu. Kosztuje to około jednego dekodowania innej stacji na 2000. Wartość jest pokazana obok każdego suwaka; dotknij jej, aby wpisać wartość. Na razie działają w <span translate="no">FT8</span> i <span translate="no">LQ8</span>; w pozostałych trybach są wyszarzone i pokazują <strong>Jeszcze niedostępne dla tego trybu</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Kontynuuj dekodowanie po końcu cyklu</strong> (w programie na komputer domyślnie włączone, na telefonie i iPhonie wyłączone) pozwala dekoderowi dalej pracować nad okresem po tym, jak qFT8 zdecydował, co nadać dalej, aż do rozpoczęcia dekodowania następnego okresu. To, co wtedy znajdzie, jest późnym dekodowaniem. W telefonie lub tablecie powoduje to, że procesor jest zajęty przez większość każdego okresu, więc urządzenie zużywa więcej baterii i może się nagrzewać: dlatego domyślnie jest tam wyłączone. Późne dekodowanie nigdy nie zmienia już ustalonej transmisji, a następny okres jest zawsze dekodowany jako pierwszy. Wodospad oznacza każde późne dekodowanie zaraz po jego znalezieniu, na jego własnym okresie i częstotliwości, także podczas transmisji. <strong>Aktualizuj stacje zaraz po zakończeniu późnego dekodowania</strong> (wyszarzone, gdy pole wyboru jest wyłączone) określa, kiedy późne dekodowania trafiają do karty Stacje, na mapę, do dziennika i do <span translate="no">AUTO</span>: <strong>Nie</strong> zachowuje je i dodaje wszystkie razem z dekodowaniami następnego okresu, tuż przed ponowną decyzją qFT8, aby lista nie zmieniała się pod palcem; <strong>W trybie AUTO</strong> (domyślnie) dodaje je od razu po nadejściu, gdy wybrany jest <span translate="no">AUTO</span>, a zachowuje jak przy <strong>Nie</strong>, gdy sam wołasz <span translate="no">CALL</span> stację; <strong>Zawsze</strong> dodaje je od razu po nadejściu. Gdy nadajesz, zawsze czekają do końca transmisji. Każde późne dekodowanie zachowuje czas własnego okresu. Późne dekodowanie trwa dalej, gdy nadajesz, z najniższym priorytetem, więc twoja transmisja zawsze ma pierwszeństwo. Na telefonie lub iPhonie, który się nagrzewa, późne dekodowanie jest wstrzymywane, aż ostygnie. Na razie działa w <span translate="no">FT8</span> i <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">WYBÓR PASMA</h4>
@@ -4034,6 +4032,9 @@
             </p>
             <p>
                 W <strong>Tony</strong> wybierasz też <strong>Wysokość tonu podsłuchu</strong> (ta sama wysokość co odbierany sygnał), <strong>Narastanie / opadanie podsłuchu</strong>, <strong>Kształt fali podsłuchu</strong> i <strong>Dźwięk podsłuchu</strong> (<strong>Ton</strong> lub <strong>Kliki (sounder)</strong>). Zmieniają one tylko to, co słyszysz: w eterze <span translate="no">CW</span> to zawsze czysty ton o łagodnych zboczach. <strong>Podtrzymanie głośnika</strong> utrzymuje telefony i słuchawki Bluetooth w gotowości między naciśnięciami, aby pierwsza kropka nie była ucięta; zwiększ, jeśli brakuje początku kropki. Aby wyłączyć ton podsłuchu lub odbierany sygnał, użyj <strong>Odtwarzaj to, co nadajesz (podsłuch)</strong> i <strong>Odtwarzaj odbierany sygnał w głośniku</strong> w <strong>Podsłuch (głośnik)</strong>.
+            </p>
+            <p>
+                <strong>Wycisz dźwięk radia podczas nadawania</strong> (<strong>Tony</strong>, domyślnie wyłączone): gdy qFT8 nadaje, dźwięk radia w telefonie lub komputerze jest wyciszony. Także przez chwilę po każdym nadawaniu, dopóki podsłuch radia jeszcze wraca. Twój własny podsłuch gra dalej. qFT8 nie wie, kiedy kluczujesz kluczem samego radia: wtedy słuchaj przez gniazdo słuchawkowe radia.
             </p>
             <p>
                 Na iPhonie nie ma tonu podsłuchu ani przycisku <span translate="no">SIDETONE</span>.

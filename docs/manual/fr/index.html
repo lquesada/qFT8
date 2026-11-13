@@ -2004,8 +2004,9 @@
 
             <h4 id="settings-digital-modes">MODES NUMÉRIQUES</h4>
             <ul>
+                <li><strong>Continuer le décodage après la fin du cycle</strong> et <strong>Mettre à jour les stations dès que le décodage tardif est terminé</strong> (voir <a href="#late-decode">ci-dessous</a>).</li>
+                <li><strong>Concentrer le décodage sur la station avec laquelle vous travaillez (mode AUTO)</strong> et <strong>Concentrer le décodage sur la station avec laquelle vous travaillez (CALL manuel)</strong> (voir <a href="#decode-focus">ci-dessous</a>).</li>
                 <li><strong>Décodage approfondi</strong> et combien de fils d'exécution le décodage peut utiliser, pour tous les modes.</li>
-                <li><strong>Capacité de décodage</strong> (voir <a href="#decode-capacity">ci-dessous</a>).</li>
                 <li><strong>Pour les indicatifs spéciaux</strong> : dans un QSO avec un indicatif composé (par exemple
                     <span translate="no">I8/ON8SGA</span>), <strong>Préférer l'envoi du report (envoyer l'indicatif le plus court)</strong>
                     ou <strong>Préférer les indicatifs complets (sans report de signal)</strong>.</li>
@@ -2018,14 +2019,11 @@
                     du <span translate="no">Q65</span>, du <span translate="no">MSK144</span>, du <span translate="no">FST4</span>
                     et du <span translate="no">FST4W</span>, décrits avec chaque mode.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Capacité de décodage</strong> montre quelle part de son temps le décodeur a utilisée dans la dernière période du
-                mode où vous êtes. La barre a deux parties, le décodage rapide et le décodage profond, et le texte dessus donne
-                les deux durées et le temps alloué. À côté : <strong>Terminé</strong> (les deux ont fini à temps),
-                <strong>Profond écourté</strong> (le décodage profond a été arrêté à la limite de temps : normal sur les appareils plus lents) ou
-                <strong>Rapide écourté</strong> (même le décodage rapide n'a pas pu finir, et certains signaux n'ont pas été décodés). Pour
-                donner plus de temps au décodeur, réglez <strong>Décodage approfondi</strong> pour qu'il utilise moins de temps, ou un
-                <strong>Instant de début du décodage</strong> plus tôt.
+            <p id="decode-focus">
+                <strong>Concentrer le décodage sur la station avec laquelle vous travaillez (mode AUTO)</strong> et <strong>Concentrer le décodage sur la station avec laquelle vous travaillez (CALL manuel)</strong> sont deux curseurs, de 0 à 30 %: la part du temps du décodeur qui va d'abord à la station avec laquelle vous travaillez; le reste va à toutes les autres stations. Ils n'agissent que lorsque vous appelez une station ou travaillez avec elle, TX activé; sans contact, toutes les stations reçoivent tout le temps de décodage. Le premier s'applique quand <span translate="no">AUTO</span> a choisi la station, le second quand vous l'avez choisie vous-même avec <span translate="no">CALL</span> dans l'onglet Stations. À 0 %, le décodeur fonctionne exactement comme sans eux. Par défaut, <span translate="no">AUTO</span> reçoit 5 % et une station que vous appelez avec <span translate="no">CALL</span> reçoit 10 %. Si plusieurs stations sont marquées <span translate="no">CALL</span> en même temps, elles se partagent le même pourcentage. Le pourcentage est un plafond : le temps dont votre contact n'a pas besoin retourne aux autres stations. Pour une seule station, environ 2 % suffisent; des valeurs plus élevées aident quand plusieurs stations sont marquées <span translate="no">CALL</span> en même temps, en <span translate="no">LQ8</span>, ainsi que sur les téléphones et ordinateurs plus lents, où le même travail prend une plus grande part du temps. Cela coûte environ un décodage d'une autre station sur 2 000. La valeur est affichée à côté de chaque curseur; touchez-la pour saisir une valeur. Ils fonctionnent pour l'instant en <span translate="no">FT8</span> et <span translate="no">LQ8</span>; dans les autres modes, ils sont grisés et affichent <strong>Pas encore pour ce mode</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Continuer le décodage après la fin du cycle</strong> (activée par défaut dans le programme pour ordinateur, désactivée sur le téléphone et l'iPhone) laisse le décodeur continuer à travailler sur une période après que qFT8 a décidé quoi émettre ensuite, jusqu'au début du décodage de la période suivante. Ce qu'il trouve alors est un décodage tardif. Sur un téléphone ou une tablette, cela occupe le processeur pendant la majeure partie de chaque période, si bien que l'appareil consomme davantage de batterie et peut chauffer : c'est pourquoi c'est désactivé par défaut sur ces appareils. Un décodage tardif ne modifie jamais une émission déjà décidée, et la période suivante est toujours décodée en premier. La cascade étiquette chaque décodage tardif dès qu'il est trouvé, sur sa propre période et sa propre fréquence, y compris pendant une émission. <strong>Mettre à jour les stations dès que le décodage tardif est terminé</strong> (grisé tant que la case est décochée) indique quand les décodages tardifs arrivent dans l'onglet Stations, sur la carte, dans le journal et dans <span translate="no">AUTO</span> : <strong>Non</strong> les garde et les ajoute tous ensemble avec les décodages de la période suivante, juste avant que qFT8 ne décide à nouveau, pour que la liste ne change pas sous votre doigt ; <strong>En mode AUTO</strong> (par défaut) les ajoute dès leur arrivée tant que <span translate="no">AUTO</span> est sélectionné, et les garde comme avec <strong>Non</strong> pendant que vous faites vous-même <span translate="no">CALL</span> à une station ; <strong>Toujours</strong> les ajoute dès leur arrivée. Pendant que vous émettez, ils attendent toujours la fin de l'émission. Chaque décodage tardif garde l'heure de sa propre période. Le décodage tardif continue pendant que vous émettez, avec la priorité la plus basse, de sorte que votre émission passe toujours en premier. Sur un téléphone ou un iPhone qui chauffe, le décodage tardif se met en pause jusqu'à ce qu'il refroidisse. Cela fonctionne pour l'instant en <span translate="no">FT8</span> et <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">SÉLECTION DE BANDE</h4>
@@ -4094,6 +4092,9 @@
             </p>
             <p>
                 Dans <strong>Tonalités</strong> vous choisissez aussi <strong>Hauteur du moniteur</strong> (la même hauteur que le signal reçu), <strong>Montée / descente de l'écoute locale</strong>, <strong>Forme d'onde de l'écoute locale</strong> et <strong>Son de l'écoute locale</strong> (<strong>Tonalité</strong> ou <strong>Clics (sounder)</strong>). Cela ne change que ce que vous entendez : sur l'air, le <span translate="no">CW</span> est toujours une tonalité propre aux flancs doux. <strong>Maintien du haut-parleur</strong> garde les téléphones et les casques Bluetooth éveillés entre deux appuis pour que le premier point ne soit pas coupé ; augmentez-le si le début d'un point manque. Pour couper la tonalité locale ou le signal reçu, utilisez <strong>Lire ce que vous envoyez (écoute locale)</strong> et <strong>Lire le signal reçu sur le haut-parleur</strong> dans <strong>Moniteur (haut-parleur)</strong>.
+            </p>
+            <p>
+                <strong>Couper le son de la radio pendant l'émission</strong> (<strong>Tonalités</strong>, désactivé par défaut): pendant que qFT8 émet, le son de la radio sur le téléphone ou l'ordinateur reste coupé. Aussi un instant après chaque passage, tant que la tonalité de contrôle de la radio revient encore. Votre propre tonalité de contrôle continue. qFT8 ne peut pas savoir quand vous manipulez avec le manipulateur de la radio elle-même : écoutez alors sur la prise casque de la radio.
             </p>
             <p>
                 Sur l'iPhone il n'y a ni tonalité locale ni bouton <span translate="no">SIDETONE</span>.

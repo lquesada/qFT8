@@ -2017,8 +2017,9 @@
 
             <h4 id="settings-digital-modes">DIGITALE MODI</h4>
             <ul>
+                <li><strong>Doorgaan met decoderen na het einde van de cyclus</strong> en <strong>Stations bijwerken zodra late decodering klaar is</strong> (zie <a href="#late-decode">hieronder</a>).</li>
+                <li><strong>Decodering concentreren op het station waarmee je werkt (AUTO-modus)</strong> en <strong>Decodering concentreren op het station waarmee je werkt (handmatige CALL)</strong> (zie <a href="#decode-focus">hieronder</a>).</li>
                 <li><strong>Diepe decodering</strong> en hoeveel threads het decoderen mag gebruiken, voor elke mode.</li>
-                <li><strong>Decodeercapaciteit</strong> (zie <a href="#decode-capacity">hieronder</a>).</li>
                 <li><strong>Voor speciale roepnamen</strong>: in een QSO met een samengestelde roepnaam (bijvoorbeeld
                     <span translate="no">I8/ON8SGA</span>) <strong>Liever rapport sturen (kortere roepnaam sturen)</strong>
                     of <strong>Liever volledige roepnamen (signaalrapport overslaan)</strong>.</li>
@@ -2031,14 +2032,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     en <span translate="no">FST4W</span>, beschreven bij elke mode.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Decodeercapaciteit</strong> toont hoeveel van zijn tijd de decoder in de laatste periode van de
-                mode waarin je zit heeft gebruikt. De balk heeft twee delen, de snelle decodering en de diepe decodering, en de tekst erover geeft
-                beide tijden en de toegestane tijd. Ernaast staat: <strong>Voltooid</strong> (beide op tijd klaar),
-                <strong>Diep afgekapt</strong> (de diepe decodering is bij de tijdlimiet gestopt: normaal op tragere apparaten) of
-                <strong>Snel afgekapt</strong> (zelfs de snelle decodering kon niet afmaken en sommige signalen zijn niet gedecodeerd). Om
-                de decoder meer tijd te geven, zet je <strong>Diepe decodering</strong> op minder tijd, of kies je een eerdere
-                <strong>Starttijd decodering</strong>.
+            <p id="decode-focus">
+                <strong>Decodering concentreren op het station waarmee je werkt (AUTO-modus)</strong> en <strong>Decodering concentreren op het station waarmee je werkt (handmatige CALL)</strong> zijn twee schuifregelaars, van 0 tot 30 %: het aandeel van de decodeertijd dat eerst naar het station gaat waarmee je werkt; de rest gaat naar alle andere stations. Ze werken alleen terwijl je een station aanroept of ermee werkt met TX aan; zonder contact krijgen alle stations alle decodeertijd. De eerste geldt als <span translate="no">AUTO</span> het station koos, de tweede als je het zelf koos met <span translate="no">CALL</span> op het tabblad Stations. Bij 0 % decodeert de decoder precies als zonder. Standaard krijgt <span translate="no">AUTO</span> 5 % en een station dat je met <span translate="no">CALL</span> aanroept 10 %. Als meerdere stations tegelijk met <span translate="no">CALL</span> zijn gemarkeerd, delen ze het ene percentage. Het percentage is een plafond: tijd die uw contact niet nodig heeft, gaat terug naar de andere stations. Voor één station is ongeveer 2 % genoeg; hogere waarden helpen als meerdere stations tegelijk met <span translate="no">CALL</span> zijn gemarkeerd, in <span translate="no">LQ8</span> en op tragere telefoons en computers, waar hetzelfde werk een groter deel van de tijd kost. Het kost ongeveer één decodering van een ander station op de 2000. De waarde staat naast elke schuifregelaar; tik erop om een waarde in te typen. Ze werken voorlopig in <span translate="no">FT8</span> en <span translate="no">LQ8</span>; in de andere modi zijn ze grijs en tonen ze <strong>Nog niet voor deze modus</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Doorgaan met decoderen na het einde van de cyclus</strong> (in het computerprogramma standaard aan, op de telefoon en de iPhone uit) laat de decoder doorwerken aan een periode nadat qFT8 heeft besloten wat er daarna wordt verzonden, tot de decodering van de volgende periode begint. Wat hij dan vindt, is een late decodering. Op een telefoon of tablet houdt dit de processor het grootste deel van elke periode bezig, waardoor het apparaat meer batterij verbruikt en warm kan worden: daarom staat het daar standaard uit. Een late decodering verandert nooit een al besloten zending, en de volgende periode wordt altijd eerst gedecodeerd. De waterval labelt elke late decodering zodra hij is gevonden, op zijn eigen periode en frequentie, ook tijdens een zending. <strong>Stations bijwerken zodra late decodering klaar is</strong> (grijs zolang het selectievakje uit staat) bepaalt wanneer late decoderingen het tabblad Stations, de kaart, het logboek en <span translate="no">AUTO</span> bereiken: <strong>Nee</strong> bewaart ze en voegt ze allemaal samen toe met de decoderingen van de volgende periode, vlak voordat qFT8 opnieuw besluit, zodat de lijst niet onder je vinger verandert; <strong>In AUTO-modus</strong> (standaard) voegt ze toe zodra ze binnenkomen zolang <span translate="no">AUTO</span> is geselecteerd, en bewaart ze zoals bij <strong>Nee</strong> terwijl je zelf een station <span translate="no">CALL</span>t; <strong>Altijd</strong> voegt ze toe zodra ze binnenkomen. Terwijl je zendt, wachten ze altijd tot de zending is afgelopen. Elke late decodering behoudt de tijd van zijn eigen periode. Late decodering gaat door terwijl je zendt, met de laagste prioriteit, zodat je zending altijd voorgaat. Op een telefoon of iPhone die warm wordt, pauzeert late decodering totdat het toestel is afgekoeld. Voorlopig werkt het in <span translate="no">FT8</span> en <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">BANDSELECTIE</h4>
@@ -4053,6 +4051,9 @@
             </p>
             <p>
                 In <strong>Tonen</strong> kiest u ook <strong>Toonhoogte monitor</strong> (dezelfde toonhoogte als het ontvangen signaal), <strong>Stijgen / dalen meeluistertoon</strong>, <strong>Golfvorm meeluistertoon</strong> en <strong>Geluid meeluistertoon</strong> (<strong>Toon</strong> of <strong>Klikken (sounder)</strong>). Dit verandert alleen wat u hoort: in de lucht is <span translate="no">CW</span> altijd een schone toon met zachte flanken. <strong>Luidspreker wakker houden</strong> houdt telefoons en Bluetooth-hoofdtelefoons wakker tussen het drukken, zodat de eerste punt niet wordt afgekapt; zet het hoger als het begin van een punt ontbreekt. Om de meeluistertoon of het ontvangen signaal uit te zetten, gebruikt u <strong>Afspelen wat je zendt (meeluistertoon)</strong> en <strong>Het ontvangen signaal via de luidspreker afspelen</strong> in <strong>Monitor (luidspreker)</strong>.
+            </p>
+            <p>
+                <strong>Geluid van de radio dempen tijdens zenden</strong> (<strong>Tonen</strong>, standaard uit): terwijl qFT8 zendt, blijft het geluid van de radio op de telefoon of computer gedempt. Ook even na elke uitzending, zolang de meeluistertoon van de radio nog terugkomt. Je eigen meeluistertoon blijft klinken. qFT8 kan niet zien wanneer je met de eigen seinsleutel van de radio seint: luister dan via de koptelefoonaansluiting van de radio.
             </p>
             <p>
                 Op de iPhone is er geen meeluistertoon en geen knop <span translate="no">SIDETONE</span>.

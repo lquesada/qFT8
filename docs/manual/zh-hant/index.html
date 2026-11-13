@@ -1799,8 +1799,9 @@
 
             <h4 id="settings-digital-modes">數位模式</h4>
             <ul>
+                <li><strong>週期結束後繼續解碼</strong>和<strong>延遲解碼完成後立即更新電台</strong>（見<a href="#late-decode">下文</a>）。</li>
+                <li><strong>將解碼集中於您正在通聯的電台（AUTO 模式）</strong>和<strong>將解碼集中於您正在通聯的電台（手動 CALL）</strong>（見<a href="#decode-focus">下文</a>）。</li>
                 <li><strong>深度解碼</strong>以及解碼可使用多少執行緒，適用於所有模式。</li>
-                <li><strong>解碼能力</strong>（見<a href="#decode-capacity">下文</a>）。</li>
                 <li><strong>對於特殊呼號</strong>：在與複合呼號（例如
                     <span translate="no">I8/ON8SGA</span>）的 QSO 中，選擇<strong>優先傳送訊號報告（傳送較短的呼號）</strong>
                     或<strong>優先使用完整呼號（略過訊號報告）</strong>。</li>
@@ -1814,14 +1815,11 @@
                     <span translate="no">Q65</span>、<span translate="no">MSK144</span>、<span translate="no">FST4</span>
                     和 <span translate="no">FST4W</span> 的設定，在各個模式中分別說明。</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>解碼能力</strong>顯示解碼器在您目前模式的上一個週期中用掉了多少時間。
-                進度條分為兩部分，快速解碼和深度解碼，條上的文字給出
-                這兩者的用時以及允許的時間。旁邊顯示：<strong>已完成</strong>（兩者都按時完成）、
-                <strong>深度逾時</strong>（深度解碼在時間上限處被停止：在較慢的裝置上屬正常）或
-                <strong>快速逾時</strong>（連快速解碼也未能完成，有些訊號沒有被解碼）。要
-                給解碼器更多時間，請把<strong>深度解碼</strong>設為用時更少，或把
-                <strong>開始解碼時間</strong>設得更早。
+            <p id="decode-focus">
+                <strong>將解碼集中於您正在通聯的電台（AUTO 模式）</strong>和<strong>將解碼集中於您正在通聯的電台（手動 CALL）</strong>是兩個0到30 %的滑桿：解碼器時間中優先分給你正在通聯的電台的比例，其餘分給所有其他電台。它們只在你開著TX呼叫或通聯某個電台時起作用；沒有聯繫時，所有電台獲得全部解碼時間。第一個在<span translate="no">AUTO</span>選定電台時適用，第二個在你自己於電台分頁中用<span translate="no">CALL</span>選定時適用。為0 %時，解碼器的運作方式與沒有它們時完全相同。預設<span translate="no">AUTO</span>為5 %，你用<span translate="no">CALL</span>選定的電台為10 %。若同時有多個電台被標記為<span translate="no">CALL</span>，它們共用同一個百分比。這個百分比是上限：你的通聯不需要的時間會還給其他電台。對於一個電台，約 2 % 就足夠；當多個電台同時標記為<span translate="no">CALL</span>時、在<span translate="no">LQ8</span>中，以及在較慢的手機和電腦上（相同的工作佔用更大部分的時間），較高的值會有幫助。代價是每 2000 次其他電台的解碼中約損失 1 次。數值顯示在每個滑桿旁邊；點按即可輸入數值。目前它們適用於<span translate="no">FT8</span>和<span translate="no">LQ8</span>；在其他模式下呈灰色並顯示「<strong>此模式尚未支援</strong>」。
+            </p>
+            <p id="late-decode">
+                <strong>週期結束後繼續解碼</strong>（電腦程式中預設開啟，手機和 iPhone 上預設關閉）讓解碼器在 qFT8 已決定接下來要發送什麼之後，仍繼續處理某一週期，直到下一週期的解碼開始。此時找到的結果就是延遲解碼。在手機或平板電腦上，這會讓處理器在每個週期的大部分時間保持忙碌，因此裝置會更耗電，還可能發熱：這就是它在那裡預設關閉的原因。延遲解碼絕不會改變已經決定的發射，下一週期總是最先解碼。瀑布圖會在找到每個延遲解碼時立即在它自己的週期和頻率上標註，發射期間也是如此。<strong>延遲解碼完成後立即更新電台</strong>（核取方塊關閉時為灰色）決定延遲解碼何時進入電台分頁、地圖、日誌和 <span translate="no">AUTO</span>：<strong>否</strong>會保留它們，並在 qFT8 再次決定之前，與下一個週期的解碼一起一次性全部加入，這樣清單不會在您手指下變動；<strong>AUTO 模式下</strong>（預設）在選取 <span translate="no">AUTO</span> 時，一到就立即加入，而當您自己 <span translate="no">CALL</span> 某個電台時，則像<strong>否</strong>一樣保留；<strong>一律</strong>一到就立即加入。您發射期間，它們始終等到發射結束。每個延遲解碼都保留其自身週期的時間。延遲解碼會在您發射時繼續進行，優先順序最低，因此您的發射始終優先。手機或 iPhone 變熱時，延遲解碼會暫停，直到冷卻為止。目前適用於 <span translate="no">FT8</span> 和 <span translate="no">LQ8</span>。
             </p>
 
             <h4 id="settings-band-selection">波段選擇</h4>
@@ -3805,6 +3803,9 @@
             </p>
             <p>
                 在 <strong>音調</strong> 中還可以選擇 <strong>監聽音高</strong>（與接收訊號相同的音高）、<strong>側音上升 / 下降</strong>、<strong>側音波形</strong> 和 <strong>側音聲音</strong>（<strong>音調</strong> 或 <strong>喀嗒聲（發聲器）</strong>）。這些只改變您聽到的聲音：空中的 <span translate="no">CW</span> 始終是邊緣柔和的純淨音。<strong>喇叭保持喚醒</strong> 讓手機和藍牙耳機在按鍵之間保持喚醒，使第一個點不被截掉；如果點的開頭缺失，請調高它。要關閉側音或接收訊號，請使用 <strong>播放您發送的內容（側音）</strong> 和 <strong>用喇叭播放接收訊號</strong>（位於 <strong>監聽（喇叭）</strong> 中）。
+            </p>
+            <p>
+                <strong>發射時將電台聲音靜音</strong> (<strong>音調</strong>, 預設關閉): qFT8 發射期間，手機或電腦上聽到的電台聲音保持靜音。 每次發射後的片刻也靜音，此時電台自己的側音仍在傳回。您自己的側音照常播放。qFT8 無法得知您何時用電台本身的電鍵拍發：此時請從電台的耳機插孔收聽。
             </p>
             <p>
                 iPhone 上沒有側音，也沒有 <span translate="no">SIDETONE</span> 按鈕。

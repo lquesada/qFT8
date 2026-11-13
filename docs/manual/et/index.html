@@ -2403,8 +2403,9 @@
 
             <h4 id="settings-digital-modes">DIGIREŽIIMID</h4>
             <ul>
+                <li><strong>Jätka dekodeerimist tsükli lõpu järel</strong> ja <strong>Värskenda jaamu kohe, kui hiline dekodeerimine on valmis</strong> (vt <a href="#late-decode">allpool</a>).</li>
+                <li><strong>Koonda dekodeerimine jaamale, millega sa tööd teed (AUTO-režiim)</strong> ja <strong>Koonda dekodeerimine jaamale, millega sa tööd teed (käsitsi CALL)</strong> (vt <a href="#decode-focus">allpool</a>).</li>
                 <li><strong>Sügavdekodeerimine</strong> ja mitut lõime dekodeerimine võib kasutada, kõigi režiimide jaoks.</li>
-                <li><strong>Dekodeerimisvõimsus</strong> (vt <a href="#decode-capacity">allpool</a>).</li>
                 <li><strong>Eriliste kutsungite puhul</strong>: QSO-s liitkutsungiga (näiteks
                     <span translate="no">I8/ON8SGA</span>) <strong>Eelista raporti saatmist (saada lühem kutsung)</strong>
                     või <strong>Eelista täielikke kutsungeid (jäta signaaliraport välja)</strong>.</li>
@@ -2418,14 +2419,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     ja <span translate="no">FST4W</span> seaded, kirjeldatud iga režiimi juures.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Dekodeerimisvõimsus</strong> näitab, kui suure osa ajast dekooder kasutas sinu praeguse režiimi
-                viimases perioodis. Ribal on kaks osa, kiire dekodeerimine ja sügav dekodeerimine, ning selle kohal olev tekst annab
-                mõlemad ajad ja lubatud aja. Selle kõrval: <strong>Lõpetatud</strong> (mõlemad lõppesid õigel ajal),
-                <strong>Sügav katkes</strong> (sügav dekodeerimine peatati ajapiirangu juures: aeglasematel seadmetel normaalne) või
-                <strong>Kiire katkes</strong> (isegi kiire dekodeerimine ei jõudnud lõpule ja mõningaid signaale ei dekodeeritud). Et
-                anda dekoodrile rohkem aega, sea <strong>Sügavdekodeerimine</strong> kasutama vähem aega või
-                varasem <strong>Dekodeerimise algusaeg</strong>.
+            <p id="decode-focus">
+                <strong>Koonda dekodeerimine jaamale, millega sa tööd teed (AUTO-režiim)</strong> ja <strong>Koonda dekodeerimine jaamale, millega sa tööd teed (käsitsi CALL)</strong> on kaks liugurit, vahemikus 0 kuni 30 %: osa dekoodri ajast, mis läheb esmalt jaamale, millega sa tööd teed; ülejäänu läheb kõigile teistele jaamadele. Need toimivad ainult siis, kui kutsud jaama või töötad sellega TX sees; ilma kontaktita saavad kõik jaamad kogu dekodeerimisaja. Esimene kehtib, kui jaama valis <span translate="no">AUTO</span>, teine, kui valisid selle ise nupuga <span translate="no">CALL</span> vahekaardil Jaamad. 0 % korral töötab dekoodri täpselt nagu ilma nendeta. Vaikimisi on <span translate="no">AUTO</span> 5 % ja jaam, mida kutsud <span translate="no">CALL</span>-iga, 10 %. Kui mitu jaama on korraga <span translate="no">CALL</span>-iga märgitud, jagavad nad ühte protsenti. Protsent on lagi: aeg, mida teie side ei vaja, läheb tagasi teistele jaamadele. Ühe jaama jaoks piisab umbes 2 %-st; suuremad väärtused aitavad, kui mitu jaama on korraga märgitud <span translate="no">CALL</span>-iga, režiimis <span translate="no">LQ8</span> ning aeglasemates telefonides ja arvutites, kus sama töö võtab suurema osa ajast. See maksab umbes ühe teise jaama dekodeeringu 2000 kohta. Väärtus on näidatud iga lüliti kõrval; puuduta seda, et väärtus sisestada. Praegu töötavad need režiimides <span translate="no">FT8</span> ja <span translate="no">LQ8</span>; teistes režiimides on need hallid ja näitavad <strong>Selle režiimi jaoks veel mitte</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Jätka dekodeerimist tsükli lõpu järel</strong> (arvutiprogrammis vaikimisi sees, telefonis ja iPhone'is väljas) laseb dekooderil jätkata tööd perioodiga pärast seda, kui qFT8 on otsustanud, mida järgmisena saata, kuni algab järgmise perioodi dekodeerimine. Seda, mida ta siis leiab, nimetatakse hiliseks dekodeeringuks. Telefonis või tahvelarvutis hoiab see protsessori hõivatud suurema osa igast perioodist, mistõttu seade kulutab rohkem akut ja võib soojaks minna: just sellepärast on see seal vaikimisi välja lülitatud. Hiline dekodeering ei muuda kunagi juba otsustatud saadet ning järgmine periood dekodeeritakse alati esimesena. Koskdiagramm märgistab iga hilise dekodeeringu kohe, kui see leitakse, selle enda perioodil ja sagedusel, ka saatmise ajal. <strong>Värskenda jaamu kohe, kui hiline dekodeerimine on valmis</strong> (hall, kuni märkeruut on väljas) määrab, millal hilised dekodeeringud jõuavad vahekaarti Jaamad, kaardile, logisse ja <span translate="no">AUTO</span>-sse: <strong>Ei</strong> säilitab need ja lisab kõik koos järgmise perioodi dekodeeringutega, vahetult enne kui qFT8 uuesti otsustab, et loend ei muutuks sõrme all; <strong>AUTO-režiimis</strong> (vaikimisi) lisab need kohe nende saabudes, kuni <span translate="no">AUTO</span> on valitud, ning säilitab need nagu <strong>Ei</strong>, kui kutsute ise jaama <span translate="no">CALL</span>; <strong>Alati</strong> lisab need kohe nende saabudes. Kui te saadate, ootavad need alati saate lõpuni. Iga hiline dekodeering säilitab oma perioodi aja. Hiline dekodeerimine jätkub ka siis, kui te saadate, madalaima prioriteediga, nii et teie saatmine on alati esikohal. Kui telefon või iPhone läheb soojaks, peatatakse hiline dekodeerimine, kuni see on jahtunud. Praegu töötab see režiimides <span translate="no">FT8</span> ja <span translate="no">LQ8</span>.
             </p>
             <h4 id="settings-band-selection">SAGEDUSALA VALIK</h4>
             <ul>
@@ -4983,6 +4981,9 @@
             </p>
             <p>
                 Jaotises <strong>Toonid</strong> valid ka selle <strong>Monitori helikõrgus</strong> (sama helikõrgus mis vastuvõetud signaalil), <strong>Sidetone tõus / langus</strong>, <strong>Sidetone lainekuju</strong> ja <strong>Sidetone heli</strong> (<strong>Toon</strong> või <strong>Klõpsud (sounder)</strong>). Need muudavad ainult seda, mida kuuled: eetris on <span translate="no">CW</span> alati puhas toon pehmete servadega. <strong>Kõlari ülalhoidja</strong> hoiab telefonid ja Bluetoothi kõrvaklapid vajutuste vahel ärkvel, et esimest dit'i ei lõigataks; suurenda seda, kui dit'i algus puudub. Kõrvaltooni või vastuvõetud signaali väljalülitamiseks kasuta valikuid <strong>Esita saadetut (sidetone)</strong> ja <strong>Esita vastuvõetud signaal kõlaris</strong> jaotises <strong>Monitor (kõlar)</strong>.
+            </p>
+            <p>
+                <strong>Vaigista raadio heli saatmise ajal</strong> (<strong>Toonid</strong>, vaikimisi väljas): kui qFT8 saadab, on raadio heli telefonis või arvutis vaigistatud. Ka hetkeks pärast iga saatmist, kuni raadio kõrvaltoon veel tagasi tuleb. Teie oma kõrvaltoon kõlab edasi. qFT8 ei saa teada, millal te raadio enda klahviga annate: siis kuulake raadio kõrvaklappide pesast.
             </p>
             <p>
                 iPhone'is pole kõrvaltooni ega nuppu <span translate="no">SIDETONE</span>.

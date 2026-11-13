@@ -2001,8 +2001,9 @@
 
             <h4 id="settings-digital-modes">Digitální módy</h4>
             <ul>
+                <li><strong>Pokračovat v dekódování po konci cyklu</strong> a <strong>Aktualizovat stanice ihned po dokončení pozdního dekódování</strong> (viz <a href="#late-decode">níže</a>).</li>
+                <li><strong>Zaměřit dekódování na stanici, se kterou pracujete (režim AUTO)</strong> a <strong>Zaměřit dekódování na stanici, se kterou pracujete (ruční CALL)</strong> (viz <a href="#decode-focus">níže</a>).</li>
                 <li><strong>Hluboké dekódování</strong> a kolik vláken smí dekódování použít, pro všechny módy.</li>
-                <li><strong>Kapacita dekódování</strong> (viz <a href="#decode-capacity">níže</a>).</li>
                 <li><strong>Pro zvláštní značky</strong>: v QSO se složenou značkou (například
                     <span translate="no">I8/ON8SGA</span>) <strong>Upřednostnit odeslání reportu (odeslat kratší značku)</strong>
                     nebo <strong>Upřednostnit úplné značky (vynechat report signálu)</strong>.</li>
@@ -2015,14 +2016,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     a <span translate="no">FST4W</span>, popsaná u jednotlivých módů.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Kapacita dekódování</strong> ukazuje, kolik svého času dekodér využil v poslední periodě
-                módu, ve kterém jste. Pruh má dvě části, rychlé a hluboké dekódování, a text nad ním uvádí
-                oba časy a povolený čas. Vedle něj: <strong>Dokončeno</strong> (obojí skončilo včas),
-                <strong>Hluboké přerušeno</strong> (hluboké dekódování bylo zastaveno na časovém limitu: na pomalejších zařízeních normální)
-                nebo <strong>Rychlé přerušeno</strong> (ani rychlé dekódování nestihlo skončit a některé signály nebyly dekódovány). Chcete-li
-                dekodéru dát víc času, nastavte u <strong>Hluboké dekódování</strong> menší využití času nebo dřívější
-                <strong>Čas zahájení dekódování</strong>.
+            <p id="decode-focus">
+                <strong>Zaměřit dekódování na stanici, se kterou pracujete (režim AUTO)</strong> a <strong>Zaměřit dekódování na stanici, se kterou pracujete (ruční CALL)</strong> jsou dva posuvníky od 0 do 30 %: podíl času dekodéru, který jde nejdřív stanici, se kterou pracujete; zbytek jde všem ostatním stanicím. Působí jen tehdy, když stanici voláte nebo s ní pracujete se zapnutým TX; bez spojení dostanou všechny stanice veškerý čas dekódování. První platí, když stanici vybral <span translate="no">AUTO</span>, druhý, když jste ji vybrali sami tlačítkem <span translate="no">CALL</span> na kartě Stanice. Při 0 % dekodér pracuje přesně jako bez nich. Ve výchozím nastavení má <span translate="no">AUTO</span> 5 % a stanice, kterou voláte tlačítkem <span translate="no">CALL</span>, 10 %. Je-li několik stanic označeno <span translate="no">CALL</span> současně, dělí se o jediné procento. Procento je strop: čas, který vaše spojení nepotřebuje, se vrací ostatním stanicím. Pro jednu stanici stačí asi 2 %; vyšší hodnoty pomáhají, když je současně označeno <span translate="no">CALL</span> více stanic, v <span translate="no">LQ8</span> a na pomalejších telefonech a počítačích, kde stejná práce zabere větší část času. Stojí to přibližně jedno dekódování jiné stanice z 2 000. Hodnota je zobrazena vedle každého posuvníku; klepnutím na ni zadáte hodnotu. Zatím fungují ve <span translate="no">FT8</span> a <span translate="no">LQ8</span>; v ostatních režimech jsou zašedlé a zobrazují <strong>Pro tento režim zatím není</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Pokračovat v dekódování po konci cyklu</strong> (ve výchozím stavu zapnuto v počítačovém programu, vypnuto v telefonu a na iPhonu) nechá dekodér pracovat na periodě i poté, co qFT8 rozhodl, co vysílat dál, až do začátku dekódování další periody. To, co přitom najde, je pozdní dekódování. V telefonu nebo tabletu to udržuje procesor zaneprázdněný po většinu každé periody, takže zařízení spotřebuje více baterie a může se zahřívat: proto je to tam ve výchozím nastavení vypnuto. Pozdní dekódování nikdy nemění už rozhodnuté vysílání a další perioda se vždy dekóduje jako první. Vodopád popíše každé pozdní dekódování, jakmile je nalezeno, na jeho vlastní periodě a frekvenci, i během vysílání. <strong>Aktualizovat stanice ihned po dokončení pozdního dekódování</strong> (zašedlé, dokud je políčko vypnuté) určuje, kdy se pozdní dekódování dostanou do karty Stanice, na mapu, do deníku a do <span translate="no">AUTO</span>: <strong>Ne</strong> je uchová a přidá je všechna najednou, spolu s dekódováními příštího období, těsně předtím, než se qFT8 znovu rozhodne, takže se seznam nemění pod prstem; <strong>V režimu AUTO</strong> (výchozí) je přidá hned, jak přijdou, dokud je vybrán <span translate="no">AUTO</span>, a uchová je jako u <strong>Ne</strong>, když sami voláte <span translate="no">CALL</span> stanici; <strong>Vždy</strong> je přidá hned, jak přijdou. Když vysíláte, vždy počkají do konce vysílání. Každé pozdní dekódování si ponechá čas své periody. Pozdní dekódování pokračuje, když vysíláte, s nejnižší prioritou, takže vaše vysílání má vždy přednost. Na telefonu nebo iPhonu, který se zahřívá, se pozdní dekódování pozastaví, dokud nevychladne. Zatím funguje v <span translate="no">FT8</span> a <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">Výběr pásma</h4>
@@ -4014,6 +4012,9 @@
             </p>
             <p>
                 V <strong>Tóny</strong> volíte také <strong>Výška tónu příposlechu</strong> (stejná výška jako přijímaný signál), <strong>Náběh / doběh příposlechu</strong>, <strong>Tvar vlny příposlechu</strong> a <strong>Zvuk příposlechu</strong> (<strong>Tón</strong> nebo <strong>Klapání (sounder)</strong>). Mění jen to, co slyšíte: na pásmu je <span translate="no">CW</span> vždy čistý tón s měkkými hranami. <strong>Udržovat reproduktor aktivní</strong> udržuje telefony a sluchátka Bluetooth mezi stisky vzhůru, aby první tečka nebyla useknutá; zvyšte ho, pokud chybí začátek tečky. Chcete-li příposlech nebo přijímaný signál vypnout, použijte <strong>Přehrávat, co vysíláte (příposlech)</strong> a <strong>Přehrávat přijímaný signál v reproduktoru</strong> v <strong>Příposlech (reproduktor)</strong>.
+            </p>
+            <p>
+                <strong>Ztlumit zvuk rádia při vysílání</strong> (<strong>Tóny</strong>, ve výchozím stavu vypnuto): během vysílání qFT8 je zvuk rádia v telefonu nebo počítači ztlumen. Také na okamžik po každém vysílání, dokud se příposlech rádia ještě vrací. Váš vlastní příposlech hraje dál. qFT8 nepozná, kdy klíčujete vlastním klíčem rádia: pak poslouchejte z konektoru sluchátek rádia.
             </p>
             <p>
                 Na iPhonu není příposlech ani tlačítko <span translate="no">SIDETONE</span>.

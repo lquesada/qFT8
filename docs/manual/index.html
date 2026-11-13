@@ -2479,8 +2479,9 @@
 
             <h4 id="settings-digital-modes">DIGITAL MODES</h4>
             <ul>
+                <li><strong>Continue decoding after the end of the cycle</strong> and <strong>Update stations as soon as late decoding is done</strong> (see <a href="#late-decode">below</a>).</li>
+                <li><strong>Focus decoding on the station you are working (AUTO mode)</strong> and <strong>Focus decoding on the station you are working (manual CALL)</strong> (see <a href="#decode-focus">below</a>).</li>
                 <li><strong>Deep decode</strong> and how many threads decoding may use, for every mode.</li>
-                <li><strong>Decoding capacity</strong> (see <a href="#decode-capacity">below</a>).</li>
                 <li><strong>For special callsigns</strong>: in a QSO with a compound callsign (for example
                     <span translate="no">I8/ON8SGA</span>), <strong>Prefer sending report (send shorter callsign)</strong>
                     or <strong>Prefer full callsigns (skip signal report)</strong>.</li>
@@ -2494,14 +2495,40 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     and <span translate="no">FST4W</span>, described with each mode.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Decoding capacity</strong> shows how much of its time the decoder used in the last period of the
-                mode you are in. The bar has two parts, the fast decode and the deep decode, and the text over it gives
-                both times and the time allowed. Beside it: <strong>Completed</strong> (both finished in time),
-                <strong>Deep cut</strong> (the deep decode was stopped at the time limit: normal on slower devices) or
-                <strong>Fast cut</strong> (even the fast decode could not finish, and some signals were not decoded). To
-                give the decoder more time, set <strong>Deep decode</strong> to use less time, or an earlier
-                <strong>Start decoding time</strong>.
+            <p id="decode-focus">
+                <strong>Focus decoding on the station you are working (AUTO mode)</strong> and
+                <strong>Focus decoding on the station you are working (manual CALL)</strong> are two sliders, from 0 to 30 %:
+                the share of the decoder's time that goes first to the station you are working; the rest goes to every
+                other station. They act only while you are calling or working a station with TX on; with no contact, every
+                station gets all the decoding time. The first applies when <span translate="no">AUTO</span> chose the
+                station, the second when you chose it yourself with <span translate="no">CALL</span> in the Stations tab.
+                At 0 % the decoder works exactly as without them. By default <span translate="no">AUTO</span> gets 5 % and a
+                station you <span translate="no">CALL</span> gets 10 %. With several stations
+                marked <span translate="no">CALL</span> at once, they share the one percentage. The percentage is a cap: time
+                your contact does not need goes back to the other stations. For one station about 2 % is enough; higher values
+                help when several stations are marked <span translate="no">CALL</span> at once, in
+                <span translate="no">LQ8</span>, and on slower phones and computers, where the same work takes a bigger part
+                of the time. It costs about one decode of another station in 2,000. The value is shown next to
+                each slider; tap it to type a value. They work in <span translate="no">FT8</span> and
+                <span translate="no">LQ8</span> for now; in the other modes they are greyed out and say
+                <strong>Not yet for this mode</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Continue decoding after the end of the cycle</strong> (on by default in the computer program, off on
+                the phone and the iPhone) lets the decoder keep working on a period after qFT8 has decided what to send
+                next, until the next period's decoding starts; what it finds then is a late decode. On a phone or tablet
+                this keeps the processor busy for most of each period, so the device uses more battery and can get warm:
+                that is why it is off there by default. A late decode never
+                changes a transmission already decided, and the next period is always decoded first. The waterfall labels each late decode as soon as it is found, on its own period and frequency, also during a transmission.
+                <strong>Update stations as soon as late decoding is done</strong> (greyed out while the checkbox is off)
+                says when late decodes reach the Stations tab, the map, the log and <span translate="no">AUTO</span>:
+                <strong>No</strong> keeps them and adds them all together with the next period's decodes, just before
+                qFT8 decides again, so the list does not change under your finger; <strong>In AUTO
+                mode</strong> (the default) adds them as soon as they arrive while <span translate="no">AUTO</span> is
+                selected, and keeps them as with <strong>No</strong> while you <span translate="no">CALL</span> a station
+                yourself; <strong>Always</strong> adds them as soon as they arrive. While you transmit they always wait
+                until the transmission ends. Each late decode keeps the time of its own period. Late decoding goes on while you transmit, at the lowest priority, so your transmission always comes first. On a phone or iPhone that is getting warm, late decoding pauses until it cools down. It works in
+                <span translate="no">FT8</span> and <span translate="no">LQ8</span> for now.
             </p>
 
             <h4 id="settings-band-selection">BAND SELECTION</h4>
@@ -5165,6 +5192,9 @@
             </p>
             <p>
                 In <strong>Tones</strong> you also choose its <strong>Monitor pitch</strong> (the same pitch as the received signal), <strong>Sidetone rise / fall</strong>, <strong>Sidetone wave</strong> and <strong>Sidetone sound</strong> (<strong>Tone</strong> or <strong>Clicks (sounder)</strong>). These only change what you hear: on the air <span translate="no">CW</span> is always a clean tone with soft edges. <strong>Speaker keep-alive</strong> keeps phones and Bluetooth headphones awake between presses so that the first dit is not cut; raise it if the start of a dit is missing. To switch the sidetone or the received signal off, use <strong>Play what you send (sidetone)</strong> and <strong>Play the received signal on the speaker</strong> in <strong>Monitor (speaker)</strong>.
+            </p>
+            <p>
+                <strong>Mute the radio's sound while transmitting</strong> (in <strong>Tones</strong>, off by default) keeps the received signal silent while qFT8 transmits and for a moment after each over, while the radio's own sidetone still comes back over <span translate="no">USB</span>; your own sidetone keeps playing. When you send with your own key or paddles plugged into the radio, qFT8 cannot tell that the radio is transmitting, and the radio's sidetone reaches you through the phone or the computer a little late: listen on the radio's own headphone jack instead, where it has no delay.
             </p>
             <p>
                 On the iPhone there is no sidetone and no <span translate="no">SIDETONE</span> button.

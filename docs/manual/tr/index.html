@@ -1774,8 +1774,9 @@
 
             <h4 id="settings-digital-modes">DİJİTAL MODLAR</h4>
             <ul>
+                <li><strong>Çevrim bittikten sonra kod çözmeye devam et</strong> ve <strong>Geç kod çözme biter bitmez istasyonları güncelle</strong> (bkz. <a href="#late-decode">aşağıda</a>).</li>
+                <li><strong>Çözmeyi birlikte çalıştığınız istasyona odaklayın (AUTO modu)</strong> ve <strong>Çözmeyi birlikte çalıştığınız istasyona odaklayın (elle CALL)</strong> (bkz. <a href="#decode-focus">aşağıda</a>).</li>
                 <li><strong>Derin kod çözme</strong> ve kod çözmenin kaç iş parçacığı kullanabileceği, her mod için.</li>
-                <li><strong>Kod çözme kapasitesi</strong> (bkz. <a href="#decode-capacity">aşağıda</a>).</li>
                 <li><strong>Özel çağrı işaretleri için</strong>: bileşik bir çağrı işaretiyle (örneğin
                     <span translate="no">I8/ON8SGA</span>) yapılan bir QSO'da <strong>Rapor göndermeyi tercih et (daha kısa çağrı işareti gönder)</strong>
                     veya <strong>Tam çağrı işaretlerini tercih et (sinyal raporunu atla)</strong>.</li>
@@ -1788,14 +1789,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     ve <span translate="no">FST4W</span> ayarları, her modla birlikte anlatılır.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Kod çözme kapasitesi</strong>, kod çözücünün içinde bulunduğunuz modun son periyodunda zamanının ne kadarını
-                kullandığını gösterir. Çubuğun iki parçası vardır, hızlı kod çözme ve derin kod çözme, ve üstündeki yazı
-                ikisinin sürelerini ve izin verilen süreyi verir. Yanında: <strong>Tamamlandı</strong> (ikisi de zamanında bitti),
-                <strong>Derin kesildi</strong> (derin kod çözme süre sınırında durduruldu: yavaş cihazlarda normaldir) veya
-                <strong>Hızlı kesildi</strong> (hızlı kod çözme bile bitemedi ve bazı sinyaller çözülmedi). Kod çözücüye
-                daha fazla zaman vermek için <strong>Derin kod çözme</strong> ayarını daha az süre kullanacak şekilde veya daha erken bir
-                <strong>Kod çözme başlangıç zamanı</strong> seçin.
+            <p id="decode-focus">
+                <strong>Çözmeyi birlikte çalıştığınız istasyona odaklayın (AUTO modu)</strong> ve <strong>Çözmeyi birlikte çalıştığınız istasyona odaklayın (elle CALL)</strong>, 0 ile 30 % arasında iki kaydırıcıdır: çözücünün süresinin önce birlikte çalıştığınız istasyona giden payı; geri kalanı diğer tüm istasyonlara gider. Yalnızca TX açıkken bir istasyonu çağırırken ya da onunla çalışırken etkilidirler; temas yokken tüm istasyonlar çözme süresinin tamamını alır. Birincisi istasyonu <span translate="no">AUTO</span> seçtiğinde, ikincisi onu İstasyonlar sekmesinde <span translate="no">CALL</span> ile kendiniz seçtiğinizde uygulanır. 0 %'da çözücü onlar yokmuş gibi aynen çalışır. Varsayılan olarak <span translate="no">AUTO</span> 5 %, <span translate="no">CALL</span> ile çağırdığınız istasyon 10 % alır. Birden fazla istasyon aynı anda <span translate="no">CALL</span> ile işaretliyse tek yüzdeyi paylaşırlar. Yüzde bir üst sınırdır: bağlantınızın ihtiyaç duymadığı süre diğer istasyonlara geri döner. Tek bir istasyon için yaklaşık %2 yeterlidir; daha yüksek değerler, birden fazla istasyon aynı anda <span translate="no">CALL</span> ile işaretlendiğinde, <span translate="no">LQ8</span> modunda ve aynı işin sürenin daha büyük bölümünü aldığı daha yavaş telefon ve bilgisayarlarda yardımcı olur. Maliyeti, diğer istasyonların her 2.000 çözümünden yaklaşık biridir. Değer her kaydırıcının yanında gösterilir; bir değer yazmak için ona dokunun. Şimdilik <span translate="no">FT8</span> ve <span translate="no">LQ8</span>'de çalışırlar; diğer modlarda gri görünür ve <strong>Bu mod için henüz yok</strong> yazar.
+            </p>
+            <p id="late-decode">
+                <strong>Çevrim bittikten sonra kod çözmeye devam et</strong> (bilgisayar programında varsayılan olarak açık, telefonda ve iPhone'da kapalı), qFT8 bundan sonra ne göndereceğine karar verdikten sonra da, sonraki periyodun kod çözmesi başlayana kadar kod çözücünün bir periyot üzerinde çalışmaya devam etmesini sağlar. O sırada bulduğu şey geç kod çözmedir. Telefonda veya tablette bu, işlemciyi her periyodun çoğunda meşgul eder; bu yüzden cihaz daha fazla pil harcar ve ısınabilir: bu nedenle orada varsayılan olarak kapalıdır. Geç kod çözme, önceden kararlaştırılmış bir iletimi asla değiştirmez ve sonraki periyodun kodu her zaman önce çözülür. Şelale, her geç kod çözmeyi bulunur bulunmaz kendi periyodunda ve frekansında etiketler; verici durumdayken de. <strong>Geç kod çözme biter bitmez istasyonları güncelle</strong> (onay kutusu kapalıyken gri), geç kod çözmelerin İstasyonlar sekmesine, haritaya, deftere ve <span translate="no">AUTO</span> moduna ne zaman ulaştığını belirler: <strong>Hayır</strong> onları saklar ve sonraki periyodun kod çözmeleriyle birlikte, qFT8 yeniden karar vermeden hemen önce hepsini ekler, böylece liste parmağınızın altında değişmez; <strong>AUTO modunda</strong> (varsayılan) <span translate="no">AUTO</span> seçiliyken onları gelir gelmez ekler, siz kendiniz bir istasyonu <span translate="no">CALL</span> ederken <strong>Hayır</strong> gibi saklar; <strong>Her zaman</strong> onları gelir gelmez ekler. Siz iletim yaparken her zaman iletim bitene kadar beklerler. Her geç kod çözme kendi periyodunun zamanını korur. Geç kod çözme siz verici durumdayken de en düşük öncelikle sürer, böylece iletiminiz her zaman önce gelir. Isınan bir telefonda veya iPhone'da geç kod çözme soğuyana kadar duraklar. Şimdilik <span translate="no">FT8</span> ve <span translate="no">LQ8</span> içinde çalışır.
             </p>
 
             <h4 id="settings-band-selection">BANT SEÇİMİ</h4>
@@ -3800,6 +3798,9 @@
             </p>
             <p>
                 <strong>Tonlar</strong> içinde ayrıca <strong>Monitör tonu</strong> (alınan sinyalle aynı perde), <strong>Yan ton yükselme / düşme</strong>, <strong>Yan ton dalga biçimi</strong> ve <strong>Yan ton sesi</strong> (<strong>Ton</strong> veya <strong>Tıklamalar (sounder)</strong>) seçersiniz. Bunlar yalnızca duyduğunuzu değiştirir: havada <span translate="no">CW</span> her zaman yumuşak kenarlı temiz bir tondur. <strong>Hoparlörü uyanık tut</strong> telefonları ve Bluetooth kulaklıkları basışlar arasında uyanık tutar, böylece ilk nokta kesilmez; bir noktanın başı eksikse artırın. Dinleme tonunu veya alınan sinyali kapatmak için <strong>Gönderdiğinizi çal (yan ton)</strong> ve <strong>Alınan sinyali hoparlörden çal</strong> ayarlarını kullanın (<strong>Monitör (hoparlör)</strong> içinde).
+            </p>
+            <p>
+                <strong>Gönderim sırasında telsizin sesini sustur</strong> (<strong>Tonlar</strong>, varsayılan olarak kapalı): qFT8 gönderim yaparken telefondaki veya bilgisayardaki telsiz sesi susturulur. Ayrıca her gönderimden sonra bir an, telsizin yan tonu hâlâ geri gelirken. Kendi yan tonunuz çalmaya devam eder. qFT8, telsizin kendi manipülatörüyle ne zaman tuşladığınızı bilemez: o zaman telsizin kulaklık girişinden dinleyin.
             </p>
             <p>
                 iPhone'da dinleme tonu ve <span translate="no">SIDETONE</span> düğmesi yoktur.

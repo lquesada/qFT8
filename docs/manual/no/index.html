@@ -2003,8 +2003,9 @@
 
             <h4 id="settings-digital-modes">DIGITALE MODUSER</h4>
             <ul>
+                <li><strong>Fortsett dekoding etter slutten av syklusen</strong> og <strong>Oppdater stasjoner så snart sen dekoding er ferdig</strong> (se <a href="#late-decode">nedenfor</a>).</li>
+                <li><strong>Fokuser dekodingen på stasjonen du kjører med (AUTO-modus)</strong> og <strong>Fokuser dekodingen på stasjonen du kjører med (manuell CALL)</strong> (se <a href="#decode-focus">nedenfor</a>).</li>
                 <li><strong>Dyp dekoding</strong> og hvor mange tråder dekodingen kan bruke, for alle moduser.</li>
-                <li><strong>Dekodingskapasitet</strong> (se <a href="#decode-capacity">nedenfor</a>).</li>
                 <li><strong>For spesielle kallesignaler</strong>: i en QSO med et sammensatt kallesignal (for eksempel
                     <span translate="no">I8/ON8SGA</span>) <strong>Foretrekk å sende rapport (send kortere kallesignal)</strong>
                     eller <strong>Foretrekk fulle kallesignaler (hopp over signalrapport)</strong>.</li>
@@ -2017,14 +2018,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     og <span translate="no">FST4W</span>, beskrevet sammen med hver modus.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Dekodingskapasitet</strong> viser hvor mye av tiden sin dekoderen brukte i den siste perioden i
-                modusen du er i. Stolpen har to deler, den raske dekodingen og den dype dekodingen, og teksten over den gir
-                begge tidene og den tillatte tiden. Ved siden av: <strong>Fullført</strong> (begge ble ferdige i tide),
-                <strong>Dyp avbrutt</strong> (den dype dekodingen ble stoppet ved tidsgrensen: normalt på tregere enheter) eller
-                <strong>Rask avbrutt</strong> (selv den raske dekodingen rakk ikke å bli ferdig, og noen signaler ble ikke dekodet). For å
-                gi dekoderen mer tid setter du <strong>Dyp dekoding</strong> til å bruke mindre tid, eller velger en tidligere
-                <strong>Starttid for dekoding</strong>.
+            <p id="decode-focus">
+                <strong>Fokuser dekodingen på stasjonen du kjører med (AUTO-modus)</strong> og <strong>Fokuser dekodingen på stasjonen du kjører med (manuell CALL)</strong> er to glidere, fra 0 til 30 %: andelen av dekoderens tid som først går til stasjonen du kjører med; resten går til alle andre stasjoner. De virker bare mens du kaller eller kjører med en stasjon med TX på; uten kontakt får alle stasjoner all dekodingstiden. Den første gjelder når <span translate="no">AUTO</span> valgte stasjonen, den andre når du selv valgte den med <span translate="no">CALL</span> i fanen Stasjoner. Ved 0 % jobber dekoderen nøyaktig som uten dem. Som standard har <span translate="no">AUTO</span> 5 %, og en stasjon du kaller med <span translate="no">CALL</span> har 10 %. Hvis flere stasjoner er merket med <span translate="no">CALL</span> samtidig, deler de den ene prosenten. Prosenten er et tak: tid som kontakten din ikke trenger, går tilbake til de andre stasjonene. For én stasjon er omtrent 2 % nok; høyere verdier hjelper når flere stasjoner er markert med <span translate="no">CALL</span> samtidig, i <span translate="no">LQ8</span> og på tregere telefoner og datamaskiner, der det samme arbeidet tar en større del av tiden. Det koster omtrent én dekoding av en annen stasjon av 2000. Verdien vises ved siden av hver glider; trykk på den for å skrive inn en verdi. De virker foreløpig i <span translate="no">FT8</span> og <span translate="no">LQ8</span>; i de andre modusene er de grået ut og viser <strong>Ikke ennå for denne modusen</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Fortsett dekoding etter slutten av syklusen</strong> (på som standard i dataprogrammet, av på telefonen og iPhone) lar dekoderen fortsette å jobbe med en periode etter at qFT8 har bestemt hva som skal sendes neste gang, til dekodingen av neste periode starter. Det den finner da, er en sen dekoding. På en telefon eller et nettbrett holder dette prosessoren opptatt mesteparten av hver periode, slik at enheten bruker mer batteri og kan bli varm: det er derfor den er slått av som standard der. En sen dekoding endrer aldri en sending som allerede er bestemt, og neste periode dekodes alltid først. Vannfallet merker hver sene dekoding så snart den er funnet, på dens egen periode og frekvens, også under en sending. <strong>Oppdater stasjoner så snart sen dekoding er ferdig</strong> (nedtonet mens avmerkingsboksen er av) sier når sene dekodinger når fanen Stasjoner, kartet, loggen og <span translate="no">AUTO</span>: <strong>Nei</strong> beholder dem og legger dem alle til samlet sammen med neste periodes dekodinger, rett før qFT8 bestemmer seg igjen, slik at listen ikke endrer seg under fingeren; <strong>I AUTO-modus</strong> (standard) legger dem til så snart de kommer mens <span translate="no">AUTO</span> er valgt, og beholder dem som ved <strong>Nei</strong> mens du selv kaller <span translate="no">CALL</span> en stasjon; <strong>Alltid</strong> legger dem til så snart de kommer. Mens du sender, venter de alltid til sendingen er slutt. Hver sene dekoding beholder tidspunktet for sin egen periode. Sen dekoding fortsetter mens du sender, med lavest prioritet, så sendingen din alltid kommer først. På en telefon eller iPhone som blir varm, pauser sen dekoding til den har kjølt seg ned. Det fungerer foreløpig i <span translate="no">FT8</span> og <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">BÅNDVALG</h4>
@@ -4038,6 +4036,9 @@
             </p>
             <p>
                 I <strong>Toner</strong> velger du også <strong>Monitorens tonehøyde</strong> (samme tonehøyde som det mottatte signalet), <strong>Medhørets stige- / falltid</strong>, <strong>Medhørets bølgeform</strong> og <strong>Medhørets lyd</strong> (<strong>Tone</strong> eller <strong>Klikk (sounder)</strong>). Disse endrer bare det du hører: på lufta er <span translate="no">CW</span> alltid en ren tone med myke flanker. <strong>Hold høyttaleren våken</strong> holder telefoner og Bluetooth-hodetelefoner våkne mellom trykkene, så den første prikken ikke kuttes; øk den hvis starten av en prikk mangler. For å slå av medhørstonen eller det mottatte signalet bruker du <strong>Spill av det du sender (medhør)</strong> og <strong>Spill av det mottatte signalet i høyttaleren</strong> i <strong>Monitor (høyttaler)</strong>.
+            </p>
+            <p>
+                <strong>Demp radioens lyd under sending</strong> (<strong>Toner</strong>, av som standard): mens qFT8 sender, er radioens lyd i telefonen eller datamaskinen dempet. Også et øyeblikk etter hver sending, mens radioens medhør fortsatt kommer tilbake. Din egen medhørstone spiller videre. qFT8 kan ikke vite når du nøkler med radioens egen padle: lytt da i radioens hodetelefonkontakt.
             </p>
             <p>
                 På iPhone er det ingen medhørstone og ingen <span translate="no">SIDETONE</span>-knapp.

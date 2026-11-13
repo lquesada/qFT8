@@ -2400,8 +2400,9 @@
 
             <h4 id="settings-digital-modes">DIGITALNI NAČINI RADA</h4>
             <ul>
+                <li><strong>Nastavi dekodiranje nakon kraja ciklusa</strong> i <strong>Ažuriraj postaje čim završi kasno dekodiranje</strong> (vidi <a href="#late-decode">ispod</a>).</li>
+                <li><strong>Usmjeri dekodiranje na postaju s kojom radite (AUTO način)</strong> i <strong>Usmjeri dekodiranje na postaju s kojom radite (ručni CALL)</strong> (vidi <a href="#decode-focus">dolje</a>).</li>
                 <li><strong>Duboko dekodiranje</strong> i koliko niti smije koristiti dekodiranje, za svaki način rada.</li>
-                <li><strong>Kapacitet dekodiranja</strong> (vidi <a href="#decode-capacity">dolje</a>).</li>
                 <li><strong>Za posebne pozivne znakove</strong>: u QSO-u sa složenim pozivnim znakom (na primjer
                     <span translate="no">I8/ON8SGA</span>), <strong>Radije šalji izvješće (šalji kraći pozivni znak)</strong>
                     ili <strong>Radije puni pozivni znakovi (preskoči izvješće o signalu)</strong>.</li>
@@ -2415,14 +2416,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     i <span translate="no">FST4W</span>, opisane uz svaki način rada.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Kapacitet dekodiranja</strong> pokazuje koliko je svojeg vremena dekoder iskoristio u posljednjem razdoblju
-                načina rada u kojem ste. Traka ima dva dijela, brzo dekodiranje i duboko dekodiranje, a tekst preko nje daje
-                oba vremena i dopušteno vrijeme. Pokraj nje: <strong>Završeno</strong> (oba su završila na vrijeme),
-                <strong>Duboko prekinuto</strong> (duboko dekodiranje zaustavljeno na vremenskom ograničenju: normalno na sporijim uređajima) ili
-                <strong>Brzo prekinuto</strong> (čak ni brzo dekodiranje nije stiglo završiti, pa neki signali nisu dekodirani). Da
-                dekoderu date više vremena, postavite <strong>Duboko dekodiranje</strong> da koristi manje vremena, ili raniji
-                <strong>Vrijeme početka dekodiranja</strong>.
+            <p id="decode-focus">
+                <strong>Usmjeri dekodiranje na postaju s kojom radite (AUTO način)</strong> i <strong>Usmjeri dekodiranje na postaju s kojom radite (ručni CALL)</strong> su dva klizača, od 0 do 30 %: udio vremena dekodera koji prvo ide postaji s kojom radite; ostatak ide svim ostalim postajama. Djeluju samo dok zovete postaju ili radite s njom uz uključen TX; bez veze sve postaje dobivaju svo vrijeme dekodiranja. Prvi se primjenjuje kada je postaju odabrao <span translate="no">AUTO</span>, drugi kada ste je sami odabrali tipkom <span translate="no">CALL</span> u kartici Postaje. Pri 0 % dekoder radi potpuno kao bez njih. Prema zadanim postavkama <span translate="no">AUTO</span> ima 5 %, a postaja koju zovete tipkom <span translate="no">CALL</span> ima 10 %. Ako je više postaja istodobno označeno s <span translate="no">CALL</span>, dijele jedan postotak. Postotak je gornja granica: vrijeme koje vaša veza ne treba vraća se ostalim postajama. Za jednu postaju dovoljno je oko 2 %; veće vrijednosti pomažu kad je više postaja istodobno označeno sa <span translate="no">CALL</span>, u <span translate="no">LQ8</span> te na sporijim telefonima i računalima, gdje isti posao zauzima veći dio vremena. To košta otprilike jedno dekodiranje druge postaje na 2.000. Vrijednost je prikazana pokraj svakog klizača; dodirnite je da upišete vrijednost. Zasad rade u <span translate="no">FT8</span> i <span translate="no">LQ8</span>; u ostalim načinima rada zasivljeni su i prikazuju <strong>Još nije za ovaj način rada</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Nastavi dekodiranje nakon kraja ciklusa</strong> (prema zadanim postavkama uključeno u računalnom programu, isključeno na telefonu i iPhoneu) dopušta dekoderu da nastavi raditi na razdoblju nakon što je qFT8 odlučio što će dalje slati, do početka dekodiranja sljedećeg razdoblja. Ono što tada pronađe je kasno dekodiranje. Na telefonu ili tabletu ovo drži procesor zauzetim većim dijelom svakog razdoblja, pa uređaj troši više baterije i može se zagrijati: zato je tamo prema zadanim postavkama isključeno. Kasno dekodiranje nikada ne mijenja već odlučeno emitiranje, a sljedeće se razdoblje uvijek dekodira prvo. Slap označava svako kasno dekodiranje čim se pronađe, na njegovu razdoblju i frekvenciji, i tijekom odašiljanja. <strong>Ažuriraj postaje čim završi kasno dekodiranje</strong> (zasivljeno dok je kvačica isključena) kaže kada kasna dekodiranja stižu u karticu Postaje, na kartu, u dnevnik i u <span translate="no">AUTO</span>: <strong>Ne</strong> ih čuva i dodaje sva zajedno s dekodiranjima sljedećeg razdoblja, neposredno prije nego što qFT8 ponovno odluči, pa se popis ne mijenja pod vašim prstom; <strong>U AUTO načinu</strong> (zadano) ih dodaje čim stignu dok je odabran <span translate="no">AUTO</span>, a čuva ih kao <strong>Ne</strong> dok sami upućujete <span translate="no">CALL</span> postaji; <strong>Uvijek</strong> ih dodaje čim stignu. Dok odašiljete, uvijek čekaju do kraja odašiljanja. Svako kasno dekodiranje zadržava vrijeme vlastitog razdoblja. Kasno dekodiranje nastavlja se dok odašiljete, s najnižim prioritetom, tako da vaše odašiljanje uvijek ima prednost. Na telefonu ili iPhoneu koji se zagrijava kasno dekodiranje pauzira se dok se ne ohladi. Za sada radi u <span translate="no">FT8</span> i <span translate="no">LQ8</span>.
             </p>
             <h4 id="settings-band-selection">ODABIR POJASA</h4>
             <ul>
@@ -4984,6 +4982,9 @@
             </p>
             <p>
                 U odjeljku <strong>Tonovi</strong> birate i njegovu <strong>Visina tona monitora</strong> (ista visina kao primljeni signal), <strong>Porast / pad sidetonea</strong>, <strong>Valni oblik sidetonea</strong> i <strong>Zvuk sidetonea</strong> (<strong>Ton</strong> ili <strong>Klikovi (sounder)</strong>). Ovo mijenja samo ono što čujete: u eteru je <span translate="no">CW</span> uvijek čist ton s mekim rubovima. <strong>Održavanje zvučnika aktivnim</strong> drži telefone i Bluetooth slušalice budnima između pritisaka da prvi dit ne bude odrezan; povećajte ga ako nedostaje početak dita. Za isključivanje sidetonea ili primljenog signala koristite <strong>Reproduciraj ono što šaljete (sidetone)</strong> i <strong>Reproduciraj primljeni signal na zvučniku</strong> u <strong>Monitor (zvučnik)</strong>.
+            </p>
+            <p>
+                <strong>Utišaj zvuk radija tijekom odašiljanja</strong> (<strong>Tonovi</strong>, zadano isključeno): dok qFT8 odašilje, zvuk radija na telefonu ili računalu je utišan. Također na trenutak nakon svakog odašiljanja, dok se bočni ton radija još vraća. Vaš bočni ton i dalje svira. qFT8 ne može znati kada tipkate vlastitim ključem radija: tada slušajte na priključku za slušalice radija.
             </p>
             <p>
                 Na iPhoneu nema sidetonea ni tipke <span translate="no">SIDETONE</span>.

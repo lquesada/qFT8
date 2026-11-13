@@ -1980,8 +1980,9 @@
 
             <h4 id="settings-digital-modes">DIGITALA TRAFIKSÄTT</h4>
             <ul>
+                <li><strong>Fortsätt avkoda efter cykelns slut</strong> och <strong>Uppdatera stationer så snart sen avkodning är klar</strong> (se <a href="#late-decode">nedan</a>).</li>
+                <li><strong>Fokusera avkodningen på stationen du kör med (AUTO-läge)</strong> och <strong>Fokusera avkodningen på stationen du kör med (manuell CALL)</strong> (se <a href="#decode-focus">nedan</a>).</li>
                 <li><strong>Djup avkodning</strong> och hur många trådar avkodningen får använda, för alla trafiksätt.</li>
-                <li><strong>Avkodningskapacitet</strong> (se <a href="#decode-capacity">nedan</a>).</li>
                 <li><strong>För speciella anropssignaler</strong>: i ett QSO med en sammansatt anropssignal (till exempel
                     <span translate="no">I8/ON8SGA</span>), <strong>Föredra att skicka rapport (skicka kortare anropssignal)</strong>
                     eller <strong>Föredra fullständiga anropssignaler (hoppa över signalrapport)</strong>.</li>
@@ -1993,11 +1994,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     och <span translate="no">FST4W</span>, beskrivna vid varje trafiksätt.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Avkodningskapacitet</strong> visar hur stor del av sin tid avkodaren använde under den senaste perioden i det trafiksätt du är i. Stapeln har två delar, den snabba och den djupa avkodningen, och texten över den anger båda tiderna och den tillåtna tiden. Bredvid: <strong>Klar</strong> (båda blev klara i tid),
-                <strong>Djup avbruten</strong> (den djupa avkodningen stoppades vid tidsgränsen: normalt på långsammare enheter) eller
-                <strong>Snabb avbruten</strong> (inte ens den snabba avkodningen hann bli klar, och en del signaler avkodades inte). För att ge avkodaren mer tid, ställ in <strong>Djup avkodning</strong> på mindre tid, eller en tidigare
-                <strong>Starttid för avkodning</strong>.
+            <p id="decode-focus">
+                <strong>Fokusera avkodningen på stationen du kör med (AUTO-läge)</strong> och <strong>Fokusera avkodningen på stationen du kör med (manuell CALL)</strong> är två reglage, från 0 till 30 %: den andel av avkodarens tid som först går till stationen du kör med; resten går till alla andra stationer. De verkar bara medan du anropar eller kör med en station med TX på; utan kontakt får alla stationer hela avkodningstiden. Det första gäller när <span translate="no">AUTO</span> valde stationen, det andra när du själv valde den med <span translate="no">CALL</span> på fliken Stationer. Vid 0 % arbetar avkodaren precis som utan dem. Som standard har <span translate="no">AUTO</span> 5 % och en station du anropar med <span translate="no">CALL</span> 10 %. Om flera stationer är markerade med <span translate="no">CALL</span> samtidigt delar de på den enda procentsatsen. Procentsatsen är ett tak: tid som din kontakt inte behöver går tillbaka till de andra stationerna. För en station räcker omkring 2 %; högre värden hjälper när flera stationer är markerade med <span translate="no">CALL</span> samtidigt, i <span translate="no">LQ8</span> och på långsammare telefoner och datorer, där samma arbete tar en större del av tiden. Det kostar ungefär en avkodning av en annan station per 2 000. Värdet visas bredvid varje reglage; tryck på det för att skriva in ett värde. De fungerar tills vidare i <span translate="no">FT8</span> och <span translate="no">LQ8</span>; i de andra lägena är de gråade och visar <strong>Inte än för detta läge</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Fortsätt avkoda efter cykelns slut</strong> (på som standard i datorprogrammet, av på telefonen och iPhone) låter avkodaren fortsätta arbeta med en period efter att qFT8 har bestämt vad som ska sändas härnäst, tills avkodningen av nästa period börjar. Det den hittar då är en sen avkodning. På en telefon eller surfplatta håller detta processorn sysselsatt under största delen av varje period, så enheten använder mer batteri och kan bli varm: det är därför det är avstängt som standard där. En sen avkodning ändrar aldrig en sändning som redan är bestämd, och nästa period avkodas alltid först. Vattenfallet märker varje sen avkodning så snart den hittas, på dess egen period och frekvens, även under en sändning. <strong>Uppdatera stationer så snart sen avkodning är klar</strong> (nedtonad medan kryssrutan är av) anger när sena avkodningar når fliken Stationer, kartan, loggen och <span translate="no">AUTO</span>: <strong>Nej</strong> behåller dem och lägger till dem alla tillsammans med nästa periods avkodningar, strax innan qFT8 bestämmer sig igen, så att listan inte ändras under fingret; <strong>I AUTO-läge</strong> (standard) lägger till dem så fort de kommer medan <span translate="no">AUTO</span> är valt, och behåller dem som vid <strong>Nej</strong> medan du själv anropar <span translate="no">CALL</span> en station; <strong>Alltid</strong> lägger till dem så fort de kommer. Medan du sänder väntar de alltid tills sändningen är slut. Varje sen avkodning behåller tiden för sin egen period. Sen avkodning fortsätter medan du sänder, med lägsta prioritet, så din sändning kommer alltid först. På en telefon eller iPhone som blir varm pausar sen avkodning tills den har svalnat. Det fungerar tills vidare i <span translate="no">FT8</span> och <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">BANDVAL</h4>
@@ -4021,6 +4022,9 @@
             </p>
             <p>
                 I <strong>Toner</strong> väljer du också <strong>Monitorns tonhöjd</strong> (samma tonhöjd som den mottagna signalen), <strong>Medhörningens stig- / falltid</strong>, <strong>Medhörningens vågform</strong> och <strong>Medhörningens ljud</strong> (<strong>Ton</strong> eller <strong>Klick (sounder)</strong>). De ändrar bara vad du hör: i etern är <span translate="no">CW</span> alltid en ren ton med mjuka flanker. <strong>Håll högtalaren vaken</strong> håller telefoner och Bluetooth-hörlurar vakna mellan trycken så att den första punkten inte klipps; höj den om början av en punkt saknas. För att stänga av medhörningstonen eller den mottagna signalen, använd <strong>Spela upp det du sänder (medhörning)</strong> och <strong>Spela upp den mottagna signalen i högtalaren</strong> i <strong>Monitor (högtalare)</strong>.
+            </p>
+            <p>
+                <strong>Tysta radions ljud under sändning</strong> (<strong>Toner</strong>, av som standard): medan qFT8 sänder är radions ljud i telefonen eller datorn tyst. Även en stund efter varje sändning, medan radions medhörning fortfarande kommer tillbaka. Din egen medhörningston fortsätter att spela. qFT8 kan inte veta när du nycklar med radions egen paddel: lyssna då i radions hörlursuttag.
             </p>
             <p>
                 På iPhone finns ingen medhörningston och ingen <span translate="no">SIDETONE</span>-knapp.

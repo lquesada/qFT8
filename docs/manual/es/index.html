@@ -2364,8 +2364,9 @@
 
             <h4 id="settings-digital-modes">MODOS DIGITALES</h4>
             <ul>
+                <li><strong>Seguir decodificando tras el final del ciclo</strong> y <strong>Actualizar estaciones en cuanto termine la decodificación tardía</strong> (véase <a href="#late-decode">abajo</a>).</li>
+                <li><strong>Concentrar la decodificación en la estación con la que trabajas (modo AUTO)</strong> y <strong>Concentrar la decodificación en la estación con la que trabajas (CALL manual)</strong> (véase <a href="#decode-focus">más abajo</a>).</li>
                 <li><strong>Decodificación profunda</strong> y cuántos hilos puede usar la decodificación, para todos los modos.</li>
-                <li><strong>Capacidad de decodificación</strong> (véase <a href="#decode-capacity">más abajo</a>).</li>
                 <li><strong>Para indicativos especiales</strong>: en un QSO con un indicativo compuesto (por ejemplo
                     <span translate="no">I8/ON8SGA</span>), <strong>Preferir enviar el reporte (enviar el indicativo más corto)</strong>
                     o <strong>Preferir indicativos completos (omitir el reporte de señal)</strong>.</li>
@@ -2378,14 +2379,11 @@
                     <span translate="no">Q65</span>, <span translate="no">MSK144</span>, <span translate="no">FST4</span>
                     y <span translate="no">FST4W</span>, descritos con cada modo.</li>
             </ul>
-            <p id="decode-capacity">
-                <strong>Capacidad de decodificación</strong> muestra qué parte de su tiempo usó el decodificador en el último periodo del
-                modo en que está. La barra tiene dos partes, la decodificación rápida y la profunda, y el texto sobre ella da
-                ambos tiempos y el tiempo permitido. A su lado: <strong>Completada</strong> (ambas terminaron a tiempo),
-                <strong>Profunda cortada</strong> (la decodificación profunda se detuvo en el límite de tiempo: normal en dispositivos más lentos) o
-                <strong>Rápida cortada</strong> (ni siquiera la rápida pudo terminar y algunas señales no se decodificaron). Para
-                dar más tiempo al decodificador, ajuste <strong>Decodificación profunda</strong> para que use menos tiempo, o una <strong>Tiempo de inicio de decodificación</strong>
-                más temprana.
+            <p id="decode-focus">
+                <strong>Concentrar la decodificación en la estación con la que trabajas (modo AUTO)</strong> y <strong>Concentrar la decodificación en la estación con la que trabajas (CALL manual)</strong> son dos deslizadores, de 0 a 30 %: la parte del tiempo del decodificador que va primero a la estación con la que trabajas; el resto va a todas las demás estaciones. Solo actúan mientras llamas o trabajas con una estación con TX activado; sin contacto, todas las estaciones reciben todo el tiempo de decodificación. El primero se aplica cuando <span translate="no">AUTO</span> eligió la estación, el segundo cuando la elegiste tú mismo con <span translate="no">CALL</span> en la pestaña de Estaciones. Con 0 % el decodificador funciona exactamente como sin ellos. Por defecto <span translate="no">AUTO</span> tiene 5 % y una estación a la que llamas con <span translate="no">CALL</span> tiene 10 %. Si varias estaciones están marcadas con <span translate="no">CALL</span> a la vez, comparten el único porcentaje. El porcentaje es un tope: el tiempo que tu contacto no necesita vuelve a las demás estaciones. Para una sola estación basta con alrededor del 2 %; los valores más altos ayudan cuando varias estaciones están marcadas con <span translate="no">CALL</span> a la vez, en <span translate="no">LQ8</span> y en teléfonos y ordenadores más lentos, donde el mismo trabajo ocupa una parte mayor del tiempo. Cuesta aproximadamente una decodificación de otra estación de cada 2000. El valor aparece junto a cada deslizador; tócalo para escribir un valor. Por ahora funcionan en <span translate="no">FT8</span> y <span translate="no">LQ8</span>; en los demás modos aparecen en gris y muestran <strong>Aún no para este modo</strong>.
+            </p>
+            <p id="late-decode">
+                <strong>Seguir decodificando tras el final del ciclo</strong> (activada por defecto en el programa de ordenador, desactivada en el teléfono y en el iPhone) deja que el decodificador siga trabajando en un periodo después de que qFT8 haya decidido qué enviar a continuación, hasta que empieza la decodificación del periodo siguiente. Lo que encuentra entonces es una decodificación tardía. En un teléfono o una tableta esto mantiene el procesador ocupado durante la mayor parte de cada periodo, por lo que el dispositivo gasta más batería y puede calentarse: por eso viene desactivado por defecto. Una decodificación tardía nunca cambia una transmisión ya decidida, y el periodo siguiente se decodifica siempre primero. La cascada etiqueta cada decodificación tardía en cuanto se encuentra, en su propio periodo y frecuencia, también durante una transmisión. <strong>Actualizar estaciones en cuanto termine la decodificación tardía</strong> (en gris mientras la casilla está desactivada) indica cuándo llegan las decodificaciones tardías a la pestaña Estaciones, al mapa, al registro y a <span translate="no">AUTO</span>: <strong>No</strong> las conserva y las añade todas juntas con las decodificaciones del período siguiente, justo antes de que qFT8 vuelva a decidir, para que la lista no cambie bajo el dedo; <strong>En modo AUTO</strong> (por defecto) las añade en cuanto llegan mientras <span translate="no">AUTO</span> está seleccionado, y las conserva como con <strong>No</strong> mientras usted mismo hace <span translate="no">CALL</span> a una estación; <strong>Siempre</strong> las añade en cuanto llegan. Mientras usted transmite, esperan siempre hasta que termina la transmisión. Cada decodificación tardía conserva la hora de su propio periodo. La decodificación tardía continúa mientras usted transmite, con la prioridad más baja, de modo que su transmisión siempre va primero. En un teléfono o iPhone que se está calentando, la decodificación tardía se pausa hasta que se enfríe. Por ahora funciona en <span translate="no">FT8</span> y <span translate="no">LQ8</span>.
             </p>
 
             <h4 id="settings-band-selection">SELECCIÓN DE BANDA</h4>
@@ -4572,6 +4570,9 @@
             </p>
             <p>
                 En <strong>Tonos</strong> también elige <strong>Tono del monitor</strong> (el mismo tono que la señal recibida), <strong>Subida / bajada del tono lateral</strong>, <strong>Onda del tono lateral</strong> y <strong>Sonido del tono lateral</strong> (<strong>Tono</strong> o <strong>Clics (resonador)</strong>). Esto solo cambia lo que usted oye: en el aire, el <span translate="no">CW</span> es siempre un tono limpio con flancos suaves. <strong>Mantener altavoz activo</strong> mantiene despiertos los teléfonos y los auriculares Bluetooth entre pulsaciones para que el primer punto no se corte; súbalo si falta el comienzo de un punto. Para apagar el tono de escucha o la señal recibida, use <strong>Reproducir lo que envías (tono lateral)</strong> y <strong>Reproducir la señal recibida por el altavoz</strong> en <strong>Monitor (altavoz)</strong>.
+            </p>
+            <p>
+                <strong>Silenciar el sonido de la radio al transmitir</strong> (<strong>Tonos</strong>, desactivado por defecto): mientras qFT8 transmite, el sonido de la radio en el teléfono o el ordenador queda en silencio. También un momento después de cada pasada, mientras el tono lateral de la radio aún vuelve. Tu propio tono lateral sigue sonando. qFT8 no puede saber cuándo manipulas con el manipulador de la propia radio: entonces escucha por la toma de auriculares de la radio.
             </p>
             <p>
                 En el iPhone no hay tono de escucha ni botón <span translate="no">SIDETONE</span>.
