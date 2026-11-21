@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Sauke a App Store",
     "FEAT2_OWN": "Na'urorin fassara da rubuta sigina nata, an rubuta su daga tushe",
     "FEAT2_RAWLOG": "Ajiye duk saƙonnin da aka fassara",
+    "FEAT2_HEADLESS": "Yana aiki ba tare da allo ba a matsayin sabar yanar gizo don sarrafawa daga nesa, misali a kan Raspberry Pi",
     "FAQ_TITLE": "Tambayoyi da amsoshi",
     "FAQ_Q1": "Menene qFT8?",
     "FAQ_A1": "qFT8 shiri ne na rediyon mai son wanda ba a biya, don hanyoyin dijital na sigina mai rauni, Morse, teletype, hotuna da murya. Yana aiki a wayoyi da kwamfutar hannu na Android, iOS, Windows, macOS da Linux, kuma ana iya sarrafa shi daga kowane burauza. Ba shi da talla kuma baya buƙatar asusu. Luis Quesada Torres, HB9IPH ne ya rubuta shi, tare da na'urorin fassara da rubuta sigina nasa da aka rubuta daga tushe.",

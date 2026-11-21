@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Atsisiųskite App Store",
     "FEAT2_OWN": "Savi dekoderiai ir koduotuvai, parašyti nuo nulio",
     "FEAT2_RAWLOG": "Registruoti visus iškoduotus pranešimus",
+    "FEAT2_HEADLESS": "Veikia be ekrano kaip nuotolinio valdymo žiniatinklio serveris, pvz., Raspberry Pi",
     "FAQ_TITLE": "Klausimai ir atsakymai",
     "FAQ_Q1": "Kas yra qFT8?",
     "FAQ_A1": "qFT8 yra nemokama mėgėjų radijo programa silpnų signalų skaitmeniniams režimams, Morzei, teletaipui, paveikslėliams ir balsui. Ji veikia Android telefonuose ir planšetėse, iOS, Windows, macOS ir Linux, ir ją galima valdyti iš bet kurios naršyklės. Ji be reklamų ir nereikalauja paskyros. Ją parašė Luis Quesada Torres, HB9IPH, su savais dekoderiais ir koduotuvais, parašytais nuo nulio.",

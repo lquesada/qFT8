@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "App Store からダウンロード",
     "FEAT2_OWN": "独自のデコーダとエンコーダをゼロから開発",
     "FEAT2_RAWLOG": "デコードしたメッセージをすべて記録",
+    "FEAT2_HEADLESS": "画面なしでリモート操作用ウェブサーバーとして動作（例：Raspberry Pi）",
     "FAQ_TITLE": "よくある質問",
     "FAQ_Q1": "qFT8 とは何ですか？",
     "FAQ_A1": "qFT8 は、微弱信号向けデジタルモード、モールス、テレタイプ、画像、音声に対応した無料のアマチュア無線プログラムです。Android のスマートフォンとタブレット、iOS、Windows、macOS、Linux で動作し、どのブラウザからでも操作できます。広告はなく、アカウントも不要です。開発者は Luis Quesada Torres（HB9IPH）で、デコーダとエンコーダは独自にゼロから書かれています。",

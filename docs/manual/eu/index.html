@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Espektrogramaren sintonia-desplazamendua</a></li>
                         <li><a href="#tx-limit">Etengabeko transmisioaren muga</a></li>
                         <li><a href="#remote-control">Urruneko kontroleko web zerbitzaria</a></li>
+                        <li><a href="#webserver-headless">qFT8 pantailarik gabe erabiltzea (urruneko web kontrolaren zerbitzaria)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log protokoloa</a></li>
@@ -638,8 +639,7 @@
                 <li><strong>Linux</strong>: portua <code>/dev/ttyACM0</code> edo <code>/dev/ttyUSB0</code> bezalakoa da eta
                     goiko taldea behar du. Soinu-gailuak soinu-zerbitzariarenak dira (PulseAudio edo PipeWire), beraz
                     irratiaren bozgorailua, zure aurikularrak eta zure mikrofonoa gailu desberdinak izan daitezke.
-                    Gailuaren bolumen-graduatzaileak <code>pactl</code> erabiltzen du, <code>pulseaudio-utils</code> paketekoa (PipeWire-rekin
-                    ere funtzionatzen du).</li>
+                    qFT8-k soinu-gailuetara (eta gailuaren bolumen-graduatzailera) <code>pactl</code> eta <code>parec</code> bidez iristen da, <code>pulseaudio-utils</code> paketekoak (PipeWire-rekin ere funtzionatzen dute): instalatu, bestela qFT8-k askotan ez du soinu-txartelik entzuten.</li>
             </ul>
 
             <h4>Irratia eta bere portua aukeratzea</h4>
@@ -767,7 +767,7 @@
                     errore batekin gelditzen da karpeta horretan idatzi ezin badu.</li>
                 <li><strong>Urruneko web kontrola.</strong> Ordenagailuko programak Androidek duen <a href="#remote-control">Urruneko kontroleko web zerbitzari</a>
                     bera du (lehenespenez desgaituta, 13497 portua) eta orri berberak erakusten ditu, bolumen-graduatzailea barne.
-                    Erabili zure sareko telefono batetik edo beste ordenagailu batetik erabiltzeko.</li>
+                    Erabili zure sareko telefono batetik edo beste ordenagailu batetik erabiltzeko. Leihorik gabe ere ibil daiteke (<code>qFT8 --webserver</code>, ikus <a href="#webserver-headless">qFT8 pantailarik gabe erabiltzea</a>), pantailarik ez duen ordenagailu baterako.</li>
                 <li><strong>Bridge-a.</strong> Ordenagailu bat da ohiko <a href="#bridge">bridge</a>-a: irratia
                     harekin konektatuta, eta qFT8 telefono, iPhone edo beste ordenagailu batean hura erabiltzen. Leihorik gabe ere ibil daiteke
                     (<code>qFT8 --bridge</code>), beste lanik ez duen ordenagailu batean.</li>
@@ -775,7 +775,7 @@
                     erakusten ditu): <code>--list-devices</code>-ek qFT8-k ikusten dituen serie-portu eta soinu-gailu guztiak zerrendatzen ditu eta irteten da;
                     <code>--port &lt;gailua&gt;</code>-ek serie-portu lehenetsia ezartzen du (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;karpeta&gt;</code>-ek profil-karpeta aukeratzen du;
-                    <code>--bridge</code>-k bridge bat abiarazten du; <code>--video-mode=&lt;modua&gt;</code>-k leihoa beste modu batean marrazten du exekuzio horretarako, qFT8 Ezarpenetan <strong>Bideo modua</strong> aldatzeko adina ireki ezin denean ere (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code>-ek leihoa OpenGL bidez marrazten du (ikusi
+                    <code>--bridge</code>-k bridge bat abiarazten du; <code>--webserver</code>-ek qFT8 leihorik gabe exekutatzen du, urruneko web kontrola irekita; <code>--video-mode=&lt;modua&gt;</code>-k leihoa beste modu batean marrazten du exekuzio horretarako, qFT8 Ezarpenetan <strong>Bideo modua</strong> aldatzeko adina ireki ezin denean ere (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code>-ek leihoa OpenGL bidez marrazten du (ikusi
                     <a href="#pc-trouble">Zerbaitek ez badu funtzionatzen</a>).</li>
             </ul>
 
@@ -1818,7 +1818,7 @@
                         <li><strong>Sareko irratia</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Sareko irratia (esperimentala)</strong> in <strong>Irratiaren konexioa</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>KONEKTATU</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metodoa</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Audio-jarioaren ataka</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Soinu-txartela</strong> under <strong>Audioa</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Metodoa</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Helbidea</strong>, the <strong>Irratia</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Erabiltzaile-izena</strong> and <strong>Pasahitza</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Irratia</strong> says which radio, <strong>Gailuan aukeratu bezala</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (esperimentala)</strong> in <strong>Irratiaren konexioa</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Aukeratu gailu bat</strong> under <strong>Bluetooth gailua</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Irratia</strong>, <strong>Gailuan aukeratu bezala</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>KONEKTATU</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (esperimentala)</strong> in <strong>Irratiaren konexioa</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Aukeratu gailu bat</strong> under <strong>Bluetooth gailua</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Irratia</strong>, <strong>Gailuan aukeratu bezala</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>KONEKTATU</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1919,6 +1919,7 @@
                     desblokeatzen ditu <strong>USB gailua</strong>, <strong>Baudio-tasa</strong>, <strong>Datu-bitak</strong>,
                     <strong>Gelditze-bitak</strong>, <strong>Parekotasuna</strong> eta irratia nola aktibatzen den (<strong>PTT</strong>:
                     CAT komandoz, edo RTS edo DTR lerroaz), transmititu aurreko PTT atzerapenarekin.
+                    RTS edo DTR erabiltzean, <strong>PTT ataka</strong> aukerak lerro hori non dagoen erabakitzen du: <strong>CAT-en berdina</strong> (irratiaren kablea) edo bigarren serie-ataka bat, CAT kable batean eta PTT beste interfaze batean dituen estaziorako (telefonoan, bi egokitzaileak USB hub baten bidez; ez iPhonean).
                     <strong>Ezarri transzeptorearen modua hasieratzean eta ziklo bakoitzean</strong>-k irratia modu egokian mantentzen du.
                     Orri nagusiko ohar batek esaten du gailu honek gainidazketak dituenean.</li>
                 <li><strong>Sintonia (irrati hau)</strong>: <a href="#tune-offset">Espektrogramaren sintonia-desplazamendua</a> eta
@@ -4488,9 +4489,9 @@
                     locatorretik duten distantziarekin.</li>
                 <li>Memoria baten lerro bakoitza, edo idazten duzun lerro bakoitza, marko bat da:
                     <span translate="no">BEACON</span> [iruzkina] zure posizioa bidaltzen du, gradura arte, zure locatorretik
-                    (inoiz ez locatorra baino zehatzago); <span translate="no">CALL: text</span> mezu bat bidaltzen dio
+                    (inoiz ez locatorra baino zehatzago); <span translate="no">BEACON</span> lat lon [iruzkina] kokapen zehatza bidaltzen du gradu hamartarretan, hegoa eta mendebala negatibo (<span translate="no">BEACON -34.3543 -58.2535</span> hau da: 34.35 S, 58.25 W; letrak ere balio dute: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> mezu bat bidaltzen dio
                     estazio horri; <span translate="no">STATUS text</span> egoera bat; <span translate="no">APRS</span>
-                    karaktere batekin (<span translate="no">! = : &gt; ;</span>) hasten den lerroa dagoen bezala ateratzen da.</li>
+                    karaktere batekin (<span translate="no">! = : &gt; ;</span>) hasten den lerroa dagoen bezala ateratzen da. Memoria bakoitzaren azpian, Ezarpenak &gt; <span translate="no">Packet</span> atalean, lerro gris batek zer bidaltzen duen esaten du ("Kokapena 34.35 S, 58.25 W", "Egoera: ..."); <span translate="no">BEACON</span> gabe idatzitako bi zenbakiak egoera-testu gisa irteten dira, ez kokapen gisa, eta memoriaren azpiko lerro gorri batek hala dio.</li>
                 <li>Zure markoak zure deitura-seinaletik ateratzen dira, <span translate="no">SSID</span> batekin, Ezarpenak &gt;
                     <span translate="no">Packet</span> atalean (pantailako engranajea) aukeratuta, bertan ezarritako digipetier-bidetik
                     (<span translate="no">WIDE1-1,WIDE2-1</span> lehenespenez, 2 m bakarrik).</li>
@@ -5064,21 +5065,19 @@
                 <strong>HF bihurgailurik gabe (laginketa zuzena)</strong> 24 MHz azpitik jasotzeko bere
                 <span translate="no">HF</span> sarreran. qFT8k ez du inoiz dongle-aren bias tee-a (antena-elikadura) aktibatzen.
             </p>
-            <p>
-                <strong>Ordenagailua, Linux</strong>: errenkada bera, kontrolatzaile txertatu bera. qFT8k dongle-a sistemak berak kargatzen duen TV kontrolatzailearengandik hartzen du. Zure erabiltzaileak baimena behar du dongle-a irekitzeko; egoera-lerroak hau esaten badu:
-                &ldquo;baimenik ez&rdquo;, gehitu behin arau-fitxategi bat (adibidez
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) lerro honekin:
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> dongle zahar batzuetarako), exekutatu
-                <code dir="ltr">sudo udevadm control --reload-rules</code> eta konektatu dongle-a berriro.
+            <p id="rtl-stock-dongle">
+                <strong>Dongle arrunt batek ez du birprogramatu beharrik.</strong> Dendatik datorren bezalako dongle batek funtzionatzen du: ez zaio ezer idazten, eta qFT8k ez du inoiz bere memoria (EEPROM) aldatzen. Sintonizadorearen txipa da garrantzitsua: <span translate="no">R820T / R820T2 / R828D</span> dabiltza; <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> sintonizadoredun dongleek ez, eta egoera-lerroak hala dio. <span translate="no">RTL-SDR Blog V4</span> fabrikatik daraman izenagatik ezagutzen da; izen hori ez duen <span translate="no">R828D</span> dongle batek (adibidez, izena berridatzi zaion V4 batek) abisua jasotzen du egoera-lerroan HF-k agian ez duela funtzionatuko. macOSen, erabili sareko zerbitzaria (behean) edozein donglerako.
             </p>
-            <p>
-                <strong>Ordenagailua, Windows eta macOS</strong>: qFT8k ezin du oraindik dongle-a zuzenean ireki. Exekutatu
-                <span translate="no">RTL-SDR</span> sare-zerbitzaria ordenagailu berean (edo beste edozeinetan, adibidez
-                <span translate="no">Raspberry Pi</span>) eta aukeratu <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                helbide honekin: <code>127.0.0.1</code>, edo zerbitzatu dongle-a telefono batetik edo Linux ordenagailu batetik hauekin:
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Ordenagailua, Linux</strong>: errenkada bera, kontrolatzaile integratu bera. qFT8-k dongle-a telebistako kontrolatzailetik hartzen du, sistemak berak kargatzen duenetik. Zure erabiltzaileak dongle-a irekitzeko baimena behar du: ez badu, qFT8-k txartel batean esaten du dongle-a konektatu bezain laster, eta <strong>KONPONDU</strong>-k baimena zuretzat gehitzen du. Terminal bat irekitzen da eta pasahitza behin eskatzen dizu (terminalik ez dagoen tokian, sistemaren beraren pasahitz-leihoak egiten du). Arau-fitxategia idazten du, <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, ordenagailua erabiltzen duenari <span translate="no">USB</span> hartzaileetarako (<span translate="no">RTL-SDR, Airspy, HackRF</span>) sarbidea ematen diona; dongle-a orduan berehala dabil, berrabiarazi gabe eta saioa berriro hasi gabe. Txartelak komandoa ere erakusten du, zuk zeuk terminalean exekutatzeko.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Ordenagailua, Windows</strong>: errenkada bera, kontrolatzaile integratu bera, Windows-ekin datorren <span translate="no">WinUSB</span> kontrolatzailearen bidez. Windows-ek dongle berri bati normalean ez dio kontrolatzailerik ematen, edo qFT8-k erabil ezin duen telebistako kontrolatzaile bat ematen dio. qFT8-k dongle-a konektatzean nabaritzen du eta konfiguratzea eskaintzen du: sakatu <strong>KONFIGURATU</strong> eta baimendu aldaketa Windows-en administratzaile-leihoan (behin); dongle-a segundo batzuk geroago dabil. Ez da ezer deskargatzen eta ez da gure kontrolatzailerik instalatzen: qFT8-k dongle-a Windows-en <span translate="no">WinUSB</span> kontrolatzaile propiora aldatzen du. Telebistako kontrolatzailea behar duten telebista-programek ez dute dongle-a gehiago ikusten. Windows-i itzultzeko: <strong>Gailu-kudeatzailea</strong>-n, egin klik eskuineko botoiarekin dongle-an <strong>Universal Serial Bus devices</strong> azpian, aukeratu <strong>Uninstall device</strong> (utzi markatu gabe kontrolatzaileari buruzko laukia), eta gero <strong>Action &gt; Scan for hardware changes</strong>. Windows-eko eguneratze batek telebistako kontrolatzailea ere itzuli dezake; qFT8-k orduan konfigurazioa berriro eskaintzen du. Microsoft Store bertsioak ezin ditu kontrolatzaileak berak aldatu: <strong>Gailu-kudeatzailea</strong>-n, egin klik eskuineko botoiarekin dongle-an (askotan &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), aukeratu <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, eta gero <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Ordenagailua, macOS</strong>: qFT8k ezin du oraindik dongle-a zuzenean ireki. Exekutatu <span translate="no">RTL-SDR</span> sare-zerbitzaria ordenagailu berean (edo beste edozeinetan, adibidez <span translate="no">Raspberry Pi</span>) eta aukeratu <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> helbide honekin: <code>127.0.0.1</code>, edo zerbitzatu dongle-a telefono batetik edo ordenagailu batetik hauekin: <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers"> <span translate="no">RTL-SDR</span> sare-zerbitzaria eta bere kontrolatzailea</h4>
             <p>
@@ -5152,7 +5151,7 @@
                 <li>Logak sarrera guztiak gordetzen ditu (mugarik gabe) gehitzeko soilik den fitxategi batean, beraz log oso luze batek ez du aplikazioaren abiaraztea moteltzen; orriak sarrera berrienak bakarrik irakurtzen ditu eta gehiago erakusten du korritu ahala.</li>
                 <li>Ham eginbideak desaktibatuta, entzundako <span translate="no">FT8, FT4, LQ ...</span> estazio bakoitza erregistratzen da (orduko behin estazio eta modu bakoitzeko); Ham eginbideak aktibatuta, entzundako QSO osoak bakarrik erregistratzen dira. Lehen aldiz entzuten duzun estazio batek (zure <span translate="no">SWL</span> logean inoiz ez lehen) bere deitura-seinalea ziano kolorez du Estazioen zerrendan Ham eginbideak desaktibatuta daudenean.</li>
                 <li>Seinale-hargailuek identifikatzen dutena logean idazten dute, estazio bakoitzeko eta <span translate="no">UTC</span> egun bakoitzeko behin: itsasontziak (<span translate="no">AIS</span>), hegazkinak (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), irrati-sondak, <span translate="no">NAVTEX</span> estazioak, <span translate="no">DSC</span>, ordu-estazioak, <span translate="no">NCDXF</span> balizak, <span translate="no">ALE / ARDOP / PACTOR</span> eta <span translate="no">APRS</span> deitura-seinaleak, eguraldi-fax eta eguraldi-satelite irudiak, eta <span translate="no">FM</span> estazioak beren <span translate="no">RDS</span> kodearekin eta izenarekin. <span translate="no">SWL</span> diplometarako zenbatzen dira; ez dira inoiz eQSLra bidaltzen eta ez daude <span translate="no">ADIF</span> esportazioan (<span translate="no">CSV</span>(e)k badauzka, entzundako izenarekin azken zutabean).</li>
-                <li>Igoerek arau bat jarraitzen dute: eQSLko <span translate="no">SWL</span> kontuak entzundako estazio bakoitza kontu horren pean artxibatzen du (ham eQSL kontu bat ukatzen da); <span translate="no">PSK Reporter</span> eta <span translate="no">WSPRnet</span>(e)k zure deitura-seinalearen pean jakinarazten dute, bestela zure <span translate="no">SWL</span> identifikatzailearen pean.</li>
+                <li>Igoerek arau bat jarraitzen dute: eQSLko <span translate="no">SWL</span> kontuak entzundako estazio bakoitza kontu horren pean artxibatzen du (ham eQSL kontu bat ukatzen da); <span translate="no">PSK Reporter</span> eta <span translate="no">WSPRnet</span>(e)k spot bakoitza zure deitura-seinalearen eta zure <span translate="no">SWL</span> identifikatzailearen pean jakinarazten dute, ezarrita dagoen bakoitzarekin; Ezarpenek kutxa bakoitzaren azpian erakusten dituzte izenak.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Zurea al da SDR hau?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Noren hargailua</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Zerbitzari hau nirea da</strong> in its rows, the same answer as <strong>Zurea al da SDR hau?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5457,6 +5456,70 @@
                     <p><strong>Oharra:</strong> web zerbitzariak pantaila itzalita dagoela funtzionatzen du, atzeko planoan exekutatzeko ezarpenak gaituta badaude (lehenespenez, <span translate="no">qFT8</span>k atzeko planoan jarraitzen du transzeptore batera konektatuta dagoenean).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>qFT8 pantailarik gabe erabiltzea (urruneko web kontrolaren zerbitzaria)</h3>
+                <p>
+                    Ordenagailuko programak leihorik gabe ere funtziona dezake, pantailarik ez duen ordenagailu batean: irratiaren ondoko Raspberry Pi batean, zerbitzari txiki batean edo SSH bidez iristen den edozein ordenagailutan. Orduan qFT8-k ohi bezala egiten du dena (soinua, irratiaren kontrola, deskodeketa, <span translate="no">AUTO</span>, erregistroa, igoerak), eta zuk nabigatzaile batetik erabiltzen duzu <a href="#remote-control">urruneko web kontrola</a> bidez, telefono, tableta edo zure sareko beste ordenagailu batean.
+                </p>
+
+                <h4>Web zerbitzaria ala bridge-a?</h4>
+                <p>Biek pantailarik gabe funtzionatzen dute. Aldea da zein gailuk egiten duen lana:</p>
+                <ul>
+                    <li><strong>Web zerbitzaria</strong> (<code>--webserver</code>): qFT8 exekutatzen duen ordenagailuak deskodetzen, igortzen eta erregistratzen du; nabigatzaileak erakutsi baino ez du egiten, eta bere botoiak ditu. Etxeko ordenagailu indartsu bat telefonotik kontrolatzeko ona.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, ikus <a href="#bridge">qFT8 bridge</a>): irratiaren ondoko gailuak irratiaren aginduak eta bere audioa pasatzen ditu soilik zure sarean, eta zuk erabiltzen duzun gailuko qFT8-k (ordenagailuko programak, Android aplikazioak edo iPhone/iPad aplikazioak) deskodetzen du. Irratian dagoen Raspberry Pi baterako ona, zure ordenagailuak lana egiten duenean.</li>
+                </ul>
+                <p>Biak ezin dira aldi berean exekutatu.</p>
+
+                <h4>Lehenengo konfiguratu</h4>
+                <p>
+                    qFT8-k gordetako ezarpenak erabiltzen ditu, leihoarekin bezala: deitura, locator-a, irratia, soinu-gailuak, moduak, erregistroa eta QSO igoera-zerbitzuak. Adibidez, <a href="#raw-message-logs">Mezuen erregistro gordinak</a> markatuta badago, bere .tsv fitxategiak idazten jarraitzen du. Beraz, konfiguratu qFT8 lehenik: abiarazi behin bere leihoarekin ordenagailu horretan (edo kopiatu profil-karpeta beste ordenagailu batetik, ikus <a href="#pc-settings">Ezarpenak: non dauden, telefono batetik nola eraman</a>), edo abiarazi pantailarik gabe eta ezarri urruneko web kontrolaren Ezarpenetatik, ohi bezala gordetzen dituena.
+                </p>
+
+                <h4>Abiaraztea</h4>
+                <p>Ordenagailu horretako terminal batean (SSH bidez ere balio du), qFT8-ren karpetan:</p>
+                <ul>
+                    <li><strong>Linux</strong>, Raspberry Pi ere: <code>./qFT8 --webserver</code>. .jar deskargarekin eta Java 21 edo berriagoarekin: <code>java -jar</code>, .jar fitxategiaren izena eta <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminalak dio qFT8 leihorik gabe dabilela, <span translate="no">TX</span> itzalita dagoela eta orriak pasahitza eskatzen duen ala ez, eta urruneko web kontrolaren esteka pribatua erakusten du: ireki ezazu sare bereko nabigatzaile batean. <code>#k=</code>-ren ondorengo zatia estekaren gakoa da: gorde pribatu. Terminalean soilik erakusten da, eta ez da inoiz qFT8-ren erregistro-fitxategian idazten. <code>Ctrl+C</code>-k qFT8 gelditzen du eta irratia errezepziora itzultzen du.
+                </p>
+                <p>
+                    <span translate="no">TX</span> beti itzalita dago qFT8 horrela abiarazten denean. Urruneko web kontrolaren <span translate="no">TX</span> botoiak soilik aktibatzen du.
+                </p>
+
+                <h4>Aukerak</h4>
+                <p>
+                    Aukera bakoitzak ezarpen bat aldatzen du exekuzio horretarako soilik: ez da ezer gordetzen, eta aukerarik gabe gordetako ezarpenak erabiltzen dira. <code>qFT8 --webserver --help</code>-k zerrendatzen ditu.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: urruneko web kontrolaren portua, 1024tik 65534ra (13497, aldatu ez baduzu).</li>
+                    <li><code>--bind ADDRESS</code>: ordenagailuaren helbide horretan soilik entzun.</li>
+                    <li><code>--password TEXT</code>, edo <code>--password-file FILE</code> (fitxategiaren lehen lerroa; seguruagoa, ordenagailuaren beste erabiltzaileek komando-lerro bat ikus dezaketelako), edo <code>--no-password</code>.</li>
+                    <li><code>--https</code> edo <code>--no-https</code>: nabigatzaile batek mikrofonoa erabiltzeko behar duen helbide segurua (portua + 1).</li>
+                    <li><code>--access read</code>, <code>stop</code> edo <code>full</code>: orriak zer egin dezakeen: ikusi soilik, ikusi eta <span translate="no">TX</span> gelditu, edo dena.</li>
+                    <li><code>--audio-in NAME</code> eta <code>--audio-out NAME</code>: irratiaren soinu-gailuak, <code>qFT8 --list-devices</code>-k erakusten duen izenaren bidez, edo <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: irratia (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), eta <code>--port DEVICE</code>: bere serie-portua (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: erabili beharreko profil-karpeta.</li>
+                </ul>
+                <p>
+                    Portua beste programa batek hartuta badago, edo beste qFT8 batek profil-karpeta bera erabiltzen badu, qFT8-k terminalean esaten du eta gelditzen da.
+                </p>
+
+                <h4>Adibidea: Raspberry Pi bat</h4>
+                <p>
+                    Irratia USB bidez konektatuta dago Pi-ra, eta qFT8 behin konfiguratu da (Pi-ko pantaila batekin edo urruneko web kontroletik). Beste ordenagailu batetik:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Gero ireki erakusten duen esteka zure telefonoan. Raspberry Pi 4 edo 5 batek <span translate="no">FT8</span> garaiz deskodetzen du; ordenagailu azkarrago batek seinale ahulenetatik gehiago aurkitzen ditu.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Itzuli aurkibidera</a>
             </section>
 
             <section id="bridge">
@@ -6023,6 +6086,19 @@
                 <li>Linuxen, qFT8k irratiaren ataka irekitzeko baimenik ez duela badio, onartu konpontzeko egiten dizun eskaintza (zure kontua atakaren taldean sartzen da), edo eskatu zure sistemaren administratzaileari.</li>
                 <li>Arazoak transmititzean bakarrik gertatzen badira, irrati-interferentziak izan daitezke arrazoia. USB kableari chokeak edo ferritak jartzeak lagun dezake. Beste banda batean transmititzen ere saia zaitezke, gailu batzuk banda jakin batzuetan bakarrik baitira sentikorrak interferentziekiko.</li>
             </ul>
+            <p>
+                qFT8 irrati batekin <span translate="no">CAT</span> bidez hitz egiten ari denean (<strong>Ezarpenak &gt; Gailua</strong> atalean aukeratutako irratia, edo <span translate="no">AUTO</span>-k aurkitutakoa) eta irratiak erantzuten ez duenean, <strong>CAT gabe</strong> abisu gorria agertzen da espektrograman (eta irratiaren azpian, <strong>Ezarpenak &gt; Gailua</strong> atalean). Sakatu: txartelak qFT8-k konexioan neurtu duena esaten du, eta kasu horretan zer probatu zerrendatzen du:
+            </p>
+            <ul>
+                <li><strong>Ez da irratirik aurkitu</strong>: irratia itzalita dago, kablea solte dago, kableak kargatu baino ez du egiten (erabili USB datu-kablea), egokitzaile edo hub batek ez ditu datuak igarotzen, edo <span translate="no">USB OTG</span> desaktibatuta dago telefonoaren sistema-ezarpenetan. Ordenagailuan: irratiaren USB kontrolatzailea eta <strong>Ezarpenak &gt; Gailuaren konfigurazioa</strong> atalean aukeratutako portua.</li>
+                <li><strong>Ezin izan da portua ireki</strong>: baimendu qFT8-k USB gailua erabiltzea Android-ek galdetzen duenean, eta itxi irratiaren portua erabiltzen duten beste programak.</li>
+                <li><strong>Irratiak ez du erantzuten</strong> (byte bakar bat ere ez da itzultzen): irratia piztuta dago, kablea bere <span translate="no">CAT</span> konektorean sartuta dago, irratiaren modeloa zuzena da, eta irratiaren <span translate="no">CAT</span> baudio-tasa qFT8-renaren berdina da (<strong>Ezarpenak &gt; Gailuaren konfigurazioa &gt; Baudio-tasa</strong>). <span translate="no">CAT RTS</span> menua duten Yaesu irratiak: ezarri <span translate="no">DISABLE</span> balioan. Xiegu irratiak: interfazearen datu-kablea (<span translate="no">CI-V</span>) irratiaren <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> konektorean doa, ez audio-kablea bakarrik, eta irratiaren <span translate="no">CI-V</span> helbidea eta baudio-tasa qFT8-renak bezalakoak dira (txartelak erakusten ditu).</li>
+                <li><strong>qFT8-ren agindu propioak soilik itzultzen dira</strong>: kableak edo interfazeak datuak irratirik gabe itzultzen ditu (Icom <span translate="no">CI-V</span> kable batek hori egiten du irratia itzalita dagoenean).</li>
+                <li><strong>Irakurri ezin diren erantzunak</strong>: baudio-tasa edo irratiaren modeloa ez datoz bat.</li>
+                <li><strong>Igortzean erantzuteari uzten dio</strong>: RF interferentzia. Jarri ferrita-iragazkiak USB eta audio kableetan, bi muturren ondoan, proba gisa probatu potentzia txikiagoa (irratian ezartzen da) eta egiaztatu antena eta elikatze-lerroa modu komuneko korronteagatik.</li>
+                <li><strong>Erantzun zuen, gero gelditu zen</strong>: irratia itzali zen, edo kablea askatu zen.</li>
+            </ul>
+            <p><strong>BERRIRO EGIAZTATU</strong> irratira berriro konektatzen da eta beste behin egiaztatzen du; <strong>BIDALI TXOSTENA</strong> neurtutakoa bidaltzen digu, irratiaren aginduen erregistroarekin.</p>
 
             <h3 id="trouble-otg-charging">Transzeptorea desagertu egiten da telefonoa guztiz kargatuta dagoenean (Android)</h3>
             <p>

@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Lejupielādējiet App Store",
     "FEAT2_OWN": "Savi dekoderi un kodētāji, uzrakstīti no nulles",
     "FEAT2_RAWLOG": "Reģistrēt visus atkodētos ziņojumus",
+    "FEAT2_HEADLESS": "Darbojas bez ekrāna kā tālvadības tīmekļa serveris, piem., uz Raspberry Pi",
     "FAQ_TITLE": "Jautājumi un atbildes",
     "FAQ_Q1": "Kas ir qFT8?",
     "FAQ_A1": "qFT8 ir bezmaksas radioamatieru programma vāju signālu digitālajiem režīmiem, Morzei, teletaipam, attēliem un balsij. Tā darbojas Android tālruņos un planšetēs, iOS, Windows, macOS un Linux, un to var vadīt no jebkura pārlūka. Tai nav reklāmu un nav vajadzīgs konts. To uzrakstījis Luis Quesada Torres, HB9IPH, ar saviem dekoderiem un kodētājiem, uzrakstītiem no nulles.",

@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Télécharger dans l'App Store",
     "FEAT2_OWN": "Ses propres décodeurs et encodeurs, écrits de zéro",
     "FEAT2_RAWLOG": "Enregistrer tous les messages décodés",
+    "FEAT2_HEADLESS": "Fonctionne sans écran comme serveur web de contrôle à distance, par exemple sur un Raspberry Pi",
     "FAQ_TITLE": "Questions et réponses",
     "FAQ_Q1": "Qu'est-ce que qFT8 ?",
     "FAQ_A1": "qFT8 est un programme de radioamateur gratuit pour les modes numériques en signaux faibles, le morse, le télétype, les images et la voix. Il fonctionne sur les téléphones et tablettes Android, iOS, Windows, macOS et Linux, et peut être piloté depuis n'importe quel navigateur. Il n'a pas de publicité et ne demande aucun compte. Il est écrit par Luis Quesada Torres, HB9IPH, avec ses propres décodeurs et encodeurs écrits de zéro.",

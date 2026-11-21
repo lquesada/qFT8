@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Afstemverschuiving spectrogram</a></li>
                         <li><a href="#tx-limit">Limiet voor continu zenden</a></li>
                         <li><a href="#remote-control">Webserver voor bediening op afstand</a></li>
+                        <li><a href="#webserver-headless">qFT8 zonder scherm draaien (webserver voor bediening op afstand)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log-protocol</a></li>
@@ -640,8 +641,7 @@
                 <li><strong>Linux</strong>: de poort ziet eruit als <code>/dev/ttyACM0</code> of <code>/dev/ttyUSB0</code> en vereist
                     de groep hierboven. De geluidsapparaten zijn die van de geluidsserver (PulseAudio of PipeWire), dus
                     de luidspreker van de radio, je koptelefoon en je microfoon kunnen elk een ander apparaat zijn.
-                    De apparaatvolumeschuif gebruikt <code>pactl</code>, uit het pakket <code>pulseaudio-utils</code> (het werkt
-                    ook met PipeWire).</li>
+                    qFT8 bereikt de geluidsapparaten (en de apparaatvolumeschuif) via <code>pactl</code> en <code>parec</code>, uit het pakket <code>pulseaudio-utils</code> (ze werken ook met PipeWire): installeer het, anders hoort qFT8 vaak geen enkele geluidskaart.</li>
             </ul>
 
             <h4>De radio en zijn poort kiezen</h4>
@@ -770,7 +770,7 @@
                 <li><strong>De webserver op afstand.</strong> Het computerprogramma heeft dezelfde
                     <a href="#remote-control">webserver voor bediening op afstand</a> als Android (standaard uit, poort 13497) en toont
                     dezelfde pagina's, inclusief de volumeschuif. Gebruik hem om te bedienen vanaf een telefoon of een andere computer op je
-                    netwerk.</li>
+                    netwerk. Hij kan ook zonder venster draaien (<code>--webserver</code>, zie <a href="#webserver-headless">qFT8 zonder scherm draaien (webserver voor bediening op afstand)</a>), voor een computer zonder scherm.</li>
                 <li><strong>De bridge.</strong> Een computer is de gebruikelijke <a href="#bridge">bridge</a>: de radio is erop
                     aangesloten en qFT8 op een telefoon, iPhone of andere computer bedient hem. Hij kan ook zonder venster draaien
                     (<code>qFT8 --bridge</code>), voor een computer zonder andere taak.</li>
@@ -778,7 +778,7 @@
                     ze): <code>--list-devices</code> toont elke seriële poort en elk geluidsapparaat dat qFT8 ziet en stopt dan;
                     <code>--port &lt;device&gt;</code> stelt de standaard seriële poort in (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> kiest de profielmap;
-                    <code>--bridge</code> start een bridge; <code>--video-mode=&lt;mode&gt;</code> tekent het venster voor die keer op een andere manier, ook als qFT8 niet ver genoeg opent om de <strong>Videomodus</strong> in Instellingen te wijzigen (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tekent het venster via OpenGL (zie
+                    <code>--bridge</code> start een bridge; <code>--webserver</code> draait qFT8 zonder venster, met de web-afstandsbediening open; <code>--video-mode=&lt;mode&gt;</code> tekent het venster voor die keer op een andere manier, ook als qFT8 niet ver genoeg opent om de <strong>Videomodus</strong> in Instellingen te wijzigen (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tekent het venster via OpenGL (zie
                     <a href="#pc-trouble">Als iets niet werkt</a>).</li>
             </ul>
 
@@ -1835,7 +1835,7 @@
                         <li><strong>Netwerkradio</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Netwerkradio (experimenteel)</strong> in <strong>Radioverbinding</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>VERBINDEN</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Methode</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Poort van de geluidsstream</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Geluidskaart</strong> under <strong>Audio</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Methode</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adres</strong>, the <strong>Radio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Gebruikersnaam</strong> and <strong>Wachtwoord</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Radio</strong> says which radio, <strong>Zoals gekozen bij Apparaat</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimenteel)</strong> in <strong>Verbinding met de radio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Kies een apparaat</strong> under <strong>Bluetooth-apparaat</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Zoals gekozen bij Apparaat</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>VERBINDEN</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimenteel)</strong> in <strong>Verbinding met de radio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Kies een apparaat</strong> under <strong>Bluetooth-apparaat</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Zoals gekozen bij Apparaat</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>VERBINDEN</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1934,6 +1934,7 @@
                     ontgrendelt het <strong>USB-apparaat</strong>, de <strong>Baudrate</strong>, <strong>Databits</strong>,
                     <strong>Stopbits</strong>, <strong>Pariteit</strong> en hoe de radio wordt getoetst (<strong>PTT</strong>:
                     met een CAT-commando, of de RTS- of DTR-lijn), met de PTT-vertraging vóór het zenden.
+                    Bij RTS of DTR kiest <strong>PTT-poort</strong> waar die lijn zit: <strong>Zelfde als CAT</strong> (de eigen kabel van de radio) of een tweede seriële poort, voor een station met <span translate="no">CAT</span> op de ene kabel en PTT op een andere interface (op een telefoon beide adapters via een USB-hub; niet op de iPhone).
                     <strong>Transceivermodus instellen bij initialisatie en elke cyclus</strong> houdt de radio in de juiste
                     mode. Een opmerking op de hoofdpagina zegt wanneer dit apparaat afwijkende instellingen heeft.</li>
                 <li><strong>Afstemming (deze radio)</strong>: de <a href="#tune-offset">Tune-spectrogramoffset</a> en de
@@ -4529,9 +4530,9 @@
                     afstand tot je locator.</li>
                 <li>Elke regel van een geheugen, of elke regel die je typt, is één frame:
                     <span translate="no">BEACON</span> [opmerking] verstuurt je positie, op de graad nauwkeurig, vanuit je locator
-                    (nooit nauwkeuriger dan de locator); <span translate="no">CALL: text</span> verstuurt een bericht naar dat
+                    (nooit nauwkeuriger dan de locator); <span translate="no">BEACON</span> breedte lengte [commentaar] verstuurt een exacte positie in decimale graden, zuid en west negatief (<span translate="no">BEACON -34.3543 -58.2535</span> is 34.35 S, 58.25 W; de letters werken ook: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> verstuurt een bericht naar dat
                     station; <span translate="no">STATUS text</span> een status; een regel die begint met een
-                    <span translate="no">APRS</span>-teken (<span translate="no">! = : &gt; ;</span>) gaat ongewijzigd de lucht in.</li>
+                    <span translate="no">APRS</span>-teken (<span translate="no">! = : &gt; ;</span>) gaat ongewijzigd de lucht in. Onder elk geheugen in Instellingen &gt; <span translate="no">Packet</span> zegt een grijze regel wat het verstuurt ("Positie 34.35 S, 58.25 W", "Status: ..."); twee getallen zonder <span translate="no">BEACON</span> gaan de lucht in als statustekst, niet als positie, en een rode regel onder het geheugen meldt dat.</li>
                 <li>Je frames komen van je roepletters met de <span translate="no">SSID</span> die je kiest in Instellingen &gt;
                     <span translate="no">Packet</span> (het tandwiel van het scherm), via het digipeaterpad dat daar is ingesteld
                     (standaard <span translate="no">WIDE1-1,WIDE2-1</span>, alleen 2 m).</li>
@@ -5115,22 +5116,19 @@
                 <strong>HF zonder converter (directe bemonstering)</strong> aan om onder 24 MHz te ontvangen op de
                 <span translate="no">HF</span>-ingang. qFT8 schakelt de bias-tee van de dongel (antennevoeding) nooit in.
             </p>
-            <p>
-                <strong>Computer, Linux</strong>: dezelfde rij, dezelfde ingebouwde driver. qFT8 neemt de dongel over van de TV-driver
-                die het systeem er zelf voor laadt. Je gebruiker heeft toestemming nodig om de dongel te openen; als de statusregel
-                &ldquo;geen toestemming&rdquo; meldt, voeg dan eenmalig een regelbestand toe (bijvoorbeeld
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) met de regel
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> voor sommige oudere dongels), voer
-                <code dir="ltr">sudo udevadm control --reload-rules</code> uit en steek de dongel er opnieuw in.
+            <p id="rtl-stock-dongle">
+                <strong>Een standaard dongel hoeft niet geflasht te worden.</strong> Een dongel zoals hij uit de winkel komt werkt: er wordt niets naar geschreven en qFT8 verandert nooit zijn geheugen (EEPROM). Wat telt is de tunerchip: <span translate="no">R820T / R820T2 / R828D</span> werken; dongels met een <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span>-tuner niet, en de statusregel zegt dat. De <span translate="no">RTL-SDR Blog V4</span> wordt herkend aan de naam die hij af fabriek draagt; een <span translate="no">R828D</span>-dongel zonder die naam (bijvoorbeeld een V4 waarvan de naam is overschreven) krijgt in de statusregel een waarschuwing dat HF mogelijk niet werkt. Gebruik op macOS voor elke dongel de netwerkserver (hieronder).
             </p>
-            <p>
-                <strong>Computer, Windows en macOS</strong>: qFT8 kan de dongel nog niet rechtstreeks openen. Start de
-                <span translate="no">RTL-SDR</span>-netwerkserver op dezelfde computer (of op een andere, zoals een
-                <span translate="no">Raspberry Pi</span>) en kies <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                met het adres <code>127.0.0.1</code>, of bied de dongel aan vanaf een telefoon of een Linux-computer met de
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Computer, Linux</strong>: dezelfde rij, hetzelfde ingebouwde stuurprogramma. qFT8 neemt de dongel over van het tv-stuurprogramma dat het systeem er zelf voor laadt. Uw gebruiker heeft toestemming nodig om de dongel te openen: heeft hij die niet, dan meldt qFT8 dat in een kaart zodra de dongel wordt aangesloten, en <strong>OPLOSSEN</strong> voegt de toestemming voor u toe. Er opent een terminal die één keer om uw wachtwoord vraagt (waar geen terminal is, doet het wachtwoordvenster van het systeem dat). Het schrijft het regelbestand <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, dat de persoon die de computer gebruikt toegang geeft tot <span translate="no">USB</span>-ontvangers (<span translate="no">RTL-SDR, Airspy, HackRF</span>); de dongel werkt dan direct, zonder herstart en zonder opnieuw inloggen. De kaart toont ook de opdracht, zodat u die zelf in een terminal kunt uitvoeren.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Computer, Windows</strong>: dezelfde rij, hetzelfde ingebouwde stuurprogramma, via het <span translate="no">WinUSB</span>-stuurprogramma dat bij Windows zit. Windows geeft een nieuwe dongel meestal geen stuurprogramma, of een tv-stuurprogramma dat qFT8 niet kan gebruiken. qFT8 merkt dat op wanneer de dongel wordt aangesloten en biedt aan hem in te stellen: druk op <strong>INSTELLEN</strong> en sta de wijziging toe in het beheerdersvenster van Windows (één keer); de dongel werkt enkele seconden later. Er wordt niets gedownload en er wordt geen stuurprogramma van ons geïnstalleerd: qFT8 zet de dongel over op het eigen <span translate="no">WinUSB</span>-stuurprogramma van Windows. Tv-programma's die het tv-stuurprogramma nodig hebben, zien de dongel dan niet meer. Om hem aan Windows terug te geven: klik in <strong>Apparaatbeheer</strong> met de rechtermuisknop op de dongel onder <strong>Universal Serial Bus devices</strong>, kies <strong>Uninstall device</strong> (laat het vakje over het stuurprogramma uitgevinkt) en dan <strong>Action &gt; Scan for hardware changes</strong>. Een Windows-update kan het tv-stuurprogramma ook terugzetten; qFT8 biedt de installatie dan opnieuw aan. De Microsoft Store-versie kan zelf geen stuurprogramma's wijzigen: klik in <strong>Apparaatbeheer</strong> met de rechtermuisknop op de dongel (vaak &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), kies <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> en dan <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Computer, macOS</strong>: qFT8 kan de dongel nog niet rechtstreeks openen. Start de <span translate="no">RTL-SDR</span>-netwerkserver op dezelfde computer (of op een andere, zoals een <span translate="no">Raspberry Pi</span>) en kies <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> met het adres <code>127.0.0.1</code>, of bied de dongel aan vanaf een telefoon of een computer met de <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">De <span translate="no">RTL-SDR</span>-netwerkserver en zijn driver</h4>
             <p>
@@ -5231,7 +5229,7 @@
                 <li>Het log bewaart elke invoer (zonder limiet) in een bestand waaraan alleen wordt toegevoegd, zodat een heel lang log de start van de app niet vertraagt; de pagina leest alleen de nieuwste invoeren en toont er meer terwijl je scrolt.</li>
                 <li>Met de Ham-functies uit wordt elk gehoord <span translate="no">FT8, FT4, LQ ...</span>-station gelogd (eenmaal per uur per station en mode); met de Ham-functies aan worden alleen de volledig gehoorde QSO's gelogd. Een station dat je voor het eerst hoort (nooit eerder in je <span translate="no">SWL</span>-log) heeft zijn roepnaam in cyaan in de stationslijst als de Ham-functies uit staan.</li>
                 <li>De signaalontvangers schrijven wat ze identificeren in het log, eenmaal per station per <span translate="no">UTC</span>-dag: schepen (<span translate="no">AIS</span>), vliegtuigen (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, <span translate="no">NAVTEX</span>-stations, <span translate="no">DSC</span>, tijdstations, <span translate="no">NCDXF</span>-bakens, <span translate="no">ALE / ARDOP / PACTOR</span>- en <span translate="no">APRS</span>-roepnamen, weerfax- en weersatellietbeelden, en <span translate="no">FM</span>-stations met hun <span translate="no">RDS</span>-code en naam. Ze tellen mee voor de <span translate="no">SWL</span>-diploma's; ze worden nooit naar eQSL gestuurd en staan niet in de <span translate="no">ADIF</span>-export (de <span translate="no">CSV</span> heeft ze, met de gehoorde naam in de laatste kolom).</li>
-                <li>Uploads volgen één regel: het eQSL-<span translate="no">SWL</span>-account archiveert elk gehoord station onder dat account (een ham-eQSL-account wordt geweigerd); <span translate="no">PSK Reporter</span> en <span translate="no">WSPRnet</span> melden onder je roepnaam, anders onder je <span translate="no">SWL</span>-id.</li>
+                <li>Uploads volgen één regel: het eQSL-<span translate="no">SWL</span>-account archiveert elk gehoord station onder dat account (een ham-eQSL-account wordt geweigerd); <span translate="no">PSK Reporter</span> en <span translate="no">WSPRnet</span> melden elke spot onder je roepnaam en onder je <span translate="no">SWL</span>-id, elk dat is ingesteld; Instellingen toont de namen onder elk vakje.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Is deze SDR van jou?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Wiens ontvanger</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Deze server is van mij</strong> in its rows, the same answer as <strong>Is deze SDR van jou?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5546,6 +5544,70 @@
                     <p><strong>Opmerking:</strong> de webserver werkt met het scherm uit als de instellingen voor werken op de achtergrond zijn ingeschakeld (standaard blijft <span translate="no">qFT8</span> op de achtergrond doorwerken zolang er een transceiver is aangesloten).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>qFT8 zonder scherm draaien (webserver voor bediening op afstand)</h3>
+                <p>
+                    Het computerprogramma kan ook helemaal zonder venster draaien, op een computer die geen scherm heeft: een Raspberry Pi naast de radio, een kleine server of elke computer die je via SSH bereikt. qFT8 doet dan alles zoals gewoonlijk (geluid, radiobesturing, decoderen, <span translate="no">AUTO</span>, loggen, uploads) en jij bedient het vanuit een browser via de <a href="#remote-control">webserver voor bediening op afstand</a>, op een telefoon, tablet of andere computer in je netwerk.
+                </p>
+
+                <h4>Webserver of bridge?</h4>
+                <p>Beide draaien zonder scherm. Het verschil is welk apparaat het werk doet:</p>
+                <ul>
+                    <li><strong>Webserver</strong> (<code>--webserver</code>): de computer waarop qFT8 draait decodeert, zendt en logt; de browser toont het alleen en heeft de knoppen. Goed voor een krachtige computer thuis die je met je telefoon bedient.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, zie <a href="#bridge">qFT8 bridge</a>): het apparaat naast de radio geeft alleen de commando's en het geluid van de radio door over je netwerk, en qFT8 op het apparaat waarmee je bedient (het computerprogramma, de Android-app of de iPhone/iPad-app) decodeert. Goed voor een Raspberry Pi bij de radio, terwijl je eigen computer het werk doet.</li>
+                </ul>
+                <p>De twee kunnen niet tegelijk draaien.</p>
+
+                <h4>Eerst instellen</h4>
+                <p>
+                    qFT8 gebruikt zijn opgeslagen instellingen precies zoals met zijn venster: roepletters, locator, radio, geluidsapparaten, modi, loggen en de QSO-uploaddiensten. Met <a href="#raw-message-logs">Ruwe berichtlogs</a> aangevinkt blijft hij bijvoorbeeld zijn .tsv-bestanden schrijven. Stel qFT8 dus eerst in: start het één keer met zijn venster op die computer (of kopieer de profielmap van een andere computer, zie <a href="#pc-settings">Instellingen: waar ze staan, overzetten van een telefoon</a>), of start het zonder scherm en stel het in via de Instellingen van de web-afstandsbediening, die ze zoals gewoonlijk opslaat.
+                </p>
+
+                <h4>Starten</h4>
+                <p>In een terminal op die computer (via SSH kan ook), in de qFT8-map:</p>
+                <ul>
+                    <li><strong>Linux</strong>, ook een Raspberry Pi: <code>./qFT8 --webserver</code>. Met de .jar-download en Java 21 of nieuwer: <code>java -jar</code>, de naam van het .jar-bestand en <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    De terminal meldt dat qFT8 zonder venster draait, dat <span translate="no">TX</span> uit staat en of de pagina om een wachtwoord vraagt, en toont de privélink van de web-afstandsbediening: open die in een browser op hetzelfde netwerk. Het deel na <code>#k=</code> is de sleutel van de link: houd die privé. Hij wordt alleen op de terminal getoond en nooit in het logbestand van qFT8 geschreven. <code>Ctrl+C</code> stopt qFT8 en zet de radio terug op ontvangen.
+                </p>
+                <p>
+                    <span translate="no">TX</span> staat altijd uit als qFT8 zo start. Alleen de <span translate="no">TX</span>-knop van de web-afstandsbediening zet het aan.
+                </p>
+
+                <h4>Opties</h4>
+                <p>
+                    Elke optie wijzigt een instelling alleen voor die ene keer: er wordt niets opgeslagen, en zonder opties worden de opgeslagen instellingen gebruikt. <code>qFT8 --webserver --help</code> toont ze.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: de poort van de web-afstandsbediening, 1024 tot 65534 (13497 tenzij je die hebt gewijzigd).</li>
+                    <li><code>--bind ADDRESS</code>: alleen op dat adres van de computer luisteren.</li>
+                    <li><code>--password TEXT</code>, of <code>--password-file FILE</code> (de eerste regel van het bestand; veiliger, want andere gebruikers van de computer kunnen een opdrachtregel zien), of <code>--no-password</code>.</li>
+                    <li><code>--https</code> of <code>--no-https</code>: het beveiligde adres (de poort + 1) dat een browser nodig heeft om zijn microfoon te gebruiken.</li>
+                    <li><code>--access read</code>, <code>stop</code> of <code>full</code>: wat de pagina mag: alleen kijken, kijken en <span translate="no">TX</span> stoppen, of alles.</li>
+                    <li><code>--audio-in NAME</code> en <code>--audio-out NAME</code>: de geluidsapparaten van de radio, met de naam die <code>qFT8 --list-devices</code> toont, of <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: de radio (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...) en <code>--port DEVICE</code>: de seriële poort (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: de te gebruiken profielmap.</li>
+                </ul>
+                <p>
+                    Als de poort door een ander programma wordt gebruikt, of een andere qFT8 dezelfde profielmap al gebruikt, meldt qFT8 dat op de terminal en stopt.
+                </p>
+
+                <h4>Voorbeeld: een Raspberry Pi</h4>
+                <p>
+                    De radio zit met USB aan de Pi en qFT8 is één keer ingesteld (met een scherm op de Pi, of via de web-afstandsbediening). Vanaf een andere computer:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Open dan de link die het toont op je telefoon. Een Raspberry Pi 4 of 5 decodeert <span translate="no">FT8</span> op tijd; een snellere computer vindt meer van de zwakste signalen.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Terug naar de inhoudsopgave</a>
             </section>
 
             <section id="bridge">
@@ -6112,6 +6174,19 @@
                 <li>Op Linux: zegt qFT8 dat het geen toestemming heeft om de poort van de radio te openen, ga dan in op het aanbod om dit op te lossen (je account wordt lid van de groep van de poort), of vraag het je systeembeheerder.</li>
                 <li>Doen de problemen zich juist tijdens het zenden voor, dan kan HF-instraling de oorzaak zijn. Mantelstroomfilters of ferrieten op de USB-kabel kunnen helpen. Je kunt ook proberen op een andere band te zenden, want sommige apparaten zijn alleen op bepaalde banden gevoelig voor instraling.</li>
             </ul>
+            <p>
+                Wanneer qFT8 via <span translate="no">CAT</span> met een radio praat (een radio gekozen in <strong>Instellingen &gt; Apparaat</strong>, of een die <span translate="no">AUTO</span> vond) en de radio niet antwoordt, verschijnt de rode waarschuwing <strong>Geen <span translate="no">CAT</span></strong> op het spectrogram (en onder de radio in <strong>Instellingen &gt; Apparaat</strong>). Tik erop: de kaart zegt wat qFT8 op de verbinding heeft gemeten en noemt wat je in dat geval kunt proberen:
+            </p>
+            <ul>
+                <li><strong>Geen radio gevonden</strong>: de radio staat uit, de kabel zit los, de kabel laadt alleen op (gebruik een USB-datakabel), een adapter of hub laat geen data door, of <span translate="no">USB OTG</span> staat uit in de systeeminstellingen van de telefoon. Op een computer: het USB-stuurprogramma van de radio en de poort gekozen in <strong>Instellingen &gt; Apparaatconfiguratie</strong>.</li>
+                <li><strong>De poort kon niet worden geopend</strong>: geef qFT8 toestemming het USB-apparaat te gebruiken als Android erom vraagt, en sluit andere programma's die de poort van de radio gebruiken.</li>
+                <li><strong>De radio antwoordt niet</strong>: (geen enkele byte terug): de radio staat aan, de kabel zit in de <span translate="no">CAT</span>-aansluiting, het radiomodel is het juiste en de <span translate="no">CAT</span>-baudrate van de radio is gelijk aan die van qFT8 (<strong>Instellingen &gt; Apparaatconfiguratie &gt; Baudrate</strong>). Yaesu-radio's met een <span translate="no">CAT RTS</span>-menu: zet het op <span translate="no">DISABLE</span>. Xiegu-radio's: de datakabel (<span translate="no">CI-V</span>) van de interface gaat in de <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span>-aansluiting van de radio, niet alleen de audiokabel, en het <span translate="no">CI-V</span>-adres en de baudrate van de radio zijn gelijk aan die van qFT8 (de kaart toont ze).</li>
+                <li><strong>Alleen de eigen opdrachten van qFT8 komen terug</strong>: de kabel of interface lust de data terug zonder de radio (een Icom <span translate="no">CI-V</span>-kabel doet dit terwijl de radio uit staat).</li>
+                <li><strong>Onleesbare antwoorden</strong>: de baudrate of het radiomodel komt niet overeen.</li>
+                <li><strong>Stopt met antwoorden tijdens het zenden</strong>: RF-storing. Klem ferrietkernen op de USB- en audiokabels bij beide uiteinden, probeer als test minder vermogen (in te stellen op de radio) en controleer de antenne en voedingslijn op common-mode-stroom.</li>
+                <li><strong>Antwoordde, daarna gestopt</strong>: de radio is uitgezet, of de kabel is losgeraakt.</li>
+            </ul>
+            <p><strong>OPNIEUW CONTROLEREN</strong> maakt opnieuw verbinding met de radio en controleert nog eens; <strong>RAPPORT STUREN</strong> stuurt ons wat is gemeten, met het commandologboek van de radio.</p>
 
             <h3 id="trouble-otg-charging">De transceiver verdwijnt wanneer de telefoon volledig is opgeladen (Android)</h3>
             <p>

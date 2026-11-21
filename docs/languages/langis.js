@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Sækja í App Store",
     "FEAT2_OWN": "Eigin afkóðarar og kóðarar, skrifaðir frá grunni",
     "FEAT2_RAWLOG": "Skrá öll afkóðuð skilaboð",
+    "FEAT2_HEADLESS": "Keyrir án skjás sem vefþjónn fyrir fjarstýringu, t.d. á Raspberry Pi",
     "FAQ_TITLE": "Spurningar og svör",
     "FAQ_Q1": "Hvað er qFT8?",
     "FAQ_A1": "qFT8 er ókeypis radíóamatörforrit fyrir stafræna hami fyrir veik merki, Morse, fjarritara, myndir og rödd. Það keyrir á Android-símum og spjaldtölvum, iOS, Windows, macOS og Linux, og hægt er að stjórna því úr hvaða vafra sem er. Það hefur engar auglýsingar og krefst engins aðgangs. Það er skrifað af Luis Quesada Torres, HB9IPH, með eigin afkóðurum og kóðurum skrifuðum frá grunni.",

@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Stáhnout v App Store",
     "FEAT2_OWN": "Vlastní dekodéry a kodéry napsané od základů",
     "FEAT2_RAWLOG": "Zaznamenávat všechny dekódované zprávy",
+    "FEAT2_HEADLESS": "Běží bez obrazovky jako webový server pro dálkové ovládání, např. na Raspberry Pi",
     "FAQ_TITLE": "Otázky a odpovědi",
     "FAQ_Q1": "Co je qFT8?",
     "FAQ_A1": "qFT8 je bezplatný radioamatérský program pro digitální módy se slabými signály, morseovku, dálnopis, obrázky a hlas. Běží na telefonech a tabletech s Androidem, na iOS, Windows, macOS a Linuxu a lze ho ovládat z libovolného prohlížeče. Nemá reklamy a nevyžaduje účet. Napsal ho Luis Quesada Torres, HB9IPH, a to s vlastními dekodéry a kodéry napsanými od základů.",

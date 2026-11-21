@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Elŝutu en App Store",
     "FEAT2_OWN": "Propraj malkodiloj kaj kodiloj, skribitaj de nulo",
     "FEAT2_RAWLOG": "Registri ĉiujn malkoditajn mesaĝojn",
+    "FEAT2_HEADLESS": "Funkcias sen ekrano kiel retservilo por fora regado, ekz. sur Raspberry Pi",
     "FAQ_TITLE": "Demandoj kaj respondoj",
     "FAQ_Q1": "Kio estas qFT8?",
     "FAQ_A1": "qFT8 estas senpaga radioamatora programo por ciferecaj reĝimoj de malfortaj signaloj, Morso, teletajpo, bildoj kaj voĉo. Ĝi funkcias en Android-telefonoj kaj -tabulkomputiloj, iOS, Windows, macOS kaj Linux, kaj estas regebla el ajna retumilo. Ĝi ne havas reklamojn kaj ne postulas konton. Ĝin verkis Luis Quesada Torres, HB9IPH, kun propraj malkodiloj kaj kodiloj skribitaj de nulo.",

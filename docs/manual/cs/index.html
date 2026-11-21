@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Posun ladění spektrogramu</a></li>
                         <li><a href="#tx-limit">Limit nepřetržitého vysílání</a></li>
                         <li><a href="#remote-control">Webový server pro dálkové ovládání</a></li>
+                        <li><a href="#webserver-headless">Provoz qFT8 bez obrazovky (webový server dálkového ovládání)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protokol qFT8log</a></li>
@@ -637,8 +638,7 @@
                 <li><strong>Linux</strong>: port vypadá jako <code>/dev/ttyACM0</code> nebo <code>/dev/ttyUSB0</code> a vyžaduje
                     výše uvedenou skupinu. Zvuková zařízení jsou zařízení zvukového serveru (PulseAudio nebo PipeWire), takže
                     reproduktor rádia, vaše sluchátka a váš mikrofon mohou být každé jiné zařízení.
-                    Posuvník hlasitosti zařízení používá <code>pactl</code> z balíčku <code>pulseaudio-utils</code> (funguje
-                    i s PipeWire).</li>
+                    qFT8 přistupuje ke zvukovým zařízením (i k posuvníku hlasitosti zařízení) přes <code>pactl</code> a <code>parec</code> z balíčku <code>pulseaudio-utils</code> (fungují i s PipeWire): nainstalujte ho, jinak qFT8 často neslyší žádnou zvukovou kartu.</li>
             </ul>
 
             <h4>Volba rádia a jeho portu</h4>
@@ -767,7 +767,7 @@
                 <li><strong>Webové ovládání.</strong> Program pro počítač má stejný
                     <a href="#remote-control">webový server pro dálkové ovládání</a> jako Android (ve výchozím stavu vypnutý, port 13497) a zobrazuje
                     stejné stránky, včetně posuvníku hlasitosti. Použijte ho k ovládání z telefonu nebo jiného počítače ve vaší
-                    síti.</li>
+                    síti. Může také běžet bez okna (<code>qFT8 --webserver</code>, viz <a href="#webserver-headless">Provoz qFT8 bez obrazovky</a>), pro počítač bez obrazovky.</li>
                 <li><strong>Most (bridge).</strong> Počítač je obvyklý <a href="#bridge">most</a>: rádio je k němu
                     připojeno a qFT8 v telefonu, iPhonu nebo jiném počítači ho ovládá. Může také běžet bez okna
                     (<code>qFT8 --bridge</code>), na počítači bez jiné práce.</li>
@@ -775,7 +775,7 @@
                     <code>--list-devices</code> vypíše každý sériový port a zvukové zařízení, které qFT8 vidí, a skončí;
                     <code>--port &lt;device&gt;</code> nastaví výchozí sériový port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> zvolí složku profilu;
-                    <code>--bridge</code> spustí most; <code>--video-mode=&lt;mode&gt;</code> vykreslí okno pro tento běh jiným způsobem, i když qFT8 nejde otevřít natolik, aby se v Nastavení dal změnit <strong>Režim videa</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vykresluje okno přes OpenGL (viz
+                    <code>--bridge</code> spustí most; <code>--webserver</code> spustí qFT8 bez okna, s otevřeným webovým ovládáním; <code>--video-mode=&lt;mode&gt;</code> vykreslí okno pro tento běh jiným způsobem, i když qFT8 nejde otevřít natolik, aby se v Nastavení dal změnit <strong>Režim videa</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> vykresluje okno přes OpenGL (viz
                     <a href="#pc-trouble">Když něco nefunguje</a>).</li>
             </ul>
 
@@ -1817,7 +1817,7 @@
                         <li><strong>Síťová radiostanice</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Síťová radiostanice (experimentální)</strong> in <strong>Připojení radiostanice</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>PŘIPOJIT</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metoda</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Port zvukového proudu</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Zvuková karta</strong> under <strong>Zvuk</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Způsob</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adresa</strong>, the <strong>Rádio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Uživatelské jméno</strong> and <strong>Heslo</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Rádio</strong> says which radio, <strong>Jak je zvoleno v Zařízení</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimentální)</strong> in <strong>Připojení radiostanice</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Vyberte zařízení</strong> under <strong>Zařízení Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rádio</strong>, <strong>Jak je zvoleno v Zařízení</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>PŘIPOJIT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (experimentální)</strong> in <strong>Připojení radiostanice</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Vyberte zařízení</strong> under <strong>Zařízení Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rádio</strong>, <strong>Jak je zvoleno v Zařízení</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>PŘIPOJIT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1917,6 +1917,7 @@
                     odemkne <strong>USB zařízení</strong>, <strong>Rychlost (Baud Rate)</strong>, <strong>Datové bity</strong>,
                     <strong>Stop bity</strong>, <strong>Parita</strong> a způsob klíčování rádia (<strong>PTT</strong>:
                     příkazem CAT nebo linkou RTS či DTR) se zpožděním PTT před vysíláním.
+                    U RTS nebo DTR volba <strong>PTT port</strong> určuje, kde ta linka je: <strong>Stejný jako CAT</strong> (vlastní kabel rádia) nebo druhý sériový port, pro stanici s CAT na jednom kabelu a PTT na jiném rozhraní (v telefonu oba adaptéry přes USB hub; ne na iPhonu).
                     <strong>Nastavit režim transceiveru při inicializaci a každém cyklu</strong> drží rádio ve správném
                     módu. Poznámka na hlavní stránce říká, kdy toto zařízení má vlastní nastavení.</li>
                 <li><strong>Ladění (toto rádio)</strong>: <a href="#tune-offset">posun ladění spektrogramu</a> a
@@ -4468,9 +4469,9 @@
                     vzdáleností od vašeho lokátoru.</li>
                 <li>Každý řádek paměti, nebo každý řádek, který napíšete, je jeden rámec:
                     <span translate="no">BEACON</span> [komentář] vyšle vaši polohu na stupeň přesně podle vašeho lokátoru
-                    (nikdy přesněji než lokátor); <span translate="no">CALL: text</span> pošle zprávu té
+                    (nikdy přesněji než lokátor); <span translate="no">BEACON</span> šířka délka [komentář] odešle přesnou polohu v desetinných stupních, jih a západ záporně (<span translate="no">BEACON -34.3543 -58.2535</span> je 34.35 S, 58.25 W; fungují i písmena: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> pošle zprávu té
                     stanici; <span translate="no">STATUS text</span> stav; řádek, který začíná znakem
-                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>), odejde beze změny.</li>
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>), odejde beze změny. Pod každou pamětí v Nastavení &gt; <span translate="no">Packet</span> šedý řádek říká, co odesílá ("Poloha 34.35 S, 58.25 W", "Stav: ..."); dvě čísla napsaná bez <span translate="no">BEACON</span> odejdou jako stavový text, ne jako poloha, a červený řádek pod pamětí to říká.</li>
                 <li>Vaše rámce vycházejí z vaší volací značky s <span translate="no">SSID</span> zvoleným v Nastavení &gt;
                     <span translate="no">Packet</span> (ozubené kolo na obrazovce), po trase digipeaterů nastavené tam
                     (ve výchozím stavu <span translate="no">WIDE1-1,WIDE2-1</span>, jen na 2 m).</li>
@@ -5023,12 +5024,19 @@
             <p>
                 <strong>Není co instalovat, u žádného klíče.</strong> qFT8 má pro klíč vlastní ovladač zabudovaný v aplikaci: pozná <span translate="no">RTL-SDR Blog V4</span> a použije jeho zabudovaný upkonvertor <span translate="no">KV</span> a přepínání vstupů, takže <span translate="no">KV</span> na V4 funguje bez jakéhokoli nastavení. U <span translate="no">V3</span> (nebo jiného klíče bez upkonvertoru) zaškrtněte <strong>KV bez konvertoru (přímé vzorkování)</strong> pro příjem pod 24 MHz na jeho vstupu <span translate="no">KV</span>. qFT8 nikdy nezapíná bias tee klíče (napájení antény).
             </p>
-            <p>
-                <strong>Počítač, Linux</strong>: stejný řádek, stejný zabudovaný ovladač. qFT8 si klíč převezme od televizního ovladače, který systém načte sám. Váš uživatel potřebuje oprávnění k otevření klíče; pokud stavový řádek hlásí &ldquo;žádné oprávnění&rdquo;, přidejte jednou soubor s pravidlem (například <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) s řádkem <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code> (<code>2832</code> u některých starších klíčů), spusťte <code dir="ltr">sudo udevadm control --reload-rules</code> a klíč znovu zapojte.
+            <p id="rtl-stock-dongle">
+                <strong>Běžný klíč není třeba přeprogramovat.</strong> Klíč tak, jak přijde z obchodu, funguje: nic se do něj nezapisuje a qFT8 nikdy nemění jeho paměť (EEPROM). Rozhoduje čip tuneru: <span translate="no">R820T / R820T2 / R828D</span> fungují; klíče s tunerem <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> ne, a stavový řádek to řekne. <span translate="no">RTL-SDR Blog V4</span> se pozná podle názvu, který nese z výroby; klíč s <span translate="no">R828D</span> bez tohoto názvu (například V4, jehož název byl přepsán) dostane ve stavovém řádku varování, že KV nemusí fungovat. Na macOS použijte pro jakýkoli klíč síťový server (níže).
             </p>
-            <p>
-                <strong>Počítač, Windows a macOS</strong>: klíč zatím qFT8 nemůže otevřít přímo. Spusťte síťový server <span translate="no">RTL-SDR</span> na stejném počítači (nebo na jakémkoli jiném, například na <span translate="no">Raspberry Pi</span>) a zvolte <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> s adresou <code>127.0.0.1</code>, nebo klíč zprostředkujte z telefonu či počítače s Linuxem pomocí <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Počítač, Linux</strong>: stejný řádek, stejný vestavěný ovladač. qFT8 převezme klíč od televizního ovladače, který pro něj systém načte sám. Váš uživatel potřebuje oprávnění klíč otevřít: pokud je nemá, qFT8 to oznámí v kartě, jakmile se klíč zapojí, a <strong>OPRAVIT</strong> oprávnění přidá za vás. Otevře se terminál a jednou se zeptá na heslo (kde terminál není, zeptá se okno systému pro heslo). Zapíše soubor pravidel <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, který dává osobě pracující u počítače přístup k přijímačům <span translate="no">USB</span> (<span translate="no">RTL-SDR, Airspy, HackRF</span>); klíč pak funguje ihned, bez restartu a bez nového přihlášení. Karta ukazuje i příkaz, který můžete spustit sami v terminálu.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Počítač, Windows</strong>: stejný řádek, stejný vestavěný ovladač, přes ovladač <span translate="no">WinUSB</span>, který je součástí Windows. Windows novému klíči obvykle nepřidělí žádný ovladač, nebo televizní ovladač, který qFT8 použít nemůže. qFT8 to zjistí při zapojení klíče a nabídne jeho nastavení: stiskněte <strong>NASTAVIT</strong> a povolte změnu v okně správce Windows (jednou); klíč funguje o několik sekund později. Nic se nestahuje a neinstaluje se žádný náš ovladač: qFT8 přepne klíč na vlastní ovladač <span translate="no">WinUSB</span> z Windows. Televizní programy, které potřebují televizní ovladač, klíč už nevidí. Chcete-li jej vrátit Windows: v <strong>Správce zařízení</strong> klikněte pravým tlačítkem na klíč v části <strong>Universal Serial Bus devices</strong>, zvolte <strong>Uninstall device</strong> (políčko o ovladači nechte nezaškrtnuté) a poté <strong>Action &gt; Scan for hardware changes</strong>. Aktualizace Windows může televizní ovladač také vrátit; qFT8 pak nastavení nabídne znovu. Verze z Microsoft Store ovladače sama měnit nemůže: v <strong>Správce zařízení</strong> klikněte pravým tlačítkem na klíč (často &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), zvolte <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> a poté <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Počítač, macOS</strong>: klíč zatím qFT8 nemůže otevřít přímo. Spusťte síťový server <span translate="no">RTL-SDR</span> na stejném počítači (nebo na jakémkoli jiném, například na <span translate="no">Raspberry Pi</span>) a zvolte <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> s adresou <code>127.0.0.1</code>, nebo klíč zprostředkujte z telefonu či počítače pomocí <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Síťový server <span translate="no">RTL-SDR</span> a jeho ovladač</h4>
             <p>
@@ -5089,7 +5097,7 @@
                 <li>Deník drží každý záznam (bez omezení) v souboru, do kterého se jen přidává, takže velmi dlouhý deník nezpomaluje start aplikace; stránka čte jen nejnovější záznamy a při posouvání ukazuje další.</li>
                 <li>S vypnutými funkcemi pro radioamatéry se zapíše každá slyšená stanice <span translate="no">FT8, FT4, LQ ...</span> (jednou za hodinu na stanici a režim); se zapnutými funkcemi pro radioamatéry se zapisují jen slyšená úplná QSO. Stanice, kterou slyšíte poprvé (nikdy dříve ve vašem deníku <span translate="no">SWL</span>), má volací značku azurově v seznamu stanic, když jsou funkce pro radioamatéry vypnuté.</li>
                 <li>Přijímače signálů zapisují do deníku to, co identifikují, jednou na stanici za den <span translate="no">UTC</span>: lodě (<span translate="no">AIS</span>), letadla (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondy, stanice <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, časové stanice, majáky <span translate="no">NCDXF</span>, volací značky <span translate="no">ALE / ARDOP / PACTOR</span> a <span translate="no">APRS</span>, faxové mapy počasí a snímky meteorologických družic a stanice <span translate="no">FM</span> podle jejich kódu <span translate="no">RDS</span> a názvu. Počítají se pro ocenění <span translate="no">SWL</span>; nikdy se neposílají na eQSL a nejsou v exportu <span translate="no">ADIF</span> (<span translate="no">CSV</span> je má, se slyšeným názvem v posledním sloupci).</li>
-                <li>Nahrávání se řídí jedním pravidlem: účet eQSL <span translate="no">SWL</span> zapíše každou slyšenou stanici pod tento účet (amatérský účet eQSL je odmítnut); <span translate="no">PSK Reporter</span> a <span translate="no">WSPRnet</span> hlásí pod vaší volací značkou, jinak pod vaším identifikátorem <span translate="no">SWL</span>.</li>
+                <li>Nahrávání se řídí jedním pravidlem: účet eQSL <span translate="no">SWL</span> zapíše každou slyšenou stanici pod tento účet (amatérský účet eQSL je odmítnut); <span translate="no">PSK Reporter</span> a <span translate="no">WSPRnet</span> hlásí každý spot pod vaší volací značkou i pod vaším identifikátorem <span translate="no">SWL</span>, každým, který je nastaven; Nastavení ukazuje jména pod každým polem.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Je toto SDR vaše?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Čí přijímač</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Tento server je můj</strong> in its rows, the same answer as <strong>Je toto SDR vaše?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5385,6 +5393,70 @@
                     <p><strong>Poznámka:</strong> webový server funguje i s vypnutou obrazovkou, pokud je zapnut běh na pozadí (ve výchozím stavu <span translate="no">qFT8</span> běží na pozadí, je-li připojen k transceiveru).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Provoz qFT8 bez obrazovky (webový server dálkového ovládání)</h3>
+                <p>
+                    Počítačový program může běžet i úplně bez okna, na počítači bez obrazovky: na Raspberry Pi vedle rádia, na malém serveru nebo na jakémkoli počítači, ke kterému se dostanete přes SSH. qFT8 pak dělá všechno jako obvykle (zvuk, ovládání rádia, dekódování, <span translate="no">AUTO</span>, záznam, nahrávání) a vy ho ovládáte z prohlížeče přes <a href="#remote-control">webové ovládání</a>, na telefonu, tabletu nebo jiném počítači ve vaší síti.
+                </p>
+
+                <h4>Webový server, nebo bridge?</h4>
+                <p>Oba běží bez obrazovky. Liší se tím, které zařízení odvádí práci:</p>
+                <ul>
+                    <li><strong>Webový server</strong> (<code>--webserver</code>): počítač, na kterém qFT8 běží, dekóduje, vysílá a zaznamenává; prohlížeč ho jen zobrazuje a má jeho tlačítka. Hodí se pro výkonný počítač doma, který ovládáte z telefonu.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, viz <a href="#bridge">qFT8 bridge</a>): zařízení u rádia jen přenáší po síti příkazy rádia a jeho zvuk a dekóduje qFT8 na zařízení, ze kterého ovládáte (počítačový program, aplikace pro Android nebo aplikace pro iPhone/iPad). Hodí se pro Raspberry Pi u rádia, když práci dělá váš vlastní počítač.</li>
+                </ul>
+                <p>Oba nemohou běžet současně.</p>
+
+                <h4>Nejdřív nastavit</h4>
+                <p>
+                    qFT8 používá své uložené nastavení úplně stejně jako s oknem: značku, lokátor, rádio, zvuková zařízení, režimy, záznam a služby pro nahrávání spojení. Například když je zaškrtnuto <a href="#raw-message-logs">Surové záznamy zpráv</a>, dál zapisuje své soubory .tsv. Nastavte proto qFT8 nejdřív: spusťte ho jednou s oknem na tom počítači (nebo zkopírujte složku profilu z jiného počítače, viz <a href="#pc-settings">Nastavení: kde jsou a jak je přenést z telefonu</a>), nebo ho spusťte bez obrazovky a nastavte z Nastavení webového ovládání, které je uloží jako obvykle.
+                </p>
+
+                <h4>Spuštění</h4>
+                <p>V terminálu na tom počítači (přes SSH to jde) ve složce qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, také Raspberry Pi: <code>./qFT8 --webserver</code>. Se staženým souborem .jar a Javou 21 nebo novější: <code>java -jar</code>, název souboru .jar a <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminál oznámí, že qFT8 běží bez okna, že <span translate="no">TX</span> je vypnuto a zda stránka vyžaduje heslo, a ukáže soukromý odkaz webového ovládání: otevřete ho v prohlížeči ve stejné síti. Část za <code>#k=</code> je klíč odkazu: nechte si ho pro sebe. Zobrazuje se jen v terminálu a nikdy se nezapisuje do souboru záznamu qFT8. <code>Ctrl+C</code> zastaví qFT8 a vrátí rádio na příjem.
+                </p>
+                <p>
+                    <span translate="no">TX</span> je při takovém spuštění vždy vypnuto. Zapne ho jen tlačítko <span translate="no">TX</span> webového ovládání.
+                </p>
+
+                <h4>Volby</h4>
+                <p>
+                    Každá volba mění nastavení jen pro tento běh: nic se neukládá a bez voleb se použije uložené nastavení. <code>qFT8 --webserver --help</code> je vypíše.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: port webového ovládání, 1024 až 65534 (13497, pokud jste ho nezměnili).</li>
+                    <li><code>--bind ADDRESS</code>: naslouchat jen na této adrese počítače.</li>
+                    <li><code>--password TEXT</code> nebo <code>--password-file FILE</code> (první řádek souboru; bezpečnější, protože příkazový řádek vidí ostatní uživatelé počítače) nebo <code>--no-password</code>.</li>
+                    <li><code>--https</code> nebo <code>--no-https</code>: zabezpečená adresa (port + 1), kterou prohlížeč potřebuje k použití mikrofonu.</li>
+                    <li><code>--access read</code>, <code>stop</code> nebo <code>full</code>: co smí stránka dělat: jen se dívat, dívat se a zastavit <span translate="no">TX</span>, nebo všechno.</li>
+                    <li><code>--audio-in NAME</code> a <code>--audio-out NAME</code>: zvuková zařízení rádia podle názvu, který ukazuje <code>qFT8 --list-devices</code>, nebo <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: rádio (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...) a <code>--port DEVICE</code>: jeho sériový port (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: použitá složka profilu.</li>
+                </ul>
+                <p>
+                    Pokud port používá jiný program nebo stejnou složku profilu už používá jiný qFT8, qFT8 to v terminálu oznámí a skončí.
+                </p>
+
+                <h4>Příklad: Raspberry Pi</h4>
+                <p>
+                    Rádio je k Pi připojeno přes USB a qFT8 bylo jednou nastaveno (s obrazovkou na Pi nebo z webového ovládání). Z jiného počítače:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Pak otevřete zobrazený odkaz na telefonu. Raspberry Pi 4 nebo 5 dekóduje <span translate="no">FT8</span> včas; rychlejší počítač najde více nejslabších signálů.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Zpět na obsah</a>
             </section>
 
             <section id="bridge">
@@ -5933,6 +6005,19 @@
                 <li>V Linuxu: pokud qFT8 hlásí, že nemá oprávnění otevřít port rádia, přijměte jeho nabídku nápravy (váš účet se přidá do skupiny portu), nebo požádejte správce systému.</li>
                 <li>Objevují-li se potíže právě při vysílání, může jít o vf rušení. Pomoci mohou tlumivky nebo ferity na USB kabelu. Můžete také zkusit vysílat na jiném pásmu, protože některá zařízení jsou na rušení citlivá jen na určitých pásmech.</li>
             </ul>
+            <p>
+                Když qFT8 komunikuje s rádiem přes <span translate="no">CAT</span> (rádio vybrané v <strong>Nastavení &gt; Zařízení</strong> nebo takové, které našlo <span translate="no">AUTO</span>) a rádio neodpovídá, na spektrogramu se objeví červené varování <strong>Žádný CAT</strong> (a pod rádiem v <strong>Nastavení &gt; Zařízení</strong>). Klepněte na něj: karta řekne, co qFT8 na spojení naměřil, a vypíše, co v daném případě zkusit:
+            </p>
+            <ul>
+                <li><strong>Rádio nenalezeno</strong>: rádio je vypnuté, kabel je uvolněný, kabel jen nabíjí (použijte datový USB kabel), redukce nebo hub data nepropouští, nebo je <span translate="no">USB OTG</span> vypnuté v systémovém nastavení telefonu. V počítači: USB ovladač rádia a port vybraný v <strong>Nastavení &gt; Konfigurace zařízení</strong>.</li>
+                <li><strong>Port nešlo otevřít</strong>: povolte qFT8 používat USB zařízení, když se Android zeptá, a zavřete ostatní programy, které používají port rádia.</li>
+                <li><strong>Rádio neodpovídá</strong> (nevrátí se ani jeden bajt): rádio je zapnuté, kabel jde do jeho zásuvky <span translate="no">CAT</span>, model rádia je správný a rychlost <span translate="no">CAT</span> rádia je stejná jako v qFT8 (<strong>Nastavení &gt; Konfigurace zařízení &gt; Rychlost (Baud Rate)</strong>). Rádia Yaesu s nabídkou <span translate="no">CAT RTS</span>: nastavte ji na <span translate="no">DISABLE</span>. Rádia Xiegu: datový (<span translate="no">CI-V</span>) kabel rozhraní patří do konektoru <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> rádia, nejen zvukový kabel, a adresa <span translate="no">CI-V</span> a rychlost (baud) rádia jsou stejné jako v qFT8 (karta je ukazuje).</li>
+                <li><strong>Vracejí se jen vlastní příkazy qFT8</strong>: kabel nebo rozhraní vrací data zpět bez rádia (kabel Icom <span translate="no">CI-V</span> to dělá, když je rádio vypnuté).</li>
+                <li><strong>Nečitelné odpovědi</strong>: nesouhlasí rychlost (baud) nebo model rádia.</li>
+                <li><strong>Při vysílání přestane odpovídat</strong>: RF rušení. Nasaďte feritová jádra na USB a audio kabely u obou konců, jako test zkuste menší výkon (nastavuje se na rádiu) a zkontrolujte anténu a napáječ, zda nevedou souhlasný proud.</li>
+                <li><strong>Odpovědělo a pak přestalo</strong>: rádio bylo vypnuto nebo se uvolnil kabel.</li>
+            </ul>
+            <p><strong>ZKONTROLOVAT ZNOVU</strong> se znovu připojí k rádiu a zkontroluje to ještě jednou; <strong>ODESLAT HLÁŠENÍ</strong> nám pošle, co bylo naměřeno, spolu s protokolem příkazů rádia.</p>
 
             <h3 id="trouble-otg-charging">Transceiver zmizí, když je telefon plně nabitý (Android)</h3>
             <p>

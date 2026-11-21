@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Tải về trên App Store",
     "FEAT2_OWN": "Bộ giải mã và mã hóa riêng, viết từ đầu",
     "FEAT2_RAWLOG": "Ghi lại mọi tin nhắn đã giải mã",
+    "FEAT2_HEADLESS": "Chạy không cần màn hình như máy chủ web điều khiển từ xa, ví dụ trên Raspberry Pi",
     "FAQ_TITLE": "Hỏi và đáp",
     "FAQ_Q1": "qFT8 là gì?",
     "FAQ_A1": "qFT8 là chương trình vô tuyến nghiệp dư miễn phí cho các chế độ số tín hiệu yếu, Morse, teletype, hình ảnh và thoại. Nó chạy trên điện thoại và máy tính bảng Android, iOS, Windows, macOS và Linux, và có thể điều khiển từ bất kỳ trình duyệt nào. Không có quảng cáo và không cần tài khoản. Chương trình do Luis Quesada Torres, HB9IPH viết, với bộ giải mã và mã hóa riêng được viết từ đầu.",

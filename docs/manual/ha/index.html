@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Bambancin daidaitawar spectrogram</a></li>
                         <li><a href="#tx-limit">Iyakar watsawa ba tsayawa</a></li>
                         <li><a href="#remote-control">Sabar Yanar Gizo Ta Kula Daga Nesa</a></li>
+                        <li><a href="#webserver-headless">Gudanar da qFT8 ba tare da allo ba (sabar yanar gizo ta kula daga nesa)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Ƙa'idar qFT8log</a></li>
@@ -636,8 +637,7 @@
                 <li><strong>Linux</strong>: port yana kama da <code>/dev/ttyACM0</code> ko <code>/dev/ttyUSB0</code> kuma yana buƙatar
                     rukunin da aka ambata a sama. Na'urorin sauti su ne na sound server (PulseAudio ko PipeWire), don haka
                     lasifikar rediyo, belun kunnenka da makirufonka kowanne na iya zama na'ura daban.
-                    Na'urar zamiyar ƙarar na'ura tana amfani da <code>pactl</code>, daga kunshin <code>pulseaudio-utils</code> (yana
-                    aiki da PipeWire ma).</li>
+                    qFT8 tana kaiwa ga na'urorin sauti (da na'urar zamiyar ƙarar na'ura) ta hanyar <code>pactl</code> da <code>parec</code>, daga kunshin <code>pulseaudio-utils</code> (suna aiki da PipeWire ma): shigar da shi, in ba haka ba qFT8 sau da yawa ba ta jin kowane katin sauti.</li>
             </ul>
 
             <h4>Zaɓar rediyo da port ɗinsa</h4>
@@ -765,7 +765,7 @@
                 <li><strong>Na'urar sarrafa daga nesa ta yanar gizo.</strong> Shirin kwamfuta yana da
                     <a href="#remote-control">Sabar Yanar Gizo Ta Kula Daga Nesa</a> iri ɗaya da na Android (a kashe ta asali, port 13497) kuma yana nuna
                     shafuka iri ɗaya, har da na'urar zamiyar ƙara. Yi amfani da ita don aiki daga waya ko wata kwamfuta a
-                    hanyar sadarwarka.</li>
+                    hanyar sadarwarka. Yana iya aiki ba tare da taga ba ma (<code>qFT8 --webserver</code>, duba <a href="#webserver-headless">Gudanar da qFT8 ba tare da allo ba</a>), don kwamfuta mara allo.</li>
                 <li><strong>Gada.</strong> Kwamfuta ita ce <a href="#bridge">gada</a> ta yau da kullum: rediyo a haɗe
                     da ita, da qFT8 a waya, iPhone ko wata kwamfuta yana sarrafa ta. Tana kuma iya aiki ba tare da taga ba
                     (<code>qFT8 --bridge</code>), don kwamfuta da ba ta da wani aiki.</li>
@@ -773,7 +773,7 @@
                     tana nuna su): <code>--list-devices</code> yana lissafa kowane port na serial da na'urar sauti da qFT8 yake gani sannan ya fita;
                     <code>--port &lt;na'ura&gt;</code> yana saita port na serial na asali (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;babban fayil&gt;</code> yana zaɓar babban fayil ɗin profile;
-                    <code>--bridge</code> yana fara gada; <code>--video-mode=&lt;yanayi&gt;</code> yana zana taga ta wata hanya domin wannan gudu, ko da qFT8 ba zai buɗe sosai don canza <strong>Yanayin bidiyo</strong> a Saituna ba (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> yana zana taga ta OpenGL (duba
+                    <code>--bridge</code> yana fara gada; <code>--webserver</code> yana gudanar da qFT8 ba tare da taga ba, tare da na'urar sarrafa daga nesa ta yanar gizo a buɗe; <code>--video-mode=&lt;yanayi&gt;</code> yana zana taga ta wata hanya domin wannan gudu, ko da qFT8 ba zai buɗe sosai don canza <strong>Yanayin bidiyo</strong> a Saituna ba (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> yana zana taga ta OpenGL (duba
                     <a href="#pc-trouble">Idan wani abu bai yi aiki ba</a>).</li>
             </ul>
 
@@ -1826,7 +1826,7 @@
                         <li><strong>Rediyon hanyar sadarwa</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Rediyon hanyar sadarwa (na gwaji)</strong> in <strong>Haɗin rediyo</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>HAƊA</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Hanya</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Tashar haɗin kwararar sauti</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Katin sauti</strong> under <strong>Sauti</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Hanya</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adireshi</strong>, the <strong>Rediyo</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Sunan mai amfani</strong> and <strong>Kalmar sirri</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Rediyo</strong> says which radio, <strong>Kamar yadda aka zaɓa a Na'ura</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (na gwaji)</strong> in <strong>Haɗin rediyo</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Zaɓi na'ura</strong> under <strong>Na'urar Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rediyo</strong>, <strong>Kamar yadda aka zaɓa a Na'ura</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>HAƊA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (na gwaji)</strong> in <strong>Haɗin rediyo</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Zaɓi na'ura</strong> under <strong>Na'urar Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rediyo</strong>, <strong>Kamar yadda aka zaɓa a Na'ura</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>HAƊA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1907,7 +1907,8 @@
                     Changing it closes the old connection and connects the radio the new way; it never turns
                     <span translate="no">TX</span> on. The web remote's settings page has the same choice.</li>
             <li><strong>Saitunan sauti</strong>: <strong>Tsarin sauti</strong>, <strong>Cikakken duplex</strong>, <strong>Tushen shigar sauti</strong> (a wayoyin da suke bayarwa, <em>Unprocessed</em> shi ne mafi kyau ga sigina masu rauni, tare da AGC na rediyo a kashe), na'urorin sauti na rediyo (<strong>Shigarwa daga na'urar rediyo</strong>, <strong>Fitarwa zuwa na'urar rediyo</strong>) da girman buffer ɗinsu, <strong>Samar da sautin tare da ƙarar</strong> (matakin sautin aikawa), ƙarar na'ura lokacin amfani da rediyo da lokacin amfani da lasifika, da <strong>Nuna gargaɗin kuskuren buffer sauti</strong>. Bar su a kan <span translate="no">AUTO</span> sai dai idan wani abu bai yi aiki ba.</li>
-            <li><strong>Saitunan na'ura</strong>, ga rediyo da aka haɗa ta USB: <strong>Bada izinin canza saituna</strong> yana buɗe <strong>Na'urar USB</strong>, <strong>Gudun Baud</strong>, <strong>Bits na Bayani</strong>, <strong>Bits na Tsayawa</strong>, <strong>Parity</strong> da yadda ake kunna rediyo don aikawa (<strong>PTT</strong>: ta umarnin CAT, ko layin RTS ko DTR), tare da jinkirin PTT kafin aikawa. <strong>Saita yanayin transceiver yayin farawa da kowane zagaye</strong> yana kiyaye rediyo a yanayin da ya dace. Bayani a babban shafin yana faɗin lokacin da wannan na'urar take da gyare-gyare.</li>
+            <li><strong>Saitunan na'ura</strong>, ga rediyo da aka haɗa ta USB: <strong>Bada izinin canza saituna</strong> yana buɗe <strong>Na'urar USB</strong>, <strong>Gudun Baud</strong>, <strong>Bits na Bayani</strong>, <strong>Bits na Tsayawa</strong>, <strong>Parity</strong> da yadda ake kunna rediyo don aikawa (<strong>PTT</strong>: ta umarnin CAT, ko layin RTS ko DTR), tare da jinkirin PTT kafin aikawa. Da RTS ko DTR, <strong>Tashar PTT</strong> tana zaɓar inda wannan layin yake: <strong>Daidai da CAT</strong> (igiyar rediyon kanta) ko tashar serial ta biyu, ga tasha mai CAT a igiya ɗaya da PTT a wata na'urar haɗi (a waya, adaftoci biyu ta hub na USB; ba a iPhone ba).
+                    <strong>Saita yanayin transceiver yayin farawa da kowane zagaye</strong> yana kiyaye rediyo a yanayin da ya dace. Bayani a babban shafin yana faɗin lokacin da wannan na'urar take da gyare-gyare.</li>
             <li><strong>Daidaitawa (wannan rediyo)</strong>: <a href="#tune-offset">Bambancin daidaitawar spectrogram</a> da <a href="#tx-limit">Iyakar watsawa ba tsayawa</a>.</li>
             </ul>
 
@@ -4503,9 +4504,9 @@
                     nisansu daga locator ɗinka.</li>
                 <li>Kowane layi na memory, ko kowane layi da ka buga, firam ɗaya ne:
                     <span translate="no">BEACON</span> [sharhi] yana aika matsayinka, har zuwa digiri, daga locator ɗinka
-                    (ba ya taɓa zama daidai fiye da locator); <span translate="no">CALL: text</span> yana aika saƙo zuwa wannan
+                    (ba ya taɓa zama daidai fiye da locator); <span translate="no">BEACON</span> lat lon [sharhi] yana aika ainihin wuri a cikin digiri na ƙima, Kudu da Yamma da alamar ragi (<span translate="no">BEACON -34.3543 -58.2535</span> yana nufin 34.35 S, 58.25 W; haruffa ma suna aiki: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> yana aika saƙo zuwa wannan
                     tasha; <span translate="no">STATUS text</span> matsayi; layin da ya fara da
-                    harafin <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) yana fita yadda yake.</li>
+                    harafin <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) yana fita yadda yake. A ƙarƙashin kowace memory a cikin Saituna &gt; <span translate="no">Packet</span>, layin launin toka yana faɗin abin da yake aikawa ("Wuri 34.35 S, 58.25 W", "Matsayi: ..."); lambobi biyu da aka rubuta ba tare da <span translate="no">BEACON</span> ba suna fita a matsayin rubutun matsayi, ba wuri ba, kuma jan layi a ƙarƙashin memory yana faɗin haka.</li>
                 <li>Firam ɗinka suna fitowa daga sunan kiranka da <span translate="no">SSID</span> da aka zaɓa a Saituna &gt;
                     <span translate="no">Packet</span> (giyar allon), ta hanyar digipeater da aka saita a can
                     (<span translate="no">WIDE1-1,WIDE2-1</span> a matsayin tsoho, 2 m kawai).</li>
@@ -5088,22 +5089,19 @@
                 <strong>HF ba tare da mai canzawa ba (ɗaukar samfur kai tsaye)</strong> don karɓa ƙasa da 24 MHz a shigarwarsa ta
                 <span translate="no">HF</span>. qFT8 ba ya taɓa kunna bias tee na dongle (wutar eriya).
             </p>
-            <p>
-                <strong>Kwamfuta, Linux</strong>: layi ɗaya, direba ɗaya da ke ciki. qFT8 yana ɗaukar dongle daga direban TV
-                da tsarin ke loda masa da kansa. Mai amfani da kai yana buƙatar izinin buɗe dongle; idan layin matsayi ya ce
-                &ldquo;babu izini&rdquo;, ƙara fayil ɗin ƙa'idodi sau ɗaya (misali
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) da layin
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> ga wasu tsofaffin dongle), aiwatar da
-                <code dir="ltr">sudo udevadm control --reload-rules</code> sannan a sake haɗa dongle.
+            <p id="rtl-stock-dongle">
+                <strong>Dongle na yau da kullum baya buƙatar sake shiryawa.</strong> Dongle kamar yadda ya zo daga shago yana aiki: ba a rubuta komai a ciki, kuma qFT8 ba ya taɓa canza ƙwaƙwalwarsa (EEPROM). Abin da ke da muhimmanci shi ne cip ɗin tuner: <span translate="no">R820T / R820T2 / R828D</span> suna aiki; dongle masu tuner <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> ba sa aiki, kuma layin matsayi yana faɗa. Ana gane <span translate="no">RTL-SDR Blog V4</span> da sunan da yake ɗauke da shi daga masana'anta; dongle <span translate="no">R828D</span> da babu wannan sunan (misali V4 da aka sake rubuta sunansa) yana samun gargaɗi a layin matsayi cewa HF bazai yi aiki ba. A macOS, yi amfani da sabar cibiyar sadarwa (a ƙasa) ga kowane dongle.
             </p>
-            <p>
-                <strong>Kwamfuta, Windows da macOS</strong>: qFT8 ba zai iya buɗe dongle kai tsaye ba tukuna. Gudanar da
-                sabar sadarwa ta <span translate="no">RTL-SDR</span> a kan kwamfuta ɗaya (ko a kowace wata, kamar
-                <span translate="no">Raspberry Pi</span>) sannan ka zaɓi <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                da adireshin <code>127.0.0.1</code>, ko ka bayar da dongle daga waya ko kwamfutar Linux da
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Kwamfuta, Linux</strong>: layi ɗaya, direba ɗaya da aka gina a ciki. qFT8 yana karɓar dongle daga direban TV da tsarin kansa yake lodawa masa. Mai amfani da kai yana buƙatar izinin buɗe dongle: idan ba shi da shi, qFT8 yana faɗa a cikin kati da zarar an haɗa dongle, kuma <strong>GYARA</strong> yana ƙara izinin maka. Ana buɗe terminal kuma yana tambayar kalmar sirrinka sau ɗaya (inda babu terminal, taga kalmar sirri ta tsarin da kanta take yin haka). Yana rubuta fayil ɗin ƙa'ida <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, wanda ke ba mai amfani da kwamfutar damar shiga na'urorin karɓa na <span translate="no">USB</span> (<span translate="no">RTL-SDR, Airspy, HackRF</span>); sai dongle ya yi aiki nan take, ba tare da sake kunnawa ba kuma ba tare da sabon shiga ba. Katin kuma yana nuna umarnin, don ka aiwatar da shi da kanka a terminal.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Kwamfuta, Windows</strong>: layi ɗaya, direba ɗaya da aka gina a ciki, ta hanyar direban <span translate="no">WinUSB</span> da ke zuwa tare da Windows. Windows yawanci ba ya ba sabon dongle wani direba, ko kuma yana ba shi direban TV da qFT8 ba zai iya amfani da shi ba. qFT8 yana lura da hakan idan an haɗa dongle kuma yana ba da shawarar saita shi: danna <strong>SAITA</strong> ka ba da izinin canjin a cikin taga mai gudanarwa ta Windows (sau ɗaya); dongle yana aiki bayan 'yan daƙiƙu. Ba a sauke komai ba kuma ba a shigar da wani direba namu ba: qFT8 yana mayar da dongle zuwa direban <span translate="no">WinUSB</span> na Windows da kansa. Shirye-shiryen TV da ke buƙatar direban TV ba za su ƙara ganin dongle ba. Don mayar da shi ga Windows: a cikin <strong>Device Manager</strong>, danna dama a kan dongle ƙarƙashin <strong>Universal Serial Bus devices</strong>, zaɓi <strong>Uninstall device</strong> (bar akwatin game da direba ba tare da alama ba), sannan <strong>Action &gt; Scan for hardware changes</strong>. Sabuntawar Windows na iya komar da direban TV; qFT8 zai sake ba da saitin. Sigar Microsoft Store ba za ta iya canza direbobi da kanta ba: a cikin <strong>Device Manager</strong>, danna dama a kan dongle (sau da yawa &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), zaɓi <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, sannan <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Kwamfuta, macOS</strong>: qFT8 ba zai iya buɗe dongle kai tsaye ba tukuna. Gudanar da sabar sadarwa ta <span translate="no">RTL-SDR</span> a kan kwamfuta ɗaya (ko a kowace wata, kamar <span translate="no">Raspberry Pi</span>) sannan ka zaɓi <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> da adireshin <code>127.0.0.1</code>, ko ka bayar da dongle daga waya ko kwamfuta da <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Sabar sadarwa ta <span translate="no">RTL-SDR</span> da direbanta</h4>
             <p>
@@ -5204,7 +5202,7 @@
                 <li>Log ɗin yana riƙe kowace shigarwa (babu iyaka) a cikin fayil da ake ƙara masa kawai, don haka log mai tsawo sosai ba ya rage saurin farawar aikace-aikacen; shafin yana karanta sabbin shigarwa kawai kuma yana nuna ƙari yayin da kake gungurawa.</li>
                 <li>Idan fasalolin Ham a kashe, kowace tashar <span translate="no">FT8, FT4, LQ ...</span> da aka ji ana rubuta ta a log (sau ɗaya a awa ga kowace tasha da yanayi); idan fasalolin Ham na kunne, cikakkun QSO da aka ji kawai ake rubutawa. Tashar da ka ji a karon farko (ba ta taɓa kasancewa a log ɗinka na <span translate="no">SWL</span> a baya ba) tana da alamar kiranta da launin shuɗi-kore a jerin Tashoshi idan fasalolin Ham a kashe.</li>
                 <li>Masu karɓar sigina suna rubuta abin da suka gane a log, sau ɗaya ga kowace tasha a kowace rana ta <span translate="no">UTC</span>: jiragen ruwa (<span translate="no">AIS</span>), jiragen sama (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, tashoshin <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, tashoshin lokaci, fitilun <span translate="no">NCDXF</span>, alamomin kira na <span translate="no">ALE / ARDOP / PACTOR</span> da <span translate="no">APRS</span>, hotunan faks na yanayi da na tauraron ɗan adam na yanayi, da tashoshin <span translate="no">FM</span> ta lambar <span translate="no">RDS</span> da suna. Suna ƙidaya don lambobin yabo na <span translate="no">SWL</span>; ba a taɓa aika su zuwa eQSL ba kuma ba sa cikin fitarwar <span translate="no">ADIF</span> (<span translate="no">CSV</span> yana da su, tare da sunan da aka ji a shafi na ƙarshe).</li>
-                <li>Lodawa tana bin doka ɗaya: asusun <span translate="no">SWL</span> na eQSL yana ajiye kowace tashar da aka ji ƙarƙashin wannan asusun (ana ƙin asusun eQSL na mai son rediyo); <span translate="no">PSK Reporter</span> da <span translate="no">WSPRnet</span> suna ba da rahoto ƙarƙashin alamar kiranka, idan ba haka ba ƙarƙashin id ɗinka na <span translate="no">SWL</span>.</li>
+                <li>Lodawa tana bin doka ɗaya: asusun <span translate="no">SWL</span> na eQSL yana ajiye kowace tashar da aka ji ƙarƙashin wannan asusun (ana ƙin asusun eQSL na mai son rediyo); <span translate="no">PSK Reporter</span> da <span translate="no">WSPRnet</span> suna ba da rahoton kowane spot ƙarƙashin alamar kiranka da id ɗinka na <span translate="no">SWL</span>, kowanne da aka saita; Saituna suna nuna sunayen ƙarƙashin kowane akwati.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Shin wannan SDR naku ne?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Mai karɓa na wa</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Wannan sabar tawa ce</strong> in its rows, the same answer as <strong>Shin wannan SDR naku ne?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5519,6 +5517,70 @@
                     <p><strong>Lura:</strong> Sabar yanar gizo za ta yi aiki allo a kashe idan an kunna saitunan aiki a bango (na asali shi ne ci gaba da aiki a bango idan <span translate="no">qFT8</span> tana haɗe da transceiver).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Gudanar da qFT8 ba tare da allo ba (sabar yanar gizo ta kula daga nesa)</h3>
+                <p>
+                    Shirin kwamfuta kuma yana iya aiki ba tare da taga ko ɗaya ba, a kwamfuta mara allo: Raspberry Pi kusa da rediyo, ƙaramar sabar, ko duk wata kwamfuta da kake isa gare ta ta SSH. Sai qFT8 ya yi komai kamar yadda aka saba (sauti, sarrafa rediyo, yanke saƙo, <span translate="no">AUTO</span>, rajista, lodawa), kuma kana sarrafa shi daga burauza ta hanyar <a href="#remote-control">na'urar sarrafa daga nesa ta yanar gizo</a>, a waya, kwamfutar tafi-da-gidanka ko wata kwamfuta a hanyar sadarwarka.
+                </p>
+
+                <h4>Sabar yanar gizo ko bridge?</h4>
+                <p>Dukansu suna aiki ba tare da allo ba. Bambancinsu shi ne wace na'ura ce ke yin aikin:</p>
+                <ul>
+                    <li><strong>Sabar yanar gizo</strong> (<code>--webserver</code>): kwamfutar da ke gudanar da qFT8 ita ce ke yanke saƙo, aika da yin rajista; burauza tana nuna shi kawai kuma tana da maɓallansa. Ta dace da kwamfuta mai ƙarfi a gida da kake sarrafawa daga waya.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, duba <a href="#bridge">qFT8 bridge</a>): na'urar da ke kusa da rediyo tana wuce umarnin rediyo da sautinsa ne kawai ta hanyar sadarwarka, kuma qFT8 da ke kan na'urar da kake aiki daga gare ta (shirin kwamfuta, manhajar Android ko manhajar iPhone/iPad) ne ke yanke saƙo. Ya dace da Raspberry Pi a wurin rediyo yayin da kwamfutarka ke yin aikin.</li>
+                </ul>
+                <p>Ba za a iya gudanar da su biyu a lokaci guda ba.</p>
+
+                <h4>Da farko a saita shi</h4>
+                <p>
+                    qFT8 yana amfani da saitunansa da aka adana daidai kamar da taga: sunan kira, locator, rediyo, na'urorin sauti, hanyoyin aiki, rajista da ayyukan lodin QSO. Misali, idan an yi alamar <a href="#raw-message-logs">Rajistar saƙonni na asali</a>, yana ci gaba da rubuta fayilolinsa na .tsv. Don haka a fara saita qFT8: a kunna shi sau ɗaya da taga a kwamfutar nan (ko a kwafi babban fayil ɗin bayanin martaba daga wata kwamfuta, duba <a href="#pc-settings">Saituna: inda suke, da mayar da su daga waya</a>), ko a kunna shi ba tare da allo ba a saita daga Saitunan na'urar sarrafa daga nesa ta yanar gizo, wanda ke adana su kamar yadda aka saba.
+                </p>
+
+                <h4>Fara shi</h4>
+                <p>A cikin tashar umarni a kwamfutar nan (ta SSH ma ya dace), a babban fayil ɗin qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, har da Raspberry Pi: <code>./qFT8 --webserver</code>. Da saukarwar .jar da Java 21 ko sabuwa: <code>java -jar</code>, sunan fayil ɗin .jar da <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Tashar umarnin tana cewa qFT8 yana aiki ba tare da taga ba, cewa <span translate="no">TX</span> a kashe yake kuma ko shafin yana neman kalmar sirri, sannan tana nuna hanyar haɗin sirri ta na'urar sarrafa daga nesa ta yanar gizo: a buɗe ta a burauza a hanyar sadarwa ɗaya. Ɓangaren da ke bayan <code>#k=</code> shi ne maɓallin hanyar haɗin: a kiyaye shi a sirri. Ana nuna shi a tashar umarni kawai, kuma ba a taɓa rubuta shi a fayil ɗin rajistar qFT8 ba. <code>Ctrl+C</code> yana tsayar da qFT8 kuma yana mayar da rediyo zuwa karɓa.
+                </p>
+                <p>
+                    <span translate="no">TX</span> a kashe yake koyaushe idan qFT8 ya fara haka. Maɓallin <span translate="no">TX</span> na na'urar sarrafa daga nesa ta yanar gizo ne kaɗai ke kunna shi.
+                </p>
+
+                <h4>Zaɓuɓɓuka</h4>
+                <p>
+                    Kowane zaɓi yana canza saiti ɗaya ne kawai don wannan gudu: ba a adana komai, kuma ba tare da zaɓuɓɓuka ba ana amfani da saitunan da aka adana. <code>qFT8 --webserver --help</code> yana lissafa su.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: tashar na'urar sarrafa daga nesa ta yanar gizo, daga 1024 zuwa 65534 (13497 sai dai idan ka canza ta).</li>
+                    <li><code>--bind ADDRESS</code>: a saurara a wannan adireshin kwamfutar kawai.</li>
+                    <li><code>--password TEXT</code>, ko <code>--password-file FILE</code> (layin farko na fayil ɗin; ya fi aminci, saboda sauran masu amfani da kwamfutar na iya ganin layin umarni), ko <code>--no-password</code>.</li>
+                    <li><code>--https</code> ko <code>--no-https</code>: adireshi mai tsaro (tashar + 1) da burauza ke buƙata don amfani da makirufonta.</li>
+                    <li><code>--access read</code>, <code>stop</code> ko <code>full</code>: abin da shafin zai iya yi: kallo kawai, kallo da tsayar da <span translate="no">TX</span>, ko komai.</li>
+                    <li><code>--audio-in NAME</code> da <code>--audio-out NAME</code>: na'urorin sautin rediyo, da sunan da <code>qFT8 --list-devices</code> ke nunawa, ko <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: rediyon (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), da <code>--port DEVICE</code>: tashar serial ɗinsa (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: babban fayil ɗin bayanin martaba da za a yi amfani da shi.</li>
+                </ul>
+                <p>
+                    Idan wani shiri ya riga ya ɗauki tashar, ko wani qFT8 ya riga ya yi amfani da babban fayil ɗin bayanin martaba ɗaya, qFT8 yana faɗa a tashar umarni kuma ya tsaya.
+                </p>
+
+                <h4>Misali: Raspberry Pi</h4>
+                <p>
+                    An haɗa rediyo da Pi ta USB, kuma an saita qFT8 sau ɗaya (da allo a kan Pi, ko daga na'urar sarrafa daga nesa ta yanar gizo). Daga wata kwamfuta:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Sannan a buɗe hanyar haɗin da yake nunawa a wayarka. Raspberry Pi 4 ko 5 yana yanke <span translate="no">FT8</span> a kan lokaci; kwamfuta mafi sauri tana samun ƙarin raunanan sigina.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Koma zuwa Abubuwan da ke ciki</a>
             </section>
 
             <section id="bridge">
@@ -6079,6 +6141,19 @@
                 <li>A Linux, idan qFT8 ta ce ba ta da izinin buɗe port na rediyo, karɓi tayinta na gyarawa (ana saka asusunka a rukunin port ɗin), ko tambayi mai kula da tsarinka.</li>
                 <li>Idan matsalolin suna faruwa ne musamman yayin watsawa, radio interference ne mai yiwuwa. Saka chokes ko ferrites a kebul na USB yana iya taimakawa. Kana kuma iya gwada watsawa a wani zango, domin wasu na'urori suna damuwa da interference a wasu zanguna kawai.</li>
             </ul>
+            <p>
+                Lokacin da qFT8 ke magana da rediyo ta hanyar <span translate="no">CAT</span> (rediyon da aka zaɓa a cikin <strong>Saituna &gt; Na'ura</strong>, ko wadda <span translate="no">AUTO</span> ta samo) kuma rediyon ba ta amsawa, jan gargaɗin <strong>Babu <span translate="no">CAT</span></strong> yana bayyana a kan spectrogram (da kuma a ƙarƙashin rediyon a cikin <strong>Saituna &gt; Na'ura</strong>). Taɓa shi: katin yana faɗin abin da qFT8 ya auna a haɗin kuma yana lissafa abin da za a gwada a wannan yanayin:
+            </p>
+            <ul>
+                <li><strong>qFT8 ba ya ganin rediyo</strong>: rediyo a kashe take, igiya ta saki, igiyar caji kawai ce (yi amfani da igiyar bayanai ta USB), adaftar ko hub ba sa ba da bayanai, ko kuma <span translate="no">USB OTG</span> a kashe yake a saitunan tsarin wayar. A kwamfuta: direban USB na rediyon, da tashar da aka zaɓa a cikin <strong>Saituna &gt; Tsarin Na'ura</strong>.</li>
+                <li><strong>An haɗa rediyo, amma qFT8 ya kasa buɗe tashar ta (babu izini, ko wani shiri yana amfani da ita)</strong>: ba qFT8 izinin amfani da na'urar USB idan Android ya tambaya, sannan a rufe sauran shirye-shiryen da ke amfani da tashar rediyon.</li>
+                <li><strong>Rediyo ba ta amsawa</strong> (ko byte ɗaya ba ya dawowa): rediyo a kunne take, igiyar tana shiga soket ɗin <span translate="no">CAT</span> nata, samfurin rediyon daidai ne, kuma gudun baud na <span translate="no">CAT</span> na rediyon ɗaya ne da na qFT8 (<strong>Saituna &gt; Tsarin Na'ura &gt; Gudun Baud</strong>). Rediyon Yaesu masu menu na <span translate="no">CAT RTS</span>: saita shi zuwa <span translate="no">DISABLE</span>. Rediyon Xiegu: kebul ɗin bayanai (<span translate="no">CI-V</span>) na interface yana shiga jack ɗin <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> na rediyo, ba kebul ɗin sauti kaɗai ba, kuma adireshin <span translate="no">CI-V</span> da gudun baud na rediyo iri ɗaya ne da na qFT8 (katin yana nuna su).</li>
+                <li><strong>Umarnin qFT8 na kansa kawai ke dawowa</strong>: igiya ko na'urar haɗi tana mayar da bayanai ba tare da rediyon ba (igiyar Icom <span translate="no">CI-V</span> tana yin haka yayin da rediyon ke a kashe).</li>
+                <li><strong>Rediyo tana amsawa, amma qFT8 ba zai iya karanta amsoshin ba</strong>: gudun baud ko samfurin rediyon bai dace ba.</li>
+                <li><strong>Rediyo na daina amsawa yayin da take aikawa</strong>: tsangwamar RF. Ɗaura ferrite chokes masu matsawa a igiyoyin USB da na sauti kusa da ƙarshen biyu, gwada ƙaramin ƙarfi (a saita a rediyon) don gwaji, sannan a duba eriya da layin ciyarwa don neman common-mode current.</li>
+                <li><strong>Rediyo ta amsa, sannan ta daina amsawa</strong>: an kashe rediyon, ko igiyar ta saki.</li>
+            </ul>
+            <p><strong>SAKE DUBAWA</strong> yana sake haɗawa da rediyon ya sake dubawa sau ɗaya; <strong>AIKA RAHOTO</strong> yana aiko mana da abin da aka auna, tare da rajistar umarnin rediyon.</p>
 
             <h3 id="trouble-otg-charging">Transceiver yana ɓacewa idan wayar ta cika caji (Android)</h3>
             <p>

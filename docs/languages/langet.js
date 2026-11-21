@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Laadi alla App Store'ist",
     "FEAT2_OWN": "Oma dekoodrid ja kodeerijad, kirjutatud algusest peale",
     "FEAT2_RAWLOG": "Logi kõik dekodeeritud sõnumid",
+    "FEAT2_HEADLESS": "Töötab ilma ekraanita kaugjuhtimise veebiserverina, nt Raspberry Pi-l",
     "FAQ_TITLE": "Küsimused ja vastused",
     "FAQ_Q1": "Mis on qFT8?",
     "FAQ_A1": "qFT8 on tasuta amatöörraadio programm nõrkade signaalide digirežiimidele, Morse’le, kirjutusteletüübile, piltidele ja häälele. See töötab Androidi telefonides ja tahvelarvutites, iOS-is, Windowsis, macOS-is ja Linuxis ning seda saab juhtida mis tahes brauserist. Selles pole reklaame ja see ei vaja kontot. Selle kirjutas Luis Quesada Torres, HB9IPH, oma dekoodrite ja kodeerijatega, mis on kirjutatud algusest peale.",

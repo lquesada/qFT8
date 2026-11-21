@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Laden im App Store",
     "FEAT2_OWN": "Eigene Decoder und Encoder, von Grund auf selbst geschrieben",
     "FEAT2_RAWLOG": "Alle decodierten Meldungen protokollieren",
+    "FEAT2_HEADLESS": "Läuft ohne Bildschirm als Webserver für die Fernbedienung, z. B. auf einem Raspberry Pi",
     "FAQ_TITLE": "Fragen und Antworten",
     "FAQ_Q1": "Was ist qFT8?",
     "FAQ_A1": "qFT8 ist ein kostenloses Amateurfunkprogramm für digitale Schwachsignal-Betriebsarten, Morse, Fernschreiben, Bilder und Sprache. Es läuft auf Android-Handys und -Tablets, iOS, Windows, macOS und Linux und lässt sich von jedem Browser aus steuern. Es hat keine Werbung und braucht kein Konto. Geschrieben wurde es von Luis Quesada Torres, HB9IPH, mit eigenen Decodern und Encodern, die von Grund auf neu entwickelt wurden.",

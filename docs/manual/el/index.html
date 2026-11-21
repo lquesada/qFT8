@@ -173,6 +173,7 @@
                         <li><a href="#tune-offset">Μετατόπιση φασματογραφήματος συντονισμού</a></li>
                         <li><a href="#tx-limit">Όριο συνεχούς εκπομπής</a></li>
                         <li><a href="#remote-control">Διακομιστής web απομακρυσμένου ελέγχου</a></li>
+                        <li><a href="#webserver-headless">Το qFT8 χωρίς οθόνη (web server απομακρυσμένου ελέγχου)</a></li>
                         <li><a href="#bridge">Γέφυρα qFT8</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Πρωτόκολλο qFT8log</a></li>
@@ -653,8 +654,7 @@
                 <li><strong>Linux</strong>: η θύρα μοιάζει με <code>/dev/ttyACM0</code> ή <code>/dev/ttyUSB0</code> και χρειάζεται
                     την ομάδα που αναφέρθηκε παραπάνω. Οι συσκευές ήχου είναι αυτές του διακομιστή ήχου (PulseAudio ή PipeWire), οπότε
                     το ηχείο του ραδιοφώνου, τα ακουστικά σας και το μικρόφωνό σας μπορεί να είναι η καθεμία διαφορετική συσκευή.
-                    Το ρυθμιστικό έντασης συσκευής χρησιμοποιεί το <code>pactl</code>, από το πακέτο <code>pulseaudio-utils</code> (λειτουργεί
-                    και με το PipeWire).</li>
+                    Το qFT8 φτάνει στις συσκευές ήχου (και στο ρυθμιστικό έντασης συσκευής) μέσω των <code>pactl</code> και <code>parec</code>, από το πακέτο <code>pulseaudio-utils</code> (λειτουργούν και με το PipeWire): εγκαταστήστε το, αλλιώς το qFT8 συχνά δεν ακούει καμία κάρτα ήχου.</li>
             </ul>
 
             <h4>Επιλογή του ραδιοφώνου και της θύρας του</h4>
@@ -782,7 +782,7 @@
                 <li><strong>Το απομακρυσμένο web.</strong> Το πρόγραμμα υπολογιστή έχει τον ίδιο
                     <a href="#remote-control">Διακομιστή web απομακρυσμένου ελέγχου</a> με το Android (απενεργοποιημένος από προεπιλογή, θύρα 13497) και εμφανίζει
                     τις ίδιες σελίδες, μαζί με το ρυθμιστικό έντασης. Χρησιμοποιήστε το για να χειρίζεστε από κινητό ή από άλλον υπολογιστή στο
-                    δίκτυό σας.</li>
+                    δίκτυό σας. Μπορεί επίσης να τρέχει χωρίς παράθυρο (<code>qFT8 --webserver</code>, δείτε <a href="#webserver-headless">Το qFT8 χωρίς οθόνη</a>), για υπολογιστή χωρίς οθόνη.</li>
                 <li><strong>Η γέφυρα.</strong> Ένας υπολογιστής είναι η συνηθισμένη <a href="#bridge">γέφυρα</a>: το ραδιόφωνο συνδεδεμένο
                     σε αυτόν, και το qFT8 σε κινητό, iPhone ή άλλον υπολογιστή που το χειρίζεται. Μπορεί επίσης να εκτελείται χωρίς παράθυρο
                     (<code>qFT8 --bridge</code>), για έναν υπολογιστή χωρίς άλλη δουλειά.</li>
@@ -790,7 +790,7 @@
                     τις δείχνει): το <code>--list-devices</code> εμφανίζει κάθε σειριακή θύρα και συσκευή ήχου που βλέπει το qFT8 και τερματίζει·
                     το <code>--port &lt;device&gt;</code> ορίζει την προεπιλεγμένη σειριακή θύρα (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>)· το <code>--qft8_profile &lt;folder&gt;</code> επιλέγει τον φάκελο προφίλ·
-                    το <code>--bridge</code> ξεκινά μια γέφυρα· το <code>--video-mode=&lt;mode&gt;</code> σχεδιάζει το παράθυρο με άλλον τρόπο γι’ αυτή την εκτέλεση, ακόμη κι όταν το qFT8 δεν μπορεί να ανοίξει αρκετά ώστε να αλλάξει η <strong>Λειτουργία βίντεο</strong> στις Ρυθμίσεις (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>· Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>)· το <code>--opengl</code> σχεδιάζει το παράθυρο μέσω OpenGL (δείτε
+                    το <code>--bridge</code> ξεκινά μια γέφυρα· το <code>--webserver</code> τρέχει το qFT8 χωρίς παράθυρο, με ανοιχτό το απομακρυσμένο web· το <code>--video-mode=&lt;mode&gt;</code> σχεδιάζει το παράθυρο με άλλον τρόπο γι’ αυτή την εκτέλεση, ακόμη κι όταν το qFT8 δεν μπορεί να ανοίξει αρκετά ώστε να αλλάξει η <strong>Λειτουργία βίντεο</strong> στις Ρυθμίσεις (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>· Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>)· το <code>--opengl</code> σχεδιάζει το παράθυρο μέσω OpenGL (δείτε
                     <a href="#pc-trouble">Αν κάτι δεν λειτουργεί</a>).</li>
             </ul>
 
@@ -2201,7 +2201,7 @@
                         <li><strong>Πομποδέκτης δικτύου</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Πομποδέκτης δικτύου (πειραματικό)</strong> in <strong>Σύνδεση πομποδέκτη</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>ΣΥΝΔΕΣΗ</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Μέθοδος</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Θύρα ροής ήχου</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Κάρτα ήχου</strong> under <strong>Ήχος</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Μέθοδος</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Διεύθυνση</strong>, the <strong>Πομποδέκτης</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Όνομα χρήστη</strong> and <strong>Κωδικός πρόσβασης</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Πομποδέκτης</strong> says which radio, <strong>Όπως επιλέχθηκε στη Συσκευή</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (πειραματικό)</strong> in <strong>Σύνδεση πομποδέκτη</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Επιλέξτε συσκευή</strong> under <strong>Συσκευή Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Πομποδέκτης</strong>, <strong>Όπως επιλέχθηκε στη Συσκευή</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>ΣΥΝΔΕΣΗ</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (πειραματικό)</strong> in <strong>Σύνδεση πομποδέκτη</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Επιλέξτε συσκευή</strong> under <strong>Συσκευή Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Πομποδέκτης</strong>, <strong>Όπως επιλέχθηκε στη Συσκευή</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>ΣΥΝΔΕΣΗ</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2314,7 +2314,8 @@
                     ξεκλειδώνει τη <strong>Συσκευή USB</strong>, τον <strong>Ρυθμός baud</strong>, τα <strong>Bit δεδομένων</strong>,
                     τα <strong>Bit τερματισμού</strong>, την <strong>Ισοτιμία</strong> και τον τρόπο που ενεργοποιείται η εκπομπή (<strong>PTT</strong>:
                     με εντολή CAT ή με τη γραμμή RTS ή DTR), με την καθυστέρηση PTT πριν τη μετάδοση.
-                    Το <strong>Ορισμός mode πομποδέκτη κατά την αρχικοποίηση και σε κάθε κύκλο</strong> κρατά το ραδιόφωνο στο σωστό
+                    Το Με RTS ή DTR, το <strong>Θύρα PTT</strong> επιλέγει πού βρίσκεται αυτή η γραμμή: <strong>Ίδια με CAT</strong> (το δικό του καλώδιο του πομποδέκτη) ή μια δεύτερη σειριακή θύρα, για σταθμό με CAT σε ένα καλώδιο και PTT σε άλλη διεπαφή (σε τηλέφωνο, και οι δύο προσαρμογείς μέσω USB hub· όχι στο iPhone).
+                    <strong>Ορισμός mode πομποδέκτη κατά την αρχικοποίηση και σε κάθε κύκλο</strong> κρατά το ραδιόφωνο στο σωστό
                     mode. Μια σημείωση στην κύρια σελίδα λέει πότε αυτή η συσκευή έχει παρακάμψεις.</li>
                 <li><strong>Συντονισμός (αυτός ο πομποδέκτης)</strong>: η <a href="#tune-offset">Μετατόπιση συντονισμού φασματογραφήματος</a> και το
                     <a href="#tx-limit">Όριο συνεχούς μετάδοσης</a>.</li>
@@ -5604,9 +5605,9 @@
                     απόστασή τους από τον εντοπιστή σας.</li>
                 <li>Κάθε γραμμή μιας μνήμης, ή κάθε γραμμή που πληκτρολογείτε, είναι ένα πλαίσιο:
                     το <span translate="no">BEACON</span> [σχόλιο] στέλνει τη θέση σας, στον βαθμό, από τον εντοπιστή σας
-                    (ποτέ ακριβέστερα από τον εντοπιστή)· το <span translate="no">CALL: text</span> στέλνει μήνυμα σε εκείνον τον
+                    (ποτέ ακριβέστερα από τον εντοπιστή)· το <span translate="no">BEACON</span> πλάτος μήκος [σχόλιο] στέλνει μια ακριβή θέση σε δεκαδικές μοίρες, νότος και δύση αρνητικά (<span translate="no">BEACON -34.3543 -58.2535</span> είναι 34.35 S, 58.25 W· δουλεύουν και τα γράμματα: <span translate="no">BEACON 34.3543S 58.2535W</span>)· το <span translate="no">CALL: text</span> στέλνει μήνυμα σε εκείνον τον
                     σταθμό· το <span translate="no">STATUS text</span> μια κατάσταση· μια γραμμή που αρχίζει με χαρακτήρα
-                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) φεύγει ως έχει.</li>
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) φεύγει ως έχει. Κάτω από κάθε μνήμη στις Ρυθμίσεις &gt; <span translate="no">Packet</span> μια γκρι γραμμή λέει τι στέλνει ("Θέση 34.35 S, 58.25 W", "Κατάσταση: ...")· δύο αριθμοί γραμμένοι χωρίς <span translate="no">BEACON</span> φεύγουν ως κείμενο κατάστασης, όχι ως θέση, και μια κόκκινη γραμμή κάτω από τη μνήμη το λέει.</li>
                 <li>Τα πλαίσιά σας φεύγουν από το διακριτικό σας με το <span translate="no">SSID</span> που επιλέγεται στις Ρυθμίσεις &gt;
                     <span translate="no">Packet</span> (το γρανάζι της οθόνης), μέσω της διαδρομής digipeater που ορίζεται εκεί
                     (<span translate="no">WIDE1-1,WIDE2-1</span> από προεπιλογή, μόνο 2 m).</li>
@@ -6442,22 +6443,19 @@
                 <strong>HF χωρίς upconverter (άμεση δειγματοληψία)</strong> για λήψη κάτω από 24 MHz στην είσοδο
                 <span translate="no">HF</span>. Το qFT8 δεν ενεργοποιεί ποτέ το bias tee του dongle (τροφοδοσία κεραίας).
             </p>
-            <p>
-                <strong>Υπολογιστής, Linux</strong>: η ίδια γραμμή, ο ίδιος ενσωματωμένος οδηγός. Το qFT8 παίρνει το dongle από τον οδηγό τηλεόρασης
-                που φορτώνει μόνο του το σύστημα. Ο χρήστης σας χρειάζεται άδεια για να ανοίξει το dongle· αν η γραμμή κατάστασης λέει
-                &ldquo;no permission&rdquo;, προσθέστε μία φορά ένα αρχείο κανόνων (για παράδειγμα
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) με τη γραμμή
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> για μερικά παλαιότερα dongle), εκτελέστε
-                <code dir="ltr">sudo udevadm control --reload-rules</code> και συνδέστε ξανά το dongle.
+            <p id="rtl-stock-dongle">
+                <strong>Ένα κοινό dongle δεν χρειάζεται επαναπρογραμματισμό.</strong> Ένα dongle όπως έρχεται από το κατάστημα λειτουργεί: δεν γράφεται τίποτα σε αυτό και το qFT8 δεν αλλάζει ποτέ τη μνήμη του (EEPROM). Αυτό που μετρά είναι το τσιπ του δέκτη: τα <span translate="no">R820T / R820T2 / R828D</span> λειτουργούν· τα dongle με δέκτη <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> όχι, και η γραμμή κατάστασης το λέει. Το <span translate="no">RTL-SDR Blog V4</span> αναγνωρίζεται από το όνομα που φέρει από το εργοστάσιο· ένα dongle <span translate="no">R828D</span> χωρίς αυτό το όνομα (π.χ. ένα V4 του οποίου το όνομα ξαναγράφτηκε) παίρνει προειδοποίηση στη γραμμή κατάστασης ότι τα HF ίσως δεν λειτουργούν. Σε macOS χρησιμοποιήστε τον διακομιστή δικτύου (παρακάτω) για οποιοδήποτε dongle.
             </p>
-            <p>
-                <strong>Υπολογιστής, Windows και macOS</strong>: το dongle δεν μπορεί ακόμη να ανοιχτεί απευθείας από το qFT8. Τρέξτε τον
-                διακομιστή δικτύου <span translate="no">RTL-SDR</span> στον ίδιο υπολογιστή (ή σε οποιονδήποτε άλλο, όπως ένα
-                <span translate="no">Raspberry Pi</span>) και επιλέξτε <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                με τη διεύθυνση <code>127.0.0.1</code>, ή εξυπηρετήστε το dongle από κινητό ή υπολογιστή Linux με το
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Υπολογιστής, Linux</strong>: η ίδια γραμμή, το ίδιο ενσωματωμένο πρόγραμμα οδήγησης. Το qFT8 παίρνει το dongle από το πρόγραμμα οδήγησης τηλεόρασης που το σύστημα φορτώνει μόνο του. Ο χρήστης σας χρειάζεται άδεια για να ανοίξει το dongle: όταν δεν την έχει, το qFT8 το λέει σε μια κάρτα μόλις συνδεθεί το dongle, και το <strong>ΔΙΟΡΘΩΣΗ</strong> προσθέτει την άδεια για εσάς. Ανοίγει ένα τερματικό και ζητά μία φορά τον κωδικό σας (όπου δεν υπάρχει τερματικό, το κάνει το παράθυρο κωδικού του ίδιου του συστήματος). Γράφει το αρχείο κανόνων <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, που δίνει σε όποιον χρησιμοποιεί τον υπολογιστή πρόσβαση στους δέκτες <span translate="no">USB</span> (<span translate="no">RTL-SDR, Airspy, HackRF</span>). Το dongle δουλεύει τότε αμέσως, χωρίς επανεκκίνηση και χωρίς νέα σύνδεση. Η κάρτα δείχνει και την εντολή, για να την εκτελέσετε μόνοι σας σε τερματικό.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Υπολογιστής, Windows</strong>: η ίδια γραμμή, το ίδιο ενσωματωμένο πρόγραμμα οδήγησης, μέσω του προγράμματος οδήγησης <span translate="no">WinUSB</span> που συνοδεύει τα Windows. Τα Windows συνήθως δεν δίνουν σε ένα νέο dongle κανένα πρόγραμμα οδήγησης, ή δίνουν ένα της τηλεόρασης που το qFT8 δεν μπορεί να χρησιμοποιήσει. Το qFT8 το αντιλαμβάνεται όταν συνδεθεί το dongle και προσφέρεται να το ρυθμίσει: πατήστε <strong>ΡΥΘΜΙΣΗ</strong> και επιτρέψτε την αλλαγή στο παράθυρο διαχειριστή των Windows (μία φορά). Το dongle δουλεύει λίγα δευτερόλεπτα αργότερα. Τίποτα δεν κατεβαίνει και δεν εγκαθίσταται δικό μας πρόγραμμα οδήγησης: το qFT8 μεταφέρει το dongle στο δικό τους πρόγραμμα οδήγησης <span translate="no">WinUSB</span> των Windows. Τα προγράμματα τηλεόρασης που χρειάζονται το πρόγραμμα οδήγησης τηλεόρασης δεν βλέπουν πια το dongle. Για να το επιστρέψετε στα Windows: στη <strong>Διαχείριση Συσκευών</strong>, κάντε δεξί κλικ στο dongle κάτω από το <strong>Universal Serial Bus devices</strong>, επιλέξτε <strong>Uninstall device</strong> (αφήστε ασημείωτο το πλαίσιο για το πρόγραμμα οδήγησης) και μετά <strong>Action &gt; Scan for hardware changes</strong>. Μια ενημέρωση των Windows μπορεί επίσης να επαναφέρει το πρόγραμμα οδήγησης τηλεόρασης· το qFT8 προσφέρει τότε ξανά τη ρύθμιση. Η έκδοση του Microsoft Store δεν μπορεί να αλλάξει μόνη της προγράμματα οδήγησης: στη <strong>Διαχείριση Συσκευών</strong>, κάντε δεξί κλικ στο dongle (συχνά &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), επιλέξτε <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> και μετά <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Υπολογιστής, macOS</strong>: το dongle δεν μπορεί ακόμη να ανοιχτεί απευθείας από το qFT8. Τρέξτε τον διακομιστή δικτύου <span translate="no">RTL-SDR</span> στον ίδιο υπολογιστή (ή σε οποιονδήποτε άλλο, όπως ένα <span translate="no">Raspberry Pi</span>) και επιλέξτε <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> με τη διεύθυνση <code>127.0.0.1</code>, ή εξυπηρετήστε το dongle από κινητό ή υπολογιστή με το <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Ο διακομιστής δικτύου <span translate="no">RTL-SDR</span> και ο οδηγός του</h4>
             <p>
@@ -6558,7 +6556,7 @@
                 <li>Το ημερολόγιο κρατά κάθε καταχώριση (χωρίς όριο) σε ένα αρχείο στο οποίο μόνο προστίθενται δεδομένα, επομένως ένα πολύ μεγάλο ημερολόγιο δεν επιβραδύνει την εκκίνηση της εφαρμογής· η σελίδα διαβάζει μόνο τις νεότερες καταχωρίσεις και δείχνει περισσότερες καθώς κυλάτε.</li>
                 <li>Με τις λειτουργίες Ham απενεργοποιημένες, κάθε σταθμός <span translate="no">FT8, FT4, LQ ...</span> που ακούγεται καταγράφεται (μία φορά την ώρα ανά σταθμό και λειτουργία)· με τις λειτουργίες Ham ενεργές, καταγράφονται μόνο τα πλήρη QSO που ακούστηκαν. Ένας σταθμός που ακούτε για πρώτη φορά (που δεν υπήρχε ποτέ πριν στο ημερολόγιο <span translate="no">SWL</span>) έχει το διακριτικό κλήσης του σε κυανό στη λίστα Σταθμών όταν οι λειτουργίες Ham είναι απενεργοποιημένες.</li>
                 <li>Οι δέκτες σημάτων γράφουν στο ημερολόγιο ό,τι αναγνωρίζουν, μία φορά ανά σταθμό ανά ημέρα <span translate="no">UTC</span>: πλοία (<span translate="no">AIS</span>), αεροσκάφη (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), ραδιοβολίδες, σταθμοί <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, σταθμοί ώρας, φάροι <span translate="no">NCDXF</span>, διακριτικά κλήσης <span translate="no">ALE / ARDOP / PACTOR</span> και <span translate="no">APRS</span>, εικόνες φαξ καιρού και δορυφόρων καιρού, και σταθμοί <span translate="no">FM</span> με τον κωδικό <span translate="no">RDS</span> και το όνομά τους. Μετρούν για τα βραβεία <span translate="no">SWL</span>· δεν στέλνονται ποτέ στο eQSL και δεν υπάρχουν στην εξαγωγή <span translate="no">ADIF</span> (το <span translate="no">CSV</span> τα έχει, με το όνομα που ακούστηκε στην τελευταία στήλη).</li>
-                <li>Οι μεταφορτώσεις ακολουθούν έναν κανόνα: ο λογαριασμός eQSL <span translate="no">SWL</span> καταχωρεί κάθε σταθμό που ακούστηκε κάτω από αυτόν τον λογαριασμό (ένας λογαριασμός eQSL ερασιτέχνη απορρίπτεται)· τα <span translate="no">PSK Reporter</span> και <span translate="no">WSPRnet</span> αναφέρουν κάτω από το διακριτικό κλήσης σας, αλλιώς κάτω από το id <span translate="no">SWL</span> σας.</li>
+                <li>Οι μεταφορτώσεις ακολουθούν έναν κανόνα: ο λογαριασμός eQSL <span translate="no">SWL</span> καταχωρεί κάθε σταθμό που ακούστηκε κάτω από αυτόν τον λογαριασμό (ένας λογαριασμός eQSL ερασιτέχνη απορρίπτεται)· τα <span translate="no">PSK Reporter</span> και <span translate="no">WSPRnet</span> αναφέρουν κάθε spot με το διακριτικό κλήσης σας και με το id <span translate="no">SWL</span> σας, όποιο έχει οριστεί· οι Ρυθμίσεις δείχνουν τα ονόματα κάτω από κάθε πλαίσιο.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Είναι δικό σας αυτό το SDR;</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Ποιανού δέκτης</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Αυτός ο διακομιστής είναι δικός μου</strong> in its rows, the same answer as <strong>Είναι δικό σας αυτό το SDR;</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6965,6 +6963,70 @@
                         πομποδέκτη).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Το qFT8 χωρίς οθόνη (web server απομακρυσμένου ελέγχου)</h3>
+                <p>
+                    Το πρόγραμμα υπολογιστή μπορεί να τρέχει και χωρίς κανένα παράθυρο, σε υπολογιστή χωρίς οθόνη: ένα Raspberry Pi δίπλα στο ραδιόφωνο, έναν μικρό server ή οποιονδήποτε υπολογιστή φτάνετε μέσω SSH. Το qFT8 κάνει τότε τα πάντα όπως συνήθως (ήχος, έλεγχος του ραδιοφώνου, αποκωδικοποίηση, <span translate="no">AUTO</span>, καταγραφή, αποστολές) και το χειρίζεστε από ένα πρόγραμμα περιήγησης μέσω του <a href="#remote-control">απομακρυσμένο web</a>, σε κινητό, tablet ή άλλον υπολογιστή του δικτύου σας.
+                </p>
+
+                <h4>Web server ή γέφυρα;</h4>
+                <p>Και τα δύο τρέχουν χωρίς οθόνη. Διαφέρουν ως προς το ποια συσκευή κάνει τη δουλειά:</p>
+                <ul>
+                    <li><strong>Web server</strong> (<code>--webserver</code>): ο υπολογιστής που τρέχει το qFT8 αποκωδικοποιεί, εκπέμπει και καταγράφει· το πρόγραμμα περιήγησης απλώς το δείχνει και έχει τα κουμπιά του. Κατάλληλο για έναν ισχυρό υπολογιστή στο σπίτι που τον ελέγχετε από το κινητό.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, δείτε <a href="#bridge">Γέφυρα qFT8</a>): η συσκευή δίπλα στο ραδιόφωνο απλώς περνά μέσω του δικτύου σας τις εντολές του ραδιοφώνου και τον ήχο του, και την αποκωδικοποίηση την κάνει το qFT8 στη συσκευή από την οποία χειρίζεστε (το πρόγραμμα υπολογιστή, η εφαρμογή Android ή η εφαρμογή iPhone/iPad). Κατάλληλη για ένα Raspberry Pi στο ραδιόφωνο, ενώ τη δουλειά την κάνει ο δικός σας υπολογιστής.</li>
+                </ul>
+                <p>Τα δύο δεν μπορούν να τρέχουν ταυτόχρονα.</p>
+
+                <h4>Πρώτα ρυθμίστε το</h4>
+                <p>
+                    Το qFT8 χρησιμοποιεί τις αποθηκευμένες ρυθμίσεις του ακριβώς όπως με παράθυρο: διακριτικό, locator, ραδιόφωνο, συσκευές ήχου, λειτουργίες, καταγραφή και υπηρεσίες αποστολής QSO. Για παράδειγμα, με επιλεγμένο το <a href="#raw-message-logs">Ακατέργαστα αρχεία καταγραφής μηνυμάτων</a> συνεχίζει να γράφει τα αρχεία .tsv του. Ρυθμίστε λοιπόν πρώτα το qFT8: ξεκινήστε το μία φορά με παράθυρο σε εκείνον τον υπολογιστή (ή αντιγράψτε τον φάκελο προφίλ από άλλον υπολογιστή, δείτε <a href="#pc-settings">Ρυθμίσεις: πού βρίσκονται, μεταφορά από κινητό</a>), ή ξεκινήστε το χωρίς οθόνη και ρυθμίστε το από τις Ρυθμίσεις του απομακρυσμένου web, που τις αποθηκεύουν όπως συνήθως.
+                </p>
+
+                <h4>Εκκίνηση</h4>
+                <p>Σε ένα τερματικό σε εκείνον τον υπολογιστή (μέσω SSH πάει καλά), στον φάκελο του qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, επίσης Raspberry Pi: <code>./qFT8 --webserver</code>. Με τη λήψη .jar και Java 21 ή νεότερη: <code>java -jar</code>, το όνομα του αρχείου .jar και <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Το τερματικό λέει ότι το qFT8 τρέχει χωρίς παράθυρο, ότι το <span translate="no">TX</span> είναι απενεργοποιημένο και αν η σελίδα ζητά κωδικό, και δείχνει τον ιδιωτικό σύνδεσμο του απομακρυσμένου web: ανοίξτε τον σε πρόγραμμα περιήγησης στο ίδιο δίκτυο. Το μέρος μετά το <code>#k=</code> είναι το κλειδί του συνδέσμου: κρατήστε το ιδιωτικό. Εμφανίζεται μόνο στο τερματικό και δεν γράφεται ποτέ στο αρχείο καταγραφής του qFT8. Το <code>Ctrl+C</code> σταματά το qFT8 και επαναφέρει το ραδιόφωνο σε λήψη.
+                </p>
+                <p>
+                    Το <span translate="no">TX</span> είναι πάντα απενεργοποιημένο όταν το qFT8 ξεκινά έτσι. Μόνο το κουμπί <span translate="no">TX</span> του απομακρυσμένου web το ενεργοποιεί.
+                </p>
+
+                <h4>Επιλογές</h4>
+                <p>
+                    Κάθε επιλογή αλλάζει μια ρύθμιση μόνο για αυτή την εκτέλεση: δεν αποθηκεύεται τίποτα και χωρίς επιλογές χρησιμοποιούνται οι αποθηκευμένες ρυθμίσεις. Το <code>qFT8 --webserver --help</code> τις απαριθμεί.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: η θύρα του απομακρυσμένου web, από 1024 έως 65534 (13497 αν δεν την έχετε αλλάξει).</li>
+                    <li><code>--bind ADDRESS</code>: ακρόαση μόνο σε εκείνη τη διεύθυνση του υπολογιστή.</li>
+                    <li><code>--password TEXT</code>, ή <code>--password-file FILE</code> (η πρώτη γραμμή του αρχείου· ασφαλέστερο, επειδή οι άλλοι χρήστες του υπολογιστή βλέπουν μια γραμμή εντολών), ή <code>--no-password</code>.</li>
+                    <li><code>--https</code> ή <code>--no-https</code>: η ασφαλής διεύθυνση (η θύρα + 1) που χρειάζεται ένα πρόγραμμα περιήγησης για να χρησιμοποιήσει το μικρόφωνό του.</li>
+                    <li><code>--access read</code>, <code>stop</code> ή <code>full</code>: τι μπορεί να κάνει η σελίδα: μόνο να βλέπει, να βλέπει και να σταματά το <span translate="no">TX</span>, ή τα πάντα.</li>
+                    <li><code>--audio-in NAME</code> και <code>--audio-out NAME</code>: οι συσκευές ήχου του ραδιοφώνου, με το όνομα που δείχνει το <code>qFT8 --list-devices</code>, ή <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: το ραδιόφωνο (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...) και <code>--port DEVICE</code>: η σειριακή θύρα του (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: ο φάκελος προφίλ που θα χρησιμοποιηθεί.</li>
+                </ul>
+                <p>
+                    Αν τη θύρα την έχει πάρει άλλο πρόγραμμα ή τον ίδιο φάκελο προφίλ τον χρησιμοποιεί ήδη άλλο qFT8, το qFT8 το λέει στο τερματικό και σταματά.
+                </p>
+
+                <h4>Παράδειγμα: ένα Raspberry Pi</h4>
+                <p>
+                    Το ραδιόφωνο είναι συνδεδεμένο στο Pi με USB και το qFT8 έχει ρυθμιστεί μία φορά (με οθόνη στο Pi ή από το απομακρυσμένο web). Από άλλον υπολογιστή:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Έπειτα ανοίξτε τον σύνδεσμο που εμφανίζει στο κινητό σας. Ένα Raspberry Pi 4 ή 5 αποκωδικοποιεί το <span translate="no">FT8</span> εγκαίρως· ένας ταχύτερος υπολογιστής βρίσκει περισσότερα από τα πιο αδύναμα σήματα.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Επιστροφή στον πίνακα περιεχομένων</a>
             </section>
 
             <section id="bridge">
@@ -7544,6 +7606,19 @@
                     (ο λογαριασμός σας μπαίνει στην ομάδα της θύρας), ή ρωτήστε τον διαχειριστή του συστήματός σας.</li>
                 <li>Αν τα προβλήματα εμφανίζονται συγκεκριμένα κατά την εκπομπή, μπορεί να οφείλονται σε παρεμβολές ραδιοφώνου. Η προσθήκη choke ή φερριτών στο καλώδιο USB μπορεί να βοηθήσει. Μπορείτε επίσης να δοκιμάσετε εκπομπή σε άλλη μπάντα, καθώς ορισμένες συσκευές είναι ευαίσθητες σε παρεμβολές μόνο σε ορισμένες μπάντες.</li>
             </ul>
+            <p>
+                Όταν το qFT8 επικοινωνεί με έναν πομποδέκτη μέσω <span translate="no">CAT</span> (πομποδέκτης που επιλέχθηκε στο <strong>Ρυθμίσεις &gt; Συσκευή</strong>, ή που βρέθηκε από το <span translate="no">AUTO</span>) και ο πομποδέκτης δεν απαντά, εμφανίζεται η κόκκινη προειδοποίηση <strong>Χωρίς CAT</strong> στο φασματογράφημα (και κάτω από τον πομποδέκτη στο <strong>Ρυθμίσεις &gt; Συσκευή</strong>). Πατήστε την: η κάρτα λέει τι μέτρησε το qFT8 στη σύνδεση και απαριθμεί τι να δοκιμάσετε σε αυτή την περίπτωση:
+            </p>
+            <ul>
+                <li><strong>Δεν βρέθηκε πομποδέκτης</strong>: ο πομποδέκτης είναι σβηστός, το καλώδιο είναι χαλαρό, το καλώδιο μόνο φορτίζει (χρησιμοποιήστε καλώδιο δεδομένων USB), ένας προσαρμογέας ή hub δεν περνά δεδομένα, ή το <span translate="no">USB OTG</span> είναι απενεργοποιημένο στις ρυθμίσεις συστήματος του τηλεφώνου. Σε υπολογιστή: το πρόγραμμα οδήγησης USB του πομποδέκτη και η θύρα που επιλέχθηκε στο <strong>Ρυθμίσεις &gt; Διαμόρφωση συσκευής</strong>.</li>
+                <li><strong>Η θύρα δεν άνοιξε</strong>: επιτρέψτε στο qFT8 να χρησιμοποιήσει τη συσκευή USB όταν το ζητήσει το Android και κλείστε άλλα προγράμματα που χρησιμοποιούν τη θύρα του πομποδέκτη.</li>
+                <li><strong>Ο πομποδέκτης δεν απαντά</strong> (ούτε ένα byte πίσω): ο πομποδέκτης είναι αναμμένος, το καλώδιο μπαίνει στην υποδοχή <span translate="no">CAT</span> του, το μοντέλο του πομποδέκτη είναι το σωστό και ο ρυθμός baud <span translate="no">CAT</span> του πομποδέκτη είναι ίδιος με του qFT8 (<strong>Ρυθμίσεις &gt; Διαμόρφωση συσκευής &gt; Ρυθμός baud</strong>). Πομποδέκτες Yaesu με μενού <span translate="no">CAT RTS</span>: ορίστε το σε <span translate="no">DISABLE</span>. Πομποδέκτες Xiegu: το καλώδιο δεδομένων (<span translate="no">CI-V</span>) της διεπαφής μπαίνει στην υποδοχή <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> του πομποδέκτη, όχι μόνο το καλώδιο ήχου, και η διεύθυνση <span translate="no">CI-V</span> και ο ρυθμός baud του πομποδέκτη είναι ίδια με του qFT8 (η κάρτα τα δείχνει).</li>
+                <li><strong>Επιστρέφουν μόνο οι δικές του εντολές του qFT8</strong>: το καλώδιο ή η διεπαφή επιστρέφει τα δεδομένα χωρίς τον πομποδέκτη (ένα καλώδιο Icom <span translate="no">CI-V</span> το κάνει αυτό όταν ο πομποδέκτης είναι σβηστός).</li>
+                <li><strong>Μη αναγνώσιμες απαντήσεις</strong>: ο ρυθμός baud ή το μοντέλο του πομποδέκτη δεν ταιριάζει.</li>
+                <li><strong>Σταματά να απαντά κατά την εκπομπή</strong>: παρεμβολή RF. Βάλτε φερρίτες στα καλώδια USB και ήχου κοντά και στα δύο άκρα, δοκιμάστε μικρότερη ισχύ (ορίζεται στον πομποδέκτη) ως τεστ και ελέγξτε την κεραία και τη γραμμή τροφοδοσίας για ρεύμα κοινού τρόπου.</li>
+                <li><strong>Απάντησε και μετά σταμάτησε</strong>: ο πομποδέκτης σβήστηκε ή το καλώδιο χαλάρωσε.</li>
+            </ul>
+            <p><strong>ΝΕΟΣ ΕΛΕΓΧΟΣ</strong> συνδέεται ξανά με τον πομποδέκτη και ελέγχει άλλη μία φορά· <strong>ΑΠΟΣΤΟΛΗ ΑΝΑΦΟΡΑΣ</strong> μας στέλνει ό,τι μετρήθηκε, μαζί με το αρχείο καταγραφής εντολών του πομποδέκτη.</p>
 
             <h3 id="trouble-otg-charging">Ο πομποδέκτης εξαφανίζεται όταν το κινητό φορτιστεί πλήρως (Android)</h3>
             <p>

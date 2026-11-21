@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Pobierz z App Store",
     "FEAT2_OWN": "Własne dekodery i enkodery, napisane od zera",
     "FEAT2_RAWLOG": "Zapisuj wszystkie zdekodowane wiadomości",
+    "FEAT2_HEADLESS": "Działa bez ekranu jako serwer WWW do zdalnego sterowania, np. na Raspberry Pi",
     "FAQ_TITLE": "Pytania i odpowiedzi",
     "FAQ_Q1": "Czym jest qFT8?",
     "FAQ_A1": "qFT8 to darmowy program dla krótkofalowców do słabosygnałowych emisji cyfrowych, telegrafii, dalekopisu, obrazów i głosu. Działa na telefonach i tabletach z Androidem, na iOS, Windows, macOS i Linuksie, a sterować nim można z dowolnej przeglądarki. Nie ma reklam i nie wymaga konta. Jego autorem jest Luis Quesada Torres, HB9IPH, a dekodery i enkodery napisał od zera.",

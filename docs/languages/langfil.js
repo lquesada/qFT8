@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "I-download sa App Store",
     "FEAT2_OWN": "Sariling mga decoder at encoder, isinulat mula sa simula",
     "FEAT2_RAWLOG": "I-log ang lahat ng na-decode na mensahe",
+    "FEAT2_HEADLESS": "Gumagana nang walang screen bilang web server para sa remote control, hal. sa Raspberry Pi",
     "FAQ_TITLE": "Mga tanong at sagot",
     "FAQ_Q1": "Ano ang qFT8?",
     "FAQ_A1": "Ang qFT8 ay libreng amateur radio program para sa mga digital mode ng mahihinang signal, Morse, teletype, mga larawan at boses. Tumatakbo ito sa mga Android phone at tablet, iOS, Windows, macOS at Linux, at maaaring kontrolin mula sa anumang browser. Walang ads at hindi nangangailangan ng account. Isinulat ito ni Luis Quesada Torres, HB9IPH, na may sariling mga decoder at encoder na isinulat mula sa simula.",

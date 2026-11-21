@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Spektrogram hangolási eltolás</a></li>
                         <li><a href="#tx-limit">Folyamatos adás korlátja</a></li>
                         <li><a href="#remote-control">Távirányító webszerver</a></li>
+                        <li><a href="#webserver-headless">A qFT8 futtatása képernyő nélkül (webes távirányító szerver)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">A qFT8log protokoll</a></li>
@@ -637,8 +638,7 @@
                 <li><strong>Linux</strong>: a port így néz ki: <code>/dev/ttyACM0</code> vagy <code>/dev/ttyUSB0</code>, és szükség van
                     a fenti csoportra. A hangeszközök a hangszerver (PulseAudio vagy PipeWire) eszközei, így
                     a rádió hangszórója, a fejhallgatója és a mikrofonja lehet külön-külön más eszköz.
-                    Az eszköz hangerőcsúszkája a <code>pactl</code> parancsot használja a <code>pulseaudio-utils</code> csomagból (PipeWire-rel
-                    is működik).</li>
+                    A qFT8 a <code>pulseaudio-utils</code> csomag <code>pactl</code> és <code>parec</code> parancsán keresztül éri el a hangeszközöket (és az eszköz hangerőcsúszkáját) (PipeWire-rel is működnek): telepítse, különben a qFT8 gyakran egyetlen hangkártyát sem hall.</li>
             </ul>
 
             <h4>A rádió és a portja kiválasztása</h4>
@@ -767,7 +767,7 @@
                 <li><strong>A webes távirányítás.</strong> A számítógépes programnak ugyanaz a
                     <a href="#remote-control">távirányító webszervere</a> van, mint Androidon (alapból kikapcsolva, 13497-es port), és ugyanazokat
                     az oldalakat mutatja, a hangerőcsúszkát is. Használja telefonról vagy a hálózat másik számítógépéről
-                    való kezeléshez.</li>
+                    való kezeléshez. Ablak nélkül is futhat (<code>--webserver</code>, lásd: <a href="#webserver-headless">A qFT8 futtatása képernyő nélkül (webes távirányító szerver)</a>), képernyő nélküli számítógéphez.</li>
                 <li><strong>A híd (bridge).</strong> A számítógép a szokásos <a href="#bridge">híd</a>: a rádió hozzá van
                     csatlakoztatva, és a qFT8 egy telefonon, iPhone-on vagy másik számítógépen kezeli. Ablak nélkül is futhat
                     (<code>qFT8 --bridge</code>), olyan számítógépen, amelynek nincs más dolga.</li>
@@ -775,7 +775,7 @@
                     mutatja őket): a <code>--list-devices</code> kilistáz minden soros portot és hangeszközt, amelyet a qFT8 lát, majd kilép;
                     a <code>--port &lt;device&gt;</code> beállítja az alapértelmezett soros portot (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); a <code>--qft8_profile &lt;folder&gt;</code> kiválasztja a profilmappát;
-                    a <code>--bridge</code> hidat indít; a <code>--video-mode=&lt;mód&gt;</code> másképp rajzolja az ablakot arra a futásra, még akkor is, ha a qFT8-at nem lehet addig megnyitni, hogy a Beállításokban módosítható legyen a <strong>Videómód</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); az <code>--opengl</code> az ablakot OpenGL-en keresztül rajzolja (lásd
+                    a <code>--bridge</code> hidat indít; a <code>--webserver</code> ablak nélkül futtatja a qFT8-at, megnyitott webes távirányítóval; a <code>--video-mode=&lt;mód&gt;</code> másképp rajzolja az ablakot arra a futásra, még akkor is, ha a qFT8-at nem lehet addig megnyitni, hogy a Beállításokban módosítható legyen a <strong>Videómód</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); az <code>--opengl</code> az ablakot OpenGL-en keresztül rajzolja (lásd
                     <a href="#pc-trouble">Ha valami nem működik</a>).</li>
             </ul>
 
@@ -1818,7 +1818,7 @@
                         <li><strong>Hálózati rádió</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Hálózati rádió (kísérleti)</strong> in <strong>Rádiókapcsolat</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>CSATLAKOZÁS</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Módszer</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>A hangfolyam portja</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Hangkártya</strong> under <strong>Hang</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Módszer</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Cím</strong>, the <strong>Rádió</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Felhasználónév</strong> and <strong>Jelszó</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Rádió</strong> says which radio, <strong>Ahogy az Eszköznél választva</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (kísérleti)</strong> in <strong>Rádiókapcsolat</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Válasszon eszközt</strong> under <strong>Bluetooth-eszköz</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rádió</strong>, <strong>Ahogy az Eszköznél választva</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>CSATLAKOZÁS</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (kísérleti)</strong> in <strong>Rádiókapcsolat</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Válasszon eszközt</strong> under <strong>Bluetooth-eszköz</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Rádió</strong>, <strong>Ahogy az Eszköznél választva</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>CSATLAKOZÁS</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1899,7 +1899,8 @@
                     Changing it closes the old connection and connects the radio the new way; it never turns
                     <span translate="no">TX</span> on. The web remote's settings page has the same choice.</li>
             <li><strong>Hangbeállítások</strong>: az <strong>Hangrendszer</strong>, a <strong>Teljes duplex</strong>, az <strong>Hangbemeneti forrás</strong> (ahol a telefon kínálja, gyenge jelekhez az <em>Unprocessed</em> a legjobb, a rádió AGC-jét kikapcsolva), a rádió hangeszközei (<strong>Audio bemenet a rádióból</strong>, <strong>Audio kimenet a rádió felé</strong>) és a pufferméretük, a <strong>Hang előállítása hangerővel</strong> (az adási hang szintje), az eszköz hangereje a rádió és a hangszóró használatakor, valamint a <strong>Hangpuffer hibák figyelmeztetéseinek megjelenítése</strong>. Hagyja őket <span translate="no">AUTO</span> állásban, hacsak valami nem működik.</li>
-            <li><strong>Eszközbeállítások</strong> az USB-n csatlakoztatott rádiókhoz: az <strong>Beállítások felülbírálásának engedélyezése</strong> feloldja az <strong>USB eszköz</strong>, <strong>Baudsebesség</strong>, <strong>Adatbitek</strong>, <strong>Stopbitek</strong>, <strong>Paritás</strong> beállításokat és a rádió adásra kapcsolásának módját (<strong>PTT</strong>: CAT-paranccsal, vagy az RTS- vagy DTR-vonallal), az adás előtti PTT-késleltetéssel. A <strong>Adó-vevő üzemmód beállítása inicializáláskor és minden ciklusban</strong> a rádiót a megfelelő üzemmódban tartja. A főoldalon egy megjegyzés jelzi, ha ennek az eszköznek felülbírált beállításai vannak.</li>
+            <li><strong>Eszközbeállítások</strong> az USB-n csatlakoztatott rádiókhoz: az <strong>Beállítások felülbírálásának engedélyezése</strong> feloldja az <strong>USB eszköz</strong>, <strong>Baudsebesség</strong>, <strong>Adatbitek</strong>, <strong>Stopbitek</strong>, <strong>Paritás</strong> beállításokat és a rádió adásra kapcsolásának módját (<strong>PTT</strong>: CAT-paranccsal, vagy az RTS- vagy DTR-vonallal), az adás előtti PTT-késleltetéssel. A RTS vagy DTR esetén a <strong>PTT port</strong> választja ki, hol van az a vonal: <strong>Ugyanaz, mint a CAT</strong> (a rádió saját kábele) vagy egy második soros port, olyan állomáshoz, ahol a CAT az egyik kábelen, a PTT pedig egy másik interfészen van (telefonon mindkét adapter USB-hubon át; iPhone-on nem).
+                    <strong>Adó-vevő üzemmód beállítása inicializáláskor és minden ciklusban</strong> a rádiót a megfelelő üzemmódban tartja. A főoldalon egy megjegyzés jelzi, ha ennek az eszköznek felülbírált beállításai vannak.</li>
             <li><strong>Hangolás (ez a rádió)</strong>: a <a href="#tune-offset">Spektrogram hangolási eltolás</a> és a <a href="#tx-limit">Folyamatos adás korlátja</a>.</li>
             </ul>
 
@@ -4484,9 +4485,9 @@
                     lokátorától mért távolsággal.</li>
                 <li>A memória minden sora, vagy minden begépelt sor egy keret:
                     a <span translate="no">BEACON</span> [megjegyzés] elküldi a helyzetét fokra pontosan, a lokátorából
-                    (soha nem pontosabban, mint a lokátor); a <span translate="no">CALL: text</span> üzenetet küld annak az
+                    (soha nem pontosabban, mint a lokátor); a <span translate="no">BEACON</span> szél hossz [megjegyzés] pontos pozíciót küld tizedes fokban, a dél és a nyugat negatív (<span translate="no">BEACON -34.3543 -58.2535</span> jelentése 34.35 S, 58.25 W; a betűk is működnek: <span translate="no">BEACON 34.3543S 58.2535W</span>); a <span translate="no">CALL: text</span> üzenetet küld annak az
                     állomásnak; a <span translate="no">STATUS text</span> állapotot; az
-                    <span translate="no">APRS</span> karakterrel (<span translate="no">! = : &gt; ;</span>) kezdődő sor változtatás nélkül megy ki.</li>
+                    <span translate="no">APRS</span> karakterrel (<span translate="no">! = : &gt; ;</span>) kezdődő sor változtatás nélkül megy ki. Minden memória alatt a Beállítások &gt; <span translate="no">Packet</span> oldalon egy szürke sor megmondja, mit küld ("Pozíció 34.35 S, 58.25 W", "Állapot: ..."); a <span translate="no">BEACON</span> nélkül írt két szám állapotszövegként megy ki, nem pozícióként, és egy piros sor a memória alatt ezt jelzi.</li>
                 <li>A keretei az Ön hívójeléről mennek ki, a <span translate="no">SSID</span>-vel,
                     amelyet a Beállítások &gt; <span translate="no">Packet</span> alatt választott (a képernyő fogaskereke), az ott megadott digipeater-útvonalon
                     (alapértelmezés szerint <span translate="no">WIDE1-1,WIDE2-1</span>, csak 2 m).</li>
@@ -5069,22 +5070,19 @@
                 <strong>RH konverter nélkül (közvetlen mintavétel)</strong> beállítást, hogy 24 MHz alatt vegyen az
                 <span translate="no">HF</span> bemenetén. A qFT8 soha nem kapcsolja be a dongle bias tee-jét (antennatáplálás).
             </p>
-            <p>
-                <strong>Számítógép, Linux</strong>: ugyanaz a sor, ugyanaz a beépített illesztőprogram. A qFT8 átveszi a dongle-t a TV-illesztőprogramtól,
-                amelyet a rendszer magától betölt hozzá. A felhasználónak jogosultság kell a dongle megnyitásához; ha az állapotsor azt mondja:
-                &bdquo;nincs jogosultság&rdquo;, adjon hozzá egyszer egy szabályfájlt (például
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) ezzel a sorral:
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> néhány régebbi dongle-hoz), futtassa a
-                <code dir="ltr">sudo udevadm control --reload-rules</code> parancsot, és dugja be újra a dongle-t.
+            <p id="rtl-stock-dongle">
+                <strong>Egy szabványos dongle-t nem kell átprogramozni.</strong> A dongle úgy, ahogy a boltból jön, működik: semmit nem írunk rá, és a qFT8 soha nem változtatja meg a memóriáját (EEPROM). A tunerchip számít: a(z) <span translate="no">R820T / R820T2 / R828D</span> működik; a(z) <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> tuneres dongle-ok nem, és ezt az állapotsor jelzi. A(z) <span translate="no">RTL-SDR Blog V4</span> a gyárilag kapott nevéről ismerhető fel; az e név nélküli <span translate="no">R828D</span> dongle (például egy V4, amelynek a nevét átírták) figyelmeztetést kap az állapotsorban, hogy a rövidhullám lehet, hogy nem működik. macOS-en bármely dongle-hoz a hálózati szervert (lent) használja.
             </p>
-            <p>
-                <strong>Számítógép, Windows és macOS</strong>: a dongle-t a qFT8 egyelőre nem tudja közvetlenül megnyitni. Futtassa az
-                <span translate="no">RTL-SDR</span> hálózati szervert ugyanazon a számítógépen (vagy egy másikon, például egy
-                <span translate="no">Raspberry Pi</span>-n), és válassza az <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> sort
-                a <code>127.0.0.1</code> címmel, vagy szolgálja ki a dongle-t egy telefonról vagy egy Linux számítógépről a
-                <a href="#bridge">qFT8 bridge</a>-dzsel.
+            <p id="rtl-usb-linux">
+                <strong>Számítógép, Linux</strong>: ugyanaz a sor, ugyanaz a beépített illesztőprogram. A qFT8 átveszi a dongle-t attól a TV-illesztőprogramtól, amelyet a rendszer magától betölt hozzá. A felhasználónak jogosultság kell a dongle megnyitásához: ha nincs, a qFT8 egy kártyán jelzi, amint a dongle be van dugva, és a <strong>JAVÍTÁS</strong> hozzáadja a jogosultságot helyette. Megnyílik egy terminál, és egyszer kéri a jelszót (ahol nincs terminál, ott a rendszer saját jelszóablaka teszi ezt). Megírja a <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code> szabályfájlt, amely hozzáférést ad a számítógépet használónak a <span translate="no">USB</span>-vevőkhöz (<span translate="no">RTL-SDR, Airspy, HackRF</span>); a dongle ezután azonnal működik, újraindítás és új bejelentkezés nélkül. A kártya megmutatja a parancsot is, amelyet ön is lefuttathat egy terminálban.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Számítógép, Windows</strong>: ugyanaz a sor, ugyanaz a beépített illesztőprogram, a Windowsszal érkező <span translate="no">WinUSB</span> illesztőprogramon át. A Windows általában nem ad az új dongle-nak illesztőprogramot, vagy olyan TV-illesztőprogramot ad, amelyet a qFT8 nem tud használni. A qFT8 ezt a dongle bedugásakor észreveszi, és felajánlja a beállítását: nyomja meg a <strong>BEÁLLÍTÁS</strong> gombot, és engedélyezze a módosítást a Windows rendszergazdai ablakában (egyszer); a dongle néhány másodperc múlva működik. Semmi sem töltődik le, és nem települ a mi illesztőprogramunk: a qFT8 a Windows saját <span translate="no">WinUSB</span> illesztőprogramjára kapcsolja a dongle-t. A TV-illesztőprogramot igénylő TV-programok már nem látják a dongle-t. Hogy visszaadja a Windowsnak: az <strong>Eszközkezelő</strong>ben kattintson jobb gombbal a dongle-ra a <strong>Universal Serial Bus devices</strong> alatt, válassza a <strong>Uninstall device</strong> lehetőséget (az illesztőprogramról szóló jelölőnégyzetet hagyja bejelöletlenül), majd a <strong>Action &gt; Scan for hardware changes</strong> parancsot. Egy Windows-frissítés vissza is hozhatja a TV-illesztőprogramot; a qFT8 ilyenkor újra felajánlja a beállítást. A Microsoft Store-os változat maga nem tud illesztőprogramot cserélni: az <strong>Eszközkezelő</strong>ben kattintson jobb gombbal a dongle-ra (gyakran &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), válassza a <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> lehetőséget, majd a <strong>Universal Serial Bus devices &gt; WinUsb Device</strong> elemet.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Számítógép, macOS</strong>: a dongle-t a qFT8 egyelőre nem tudja közvetlenül megnyitni. Futtassa az <span translate="no">RTL-SDR</span> hálózati szervert ugyanazon a számítógépen (vagy egy másikon, például egy <span translate="no">Raspberry Pi</span>-n), és válassza az <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> sort a <code>127.0.0.1</code> címmel, vagy szolgálja ki a dongle-t egy telefonról vagy egy számítógépről a <a href="#bridge">qFT8 bridge</a>-dzsel.
+            </p>
+
 
             <h4 id="swl-drivers">Az <span translate="no">RTL-SDR</span> hálózati szerver és illesztőprogramja</h4>
             <p>
@@ -5185,7 +5183,7 @@
                 <li>A napló minden bejegyzést (korlát nélkül) egy olyan fájlban tart, amelyhez csak hozzáfűznek, így egy nagyon hosszú napló nem lassítja az alkalmazás indulását; az oldal csak a legújabb bejegyzéseket olvassa, és görgetéskor többet mutat.</li>
                 <li>Kikapcsolt rádióamatőr funkciókkal minden hallott <span translate="no">FT8, FT4, LQ ...</span> állomás naplózódik (óránként egyszer állomásonként és üzemmódonként); bekapcsolt rádióamatőr funkciókkal csak a hallott teljes QSO-k naplózódnak. Az az állomás, amelyet először hall (korábban soha nem szerepelt a(z) <span translate="no">SWL</span> naplójában), hívójelét ciánkékkel mutatja az állomáslistában, ha a rádióamatőr funkciók ki vannak kapcsolva.</li>
                 <li>A jelvevők a naplóba írják, amit azonosítanak, állomásonként egyszer <span translate="no">UTC</span> naponként: hajók (<span translate="no">AIS</span>), légi járművek (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), rádiószondák, <span translate="no">NAVTEX</span> állomások, <span translate="no">DSC</span>, időállomások, <span translate="no">NCDXF</span> jeladók, <span translate="no">ALE / ARDOP / PACTOR</span> és <span translate="no">APRS</span> hívójelek, időjárási faxtérképek és időjárási műholdképek, valamint <span translate="no">FM</span> állomások a(z) <span translate="no">RDS</span> kódjuk és nevük szerint. Beszámítanak a(z) <span translate="no">SWL</span> díjakba; soha nem kerülnek az eQSL-re, és nincsenek a(z) <span translate="no">ADIF</span> exportban (a(z) <span translate="no">CSV</span> tartalmazza őket, a hallott névvel az utolsó oszlopban).</li>
-                <li>A feltöltések egy szabályt követnek: az eQSL <span translate="no">SWL</span> fiók minden hallott állomást e fiók alatt naplóz (rádióamatőr eQSL-fiókot visszautasít); a(z) <span translate="no">PSK Reporter</span> és <span translate="no">WSPRnet</span> a hívójele alatt jelent, egyébként a(z) <span translate="no">SWL</span> azonosítója alatt.</li>
+                <li>A feltöltések egy szabályt követnek: az eQSL <span translate="no">SWL</span> fiók minden hallott állomást e fiók alatt naplóz (rádióamatőr eQSL-fiókot visszautasít); a(z) <span translate="no">PSK Reporter</span> és <span translate="no">WSPRnet</span> minden spotot a hívójele és a(z) <span translate="no">SWL</span> azonosítója alatt is jelent, mindegyik alatt, amelyik be van állítva; a Beállítások minden négyzet alatt mutatják a neveket.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Ez az SDR az öné?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Kinek a vevője</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Ez a szerver az enyém</strong> in its rows, the same answer as <strong>Ez az SDR az öné?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5500,6 +5498,70 @@
                     <p><strong>Megjegyzés:</strong> a webszerver kikapcsolt képernyővel is működik, ha a háttérben futás beállításai be vannak kapcsolva (alapértelmezés szerint a <span translate="no">qFT8</span> a háttérben is fut, amíg adó-vevő csatlakozik hozzá).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>A qFT8 futtatása képernyő nélkül (webes távirányító szerver)</h3>
+                <p>
+                    A számítógépes program ablak nélkül is futhat, olyan számítógépen, amelynek nincs képernyője: egy Raspberry Pi a rádió mellett, egy kis szerver vagy bármely gép, amelyet SSH-n át ér el. A qFT8 ilyenkor mindent a megszokott módon végez (hang, rádióvezérlés, dekódolás, <span translate="no">AUTO</span>, naplózás, feltöltések), Ön pedig böngészőből kezeli a <a href="#remote-control">távirányító webszervere</a> segítségével, telefonról, tabletről vagy a hálózat másik számítógépéről.
+                </p>
+
+                <h4>Webszerver vagy bridge?</h4>
+                <p>Mindkettő képernyő nélkül fut. Az különbözteti meg őket, hogy melyik eszköz végzi a munkát:</p>
+                <ul>
+                    <li><strong>Webszerver</strong> (<code>--webserver</code>): a qFT8-at futtató számítógép dekódol, ad és naplóz; a böngésző csak megjeleníti, és az ő gombjait adja. Jó egy erős otthoni számítógéphez, amelyet telefonról vezérel.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, lásd: <a href="#bridge">qFT8 bridge</a>): a rádió melletti eszköz csak a rádió parancsait és hangját továbbítja a hálózaton, a dekódolást pedig az az eszköz végzi, amelyről kezeli (a számítógépes program, az Android-alkalmazás vagy az iPhone/iPad-alkalmazás). Jó egy rádió melletti Raspberry Pi-hez, ahol a saját számítógépe dolgozik.</li>
+                </ul>
+                <p>A kettő nem futhat egyszerre.</p>
+
+                <h4>Először állítsa be</h4>
+                <p>
+                    A qFT8 a mentett beállításait használja, pontosan úgy, mint az ablakával: hívójel, lokátor, rádió, hangeszközök, módok, naplózás és a QSO-feltöltő szolgáltatások. Például ha a <a href="#raw-message-logs">Nyers üzenetnaplók</a> be van jelölve, tovább írja a .tsv fájljait. Ezért előbb állítsa be a qFT8-at: indítsa el egyszer ablakkal azon a számítógépen (vagy másolja át a profilmappát egy másik gépről, lásd: <a href="#pc-settings">Beállítások: hol vannak, és hogyan viheti át őket telefonról</a>), vagy indítsa el képernyő nélkül, és állítsa be a webes távirányító Beállításaiban, amelyek a szokott módon mentődnek.
+                </p>
+
+                <h4>Indítás</h4>
+                <p>A számítógép terminálján (SSH-n át is jó), a qFT8 mappában:</p>
+                <ul>
+                    <li><strong>Linux</strong>, Raspberry Pi is: <code>./qFT8 --webserver</code>. A .jar letöltéssel és Java 21 vagy újabb mellett: <code>java -jar</code>, a .jar fájl neve és <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    A terminál kiírja, hogy a qFT8 ablak nélkül fut, hogy a <span translate="no">TX</span> ki van kapcsolva, és hogy az oldal kér-e jelszót, majd megmutatja a webes távirányító privát hivatkozását: nyissa meg egy böngészőben ugyanazon a hálózaton. A <code>#k=</code> utáni rész a hivatkozás kulcsa: tartsa titokban. Csak a terminálon jelenik meg, a qFT8 naplófájljába soha nem íródik be. A <code>Ctrl+C</code> leállítja a qFT8-at, és a rádiót visszaállítja vételre.
+                </p>
+                <p>
+                    A <span translate="no">TX</span> mindig ki van kapcsolva, amikor a qFT8 így indul. Csak a webes távirányító <span translate="no">TX</span> gombja kapcsolja be.
+                </p>
+
+                <h4>Kapcsolók</h4>
+                <p>
+                    Minden kapcsoló csak arra a futásra módosít egy beállítást: semmi nem mentődik, és kapcsolók nélkül a mentett beállítások érvényesek. A <code>qFT8 --webserver --help</code> felsorolja őket.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: a webes távirányító portja, 1024 és 65534 között (13497, ha nem módosította).</li>
+                    <li><code>--bind ADDRESS</code>: csak a számítógép ezen címén figyel.</li>
+                    <li><code>--password TEXT</code>, vagy <code>--password-file FILE</code> (a fájl első sora; biztonságosabb, mert a gép többi felhasználója látja a parancssort), vagy <code>--no-password</code>.</li>
+                    <li><code>--https</code> vagy <code>--no-https</code>: a biztonságos cím (a port + 1), amelyre a böngészőnek szüksége van a mikrofonja használatához.</li>
+                    <li><code>--access read</code>, <code>stop</code> vagy <code>full</code>: mit tehet az oldal: csak nézhet, nézhet és leállíthatja a <span translate="no">TX</span>-et, vagy mindent.</li>
+                    <li><code>--audio-in NAME</code> és <code>--audio-out NAME</code>: a rádió hangeszközei, a <code>qFT8 --list-devices</code> által mutatott névvel, vagy <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: a rádió (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), és <code>--port DEVICE</code>: a soros portja (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: a használt profilmappa.</li>
+                </ul>
+                <p>
+                    Ha a portot másik program használja, vagy ugyanazt a profilmappát már másik qFT8 használja, a qFT8 ezt kiírja a terminálra, és leáll.
+                </p>
+
+                <h4>Példa: egy Raspberry Pi</h4>
+                <p>
+                    A rádió USB-n csatlakozik a Pi-hez, és a qFT8-at már egyszer beállították (a Pi-n képernyővel, vagy a webes távirányítóról). Egy másik számítógépről:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Ezután nyissa meg a kiírt hivatkozást a telefonján. Egy Raspberry Pi 4 vagy 5 időben dekódolja az <span translate="no">FT8</span>-at; egy gyorsabb számítógép több leggyengébb jelet talál meg.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Vissza a tartalomjegyzékhez</a>
             </section>
 
             <section id="bridge">
@@ -6063,6 +6125,19 @@
                 <li>Linuxon, ha a qFT8 azt jelzi, hogy nincs engedélye megnyitni a rádió portját, fogadja el a felajánlott javítást (a fiókja bekerül a port csoportjába), vagy kérje a rendszergazda segítségét.</li>
                 <li>Ha a gondok kifejezetten adás közben jelentkeznek, rádiófrekvenciás zavar lehet az ok. Segíthet, ha fojtót vagy ferritet tesz az USB-kábelre. Megpróbálhat másik sávon is adni, mert egyes eszközök csak bizonyos sávokon érzékenyek a zavarra.</li>
             </ul>
+            <p>
+                Amikor a qFT8 <span translate="no">CAT</span>-on keresztül beszél egy rádióval (a <strong>Beállítások &gt; Eszköz</strong> alatt kiválasztott, vagy az <span translate="no">AUTO</span> által megtalált rádióval), és a rádió nem válaszol, megjelenik a piros <strong>Nincs <span translate="no">CAT</span></strong> figyelmeztetés a spektrogramon (és a rádió alatt a <strong>Beállítások &gt; Eszköz</strong> alatt). Koppintson rá: a kártya megmondja, mit mért a qFT8 a kapcsolaton, és felsorolja, mit érdemes kipróbálni az adott esetben:
+            </p>
+            <ul>
+                <li><strong>A qFT8 nem látja a rádiót</strong>: a rádió ki van kapcsolva, a kábel meglazult, a kábel csak töltésre jó (használjon USB adatkábelt), egy adapter vagy hub nem engedi át az adatot, vagy az <span translate="no">USB OTG</span> ki van kapcsolva a telefon rendszerbeállításaiban. Számítógépen: a rádió USB-illesztőprogramja és a <strong>Beállítások &gt; Eszközkonfiguráció</strong> alatt kiválasztott port.</li>
+                <li><strong>A rádió csatlakoztatva van, de a qFT8 nem tudta megnyitni a portját (nincs engedély, vagy másik program használja)</strong>: engedélyezze a qFT8-nak az USB-eszköz használatát, amikor az Android rákérdez, és zárja be a rádió portját használó többi programot.</li>
+                <li><strong>A rádió nem válaszol</strong> (egyetlen bájt sem jön vissza): a rádió be van kapcsolva, a kábel a rádió <span translate="no">CAT</span> aljzatába megy, a rádiótípus helyes, és a rádió <span translate="no">CAT</span> baudsebessége megegyezik a qFT8-éval (<strong>Beállítások &gt; Eszközkonfiguráció &gt; Baudsebesség</strong>). <span translate="no">CAT RTS</span> menüvel rendelkező Yaesu rádiók: állítsa <span translate="no">DISABLE</span> értékre. Xiegu rádiók: a csatoló adatkábele (<span translate="no">CI-V</span>) a rádió <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> aljzatába kerül, nem csak a hangkábel, és a rádió <span translate="no">CI-V</span> címe és baudsebessége megegyezik a qFT8-éval (a kártya mutatja őket).</li>
+                <li><strong>Csak a qFT8 saját parancsai jönnek vissza</strong>: a kábel vagy az illesztőfelület a rádió nélkül küldi vissza az adatokat (egy Icom <span translate="no">CI-V</span> kábel ezt teszi, amikor a rádió ki van kapcsolva).</li>
+                <li><strong>A rádió válaszol, de a qFT8 nem tudja elolvasni a válaszokat</strong>: a baudsebesség vagy a rádió típusa nem egyezik.</li>
+                <li><strong>A rádió adás közben nem válaszol</strong>: RF-zavar. Tegyen rácsíptethető ferritgyűrűket az USB- és hangkábelekre mindkét vég közelében, próbaként próbáljon kisebb teljesítményt (a rádión beállítva), és ellenőrizze az antennát és a tápvonalat közös módusú áramok szempontjából.</li>
+                <li><strong>A rádió válaszolt, majd nem válaszolt tovább</strong>: a rádiót kikapcsolták, vagy a kábel meglazult.</li>
+            </ul>
+            <p><strong>ÚJRAELLENŐRZÉS</strong> újra csatlakozik a rádióhoz, és még egyszer ellenőriz; <strong>JELENTÉS KÜLDÉSE</strong> elküldi nekünk a mért adatokat a rádió parancsnaplójával együtt.</p>
 
             <h3 id="trouble-otg-charging">Az adó-vevő eltűnik, amikor a telefon teljesen feltöltődik (Android)</h3>
             <p>

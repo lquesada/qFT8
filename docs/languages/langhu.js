@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Letöltés az App Store-ból",
     "FEAT2_OWN": "Saját dekóderek és enkóderek, a nulláról megírva",
     "FEAT2_RAWLOG": "Minden dekódolt üzenet naplózása",
+    "FEAT2_HEADLESS": "Képernyő nélkül távvezérlő webszerverként fut, például Raspberry Pi-n",
     "FAQ_TITLE": "Kérdések és válaszok",
     "FAQ_Q1": "Mi az a qFT8?",
     "FAQ_A1": "A qFT8 ingyenes amatőrrádiós program gyenge jelű digitális üzemmódokhoz, morzéhoz, távírógéphez, képekhez és beszédhez. Fut Android-telefonokon és -táblagépeken, iOS-en, Windowson, macOS-en és Linuxon, és bármely böngészőből vezérelhető. Nincsenek benne reklámok, és nem kér fiókot. Luis Quesada Torres, HB9IPH írta, saját, a nulláról megírt dekóderekkel és enkóderekkel.",

@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "在 App Store 下載",
     "FEAT2_OWN": "自有的解碼器和編碼器，全部從零編寫",
     "FEAT2_RAWLOG": "記錄所有已解碼的訊息",
+    "FEAT2_HEADLESS": "無需螢幕即可作為遠端控制網頁伺服器執行，例如在 Raspberry Pi 上",
     "FAQ_TITLE": "常見問題",
     "FAQ_Q1": "qFT8 是什麼？",
     "FAQ_A1": "qFT8 是一款免費的業餘無線電程式，支援弱訊號數位模式、摩斯電碼、電傳打字、圖片和語音。它可在 Android 手機和平板、iOS、Windows、macOS 和 Linux 上執行，並可透過任何瀏覽器控制。它沒有廣告，也無需帳號。作者是 Luis Quesada Torres，HB9IPH，解碼器和編碼器均為自行從零編寫。",

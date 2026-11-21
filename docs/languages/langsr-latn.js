@@ -135,6 +135,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Preuzmite na App Store",
     "FEAT2_OWN": "Sopstveni dekoderi i koderi, napisani od nule",
     "FEAT2_RAWLOG": "Beleži sve dekodirane poruke",
+    "FEAT2_HEADLESS": "Radi bez ekrana kao veb server za daljinsko upravljanje, npr. na Raspberry Pi",
     "FAQ_TITLE": "Pitanja i odgovori",
     "FAQ_Q1": "Šta je qFT8?",
     "FAQ_A1": "qFT8 je besplatan radioamaterski program za digitalne modove za slabe signale, Morzeov kod, teleprinter, slike i glas. Radi na Android telefonima i tabletima, iOS-u, Windowsu, macOS-u i Linuxu, i njime se može upravljati iz bilo kog pregledača. Nema reklama i ne traži nalog. Napisao ga je Luis Quesada Torres, HB9IPH, sa sopstvenim dekoderima i koderima napisanim od nule.",

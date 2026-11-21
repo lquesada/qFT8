@@ -175,6 +175,7 @@
                         <li><a href="#tune-offset">స్పెక్ట్రోగ్రామ్ ట్యూన్ ఆఫ్‌సెట్</a></li>
                         <li><a href="#tx-limit">నిరంతర ప్రసార పరిమితి</a></li>
                         <li><a href="#remote-control">రిమోట్ కంట్రోల్ వెబ్ సర్వర్</a></li>
+                        <li><a href="#webserver-headless">స్క్రీన్ లేకుండా qFT8 ను నడపడం (వెబ్ సర్వర్)</a></li>
                         <li><a href="#bridge">qFT8 బ్రిడ్జ్</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log ప్రోటోకాల్</a></li>
@@ -630,8 +631,7 @@
                 <li><strong>Linux</strong>: పోర్ట్ <code>/dev/ttyACM0</code> లేదా <code>/dev/ttyUSB0</code> లా కనిపిస్తుంది, పైన చెప్పిన
                     గ్రూప్ అవసరం. సౌండ్ పరికరాలు సౌండ్ సర్వర్ (PulseAudio లేదా PipeWire) వి, కాబట్టి
                     రేడియో స్పీకర్, మీ హెడ్‌ఫోన్లు, మీ మైక్రోఫోన్ ప్రతిదీ వేర్వేరు పరికరం కావచ్చు.
-                    పరికర వాల్యూమ్ స్లైడర్ <code>pactl</code> ను ఉపయోగిస్తుంది, అది <code>pulseaudio-utils</code> ప్యాకేజీలో ఉంటుంది (ఇది
-                    PipeWire తోనూ పని చేస్తుంది).</li>
+                    qFT8 ధ్వని పరికరాలను (మరియు పరికర వాల్యూమ్ స్లైడర్‌ను) <code>pulseaudio-utils</code> ప్యాకేజీలోని <code>pactl</code>, <code>parec</code> ద్వారా చేరుకుంటుంది (ఇవి PipeWire తోనూ పని చేస్తాయి): దాన్ని ఇన్‌స్టాల్ చేయండి, లేకపోతే qFT8 తరచుగా ఏ సౌండ్ కార్డ్‌నూ వినదు.</li>
             </ul>
 
             <h4>రేడియో, దాని పోర్ట్ ఎంచుకోవడం</h4>
@@ -752,7 +752,7 @@
                     <code>qFT8 --qft8_profile D:\qft8-radio2</code> (Windows: <code>qFT8.exe</code>). ఆ ఫోల్డర్‌కు రాయలేకపోతే qFT8
                     లోపంతో ఆగిపోతుంది.</li>
                 <li><strong>వెబ్ రిమోట్.</strong> కంప్యూటర్ ప్రోగ్రామ్‌కు Android లో ఉన్న అదే
-                    <a href="#remote-control">రిమోట్ కంట్రోల్ వెబ్ సర్వర్</a> ఉంది (డిఫాల్ట్‌గా ఆఫ్, పోర్ట్ 13497), అది వాల్యూమ్ స్లైడర్‌తో సహా అవే పేజీలను చూపిస్తుంది. మీ నెట్‌వర్క్‌లోని ఫోన్ లేదా మరో కంప్యూటర్ నుండి ఆపరేట్ చేయడానికి దీన్ని ఉపయోగించండి.</li>
+                    <a href="#remote-control">రిమోట్ కంట్రోల్ వెబ్ సర్వర్</a> ఉంది (డిఫాల్ట్‌గా ఆఫ్, పోర్ట్ 13497), అది వాల్యూమ్ స్లైడర్‌తో సహా అవే పేజీలను చూపిస్తుంది. మీ నెట్‌వర్క్‌లోని ఫోన్ లేదా మరో కంప్యూటర్ నుండి ఆపరేట్ చేయడానికి దీన్ని ఉపయోగించండి. ఇది విండో లేకుండా కూడా నడవగలదు (<code>qFT8 --webserver</code>, <a href="#webserver-headless">స్క్రీన్ లేకుండా qFT8 ను నడపడం</a> చూడండి), స్క్రీన్ లేని కంప్యూటర్ కోసం.</li>
                 <li><strong>బ్రిడ్జ్.</strong> కంప్యూటర్ సాధారణ <a href="#bridge">బ్రిడ్జ్</a>: రేడియో దానికి ప్లగ్ చేసి ఉంటుంది,
                     ఫోన్, iPhone లేదా మరో కంప్యూటర్‌లోని qFT8 దాన్ని ఆపరేట్ చేస్తుంది. వేరే పని లేని కంప్యూటర్ కోసం ఇది విండో లేకుండా కూడా
                     నడవగలదు (<code>qFT8 --bridge</code>).</li>
@@ -760,7 +760,7 @@
                     వాటిని చూపిస్తుంది): <code>--list-devices</code> qFT8 చూసే ప్రతి సీరియల్ పోర్ట్, సౌండ్ పరికరాన్ని జాబితా చేసి నిష్క్రమిస్తుంది;
                     <code>--port &lt;device&gt;</code> డిఫాల్ట్ సీరియల్ పోర్ట్‌ను సెట్ చేస్తుంది (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> ప్రొఫైల్ ఫోల్డర్‌ను ఎంచుకుంటుంది;
-                    <code>--bridge</code> బ్రిడ్జ్‌ను ప్రారంభిస్తుంది; <code>--video-mode=&lt;mode&gt;</code> ఆ ఒక్క రన్‌కు విండోను మరో విధంగా గీస్తుంది; సెట్టింగ్‌లలో <strong>వీడియో మోడ్</strong> మార్చేంతగా qFT8 తెరవలేనప్పుడు కూడా ఇది పనిచేస్తుంది (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> విండోను OpenGL ద్వారా గీస్తుంది (
+                    <code>--bridge</code> బ్రిడ్జ్‌ను ప్రారంభిస్తుంది; <code>--webserver</code> qFT8 ను విండో లేకుండా, రిమోట్ కంట్రోల్ తెరిచి నడుపుతుంది; <code>--video-mode=&lt;mode&gt;</code> ఆ ఒక్క రన్‌కు విండోను మరో విధంగా గీస్తుంది; సెట్టింగ్‌లలో <strong>వీడియో మోడ్</strong> మార్చేంతగా qFT8 తెరవలేనప్పుడు కూడా ఇది పనిచేస్తుంది (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> విండోను OpenGL ద్వారా గీస్తుంది (
                     <a href="#pc-trouble">ఏదైనా పని చేయకపోతే</a> చూడండి).</li>
             </ul>
 
@@ -2108,7 +2108,7 @@
                         <li><strong>నెట్‌వర్క్ రేడియో</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>నెట్‌వర్క్ రేడియో (ప్రయోగాత్మకం)</strong> in <strong>రేడియో కనెక్షన్</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>కనెక్ట్</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>పద్ధతి</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>ఆడియో స్ట్రీమ్ పోర్ట్</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>సౌండ్ కార్డ్</strong> under <strong>ఆడియో</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>పద్ధతి</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>చిరునామా</strong>, the <strong>రేడియో</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>వినియోగదారు పేరు</strong> and <strong>పాస్‌వర్డ్</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>రేడియో</strong> says which radio, <strong>″పరికరం″లో ఎంచుకున్నట్లు</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>బ్లూటూత్ (ప్రయోగాత్మకం)</strong> in <strong>రేడియో కనెక్షన్</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>పరికరాన్ని ఎంచుకోండి</strong> under <strong>బ్లూటూత్ పరికరం</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>రేడియో</strong>, <strong>″పరికరం″లో ఎంచుకున్నట్లు</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>కనెక్ట్</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>బ్లూటూత్ (ప్రయోగాత్మకం)</strong> in <strong>రేడియో కనెక్షన్</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>పరికరాన్ని ఎంచుకోండి</strong> under <strong>బ్లూటూత్ పరికరం</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>రేడియో</strong>, <strong>″పరికరం″లో ఎంచుకున్నట్లు</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>కనెక్ట్</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2218,6 +2218,7 @@
                     <strong>USB పరికరం</strong>, <strong>బాడ్ రేట్</strong>, <strong>డేటా బిట్స్</strong>,
                     <strong>స్టాప్ బిట్స్</strong>, <strong>పారిటీ</strong> మరియు రేడియోను కీ చేసే విధానాన్ని (<strong>PTT</strong>:
                     CAT కమాండ్ ద్వారా, లేదా RTS లేదా DTR లైన్ ద్వారా) అన్‌లాక్ చేస్తుంది, ప్రసారానికి ముందు PTT ఆలస్యంతో సహా.
+                    RTS లేదా DTR తో, ఆ లైన్ ఎక్కడ ఉందో <strong>PTT పోర్ట్</strong> ఎంచుకుంటుంది: <strong>CAT లాగానే</strong> (రేడియో సొంత కేబుల్) లేదా రెండో సీరియల్ పోర్ట్; ఒక కేబుల్‌పై CAT, మరో ఇంటర్‌ఫేస్‌పై PTT ఉన్న స్టేషన్ కోసం (ఫోన్‌లో, రెండు అడాప్టర్లూ USB హబ్ ద్వారా; iPhone లో కాదు).
                     <strong>ప్రారంభంలో మరియు ప్రతి సైకిల్‌లో ట్రాన్స్‌సీవర్ మోడ్‌ను సెట్ చేయి</strong> రేడియోను సరైన మోడ్‌లో ఉంచుతుంది.
                     ఈ పరికరానికి ఓవర్‌రైడ్‌లు ఉన్నప్పుడు ప్రధాన పేజీలోని ఒక గమనిక చెబుతుంది.</li>
                 <li><strong>ట్యూనింగ్ (ఈ రేడియో)</strong>: <a href="#tune-offset">ట్యూన్ స్పెక్ట్రోగ్రామ్ ఆఫ్‌సెట్</a> మరియు
@@ -5363,9 +5364,9 @@
                     వాటి దూరంతో.</li>
                 <li>మెమరీ యొక్క ప్రతి పంక్తి, లేదా మీరు టైప్ చేసే ప్రతి పంక్తి, ఒక ఫ్రేమ్:
                     <span translate="no">BEACON</span> [వ్యాఖ్య] మీ లొకేటర్ నుండి డిగ్రీ వరకు మీ స్థానాన్ని పంపుతుంది
-                    (లొకేటర్ కంటే ఎప్పుడూ ఎక్కువ ఖచ్చితంగా కాదు); <span translate="no">CALL: text</span> ఆ స్టేషన్‌కు సందేశం పంపుతుంది;
+                    (లొకేటర్ కంటే ఎప్పుడూ ఎక్కువ ఖచ్చితంగా కాదు); <span translate="no">BEACON</span> అక్షాంశం రేఖాంశం [వ్యాఖ్య] దశాంశ డిగ్రీలలో ఖచ్చితమైన స్థానాన్ని పంపుతుంది, దక్షిణ మరియు పశ్చిమ రుణాత్మకం (<span translate="no">BEACON -34.3543 -58.2535</span> అంటే 34.35 S, 58.25 W; అక్షరాలు కూడా పనిచేస్తాయి: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> ఆ స్టేషన్‌కు సందేశం పంపుతుంది;
                     <span translate="no">STATUS text</span> స్థితిని; <span translate="no">APRS</span> అక్షరం (<span translate="no">! = : &gt; ;</span>)
-                    తో మొదలయ్యే పంక్తి యథాతథంగా వెళ్తుంది.</li>
+                    తో మొదలయ్యే పంక్తి యథాతథంగా వెళ్తుంది. సెట్టింగ్‌లు &gt; <span translate="no">Packet</span>లో ప్రతి మెమరీ కింద ఒక బూడిద రంగు పంక్తి అది ఏమి పంపుతుందో చెబుతుంది ("స్థానం 34.35 S, 58.25 W", "స్థితి: ..."); <span translate="no">BEACON</span> లేకుండా రాసిన రెండు సంఖ్యలు స్థానంగా కాక స్టేటస్ టెక్స్ట్‌గా వెళ్తాయి, మెమరీ కింద ఎరుపు పంక్తి ఆ విషయం చెబుతుంది.</li>
                 <li>మీ ఫ్రేమ్‌లు మీ కాల్‌సైన్ నుండి, <span translate="no">SSID</span>తో,
                     సెట్టింగ్‌లు &gt; <span translate="no">Packet</span> (తెర యొక్క గేర్)లో ఎంచుకున్న, అక్కడ సెట్ చేసిన డిజిపీటర్ మార్గం ద్వారా వెళ్తాయి
                     (డిఫాల్ట్‌గా <span translate="no">WIDE1-1,WIDE2-1</span>, 2 m మాత్రమే).</li>
@@ -6165,20 +6166,19 @@
                 <strong>అప్‌కన్వర్టర్ లేని HF (డైరెక్ట్ శాంప్లింగ్)</strong>ను టిక్ చేయండి, దాని
                 <span translate="no">HF</span> ఇన్‌పుట్‌పై 24 MHz కంటే తక్కువ స్వీకరించడానికి. qFT8 డాంగిల్ బయాస్ టీ (యాంటెన్నా పవర్)ని ఎప్పుడూ ఆన్ చేయదు.
             </p>
-            <p>
-                <strong>కంప్యూటర్, Linux</strong>: అదే వరుస, అదే అంతర్నిర్మిత డ్రైవర్. సిస్టమ్ దాని కోసం దానంతట అదే లోడ్ చేసే TV డ్రైవర్ నుండి qFT8 డాంగిల్‌ను తీసుకుంటుంది. మీ యూజర్‌కు డాంగిల్‌ను తెరిచే అనుమతి అవసరం; స్థితి వరుస
-                &ldquo;no permission&rdquo; అని చెబితే, ఒకసారి ఒక రూల్ ఫైల్‌ను జోడించండి (ఉదాహరణకు
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) ఈ వరుసతో
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (కొన్ని పాత డాంగిల్స్‌కు <code>2832</code>),
-                <code dir="ltr">sudo udevadm control --reload-rules</code> నడపండి మరియు డాంగిల్‌ను మళ్లీ ప్లగ్ చేయండి.
+            <p id="rtl-stock-dongle">
+                <strong>సాధారణ డాంగిల్‌ను ఫ్లాష్ చేయనవసరం లేదు.</strong> దుకాణం నుంచి వచ్చినట్లే డాంగిల్ పనిచేస్తుంది: దానిలో ఏమీ రాయబడదు, qFT8 దాని మెమరీ (EEPROM)ని ఎప్పుడూ మార్చదు. ముఖ్యం ట్యూనర్ చిప్: <span translate="no">R820T / R820T2 / R828D</span> పనిచేస్తాయి; <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> ట్యూనర్ ఉన్న డాంగిల్‌లు పనిచేయవు, స్థితి పంక్తి అది చెబుతుంది. <span translate="no">RTL-SDR Blog V4</span>ను ఫ్యాక్టరీ పేరుతో గుర్తిస్తారు; ఆ పేరు లేని <span translate="no">R828D</span> డాంగిల్ (ఉదా. పేరు తిరిగి రాసిన V4) HF పనిచేయకపోవచ్చని స్థితి పంక్తిలో హెచ్చరిక పొందుతుంది. macOSలో ఏ డాంగిల్‌కైనా నెట్‌వర్క్ సర్వర్‌ను (కింద) వాడండి.
             </p>
-            <p>
-                <strong>కంప్యూటర్, Windows మరియు macOS</strong>: డాంగిల్‌ను qFT8 ఇంకా నేరుగా తెరవలేదు. <span translate="no">RTL-SDR</span> నెట్‌వర్క్ సర్వర్‌ను అదే కంప్యూటర్‌లో (లేదా
-                <span translate="no">Raspberry Pi</span> వంటి మరేదైనా దానిలో) నడపండి మరియు
-                <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>ను చిరునామా <code>127.0.0.1</code>తో ఎంచుకోండి, లేదా
-                <a href="#bridge">qFT8 బ్రిడ్జ్</a>తో ఫోన్ లేదా Linux కంప్యూటర్ నుండి డాంగిల్‌ను అందించండి.
+            <p id="rtl-usb-linux">
+                <strong>కంప్యూటర్, Linux</strong>: అదే వరుస, అదే అంతర్నిర్మిత డ్రైవర్. సిస్టమ్ తానే లోడ్ చేసే టీవీ డ్రైవర్ నుండి qFT8 డాంగిల్‌ను తీసుకుంటుంది. మీ వినియోగదారుకు డాంగిల్‌ను తెరవడానికి అనుమతి కావాలి: లేకపోతే డాంగిల్ ప్లగ్ చేసిన వెంటనే qFT8 ఒక కార్డులో చెబుతుంది, మరియు <strong>సరిచేయి</strong> మీ కోసం అనుమతిని జోడిస్తుంది. టెర్మినల్ తెరుచుకుని ఒకసారి మీ పాస్‌వర్డ్ అడుగుతుంది (టెర్మినల్ లేని చోట సిస్టమ్ సొంత పాస్‌వర్డ్ విండో అడుగుతుంది). ఇది కంప్యూటర్ వాడేవారికి <span translate="no">USB</span> రిసీవర్లకు (<span translate="no">RTL-SDR, Airspy, HackRF</span>) ప్రవేశం ఇచ్చే నియమాల ఫైల్ <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code> ను రాస్తుంది; ఆ తర్వాత డాంగిల్ వెంటనే, రీస్టార్ట్ లేకుండా, కొత్త లాగిన్ లేకుండా పనిచేస్తుంది. కార్డు ఆదేశాన్ని కూడా చూపిస్తుంది, మీరే టెర్మినల్‌లో నడపడానికి.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>కంప్యూటర్, Windows</strong>: అదే వరుస, అదే అంతర్నిర్మిత డ్రైవర్, Windows తో వచ్చే <span translate="no">WinUSB</span> డ్రైవర్ ద్వారా. Windows సాధారణంగా కొత్త డాంగిల్‌కు డ్రైవర్ ఇవ్వదు, లేదా qFT8 వాడలేని టీవీ డ్రైవర్ ఇస్తుంది. డాంగిల్ ప్లగ్ చేసినప్పుడు qFT8 దీన్ని గుర్తించి సెటప్ చేయడానికి ముందుకొస్తుంది: <strong>సెటప్</strong> నొక్కి Windows అడ్మినిస్ట్రేటర్ విండోలో మార్పును అనుమతించండి (ఒకసారి); కొన్ని సెకన్ల తర్వాత డాంగిల్ పనిచేస్తుంది. ఏదీ డౌన్‌లోడ్ కాదు, మా డ్రైవర్ ఏదీ ఇన్‌స్టాల్ కాదు: qFT8 డాంగిల్‌ను Windows సొంత <span translate="no">WinUSB</span> డ్రైవర్‌కు మారుస్తుంది. టీవీ డ్రైవర్ అవసరమైన టీవీ ప్రోగ్రామ్‌లు ఇక డాంగిల్‌ను చూడవు. దాన్ని Windows కు తిరిగి ఇవ్వడానికి: <strong>Device Manager</strong> లో <strong>Universal Serial Bus devices</strong> కింద డాంగిల్‌పై రైట్-క్లిక్ చేసి, <strong>Uninstall device</strong> ఎంచుకోండి (డ్రైవర్ గురించిన బాక్స్‌ను టిక్ చేయకండి), తర్వాత <strong>Action &gt; Scan for hardware changes</strong>. Windows అప్‌డేట్ టీవీ డ్రైవర్‌ను తిరిగి తేవచ్చు; అప్పుడు qFT8 సెటప్‌ను మళ్లీ అందిస్తుంది. Microsoft Store వెర్షన్ డ్రైవర్లను తానే మార్చలేదు: <strong>Device Manager</strong> లో డాంగిల్‌పై రైట్-క్లిక్ చేసి (తరచుగా &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> ఎంచుకుని, తర్వాత <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>కంప్యూటర్, macOS</strong>: డాంగిల్‌ను qFT8 ఇంకా నేరుగా తెరవలేదు. <span translate="no">RTL-SDR</span> నెట్‌వర్క్ సర్వర్‌ను అదే కంప్యూటర్‌లో (లేదా <span translate="no">Raspberry Pi</span> వంటి మరేదైనా దానిలో) నడపండి మరియు <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>ను చిరునామా <code>127.0.0.1</code>తో ఎంచుకోండి, లేదా <a href="#bridge">qFT8 బ్రిడ్జ్</a>తో ఫోన్ లేదా కంప్యూటర్ నుండి డాంగిల్‌ను అందించండి.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span> నెట్‌వర్క్ సర్వర్ మరియు దాని డ్రైవర్</h4>
             <p>
@@ -6279,7 +6279,7 @@
                 <li>లాగ్ ప్రతి ఎంట్రీని (పరిమితి లేకుండా) కేవలం జోడింపులు మాత్రమే జరిగే ఫైల్‌లో ఉంచుతుంది, కాబట్టి చాలా పొడవైన లాగ్ యాప్ ప్రారంభాన్ని నెమ్మది చేయదు; పేజీ కొత్త ఎంట్రీలను మాత్రమే చదివి మీరు స్క్రోల్ చేసినప్పుడు మరిన్ని చూపుతుంది.</li>
                 <li>Ham ఫీచర్లు ఆఫ్‌లో ఉన్నప్పుడు, వినబడిన ప్రతి <span translate="no">FT8, FT4, LQ ...</span> స్టేషన్ లాగ్ అవుతుంది (ప్రతి స్టేషన్ మరియు మోడ్‌కు గంటకు ఒకసారి); Ham ఫీచర్లు ఆన్‌లో ఉన్నప్పుడు, వినబడిన పూర్తి QSOలు మాత్రమే లాగ్ అవుతాయి. మీరు మొదటిసారి వినే స్టేషన్ (మీ <span translate="no">SWL</span> లాగ్‌లో ఇంతకు ముందు ఎప్పుడూ లేనిది) Ham ఫీచర్లు ఆఫ్‌లో ఉన్నప్పుడు స్టేషన్ల జాబితాలో దాని కాల్‌సైన్‌ను సయాన్ రంగులో కలిగి ఉంటుంది.</li>
                 <li>సంకేత రిసీవర్లు తాము గుర్తించినదాన్ని లాగ్‌లో రాస్తాయి, ప్రతి స్టేషన్‌కు ప్రతి <span translate="no">UTC</span> రోజుకు ఒకసారి: ఓడలు (<span translate="no">AIS</span>), విమానాలు (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), రేడియోసాండ్‌లు, <span translate="no">NAVTEX</span> స్టేషన్లు, <span translate="no">DSC</span>, సమయ స్టేషన్లు, <span translate="no">NCDXF</span> బీకన్లు, <span translate="no">ALE / ARDOP / PACTOR</span> మరియు <span translate="no">APRS</span> కాల్‌సైన్లు, వాతావరణ ఫ్యాక్స్ మరియు వాతావరణ ఉపగ్రహ చిత్రాలు, మరియు <span translate="no">FM</span> స్టేషన్లు వాటి <span translate="no">RDS</span> కోడ్ మరియు పేరుతో. అవి <span translate="no">SWL</span> అవార్డులకు లెక్కించబడతాయి; అవి ఎప్పుడూ eQSLకు పంపబడవు మరియు <span translate="no">ADIF</span> ఎగుమతిలో లేవు (<span translate="no">CSV</span>లో ఉన్నాయి, చివరి కాలమ్‌లో వినబడిన పేరుతో).</li>
-                <li>అప్‌లోడ్‌లు ఒక నియమాన్ని అనుసరిస్తాయి: eQSL <span translate="no">SWL</span> ఖాతా వినబడిన ప్రతి స్టేషన్‌ను ఆ ఖాతా కింద దాఖలు చేస్తుంది (హామ్ eQSL ఖాతా తిరస్కరించబడుతుంది); <span translate="no">PSK Reporter</span> మరియు <span translate="no">WSPRnet</span> మీ కాల్‌సైన్ కింద నివేదిస్తాయి, లేకపోతే మీ <span translate="no">SWL</span> ఐడి కింద.</li>
+                <li>అప్‌లోడ్‌లు ఒక నియమాన్ని అనుసరిస్తాయి: eQSL <span translate="no">SWL</span> ఖాతా వినబడిన ప్రతి స్టేషన్‌ను ఆ ఖాతా కింద దాఖలు చేస్తుంది (హామ్ eQSL ఖాతా తిరస్కరించబడుతుంది); <span translate="no">PSK Reporter</span> మరియు <span translate="no">WSPRnet</span> ప్రతి స్పాట్‌ను మీ కాల్‌సైన్ మరియు మీ <span translate="no">SWL</span> ఐడి — సెట్ చేసినవి — రెండింటి కింద నివేదిస్తాయి; సెట్టింగ్‌లు ప్రతి పెట్టె కింద పేర్లను చూపుతాయి.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>ఈ SDR మీదేనా?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>ఎవరి రిసీవర్</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>ఈ సర్వర్ నాది</strong> in its rows, the same answer as <strong>ఈ SDR మీదేనా?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6679,6 +6679,70 @@
                         కనెక్ట్ అయి ఉన్నప్పుడు నేపథ్యంలో నడుస్తూనే ఉండటం డిఫాల్ట్).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>స్క్రీన్ లేకుండా qFT8 ను నడపడం (వెబ్ సర్వర్)</h3>
+                <p>
+                    కంప్యూటర్ ప్రోగ్రామ్ అసలు విండో లేకుండా, స్క్రీన్ లేని కంప్యూటర్‌లో కూడా నడవగలదు: రేడియో పక్కన Raspberry Pi, చిన్న సర్వర్, లేదా మీరు SSH ద్వారా చేరే ఏ కంప్యూటర్ అయినా. అప్పుడు qFT8 అన్నీ మామూలుగానే చేస్తుంది (ధ్వని, రేడియో నియంత్రణ, డీకోడింగ్, <span translate="no">AUTO</span>, లాగింగ్, అప్‌లోడ్‌లు), మీరు దాన్ని బ్రౌజర్ నుండి, మీ నెట్‌వర్క్‌లోని ఫోన్, టాబ్లెట్ లేదా మరో కంప్యూటర్ నుండి <a href="#remote-control">రిమోట్ కంట్రోల్ వెబ్ సర్వర్</a> ద్వారా ఆపరేట్ చేస్తారు.
+                </p>
+
+                <h4>వెబ్ సర్వర్ లేదా బ్రిడ్జ్?</h4>
+                <p>రెండూ స్క్రీన్ లేకుండా నడుస్తాయి. ఏ పరికరం పని చేస్తుందన్నదే తేడా:</p>
+                <ul>
+                    <li><strong>వెబ్ సర్వర్</strong> (<code>--webserver</code>): qFT8 నడిపే కంప్యూటరే డీకోడ్ చేస్తుంది, ప్రసారం చేస్తుంది, లాగ్ చేస్తుంది; బ్రౌజర్ దాన్ని చూపిస్తూ దాని బటన్‌లను మాత్రమే కలిగి ఉంటుంది. ఇంట్లో ఉన్న శక్తివంతమైన కంప్యూటర్‌ను ఫోన్ నుండి నియంత్రించడానికి మంచిది.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, <a href="#bridge">qFT8 బ్రిడ్జ్</a> చూడండి): రేడియో పక్కన ఉన్న పరికరం రేడియో ఆదేశాలను, దాని ఆడియోను నెట్‌వర్క్ ద్వారా పంపడమే చేస్తుంది; మీరు ఆపరేట్ చేసే పరికరంలోని qFT8 (కంప్యూటర్ ప్రోగ్రామ్, Android యాప్ లేదా iPhone/iPad యాప్) డీకోడింగ్ చేస్తుంది. మీ సొంత కంప్యూటర్ పని చేస్తూ, రేడియో వద్ద Raspberry Pi ఉండటానికి మంచిది.</li>
+                </ul>
+                <p>ఈ రెండూ ఒకేసారి నడవలేవు.</p>
+
+                <h4>ముందుగా సెటప్ చేయండి</h4>
+                <p>
+                    qFT8 సేవ్ చేసిన సెట్టింగ్‌లను విండోతో ఉన్నప్పటిలాగే ఉపయోగిస్తుంది: కాల్‌సైన్, locator, రేడియో, ధ్వని పరికరాలు, మోడ్‌లు, లాగింగ్, QSO అప్‌లోడ్ సేవలు. ఉదాహరణకు, <a href="#raw-message-logs">రా సందేశ లాగ్‌లు</a> టిక్ చేసి ఉంటే అది తన .tsv ఫైళ్లను రాస్తూనే ఉంటుంది. కాబట్టి ముందుగా qFT8 ను సెటప్ చేయండి: ఆ కంప్యూటర్‌లో ఒకసారి విండోతో ప్రారంభించండి (లేదా మరో కంప్యూటర్ నుండి ప్రొఫైల్ ఫోల్డర్‌ను కాపీ చేయండి, <a href="#pc-settings">సెట్టింగ్‌లు: ఎక్కడ ఉంటాయి, ఫోన్ నుండి తరలించడం</a> చూడండి), లేదా స్క్రీన్ లేకుండా ప్రారంభించి రిమోట్ కంట్రోల్ సెట్టింగ్‌ల నుండి సెట్ చేయండి, అవి మామూలుగానే సేవ్ అవుతాయి.
+                </p>
+
+                <h4>ప్రారంభించడం</h4>
+                <p>ఆ కంప్యూటర్‌లోని టెర్మినల్‌లో (SSH ద్వారా అయినా సరే), qFT8 ఫోల్డర్‌లో:</p>
+                <ul>
+                    <li><strong>Linux</strong>, Raspberry Pi కూడా: <code>./qFT8 --webserver</code>. .jar డౌన్‌లోడ్ మరియు Java 21 లేదా కొత్తదితో: <code>java -jar</code>, .jar ఫైల్ పేరు, మరియు <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    qFT8 విండో లేకుండా నడుస్తోందని, <span translate="no">TX</span> ఆఫ్‌లో ఉందని, పేజీ పాస్‌వర్డ్ అడుగుతుందో లేదో టెర్మినల్ చెబుతుంది, రిమోట్ కంట్రోల్ ప్రైవేట్ లింక్‌ను చూపుతుంది: అదే నెట్‌వర్క్‌లోని బ్రౌజర్‌లో తెరవండి. <code>#k=</code> తర్వాతి భాగం లింక్ కీ: దాన్ని రహస్యంగా ఉంచండి. అది టెర్మినల్‌లో మాత్రమే కనిపిస్తుంది, qFT8 లాగ్ ఫైల్‌లో ఎప్పుడూ రాయబడదు. <code>Ctrl+C</code> qFT8 ను ఆపి రేడియోను తిరిగి స్వీకరణలో ఉంచుతుంది.
+                </p>
+                <p>
+                    qFT8 ఇలా ప్రారంభమైనప్పుడు <span translate="no">TX</span> ఎల్లప్పుడూ ఆఫ్‌లో ఉంటుంది. రిమోట్ కంట్రోల్‌లోని <span translate="no">TX</span> బటన్ మాత్రమే దాన్ని ఆన్ చేస్తుంది.
+                </p>
+
+                <h4>ఎంపికలు</h4>
+                <p>
+                    ప్రతి ఎంపిక ఆ రన్‌కు మాత్రమే ఒక సెట్టింగ్‌ను మారుస్తుంది: ఏదీ సేవ్ కాదు, ఎంపికలు లేకపోతే సేవ్ చేసిన సెట్టింగ్‌లు వాడబడతాయి. <code>qFT8 --webserver --help</code> వాటిని జాబితా చేస్తుంది.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: రిమోట్ కంట్రోల్ పోర్ట్, 1024 నుండి 65534 వరకు (మీరు మార్చకపోతే 13497).</li>
+                    <li><code>--bind చిరునామా</code>: కంప్యూటర్‌లోని ఆ చిరునామాలో మాత్రమే వింటుంది.</li>
+                    <li><code>--password టెక్స్ట్</code>, లేదా <code>--password-file ఫైల్</code> (ఫైల్ మొదటి లైన్; సురక్షితం, ఎందుకంటే కంప్యూటర్‌లోని ఇతర వినియోగదారులు కమాండ్ లైన్‌ను చూడగలరు), లేదా <code>--no-password</code>.</li>
+                    <li><code>--https</code> లేదా <code>--no-https</code>: బ్రౌజర్ మైక్రోఫోన్‌ను వాడటానికి అవసరమైన సురక్షిత చిరునామా (పోర్ట్ + 1).</li>
+                    <li><code>--access read</code>, <code>stop</code> లేదా <code>full</code>: పేజీ ఏమి చేయవచ్చు: చూడటం మాత్రమే, చూసి <span translate="no">TX</span> ను ఆపడం, లేదా అన్నీ.</li>
+                    <li><code>--audio-in పేరు</code> మరియు <code>--audio-out పేరు</code>: రేడియో ధ్వని పరికరాలు, <code>qFT8 --list-devices</code> చూపే పేరుతో, లేదా <code>auto</code>.</li>
+                    <li><code>--radio రకం</code>: రేడియో (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), మరియు <code>--port పరికరం</code>: దాని సీరియల్ పోర్ట్ (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile ఫోల్డర్</code>: వాడాల్సిన ప్రొఫైల్ ఫోల్డర్.</li>
+                </ul>
+                <p>
+                    పోర్ట్‌ను మరో ప్రోగ్రామ్ వాడుతుంటే, లేదా అదే ప్రొఫైల్ ఫోల్డర్‌ను మరో qFT8 ఇప్పటికే వాడుతుంటే, qFT8 టెర్మినల్‌లో ఆ విషయం చెప్పి ఆగిపోతుంది.
+                </p>
+
+                <h4>ఉదాహరణ: Raspberry Pi</h4>
+                <p>
+                    రేడియో USB ద్వారా Pi కి కనెక్ట్ చేయబడింది, qFT8 ఒకసారి సెటప్ చేయబడింది (Pi లో స్క్రీన్‌తో, లేదా రిమోట్ కంట్రోల్ నుండి). మరో కంప్యూటర్ నుండి:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    తర్వాత అది చూపే లింక్‌ను మీ ఫోన్‌లో తెరవండి. Raspberry Pi 4 లేదా 5 <span translate="no">FT8</span> ను సమయానికి డీకోడ్ చేస్తుంది; వేగవంతమైన కంప్యూటర్ అత్యంత బలహీన సంకేతాలను మరిన్ని కనుగొంటుంది.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; విషయ సూచికకు తిరిగి వెళ్ళండి</a>
             </section>
 
             <section id="bridge">
@@ -7235,6 +7299,19 @@
                     (మీ ఖాతా పోర్ట్ గ్రూప్‌లో చేరుతుంది), లేదా మీ సిస్టమ్ అడ్మినిస్ట్రేటర్‌ను అడగండి.</li>
                 <li>సమస్యలు ప్రత్యేకంగా ప్రసారం చేస్తున్నప్పుడు సంభవిస్తే, అది రేడియో జోక్యం వల్ల కావచ్చు. USB కేబుల్‌కు చోక్‌లు లేదా ఫెర్రైట్‌లు జోడించడం సహాయపడవచ్చు. మీరు వేరే బ్యాండ్‌లో ప్రసారం చేసి కూడా చూడవచ్చు, ఎందుకంటే కొన్ని పరికరాలు కొన్ని బ్యాండ్లలో మాత్రమే జోక్యానికి సున్నితంగా ఉంటాయి.</li>
             </ul>
+            <p>
+                qFT8 <span translate="no">CAT</span> ద్వారా రేడియోతో మాట్లాడుతున్నప్పుడు (<strong>సెట్టింగ్‌లు &gt; పరికరం</strong> లో ఎంచుకున్న రేడియో, లేదా <span translate="no">AUTO</span> కనుగొన్నది) రేడియో బదులివ్వకపోతే, స్పెక్ట్రోగ్రామ్‌పై ఎరుపు <strong>CAT లేదు</strong> హెచ్చరిక కనిపిస్తుంది (మరియు <strong>సెట్టింగ్‌లు &gt; పరికరం</strong> లో రేడియో కింద). దాన్ని తాకండి: కనెక్షన్‌పై qFT8 ఏమి కొలిచిందో కార్డ్ చెబుతుంది, ఆ సందర్భంలో ఏమి ప్రయత్నించాలో జాబితా చేస్తుంది:
+            </p>
+            <ul>
+                <li><strong>రేడియో కనబడలేదు</strong>: రేడియో ఆఫ్‌లో ఉంది, కేబుల్ వదులుగా ఉంది, కేబుల్ కేవలం ఛార్జ్ మాత్రమే చేస్తుంది (USB డేటా కేబుల్ వాడండి), అడాప్టర్ లేదా హబ్ డేటాను పంపడం లేదు, లేదా ఫోన్ సిస్టమ్ సెట్టింగ్‌లలో <span translate="no">USB OTG</span> ఆఫ్‌లో ఉంది. కంప్యూటర్‌లో: రేడియో USB డ్రైవర్, మరియు <strong>సెట్టింగ్‌లు &gt; పరికర కాన్ఫిగరేషన్</strong> లో ఎంచుకున్న పోర్ట్.</li>
+                <li><strong>పోర్ట్ తెరవలేకపోయింది</strong>: Android అడిగినప్పుడు USB పరికరాన్ని వాడటానికి qFT8 కు అనుమతి ఇవ్వండి, రేడియో పోర్ట్‌ను వాడుతున్న ఇతర ప్రోగ్రామ్‌లను మూసివేయండి.</li>
+                <li><strong>రేడియో బదులివ్వడం లేదు</strong> (ఒక్క బైట్ కూడా తిరిగి రాదు): రేడియో ఆన్‌లో ఉంది, కేబుల్ దాని <span translate="no">CAT</span> సాకెట్‌లో ఉంది, రేడియో మోడల్ సరైనది, రేడియో <span translate="no">CAT</span> బాడ్ రేట్ qFT8 దానితో సమానం (<strong>సెట్టింగ్‌లు &gt; పరికర కాన్ఫిగరేషన్ &gt; బాడ్ రేట్</strong>). <span translate="no">CAT RTS</span> మెనూ ఉన్న Yaesu రేడియోలు: దాన్ని <span translate="no">DISABLE</span> కు సెట్ చేయండి. Xiegu రేడియోలు: ఇంటర్‌ఫేస్ డేటా (<span translate="no">CI-V</span>) కేబుల్ రేడియో <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> జాక్‌లోకి వెళ్తుంది, ఆడియో కేబుల్ మాత్రమే కాదు, మరియు రేడియో <span translate="no">CI-V</span> చిరునామా, బాడ్ రేట్ qFT8 లో ఉన్నవే (కార్డ్ వాటిని చూపిస్తుంది).</li>
+                <li><strong>qFT8 సొంత కమాండ్‌లు మాత్రమే తిరిగి వస్తున్నాయి</strong>: కేబుల్ లేదా ఇంటర్‌ఫేస్ రేడియో లేకుండానే డేటాను వెనక్కి పంపుతోంది (రేడియో ఆఫ్‌లో ఉన్నప్పుడు Icom <span translate="no">CI-V</span> కేబుల్ ఇలా చేస్తుంది).</li>
+                <li><strong>చదవలేని బదుళ్లు</strong>: బాడ్ రేట్ లేదా రేడియో మోడల్ సరిపోలడం లేదు.</li>
+                <li><strong>ప్రసారం చేసేటప్పుడు బదులివ్వడం ఆపుతుంది</strong>: RF అంతరాయం. రెండు చివరల దగ్గర USB మరియు ఆడియో కేబుళ్లకు ఫెరైట్ చోక్‌లు తగిలించండి, పరీక్షగా తక్కువ పవర్ ప్రయత్నించండి (రేడియోలో సెట్ చేయాలి), యాంటెన్నా మరియు ఫీడ్ లైన్‌లో కామన్-మోడ్ కరెంట్ ఉందేమో చూడండి.</li>
+                <li><strong>బదులిచ్చింది, తర్వాత ఆగింది</strong>: రేడియో ఆఫ్ చేయబడింది, లేదా కేబుల్ ఊడింది.</li>
+            </ul>
+            <p><strong>మళ్ళీ తనిఖీ చేయి</strong> రేడియోకు మళ్ళీ కనెక్ట్ అయి ఇంకోసారి తనిఖీ చేస్తుంది; <strong>రిపోర్ట్ పంపు</strong> కొలిచినదాన్ని, రేడియో కమాండ్ లాగ్‌తో సహా, మాకు పంపుతుంది.</p>
 
             <h3 id="trouble-otg-charging">ఫోన్ పూర్తిగా ఛార్జ్ అయినప్పుడు ట్రాన్స్‌సీవర్ మాయమవుతుంది (Android)</h3>
             <p>

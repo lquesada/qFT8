@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Deskargatu App Store-n",
     "FEAT2_OWN": "Dekodetzaile eta kodetzaile propioak, hutsetik idatziak",
     "FEAT2_RAWLOG": "Erregistratu deskodetutako mezu guztiak",
+    "FEAT2_HEADLESS": "Pantailarik gabe dabil urruneko kontrolerako web zerbitzari gisa, adibidez Raspberry Pi batean",
     "FAQ_TITLE": "Galderak eta erantzunak",
     "FAQ_Q1": "Zer da qFT8?",
     "FAQ_A1": "qFT8 irrati-zaleentzako programa doakoa da, seinale ahuleko modu digitaletarako, Morserako, teletiporako, irudietarako eta ahotserako. Android telefono eta tabletetan, iOS-en, Windows-en, macOS-en eta Linux-en funtzionatzen du, eta edozein nabigatzailetatik kontrola daiteke. Ez du iragarkirik eta ez du konturik behar. Luis Quesada Torres-ek, HB9IPH-k, idatzi du, hutsetik idatzitako dekodetzaile eta kodetzaile propioekin.",

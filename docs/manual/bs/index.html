@@ -173,6 +173,7 @@
                         <li><a href="#tune-offset">Pomak spektrograma pri ugađanju</a></li>
                         <li><a href="#tx-limit">Ograničenje neprekidnog slanja</a></li>
                         <li><a href="#remote-control">Web server za daljinsko upravljanje</a></li>
+                        <li><a href="#webserver-headless">Rad qFT8 bez ekrana (web server daljinskog upravljanja)</a></li>
                         <li><a href="#bridge">qFT8 most</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protokol qFT8log</a></li>
@@ -545,7 +546,7 @@
                 <li><strong>Windows</strong>: qFT8 čuje radio preko vlastitog audio mehanizma Windowsa (WASAPI), koji daje stabilniji tok nego stariji način. Radio se pojavljuje kao COM port (<code>COM3</code>, ...) i kao zvučni uređaj "USB Audio CODEC" ili sličan. Windows dopušta samo jednom programu da koristi COM port: ako qFT8 javi da je pristup odbijen, zatvorite drugi program (logger, program za digitalne modove, vlastiti softver radija) i pritisnite <strong>PONOVI</strong>.</li>
                 <li><strong>macOS</strong>: port radija izgleda kao <code>/dev/cu.usbmodem...</code> (
                     <span translate="no">QMX</span>) ili <code>/dev/cu.SLAB_USBtoUART</code> (IC-7300). macOS ne treba grupu ni dozvolu za port, samo gornju dozvolu za mikrofon. Ako je port odbijen, drugi program ga ima otvoren.</li>
-                <li><strong>Linux</strong>: port izgleda kao <code>/dev/ttyACM0</code> ili <code>/dev/ttyUSB0</code> i treba gornju grupu. Zvučni uređaji su oni zvučnog servera (PulseAudio ili PipeWire), pa radijski zvučnik, vaše slušalice i vaš mikrofon mogu biti različiti uređaji. Klizač glasnoće uređaja koristi <code>pactl</code>, iz paketa <code>pulseaudio-utils</code> (radi i s PipeWireom).</li>
+                <li><strong>Linux</strong>: port izgleda kao <code>/dev/ttyACM0</code> ili <code>/dev/ttyUSB0</code> i treba gornju grupu. Zvučni uređaji su oni zvučnog servera (PulseAudio ili PipeWire), pa radijski zvučnik, vaše slušalice i vaš mikrofon mogu biti različiti uređaji. qFT8 pristupa zvučnim uređajima (i klizaču glasnoće uređaja) preko <code>pactl</code> i <code>parec</code>, iz paketa <code>pulseaudio-utils</code> (rade i s PipeWireom): instalirajte ga, inače qFT8 često ne čuje nijednu zvučnu karticu.</li>
             </ul>
 
             <h4>Odabir radija i njegovog porta</h4>
@@ -643,12 +644,12 @@
                 <li><strong>Jedna kopija po folderu profila.</strong> Ako pokrenete qFT8 dok druga kopija koristi isti folder, prikazuje <strong>Već radi</strong> i nudi <strong>PONOVI</strong> ili
                     <strong>Izađi</strong>: dvije kopije na jednom folderu mogle bi oštetiti vaše postavke i dnevnik. Za istovremeno pokretanje više kopija, na primjer po jednu za svaki radio, svakoj dajte vlastiti folder pri pokretanju: <code>qFT8 --qft8_profile D:\qft8-radio2</code> (Windows: <code>qFT8.exe</code>). qFT8 se zaustavlja s greškom ako ne može pisati u taj folder.</li>
                 <li><strong>Web daljinski upravljač.</strong> Računarski program ima isti
-                    <a href="#remote-control">web server za daljinsko upravljanje</a> kao Android (isključen podrazumijevano, port 13497) i prikazuje iste stranice, uključujući klizač glasnoće. Koristite ga za rad s telefona ili drugog računara na vašoj mreži.</li>
+                    <a href="#remote-control">web server za daljinsko upravljanje</a> kao Android (isključen podrazumijevano, port 13497) i prikazuje iste stranice, uključujući klizač glasnoće. Koristite ga za rad s telefona ili drugog računara na vašoj mreži. Može raditi i bez prozora (<code>qFT8 --webserver</code>, vidi <a href="#webserver-headless">Rad qFT8 bez ekrana</a>), za računar bez ekrana.</li>
                 <li><strong>Most.</strong> Računar je uobičajeni <a href="#bridge">most</a>: radio je priključen na njega, a qFT8 na telefonu, iPhoneu ili drugom računaru njime upravlja. Može raditi i bez prozora (<code>qFT8 --bridge</code>), za računar koji nema drugog posla.</li>
                 <li><strong>Komandna linija.</strong> <code>qFT8 --help</code> navodi opcije (u Windowsu ih prikazuje mali prozor): <code>--list-devices</code> ispisuje svaki serijski port i zvučni uređaj koje qFT8 vidi i izlazi;
                     <code>--port &lt;device&gt;</code> postavlja zadani serijski port (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> bira folder profila;
-                    <code>--bridge</code> pokreće most; <code>--video-mode=&lt;mode&gt;</code> crta prozor na drugi način za to pokretanje, čak i kad se qFT8 ne može otvoriti dovoljno da se promijeni <strong>Video način</strong> u Postavkama (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> crta prozor preko OpenGL-a (pogledajte
+                    <code>--bridge</code> pokreće most; <code>--webserver</code> pokreće qFT8 bez prozora, s otvorenim web daljinskim upravljačem; <code>--video-mode=&lt;mode&gt;</code> crta prozor na drugi način za to pokretanje, čak i kad se qFT8 ne može otvoriti dovoljno da se promijeni <strong>Video način</strong> u Postavkama (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> crta prozor preko OpenGL-a (pogledajte
                     <a href="#pc-trouble">Ako nešto ne radi</a>).</li>
             </ul>
 
@@ -1779,7 +1780,7 @@
                         <li><strong>Mrežni radio</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Mrežni radio (eksperimentalno)</strong> in <strong>Veza s radiom</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>POVEŽI</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metoda</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Port zvučnog toka</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Zvučna kartica</strong> under <strong>Audio</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Metoda</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adresa</strong>, the <strong>Radio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Korisničko ime</strong> and <strong>Lozinka</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Radio</strong> says which radio, <strong>Kako je odabrano u Uređaju</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentalno)</strong> in <strong>Veza s radiom</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Odaberite uređaj</strong> under <strong>Bluetooth uređaj</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Kako je odabrano u Uređaju</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>POVEŽI</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentalno)</strong> in <strong>Veza s radiom</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Odaberite uređaj</strong> under <strong>Bluetooth uređaj</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Kako je odabrano u Uređaju</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>POVEŽI</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1892,6 +1893,7 @@
                     otključava <strong>USB uređaj</strong>, <strong>Brzina prijenosa (baud)</strong>, <strong>Bitovi podataka</strong>,
                     <strong>Stop bitovi</strong>, <strong>Paritet</strong> i način na koji se radio aktivira za predaju
                     (<strong>PTT</strong>: CAT naredbom ili linijom RTS ili DTR), s PTT kašnjenjem prije predaje.
+                    Uz RTS ili DTR, <strong>PTT port</strong> bira gdje se ta linija nalazi: <strong>Isti kao CAT</strong> (vlastiti kabel radija) ili drugi serijski port, za stanicu s CAT-om na jednom kablu i PTT-om na drugom interfejsu (na telefonu, oba adaptera preko USB huba; ne na iPhoneu).
                     <strong>Postavi mod transivera pri inicijalizaciji i u svakom ciklusu</strong> drži radio u pravom
                     modu. Napomena na glavnoj stranici kaže kada ovaj uređaj ima nadjačane postavke.</li>
                 <li><strong>Ugađanje (ovaj radio)</strong>: <a href="#tune-offset">Pomak spektrograma pri ugađanju</a> i
@@ -5171,9 +5173,9 @@
                     udaljenošću od vašeg lokatora.</li>
                 <li>Svaki red memorije, ili svaki red koji otkucate, je jedan okvir:
                     <span translate="no">BEACON</span> [komentar] šalje vašu poziciju, na stepen tačno, iz vašeg lokatora
-                    (nikada preciznije od lokatora); <span translate="no">CALL: text</span> šalje poruku toj
+                    (nikada preciznije od lokatora); <span translate="no">BEACON</span> širina dužina [komentar] šalje tačan položaj u decimalnim stepenima, jug i zapad negativno (<span translate="no">BEACON -34.3543 -58.2535</span> je 34.35 S, 58.25 W; i slova rade: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> šalje poruku toj
                     stanici; <span translate="no">STATUS text</span> status; red koji počinje
-                    <span translate="no">APRS</span> znakom (<span translate="no">! = : &gt; ;</span>) šalje se kakav jeste.</li>
+                    <span translate="no">APRS</span> znakom (<span translate="no">! = : &gt; ;</span>) šalje se kakav jeste. Ispod svake memorije u Postavkama &gt; <span translate="no">Packet</span> siva linija kaže šta šalje ("Položaj 34.35 S, 58.25 W", "Status: ..."); dva broja napisana bez <span translate="no">BEACON</span> idu kao statusni tekst, a ne kao položaj, a crvena linija ispod memorije to kaže.</li>
                 <li>Vaši okviri polaze s vašeg pozivnog znaka sa <span translate="no">SSID</span>-om odabranim u Postavkama &gt;
                     <span translate="no">Packet</span> (zupčanik ekrana), preko puta digipitera postavljenog tamo
                     (<span translate="no">WIDE1-1,WIDE2-1</span> po zadanom, samo 2 m).</li>
@@ -6008,22 +6010,19 @@
                 <strong>HF bez upkonvertera (direktno uzorkovanje)</strong> da primate ispod 24 MHz na njegovom
                 <span translate="no">HF</span> ulazu. qFT8 nikada ne uključuje bias tee ključa (napajanje antene).
             </p>
-            <p>
-                <strong>Računar, Linux</strong>: isti red, isti ugrađeni drajver. qFT8 preuzima ključ od TV drajvera
-                koji ga sistem sam učita. Vaš korisnik treba dozvolu da otvori ključ; ako statusna linija kaže
-                &ldquo;no permission&rdquo;, jednom dodajte datoteku s pravilom (na primjer
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) s linijom
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> za neke starije ključeve), pokrenite
-                <code dir="ltr">sudo udevadm control --reload-rules</code> i ponovo uključite ključ.
+            <p id="rtl-stock-dongle">
+                <strong>Standardni ključ ne treba ponovo programirati.</strong> Ključ kakav dolazi iz trgovine radi: ništa se u njega ne upisuje, a qFT8 nikada ne mijenja njegovu memoriju (EEPROM). Važan je čip tunera: <span translate="no">R820T / R820T2 / R828D</span> rade; ključevi s tunerom <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> ne rade, i statusna linija to kaže. <span translate="no">RTL-SDR Blog V4</span> se prepoznaje po imenu koje nosi iz fabrike; ključ s <span translate="no">R828D</span> bez tog imena (npr. V4 čije je ime prepisano) dobija upozorenje u statusnoj liniji da KV možda neće raditi. Na macOS-u koristite mrežni server (ispod) za bilo koji ključ.
             </p>
-            <p>
-                <strong>Računar, Windows i macOS</strong>: qFT8 još ne može direktno otvoriti ključ. Pokrenite
-                <span translate="no">RTL-SDR</span> mrežni server na istom računaru (ili na bilo kojem drugom, kao
-                <span translate="no">Raspberry Pi</span>) i odaberite <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                s adresom <code>127.0.0.1</code>, ili poslužite ključ s telefona ili Linux računara pomoću
-                <a href="#bridge">qFT8 mosta</a>.
+            <p id="rtl-usb-linux">
+                <strong>Računar, Linux</strong>: isti red, isti ugrađeni drajver. qFT8 preuzima ključ od televizijskog drajvera koji sistem sam učitava za njega. Vašem korisniku treba dozvola za otvaranje ključa: ako je nema, qFT8 to javlja u kartici čim se ključ priključi, a <strong>POPRAVI</strong> dodaje dozvolu umjesto vas. Otvara se terminal i jednom traži vašu lozinku (gdje terminala nema, to radi prozor za lozinku samog sistema). Upisuje datoteku pravila <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, koja osobi koja koristi računar daje pristup <span translate="no">USB</span> prijemnicima (<span translate="no">RTL-SDR, Airspy, HackRF</span>); ključ tada radi odmah, bez ponovnog pokretanja i bez nove prijave. Kartica prikazuje i naredbu koju možete sami pokrenuti u terminalu.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Računar, Windows</strong>: isti red, isti ugrađeni drajver, putem drajvera <span translate="no">WinUSB</span> koji dolazi s Windowsom. Windows novom ključu obično ne dodijeli drajver ili mu dodijeli televizijski drajver koji qFT8 ne može koristiti. qFT8 to primijeti kad se ključ priključi i nudi njegovo podešavanje: pritisnite <strong>PODESI</strong> i dozvolite promjenu u administratorskom prozoru Windowsa (jednom); ključ radi nekoliko sekundi kasnije. Ništa se ne preuzima i ne instalira se nijedan naš drajver: qFT8 prebacuje ključ na vlastiti <span translate="no">WinUSB</span> drajver Windowsa. Televizijski programi kojima treba televizijski drajver više ne vide ključ. Da ga vratite Windowsu: u <strong>Upravitelj uređaja</strong> desnim tasterom miša kliknite ključ pod <strong>Universal Serial Bus devices</strong>, odaberite <strong>Uninstall device</strong> (kućicu o drajveru ostavite neoznačenu), zatim <strong>Action &gt; Scan for hardware changes</strong>. Ažuriranje Windowsa može vratiti i televizijski drajver; qFT8 tada ponovo nudi podešavanje. Verzija iz Microsoft Store ne može sama mijenjati drajvere: u <strong>Upravitelj uređaja</strong> desnim tasterom miša kliknite ključ (često &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), odaberite <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, zatim <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Računar, macOS</strong>: qFT8 još ne može direktno otvoriti ključ. Pokrenite <span translate="no">RTL-SDR</span> mrežni server na istom računaru (ili na bilo kojem drugom, kao <span translate="no">Raspberry Pi</span>) i odaberite <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> s adresom <code>127.0.0.1</code>, ili poslužite ključ s telefona ili računara pomoću <a href="#bridge">qFT8 mosta</a>.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span> mrežni server i njegov drajver</h4>
             <p>
@@ -6123,7 +6122,7 @@
                 <li>Dnevnik čuva svaki unos (bez ograničenja) u datoteci u koju se samo dodaje, pa vrlo dug dnevnik ne usporava pokretanje aplikacije; stranica čita samo najnovije unose i prikazuje više dok pomjerate.</li>
                 <li>S isključenim radioamaterskim funkcijama bilježi se svaka primljena stanica <span translate="no">FT8, FT4, LQ ...</span> (jednom na sat po stanici i načinu); s uključenim radioamaterskim funkcijama bilježe se samo potpuni primljeni QSO-i. Stanica koju čujete prvi put (nikad prije u vašem dnevniku <span translate="no">SWL</span>) ima pozivni znak cijan bojom na listi stanica kad su radioamaterske funkcije isključene.</li>
                 <li>Prijemnici signala upisuju u dnevnik ono što identifikuju, jednom po stanici na <span translate="no">UTC</span> dan: brodovi (<span translate="no">AIS</span>), zrakoplovi (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosonde, stanice <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, stanice tačnog vremena, svjetionici <span translate="no">NCDXF</span>, pozivni znakovi <span translate="no">ALE / ARDOP / PACTOR</span> i <span translate="no">APRS</span>, vremenske faks karte i slike meteoroloških satelita, te stanice <span translate="no">FM</span> po svom kodu <span translate="no">RDS</span> i imenu. Računaju se za nagrade <span translate="no">SWL</span>; nikad se ne šalju na eQSL i nisu u izvozu <span translate="no">ADIF</span> (<span translate="no">CSV</span> ih ima, s primljenim imenom u zadnjoj koloni).</li>
-                <li>Slanja slijede jedno pravilo: eQSL račun <span translate="no">SWL</span> upisuje svaku primljenu stanicu pod tim računom (amaterski eQSL račun se odbija); <span translate="no">PSK Reporter</span> i <span translate="no">WSPRnet</span> prijavljuju pod vašim pozivnim znakom, inače pod vašim ID-om <span translate="no">SWL</span>.</li>
+                <li>Slanja slijede jedno pravilo: eQSL račun <span translate="no">SWL</span> upisuje svaku primljenu stanicu pod tim računom (amaterski eQSL račun se odbija); <span translate="no">PSK Reporter</span> i <span translate="no">WSPRnet</span> prijavljuju svaki spot pod vašim pozivnim znakom i pod vašim ID-om <span translate="no">SWL</span>, svakim koji je postavljen; Postavke prikazuju imena ispod svakog polja.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Je li ovaj SDR vaš?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Čiji prijemnik</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Ovaj server je moj</strong> in its rows, the same answer as <strong>Je li ovaj SDR vaš?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6531,6 +6530,70 @@
                         transiver).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Rad qFT8 bez ekrana (web server daljinskog upravljanja)</h3>
+                <p>
+                    Računarski program može raditi i potpuno bez prozora, na računaru bez ekrana: Raspberry Pi pored radija, mali server ili bilo koji računar kojem pristupate preko SSH. qFT8 tada radi sve kao i obično (zvuk, upravljanje radijem, dekodiranje, <span translate="no">AUTO</span>, vođenje dnevnika, slanja), a vi ga koristite iz preglednika preko <a href="#remote-control">web daljinski upravljač</a>, na telefonu, tabletu ili drugom računaru na vašoj mreži.
+                </p>
+
+                <h4>Web server ili most?</h4>
+                <p>Oba rade bez ekrana. Razlikuju se po tome koji uređaj radi posao:</p>
+                <ul>
+                    <li><strong>Web server</strong> (<code>--webserver</code>): računar na kojem radi qFT8 dekodira, šalje i bilježi; preglednik ga samo prikazuje i ima njegova dugmad. Dobro za snažan računar kod kuće kojim upravljate s telefona.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, vidi <a href="#bridge">qFT8 most</a>): uređaj pored radija samo prosljeđuje komande radija i njegov zvuk preko vaše mreže, a dekodira qFT8 na uređaju s kojeg radite (računarski program, aplikacija za Android ili aplikacija za iPhone/iPad). Dobro za Raspberry Pi pored radija dok posao radi vaš vlastiti računar.</li>
+                </ul>
+                <p>Ova dva ne mogu raditi istovremeno.</p>
+
+                <h4>Prvo ga podesite</h4>
+                <p>
+                    qFT8 koristi svoje sačuvane postavke potpuno isto kao s prozorom: pozivni znak, lokator, radio, zvučne uređaje, modove, vođenje dnevnika i usluge za slanje QSO-a. Na primjer, kad je <a href="#raw-message-logs">Sirovi zapisi poruka</a> označeno, i dalje piše svoje .tsv datoteke. Zato prvo podesite qFT8: pokrenite ga jednom s prozorom na tom računaru (ili kopirajte folder profila s drugog računara, vidi <a href="#pc-settings">Postavke: gdje se nalaze, prelazak s telefona</a>), ili ga pokrenite bez ekrana i podesite iz Postavki web daljinskog upravljača, koji ih sprema kao i obično.
+                </p>
+
+                <h4>Pokretanje</h4>
+                <p>U terminalu na tom računaru (preko SSH-a je u redu), u folderu qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, također Raspberry Pi: <code>./qFT8 --webserver</code>. S preuzimanjem .jar i Javom 21 ili novijom: <code>java -jar</code>, naziv .jar datoteke i <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminal kaže da qFT8 radi bez prozora, da je <span translate="no">TX</span> isključen i traži li stranica lozinku, te prikazuje privatni link web daljinskog upravljača: otvorite ga u pregledniku na istoj mreži. Dio iza <code>#k=</code> je ključ linka: čuvajte ga privatnim. Prikazuje se samo na terminalu i nikad se ne upisuje u datoteku dnevnika qFT8. <code>Ctrl+C</code> zaustavlja qFT8 i vraća radio na prijem.
+                </p>
+                <p>
+                    <span translate="no">TX</span> je uvijek isključen kad qFT8 ovako počne. Samo dugme <span translate="no">TX</span> web daljinskog upravljača ga uključuje.
+                </p>
+
+                <h4>Opcije</h4>
+                <p>
+                    Svaka opcija mijenja jednu postavku samo za to pokretanje: ništa se ne sprema, a bez opcija se koriste sačuvane postavke. <code>qFT8 --webserver --help</code> ih navodi.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: port web daljinskog upravljača, od 1024 do 65534 (13497 ako ga niste promijenili).</li>
+                    <li><code>--bind ADDRESS</code>: slušaj samo na toj adresi računara.</li>
+                    <li><code>--password TEXT</code> ili <code>--password-file FILE</code> (prvi red datoteke; sigurnije, jer drugi korisnici računara mogu vidjeti komandnu liniju) ili <code>--no-password</code>.</li>
+                    <li><code>--https</code> ili <code>--no-https</code>: sigurna adresa (port + 1) koja je pregledniku potrebna za korištenje mikrofona.</li>
+                    <li><code>--access read</code>, <code>stop</code> ili <code>full</code>: što stranica smije: samo gledati, gledati i zaustaviti <span translate="no">TX</span>, ili sve.</li>
+                    <li><code>--audio-in NAME</code> i <code>--audio-out NAME</code>: zvučni uređaji radija, po nazivu koji prikazuje <code>qFT8 --list-devices</code>, ili <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: radio (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...) i <code>--port DEVICE</code>: njegov serijski port (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: folder profila koji se koristi.</li>
+                </ul>
+                <p>
+                    Ako port zauzima drugi program, ili isti folder profila već koristi drugi qFT8, qFT8 to kaže u terminalu i staje.
+                </p>
+
+                <h4>Primjer: Raspberry Pi</h4>
+                <p>
+                    Radio je USB-om priključen na Pi, a qFT8 je jednom podešen (s ekranom na Pi-ju ili iz web daljinskog upravljača). S drugog računara:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Zatim otvorite prikazani link na telefonu. Raspberry Pi 4 ili 5 dekodira <span translate="no">FT8</span> na vrijeme; brži računar nalazi više najslabijih signala.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Nazad na sadržaj</a>
             </section>
 
             <section id="bridge">
@@ -7111,6 +7174,19 @@
                     (vaš nalog se pridružuje grupi porta) ili pitajte administratora sistema.</li>
                 <li>Ako se problemi javljaju posebno tokom emitiranja, uzrok mogu biti radio-smetnje. Dodavanje prigušnica ili ferita na USB kabl može pomoći. Možete pokušati i emitirati na drugom opsegu, jer su neki uređaji osjetljivi na smetnje samo na određenim opsezima.</li>
             </ul>
+            <p>
+                Kada qFT8 komunicira s radiom preko <span translate="no">CAT</span> (radio odabran u <strong>Postavke &gt; Uređaj</strong>, ili onaj koji je pronašao <span translate="no">AUTO</span>) a radio ne odgovara, na spektrogramu se pojavljuje crveno upozorenje <strong>Nema CAT</strong> (i ispod radija u <strong>Postavke &gt; Uređaj</strong>). Dodirnite ga: kartica kaže šta je qFT8 izmjerio na vezi i navodi šta pokušati u tom slučaju:
+            </p>
+            <ul>
+                <li><strong>Radio nije pronađen</strong>: radio je isključen, kabel je labav, kabel samo puni (koristite USB kabel za podatke), adapter ili hub ne propušta podatke, ili je <span translate="no">USB OTG</span> isključen u sistemskim postavkama telefona. Na računaru: USB drajver radija i port odabran u <strong>Postavke &gt; Konfiguracija uređaja</strong>.</li>
+                <li><strong>Port se nije mogao otvoriti</strong>: dozvolite qFT8 da koristi USB uređaj kada Android pita i zatvorite druge programe koji koriste port radija.</li>
+                <li><strong>Radio ne odgovara</strong> (ne vraća se nijedan bajt): radio je uključen, kabel ide u njegovu <span translate="no">CAT</span> utičnicu, model radija je ispravan, a <span translate="no">CAT</span> brzina radija jednaka je brzini qFT8 (<strong>Postavke &gt; Konfiguracija uređaja &gt; Brzina prijenosa (baud)</strong>). Yaesu radiji s <span translate="no">CAT RTS</span> menijem: postavite ga na <span translate="no">DISABLE</span>. Xiegu radiji: podatkovni (<span translate="no">CI-V</span>) kabl interfejsa ide u utičnicu <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> radija, ne samo audio kabl, a <span translate="no">CI-V</span> adresa i brzina (baud) radija iste su kao u qFT8 (kartica ih prikazuje).</li>
+                <li><strong>Vraćaju se samo vlastite komande qFT8</strong>: kabel ili interfejs vraća podatke nazad bez radija (Icom <span translate="no">CI-V</span> kabel to radi dok je radio isključen).</li>
+                <li><strong>Nečitljivi odgovori</strong>: brzina (baud) ili model radija se ne podudaraju.</li>
+                <li><strong>Prestaje odgovarati dok emituje</strong>: RF smetnje. Stavite feritne prigušnice na USB i audio kablove blizu oba kraja, kao test probajte manju snagu (postavlja se na radiju) i provjerite antenu i dovod na struju zajedničkog moda.</li>
+                <li><strong>Odgovorio, pa prestao</strong>: radio je isključen ili se kabel olabavio.</li>
+            </ul>
+            <p><strong>PROVJERI PONOVO</strong> ponovo se povezuje s radiom i provjerava još jednom; <strong>POŠALJI IZVJEŠTAJ</strong> šalje nam šta je izmjereno, s dnevnikom komandi radija.</p>
 
             <h3 id="trouble-otg-charging">Transiver nestaje kada se telefon potpuno napuni (Android)</h3>
             <p>

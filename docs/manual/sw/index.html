@@ -175,6 +175,7 @@
                         <li><a href="#tune-offset">Mwelekeo wa spektrogramu wa kurekebisha masafa</a></li>
                         <li><a href="#tx-limit">Kikomo cha usambazaji endelevu</a></li>
                         <li><a href="#remote-control">Seva ya Wavuti ya Udhibiti wa Mbali</a></li>
+                        <li><a href="#webserver-headless">Kuendesha qFT8 bila skrini (seva ya wavuti)</a></li>
                         <li><a href="#bridge">Daraja la qFT8</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log protocol</a></li>
@@ -653,8 +654,7 @@
                 <li><strong>Linux</strong>: mlango unaonekana kama <code>/dev/ttyACM0</code> au <code>/dev/ttyUSB0</code> na unahitaji
                     kikundi kilichotajwa hapo juu. Vifaa vya sauti ni vile vya seva ya sauti (PulseAudio au PipeWire), hivyo
                     spika ya redio, vipokea sauti vyako na maikrofoni yako kila kimoja kinaweza kuwa kifaa tofauti.
-                    Kitelezi cha sauti ya kifaa hutumia <code>pactl</code>, kutoka kwenye kifurushi <code>pulseaudio-utils</code> (hufanya
-                    kazi na PipeWire pia).</li>
+                    qFT8 hufikia vifaa vya sauti (na kitelezi cha sauti ya kifaa) kupitia <code>pactl</code> na <code>parec</code>, kutoka kwenye kifurushi <code>pulseaudio-utils</code> (hufanya kazi na PipeWire pia): kisakinishe, la sivyo qFT8 mara nyingi haisikii kadi yoyote ya sauti.</li>
             </ul>
 
             <h4>Kuchagua redio na mlango wake</h4>
@@ -781,7 +781,7 @@
                 <li><strong>Udhibiti wa mbali wa wavuti.</strong> Programu ya kompyuta ina
                     <a href="#remote-control">Seva ya Wavuti ya Udhibiti wa Mbali</a> ile ile kama Android (imezimwa kwa chaguo-msingi, mlango 13497) na inaonyesha
                     kurasa zile zile, pamoja na kitelezi cha sauti. Itumie kuendesha kutoka kwenye simu au kompyuta nyingine kwenye
-                    mtandao wako.</li>
+                    mtandao wako. Inaweza pia kuendeshwa bila dirisha (<code>qFT8 --webserver</code>, tazama <a href="#webserver-headless">Kuendesha qFT8 bila skrini</a>), kwa kompyuta isiyo na skrini.</li>
                 <li><strong>Daraja.</strong> Kompyuta ndiyo <a href="#bridge">daraja</a> la kawaida: redio imechomekwa
                     ndani yake, na qFT8 kwenye simu, iPhone au kompyuta nyingine inaiendesha. Inaweza pia kuendeshwa bila dirisha
                     (<code>qFT8 --bridge</code>), kwa kompyuta isiyo na kazi nyingine.</li>
@@ -789,7 +789,7 @@
                     huzionyesha): <code>--list-devices</code> huorodhesha kila mlango wa serial na kifaa cha sauti ambacho qFT8 inaona kisha hutoka;
                     <code>--port &lt;device&gt;</code> huweka mlango wa serial wa chaguo-msingi (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> huchagua folda ya wasifu;
-                    <code>--bridge</code> huanzisha daraja; <code>--video-mode=&lt;mode&gt;</code> huchora dirisha kwa njia nyingine kwa mwendo huo, hata qFT8 isipoweza kufunguliwa vya kutosha kubadilisha <strong>Hali ya video</strong> katika Mipangilio (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> huchora dirisha kupitia OpenGL (tazama
+                    <code>--bridge</code> huanzisha daraja; <code>--webserver</code> huendesha qFT8 bila dirisha, ikiwa na udhibiti wa mbali umefunguliwa; <code>--video-mode=&lt;mode&gt;</code> huchora dirisha kwa njia nyingine kwa mwendo huo, hata qFT8 isipoweza kufunguliwa vya kutosha kubadilisha <strong>Hali ya video</strong> katika Mipangilio (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> huchora dirisha kupitia OpenGL (tazama
                     <a href="#pc-trouble">Kitu kisipofanya kazi</a>).</li>
             </ul>
 
@@ -2196,7 +2196,7 @@
                         <li><strong>Redio ya mtandao</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Redio ya mtandao (ya majaribio)</strong> in <strong>Muunganisho wa redio</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>UNGANISHA</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Njia</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Mlango wa mtiririko wa sauti</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Kadi ya sauti</strong> under <strong>Sauti</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Njia</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Anwani</strong>, the <strong>Redio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Jina la mtumiaji</strong> and <strong>Nenosiri</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Redio</strong> says which radio, <strong>Kama ilivyochaguliwa kwenye Kifaa</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (ya majaribio)</strong> in <strong>Muunganisho wa redio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Chagua kifaa</strong> under <strong>Kifaa cha Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Redio</strong>, <strong>Kama ilivyochaguliwa kwenye Kifaa</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>UNGANISHA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (ya majaribio)</strong> in <strong>Muunganisho wa redio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Chagua kifaa</strong> under <strong>Kifaa cha Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Redio</strong>, <strong>Kama ilivyochaguliwa kwenye Kifaa</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>UNGANISHA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2310,6 +2310,7 @@
                     hufungua <strong>Kifaa cha USB</strong>, <strong>Baud Rate</strong>, <strong>Biti za Data</strong>,
                     <strong>Biti za Kusimama</strong>, <strong>Parity</strong> na jinsi redio inavyowashwa kutuma (<strong>PTT</strong>:
                     kwa amri ya CAT, au laini ya RTS au DTR), pamoja na ucheleweshaji wa PTT kabla ya kutuma.
+                    Kwa RTS au DTR, <strong>Mlango wa PTT</strong> huchagua laini hiyo iko wapi: <strong>Sawa na CAT</strong> (kebo ya redio yenyewe) au mlango wa pili wa serial, kwa kituo chenye CAT kwenye kebo moja na PTT kwenye kiolesura kingine (kwenye simu, adapta zote mbili kupitia USB hub; si kwenye iPhone).
                     <strong>Weka modi ya kipitisha-redio wakati wa kuanzisha na kila mzunguko</strong> huiweka redio kwenye
                     modi sahihi. Maelezo kwenye ukurasa mkuu yanasema kifaa hiki kinapokuwa na mabadiliko ya mipangilio.</li>
                 <li><strong>Urekebishaji wa masafa (redio hii)</strong>: <a href="#tune-offset">Kosa la spectrogram ya kutunisha</a> na
@@ -5620,9 +5621,9 @@
                     umbali kutoka kitambulisho chako cha mahali.</li>
                 <li>Kila mstari wa kumbukumbu, au kila mstari unaoandika, ni fremu moja:
                     <span translate="no">BEACON</span> [maoni] hutuma nafasi yako, hadi digrii, kutoka kitambulisho chako cha mahali
-                    (kamwe si sahihi zaidi kuliko kitambulisho cha mahali); <span translate="no">CALL: text</span> hutuma ujumbe kwa kituo
+                    (kamwe si sahihi zaidi kuliko kitambulisho cha mahali); <span translate="no">BEACON</span> lat lon [maoni] hutuma mahali kamili kwa digrii za desimali, Kusini na Magharibi ni hasi (<span translate="no">BEACON -34.3543 -58.2535</span> ni 34.35 S, 58.25 W; herufi pia zinafanya kazi: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> hutuma ujumbe kwa kituo
                     hicho; <span translate="no">STATUS text</span> hali; mstari unaoanza na herufi ya
-                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) hutoka kama ulivyo.</li>
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) hutoka kama ulivyo. Chini ya kila kumbukumbu katika Mipangilio &gt; <span translate="no">Packet</span>, mstari wa kijivu unasema kinachotumwa ("Mahali 34.35 S, 58.25 W", "Hali: ..."); nambari mbili zilizoandikwa bila <span translate="no">BEACON</span> hutoka kama maandishi ya hali, si mahali, na mstari mwekundu chini ya kumbukumbu unasema hivyo.</li>
                 <li>Fremu zako hutoka kwa ishara yako ya wito pamoja na <span translate="no">SSID</span> iliyochaguliwa katika Mipangilio &gt;
                     <span translate="no">Packet</span> (gia ya skrini), kupitia njia ya digipeater iliyowekwa hapo
                     (<span translate="no">WIDE1-1,WIDE2-1</span> kwa chaguo-msingi, 2 m tu).</li>
@@ -6459,22 +6460,19 @@
                 <strong>HF bila upconverter (sampuli ya moja kwa moja)</strong> kupokea chini ya 24 MHz kwenye ingizo lake la
                 <span translate="no">HF</span>. qFT8 haiwashi kamwe bias tee ya kijiti (nguvu ya antena).
             </p>
-            <p>
-                <strong>Kompyuta, Linux</strong>: safu ileile, dereva ileile iliyojengwa ndani. qFT8 huchukua kijiti kutoka kwa dereva ya TV
-                ambayo mfumo huipakia wenyewe. Mtumiaji wako anahitaji ruhusa ya kufungua kijiti; ikiwa mstari wa hali unasema
-                &ldquo;no permission&rdquo;, ongeza faili ya sheria mara moja (kwa mfano
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) yenye mstari
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> kwa baadhi ya vijiti vya zamani), endesha
-                <code dir="ltr">sudo udevadm control --reload-rules</code> na uchomeke kijiti tena.
+            <p id="rtl-stock-dongle">
+                <strong>Kijiti cha kawaida hakihitaji kupangwa upya.</strong> Kijiti kama kinavyotoka dukani hufanya kazi: hakuna kinachoandikwa ndani yake, na qFT8 kamwe haibadilishi kumbukumbu yake (EEPROM). Kinachojalisha ni chipu ya kitafuta-mawimbi: <span translate="no">R820T / R820T2 / R828D</span> hufanya kazi; vijiti vyenye kitafuta-mawimbi <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> havifanyi, na mstari wa hali husema hivyo. <span translate="no">RTL-SDR Blog V4</span> hutambuliwa kwa jina linalotoka nalo kiwandani; kijiti <span translate="no">R828D</span> kisicho na jina hilo (kwa mfano V4 ambalo jina lake liliandikwa upya) hupata onyo kwenye mstari wa hali kwamba HF huenda isifanye kazi. Kwenye macOS, tumia seva ya mtandao (hapa chini) kwa kijiti chochote.
             </p>
-            <p>
-                <strong>Kompyuta, Windows na macOS</strong>: kijiti hakiwezi kufunguliwa na qFT8 moja kwa moja bado. Endesha seva ya mtandao ya
-                <span translate="no">RTL-SDR</span> kwenye kompyuta ileile (au kwenye nyingine yoyote, kama
-                <span translate="no">Raspberry Pi</span>) na uchague <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                kwa anwani <code>127.0.0.1</code>, au hudumia kijiti kutoka kwenye simu au kompyuta ya Linux kwa
-                <a href="#bridge">daraja la qFT8</a>.
+            <p id="rtl-usb-linux">
+                <strong>Kompyuta, Linux</strong>: safu ile ile, kiendeshi kilichojengwa ndani kile kile. qFT8 huchukua kijiti kutoka kwa kiendeshi cha TV ambacho mfumo hukipakia wenyewe. Mtumiaji wako anahitaji ruhusa ya kufungua kijiti: asipokuwa nayo, qFT8 hulisema hilo kwenye kadi mara tu kijiti kinapochomekwa, na <strong>IREKEBISHE</strong> huongeza ruhusa kwa ajili yako. Terminal hufunguka na kuomba nenosiri lako mara moja (pasipo na terminal, dirisha la nenosiri la mfumo wenyewe hufanya hivyo). Huandika faili ya kanuni <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, inayompa anayetumia kompyuta ufikiaji wa vipokezi vya <span translate="no">USB</span> (<span translate="no">RTL-SDR, Airspy, HackRF</span>); kijiti kisha hufanya kazi mara moja, bila kuwasha upya na bila kuingia tena. Kadi pia huonyesha amri, uiendeshe mwenyewe kwenye terminal.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Kompyuta, Windows</strong>: safu ile ile, kiendeshi kilichojengwa ndani kile kile, kupitia kiendeshi cha <span translate="no">WinUSB</span> kinachokuja na Windows. Kwa kawaida Windows haipi kijiti kipya kiendeshi chochote, au hukipa kiendeshi cha TV ambacho qFT8 haiwezi kukitumia. qFT8 huligundua hilo kijiti kinapochomekwa na hutoa kukisanidi: bonyeza <strong>WEKA</strong> na ruhusu mabadiliko kwenye dirisha la msimamizi la Windows (mara moja); kijiti hufanya kazi sekunde chache baadaye. Hakuna kinachopakuliwa na hakuna kiendeshi chetu kinachosakinishwa: qFT8 hubadilisha kijiti kwenda kiendeshi cha <span translate="no">WinUSB</span> cha Windows chenyewe. Programu za TV zinazohitaji kiendeshi cha TV hazikioni tena kijiti. Ili kukirudisha kwa Windows: katika <strong>Device Manager</strong>, bofya kulia kijiti chini ya <strong>Universal Serial Bus devices</strong>, chagua <strong>Uninstall device</strong> (acha kisanduku kuhusu kiendeshi bila tiki), kisha <strong>Action &gt; Scan for hardware changes</strong>. Sasisho la Windows linaweza pia kurudisha kiendeshi cha TV; qFT8 kisha hutoa usanidi tena. Toleo la Microsoft Store haliwezi kubadilisha viendeshi lenyewe: katika <strong>Device Manager</strong>, bofya kulia kijiti (mara nyingi &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), chagua <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, kisha <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Kompyuta, macOS</strong>: kijiti hakiwezi kufunguliwa na qFT8 moja kwa moja bado. Endesha seva ya mtandao ya <span translate="no">RTL-SDR</span> kwenye kompyuta ileile (au kwenye nyingine yoyote, kama <span translate="no">Raspberry Pi</span>) na uchague <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> kwa anwani <code>127.0.0.1</code>, au hudumia kijiti kutoka kwenye simu au kompyuta kwa <a href="#bridge">daraja la qFT8</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Seva ya mtandao ya <span translate="no">RTL-SDR</span> na dereva yake</h4>
             <p>
@@ -6574,7 +6572,7 @@
                 <li>Logi huhifadhi kila kiingizo (bila kikomo) katika faili inayoongezewa tu, kwa hiyo logi ndefu sana haipunguzi kasi ya kuanza kwa programu; ukurasa husoma viingizo vipya zaidi tu na huonyesha zaidi unaposogeza.</li>
                 <li>Vipengele vya redio ya wapenzi vikiwa vimezimwa, kila kituo cha <span translate="no">FT8, FT4, LQ ...</span> kilichosikika huandikwa kwenye logi (mara moja kwa saa kwa kila kituo na hali); vipengele vya redio ya wapenzi vikiwa vimewashwa, ni QSO kamili zilizosikika tu zinazoandikwa. Kituo unachosikia kwa mara ya kwanza (hakijawahi kuwa kwenye logi yako ya <span translate="no">SWL</span> hapo awali) kina alama yake ya simu kwa rangi ya samawati-kijani kwenye orodha ya Vituo vipengele vya redio ya wapenzi vikiwa vimezimwa.</li>
                 <li>Vipokezi vya ishara huandika kile wanachotambua kwenye logi, mara moja kwa kila kituo kwa kila siku ya <span translate="no">UTC</span>: meli (<span translate="no">AIS</span>), ndege (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosondes, vituo vya <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, vituo vya saa, vinara vya <span translate="no">NCDXF</span>, alama za simu za <span translate="no">ALE / ARDOP / PACTOR</span> na <span translate="no">APRS</span>, picha za faksi ya hali ya hewa na za setilaiti za hali ya hewa, na vituo vya <span translate="no">FM</span> kwa msimbo wao wa <span translate="no">RDS</span> na jina. Huhesabiwa kwa tuzo za <span translate="no">SWL</span>; kamwe hazitumwi kwa eQSL na haziko kwenye usafirishaji wa <span translate="no">ADIF</span> (<span translate="no">CSV</span> inazo, pamoja na jina lililosikika kwenye safu ya mwisho).</li>
-                <li>Kupakia hufuata kanuni moja: akaunti ya <span translate="no">SWL</span> ya eQSL huweka kila kituo kilichosikika chini ya akaunti hiyo (akaunti ya eQSL ya wapenzi hukataliwa); <span translate="no">PSK Reporter</span> na <span translate="no">WSPRnet</span> huripoti chini ya alama yako ya simu, vinginevyo chini ya kitambulisho chako cha <span translate="no">SWL</span>.</li>
+                <li>Kupakia hufuata kanuni moja: akaunti ya <span translate="no">SWL</span> ya eQSL huweka kila kituo kilichosikika chini ya akaunti hiyo (akaunti ya eQSL ya wapenzi hukataliwa); <span translate="no">PSK Reporter</span> na <span translate="no">WSPRnet</span> huripoti kila spot chini ya alama yako ya simu na chini ya kitambulisho chako cha <span translate="no">SWL</span>, kila kimoja kilichowekwa; Mipangilio huonyesha majina chini ya kila kisanduku.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Je, SDR hii ni yako?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Kipokezi cha nani</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Seva hii ni yangu</strong> in its rows, the same answer as <strong>Je, SDR hii ni yako?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6983,6 +6981,70 @@
                         kipokea-kutuma).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Kuendesha qFT8 bila skrini (seva ya wavuti)</h3>
+                <p>
+                    Programu ya kompyuta inaweza pia kuendeshwa bila dirisha kabisa, kwenye kompyuta isiyo na skrini: Raspberry Pi kando ya redio, seva ndogo, au kompyuta yoyote unayoifikia kupitia SSH. Kisha qFT8 hufanya kila kitu kama kawaida (sauti, udhibiti wa redio, kusimbua, <span translate="no">AUTO</span>, kuweka kumbukumbu, kupakia), nawe unaiendesha kutoka kwenye kivinjari kupitia <a href="#remote-control">Seva ya Wavuti ya Udhibiti wa Mbali</a>, kwenye simu, kompyuta kibao au kompyuta nyingine kwenye mtandao wako.
+                </p>
+
+                <h4>Seva ya wavuti au daraja?</h4>
+                <p>Zote mbili huendeshwa bila skrini. Tofauti ni kifaa gani kinafanya kazi:</p>
+                <ul>
+                    <li><strong>Seva ya wavuti</strong> (<code>--webserver</code>): kompyuta inayoendesha qFT8 husimbua, hutuma na huweka kumbukumbu; kivinjari huonyesha tu na kina vitufe vyake. Inafaa kwa kompyuta yenye nguvu nyumbani unayoidhibiti kutoka kwenye simu yako.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, tazama <a href="#bridge">Daraja la qFT8</a>): kifaa kilicho kando ya redio hupitisha tu amri za redio na sauti yake kupitia mtandao, na qFT8 kwenye kifaa unachoendeshea (programu ya kompyuta, programu ya Android au programu ya iPhone/iPad) hufanya kusimbua. Inafaa kwa Raspberry Pi kwenye redio huku kompyuta yako mwenyewe ikifanya kazi.</li>
+                </ul>
+                <p>Hizi mbili haziwezi kuendeshwa kwa wakati mmoja.</p>
+
+                <h4>Sanidi kwanza</h4>
+                <p>
+                    qFT8 hutumia mipangilio yake iliyohifadhiwa kama vile inapokuwa na dirisha: kitambulisho, locator, redio, vifaa vya sauti, modi, kuweka kumbukumbu na huduma za kupakia QSO. Kwa mfano, ukiwa umeteua <a href="#raw-message-logs">Kumbukumbu ghafi za jumbe</a>, inaendelea kuandika faili zake za .tsv. Kwa hiyo sanidi qFT8 kwanza: ianzishe mara moja ikiwa na dirisha kwenye kompyuta hiyo (au nakili folda ya wasifu kutoka kompyuta nyingine, tazama <a href="#pc-settings">Mipangilio: ilipo, na kuhamisha kutoka kwenye simu</a>), au ianzishe bila skrini na uiweke kutoka Mipangilio ya udhibiti wa mbali, inayoihifadhi kama kawaida.
+                </p>
+
+                <h4>Kuianzisha</h4>
+                <p>Kwenye terminal ya kompyuta hiyo (kupitia SSH pia inafaa), katika folda ya qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, pia Raspberry Pi: <code>./qFT8 --webserver</code>. Kwa upakuaji wa .jar na Java 21 au mpya zaidi: <code>java -jar</code>, jina la faili ya .jar, na <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminal inasema kuwa qFT8 inaendeshwa bila dirisha, kuwa <span translate="no">TX</span> imezimwa na kama ukurasa unaomba nenosiri, na inaonyesha kiungo cha faragha cha udhibiti wa mbali: kifungue kwenye kivinjari kwenye mtandao huo huo. Sehemu iliyo baada ya <code>#k=</code> ni ufunguo wa kiungo: iweke siri. Inaonyeshwa kwenye terminal tu, na haiandikwi kamwe kwenye faili ya kumbukumbu ya qFT8. <code>Ctrl+C</code> husimamisha qFT8 na kurudisha redio kwenye upokeaji.
+                </p>
+                <p>
+                    <span translate="no">TX</span> huwa imezimwa kila wakati qFT8 inapoanza kwa njia hii. Kitufe cha <span translate="no">TX</span> cha udhibiti wa mbali pekee ndicho kinachoiwasha.
+                </p>
+
+                <h4>Chaguo</h4>
+                <p>
+                    Kila chaguo hubadilisha mpangilio kwa mwendesho huo tu: hakuna kinachohifadhiwa, na bila chaguo mipangilio iliyohifadhiwa hutumika. <code>qFT8 --webserver --help</code> huziorodhesha.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: port ya udhibiti wa mbali, 1024 hadi 65534 (13497 isipokuwa umeibadilisha).</li>
+                    <li><code>--bind ANWANI</code>: sikiliza kwenye anwani hiyo tu ya kompyuta.</li>
+                    <li><code>--password MAANDISHI</code>, au <code>--password-file FAILI</code> (mstari wa kwanza wa faili; salama zaidi, kwa sababu watumiaji wengine wa kompyuta wanaweza kuona mstari wa amri), au <code>--no-password</code>.</li>
+                    <li><code>--https</code> au <code>--no-https</code>: anwani salama (port + 1) ambayo kivinjari kinahitaji ili kutumia maikrofoni.</li>
+                    <li><code>--access read</code>, <code>stop</code> au <code>full</code>: ukurasa unaweza kufanya nini: kutazama tu, kutazama na kusimamisha <span translate="no">TX</span>, au kila kitu.</li>
+                    <li><code>--audio-in JINA</code> na <code>--audio-out JINA</code>: vifaa vya sauti vya redio, kwa jina linaloonyeshwa na <code>qFT8 --list-devices</code>, au <code>auto</code>.</li>
+                    <li><code>--radio AINA</code>: redio (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), na <code>--port KIFAA</code>: port yake ya serial (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDA</code>: folda ya wasifu itakayotumika.</li>
+                </ul>
+                <p>
+                    Ikiwa port inatumiwa na programu nyingine, au qFT8 nyingine tayari inatumia folda hiyo hiyo ya wasifu, qFT8 hulisema hilo kwenye terminal na kusimama.
+                </p>
+
+                <h4>Mfano: Raspberry Pi</h4>
+                <p>
+                    Redio imeunganishwa kwenye Pi kwa USB, na qFT8 imesanidiwa mara moja (kwa skrini kwenye Pi, au kutoka kwenye udhibiti wa mbali). Kutoka kompyuta nyingine:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Kisha fungua kiungo inachoonyesha kwenye simu yako. Raspberry Pi 4 au 5 husimbua <span translate="no">FT8</span> kwa wakati; kompyuta ya kasi zaidi hupata ishara dhaifu zaidi nyingi zaidi.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Rudi kwenye Yaliyomo</a>
             </section>
 
             <section id="bridge">
@@ -7564,6 +7626,19 @@
                     (akaunti yako hujiunga na kundi la mlango), au muulize msimamizi wa mfumo wako.</li>
                 <li>Matatizo yakitokea hasa wakati wa kutuma, yanaweza kusababishwa na kuingiliwa na redio. Kuongeza chokes au ferrite kwenye kebo ya USB kunaweza kusaidia. Unaweza pia kujaribu kutuma kwenye bendi tofauti, kwa kuwa vifaa vingine ni nyeti kwa kuingiliwa katika bendi fulani tu.</li>
             </ul>
+            <p>
+                Wakati qFT8 inazungumza na redio kupitia <span translate="no">CAT</span> (redio iliyochaguliwa katika <strong>Mipangilio &gt; Kifaa</strong>, au ile iliyopatikana na <span translate="no">AUTO</span>) na redio haijibu, onyo jekundu <strong>Hakuna CAT</strong> linaonekana kwenye spectrogram (na chini ya redio katika <strong>Mipangilio &gt; Kifaa</strong>). Ligonge: kadi inaeleza qFT8 ilipima nini kwenye muunganisho na inaorodhesha cha kujaribu kwa hali hiyo:
+            </p>
+            <ul>
+                <li><strong>Redio haikupatikana</strong>: redio imezimwa, kebo imelegea, kebo inachaji tu (tumia kebo ya data ya USB), adapta au hub haipitishi data, au <span translate="no">USB OTG</span> imezimwa katika mipangilio ya mfumo wa simu. Kwenye kompyuta: dereva wa USB wa redio, na mlango uliochaguliwa katika <strong>Mipangilio &gt; Usanidi wa Kifaa</strong>.</li>
+                <li><strong>Mlango haukuweza kufunguliwa</strong>: ruhusu qFT8 itumie kifaa cha USB Android inapouliza, na funga programu nyingine zinazotumia mlango wa redio.</li>
+                <li><strong>Redio haijibu</strong> (hakuna baiti hata moja inayorudi): redio imewashwa, kebo imeingia kwenye soketi yake ya <span translate="no">CAT</span>, modeli ya redio ni sahihi, na baud rate ya <span translate="no">CAT</span> ya redio ni sawa na ya qFT8 (<strong>Mipangilio &gt; Usanidi wa Kifaa &gt; Baud Rate</strong>). Redio za Yaesu zenye menyu ya <span translate="no">CAT RTS</span>: iweke kuwa <span translate="no">DISABLE</span>. Redio za Xiegu: kebo ya data (<span translate="no">CI-V</span>) ya kiolesura huchomekwa kwenye jeki ya <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> ya redio, si kebo ya sauti pekee, na anwani ya <span translate="no">CI-V</span> na baud rate ya redio ni sawa na za qFT8 (kadi inazionyesha).</li>
+                <li><strong>Amri za qFT8 pekee ndizo zinazorudi</strong>: kebo au kiolesura kinarudisha data bila redio (kebo ya Icom <span translate="no">CI-V</span> hufanya hivi redio ikiwa imezimwa).</li>
+                <li><strong>Majibu yasiyosomeka</strong>: baud rate au modeli ya redio hailingani.</li>
+                <li><strong>Huacha kujibu inaposambaza</strong>: mwingiliano wa RF. Weka ferrite chokes kwenye nyaya za USB na sauti karibu na ncha zote mbili, jaribu nguvu ndogo (huwekwa kwenye redio) kama jaribio, na kagua antena na feed line kwa mkondo wa common-mode.</li>
+                <li><strong>Ilijibu, kisha ikaacha</strong>: redio ilizimwa, au kebo ilitoka.</li>
+            </ul>
+            <p><strong>KAGUA TENA</strong> huunganisha tena na redio na kukagua mara moja zaidi; <strong>TUMA RIPOTI</strong> hututumia kilichopimwa, pamoja na kumbukumbu ya amri za redio.</p>
 
             <h3 id="trouble-otg-charging">Kipokea-kutuma hupotea simu inapojaa chaji (Android)</h3>
             <p>

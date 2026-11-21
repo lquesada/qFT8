@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Shkarko në App Store",
     "FEAT2_OWN": "Dekoderët dhe kodifikuesit e vet, shkruar nga e para",
     "FEAT2_RAWLOG": "Regjistro të gjitha mesazhet e deshifruara",
+    "FEAT2_HEADLESS": "Punon pa ekran si server uebi për kontroll në distancë, p.sh. në një Raspberry Pi",
     "FAQ_TITLE": "Pyetje dhe përgjigje",
     "FAQ_Q1": "Çfarë është qFT8?",
     "FAQ_A1": "qFT8 është një program falas radioamatori për mënyra digjitale me sinjale të dobëta, Morse, teletajp, figura dhe zë. Punon në telefona dhe tabletë Android, iOS, Windows, macOS dhe Linux, dhe mund të kontrollohet nga çdo shfletues. Nuk ka reklama dhe nuk kërkon llogari. Është shkruar nga Luis Quesada Torres, HB9IPH, me dekoderët dhe kodifikuesit e vet të shkruar nga e para.",

@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">스펙트로그램 튜닝 오프셋</a></li>
                         <li><a href="#tx-limit">연속 송신 제한</a></li>
                         <li><a href="#remote-control">원격 제어 웹 서버</a></li>
+                        <li><a href="#webserver-headless">화면 없이 qFT8 실행하기 (웹 리모컨 서버)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log 프로토콜</a></li>
@@ -626,8 +627,7 @@
                     필요하지 않고, 위의 마이크 권한만 필요합니다. 포트가 거부되면 다른 프로그램이 열고 있는 것입니다.</li>
                 <li><strong>Linux</strong>: 포트는 <code>/dev/ttyACM0</code> 또는 <code>/dev/ttyUSB0</code>처럼 보이며 위의
                     그룹이 필요합니다. 사운드 장치는 사운드 서버(PulseAudio 또는 PipeWire)의 것이므로, 무전기의 스피커,
-                    헤드폰, 마이크를 각각 다른 장치로 쓸 수 있습니다. 장치 음량 슬라이더는 <code>pulseaudio-utils</code>
-                    패키지의 <code>pactl</code>을 씁니다(PipeWire에서도 동작합니다).</li>
+                    헤드폰, 마이크를 각각 다른 장치로 쓸 수 있습니다. qFT8은 <code>pulseaudio-utils</code> 패키지의 <code>pactl</code>와 <code>parec</code>로 사운드 장치(와 장치 음량 슬라이더)에 접근합니다(PipeWire에서도 동작합니다). 이 패키지를 설치하세요. 없으면 qFT8이 어떤 사운드 카드도 듣지 못하는 경우가 많습니다.</li>
             </ul>
 
             <h4>무전기와 포트 고르기</h4>
@@ -752,7 +752,7 @@
                     없으면 qFT8은 오류와 함께 멈춥니다.</li>
                 <li><strong>웹 리모컨.</strong> 컴퓨터용 프로그램에는 Android와 같은
                     <a href="#remote-control">원격 제어 웹 서버</a>가 있으며(기본값은 꺼짐, 포트 13497) 음량 슬라이더를
-                    포함해 같은 페이지를 보여 줍니다. 네트워크의 휴대폰이나 다른 컴퓨터에서 운용할 때 쓰세요.</li>
+                    포함해 같은 페이지를 보여 줍니다. 네트워크의 휴대폰이나 다른 컴퓨터에서 운용할 때 쓰세요. 창 없이 실행할 수도 있으며(<code>--webserver</code>, <a href="#webserver-headless">화면 없이 qFT8 실행하기 (웹 리모컨 서버)</a> 참조) 화면이 없는 컴퓨터에 쓸 수 있습니다.</li>
                 <li><strong>bridge.</strong> 컴퓨터는 흔히 쓰는 <a href="#bridge">bridge</a>입니다. 무전기를 컴퓨터에
                     연결하고, 휴대폰, iPhone 또는 다른 컴퓨터의 qFT8이 그것을 운용합니다. 다른 용도가 없는 컴퓨터를 위해
                     창 없이 실행할 수도 있습니다(<code>qFT8 --bridge</code>).</li>
@@ -760,7 +760,7 @@
                     표시됩니다). <code>--list-devices</code>는 qFT8이 보는 모든 시리얼 포트와 사운드 장치를 나열하고
                     종료합니다. <code>--port &lt;device&gt;</code>는 기본 시리얼 포트(<code>COM3</code>,
                     <code>/dev/ttyACM0</code>)를 정합니다. <code>--qft8_profile &lt;folder&gt;</code>는 프로필 폴더를
-                    고릅니다. <code>--bridge</code>는 bridge를 시작합니다. <code>--video-mode=&lt;mode&gt;</code>는 그 실행에 한해 창을 다른 방식으로 그립니다. qFT8이 설정에서 <strong>비디오 모드</strong>를 바꿀 수 있을 만큼 열리지 않을 때도 쓸 수 있습니다(Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>). <code>--opengl</code>은 창을 OpenGL로
+                    고릅니다. <code>--bridge</code>는 bridge를 시작합니다. <code>--video-mode=&lt; <code>--webserver</code>는 창 없이 qFT8을 실행하고 웹 리모컨을 엽니다.mode&gt;</code>는 그 실행에 한해 창을 다른 방식으로 그립니다. qFT8이 설정에서 <strong>비디오 모드</strong>를 바꿀 수 있을 만큼 열리지 않을 때도 쓸 수 있습니다(Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>). <code>--opengl</code>은 창을 OpenGL로
                     그립니다(<a href="#pc-trouble">문제가 생겼을 때</a> 참조).</li>
             </ul>
 
@@ -1804,7 +1804,7 @@
                         <li><strong>네트워크 무전기</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>네트워크 무전기 (실험적)</strong> in <strong>무전기 연결</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>연결</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>방법</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>오디오 스트림 포트</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>사운드 카드</strong> under <strong>오디오</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>방식</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>주소</strong>, the <strong>무전기</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>사용자 이름</strong> and <strong>비밀번호</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>무전기</strong> says which radio, <strong>'장치'에서 고른 대로</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>블루투스(실험적)</strong> in <strong>무전기 연결</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>장치 선택</strong> under <strong>블루투스 장치</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>무전기</strong>, <strong>'장치'에서 고른 대로</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>연결</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>블루투스(실험적)</strong> in <strong>무전기 연결</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>장치 선택</strong> under <strong>블루투스 장치</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>무전기</strong>, <strong>'장치'에서 고른 대로</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>연결</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1901,6 +1901,7 @@
                     켜면 <strong>USB 장치</strong>, <strong>보드레이트</strong>, <strong>데이터 비트</strong>,
                     <strong>정지 비트</strong>, <strong>패리티</strong>와 무전기를 키잉하는 방식(<strong>PTT</strong>:
                     CAT 명령, 또는 RTS나 DTR 선), 송신 전 PTT 지연을 바꿀 수 있습니다.
+                    RTS 또는 DTR을 사용할 때 <strong>PTT 포트</strong>는 그 신호선의 위치를 정합니다: <strong>CAT과 같음</strong> (무전기 자체 케이블) 또는 두 번째 시리얼 포트로, CAT은 한 케이블에, PTT는 다른 인터페이스에 연결하는 스테이션용입니다 (휴대폰에서는 두 어댑터를 USB 허브로 연결, iPhone에서는 불가).
                     <strong>초기화 및 매 주기마다 트랜시버 모드 설정</strong>는 무전기를 올바른 모드로 유지합니다. 이 장치에 재정의가 있으면 메인 페이지의 메모가 알려 줍니다.</li>
                 <li><strong>튜닝 (이 무전기)</strong>: <a href="#tune-offset">스펙트로그램 튜닝 오프셋</a>과
                     <a href="#tx-limit">연속 송신 제한</a>.</li>
@@ -4440,9 +4441,9 @@
                     나타납니다.</li>
                 <li>메모리의 각 줄, 또는 직접 입력한 각 줄이 프레임 하나입니다.
                     <span translate="no">BEACON</span> [메모]는 로케이터에서 구한 내 위치를 도 단위까지 보냅니다
-                    (로케이터보다 더 정밀하지는 않습니다). <span translate="no">CALL: text</span>는 해당
+                    (로케이터보다 더 정밀하지는 않습니다). <span translate="no">BEACON</span> 위도 경도 [메모]는 십진 도 단위의 정확한 위치를 보냅니다 (남쪽 / 서쪽은 음수, <span translate="no">BEACON -34.3543 -58.2535</span>은 34.35 S, 58.25 W이며 글자로도 쓸 수 있습니다: <span translate="no">BEACON 34.3543S 58.2535W</span>). <span translate="no">CALL: text</span>는 해당
                     무선국에 메시지를 보냅니다. <span translate="no">STATUS text</span>는 상태를 보냅니다.
-                    <span translate="no">APRS</span> 문자(<span translate="no">! = : &gt; ;</span>)로 시작하는 줄은 그대로 나갑니다.</li>
+                    <span translate="no">APRS</span> 문자(<span translate="no">! = : &gt; ;</span>)로 시작하는 줄은 그대로 나갑니다. 설정 &gt; <span translate="no">Packet</span>의 각 메모리 아래 회색 줄이 보낼 내용을 알려 줍니다 ("위치 34.35 S, 58.25 W", "상태: ..."). <span translate="no">BEACON</span> 없이 쓴 숫자 두 개는 위치가 아니라 상태 텍스트로 나가며, 메모리 아래 빨간 줄이 그렇게 알려 줍니다.</li>
                 <li>프레임은 내 호출부호에 <span translate="no">SSID</span>를 붙여(설정 &gt;
                     <span translate="no">Packet</span>(화면의 톱니바퀴)에서 선택), 거기서 정한 디지피터 경로
                     (기본값 <span translate="no">WIDE1-1,WIDE2-1</span>, 2 m만)로 나갑니다.</li>
@@ -4994,21 +4995,19 @@
                 <strong>컨버터 없는 HF (직접 샘플링)</strong>를 체크하면
                 <span translate="no">HF</span> 입력으로 24 MHz 이하를 수신할 수 있습니다. qFT8는 동글의 바이어스 티(안테나 전원)를 절대 켜지 않습니다.
             </p>
-            <p>
-                <strong>컴퓨터, Linux</strong>: 같은 행, 같은 내장 드라이버입니다. 시스템이 알아서 불러오는 TV 드라이버에서 qFT8가 동글을 넘겨받습니다.
-                동글을 열 권한이 사용자에게 있어야 합니다. 상태 줄에
-                &ldquo;권한 없음&rdquo;이라고 나오면 규칙 파일을 한 번 추가하세요(예:
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>). 내용은 다음 한 줄입니다:
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (일부 구형 동글은 <code>2832</code>). 그런 다음
-                <code dir="ltr">sudo udevadm control --reload-rules</code>를 실행하고 동글을 다시 꽂으세요.
+            <p id="rtl-stock-dongle">
+                <strong>일반 동글은 다시 쓸(플래싱) 필요가 없습니다.</strong> 가게에서 산 그대로의 동글이 작동합니다. 아무것도 기록하지 않으며 qFT8은 메모리(EEPROM)를 절대 바꾸지 않습니다. 중요한 것은 튜너 칩입니다. <span translate="no">R820T / R820T2 / R828D</span>는 작동하고, <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> 튜너 동글은 작동하지 않으며 상태 줄에 그렇게 표시됩니다. <span translate="no">RTL-SDR Blog V4</span>는 공장에서 붙은 이름으로 인식합니다. 그 이름이 없는 <span translate="no">R828D</span> 동글(예: 이름이 다시 쓰인 V4)은 HF가 작동하지 않을 수 있다는 경고를 상태 줄에 받습니다. macOS에서는 어떤 동글이든 네트워크 서버(아래)를 사용하세요.
             </p>
-            <p>
-                <strong>컴퓨터, Windows와 macOS</strong>: 아직은 qFT8가 동글을 직접 열 수 없습니다. 같은 컴퓨터(또는
-                <span translate="no">Raspberry Pi</span> 같은 다른 컴퓨터)에서 <span translate="no">RTL-SDR</span> 네트워크 서버를 실행하고
-                <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>를 주소 <code>127.0.0.1</code>로 고르거나,
-                휴대폰이나 Linux 컴퓨터에서 <a href="#bridge">qFT8 bridge</a>로 동글을 제공하세요.
+            <p id="rtl-usb-linux">
+                <strong>컴퓨터, Linux</strong>: 같은 행, 같은 내장 드라이버입니다. qFT8는 시스템이 스스로 불러오는 TV 드라이버에서 동글을 넘겨받습니다. 사용자에게는 동글을 열 권한이 필요합니다. 권한이 없으면 동글을 꽂자마자 qFT8가 카드로 알려 주고, <strong>해결하기</strong>가 대신 권한을 추가합니다. 터미널이 열려 비밀번호를 한 번 묻습니다(터미널이 없는 곳에서는 시스템 자체의 비밀번호 창이 묻습니다). 컴퓨터를 사용하는 사람에게 <span translate="no">USB</span> 수신기(<span translate="no">RTL-SDR, Airspy, HackRF</span>)에 대한 접근 권한을 주는 규칙 파일 <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>을 기록합니다. 그러면 동글이 재시동이나 재로그인 없이 바로 작동합니다. 카드에는 명령도 표시되어 직접 터미널에서 실행할 수 있습니다.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>컴퓨터, Windows</strong>: 같은 행, 같은 내장 드라이버이며 Windows에 포함된 <span translate="no">WinUSB</span> 드라이버를 통합니다. Windows는 보통 새 동글에 드라이버를 지정하지 않거나 qFT8가 쓸 수 없는 TV 드라이버를 지정합니다. qFT8는 동글을 꽂을 때 이를 알아채고 설정을 제안합니다. <strong>설정</strong>를 누르고 Windows 관리자 창에서 변경을 허용하세요(한 번). 몇 초 뒤 동글이 작동합니다. 아무것도 내려받지 않고 우리 드라이버도 설치하지 않습니다. qFT8는 동글을 Windows 자체의 <span translate="no">WinUSB</span> 드라이버로 전환할 뿐입니다. TV 드라이버가 필요한 TV 프로그램에서는 동글이 더 이상 보이지 않습니다. Windows로 되돌리려면 <strong>장치 관리자</strong>에서 <strong>Universal Serial Bus devices</strong> 아래의 동글을 마우스 오른쪽 버튼으로 클릭하고 <strong>Uninstall device</strong>를 선택한 다음(드라이버에 관한 상자는 선택하지 않은 채로 둡니다) <strong>Action &gt; Scan for hardware changes</strong>를 선택하세요. Windows 업데이트가 TV 드라이버를 되돌려 놓을 수도 있으며, 그러면 qFT8가 설정을 다시 제안합니다. Microsoft Store 버전은 드라이버를 직접 바꿀 수 없습니다. <strong>장치 관리자</strong>에서 동글(대개 &ldquo;Bulk-In, Interface (Interface 0)&rdquo;)을 마우스 오른쪽 버튼으로 클릭하고 <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>를 선택한 다음 <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>를 선택하세요.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>컴퓨터, macOS</strong>: 아직은 qFT8가 동글을 직접 열 수 없습니다. 같은 컴퓨터(또는 <span translate="no">Raspberry Pi</span> 같은 다른 컴퓨터)에서 <span translate="no">RTL-SDR</span> 네트워크 서버를 실행하고 <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>를 주소 <code>127.0.0.1</code>로 고르거나, 휴대폰이나 컴퓨터에서 <a href="#bridge">qFT8 bridge</a>로 동글을 제공하세요.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span> 네트워크 서버와 그 드라이버</h4>
             <p>
@@ -5108,7 +5107,7 @@
                 <li>로그는 모든 항목을 (제한 없이) 덧붙이기만 하는 파일에 보관하므로, 아주 긴 로그도 앱 시작을 느리게 하지 않습니다. 페이지는 최신 항목만 읽고 스크롤하면 더 보여줍니다.</li>
                 <li>Ham 기능이 꺼져 있으면 수신한 모든 <span translate="no">FT8, FT4, LQ ...</span> 스테이션이 기록됩니다(스테이션과 모드마다 한 시간에 한 번). Ham 기능이 켜져 있으면 수신한 완전한 QSO만 기록됩니다. Ham 기능이 꺼져 있을 때, 처음 수신한 스테이션(이전에 <span translate="no">SWL</span> 로그에 없던 스테이션)은 스테이션 목록에서 콜사인이 청록색으로 표시됩니다.</li>
                 <li>신호 수신기는 식별한 것을 스테이션마다 <span translate="no">UTC</span> 하루에 한 번 로그에 기록합니다: 선박(<span translate="no">AIS</span>), 항공기(<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), 라디오존데, <span translate="no">NAVTEX</span> 스테이션, <span translate="no">DSC</span>, 시보국, <span translate="no">NCDXF</span> 비콘, <span translate="no">ALE / ARDOP / PACTOR</span>와(과) <span translate="no">APRS</span> 콜사인, 기상 팩스와 기상 위성 사진, 그리고 <span translate="no">RDS</span> 코드와 이름에 따른 <span translate="no">FM</span> 방송국. 이것들은 <span translate="no">SWL</span> 어워드에 포함되지만 eQSL로는 절대 보내지지 않고 <span translate="no">ADIF</span> 내보내기에도 없습니다(<span translate="no">CSV</span>에는 있으며, 마지막 열에 수신한 이름이 들어갑니다).</li>
-                <li>업로드는 한 가지 규칙을 따릅니다: eQSL <span translate="no">SWL</span> 계정은 수신한 모든 스테이션을 그 계정으로 등록합니다(아마추어 eQSL 계정은 거부됩니다). <span translate="no">PSK Reporter</span>과(와) <span translate="no">WSPRnet</span>은(는) 콜사인으로, 없으면 <span translate="no">SWL</span> ID로 보고합니다.</li>
+                <li>업로드는 한 가지 규칙을 따릅니다: eQSL <span translate="no">SWL</span> 계정은 수신한 모든 스테이션을 그 계정으로 등록합니다(아마추어 eQSL 계정은 거부됩니다). <span translate="no">PSK Reporter</span>과(와) <span translate="no">WSPRnet</span>은(는) 각 스폿을 콜사인과 <span translate="no">SWL</span> ID(설정된 것) 모두로 보고합니다. 설정의 각 상자 아래에 이름이 표시됩니다.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>본인 소유의 SDR입니까?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>누구의 수신기</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>이 서버는 제 것입니다</strong> in its rows, the same answer as <strong>본인 소유의 SDR입니까?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5423,6 +5422,70 @@
                     <p><strong>참고:</strong> 백그라운드 실행 설정이 켜져 있으면 화면이 꺼져 있어도 웹 서버가 동작합니다(기본값은 <span translate="no">qFT8</span>이 무전기에 연결되어 있을 때 백그라운드에서 계속 실행하는 것입니다).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>화면 없이 qFT8 실행하기 (웹 리모컨 서버)</h3>
+                <p>
+                    컴퓨터용 프로그램은 창 없이도 실행할 수 있습니다. 화면이 없는 컴퓨터, 예를 들어 무선기 옆의 Raspberry Pi, 작은 서버, SSH로 접속하는 컴퓨터에서요. 그러면 qFT8은 소리, 무선기 제어, 디코딩, <span translate="no">AUTO</span>, 로그 기록, 업로드를 평소와 똑같이 처리하고, 여러분은 네트워크의 휴대폰, 태블릿, 다른 컴퓨터의 브라우저에서 <a href="#remote-control">원격 제어 웹 서버</a>로 운용합니다.
+                </p>
+
+                <h4>웹 서버와 bridge</h4>
+                <p>둘 다 화면 없이 실행됩니다. 어느 기기가 일을 하느냐가 다릅니다.</p>
+                <ul>
+                    <li><strong>웹 서버</strong>(<code>--webserver</code>): qFT8을 실행하는 컴퓨터가 디코딩, 송신, 기록을 하고, 브라우저는 그것을 보여 주고 버튼만 제공합니다. 휴대폰으로 조작하는 집의 성능 좋은 컴퓨터에 알맞습니다.</li>
+                    <li><strong>Bridge</strong>(<code>--bridge</code>, <a href="#bridge">qFT8 bridge</a> 참조): 무선기 옆의 기기는 무선기의 명령과 소리를 네트워크로 전달하기만 하고, 디코딩은 운용하는 기기의 qFT8(컴퓨터용 프로그램, Android 앱, iPhone/iPad 앱)이 합니다. 무선기 옆에 Raspberry Pi를 두고 일은 내 컴퓨터가 하게 할 때 알맞습니다.</li>
+                </ul>
+                <p>둘은 동시에 실행할 수 없습니다.</p>
+
+                <h4>먼저 설정하기</h4>
+                <p>
+                    qFT8은 창으로 실행할 때와 똑같이 저장된 설정을 사용합니다. 콜사인, 로케이터, 무선기, 사운드 장치, 모드, 로그 기록, QSO 업로드 서비스가 그렇습니다. 예를 들어 <a href="#raw-message-logs">원시 메시지 로그</a>에 체크가 되어 있으면 .tsv 파일을 계속 씁니다. 그러므로 먼저 qFT8을 설정하세요. 그 컴퓨터에서 창으로 한 번 실행하거나(또는 다른 컴퓨터에서 프로필 폴더를 복사합니다. <a href="#pc-settings">설정: 저장 위치, 휴대폰에서 옮기기</a> 참조), 화면 없이 실행한 뒤 웹 리모컨의 설정에서 하세요. 설정은 평소처럼 저장됩니다.
+                </p>
+
+                <h4>시작하기</h4>
+                <p>그 컴퓨터의 터미널에서(SSH도 됩니다) qFT8 폴더로 가서:</p>
+                <ul>
+                    <li><strong>Linux</strong>, Raspberry Pi도 마찬가지: <code>./qFT8 --webserver</code>. .jar 다운로드와 Java 21 이상을 쓸 때: <code>java -jar</code>, .jar 파일 이름, <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    터미널에는 qFT8이 창 없이 실행 중이라는 것, <span translate="no">TX</span>가 꺼져 있다는 것, 페이지가 비밀번호를 요구하는지가 표시되고, 웹 리모컨의 비공개 링크도 나옵니다. 같은 네트워크의 브라우저에서 여세요. <code>#k=</code> 뒤의 부분이 링크의 키이니 비밀로 하세요. 키는 터미널에만 표시되고 qFT8의 로그 파일에는 절대 기록되지 않습니다. <code>Ctrl+C</code>는 qFT8을 멈추고 무선기를 수신 상태로 되돌립니다.
+                </p>
+                <p>
+                    이렇게 시작하면 <span translate="no">TX</span>는 항상 꺼져 있습니다. 웹 리모컨의 <span translate="no">TX</span> 버튼만 켤 수 있습니다.
+                </p>
+
+                <h4>옵션</h4>
+                <p>
+                    각 옵션은 그 실행에 한해 설정 하나를 바꿉니다. 아무것도 저장되지 않으며, 옵션이 없으면 저장된 설정을 씁니다. <code>qFT8 --webserver --help</code>로 목록을 볼 수 있습니다.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: 웹 리모컨의 포트. 1024에서 65534까지(바꾸지 않았다면 13497).</li>
+                    <li><code>--bind ADDRESS</code>: 컴퓨터의 그 주소에서만 대기합니다.</li>
+                    <li><code>--password TEXT</code>, 또는 <code>--password-file FILE</code>(파일의 첫 줄. 컴퓨터의 다른 사용자가 명령줄을 볼 수 있으므로 더 안전합니다), 또는 <code>--no-password</code>.</li>
+                    <li><code>--https</code> 또는 <code>--no-https</code>: 브라우저가 마이크를 쓰는 데 필요한 보안 주소(포트 + 1).</li>
+                    <li><code>--access read</code>, <code>stop</code>, <code>full</code>: 페이지가 할 수 있는 일. 보기만, 보기와 <span translate="no">TX</span> 중지, 또는 모든 것.</li>
+                    <li><code>--audio-in NAME</code>과 <code>--audio-out NAME</code>: 무선기의 사운드 장치. <code>qFT8 --list-devices</code>가 보여 주는 이름이나 <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: 무선기(<code>auto</code>, <code>qmx</code>, <code>icom7300</code> 등), 그리고 <code>--port DEVICE</code>: 그 시리얼 포트(<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: 사용할 프로필 폴더.</li>
+                </ul>
+                <p>
+                    포트를 다른 프로그램이 쓰고 있거나, 다른 qFT8이 이미 같은 프로필 폴더를 쓰고 있으면 qFT8은 터미널에 알리고 멈춥니다.
+                </p>
+
+                <h4>예: Raspberry Pi</h4>
+                <p>
+                    무선기는 USB로 Pi에 연결되어 있고, qFT8은 한 번 설정되어 있습니다(Pi에 화면을 연결하거나 웹 리모컨에서). 다른 컴퓨터에서:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    그런 다음 표시되는 링크를 휴대폰에서 여세요. Raspberry Pi 4 또는 5는 <span translate="no">FT8</span>를 제때 디코딩합니다. 더 빠른 컴퓨터는 가장 약한 신호를 더 많이 찾아냅니다.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; 목차로 돌아가기</a>
             </section>
 
             <section id="bridge">
@@ -5971,6 +6034,19 @@
                 <li>Linux에서 qFT8이 무전기의 포트를 열 권한이 없다고 하면, 고쳐 주겠다는 제안을 받아들이거나(계정이 그 포트의 그룹에 들어갑니다) 시스템 관리자에게 문의하세요.</li>
                 <li>문제가 송신할 때만 생긴다면 전파 간섭이 원인일 수 있습니다. USB 케이블에 초크나 페라이트를 달면 도움이 될 수 있습니다. 다른 밴드에서 송신해 볼 수도 있습니다. 일부 기기는 특정 밴드의 간섭에만 민감하기 때문입니다.</li>
             </ul>
+            <p>
+                qFT8이 <span translate="no">CAT</span>로 무전기와 통신하는데 (<strong>설정 &gt; 장치</strong>에서 선택한 무전기 또는 <span translate="no">AUTO</span>가 찾은 무전기) 무전기가 응답하지 않으면 빨간 <strong><span translate="no">CAT</span> 없음</strong> 경고가 스펙트로그램에 (그리고 <strong>설정 &gt; 장치</strong>의 무전기 아래에) 나타납니다. 탭하면 qFT8이 연결에서 측정한 내용과 해당 경우에 시도할 사항이 카드에 표시됩니다:
+            </p>
+            <ul>
+                <li><strong>qFT8이 무전기를 찾지 못합니다</strong>: 무전기가 꺼져 있거나, 케이블이 헐겁거나, 케이블이 충전 전용이거나 (USB 데이터 케이블 사용), 어댑터나 허브가 데이터를 전달하지 않거나, 휴대폰 시스템 설정에서 <span translate="no">USB OTG</span>가 꺼져 있습니다. 컴퓨터에서는 무전기의 USB 드라이버와 <strong>설정 &gt; 기기 설정</strong>에서 선택한 포트를 확인하세요.</li>
+                <li><strong>무전기는 연결되어 있지만 qFT8이 포트를 열 수 없습니다 (권한이 없거나 다른 프로그램이 사용 중입니다)</strong>: Android가 물으면 qFT8이 USB 장치를 사용하도록 허용하고, 무전기 포트를 사용하는 다른 프로그램을 닫으세요.</li>
+                <li><strong>무전기가 응답하지 않습니다</strong> (1바이트도 돌아오지 않음): 무전기가 켜져 있고, 케이블이 무전기의 <span translate="no">CAT</span> 단자에 연결되어 있고, 무전기 모델이 맞고, 무전기의 <span translate="no">CAT</span> 보드레이트가 qFT8과 같아야 합니다 (<strong>설정 &gt; 기기 설정 &gt; 보드레이트</strong>). <span translate="no">CAT RTS</span> 메뉴가 있는 Yaesu 무전기: <span translate="no">DISABLE</span>로 설정하세요. Xiegu 무전기: 인터페이스의 데이터(<span translate="no">CI-V</span>) 케이블은 오디오 케이블뿐 아니라 무전기의 <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> 잭에 꽂고, 무전기의 <span translate="no">CI-V</span> 주소와 보드레이트는 qFT8과 같아야 합니다(카드에 표시됨).</li>
+                <li><strong>qFT8 자신의 명령만 돌아옵니다</strong>: 케이블이나 인터페이스가 무전기를 거치지 않고 데이터를 되돌려 보냅니다 (Icom <span translate="no">CI-V</span> 케이블은 무전기가 꺼져 있을 때 이렇게 됩니다).</li>
+                <li><strong>무전기가 응답하지만 qFT8이 응답을 읽을 수 없습니다</strong>: 보드레이트 또는 무전기 모델이 맞지 않습니다.</li>
+                <li><strong>송신 중에 무전기가 응답하지 않습니다</strong>: RF 간섭. USB 케이블과 오디오 케이블의 양 끝 근처에 클립형 페라이트 초크를 끼우고, 테스트로 출력을 낮춰 보고 (무전기에서 설정), 안테나와 급전선에 코먼모드 전류가 있는지 확인하세요.</li>
+                <li><strong>무전기가 응답하다가 응답을 멈췄습니다</strong>: 무전기가 꺼졌거나 케이블이 빠졌습니다.</li>
+            </ul>
+            <p><strong>다시 확인</strong>은(는) 무전기에 다시 연결해 한 번 더 확인하고, <strong>보고서 보내기</strong>은(는) 측정된 내용을 무전기의 명령 로그와 함께 보냅니다.</p>
 
             <h3 id="trouble-otg-charging">휴대폰이 완전히 충전되면 무전기가 사라집니다 (Android)</h3>
             <p>

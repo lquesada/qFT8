@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "App Store'dan indirin",
     "FEAT2_OWN": "Sıfırdan yazılmış kendi çözücüleri ve kodlayıcıları",
     "FEAT2_RAWLOG": "Çözülen tüm mesajları kaydet",
+    "FEAT2_HEADLESS": "Ekransız, uzaktan kumanda web sunucusu olarak çalışır, örneğin bir Raspberry Pi üzerinde",
     "FAQ_TITLE": "Sorular ve cevaplar",
     "FAQ_Q1": "qFT8 nedir?",
     "FAQ_A1": "qFT8; zayıf sinyal dijital modları, Mors, teleyazıcı, görüntü ve ses için ücretsiz bir amatör telsiz programıdır. Android telefon ve tabletlerde, iOS, Windows, macOS ve Linux'ta çalışır ve herhangi bir tarayıcıdan kontrol edilebilir. Reklam yoktur ve hesap gerekmez. Luis Quesada Torres, HB9IPH tarafından, sıfırdan yazılmış kendi çözücüleri ve kodlayıcılarıyla yazılmıştır.",

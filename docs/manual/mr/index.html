@@ -175,6 +175,7 @@
                         <li><a href="#tune-offset">स्पेक्ट्रोग्राम ट्यून ऑफसेट</a></li>
                         <li><a href="#tx-limit">सतत प्रक्षेपण मर्यादा</a></li>
                         <li><a href="#remote-control">रिमोट कंट्रोल वेब सर्व्हर</a></li>
+                        <li><a href="#webserver-headless">qFT8 स्क्रीनशिवाय चालवणे (वेब रिमोट सर्व्हर)</a></li>
                         <li><a href="#bridge">qFT8 ब्रिज</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log प्रोटोकॉल</a></li>
@@ -634,8 +635,7 @@
                 <li><strong>Linux</strong>: पोर्ट <code>/dev/ttyACM0</code> किंवा <code>/dev/ttyUSB0</code> असा दिसतो आणि त्याला
                     वर सांगितलेला ग्रुप लागतो. साउंड उपकरणे साउंड सर्व्हरची (PulseAudio किंवा PipeWire) असतात, त्यामुळे
                     रेडिओचा स्पीकर, तुमचे हेडफोन आणि तुमचा मायक्रोफोन प्रत्येक वेगळे उपकरण असू शकते.
-                    उपकरण आवाज स्लायडर <code>pactl</code> वापरतो, जे <code>pulseaudio-utils</code> पॅकेजमध्ये आहे (तो
-                    PipeWire सह देखील चालतो).</li>
+                    qFT8 ध्वनी उपकरणांपर्यंत (आणि उपकरण आवाज स्लायडरपर्यंत) <code>pulseaudio-utils</code> पॅकेजमधील <code>pactl</code> आणि <code>parec</code> द्वारे पोहोचतो (ते PipeWire सह देखील चालतात): ते पॅकेज इन्स्टॉल करा, नाहीतर qFT8 ला बहुधा कोणतेही साउंड कार्ड ऐकू येत नाही.</li>
             </ul>
 
             <h4>रेडिओ आणि त्याचा पोर्ट निवडणे</h4>
@@ -760,7 +760,7 @@
                     त्रुटीसह थांबते.</li>
                 <li><strong>वेब रिमोट.</strong> संगणक प्रोग्राममध्ये Android सारखाच
                     <a href="#remote-control">रिमोट कंट्रोल वेब सर्व्हर</a> आहे (डीफॉल्टनुसार बंद, पोर्ट 13497) आणि तीच पाने दाखवतो,
-                    आवाज स्लायडरसह. तुमच्या नेटवर्कवरील फोन किंवा दुसऱ्या संगणकावरून चालवण्यासाठी त्याचा वापर करा.</li>
+                    आवाज स्लायडरसह. तुमच्या नेटवर्कवरील फोन किंवा दुसऱ्या संगणकावरून चालवण्यासाठी त्याचा वापर करा. तो विंडोशिवायही चालू शकतो (<code>--webserver</code>, पहा <a href="#webserver-headless">qFT8 स्क्रीनशिवाय चालवणे (वेब रिमोट सर्व्हर)</a>), स्क्रीन नसलेल्या संगणकासाठी.</li>
                 <li><strong>ब्रिज.</strong> संगणक हा नेहमीचा <a href="#bridge">ब्रिज</a> असतो: रेडिओ त्याला जोडलेला,
                     आणि फोन, iPhone किंवा दुसऱ्या संगणकावरील qFT8 त्याला चालवते. तो विंडोशिवायही चालू शकतो
                     (<code>qFT8 --bridge</code>), दुसरे काहीही काम नसलेल्या संगणकासाठी.</li>
@@ -768,7 +768,7 @@
                     ती दाखवते): <code>--list-devices</code> qFT8 ला दिसणारे प्रत्येक सिरियल पोर्ट आणि साउंड उपकरण यादीत दाखवते आणि बंद होते;
                     <code>--port &lt;device&gt;</code> डीफॉल्ट सिरियल पोर्ट ठरवते (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> प्रोफाइल फोल्डर निवडते;
-                    <code>--bridge</code> ब्रिज सुरू करते; <code>--video-mode=&lt;mode&gt;</code> त्या एका चालवण्यासाठी विंडो दुसऱ्या प्रकारे काढते, qFT8 सेटिंग्जमध्ये <strong>व्हिडिओ मोड</strong> बदलता येईल इतकेही उघडत नसले तरी (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> विंडो OpenGL द्वारे काढते (पहा
+                    <code>--bridge</code> ब्रिज सुरू करते; <code>--webserver</code> qFT8 विंडोशिवाय चालवतो, वेब रिमोट उघडे ठेवून; <code>--video-mode=&lt;mode&gt;</code> त्या एका चालवण्यासाठी विंडो दुसऱ्या प्रकारे काढते, qFT8 सेटिंग्जमध्ये <strong>व्हिडिओ मोड</strong> बदलता येईल इतकेही उघडत नसले तरी (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> विंडो OpenGL द्वारे काढते (पहा
                     <a href="#pc-trouble">काही चालत नसेल तर</a>).</li>
             </ul>
 
@@ -2127,7 +2127,7 @@
                         <li><strong>नेटवर्क रेडिओ</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>नेटवर्क रेडिओ (प्रायोगिक)</strong> in <strong>रेडिओ कनेक्शन</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>कनेक्ट करा</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>पद्धत</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>ऑडिओ स्ट्रीमचा पोर्ट</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>साउंड कार्ड</strong> under <strong>ऑडिओ</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>पद्धत</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>पत्ता</strong>, the <strong>रेडिओ</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>वापरकर्ता नाव</strong> and <strong>पासवर्ड</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>रेडिओ</strong> says which radio, <strong>″डिव्हाइस″ मध्ये निवडल्याप्रमाणे</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>ब्लूटूथ (प्रायोगिक)</strong> in <strong>रेडिओ जोडणी</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>डिव्हाइस निवडा</strong> under <strong>ब्लूटूथ डिव्हाइस</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>रेडिओ</strong>, <strong>″डिव्हाइस″ मध्ये निवडल्याप्रमाणे</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>कनेक्ट करा</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>ब्लूटूथ (प्रायोगिक)</strong> in <strong>रेडिओ जोडणी</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>डिव्हाइस निवडा</strong> under <strong>ब्लूटूथ डिव्हाइस</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>रेडिओ</strong>, <strong>″डिव्हाइस″ मध्ये निवडल्याप्रमाणे</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>कनेक्ट करा</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2213,6 +2213,7 @@
                     <span translate="no">TX</span> on. The web remote's settings page has the same choice.</li>
                 <li><strong>ऑडिओ सेटिंग्ज</strong>: <strong>ऑडिओ सिस्टम</strong>, <strong>फुल डुप्लेक्स</strong>, <strong>ऑडिओ इनपुट स्रोत</strong> (हे देणाऱ्या फोनवर, कमकुवत सिग्नलसाठी <em>Unprocessed</em> सर्वोत्तम आहे, रेडिओचा AGC बंद ठेवून), रेडिओची ध्वनी उपकरणे (<strong>रेडिओ उपकरणातून इनपुट</strong>, <strong>रेडिओ उपकरणाकडे आउटपुट</strong>) आणि त्यांचे बफर आकार, <strong>आवाजासह टोन तयार करा</strong> (TX ऑडिओ पातळी), रेडिओ वापरताना आणि स्पीकर वापरताना उपकरणाचा आवाज, आणि <strong>ऑडिओ बफर ग्लिच इशारा दाखवा</strong>. काही चालत नसेल तरच त्यांना <span translate="no">AUTO</span> वरून बदला.</li>
                 <li><strong>उपकरण सेटिंग्ज</strong>, USB ने जोडलेल्या रेडिओसाठी: <strong>सेटिंग्ज ओव्हरराइड करण्यास परवानगी द्या</strong> हे <strong>USB उपकरण</strong>, <strong>बॉड रेट</strong>, <strong>डेटा बिट्स</strong>, <strong>स्टॉप बिट्स</strong>, <strong>पॅरिटी</strong> आणि रेडिओ कसा कीड केला जातो (<strong>PTT</strong>: CAT कमांडने, किंवा RTS किंवा DTR लाइनने) हे अनलॉक करते, तसेच प्रसारणापूर्वीचा PTT विलंब.
+                    RTS किंवा DTR सह, <strong>PTT पोर्ट</strong> ती लाइन कुठे आहे ते निवडतो: <strong>CAT सारखाच</strong> (रेडिओची स्वतःची केबल) किंवा दुसरा सिरियल पोर्ट, एका केबलवर <span translate="no">CAT</span> आणि दुसऱ्या इंटरफेसवर PTT असलेल्या स्टेशनसाठी (फोनवर, दोन्ही अ‍ॅडॉप्टर USB हबमधून; iPhone वर नाही).
                     <strong>सुरुवातीला आणि प्रत्येक सायकलमध्ये ट्रान्सीव्हर मोड सेट करा</strong> रेडिओला योग्य मोडमध्ये ठेवते. या उपकरणासाठी ओव्हरराइड असल्यास मुख्य पानावरील टीप तसे सांगते.</li>
                 <li><strong>ट्यूनिंग (हा रेडिओ)</strong>: <a href="#tune-offset">ट्यून स्पेक्ट्रोग्राम ऑफसेट</a> आणि <a href="#tx-limit">सतत प्रसारण मर्यादा</a>.</li>
             </ul>
@@ -5368,9 +5369,9 @@
                     अंतरासह नकाशावरही दिसतात.</li>
                 <li>मेमरीची प्रत्येक ओळ, किंवा तुम्ही टाइप केलेली प्रत्येक ओळ, एक फ्रेम असते:
                     <span translate="no">BEACON</span> [टिप्पणी] तुमचे स्थान, अंशापर्यंत, तुमच्या लोकेटरवरून पाठवतो
-                    (लोकेटरपेक्षा अधिक अचूक कधीही नाही); <span translate="no">CALL: text</span> त्या
+                    (लोकेटरपेक्षा अधिक अचूक कधीही नाही); <span translate="no">BEACON</span> अक्षांश रेखांश [टिप्पणी] दशांश अंशांमध्ये अचूक स्थान पाठवतो, दक्षिण आणि पश्चिम ऋण (<span translate="no">BEACON -34.3543 -58.2535</span> म्हणजे 34.35 S, 58.25 W; अक्षरेही चालतात: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> त्या
                     स्टेशनला संदेश पाठवतो; <span translate="no">STATUS text</span> स्टेटस; <span translate="no">APRS</span>
-                    अक्षराने (<span translate="no">! = : &gt; ;</span>) सुरू होणारी ओळ जशी आहे तशी जाते.</li>
+                    अक्षराने (<span translate="no">! = : &gt; ;</span>) सुरू होणारी ओळ जशी आहे तशी जाते. सेटिंग्ज &gt; <span translate="no">Packet</span> मध्ये प्रत्येक मेमरीखाली एक राखाडी ओळ ती काय पाठवते ते सांगते ("स्थान 34.35 S, 58.25 W", "स्थिती: ..."); <span translate="no">BEACON</span> शिवाय लिहिलेले दोन अंक स्थान म्हणून नव्हे तर स्थिती मजकूर म्हणून जातात, आणि मेमरीखालील लाल ओळ तसे सांगते.</li>
                 <li>तुमच्या फ्रेम तुमच्या कॉलसाइनवरून जातात, <span translate="no">SSID</span> सह, जो सेटिंग्ज &gt;
                     <span translate="no">Packet</span> मध्ये (स्क्रीनचे गियर) निवडला जातो, आणि तेथे सेट केलेल्या डिजिपीटर मार्गाने
                     (डिफॉल्टनुसार <span translate="no">WIDE1-1,WIDE2-1</span>, फक्त 2 m).</li>
@@ -6183,21 +6184,19 @@
                 <strong>अपकन्व्हर्टरशिवाय HF (थेट सॅम्पलिंग)</strong> वर खूण करा,
                 त्याच्या <span translate="no">HF</span> इनपुटवर 24 MHz खालील स्वीकारण्यासाठी. qFT8 डोंगलचा बायस टी (अँटेना पॉवर) कधीही चालू करत नाही.
             </p>
-            <p>
-                <strong>संगणक, Linux</strong>: तीच ओळ, तोच अंगभूत ड्रायव्हर. सिस्टम त्यासाठी स्वतःहून लोड करते त्या TV ड्रायव्हरकडून qFT8 डोंगल घेते.
-                तुमच्या वापरकर्त्याला डोंगल उघडण्याची परवानगी हवी; स्थिती ओळ
-                &ldquo;no permission&rdquo; म्हणत असेल, तर एकदा नियम फाइल जोडा (उदाहरणार्थ
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) या ओळीसह
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (काही जुन्या डोंगलसाठी <code>2832</code>), चालवा
-                <code dir="ltr">sudo udevadm control --reload-rules</code> आणि डोंगल पुन्हा जोडा.
+            <p id="rtl-stock-dongle">
+                <strong>साध्या डोंगलला फ्लॅश करण्याची गरज नाही.</strong> दुकानातून जसा येतो तसा डोंगल चालतो: त्यात काहीही लिहिले जात नाही, आणि qFT8 कधीही त्याची मेमरी (EEPROM) बदलत नाही. महत्त्वाचा आहे ट्यूनर चिप: <span translate="no">R820T / R820T2 / R828D</span> चालतात; <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> ट्यूनर असलेले डोंगल चालत नाहीत, आणि स्टेटस लाइन तसे सांगते. <span translate="no">RTL-SDR Blog V4</span> कारखान्यातून मिळालेल्या नावाने ओळखला जातो; त्या नावाशिवायच्या <span translate="no">R828D</span> डोंगलला (उदा. ज्या V4 चे नाव पुन्हा लिहिले गेले) स्टेटस लाइनवर HF कदाचित चालणार नाही अशी सूचना मिळते. macOS वर कोणत्याही डोंगलसाठी नेटवर्क सर्व्हर (खाली) वापरा.
             </p>
-            <p>
-                <strong>संगणक, Windows आणि macOS</strong>: डोंगल अजून qFT8 थेट उघडू शकत नाही. <span translate="no">RTL-SDR</span> नेटवर्क सर्व्हर त्याच संगणकावर (किंवा
-                <span translate="no">Raspberry Pi</span> सारख्या दुसऱ्या कोणत्याही संगणकावर) चालवा आणि
-                <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> निवडा, पत्ता <code>127.0.0.1</code> ठेवून,
-                किंवा <a href="#bridge">qFT8 bridge</a> ने डोंगल फोनवरून किंवा Linux संगणकावरून पुरवा.
+            <p id="rtl-usb-linux">
+                <strong>संगणक, Linux</strong>: तीच ओळ, तोच अंगभूत ड्रायव्हर. qFT8 डोंगल त्या टीव्ही ड्रायव्हरकडून घेतो जो सिस्टीम स्वतः त्यासाठी लोड करते. तुमच्या वापरकर्त्याला डोंगल उघडण्याची परवानगी हवी: ती नसेल तर डोंगल जोडताच qFT8 कार्डमध्ये तसे सांगतो, आणि <strong>दुरुस्त करा</strong> तुमच्यासाठी परवानगी जोडतो. टर्मिनल उघडतो आणि एकदा तुमचा पासवर्ड विचारतो (जिथे टर्मिनल नाही तिथे सिस्टीमची स्वतःची पासवर्ड विंडो हे करते). तो नियम फाइल <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code> लिहितो, जी संगणक वापरणाऱ्याला <span translate="no">USB</span> रिसीव्हरपर्यंत (<span translate="no">RTL-SDR, Airspy, HackRF</span>) प्रवेश देते; डोंगल मग लगेच चालतो, रीस्टार्ट आणि नवीन लॉगिनशिवाय. कार्ड कमांडही दाखवते, म्हणजे तुम्ही ती स्वतः टर्मिनलमध्ये चालवू शकता.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>संगणक, Windows</strong>: तीच ओळ, तोच अंगभूत ड्रायव्हर, Windows सोबत येणाऱ्या <span translate="no">WinUSB</span> ड्रायव्हरद्वारे. Windows सहसा नवीन डोंगलला ड्रायव्हर देत नाही, किंवा qFT8 वापरू शकत नाही असा टीव्ही ड्रायव्हर देते. डोंगल जोडताच qFT8 हे ओळखतो आणि तो सेट अप करण्याची ऑफर देतो: <strong>सेट अप</strong> दाबा आणि Windows च्या ॲडमिनिस्ट्रेटर विंडोत बदलाची परवानगी द्या (एकदा); काही सेकंदांनी डोंगल चालतो. काही डाउनलोड होत नाही आणि आमचा कोणताही ड्रायव्हर इन्स्टॉल होत नाही: qFT8 डोंगल Windows च्या स्वतःच्या <span translate="no">WinUSB</span> ड्रायव्हरवर बदलतो. टीव्ही ड्रायव्हर लागणारे टीव्ही प्रोग्राम आता डोंगल पाहू शकत नाहीत. तो Windows ला परत देण्यासाठी: <strong>Device Manager</strong> मध्ये <strong>Universal Serial Bus devices</strong> खालील डोंगलवर राइट-क्लिक करा, <strong>Uninstall device</strong> निवडा (ड्रायव्हरबद्दलचा बॉक्स अनटिक ठेवा), मग <strong>Action &gt; Scan for hardware changes</strong>. Windows अपडेट टीव्ही ड्रायव्हर परत आणू शकते; तेव्हा qFT8 पुन्हा सेटअप देऊ करतो. Microsoft Store आवृत्ती स्वतः ड्रायव्हर बदलू शकत नाही: <strong>Device Manager</strong> मध्ये डोंगलवर राइट-क्लिक करा (बहुतेकदा &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> निवडा, मग <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>संगणक, macOS</strong>: डोंगल अजून qFT8 थेट उघडू शकत नाही. <span translate="no">RTL-SDR</span> नेटवर्क सर्व्हर त्याच संगणकावर (किंवा <span translate="no">Raspberry Pi</span> सारख्या दुसऱ्या कोणत्याही संगणकावर) चालवा आणि <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> निवडा, पत्ता <code>127.0.0.1</code> ठेवून, किंवा <a href="#bridge">qFT8 bridge</a> ने डोंगल फोनवरून किंवा संगणकावरून पुरवा.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span> नेटवर्क सर्व्हर आणि त्याचा ड्रायव्हर</h4>
             <p>
@@ -6297,7 +6296,7 @@
                 <li>लॉग प्रत्येक नोंद (मर्यादेशिवाय) अशा फाइलमध्ये ठेवतो ज्यात फक्त भर घातली जाते, म्हणून खूप मोठा लॉग अ‍ॅपची सुरुवात मंद करत नाही; पान फक्त नवीनतम नोंदी वाचते आणि स्क्रोल केल्यावर आणखी दाखवते.</li>
                 <li>Ham वैशिष्ट्ये बंद असताना, ऐकलेले प्रत्येक <span translate="no">FT8, FT4, LQ ...</span> स्टेशन लॉग होते (प्रत्येक स्टेशन आणि मोडसाठी तासातून एकदा); Ham वैशिष्ट्ये चालू असताना फक्त ऐकलेले पूर्ण QSO लॉग होतात. जे स्टेशन तुम्ही पहिल्यांदा ऐकता (तुमच्या <span translate="no">SWL</span> लॉगमध्ये आधी कधीही नव्हते) त्याचा कॉलसाइन Ham वैशिष्ट्ये बंद असताना स्टेशन यादीत सायन रंगात असतो.</li>
                 <li>सिग्नल रिसीव्हर जे ओळखतात ते लॉगमध्ये लिहितात, प्रत्येक स्टेशनसाठी प्रत्येक <span translate="no">UTC</span> दिवसात एकदा: जहाजे (<span translate="no">AIS</span>), विमाने (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), रेडिओसोंड, <span translate="no">NAVTEX</span> स्टेशन, <span translate="no">DSC</span>, वेळ स्टेशन, <span translate="no">NCDXF</span> बीकन, <span translate="no">ALE / ARDOP / PACTOR</span> आणि <span translate="no">APRS</span> कॉलसाइन, वेदर फॅक्स आणि हवामान उपग्रहाची चित्रे, आणि <span translate="no">FM</span> स्टेशन त्यांच्या <span translate="no">RDS</span> कोड आणि नावाने. ते <span translate="no">SWL</span> पुरस्कारांसाठी मोजले जातात; ते कधीही eQSL ला पाठवले जात नाहीत आणि <span translate="no">ADIF</span> एक्सपोर्टमध्ये नाहीत (<span translate="no">CSV</span> मध्ये आहेत, शेवटच्या स्तंभात ऐकलेल्या नावासह).</li>
-                <li>अपलोड एका नियमाने चालतात: eQSL <span translate="no">SWL</span> खाते प्रत्येक ऐकलेले स्टेशन त्याच खात्याखाली नोंदवते (हॅम eQSL खाते नाकारले जाते); <span translate="no">PSK Reporter</span> आणि <span translate="no">WSPRnet</span> तुमच्या कॉलसाइनखाली रिपोर्ट करतात, नाहीतर तुमच्या <span translate="no">SWL</span> आयडीखाली.</li>
+                <li>अपलोड एका नियमाने चालतात: eQSL <span translate="no">SWL</span> खाते प्रत्येक ऐकलेले स्टेशन त्याच खात्याखाली नोंदवते (हॅम eQSL खाते नाकारले जाते); <span translate="no">PSK Reporter</span> आणि <span translate="no">WSPRnet</span> प्रत्येक स्पॉट तुमच्या कॉलसाइन आणि तुमच्या <span translate="no">SWL</span> आयडी — जे सेट असेल — दोन्हींखाली रिपोर्ट करतात; सेटिंग्ज प्रत्येक बॉक्सखाली नावे दाखवतात.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>हा SDR तुमचा आहे का?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>कोणाचा रिसीव्हर</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>हा सर्व्हर माझा आहे</strong> in its rows, the same answer as <strong>हा SDR तुमचा आहे का?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6698,6 +6697,70 @@
                         <span translate="no">qFT8</span> ट्रान्सीव्हरशी जोडलेले असताना पार्श्वभूमीत चालू राहणे).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>qFT8 स्क्रीनशिवाय चालवणे (वेब रिमोट सर्व्हर)</h3>
+                <p>
+                    संगणक प्रोग्राम कोणत्याही विंडोशिवायही चालू शकतो, स्क्रीन नसलेल्या संगणकावर: रेडिओजवळचा Raspberry Pi, एखादा छोटा सर्व्हर किंवा SSH ने जोडता येणारा कोणताही संगणक. तेव्हा qFT8 सर्व काही नेहमीप्रमाणे करतो (आवाज, रेडिओ नियंत्रण, डिकोडिंग, <span translate="no">AUTO</span>, लॉगिंग, अपलोड), आणि तुम्ही तो ब्राउझरमधून <a href="#remote-control">रिमोट कंट्रोल वेब सर्व्हर</a> द्वारे, तुमच्या नेटवर्कवरील फोन, टॅबलेट किंवा दुसऱ्या संगणकावरून चालवता.
+                </p>
+
+                <h4>वेब सर्व्हर की ब्रिज?</h4>
+                <p>दोन्ही स्क्रीनशिवाय चालतात. फरक एवढाच की काम कोणते डिव्हाइस करते:</p>
+                <ul>
+                    <li><strong>वेब सर्व्हर</strong> (<code>--webserver</code>): qFT8 चालवणारा संगणक डिकोड, ट्रान्समिट आणि लॉग करतो; ब्राउझर फक्त ते दाखवतो आणि त्याची बटणे देतो. फोनवरून चालवायच्या घरच्या ताकदवान संगणकासाठी चांगले.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, पहा <a href="#bridge">qFT8 ब्रिज</a>): रेडिओजवळचे डिव्हाइस रेडिओचे कमांड आणि त्याचा आवाज फक्त तुमच्या नेटवर्कवरून पुढे पाठवते, आणि तुम्ही ज्या डिव्हाइसवरून चालवता त्यावरील qFT8 (संगणक प्रोग्राम, Android अॅप किंवा iPhone/iPad अॅप) डिकोडिंग करतो. रेडिओजवळ Raspberry Pi आणि काम तुमच्या स्वतःच्या संगणकावर, यासाठी चांगले.</li>
+                </ul>
+                <p>दोन्ही एकाच वेळी चालू शकत नाहीत.</p>
+
+                <h4>आधी सेट करा</h4>
+                <p>
+                    qFT8 त्याच्या विंडोसह चालवताना जशा, तशाच जतन केलेल्या सेटिंग्ज वापरतो: कॉलसाइन, लोकेटर, रेडिओ, साउंड डिव्हाइस, मोड, लॉगिंग आणि QSO अपलोड सेवा. उदाहरणार्थ, <a href="#raw-message-logs">कच्चे संदेश लॉग</a> निवडलेले असल्यास तो त्याच्या .tsv फाइल लिहीत राहतो. म्हणून आधी qFT8 सेट करा: तो त्या संगणकावर एकदा विंडोसह चालवा (किंवा दुसऱ्या संगणकावरून प्रोफाइल फोल्डर कॉपी करा, पहा <a href="#pc-settings">सेटिंग्ज: त्या कुठे राहतात, फोनवरून हलवणे</a>), किंवा स्क्रीनशिवाय सुरू करून वेब रिमोटच्या सेटिंग्जमधून सेट करा, त्या नेहमीप्रमाणे जतन होतात.
+                </p>
+
+                <h4>सुरू करणे</h4>
+                <p>त्या संगणकावरील टर्मिनलमध्ये (SSH ने चालेल), qFT8 फोल्डरमध्ये:</p>
+                <ul>
+                    <li><strong>Linux</strong>, तसेच Raspberry Pi: <code>./qFT8 --webserver</code>. .jar डाउनलोड आणि Java 21 किंवा नवीन असल्यास: <code>java -jar</code>, .jar फाइलचे नाव आणि <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    टर्मिनल सांगते की qFT8 विंडोशिवाय चालू आहे, <span translate="no">TX</span> बंद आहे आणि पान पासवर्ड मागते का, आणि वेब रिमोटची खासगी लिंक दाखवते: ती त्याच नेटवर्कवरील ब्राउझरमध्ये उघडा. <code>#k=</code> नंतरचा भाग लिंकची की आहे: ती खासगी ठेवा. ती फक्त टर्मिनलवर दिसते, qFT8 च्या लॉग फाइलमध्ये कधीच लिहिली जात नाही. <code>Ctrl+C</code> qFT8 थांबवतो आणि रेडिओला पुन्हा रिसीव्हवर आणतो.
+                </p>
+                <p>
+                    qFT8 असा सुरू केल्यावर <span translate="no">TX</span> नेहमी बंद असतो. तो फक्त वेब रिमोटचे <span translate="no">TX</span> बटण चालू करते.
+                </p>
+
+                <h4>पर्याय</h4>
+                <p>
+                    प्रत्येक पर्याय फक्त त्या एका चालवण्यासाठी एक सेटिंग बदलतो: काहीही जतन होत नाही, आणि पर्यायांशिवाय जतन केलेल्या सेटिंग्ज वापरल्या जातात. <code>qFT8 --webserver --help</code> त्यांची यादी देतो.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: वेब रिमोटचा पोर्ट, 1024 ते 65534 (तुम्ही बदलला नसेल तर 13497).</li>
+                    <li><code>--bind ADDRESS</code>: संगणकाच्या फक्त त्या पत्त्यावर ऐका.</li>
+                    <li><code>--password TEXT</code>, किंवा <code>--password-file FILE</code> (फाइलची पहिली ओळ; अधिक सुरक्षित, कारण संगणकाचे इतर वापरकर्ते कमांड लाइन पाहू शकतात), किंवा <code>--no-password</code>.</li>
+                    <li><code>--https</code> किंवा <code>--no-https</code>: ब्राउझरला त्याचा मायक्रोफोन वापरण्यासाठी लागणारा सुरक्षित पत्ता (पोर्ट + 1).</li>
+                    <li><code>--access read</code>, <code>stop</code> किंवा <code>full</code>: पान काय करू शकते: फक्त पाहणे, पाहणे आणि <span translate="no">TX</span> थांबवणे, किंवा सर्व काही.</li>
+                    <li><code>--audio-in NAME</code> आणि <code>--audio-out NAME</code>: रेडिओची साउंड डिव्हाइस, <code>qFT8 --list-devices</code> दाखवते त्या नावाने, किंवा <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: रेडिओ (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), आणि <code>--port DEVICE</code>: त्याचा सिरीयल पोर्ट (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: वापरायचा प्रोफाइल फोल्डर.</li>
+                </ul>
+                <p>
+                    पोर्ट दुसऱ्या प्रोग्रामने घेतला असल्यास, किंवा तोच प्रोफाइल फोल्डर दुसरा qFT8 आधीच वापरत असल्यास, qFT8 टर्मिनलवर तसे सांगतो आणि थांबतो.
+                </p>
+
+                <h4>उदाहरण: Raspberry Pi</h4>
+                <p>
+                    रेडिओ USB ने Pi ला जोडलेला आहे, आणि qFT8 एकदा सेट केलेला आहे (Pi वर स्क्रीनसह, किंवा वेब रिमोटमधून). दुसऱ्या संगणकावरून:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    मग तो दाखवत असलेली लिंक तुमच्या फोनवर उघडा. Raspberry Pi 4 किंवा 5 <span translate="no">FT8</span> वेळेत डिकोड करतो; वेगवान संगणक सर्वात कमकुवत सिग्नल अधिक शोधतो.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; अनुक्रमणिकेकडे परत</a>
             </section>
 
             <section id="bridge">
@@ -7156,6 +7219,19 @@
                     (तुमचे खाते पोर्टच्या गटात सामील होते), किंवा तुमच्या सिस्टम प्रशासकाला विचारा.</li>
                 <li>समस्या विशेषतः प्रसारण करताना येत असतील, तर ते रेडिओ हस्तक्षेपामुळे असू शकते. USB केबलला चोक किंवा फेराइट लावल्याने मदत होऊ शकते. तुम्ही वेगळ्या बँडवर प्रसारण करूनही पाहू शकता, कारण काही उपकरणे फक्त काही बँडमध्येच हस्तक्षेपाला संवेदनशील असतात.</li>
             </ul>
+            <p>
+                qFT8 जेव्हा <span translate="no">CAT</span> द्वारे रेडिओशी बोलते (रेडिओ <strong>सेटिंग्ज &gt; उपकरण</strong> मध्ये निवडलेला किंवा <span translate="no">AUTO</span> ने शोधलेला) आणि रेडिओ उत्तर देत नाही, तेव्हा लाल <strong><span translate="no">CAT</span> नाही</strong> इशारा स्पेक्ट्रोग्रामवर (आणि <strong>सेटिंग्ज &gt; उपकरण</strong> मधील रेडिओखाली) दिसतो. त्यावर टॅप करा: कार्ड qFT8 ने कनेक्शनवर काय मोजले ते सांगते आणि त्या प्रकरणात काय करून पाहावे ते सूचीबद्ध करते:
+            </p>
+            <ul>
+                <li><strong>रेडिओ सापडला नाही</strong>: रेडिओ बंद आहे, केबल सैल आहे, केबल फक्त चार्ज करते (USB डेटा केबल वापरा), अ‍ॅडॉप्टर किंवा हब डेटा पुढे जाऊ देत नाही, किंवा फोनच्या सिस्टम सेटिंग्जमध्ये <span translate="no">USB OTG</span> बंद आहे. संगणकावर: रेडिओचा USB ड्रायव्हर आणि <strong>सेटिंग्ज &gt; उपकरण कॉन्फिगरेशन</strong> मध्ये निवडलेला पोर्ट.</li>
+                <li><strong>पोर्ट उघडता आला नाही</strong>: Android विचारेल तेव्हा qFT8 ला USB उपकरण वापरू द्या आणि रेडिओचा पोर्ट वापरणारे इतर प्रोग्राम बंद करा.</li>
+                <li><strong>रेडिओ उत्तर देत नाही</strong>: (एकही बाइट परत नाही): रेडिओ चालू आहे, केबल त्याच्या <span translate="no">CAT</span> सॉकेटमध्ये आहे, रेडिओ मॉडेल बरोबर आहे, आणि रेडिओचा <span translate="no">CAT</span> बॉड रेट qFT8 सारखाच आहे (<strong>सेटिंग्ज &gt; उपकरण कॉन्फिगरेशन &gt; बॉड रेट</strong>). <span translate="no">CAT RTS</span> मेनू असलेले Yaesu रेडिओ: तो <span translate="no">DISABLE</span> वर सेट करा. Xiegu रेडिओ: इंटरफेसची डेटा (<span translate="no">CI-V</span>) केबल रेडिओच्या <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> जॅकमध्ये लावली जाते, फक्त ऑडिओ केबल नाही, आणि रेडिओचा <span translate="no">CI-V</span> पत्ता आणि बॉड रेट qFT8 प्रमाणेच असतात (कार्ड ते दाखवते).</li>
+                <li><strong>फक्त qFT8 चे आदेश परत येतात</strong>: केबल किंवा इंटरफेस रेडिओशिवाय डेटा परत पाठवतो (रेडिओ बंद असताना Icom <span translate="no">CI-V</span> केबल असे करते).</li>
+                <li><strong>अवाचनीय उत्तरे</strong>: बॉड रेट किंवा रेडिओ मॉडेल जुळत नाही.</li>
+                <li><strong>ट्रान्समिट करताना उत्तर देणे थांबते</strong>: RF व्यत्यय. दोन्ही टोकांजवळ USB आणि ऑडिओ केबलवर फेराइट चोक लावा, चाचणी म्हणून कमी पॉवर वापरून पहा (रेडिओवर सेट करा), आणि अँटेना व फीडलाइनमध्ये कॉमन-मोड करंट आहे का ते तपासा.</li>
+                <li><strong>उत्तर दिले, मग थांबले</strong>: रेडिओ बंद झाला किंवा केबल सैल झाली.</li>
+            </ul>
+            <p><strong>पुन्हा तपासा</strong> रेडिओशी पुन्हा जोडते आणि आणखी एकदा तपासते; <strong>रिपोर्ट पाठवा</strong> जे मोजले ते रेडिओच्या कमांड लॉगसह आम्हाला पाठवते.</p>
 
             <h3 id="trouble-otg-charging">फोन पूर्ण चार्ज झाल्यावर ट्रान्सीव्हर गायब होतो (Android)</h3>
             <p>

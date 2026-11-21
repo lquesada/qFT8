@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Pakua kwenye App Store",
     "FEAT2_OWN": "Visimbuzi na visimbaji vyake vyenyewe, vilivyoandikwa kuanzia mwanzo",
     "FEAT2_RAWLOG": "Rekodi jumbe zote zilizofasiriwa",
+    "FEAT2_HEADLESS": "Hufanya kazi bila skrini kama seva ya wavuti ya udhibiti wa mbali, k.m. kwenye Raspberry Pi",
     "FAQ_TITLE": "Maswali na majibu",
     "FAQ_Q1": "qFT8 ni nini?",
     "FAQ_A1": "qFT8 ni programu ya bure ya redio ya amateur kwa modi za kidijitali za mawimbi hafifu, Morse, teletype, picha na sauti. Inafanya kazi kwenye simu na kompyuta kibao za Android, iOS, Windows, macOS na Linux, na inaweza kudhibitiwa kutoka kivinjari chochote. Haina matangazo na haihitaji akaunti. Imeandikwa na Luis Quesada Torres, HB9IPH, ikiwa na visimbuzi na visimbaji vyake vyenyewe vilivyoandikwa kuanzia mwanzo.",

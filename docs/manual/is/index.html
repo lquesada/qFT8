@@ -175,6 +175,7 @@
                         <li><a href="#tune-offset">Frávik litrófsritsins við stillingu</a></li>
                         <li><a href="#tx-limit">Takmörkun samfelldrar sendingar</a></li>
                         <li><a href="#remote-control">Vefþjónn fyrir fjarstýringu</a></li>
+                        <li><a href="#webserver-headless">qFT8 keyrt án skjás (vefþjónn fyrir fjarstýringu)</a></li>
                         <li><a href="#bridge">qFT8-brúin</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log-samskiptareglur</a></li>
@@ -654,8 +655,7 @@
                 <li><strong>Linux</strong>: tengið lítur út eins og <code>/dev/ttyACM0</code> eða <code>/dev/ttyUSB0</code> og þarf
                     hópinn hér að ofan. Hljóðtækin eru þau sem hljóðþjónninn (PulseAudio eða PipeWire) býður, svo
                     hátalari talstöðvarinnar, heyrnartólin þín og hljóðneminn þinn geta hvert verið sitt tækið.
-                    Hljóðstyrkssleði tækisins notar <code>pactl</code>, úr pakkanum <code>pulseaudio-utils</code> (það
-                    virkar líka með PipeWire).</li>
+                    qFT8 nær til hljóðtækjanna (og hljóðstyrkssleða tækisins) með <code>pactl</code> og <code>parec</code>, úr pakkanum <code>pulseaudio-utils</code> (þau virka líka með PipeWire): settu hann upp, annars heyrir qFT8 oft ekkert hljóðkort.</li>
             </ul>
 
             <h4>Að velja talstöðina og tengi hennar</h4>
@@ -783,7 +783,7 @@
                 <li><strong>Vefstýringin.</strong> Tölvuforritið hefur sama
                     <a href="#remote-control">vefþjón fyrir fjarstýringu</a> og Android (slökkt sjálfgefið, tengi 13497) og sýnir
                     sömu síður, þar á meðal hljóðstyrkssleðann. Notaðu hann til að stjórna úr síma eða annarri tölvu á
-                    netinu þínu.</li>
+                    netinu þínu. Það getur líka keyrt án glugga (<code>--webserver</code>, sjá <a href="#webserver-headless">qFT8 keyrt án skjás (vefþjónn fyrir fjarstýringu)</a>), fyrir tölvu án skjás.</li>
                 <li><strong>Brúin.</strong> Tölva er venjulega <a href="#bridge">brúin</a>: talstöðin er tengd
                     við hana, og qFT8 í síma, iPhone eða annarri tölvu stjórnar henni. Hún getur líka keyrt án glugga
                     (<code>qFT8 --bridge</code>), fyrir tölvu sem hefur ekkert annað hlutverk.</li>
@@ -791,7 +791,7 @@
                     með þeim): <code>--list-devices</code> sýnir hvert raðtengi og hljóðtæki sem qFT8 sér og hættir;
                     <code>--port &lt;device&gt;</code> stillir sjálfgefið raðtengi (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> velur notandamöppuna;
-                    <code>--bridge</code> ræsir brú; <code>--video-mode=&lt;mode&gt;</code> teiknar gluggann á annan hátt í þeirri keyrslu, jafnvel þegar ekki er hægt að opna qFT8 nógu langt til að breyta <strong>Myndhamur</strong> í Stillingum (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> teiknar gluggann í gegnum OpenGL (sjá
+                    <code>--bridge</code> ræsir brú; <code>--webserver</code> keyrir qFT8 án glugga, með vefstýringuna opna; <code>--video-mode=&lt;mode&gt;</code> teiknar gluggann á annan hátt í þeirri keyrslu, jafnvel þegar ekki er hægt að opna qFT8 nógu langt til að breyta <strong>Myndhamur</strong> í Stillingum (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> teiknar gluggann í gegnum OpenGL (sjá
                     <a href="#pc-trouble">Ef eitthvað virkar ekki</a>).</li>
             </ul>
 
@@ -2203,7 +2203,7 @@
                         <li><strong>Netstöð</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Netstöð (tilraun)</strong> in <strong>Tenging við stöðina</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>TENGJA</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Aðferð</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Tengi hljóðstraums</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Hljóðkort</strong> under <strong>Hljóð</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Aðferð</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Vistfang</strong>, the <strong>Stöð</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Notandanafn</strong> and <strong>Lykilorð</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Stöð</strong> says which radio, <strong>Eins og valið í Tæki</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (tilraun)</strong> in <strong>Tenging við stöðina</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Veldu tæki</strong> under <strong>Bluetooth-tæki</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Stöð</strong>, <strong>Eins og valið í Tæki</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>TENGJA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (tilraun)</strong> in <strong>Tenging við stöðina</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Veldu tæki</strong> under <strong>Bluetooth-tæki</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Stöð</strong>, <strong>Eins og valið í Tæki</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>TENGJA</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2317,6 +2317,7 @@
                     opnar <strong>USB-tæki</strong>, <strong>Baud-hraði</strong>, <strong>Gagnabitar</strong>,
                     <strong>Stöðvunarbitar</strong>, <strong>Jafnstaða</strong> og hvernig talstöðin er send í gang (<strong>PTT</strong>:
                     með CAT-skipun eða RTS- eða DTR-línunni), ásamt PTT-seinkun fyrir sendingu.
+                    Með RTS eða DTR velur <strong>PTT-tengi</strong> hvar sú lína er: <strong>Sama og CAT</strong> (eigin snúra talstöðvarinnar) eða annað raðtengi, fyrir stöð með CAT á einni snúru og PTT á öðru viðmóti (í síma, bæði millistykkin í gegnum USB-hub; ekki á iPhone).
                     <strong>Stilla ham senditækis við frumstillingu og í hverri lotu</strong> heldur talstöðinni í réttum
                     ham. Athugasemd á aðalsíðunni segir til um hvenær þetta tæki hefur yfirskriftir.</li>
                 <li><strong>Stilling (þessi talstöð)</strong>: <a href="#tune-offset">Frávik litrófsrits í stillingu</a> og
@@ -5599,9 +5600,9 @@
                     frá reitnum þínum.</li>
                 <li>Hver lína í minni, eða hver lína sem þú slærð inn, er einn rammi:
                     <span translate="no">BEACON</span> [athugasemd] sendir staðsetningu þína, upp á gráðu, út frá reitnum þínum
-                    (aldrei nákvæmari en reiturinn); <span translate="no">CALL: text</span> sendir skilaboð til þeirrar
+                    (aldrei nákvæmari en reiturinn); <span translate="no">BEACON</span> breidd lengd [athugasemd] sendir nákvæma staðsetningu í tugabrotagráðum, suður og vestur neikvætt (<span translate="no">BEACON -34.3543 -58.2535</span> er 34.35 S, 58.25 W; bókstafirnir virka líka: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> sendir skilaboð til þeirrar
                     stöðvar; <span translate="no">STATUS text</span> stöðu; lína sem byrjar á
-                    <span translate="no">APRS</span>-staf (<span translate="no">! = : &gt; ;</span>) fer út óbreytt.</li>
+                    <span translate="no">APRS</span>-staf (<span translate="no">! = : &gt; ;</span>) fer út óbreytt. Undir hverju minni í Stillingar &gt; <span translate="no">Packet</span> segir grá lína hvað það sendir ("Staðsetning 34.35 S, 58.25 W", "Staða: ..."); tvær tölur skrifaðar án <span translate="no">BEACON</span> fara út sem stöðutexti, ekki staðsetning, og rauð lína undir minninu segir frá því.</li>
                 <li>Rammarnir þínir koma frá kallmerki þínu með <span translate="no">SSID</span> sem valið er í Stillingar &gt;
                     <span translate="no">Packet</span> (tannhjól skjásins), í gegnum endurvarpaleiðina sem stillt er þar
                     (<span translate="no">WIDE1-1,WIDE2-1</span> sjálfgefið, aðeins 2 m).</li>
@@ -6437,22 +6438,19 @@
                 <strong>HF án upptransformara (beint sýni)</strong> til að taka á móti undir 24 MHz á
                 <span translate="no">HF</span>-inntaki hans. qFT8 kveikir aldrei á bias tee lykilsins (loftnetsafl).
             </p>
-            <p>
-                <strong>Tölva, Linux</strong>: sama línan, sami innbyggði reklinum. qFT8 tekur lykilinn af sjónvarpsreklinum
-                sem kerfið hleður sjálfkrafa fyrir hann. Notandinn þinn þarf heimild til að opna lykilinn; ef stöðulínan segir
-                „no permission“, bættu við reglnaskrá einu sinni (til dæmis
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) með línunni
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> fyrir suma eldri lykla), keyrðu
-                <code dir="ltr">sudo udevadm control --reload-rules</code> og settu lykilinn aftur í.
+            <p id="rtl-stock-dongle">
+                <strong>Venjulegur lykill þarf ekki endurforritun.</strong> Lykill eins og hann kemur úr búðinni virkar: ekkert er skrifað á hann og qFT8 breytir aldrei minni hans (EEPROM). Það sem skiptir máli er stillikubburinn: <span translate="no">R820T / R820T2 / R828D</span> virka; lyklar með <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span>-stilli virka ekki og stöðulínan segir það. <span translate="no">RTL-SDR Blog V4</span> er þekktur á nafninu sem hann ber frá verksmiðju; <span translate="no">R828D</span>-lykill án þess nafns (t.d. V4 sem fékk nýtt nafn skrifað) fær viðvörun í stöðulínunni um að HF virki hugsanlega ekki. Á macOS notarðu netþjóninn (hér fyrir neðan) fyrir hvaða lykil sem er.
             </p>
-            <p>
-                <strong>Tölva, Windows og macOS</strong>: qFT8 getur ekki enn opnað lykilinn beint. Keyrðu
-                <span translate="no">RTL-SDR</span>-netþjóninn á sömu tölvu (eða hvaða annarri sem er, svo sem
-                <span translate="no">Raspberry Pi</span>) og veldu <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                með vistfanginu <code>127.0.0.1</code>, eða framreiddu lykilinn úr síma eða Linux-tölvu með
-                <a href="#bridge">qFT8-brúnni</a>.
+            <p id="rtl-usb-linux">
+                <strong>Tölva, Linux</strong>: sama röð, sami innbyggði reklinn. qFT8 tekur lykilinn frá sjónvarpsreklinum sem kerfið hleður sjálft fyrir hann. Notandinn þinn þarf leyfi til að opna lykilinn: vanti það segir qFT8 frá því á korti um leið og lykillinn er tengdur, og <strong>LAGA ÞETTA</strong> bætir leyfinu við fyrir þig. Útstöð opnast og biður einu sinni um lykilorðið þitt (þar sem engin útstöð er gerir lykilorðsgluggi kerfisins það). Hún skrifar reglu­skrána <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, sem gefur þeim sem notar tölvuna aðgang að <span translate="no">USB</span>-móttökurum (<span translate="no">RTL-SDR, Airspy, HackRF</span>); lykillinn virkar þá strax, án endurræsingar og án nýrrar innskráningar. Kortið sýnir líka skipunina, svo þú getir keyrt hana sjálfur í útstöð.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Tölva, Windows</strong>: sama röð, sami innbyggði reklinn, í gegnum <span translate="no">WinUSB</span>-reklinn sem fylgir Windows. Windows gefur nýjum lykli yfirleitt engan rekil eða sjónvarpsrekil sem qFT8 getur ekki notað. qFT8 tekur eftir því þegar lykillinn er tengdur og býðst til að setja hann upp: ýttu á <strong>STILLA</strong> og leyfðu breytinguna í stjórnandaglugga Windows (einu sinni); lykillinn virkar nokkrum sekúndum síðar. Engu er hlaðið niður og enginn rekill frá okkur er settur upp: qFT8 skiptir lyklinum yfir á eigin <span translate="no">WinUSB</span>-rekil Windows. Sjónvarpsforrit sem þurfa sjónvarpsrekilinn sjá lykilinn ekki lengur. Til að skila honum til Windows: hægrismelltu í <strong>Tækjastjórnun</strong> á lykilinn undir <strong>Universal Serial Bus devices</strong>, veldu <strong>Uninstall device</strong> (hafðu reitinn um rekilinn óhakaðan) og síðan <strong>Action &gt; Scan for hardware changes</strong>. Windows-uppfærsla getur líka sett sjónvarpsrekilinn aftur inn; qFT8 býður þá uppsetninguna aftur. Microsoft Store-útgáfan getur ekki skipt um rekla sjálf: hægrismelltu í <strong>Tækjastjórnun</strong> á lykilinn (oft &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), veldu <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> og síðan <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Tölva, macOS</strong>: qFT8 getur ekki enn opnað lykilinn beint. Keyrðu <span translate="no">RTL-SDR</span>-netþjóninn á sömu tölvu (eða hvaða annarri sem er, svo sem <span translate="no">Raspberry Pi</span>) og veldu <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> með vistfanginu <code>127.0.0.1</code>, eða framreiddu lykilinn úr síma eða tölvu með <a href="#bridge">qFT8-brúnni</a>.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span>-netþjónninn og rekill hans</h4>
             <p>
@@ -6553,7 +6551,7 @@
                 <li>Loggbókin geymir hverja færslu (án takmarkana) í skrá sem aðeins er bætt við, svo mjög löng loggbók hægir ekki á ræsingu forritsins; síðan les aðeins nýjustu færslurnar og sýnir fleiri þegar þú flettir.</li>
                 <li>Með Ham-eiginleikana af er hver <span translate="no">FT8, FT4, LQ ...</span>-stöð sem heyrist skráð (einu sinni á klukkustund fyrir hverja stöð og stillingu); með Ham-eiginleikana á eru aðeins heil QSO sem heyrðust skráð. Stöð sem þú heyrir í fyrsta sinn (aldrei áður í <span translate="no">SWL</span>-loggbókinni þinni) hefur kallmerki sitt í blágrænu í stöðvalistanum þegar Ham-eiginleikar eru af.</li>
                 <li>Merkjamóttakararnir skrifa í loggbókina það sem þeir bera kennsl á, einu sinni fyrir hverja stöð á <span translate="no">UTC</span>-dag: skip (<span translate="no">AIS</span>), flugvélar (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), veðurbelgir, <span translate="no">NAVTEX</span>-stöðvar, <span translate="no">DSC</span>, tímastöðvar, <span translate="no">NCDXF</span>-vitar, <span translate="no">ALE / ARDOP / PACTOR</span>- og <span translate="no">APRS</span>-kallmerki, veðurfaxmyndir og veðurgervihnattamyndir, og <span translate="no">FM</span>-stöðvar eftir <span translate="no">RDS</span>-kóða sínum og nafni. Þær telja fyrir <span translate="no">SWL</span>-viðurkenningar; þær eru aldrei sendar til eQSL og eru ekki í <span translate="no">ADIF</span>-útflutningnum (<span translate="no">CSV</span> hefur þær, með nafninu sem heyrðist í síðasta dálki).</li>
-                <li>Upphleðslur fylgja einni reglu: eQSL-<span translate="no">SWL</span>-aðgangurinn skráir hverja stöð sem heyrðist undir þeim aðgangi (áhugamanna-eQSL-aðgangi er hafnað); <span translate="no">PSK Reporter</span> og <span translate="no">WSPRnet</span> tilkynna undir kallmerki þínu, annars <span translate="no">SWL</span>-auðkenni þínu.</li>
+                <li>Upphleðslur fylgja einni reglu: eQSL-<span translate="no">SWL</span>-aðgangurinn skráir hverja stöð sem heyrðist undir þeim aðgangi (áhugamanna-eQSL-aðgangi er hafnað); <span translate="no">PSK Reporter</span> og <span translate="no">WSPRnet</span> tilkynna hvert spot undir kallmerki þínu og undir <span translate="no">SWL</span>-auðkenni þínu, hvoru sem er stillt; Stillingar sýna nöfnin undir hverjum reit.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Er þetta SDR þitt?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Hvers viðtæki</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Ég á þennan netþjón</strong> in its rows, the same answer as <strong>Er þetta SDR þitt?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6961,6 +6959,70 @@
                         senditæki).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>qFT8 keyrt án skjás (vefþjónn fyrir fjarstýringu)</h3>
+                <p>
+                    Tölvuforritið getur líka keyrt án nokkurs glugga, á tölvu sem hefur engan skjá: Raspberry Pi við hliðina á talstöðinni, lítill netþjónn eða hvaða tölva sem þú nærð í gegnum SSH. qFT8 gerir þá allt eins og venjulega (hljóð, stjórn á talstöð, afkóðun, <span translate="no">AUTO</span>, skráningu, upphleðslur) og þú stjórnar því úr vafra í gegnum <a href="#remote-control">vefþjón fyrir fjarstýringu</a>, í síma, spjaldtölvu eða annarri tölvu á netinu þínu.
+                </p>
+
+                <h4>Vefþjónn eða brú?</h4>
+                <p>Hvort tveggja keyrir án skjás. Munurinn er hvaða tæki vinnur verkið:</p>
+                <ul>
+                    <li><strong>Vefþjónn</strong> (<code>--webserver</code>): tölvan sem keyrir qFT8 afkóðar, sendir og skráir; vafrinn sýnir það aðeins og hefur hnappana. Hentar fyrir öfluga heimatölvu sem þú stjórnar úr símanum.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, sjá <a href="#bridge">qFT8-brúin</a>): tækið við talstöðina flytur aðeins skipanir talstöðvarinnar og hljóðið yfir netið þitt, og qFT8 á tækinu sem þú stjórnar úr (tölvuforritið, Android-forritið eða iPhone/iPad-forritið) afkóðar. Hentar fyrir Raspberry Pi við talstöðina þar sem þín eigin tölva vinnur verkið.</li>
+                </ul>
+                <p>Þetta tvennt getur ekki keyrt samtímis.</p>
+
+                <h4>Settu það upp fyrst</h4>
+                <p>
+                    qFT8 notar vistuðu stillingarnar sínar nákvæmlega eins og með glugganum: kallmerki, hnitareit, talstöð, hljóðtæki, stillingar fyrir hami, skráningu og QSO-upphleðsluþjónustur. Til dæmis heldur það áfram að skrifa .tsv-skrárnar sínar ef <a href="#raw-message-logs">Hrá skilaboðaskrá</a> er hakað við. Settu því qFT8 upp fyrst: ræstu það einu sinni með glugganum á þeirri tölvu (eða afritaðu notandamöppuna úr annarri tölvu, sjá <a href="#pc-settings">Stillingar: hvar þær eru geymdar og flutningur úr síma</a>), eða ræstu það án skjás og stilltu það í stillingum vefstýringarinnar, sem vistast eins og venjulega.
+                </p>
+
+                <h4>Ræsing</h4>
+                <p>Í skipanaglugga á þeirri tölvu (SSH dugar), í qFT8-möppunni:</p>
+                <ul>
+                    <li><strong>Linux</strong>, líka Raspberry Pi: <code>./qFT8 --webserver</code>. Með .jar-niðurhalinu og Java 21 eða nýrra: <code>java -jar</code>, heiti .jar-skrárinnar og <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Skipanaglugginn segir að qFT8 keyri án glugga, að <span translate="no">TX</span> sé slökkt og hvort síðan biðji um lykilorð, og sýnir einkatengil vefstýringarinnar: opnaðu hann í vafra á sama neti. Hlutinn á eftir <code>#k=</code> er lykill tengilsins: haltu honum leyndum. Hann birtist aðeins í skipanaglugganum og er aldrei skrifaður í annálsskrá qFT8. <code>Ctrl+C</code> stöðvar qFT8 og setur talstöðina aftur í móttöku.
+                </p>
+                <p>
+                    <span translate="no">TX</span> er alltaf slökkt þegar qFT8 er ræst svona. Aðeins <span translate="no">TX</span>-hnappur vefstýringarinnar kveikir á því.
+                </p>
+
+                <h4>Valkostir</h4>
+                <p>
+                    Hver valkostur breytir einni stillingu aðeins fyrir þá keyrslu: ekkert er vistað og án valkosta eru vistuðu stillingarnar notaðar. <code>qFT8 --webserver --help</code> sýnir þá.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: tengi vefstýringarinnar, 1024 til 65534 (13497 nema þú hafir breytt því).</li>
+                    <li><code>--bind ADDRESS</code>: hlusta aðeins á því vistfangi tölvunnar.</li>
+                    <li><code>--password TEXT</code>, eða <code>--password-file FILE</code> (fyrsta lína skrárinnar; öruggara, því aðrir notendur tölvunnar sjá skipanalínuna), eða <code>--no-password</code>.</li>
+                    <li><code>--https</code> eða <code>--no-https</code>: örugga vistfangið (tengið + 1) sem vafri þarf til að nota hljóðnemann sinn.</li>
+                    <li><code>--access read</code>, <code>stop</code> eða <code>full</code>: hvað síðan má gera: aðeins skoða, skoða og stöðva <span translate="no">TX</span>, eða allt.</li>
+                    <li><code>--audio-in NAME</code> og <code>--audio-out NAME</code>: hljóðtæki talstöðvarinnar, með heitinu sem <code>qFT8 --list-devices</code> sýnir, eða <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: talstöðin (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), og <code>--port DEVICE</code>: raðtengi hennar (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: notandamappan sem á að nota.</li>
+                </ul>
+                <p>
+                    Ef annað forrit notar tengið, eða annað qFT8 notar sömu notandamöppu, segir qFT8 frá því í skipanaglugganum og stöðvast.
+                </p>
+
+                <h4>Dæmi: Raspberry Pi</h4>
+                <p>
+                    Talstöðin er tengd við Pi með USB og qFT8 hefur verið sett upp einu sinni (með skjá á Pi, eða úr vefstýringunni). Úr annarri tölvu:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Opnaðu svo tengilinn sem það sýnir í símanum þínum. Raspberry Pi 4 eða 5 afkóðar <span translate="no">FT8</span> í tæka tíð; hraðari tölva finnur fleiri af veikustu merkjunum.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Aftur í efnisyfirlit</a>
             </section>
 
             <section id="bridge">
@@ -7542,6 +7604,19 @@
                     (aðgangur þinn bætist í hóp tengisins), eða spurðu kerfisstjórann þinn.</li>
                 <li>Ef vandamálin koma sérstaklega fram við sendingu gæti orsökin verið truflun frá talstöðinni. Að bæta kæfum eða ferrítum á USB-snúruna gæti hjálpað. Þú getur líka reynt að senda á öðru bandi, því sum tæki eru aðeins viðkvæm fyrir truflun á ákveðnum böndum.</li>
             </ul>
+            <p>
+                Þegar qFT8 talar við talstöð um <span translate="no">CAT</span> (talstöð sem valin er í <strong>Stillingar &gt; Tæki</strong>, eða sem <span translate="no">AUTO</span> fann) og talstöðin svarar ekki birtist rauða viðvörunin <strong>Ekkert <span translate="no">CAT</span></strong> á tíðnirófinu (og undir talstöðinni í <strong>Stillingar &gt; Tæki</strong>). Pikkaðu á hana: kortið segir hvað qFT8 mældi á tengingunni og telur upp hvað á að prófa í því tilviki:
+            </p>
+            <ul>
+                <li><strong>qFT8 sér ekki talstöðina</strong>: talstöðin er slökkt, snúran er laus, snúran hleður bara (notaðu USB-gagnasnúru), millistykki eða hub hleypir ekki gögnum í gegn, eða <span translate="no">USB OTG</span> er slökkt í kerfisstillingum símans. Í tölvu: USB-driver talstöðvarinnar og tengið sem valið er í <strong>Stillingar &gt; Uppsetning tækis</strong>.</li>
+                <li><strong>Talstöðin er tengd en qFT8 gat ekki opnað tengið hennar (ekkert leyfi, eða annað forrit notar það)</strong>: leyfðu qFT8 að nota USB-tækið þegar Android spyr og lokaðu öðrum forritum sem nota tengi talstöðvarinnar.</li>
+                <li><strong>Talstöðin svarar ekki</strong> (ekki eitt einasta bæti kemur til baka): kveikt er á talstöðinni, snúran fer í <span translate="no">CAT</span>-tengið hennar, gerð talstöðvarinnar er rétt og <span translate="no">CAT</span>-baud-hraði talstöðvarinnar er sá sami og hjá qFT8 (<strong>Stillingar &gt; Uppsetning tækis &gt; Baud-hraði</strong>). Yaesu talstöðvar með <span translate="no">CAT RTS</span> valmynd: stilltu hana á <span translate="no">DISABLE</span>. Xiegu-talstöðvar: gagnasnúra (<span translate="no">CI-V</span>) tengisins fer í <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span>-tengi talstöðvarinnar, ekki aðeins hljóðsnúran, og <span translate="no">CI-V</span>-vistfang og baud-hraði talstöðvarinnar eru þau sömu og í qFT8 (spjaldið sýnir þau).</li>
+                <li><strong>Aðeins skipanir qFT8 sjálfs koma til baka</strong>: snúran eða viðmótið sendir gögnin til baka án talstöðvarinnar (Icom <span translate="no">CI-V</span> snúra gerir þetta þegar slökkt er á talstöðinni).</li>
+                <li><strong>Talstöðin svarar en qFT8 getur ekki lesið svörin</strong>: baud-hraðinn eða gerð talstöðvarinnar passar ekki.</li>
+                <li><strong>Talstöðin hættir að svara meðan hún sendir</strong>: RF-truflanir. Settu klemmu-ferrítkjarna á USB- og hljóðsnúrur nálægt báðum endum, prófaðu minna afl (stillt á talstöðinni) sem tilraun og athugaðu loftnetið og fæðilínuna með tilliti til common-mode-straums.</li>
+                <li><strong>Talstöðin svaraði en hætti svo að svara</strong>: slökkt var á talstöðinni eða snúran losnaði.</li>
+            </ul>
+            <p><strong>ATHUGA AFTUR</strong> tengist talstöðinni aftur og athugar einu sinni enn; <strong>SENDA SKÝRSLU</strong> sendir okkur það sem var mælt, ásamt skipanaskrá talstöðvarinnar.</p>
 
             <h3 id="trouble-otg-charging">Senditækið hverfur þegar síminn er fullhlaðinn (Android)</h3>
             <p>

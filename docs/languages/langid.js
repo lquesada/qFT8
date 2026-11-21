@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Unduh di App Store",
     "FEAT2_OWN": "Decoder dan encoder sendiri, ditulis dari nol",
     "FEAT2_RAWLOG": "Catat semua pesan yang terdekode",
+    "FEAT2_HEADLESS": "Berjalan tanpa layar sebagai server web kendali jarak jauh, misalnya di Raspberry Pi",
     "FAQ_TITLE": "Tanya jawab",
     "FAQ_Q1": "Apa itu qFT8?",
     "FAQ_A1": "qFT8 adalah program radio amatir gratis untuk mode digital sinyal lemah, Morse, teleprinter, gambar, dan suara. Berjalan di ponsel dan tablet Android, iOS, Windows, macOS, dan Linux, serta dapat dikendalikan dari browser mana pun. Tanpa iklan dan tidak perlu akun. Dibuat oleh Luis Quesada Torres, HB9IPH, dengan decoder dan encoder sendiri yang ditulis dari nol.",

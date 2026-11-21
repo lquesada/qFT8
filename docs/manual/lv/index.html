@@ -175,6 +175,7 @@
                         <li><a href="#tune-offset">Spektrogrammas noskaņošanas nobīde</a></li>
                         <li><a href="#tx-limit">Nepārtrauktas raidīšanas ierobežojums</a></li>
                         <li><a href="#remote-control">Tālvadības tīmekļa serveris</a></li>
+                        <li><a href="#webserver-headless">qFT8 palaišana bez ekrāna (tālvadības tīmekļa serveris)</a></li>
                         <li><a href="#bridge">qFT8 tilts</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log protokols</a></li>
@@ -655,8 +656,7 @@
                 <li><strong>Linux</strong>: ports izskatās kā <code>/dev/ttyACM0</code> vai <code>/dev/ttyUSB0</code>, un tam vajadzīga
                     iepriekš minētā grupa. Skaņas ierīces ir skaņas servera (PulseAudio vai PipeWire) ierīces, tāpēc
                     radio skaļrunis, jūsu austiņas un jūsu mikrofons var būt katrs cita ierīce.
-                    Ierīces skaļuma slīdnis izmanto <code>pactl</code> no pakotnes <code>pulseaudio-utils</code> (tas
-                    darbojas arī ar PipeWire).</li>
+                    qFT8 piekļūst skaņas ierīcēm (un ierīces skaļuma slīdnim) ar <code>pactl</code> un <code>parec</code> no pakotnes <code>pulseaudio-utils</code> (tie darbojas arī ar PipeWire): instalējiet to, citādi qFT8 bieži nedzird nevienu skaņas karti.</li>
             </ul>
 
             <h4>Radio un tā porta izvēle</h4>
@@ -784,7 +784,7 @@
                 <li><strong>Tīmekļa tālvadība.</strong> Datora programmai ir tas pats
                     <a href="#remote-control">tālvadības tīmekļa serveris</a> kā Android ierīcei (pēc noklusējuma izslēgts, ports 13497), un tā rāda
                     tās pašas lapas, ieskaitot skaļuma slīdni. Izmantojiet to, lai vadītu no tālruņa vai cita datora jūsu
-                    tīklā.</li>
+                    tīklā. Tā var darboties arī bez loga (<code>--webserver</code>, skatiet <a href="#webserver-headless">qFT8 palaišana bez ekrāna (tālvadības tīmekļa serveris)</a>), datoram bez ekrāna.</li>
                 <li><strong>Tilts.</strong> Dators ir parastais <a href="#bridge">tilts</a>: radio ir pievienots
                     tam, un qFT8 tālrunī, iPhone vai citā datorā to vada. Tas var darboties arī bez loga
                     (<code>qFT8 --bridge</code>) datoram, kuram nav cita darba.</li>
@@ -792,7 +792,7 @@
                     logs): <code>--list-devices</code> uzskaita katru seriālo portu un skaņas ierīci, ko qFT8 redz, un beidz darbu;
                     <code>--port &lt;device&gt;</code> iestata noklusējuma seriālo portu (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> izvēlas profila mapi;
-                    <code>--bridge</code> startē tiltu; <code>--video-mode=&lt;mode&gt;</code> šai palaišanas reizei zīmē logu citādi, pat ja qFT8 nevar atvērt tik tālu, lai iestatījumos mainītu <strong>Video režīms</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> zīmē logu ar OpenGL (skatiet
+                    <code>--bridge</code> startē tiltu; <code>--webserver</code> palaiž qFT8 bez loga, ar atvērtu tālvadības lapu; <code>--video-mode=&lt;mode&gt;</code> šai palaišanas reizei zīmē logu citādi, pat ja qFT8 nevar atvērt tik tālu, lai iestatījumos mainītu <strong>Video režīms</strong> (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> zīmē logu ar OpenGL (skatiet
                     <a href="#pc-trouble">Ja kaut kas nedarbojas</a>).</li>
             </ul>
 
@@ -2204,7 +2204,7 @@
                         <li><strong>Tīkla radiostacija</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Tīkla radiostacija (eksperimentāli)</strong> in <strong>Radio savienojums</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>SAVIENOT</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Skaņas plūsmas ports</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Skaņas karte</strong> under <strong>Audio</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adrese</strong>, the <strong>Raidītājs</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Lietotājvārds</strong> and <strong>Parole</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Raidītājs</strong> says which radio, <strong>Kā izvēlēts sadaļā Ierīce</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentāls)</strong> in <strong>Radiostacijas savienojums</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Izvēlieties ierīci</strong> under <strong>Bluetooth ierīce</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Raidītājs</strong>, <strong>Kā izvēlēts sadaļā Ierīce</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>SAVIENOT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentāls)</strong> in <strong>Radiostacijas savienojums</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Izvēlieties ierīci</strong> under <strong>Bluetooth ierīce</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Raidītājs</strong>, <strong>Kā izvēlēts sadaļā Ierīce</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>SAVIENOT</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -2318,6 +2318,7 @@
                     atbloķē <strong>USB ierīce</strong>, <strong>Pārraides ātrums</strong>, <strong>Datu biti</strong>,
                     <strong>Stopbiti</strong>, <strong>Paritāte</strong> un to, kā radio tiek ieslēgts raidīšanai (<strong>PTT</strong>:
                     ar CAT komandu vai RTS vai DTR līniju), ar PTT aizkavi pirms pārraides.
+                    Izmantojot RTS vai DTR, <strong>PTT ports</strong> izvēlas, kur atrodas šī līnija: <strong>Tas pats, kas CAT</strong> (paša radio kabelis) vai otrs seriālais ports, ja stacijā <span translate="no">CAT</span> iet pa vienu kabeli, bet PTT pa citu interfeisu (tālrunī abi adapteri caur USB centrmezglu; ne iPhone).
                     <strong>Iestatīt raiduztvērēja režīmu inicializācijā un katrā ciklā</strong> notur radio pareizajā
                     režīmā. Piezīme galvenajā lapā norāda, kad šai ierīcei ir aizstājumi.</li>
                 <li><strong>Noskaņošana (šis radio)</strong>: <a href="#tune-offset">spektrogrammas noskaņošanas nobīde</a> un
@@ -5617,9 +5618,9 @@
                     attālumu no jūsu lokatora.</li>
                 <li>Katra atmiņas rinda vai katra jūsu ierakstītā rinda ir viens kadrs:
                     <span translate="no">BEACON</span> [komentārs] sūta jūsu pozīciju ar grāda precizitāti pēc jūsu lokatora
-                    (nekad precīzāk par lokatoru); <span translate="no">CALL: text</span> sūta ziņojumu tai
+                    (nekad precīzāk par lokatoru); <span translate="no">BEACON</span> platums garums [komentārs] sūta precīzu atrašanās vietu decimālgrādos, dienvidi un rietumi negatīvi (<span translate="no">BEACON -34.3543 -58.2535</span> ir 34.35 S, 58.25 W; burti arī der: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> sūta ziņojumu tai
                     stacijai; <span translate="no">STATUS text</span> statusu; rinda, kas sākas ar
-                    <span translate="no">APRS</span> rakstzīmi (<span translate="no">! = : &gt; ;</span>), tiek izsūtīta tāda, kāda ir.</li>
+                    <span translate="no">APRS</span> rakstzīmi (<span translate="no">! = : &gt; ;</span>), tiek izsūtīta tāda, kāda ir. Zem katras atmiņas sadaļā Iestatījumi &gt; <span translate="no">Packet</span> pelēka rinda norāda, ko tā sūta ("Atrašanās vieta 34.35 S, 58.25 W", "Statuss: ..."); divi skaitļi, kas rakstīti bez <span translate="no">BEACON</span>, tiek raidīti kā statusa teksts, nevis pozīcija, un sarkana rinda zem atmiņas to norāda.</li>
                 <li>Jūsu kadri nāk no jūsu zvana zīmes ar <span translate="no">SSID</span>, izvēlētu sadaļā Iestatījumi &gt;
                     <span translate="no">Packet</span> (ekrāna zobrats), caur tur iestatīto
                     digipeateru ceļu
@@ -6456,22 +6457,19 @@
                 <strong>HF bez augšupkonvertora (tieša iztveršana)</strong>, lai uztvertu zem 24 MHz tā
                 <span translate="no">HF</span> ieejā. qFT8 nekad neieslēdz uztvērēja bias tee (antenas barošanu).
             </p>
-            <p>
-                <strong>Dators, Linux</strong>: tā pati rinda, tas pats iebūvētais draiveris. qFT8 paņem uztvērēju no TV draivera,
-                ko sistēma tam ielādē pati. Jūsu lietotājam vajag atļauju atvērt uztvērēju; ja statusa rinda saka
-                &ldquo;no permission&rdquo;, vienreiz pievienojiet noteikumu failu (piemēram,
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) ar rindu
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> dažiem vecākiem uztvērējiem), izpildiet
-                <code dir="ltr">sudo udevadm control --reload-rules</code> un pieslēdziet uztvērēju atkal.
+            <p id="rtl-stock-dongle">
+                <strong>Parastu uztvērēju nav jāpārprogrammē.</strong> Uztvērējs tāds, kāds tas nāk no veikala, darbojas: tajā nekas netiek rakstīts, un qFT8 nekad nemaina tā atmiņu (EEPROM). Svarīga ir uztvērēja mikroshēma: <span translate="no">R820T / R820T2 / R828D</span> darbojas; uztvērēji ar <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> nedarbojas, un statusa rinda to pasaka. <span translate="no">RTL-SDR Blog V4</span> tiek atpazīts pēc rūpnīcas nosaukuma; <span translate="no">R828D</span> uztvērējs bez šī nosaukuma (piemēram, V4, kura nosaukums pārrakstīts) statusa rindā saņem brīdinājumu, ka HF var nedarboties. macOS jebkuram uztvērējam izmantojiet tīkla serveri (zemāk).
             </p>
-            <p>
-                <strong>Dators, Windows un macOS</strong>: qFT8 uztvērēju pagaidām tieši atvērt nevar. Palaidiet
-                <span translate="no">RTL-SDR</span> tīkla serveri tajā pašā datorā (vai jebkurā citā, piemēram,
-                <span translate="no">Raspberry Pi</span>) un izvēlieties <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                ar adresi <code>127.0.0.1</code>, vai apkalpojiet uztvērēju no tālruņa vai Linux datora ar
-                <a href="#bridge">qFT8 tiltu</a>.
+            <p id="rtl-usb-linux">
+                <strong>Dators, Linux</strong>: tā pati rinda, tas pats iebūvētais draiveris. qFT8 pārņem uztvērēju no TV draivera, ko sistēma tam ielādē pati. Jūsu lietotājam ir vajadzīga atļauja atvērt uztvērēju: ja tās nav, qFT8 par to paziņo kartītē, tiklīdz uztvērējs tiek pievienots, un <strong>SALABOT</strong> pievieno atļauju jūsu vietā. Atveras terminālis un vienreiz pieprasa paroli (kur termināļa nav, to dara pašas sistēmas paroles logs). Tas ieraksta noteikumu failu <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, kas datora lietotājam dod piekļuvi <span translate="no">USB</span> uztvērējiem (<span translate="no">RTL-SDR, Airspy, HackRF</span>); uztvērējs tad darbojas uzreiz, bez restartēšanas un bez jaunas pieteikšanās. Kartīte rāda arī komandu, ko varat palaist pats terminālī.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Dators, Windows</strong>: tā pati rinda, tas pats iebūvētais draiveris, izmantojot Windows komplektā esošo <span translate="no">WinUSB</span> draiveri. Windows jaunam uztvērējam parasti nepiešķir draiveri vai piešķir TV draiveri, ko qFT8 nevar izmantot. qFT8 to pamana, kad uztvērējs tiek pievienots, un piedāvā to iestatīt: nospiediet <strong>IESTATĪT</strong> un atļaujiet izmaiņu Windows administratora logā (vienreiz); uztvērējs darbojas pēc dažām sekundēm. Nekas netiek lejupielādēts un neviens mūsu draiveris netiek instalēts: qFT8 pārslēdz uztvērēju uz paša Windows <span translate="no">WinUSB</span> draiveri. TV programmas, kurām vajadzīgs TV draiveris, uztvērēju vairs neredz. Lai to atdotu Windows: <strong>Ierīču pārvaldnieks</strong> ar peles labo pogu noklikšķiniet uz uztvērēja sadaļā <strong>Universal Serial Bus devices</strong>, izvēlieties <strong>Uninstall device</strong> (rūtiņu par draiveri neatzīmējiet), tad <strong>Action &gt; Scan for hardware changes</strong>. Windows atjauninājums var arī atjaunot TV draiveri; tad qFT8 atkal piedāvā iestatīšanu. Microsoft Store versija pati draiverus mainīt nevar: <strong>Ierīču pārvaldnieks</strong> ar peles labo pogu noklikšķiniet uz uztvērēja (bieži &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), izvēlieties <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, tad <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Dators, macOS</strong>: qFT8 uztvērēju pagaidām tieši atvērt nevar. Palaidiet <span translate="no">RTL-SDR</span> tīkla serveri tajā pašā datorā (vai jebkurā citā, piemēram, <span translate="no">Raspberry Pi</span>) un izvēlieties <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> ar adresi <code>127.0.0.1</code>, vai apkalpojiet uztvērēju no tālruņa vai datora ar <a href="#bridge">qFT8 tiltu</a>.
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span> tīkla serveris un tā draiveris</h4>
             <p>
@@ -6572,7 +6570,7 @@
                 <li>Žurnāls glabā katru ierakstu (bez ierobežojuma) failā, kuram tikai pievieno, tāpēc ļoti garš žurnāls nepalēnina lietotnes startēšanu; lapa nolasa tikai jaunākos ierakstus un rāda vairāk, ritinot.</li>
                 <li>Ar izslēgtām radioamatieru funkcijām tiek reģistrēta katra dzirdētā <span translate="no">FT8, FT4, LQ ...</span> stacija (reizi stundā uz staciju un režīmu); ar ieslēgtām radioamatieru funkcijām tiek reģistrēti tikai dzirdētie pilnie QSO. Stacijai, ko dzirdat pirmo reizi (nekad agrāk jūsu <span translate="no">SWL</span> žurnālā), izsaukuma zīme ir ciāna krāsā staciju sarakstā, kad radioamatieru funkcijas ir izslēgtas.</li>
                 <li>Signālu uztvērēji ieraksta žurnālā to, ko tie identificē, reizi uz staciju <span translate="no">UTC</span> dienā: kuģi (<span translate="no">AIS</span>), gaisakuģi (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiozondes, <span translate="no">NAVTEX</span> stacijas, <span translate="no">DSC</span>, laika stacijas, <span translate="no">NCDXF</span> bākas, <span translate="no">ALE / ARDOP / PACTOR</span> un <span translate="no">APRS</span> izsaukuma zīmes, laika faksimila kartes un laika pavadoņu attēli, kā arī <span translate="no">FM</span> stacijas pēc to <span translate="no">RDS</span> koda un nosaukuma. Tie tiek ieskaitīti <span translate="no">SWL</span> apbalvojumiem; tie nekad netiek sūtīti uz eQSL un nav <span translate="no">ADIF</span> eksportā (<span translate="no">CSV</span> tos satur, ar dzirdēto nosaukumu pēdējā kolonnā).</li>
-                <li>Augšupielādes ievēro vienu noteikumu: eQSL <span translate="no">SWL</span> konts ieraksta katru dzirdēto staciju zem šī konta (radioamatiera eQSL konts tiek noraidīts); <span translate="no">PSK Reporter</span> un <span translate="no">WSPRnet</span> ziņo ar jūsu izsaukuma zīmi, citādi ar jūsu <span translate="no">SWL</span> ID.</li>
+                <li>Augšupielādes ievēro vienu noteikumu: eQSL <span translate="no">SWL</span> konts ieraksta katru dzirdēto staciju zem šī konta (radioamatiera eQSL konts tiek noraidīts); <span translate="no">PSK Reporter</span> un <span translate="no">WSPRnet</span> ziņo katru spotu ar jūsu izsaukuma zīmi un ar jūsu <span translate="no">SWL</span> ID, katru, kas ir iestatīts; Iestatījumi rāda vārdus zem katras rūtiņas.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Vai šis SDR ir jūsu?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Kura uztvērējs</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Šis serveris ir mans</strong> in its rows, the same answer as <strong>Vai šis SDR ir jūsu?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -6980,6 +6978,70 @@
                         raiduztvērēju).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>qFT8 palaišana bez ekrāna (tālvadības tīmekļa serveris)</h3>
+                <p>
+                    Datora programma var darboties arī bez loga, datorā, kuram nav ekrāna: Raspberry Pi blakus radiostacijai, nelielā serverī vai jebkurā datorā, kuram piekļūstat pa SSH. Tad qFT8 visu dara kā parasti (skaņa, radiostacijas vadība, dekodēšana, <span translate="no">AUTO</span>, žurnāla rakstīšana, augšupielādes), bet jūs to vadāt no pārlūka, izmantojot <a href="#remote-control">tālvadības tīmekļa serveris</a>, ar tālruni, planšeti vai citu datoru savā tīklā.
+                </p>
+
+                <h4>Tīmekļa serveris vai tilts?</h4>
+                <p>Abi darbojas bez ekrāna. Atšķirība ir tajā, kura ierīce veic darbu:</p>
+                <ul>
+                    <li><strong>Tīmekļa serveris</strong> (<code>--webserver</code>): dators, kurā darbojas qFT8, dekodē, raida un raksta žurnālu; pārlūks to tikai rāda un nodrošina tā pogas. Der jaudīgam mājas datoram, ko vadāt no tālruņa.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, skatiet <a href="#bridge">qFT8 tilts</a>): ierīce pie radiostacijas tikai pārsūta radiostacijas komandas un skaņu pa jūsu tīklu, un dekodē qFT8 ierīcē, no kuras vadāt (datora programma, Android lietotne vai iPhone/iPad lietotne). Der Raspberry Pi pie radiostacijas, kad darbu veic jūsu pašu dators.</li>
+                </ul>
+                <p>Šie divi nevar darboties vienlaikus.</p>
+
+                <h4>Vispirms iestatiet</h4>
+                <p>
+                    qFT8 izmanto saglabātos iestatījumus tieši tāpat kā ar logu: izsaukuma zīmi, lokatoru, radiostaciju, skaņas ierīces, režīmus, žurnāla rakstīšanu un QSO augšupielādes pakalpojumus. Piemēram, ja <a href="#raw-message-logs">Neapstrādāti ziņojumu žurnāli</a> ir atzīmēts, tas turpina rakstīt savus .tsv failus. Tāpēc vispirms iestatiet qFT8: vienreiz palaidiet to ar logu tajā datorā (vai nokopējiet profila mapi no cita datora, skatiet <a href="#pc-settings">Iestatījumi: kur tie atrodas, pārnešana no tālruņa</a>), vai palaidiet bez ekrāna un iestatiet tālvadības lapas Iestatījumos, kas tiek saglabāti kā parasti.
+                </p>
+
+                <h4>Palaišana</h4>
+                <p>Šī datora terminālī (der arī pa SSH), qFT8 mapē:</p>
+                <ul>
+                    <li><strong>Linux</strong>, arī Raspberry Pi: <code>./qFT8 --webserver</code>. Ar .jar lejupielādi un Java 21 vai jaunāku: <code>java -jar</code>, .jar faila nosaukums un <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminālī parādās, ka qFT8 darbojas bez loga, ka <span translate="no">TX</span> ir izslēgts un vai lapa prasa paroli, kā arī tālvadības lapas privātā saite: atveriet to pārlūkā tajā pašā tīklā. Daļa pēc <code>#k=</code> ir saites atslēga: turiet to privātu. Tā tiek rādīta tikai terminālī un nekad netiek ierakstīta qFT8 žurnāla failā. <code>Ctrl+C</code> aptur qFT8 un atgriež radiostaciju uztveršanā.
+                </p>
+                <p>
+                    Ja qFT8 tiek palaists šādi, <span translate="no">TX</span> vienmēr ir izslēgts. To ieslēdz tikai tālvadības lapas poga <span translate="no">TX</span>.
+                </p>
+
+                <h4>Opcijas</h4>
+                <p>
+                    Katra opcija maina vienu iestatījumu tikai šai palaišanas reizei: nekas netiek saglabāts, un bez opcijām tiek izmantoti saglabātie iestatījumi. <code>qFT8 --webserver --help</code> tās uzskaita.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: tālvadības lapas ports, no 1024 līdz 65534 (13497, ja neesat to mainījis).</li>
+                    <li><code>--bind ADDRESS</code>: klausīties tikai šajā datora adresē.</li>
+                    <li><code>--password TEXT</code> vai <code>--password-file FILE</code> (faila pirmā rindiņa; drošāk, jo citi datora lietotāji redz komandrindu) vai <code>--no-password</code>.</li>
+                    <li><code>--https</code> vai <code>--no-https</code>: drošā adrese (ports + 1), kas pārlūkam vajadzīga, lai izmantotu mikrofonu.</li>
+                    <li><code>--access read</code>, <code>stop</code> vai <code>full</code>: ko lapa drīkst darīt: tikai skatīties, skatīties un apturēt <span translate="no">TX</span>, vai visu.</li>
+                    <li><code>--audio-in NAME</code> un <code>--audio-out NAME</code>: radiostacijas skaņas ierīces pēc nosaukuma, ko rāda <code>qFT8 --list-devices</code>, vai <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: radiostacija (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), un <code>--port DEVICE</code>: tās seriālais ports (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: izmantojamā profila mape.</li>
+                </ul>
+                <p>
+                    Ja portu aizņem cita programma vai to pašu profila mapi jau izmanto cits qFT8, qFT8 to paziņo terminālī un apstājas.
+                </p>
+
+                <h4>Piemērs: Raspberry Pi</h4>
+                <p>
+                    Radiostacija ir pievienota Pi ar USB, un qFT8 jau reizi ir iestatīts (ar ekrānu pie Pi vai no tālvadības lapas). No cita datora:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Pēc tam savā tālrunī atveriet saiti, ko tas parāda. Raspberry Pi 4 vai 5 <span translate="no">FT8</span> dekodē laikā; ātrāks dators atrod vairāk vājāko signālu.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Atpakaļ uz satura rādītāju</a>
             </section>
 
             <section id="bridge">
@@ -7561,6 +7623,19 @@
                     (jūsu konts pievienojas porta grupai) vai vaicājiet savam sistēmas administratoram.</li>
                 <li>Ja problēmas rodas tieši raidīšanas laikā, to var izraisīt radio traucējumi. Palīdzēt var drosele vai ferīti uz USB kabeļa. Varat arī mēģināt raidīt citā joslā, jo dažas ierīces ir jutīgas pret traucējumiem tikai noteiktās joslās.</li>
             </ul>
+            <p>
+                Kad qFT8 sazinās ar radio, izmantojot <span translate="no">CAT</span> (radio izvēlēts sadaļā <strong>Iestatījumi &gt; Ierīce</strong> vai atrasts ar <span translate="no">AUTO</span>), un radio neatbild, parādās sarkans brīdinājums <strong>Nav <span translate="no">CAT</span></strong> uz spektrogrammas (un zem radio sadaļā <strong>Iestatījumi &gt; Ierīce</strong>). Pieskarieties tam: kartītē redzams, ko qFT8 izmērīja savienojumā, un uzskaitīts, ko šajā gadījumā izmēģināt:
+            </p>
+            <ul>
+                <li><strong>Radio nav atrasts</strong>: radio ir izslēgts, kabelis nav stingri pievienots, kabelis tikai lādē (izmantojiet USB datu kabeli), adapteris vai centrmezgls nenodod datus, vai tālruņa sistēmas iestatījumos ir izslēgts <span translate="no">USB OTG</span>. Datorā: radio USB draiveris un ports, kas izvēlēts sadaļā <strong>Iestatījumi &gt; Ierīces konfigurācija</strong>.</li>
+                <li><strong>Portu neizdevās atvērt</strong>: atļaujiet qFT8 izmantot USB ierīci, kad Android to pieprasa, un aizveriet citas programmas, kas izmanto radio portu.</li>
+                <li><strong>Radio neatbild</strong>: (neatgriežas neviens baits): radio ir ieslēgts, kabelis iesprausts tā <span translate="no">CAT</span> ligzdā, radio modelis ir pareizs, un radio <span translate="no">CAT</span> pārraides ātrums ir tāds pats kā qFT8 (<strong>Iestatījumi &gt; Ierīces konfigurācija &gt; Pārraides ātrums</strong>). Yaesu radio ar <span translate="no">CAT RTS</span> izvēlni: iestatiet <span translate="no">DISABLE</span>. Xiegu radio: saskarnes datu (<span translate="no">CI-V</span>) kabelis jāpievieno radio ligzdai <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span>, ne tikai audio kabelis, un radio <span translate="no">CI-V</span> adrese un ātrums (baud) ir tādi paši kā qFT8 (kartīte tos parāda).</li>
+                <li><strong>Atgriežas tikai qFT8 komandas</strong>: kabelis vai interfeiss atgriež datus atpakaļ bez radio (Icom <span translate="no">CI-V</span> kabelis tā dara, kamēr radio ir izslēgts).</li>
+                <li><strong>Nesalasāmas atbildes</strong>: nesakrīt pārraides ātrums vai radio modelis.</li>
+                <li><strong>Pārstāj atbildēt raidot</strong>: RF traucējumi. Uzspraudiet ferīta drosules uz USB un audio kabeļiem abos galos, kā pārbaudi izmēģiniet mazāku jaudu (iestata radio) un pārbaudiet, vai antenā un barošanas līnijā nav kopējā režīma strāvas.</li>
+                <li><strong>Atbildēja, tad pārstāja</strong>: radio tika izslēgts vai kabelis atvienojās.</li>
+            </ul>
+            <p><strong>PĀRBAUDĪT ATKAL</strong> atkal izveido savienojumu ar radio un pārbauda vēlreiz; <strong>SŪTĪT ZIŅOJUMU</strong> nosūta mums izmērīto kopā ar radio komandu žurnālu.</p>
 
             <h3 id="trouble-otg-charging">Raiduztvērējs pazūd, kad tālrunis ir pilnībā uzlādēts (Android)</h3>
             <p>

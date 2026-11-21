@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "Hent i App Store",
     "FEAT2_OWN": "Egne dekodere og enkodere, skrevet fra bunden",
     "FEAT2_RAWLOG": "Log alle afkodede beskeder",
+    "FEAT2_HEADLESS": "Kører uden skærm som webserver til fjernbetjening, f.eks. på en Raspberry Pi",
     "FAQ_TITLE": "Spørgsmål og svar",
     "FAQ_Q1": "Hvad er qFT8?",
     "FAQ_A1": "qFT8 er et gratis amatørradioprogram til digitale svagsignaltyper, morse, fjernskriver, billeder og tale. Det kører på Android-telefoner og tablets, iOS, Windows, macOS og Linux og kan styres fra en hvilken som helst browser. Det har ingen reklamer og kræver ingen konto. Det er skrevet af Luis Quesada Torres, HB9IPH, med egne dekodere og enkodere skrevet fra bunden.",

@@ -165,6 +165,7 @@
                         <li><a href="#tune-offset">スペクトログラムのチューニングオフセット</a></li>
                         <li><a href="#tx-limit">連続送信時間の上限</a></li>
                         <li><a href="#remote-control">リモートコントロール Webサーバー</a></li>
+                        <li><a href="#webserver-headless">画面なしで qFT8 を実行する（Web リモートサーバー）</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log プロトコル</a></li>
@@ -509,7 +510,7 @@
             <ul>
                 <li><strong>Windows</strong>: qFT8 は Windows 自身のオーディオエンジン（WASAPI）を通して無線機の音を聞きます。従来の方式より安定したストリームが得られます。無線機は COM ポート（<code>COM3</code>、...）と、「USB Audio CODEC」などのサウンドデバイスとして現れます。Windows では COM ポートを使えるプログラムは 1 つだけです。アクセスが拒否されたと qFT8 が表示したら、もう一方のプログラム（ロガー、デジタルモードのプログラム、無線機付属のソフトウェア）を閉じて、<strong>再試行</strong>を押してください。</li>
                 <li><strong>macOS</strong>: 無線機のポートは <code>/dev/cu.usbmodem...</code>（<span translate="no">QMX</span>）または <code>/dev/cu.SLAB_USBtoUART</code>（IC-7300）のように見えます。macOS ではポートにグループや許可は不要で、上で述べたマイクの許可だけが必要です。ポートが拒否された場合は、別のプログラムがそれを開いています。</li>
-                <li><strong>Linux</strong>: ポートは <code>/dev/ttyACM0</code> や <code>/dev/ttyUSB0</code> のように見え、上で述べたグループが必要です。サウンドデバイスはサウンドサーバー（PulseAudio または PipeWire）のものなので、無線機のスピーカー、ヘッドホン、マイクをそれぞれ別のデバイスにできます。デバイス音量スライダーは、パッケージ <code>pulseaudio-utils</code> の <code>pactl</code> を使います（PipeWire でも動作します）。</li>
+                <li><strong>Linux</strong>: ポートは <code>/dev/ttyACM0</code> や <code>/dev/ttyUSB0</code> のように見え、上で述べたグループが必要です。サウンドデバイスはサウンドサーバー（PulseAudio または PipeWire）のものなので、無線機のスピーカー、ヘッドホン、マイクをそれぞれ別のデバイスにできます。qFT8 は、パッケージ <code>pulseaudio-utils</code> の <code>pactl</code> と <code>parec</code> を通してサウンドデバイス（とデバイス音量スライダー）を使います（PipeWire でも動作します）。このパッケージをインストールしてください。ないと qFT8 はどのサウンドカードも聞けないことがよくあります。</li>
             </ul>
 
             <h4>無線機とポートの選び方</h4>
@@ -600,9 +601,9 @@
 
             <ul>
                 <li><strong>プロファイルフォルダーごとに 1 つのコピー。</strong>同じフォルダーを使う別のコピーが動いているときに qFT8 を起動すると、<strong>既に実行中です</strong>と表示され、<strong>再試行</strong>または<strong>終了</strong>が提案されます。1 つのフォルダーで 2 つのコピーを動かすと、設定とログが壊れるおそれがあるためです。複数のコピーを同時に動かすには（たとえば無線機ごとに 1 つ）、起動するときにそれぞれ専用のフォルダーを指定します。<code>qFT8 --qft8_profile D:\qft8-radio2</code>（Windows では <code>qFT8.exe</code>）。そのフォルダーに書き込めない場合、qFT8 はエラーで停止します。</li>
-                <li><strong>Web リモコン。</strong>パソコン版には、Android と同じ<a href="#remote-control">リモートコントロール Web サーバー</a>があり（初期設定ではオフ、ポート 13497）、音量スライダーを含め、同じページを表示します。ネットワーク上のスマートフォンや別のパソコンから操作するのに使います。</li>
+                <li><strong>Web リモコン。</strong>パソコン版には、Android と同じ<a href="#remote-control">リモートコントロール Web サーバー</a>があり（初期設定ではオフ、ポート 13497）、音量スライダーを含め、同じページを表示します。ネットワーク上のスマートフォンや別のパソコンから操作するのに使います。ウィンドウなしで実行することもでき（<code>--webserver</code>、<a href="#webserver-headless">画面なしで qFT8 を実行する（Web リモートサーバー）</a>を参照）、画面のないコンピューターで使えます。</li>
                 <li><strong>bridge。</strong>パソコンは、よく使われる <a href="#bridge">bridge</a> です。無線機をパソコンにつなぎ、スマートフォン、iPhone、または別のパソコンの qFT8 から操作します。ほかに用途のないパソコンでは、ウィンドウなしで動かすこともできます（<code>qFT8 --bridge</code>）。</li>
-                <li><strong>コマンドライン。</strong><code>qFT8 --help</code> でオプションの一覧が表示されます（Windows では小さなウィンドウに表示されます）。<code>--list-devices</code> は、qFT8 が認識しているすべてのシリアルポートとサウンドデバイスを一覧表示して終了します。<code>--port &lt;デバイス&gt;</code> は既定のシリアルポート（<code>COM3</code>、<code>/dev/ttyACM0</code>）を設定します。<code>--qft8_profile &lt;フォルダー&gt;</code> はプロファイルフォルダーを選びます。<code>--bridge</code> は bridge を起動します。<code>--video-mode=&lt;mode&gt;</code> はその起動に限りウィンドウを別の方法で描画します。qFT8 が設定で<strong>ビデオモード</strong>を変更できるところまで開けない場合にも使えます（Windows: <code>default</code>、<code>d3d</code>、<code>gdi</code>、Linux: <code>default</code>、<code>xrender</code>、<code>opengl</code>、<code>x11</code>）。<code>--opengl</code> はウィンドウを OpenGL で描画します（<a href="#pc-trouble">うまく動かないとき</a>をご覧ください）。</li>
+                <li><strong>コマンドライン。</strong><code>qFT8 --help</code> でオプションの一覧が表示されます（Windows では小さなウィンドウに表示されます）。<code>--list-devices</code> は、qFT8 が認識しているすべてのシリアルポートとサウンドデバイスを一覧表示して終了します。<code>--port &lt;デバイス&gt;</code> は既定のシリアルポート（<code>COM3</code>、<code>/dev/ttyACM0</code>）を設定します。<code>--qft8_profile &lt;フォルダー&gt;</code> はプロファイルフォルダーを選びます。<code>--bridge</code> は bridge を起動します。<code>--webserver</code> はウィンドウなしで qFT8 を実行し、Web リモートを開きます。<code>--video-mode=&lt;mode&gt;</code> はその起動に限りウィンドウを別の方法で描画します。qFT8 が設定で<strong>ビデオモード</strong>を変更できるところまで開けない場合にも使えます（Windows: <code>default</code>、<code>d3d</code>、<code>gdi</code>、Linux: <code>default</code>、<code>xrender</code>、<code>opengl</code>、<code>x11</code>）。<code>--opengl</code> はウィンドウを OpenGL で描画します（<a href="#pc-trouble">うまく動かないとき</a>をご覧ください）。</li>
             </ul>
 
             <h3 id="pc-slow">低速なパソコン</h3>
@@ -1613,7 +1614,7 @@
                         <li><strong>ネットワーク無線機</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>ネットワーク無線機 (実験的)</strong> in <strong>無線機の接続</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>接続</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>方式</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>音声ストリームのポート</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>サウンドカード</strong> under <strong>音声</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>方式</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>アドレス</strong>, the <strong>無線機</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>ユーザー名</strong> and <strong>パスワード</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>無線機</strong> says which radio, <strong>「デバイス」での選択どおり</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth（実験的）</strong> in <strong>無線機の接続</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>デバイスを選択</strong> under <strong>Bluetooth デバイス</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>無線機</strong>, <strong>「デバイス」での選択どおり</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>接続</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth（実験的）</strong> in <strong>無線機の接続</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>デバイスを選択</strong> under <strong>Bluetooth デバイス</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>無線機</strong>, <strong>「デバイス」での選択どおり</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>接続</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1710,6 +1711,7 @@
                     をオンにすると、<strong>USBデバイス</strong>、<strong>ボーレート</strong>、<strong>データビット</strong>、
                     <strong>ストップビット</strong>、<strong>パリティ</strong>と、無線機のキーイング方法（<strong>PTT</strong>:
                     CAT コマンド、または RTS / DTR ライン）、送信前の PTT 遅延を変更できます。
+                    RTS または DTR を使う場合、<strong>PTTポート</strong> でその信号線の場所を選びます: <strong>CATと同じ</strong> (無線機自身のケーブル) か、2 つ目のシリアルポートです。CAT を一方のケーブル、PTT を別のインターフェースで接続する局向けです (スマートフォンでは、両方のアダプターを USB ハブ経由で接続。iPhone では不可)。
                     <strong>初期化時および各サイクルでトランシーバーモードを設定</strong>は、無線機を正しいモードに保ちます。このデバイスに上書き設定があるときは、メインページの注記でわかります。</li>
                 <li><strong>チューニング（この無線機）</strong>: <a href="#tune-offset">スペクトログラムのチューニングオフセット</a>と
                     <a href="#tx-limit">連続送信時間の上限</a>。</li>
@@ -4250,9 +4252,9 @@
                     距離が示されます。</li>
                 <li>メモリーの各行、または入力した各行が 1 フレームになります。
                     <span translate="no">BEACON</span> [コメント] はロケーターから度単位で自局の位置を送ります
-                    (ロケーター以上に細かくはなりません)。<span translate="no">CALL: text</span> はその
+                    (ロケーター以上に細かくはなりません)。<span translate="no">BEACON</span> 緯度 経度 [コメント] は10進の度で表した正確な位置を送ります (南・西はマイナス。<span translate="no">BEACON -34.3543 -58.2535</span> は 34.35 S, 58.25 W です。文字でも書けます: <span translate="no">BEACON 34.3543S 58.2535W</span>)。<span translate="no">CALL: text</span> はその
                     局にメッセージを送り、<span translate="no">STATUS text</span> はステータスを送ります。
-                    <span translate="no">APRS</span> 文字 (<span translate="no">! = : &gt; ;</span>) で始まる行はそのまま送られます。</li>
+                    <span translate="no">APRS</span> 文字 (<span translate="no">! = : &gt; ;</span>) で始まる行はそのまま送られます。設定 &gt; <span translate="no">Packet</span> の各メモリーの下には、送信内容を示すグレーの行が表示されます (「位置 34.35 S, 58.25 W」「ステータス：...」)。<span translate="no">BEACON</span> なしで書いた 2 つの数字は位置ではなくステータステキストとして送信され、メモリーの下の赤い行がそれを知らせます。</li>
                 <li>フレームは、<span translate="no">SSID</span> (設定 &gt; <span translate="no">Packet</span>、画面の歯車で選択) を付けたあなたのコールサインから、
                     そこで設定したデジピーターパス
                     (既定は <span translate="no">WIDE1-1,WIDE2-1</span>、2 m のみ) を通って送られます。</li>
@@ -4803,21 +4805,19 @@
                 <strong>コンバーターなしの HF (ダイレクトサンプリング)</strong>にチェックを入れると、
                 <span translate="no">HF</span>入力で 24 MHz 以下を受信できます。qFT8 がドングルのバイアスティー（アンテナ給電）をオンにすることは決してありません。
             </p>
-            <p>
-                <strong>パソコン、Linux</strong>：同じ項目、同じ内蔵ドライバーです。システムが自動で読み込む TV 用ドライバーから、qFT8 がドングルを引き継ぎます。
-                ドングルを開くための権限がユーザーに必要です。ステータス行に
-                「権限がありません」と表示されたら、ルールファイルを一度だけ追加してください（例：
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>）。内容は次の 1 行です：
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                （一部の古いドングルでは <code>2832</code>）。続いて
-                <code dir="ltr">sudo udevadm control --reload-rules</code> を実行し、ドングルを挿し直します。
+            <p id="rtl-stock-dongle">
+                <strong>普通のドングルは書き換え不要です。</strong>店で買ったままのドングルが動作します。何も書き込まず、qFT8 がそのメモリ (EEPROM) を変更することはありません。大事なのはチューナーチップです。<span translate="no">R820T / R820T2 / R828D</span> は動作し、<span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> チューナーのドングルは動作しません (ステータス行に表示されます)。<span translate="no">RTL-SDR Blog V4</span> は工場出荷時の名前で認識されます。その名前のない <span translate="no">R828D</span> ドングル (名前が書き換えられた V4 など) には、HF が動作しない可能性があるという警告がステータス行に出ます。macOS では、どのドングルでもネットワークサーバー (下記) を使ってください。
             </p>
-            <p>
-                <strong>パソコン、Windows と macOS</strong>：ドングルを qFT8 が直接開くことは、まだできません。同じパソコン（または
-                <span translate="no">Raspberry Pi</span>など別のパソコン）で<span translate="no">RTL-SDR</span>ネットワークサーバーを動かし、
-                <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>をアドレス <code>127.0.0.1</code> で選ぶか、
-                スマートフォンまたは Linux パソコンから<a href="#bridge">qFT8 bridge</a>でドングルを提供してください。
+            <p id="rtl-usb-linux">
+                <strong>パソコン、Linux</strong>: 同じ行、同じ内蔵ドライバーです。qFT8 は、システムが自動で読み込む TV 用ドライバーからドングルを引き継ぎます。ユーザーにはドングルを開く権限が必要です。権限がない場合、ドングルを接続するとすぐに qFT8 がカードでそのことを知らせ、<strong>修正する</strong> が代わりに権限を追加します。ターミナルが開いてパスワードを一度だけ尋ねます (ターミナルがない環境では、システム自身のパスワード画面が尋ねます)。これはルールファイル <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code> を書き込み、パソコンを使う人が <span translate="no">USB</span> 受信機 (<span translate="no">RTL-SDR, Airspy, HackRF</span>) にアクセスできるようにします。その後ドングルはすぐに、再起動も再ログインもなしで動作します。カードにはコマンドも表示されるので、自分でターミナルで実行することもできます。
             </p>
+            <p id="rtl-usb-windows">
+                <strong>パソコン、Windows</strong>: 同じ行、同じ内蔵ドライバーで、Windows に付属する <span translate="no">WinUSB</span> ドライバーを使います。Windows は新しいドングルにドライバーを割り当てないか、qFT8 が使えない TV 用ドライバーを割り当てるのが普通です。qFT8 はドングルの接続時にこれに気づき、セットアップを提案します。<strong>設定する</strong> を押し、Windows の管理者ウィンドウで変更を許可してください (一度だけ)。数秒後にドングルが動作します。何もダウンロードされず、当方のドライバーもインストールされません。qFT8 はドングルを Windows 自身の <span translate="no">WinUSB</span> ドライバーに切り替えるだけです。TV 用ドライバーが必要な TV プログラムからは、ドングルは見えなくなります。Windows に戻すには、<strong>デバイス マネージャー</strong> で <strong>Universal Serial Bus devices</strong> の下にあるドングルを右クリックし、<strong>Uninstall device</strong> を選び (ドライバーに関するチェックボックスはオフのまま)、続けて <strong>Action &gt; Scan for hardware changes</strong> を選びます。Windows の更新で TV 用ドライバーが戻ることもあります。その場合 qFT8 は再びセットアップを提案します。Microsoft Store 版はドライバーを自分で変更できません。<strong>デバイス マネージャー</strong> でドングル (多くは &ldquo;Bulk-In, Interface (Interface 0)&rdquo;) を右クリックし、<strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> を選び、続けて <strong>Universal Serial Bus devices &gt; WinUsb Device</strong> を選んでください。
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>パソコン、macOS</strong>：ドングルを qFT8 が直接開くことは、まだできません。同じパソコン（または <span translate="no">Raspberry Pi</span>など別のパソコン）で<span translate="no">RTL-SDR</span>ネットワークサーバーを動かし、 <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>をアドレス <code>127.0.0.1</code> で選ぶか、 スマートフォンまたは パソコンから<a href="#bridge">qFT8 bridge</a>でドングルを提供してください。
+            </p>
+
 
             <h4 id="swl-drivers"><span translate="no">RTL-SDR</span>ネットワークサーバーとそのドライバー</h4>
             <p>
@@ -4917,7 +4917,7 @@
                 <li>ログはすべてのエントリーを（上限なしで）追記のみのファイルに保存するため、非常に長いログでもアプリの起動が遅くなりません。ページは最新のエントリーだけを読み込み、スクロールに応じてさらに表示します。</li>
                 <li>Ham 機能がオフのときは、受信したすべての <span translate="no">FT8, FT4, LQ ...</span> 局が記録されます（局とモードごとに1時間に1回）。Ham 機能がオンのときは、受信した完全な QSO だけが記録されます。Ham 機能がオフのとき、初めて受信した局（それまで <span translate="no">SWL</span> ログになかった局）は局リストでコールサインがシアンで表示されます。</li>
                 <li>信号受信機は識別したものを、局ごとに <span translate="no">UTC</span> 日1回ログに書き込みます：船舶（<span translate="no">AIS</span>）、航空機（<span translate="no">ADS-B</span>、<span translate="no">UAT</span>）、ラジオゾンデ、<span translate="no">NAVTEX</span> 局、<span translate="no">DSC</span>、時報局、<span translate="no">NCDXF</span> ビーコン、<span translate="no">ALE / ARDOP / PACTOR</span> と <span translate="no">APRS</span> のコールサイン、気象ファクスと気象衛星の画像、そして <span translate="no">RDS</span> コードと名前による <span translate="no">FM</span> 局。これらは <span translate="no">SWL</span> アワードに数えられますが、eQSL には決して送られず、<span translate="no">ADIF</span> のエクスポートにも含まれません（<span translate="no">CSV</span> には含まれ、最後の列に受信した名前が入ります）。</li>
-                <li>アップロードには1つの規則があります：eQSL の <span translate="no">SWL</span> アカウントは受信したすべての局をそのアカウントで登録します（アマチュアの eQSL アカウントは拒否されます）。<span translate="no">PSK Reporter</span> と <span translate="no">WSPRnet</span> はあなたのコールサインで、なければあなたの <span translate="no">SWL</span> ID で報告します。</li>
+                <li>アップロードには1つの規則があります：eQSL の <span translate="no">SWL</span> アカウントは受信したすべての局をそのアカウントで登録します（アマチュアの eQSL アカウントは拒否されます）。<span translate="no">PSK Reporter</span> と <span translate="no">WSPRnet</span> は、各スポットをあなたのコールサインと <span translate="no">SWL</span> ID の両方（設定されているもの）で報告します。設定の各チェックボックスの下に送信名が表示されます。</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>このSDRはあなたのものですか?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>受信機の所有者</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>このサーバーは自分のものです</strong> in its rows, the same answer as <strong>このSDRはあなたのものですか?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5232,6 +5232,70 @@
                     <p><strong>注:</strong> バックグラウンドで動作する設定が有効であれば、ウェブサーバーは画面がオフのときも動作します（既定では、<span translate="no">qFT8</span> がトランシーバーに接続されている間はバックグラウンドで動作を続けます）。
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>画面なしで qFT8 を実行する（Web リモートサーバー）</h3>
+                <p>
+                    パソコン版は、画面のないコンピューターでウィンドウをまったく開かずに動かすこともできます。無線機のそばの Raspberry Pi、小さなサーバー、SSH でつなぐコンピューターなどです。そのとき qFT8 は、音声、無線機の制御、デコード、<span translate="no">AUTO</span>、ログ記録、アップロードをいつもどおり行い、あなたはネットワーク上のスマートフォン、タブレット、別のパソコンのブラウザーから<a href="#remote-control">リモートコントロール Web サーバー</a>で操作します。
+                </p>
+
+                <h4>Web サーバーか bridge か</h4>
+                <p>どちらも画面なしで動きます。違いは、どの機器が処理を行うかです。</p>
+                <ul>
+                    <li><strong>Web サーバー</strong>（<code>--webserver</code>）: qFT8 を動かしているコンピューターがデコード、送信、記録を行い、ブラウザーは表示とボタンだけを受け持ちます。スマートフォンから操作する、自宅の高性能なコンピューター向きです。</li>
+                    <li><strong>Bridge</strong>（<code>--bridge</code>、<a href="#bridge">qFT8 bridge</a>を参照）: 無線機のそばの機器は、無線機のコマンドと音声をネットワーク越しに中継するだけで、デコードは操作する側の機器の qFT8（パソコン版、Android アプリ、iPhone/iPad アプリ）が行います。無線機のそばに Raspberry Pi を置き、処理は手元のコンピューターに任せたい場合に向いています。</li>
+                </ul>
+                <p>この二つは同時には動かせません。</p>
+
+                <h4>先に設定する</h4>
+                <p>
+                    qFT8 は、ウィンドウで使うときとまったく同じように保存済みの設定を使います。コールサイン、ロケーター、無線機、サウンドデバイス、モード、ログ記録、QSO アップロードサービスなどです。たとえば<a href="#raw-message-logs">生メッセージログ</a>にチェックがあれば、.tsv ファイルへの書き込みも続けます。そのため、まず qFT8 を設定してください。そのコンピューターで一度ウィンドウ付きで起動する（または別のコンピューターからプロファイルフォルダーをコピーする。<a href="#pc-settings">設定: 保存場所と、スマートフォンからの引っ越し</a>を参照）か、画面なしで起動して Web リモートの設定から行います。設定は通常どおり保存されます。
+                </p>
+
+                <h4>起動のしかた</h4>
+                <p>そのコンピューターのターミナル（SSH 経由でも構いません）で、qFT8 のフォルダーにて:</p>
+                <ul>
+                    <li><strong>Linux</strong>（Raspberry Pi も）: <code>./qFT8 --webserver</code>。.jar 版と Java 21 以降を使う場合: <code>java -jar</code>、.jar ファイルの名前、<code>--webserver</code>。</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    ターミナルには、qFT8 がウィンドウなしで動いていること、<span translate="no">TX</span> がオフであること、ページにパスワードが必要かどうかが表示され、Web リモートのプライベートリンクも表示されます。同じネットワーク上のブラウザーで開いてください。<code>#k=</code> の後ろの部分がリンクのキーです。他人に知られないようにしてください。キーはターミナルにだけ表示され、qFT8 のログファイルには書き込まれません。<code>Ctrl+C</code> で qFT8 が止まり、無線機は受信に戻ります。
+                </p>
+                <p>
+                    この方法で起動したときは、<span translate="no">TX</span> は常にオフです。オンにできるのは Web リモートの <span translate="no">TX</span> ボタンだけです。
+                </p>
+
+                <h4>オプション</h4>
+                <p>
+                    各オプションは、その起動に限って設定を一つ変えます。何も保存されず、オプションがなければ保存済みの設定が使われます。<code>qFT8 --webserver --help</code> で一覧を表示します。
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: Web リモートのポート。1024 から 65534（変更していなければ 13497）。</li>
+                    <li><code>--bind ADDRESS</code>: コンピューターのそのアドレスだけで待ち受けます。</li>
+                    <li><code>--password TEXT</code>、または <code>--password-file FILE</code>（ファイルの 1 行目。コマンドラインはコンピューターの他のユーザーにも見えるため、こちらが安全です）、または <code>--no-password</code>。</li>
+                    <li><code>--https</code> または <code>--no-https</code>: ブラウザーがマイクを使うために必要な、安全なアドレス（ポート + 1）。</li>
+                    <li><code>--access read</code>、<code>stop</code>、<code>full</code>: ページにできること。見るだけ、見ることと <span translate="no">TX</span> の停止、またはすべて。</li>
+                    <li><code>--audio-in NAME</code> と <code>--audio-out NAME</code>: 無線機のサウンドデバイス。<code>qFT8 --list-devices</code> が表示する名前、または <code>auto</code>。</li>
+                    <li><code>--radio TYPE</code>: 無線機（<code>auto</code>、<code>qmx</code>、<code>icom7300</code> など）。<code>--port DEVICE</code>: そのシリアルポート（<code>/dev/ttyUSB0</code>、<code>COM3</code>）。</li>
+                    <li><code>--qft8_profile FOLDER</code>: 使用するプロファイルフォルダー。</li>
+                </ul>
+                <p>
+                    ポートが別のプログラムに使われている場合や、別の qFT8 がすでに同じプロファイルフォルダーを使っている場合は、qFT8 はターミナルにそう表示して停止します。
+                </p>
+
+                <h4>例: Raspberry Pi</h4>
+                <p>
+                    無線機は USB で Pi につながっていて、qFT8 は一度設定済みです（Pi に画面をつなぐか、Web リモートから）。別のコンピューターから:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    表示されたリンクをスマートフォンで開きます。Raspberry Pi 4 または 5 なら <span translate="no">FT8</span> は時間内にデコードできます。より速いコンピューターなら、さらに弱い信号まで見つかります。
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; 目次に戻る</a>
             </section>
 
             <section id="bridge">
@@ -5698,6 +5762,19 @@
                 <li>Linux で、無線機のポートを開く権限がないと qFT8 が表示した場合は、修正の提案を受け入れるか（アカウントがポートのグループに追加されます）、システム管理者に相談してください。</li>
                 <li>問題が送信中にだけ起きる場合は、電波の回り込みが原因かもしれません。USB ケーブルにチョークやフェライトを付けると改善することがあります。機器によっては特定のバンドでだけ回り込みの影響を受けるので、別のバンドで送信してみるのも一つの方法です。</li>
             </ul>
+            <p>
+                qFT8 が <span translate="no">CAT</span> で無線機と通信していて (<strong>設定 &gt; デバイス</strong> で選んだ無線機、または <span translate="no">AUTO</span> が見つけた無線機)、無線機が応答しないと、赤い警告 <strong><span translate="no">CAT</span>なし</strong> がスペクトログラム上 (および <strong>設定 &gt; デバイス</strong> の無線機の下) に表示されます。タップすると、qFT8 が接続で測定した内容と、そのケースで試すべきことがカードに表示されます:
+            </p>
+            <ul>
+                <li><strong>qFT8 が無線機を認識できません</strong>: 無線機の電源が切れている、ケーブルが抜けかかっている、ケーブルが充電専用 (USB データケーブルを使用)、アダプターやハブがデータを通さない、またはスマートフォンのシステム設定で <span translate="no">USB OTG</span> がオフになっている。コンピューターの場合: 無線機の USB ドライバーと、<strong>設定 &gt; デバイス設定</strong> で選んだポート。</li>
+                <li><strong>無線機は接続されていますが、qFT8 がそのポートを開けませんでした (権限がない、または別のプログラムが使用中です)</strong>: Android が確認してきたら qFT8 に USB デバイスの使用を許可し、無線機のポートを使っている他のプログラムを閉じてください。</li>
+                <li><strong>無線機が応答しません</strong> (1 バイトも戻らない): 無線機の電源が入っている、ケーブルが無線機の <span translate="no">CAT</span> 端子に接続されている、無線機の機種が正しい、無線機の <span translate="no">CAT</span> ボーレートが qFT8 と同じ (<strong>設定 &gt; デバイス設定 &gt; ボーレート</strong>)。<span translate="no">CAT RTS</span> メニューのある Yaesu 無線機: <span translate="no">DISABLE</span> に設定してください。Xiegu の無線機: インターフェースのデータ (<span translate="no">CI-V</span>) ケーブルは、オーディオケーブルだけでなく無線機の <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> ジャックに挿します。無線機の <span translate="no">CI-V</span> アドレスとボーレートは qFT8 と同じにします (カードに表示されます)。</li>
+                <li><strong>qFT8 自身のコマンドだけが戻ってきます</strong>: ケーブルまたはインターフェースが、無線機を介さずにデータを折り返している (Icom の <span translate="no">CI-V</span> ケーブルは無線機の電源が切れているとこうなります)。</li>
+                <li><strong>無線機は応答していますが、qFT8 が応答を読み取れません</strong>: ボーレートまたは無線機の機種が合っていません。</li>
+                <li><strong>送信中に無線機が応答しなくなります</strong>: RF 干渉。USB ケーブルとオーディオケーブルの両端付近にクリップ式フェライトコアを付け、テストとして出力を下げ (無線機側で設定)、アンテナと給電線にコモンモード電流がないか確認してください。</li>
+                <li><strong>無線機は応答していましたが、その後応答しなくなりました</strong>: 無線機の電源が切られたか、ケーブルが外れました。</li>
+            </ul>
+            <p><strong>再チェック</strong> は無線機に再接続してもう一度確認します。<strong>レポートを送信</strong> は、測定結果を無線機のコマンドログとともに送信します。</p>
 
             <h3 id="trouble-otg-charging">スマートフォンが満充電になるとトランシーバーが見えなくなる（Android）</h3>
             <p>

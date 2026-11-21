@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Juster spektrogrammets forskyvning</a></li>
                         <li><a href="#tx-limit">Grense for sammenhengende sending</a></li>
                         <li><a href="#remote-control">Webtjener for fjernstyring</a></li>
+                        <li><a href="#webserver-headless">Kjøre qFT8 uten skjerm (webtjener for fjernstyring)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log-protokollen</a></li>
@@ -639,8 +640,7 @@
                 <li><strong>Linux</strong>: porten ser ut som <code>/dev/ttyACM0</code> eller <code>/dev/ttyUSB0</code> og krever
                     gruppen ovenfor. Lydenhetene er lydtjenerens (PulseAudio eller PipeWire), så
                     radioens høyttaler, hodetelefonene dine og mikrofonen din kan hver være en annen enhet.
-                    Enhetsvolumets glidebryter bruker <code>pactl</code> fra pakken <code>pulseaudio-utils</code> (den
-                    fungerer også med PipeWire).</li>
+                    qFT8 når lydenhetene (og enhetsvolumets glidebryter) gjennom <code>pactl</code> og <code>parec</code> fra pakken <code>pulseaudio-utils</code> (de fungerer også med PipeWire): installer den, ellers hører qFT8 ofte ikke noe lydkort.</li>
             </ul>
 
             <h4>Å velge radio og port</h4>
@@ -769,7 +769,7 @@
                 <li><strong>Nettfjernstyringen.</strong> Dataprogrammet har den samme
                     <a href="#remote-control">webtjeneren for fjernstyring</a> som Android (av som standard, port 13497) og viser
                     de samme sidene, også volumglidebryteren. Bruk den til å betjene fra en telefon eller en annen datamaskin på
-                    nettverket ditt.</li>
+                    nettverket ditt. Den kan også kjøre uten vindu (<code>--webserver</code>, se <a href="#webserver-headless">Kjøre qFT8 uten skjerm (webtjener for fjernstyring)</a>), for en datamaskin uten skjerm.</li>
                 <li><strong>Bridgen.</strong> En datamaskin er den vanlige <a href="#bridge">bridgen</a>: radioen er koblet
                     til den, og qFT8 på en telefon, iPhone eller en annen datamaskin betjener den. Den kan også kjøre uten vindu
                     (<code>qFT8 --bridge</code>), for en datamaskin uten andre oppgaver.</li>
@@ -777,7 +777,7 @@
                     dem): <code>--list-devices</code> viser alle serielle porter og lydenheter qFT8 ser, og avslutter;
                     <code>--port &lt;device&gt;</code> angir standardporten (<code>COM3</code>,
                     <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> velger profilmappen;
-                    <code>--bridge</code> starter en bridge; <code>--video-mode=&lt;mode&gt;</code> tegner vinduet på en annen måte for den kjøringen, selv når qFT8 ikke kan åpnes langt nok til å endre <strong>Videomodus</strong> i Innstillinger (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tegner vinduet via OpenGL (se
+                    <code>--bridge</code> starter en bridge; <code>--webserver</code> kjører qFT8 uten vindu, med web-fjernkontrollen åpen; <code>--video-mode=&lt;mode&gt;</code> tegner vinduet på en annen måte for den kjøringen, selv når qFT8 ikke kan åpnes langt nok til å endre <strong>Videomodus</strong> i Innstillinger (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> tegner vinduet via OpenGL (se
                     <a href="#pc-trouble">Hvis noe ikke fungerer</a>).</li>
             </ul>
 
@@ -1820,7 +1820,7 @@
                         <li><strong>Nettverksradio</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Nettverksradio (eksperimentell)</strong> in <strong>Radiotilkobling</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>KOBLE TIL</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Port for lydstrømmen</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Lydkort</strong> under <strong>Lyd</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Adresse</strong>, the <strong>Radio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Brukernavn</strong> and <strong>Passord</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Radio</strong> says which radio, <strong>Som valgt under Enhet</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentell)</strong> in <strong>Radiotilkobling</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Velg en enhet</strong> under <strong>Bluetooth-enhet</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Som valgt under Enhet</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>KOBLE TIL</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimentell)</strong> in <strong>Radiotilkobling</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Velg en enhet</strong> under <strong>Bluetooth-enhet</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Som valgt under Enhet</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>KOBLE TIL</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1920,6 +1920,7 @@
                     låser opp <strong>USB-enhet</strong>, <strong>Baudhastighet</strong>, <strong>Databits</strong>,
                     <strong>Stoppbits</strong>, <strong>Paritet</strong> og hvordan radioen tastes (<strong>PTT</strong>:
                     med en CAT-kommando, eller RTS- eller DTR-linjen), med PTT-forsinkelsen før sending.
+                    Med RTS eller DTR velger <strong>PTT-port</strong> hvor den linjen er: <strong>Samme som CAT</strong> (radioens egen kabel) eller en annen seriell port, for en stasjon med <span translate="no">CAT</span> på én kabel og PTT på et annet grensesnitt (på en telefon begge adapterne via en USB-hub; ikke på iPhone).
                     <strong>Angi transceiver-modus ved initialisering og hver syklus</strong> holder radioen i riktig
                     modus. Et notat på hovedsiden sier fra når denne enheten har overstyringer.</li>
                 <li><strong>Frekvensinnstilling (denne radioen)</strong>: <a href="#tune-offset">Tune-spektrogramforskyvningen</a> og den
@@ -4513,9 +4514,9 @@
                     fra lokatoren din.</li>
                 <li>Hver linje i et minne, eller hver linje du skriver, er én ramme:
                     <span translate="no">BEACON</span> [kommentar] sender posisjonen din, avrundet til grad, fra lokatoren din
-                    (aldri mer nøyaktig enn lokatoren); <span translate="no">CALL: text</span> sender en melding til den
+                    (aldri mer nøyaktig enn lokatoren); <span translate="no">BEACON</span> bredde lengde [kommentar] sender en nøyaktig posisjon i desimalgrader, sør og vest negativ (<span translate="no">BEACON -34.3543 -58.2535</span> er 34.35 S, 58.25 W; bokstavene fungerer også: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> sender en melding til den
                     stasjonen; <span translate="no">STATUS text</span> en status; en linje som begynner med et
-                    <span translate="no">APRS</span>-tegn (<span translate="no">! = : &gt; ;</span>) sendes som den er.</li>
+                    <span translate="no">APRS</span>-tegn (<span translate="no">! = : &gt; ;</span>) sendes som den er. Under hvert minne i Innstillinger &gt; <span translate="no">Packet</span> sier en grå linje hva det sender ("Posisjon 34.35 S, 58.25 W", "Status: ..."); to tall skrevet uten <span translate="no">BEACON</span> sendes som en statustekst, ikke en posisjon, og en rød linje under minnet sier fra om det.</li>
                 <li>Rammene dine kommer fra anropssignalet ditt med <span translate="no">SSID</span>-en valgt i Innstillinger &gt;
                     <span translate="no">Packet</span> (skjermens tannhjul), gjennom digipeaterstien satt der
                     (<span translate="no">WIDE1-1,WIDE2-1</span> som standard, bare 2 m).</li>
@@ -5098,22 +5099,19 @@
                 <strong>HF uten konverter (direkte sampling)</strong> for å motta under 24 MHz på
                 <span translate="no">HF</span>-inngangen. qFT8 slår aldri på donglens bias-tee (antenneforsyning).
             </p>
-            <p>
-                <strong>Datamaskin, Linux</strong>: samme rad, samme innebygde driver. qFT8 overtar donglen fra TV-driveren
-                systemet laster for den av seg selv. Brukeren din trenger tillatelse til å åpne donglen; hvis statuslinjen sier
-                &ldquo;ingen tillatelse&rdquo;, legg til en regelfil én gang (for eksempel
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) med linjen
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> for noen eldre dongler), kjør
-                <code dir="ltr">sudo udevadm control --reload-rules</code> og sett donglen inn igjen.
+            <p id="rtl-stock-dongle">
+                <strong>En vanlig dongel trenger ikke omprogrammering.</strong> En dongel slik den kommer fra butikken virker: ingenting skrives til den, og qFT8 endrer aldri minnet (EEPROM). Det som teller er tunerbrikken: <span translate="no">R820T / R820T2 / R828D</span> virker; dongler med <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span>-tuner gjør ikke det, og statuslinjen sier det. <span translate="no">RTL-SDR Blog V4</span> gjenkjennes på navnet den har fra fabrikken; en <span translate="no">R828D</span>-dongel uten det navnet (for eksempel en V4 som har fått navnet overskrevet) får en advarsel i statuslinjen om at HF kanskje ikke virker. På macOS bruker du nettverksserveren (nedenfor) for enhver dongel.
             </p>
-            <p>
-                <strong>Datamaskin, Windows og macOS</strong>: qFT8 kan ennå ikke åpne donglen direkte. Kjør
-                <span translate="no">RTL-SDR</span>-nettverksserveren på samme datamaskin (eller på en annen, for eksempel en
-                <span translate="no">Raspberry Pi</span>) og velg <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                med adressen <code>127.0.0.1</code>, eller del donglen fra en telefon eller en Linux-datamaskin med
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Datamaskin, Linux</strong>: samme rad, samme innebygde driver. qFT8 overtar donglen fra TV-driveren som systemet selv laster for den. Brukeren din trenger tillatelse til å åpne donglen: mangler den, sier qFT8 fra i et kort så snart donglen settes inn, og <strong>FIKS DET</strong> legger til tillatelsen for deg. En terminal åpnes og ber om passordet ditt én gang (der det ikke finnes terminal, gjør systemets eget passordvindu det). Den skriver regelfilen <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, som gir den som bruker datamaskinen tilgang til <span translate="no">USB</span>-mottakere (<span translate="no">RTL-SDR, Airspy, HackRF</span>); donglen virker da med én gang, uten omstart og uten ny innlogging. Kortet viser også kommandoen, så du selv kan kjøre den i en terminal.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Datamaskin, Windows</strong>: samme rad, samme innebygde driver, via <span translate="no">WinUSB</span>-driveren som følger med Windows. Windows gir vanligvis en ny dongle ingen driver, eller en TV-driver som qFT8 ikke kan bruke. qFT8 oppdager det når donglen settes inn og tilbyr å sette den opp: trykk <strong>SETT OPP</strong> og tillat endringen i Windows' administratorvindu (én gang); donglen virker noen sekunder senere. Ingenting lastes ned, og ingen driver fra oss installeres: qFT8 bytter donglen over til Windows' egen <span translate="no">WinUSB</span>-driver. TV-programmer som trenger TV-driveren, ser ikke lenger donglen. Slik gir du den tilbake til Windows: høyreklikk i <strong>Enhetsbehandling</strong> på donglen under <strong>Universal Serial Bus devices</strong>, velg <strong>Uninstall device</strong> (la ruten om driveren stå uavkrysset) og deretter <strong>Action &gt; Scan for hardware changes</strong>. En Windows-oppdatering kan også sette TV-driveren tilbake; qFT8 tilbyr da oppsettet på nytt. Microsoft Store-versjonen kan ikke bytte drivere selv: høyreklikk i <strong>Enhetsbehandling</strong> på donglen (ofte &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), velg <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong> og deretter <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Datamaskin, macOS</strong>: qFT8 kan ennå ikke åpne donglen direkte. Kjør <span translate="no">RTL-SDR</span>-nettverksserveren på samme datamaskin (eller på en annen, for eksempel en <span translate="no">Raspberry Pi</span>) og velg <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> med adressen <code>127.0.0.1</code>, eller del donglen fra en telefon eller en datamaskin med <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Nettverksserveren for <span translate="no">RTL-SDR</span> og dens driver</h4>
             <p>
@@ -5214,7 +5212,7 @@
                 <li>Loggen beholder hver oppføring (uten grense) i en fil det bare legges til i, slik at en veldig lang logg ikke gjør appens oppstart tregere; siden leser bare de nyeste oppføringene og viser flere mens du ruller.</li>
                 <li>Med Ham-funksjonene av logges hver hørte <span translate="no">FT8, FT4, LQ ...</span>-stasjon (én gang i timen per stasjon og modus); med Ham-funksjonene på logges bare de komplette hørte QSO-ene. En stasjon du hører for første gang (aldri før i <span translate="no">SWL</span>-loggen din) har anropssignalet i cyan i stasjonslisten når Ham-funksjonene er av.</li>
                 <li>Signalmottakerne skriver det de identifiserer i loggen, én gang per stasjon per <span translate="no">UTC</span>-dag: skip (<span translate="no">AIS</span>), fly (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosonder, <span translate="no">NAVTEX</span>-stasjoner, <span translate="no">DSC</span>, tidsstasjoner, <span translate="no">NCDXF</span>-fyr, <span translate="no">ALE / ARDOP / PACTOR</span>- og <span translate="no">APRS</span>-anropssignaler, værfaks- og værsatellittbilder, og <span translate="no">FM</span>-stasjoner med <span translate="no">RDS</span>-koden og navnet sitt. De teller for <span translate="no">SWL</span>-diplomene; de sendes aldri til eQSL og er ikke i <span translate="no">ADIF</span>-eksporten (<span translate="no">CSV</span> har dem, med det hørte navnet i siste kolonne).</li>
-                <li>Opplastinger følger én regel: eQSL-<span translate="no">SWL</span>-kontoen arkiverer hver hørte stasjon under den kontoen (en ham-eQSL-konto avvises); <span translate="no">PSK Reporter</span> og <span translate="no">WSPRnet</span> rapporterer under anropssignalet ditt, ellers <span translate="no">SWL</span>-ID-en din.</li>
+                <li>Opplastinger følger én regel: eQSL-<span translate="no">SWL</span>-kontoen arkiverer hver hørte stasjon under den kontoen (en ham-eQSL-konto avvises); <span translate="no">PSK Reporter</span> og <span translate="no">WSPRnet</span> rapporterer hvert spot under anropssignalet ditt og under <span translate="no">SWL</span>-ID-en din, hver av dem som er satt; Innstillinger viser navnene under hver boks.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Er denne SDR-en din?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Hvem sin mottaker</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Denne serveren er min</strong> in its rows, the same answer as <strong>Er denne SDR-en din?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5529,6 +5527,70 @@
                     <p><strong>Merk:</strong> Webtjeneren virker med skjermen av hvis innstillingene for kjøring i bakgrunnen er slått på (som standard fortsetter <span translate="no">qFT8</span> å kjøre i bakgrunnen når den er koblet til en transceiver).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Kjøre qFT8 uten skjerm (webtjener for fjernstyring)</h3>
+                <p>
+                    Dataprogrammet kan også kjøre helt uten vindu, på en datamaskin som ikke har skjerm: en Raspberry Pi ved siden av radioen, en liten tjener eller en hvilken som helst datamaskin du når via SSH. qFT8 gjør da alt som vanlig (lyd, radiostyring, dekoding, <span translate="no">AUTO</span>, logging, opplastinger), og du betjener det fra en nettleser gjennom <a href="#remote-control">webtjeneren for fjernstyring</a>, på en telefon, et nettbrett eller en annen datamaskin på nettverket ditt.
+                </p>
+
+                <h4>Webtjener eller bridge?</h4>
+                <p>Begge kjører uten skjerm. Forskjellen er hvilken enhet som gjør jobben:</p>
+                <ul>
+                    <li><strong>Webtjener</strong> (<code>--webserver</code>): datamaskinen som kjører qFT8 dekoder, sender og logger; nettleseren viser det bare og har knappene. Passer for en kraftig datamaskin hjemme som du styrer fra telefonen.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, se <a href="#bridge">qFT8 bridge</a>): enheten ved radioen sender bare radioens kommandoer og lyd videre over nettverket ditt, og qFT8 på enheten du betjener fra (dataprogrammet, Android-appen eller iPhone/iPad-appen) dekoder. Passer for en Raspberry Pi ved radioen, der din egen datamaskin gjør jobben.</li>
+                </ul>
+                <p>De to kan ikke kjøre samtidig.</p>
+
+                <h4>Sett det opp først</h4>
+                <p>
+                    qFT8 bruker de lagrede innstillingene sine nøyaktig som med vinduet: kallesignal, lokator, radio, lydenheter, moduser, logging og QSO-opplastingstjenestene. Med <a href="#raw-message-logs">Rå meldingslogger</a> avkrysset fortsetter det for eksempel å skrive .tsv-filene sine. Sett derfor opp qFT8 først: start det én gang med vinduet på den datamaskinen (eller kopier profilmappen fra en annen datamaskin, se <a href="#pc-settings">Innstillinger: hvor de ligger, og flytting fra en telefon</a>), eller start det uten skjerm og sett det opp fra Innstillinger i web-fjernkontrollen, som lagrer dem som vanlig.
+                </p>
+
+                <h4>Starte det</h4>
+                <p>I en terminal på den datamaskinen (via SSH går fint), i qFT8-mappen:</p>
+                <ul>
+                    <li><strong>Linux</strong>, også en Raspberry Pi: <code>./qFT8 --webserver</code>. Med .jar-nedlastingen og Java 21 eller nyere: <code>java -jar</code>, navnet på .jar-filen og <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminalen sier at qFT8 kjører uten vindu, at <span translate="no">TX</span> er av og om siden ber om passord, og viser den private lenken til web-fjernkontrollen: åpne den i en nettleser på samme nettverk. Delen etter <code>#k=</code> er nøkkelen til lenken: hold den privat. Den vises bare på terminalen og skrives aldri til loggfilen til qFT8. <code>Ctrl+C</code> stopper qFT8 og setter radioen tilbake til mottak.
+                </p>
+                <p>
+                    <span translate="no">TX</span> er alltid av når qFT8 starter slik. Bare <span translate="no">TX</span>-knappen i web-fjernkontrollen slår det på.
+                </p>
+
+                <h4>Valg</h4>
+                <p>
+                    Hvert valg endrer én innstilling bare for den ene kjøringen: ingenting lagres, og uten valg brukes de lagrede innstillingene. <code>qFT8 --webserver --help</code> lister dem.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: porten til web-fjernkontrollen, 1024 til 65534 (13497 hvis du ikke har endret den).</li>
+                    <li><code>--bind ADDRESS</code>: lytt bare på den adressen til datamaskinen.</li>
+                    <li><code>--password TEXT</code>, eller <code>--password-file FILE</code> (første linje i filen; tryggere, fordi andre brukere av datamaskinen kan se en kommandolinje), eller <code>--no-password</code>.</li>
+                    <li><code>--https</code> eller <code>--no-https</code>: den sikre adressen (porten + 1) en nettleser trenger for å bruke mikrofonen sin.</li>
+                    <li><code>--access read</code>, <code>stop</code> eller <code>full</code>: hva siden får gjøre: bare se, se og stoppe <span translate="no">TX</span>, eller alt.</li>
+                    <li><code>--audio-in NAME</code> og <code>--audio-out NAME</code>: radioens lydenheter, med navnet <code>qFT8 --list-devices</code> viser, eller <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: radioen (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...) og <code>--port DEVICE</code>: den serielle porten (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: profilmappen som skal brukes.</li>
+                </ul>
+                <p>
+                    Hvis porten er tatt av et annet program, eller en annen qFT8 allerede bruker den samme profilmappen, sier qFT8 fra på terminalen og stopper.
+                </p>
+
+                <h4>Eksempel: en Raspberry Pi</h4>
+                <p>
+                    Radioen er koblet til Pi-en med USB, og qFT8 er satt opp én gang (med skjerm på Pi-en, eller fra web-fjernkontrollen). Fra en annen datamaskin:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Åpne så lenken den viser på telefonen din. En Raspberry Pi 4 eller 5 dekoder <span translate="no">FT8</span> i tide; en raskere datamaskin finner flere av de svakeste signalene.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Tilbake til innholdet</a>
             </section>
 
             <section id="bridge">
@@ -6086,6 +6148,19 @@
                 <li>På Linux: Sier qFT8 at den ikke har tillatelse til å åpne radioens port, tar du imot tilbudet om å ordne det (kontoen din blir med i portens gruppe), eller spør systemadministratoren din.</li>
                 <li>Oppstår problemene nettopp mens du sender, kan det skyldes HF-innstråling. Drosler eller ferritter på USB-kabelen kan hjelpe. Du kan også prøve å sende på et annet bånd, for noen enheter er bare følsomme for innstråling på bestemte bånd.</li>
             </ul>
+            <p>
+                Når qFT8 snakker med en radio over <span translate="no">CAT</span> (en radio valgt i <strong>Innstillinger &gt; Enhet</strong>, eller en som <span translate="no">AUTO</span> fant) og radioen ikke svarer, vises den røde advarselen <strong>Ingen <span translate="no">CAT</span></strong> på spektrogrammet (og under radioen i <strong>Innstillinger &gt; Enhet</strong>). Trykk på den: kortet sier hva qFT8 målte på forbindelsen og lister hva du kan prøve i det tilfellet:
+            </p>
+            <ul>
+                <li><strong>Ingen radio funnet</strong>: radioen er av, kabelen sitter løst, kabelen bare lader (bruk en USB-datakabel), en adapter eller hub slipper ikke gjennom data, eller <span translate="no">USB OTG</span> er slått av i telefonens systeminnstillinger. På en datamaskin: radioens USB-driver og porten valgt i <strong>Innstillinger &gt; Enhetskonfigurasjon</strong>.</li>
+                <li><strong>Porten kunne ikke åpnes</strong>: la qFT8 bruke USB-enheten når Android spør, og lukk andre programmer som bruker radioens port.</li>
+                <li><strong>Radioen svarer ikke</strong>: (ikke en eneste byte tilbake): radioen er på, kabelen sitter i <span translate="no">CAT</span>-kontakten, radiomodellen er riktig, og radioens <span translate="no">CAT</span>-baudhastighet er den samme som qFT8s (<strong>Innstillinger &gt; Enhetskonfigurasjon &gt; Baudhastighet</strong>). Yaesu-radioer med en <span translate="no">CAT RTS</span>-meny: sett den til <span translate="no">DISABLE</span>. Xiegu-radioer: grensesnittets datakabel (<span translate="no">CI-V</span>) skal i radioens <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span>-kontakt, ikke bare lydkabelen, og radioens <span translate="no">CI-V</span>-adresse og baudhastighet er de samme som i qFT8 (kortet viser dem).</li>
+                <li><strong>Bare qFT8s egne kommandoer kommer tilbake</strong>: kabelen eller grensesnittet sender data tilbake uten radioen (en Icom <span translate="no">CI-V</span>-kabel gjør dette mens radioen er av).</li>
+                <li><strong>Uleselige svar</strong>: baudhastigheten eller radiomodellen stemmer ikke.</li>
+                <li><strong>Slutter å svare under sending</strong>: RF-støy. Sett ferrittkjerner på USB- og lydkablene nær begge ender, prøv lavere effekt (stilles inn på radioen) som test, og sjekk antennen og matelinjen for common-mode-strøm.</li>
+                <li><strong>Svarte, så sluttet</strong>: radioen ble slått av, eller kabelen løsnet.</li>
+            </ul>
+            <p><strong>SJEKK PÅ NYTT</strong> kobler til radioen igjen og sjekker en gang til; <strong>SEND RAPPORT</strong> sender oss det som ble målt, med radioens kommandologg.</p>
 
             <h3 id="trouble-otg-charging">Transceiveren forsvinner når telefonen er fulladet (Android)</h3>
             <p>

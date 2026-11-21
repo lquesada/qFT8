@@ -136,6 +136,7 @@ const langData = {
     "BTN_APPSTORE_ALT": "App Store에서 다운로드",
     "FEAT2_OWN": "처음부터 직접 작성한 자체 디코더와 인코더",
     "FEAT2_RAWLOG": "디코딩된 모든 메시지 기록",
+    "FEAT2_HEADLESS": "화면 없이 원격 제어 웹 서버로 실행 (예: Raspberry Pi)",
     "FAQ_TITLE": "질문과 답변",
     "FAQ_Q1": "qFT8이란 무엇인가요?",
     "FAQ_A1": "qFT8은 약신호 디지털 모드, 모스, 텔레타이프, 이미지, 음성을 위한 무료 아마추어 무선 프로그램입니다. Android 휴대폰과 태블릿, iOS, Windows, macOS, Linux에서 실행되며 어떤 브라우저에서도 제어할 수 있습니다. 광고가 없고 계정이 필요 없습니다. Luis Quesada Torres, HB9IPH가 만들었으며, 처음부터 직접 작성한 자체 디코더와 인코더를 사용합니다.",

@@ -171,6 +171,7 @@
                         <li><a href="#tune-offset">Offset penalaan spektrogram</a></li>
                         <li><a href="#tx-limit">Batas pancaran terus-menerus</a></li>
                         <li><a href="#remote-control">Server Web Kontrol Jarak Jauh</a></li>
+                        <li><a href="#webserver-headless">Menjalankan qFT8 tanpa layar (server web remote)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protokol qFT8log</a></li>
@@ -649,8 +650,7 @@
                 <li><strong>Linux</strong>: port terlihat seperti <code>/dev/ttyACM0</code> atau <code>/dev/ttyUSB0</code>
                     dan memerlukan grup di atas. Perangkat suaranya adalah milik sound server (PulseAudio atau PipeWire),
                     sehingga speaker radio, headphone Anda, dan mikrofon Anda masing-masing dapat berupa perangkat yang
-                    berbeda. Penggeser volume perangkat memakai <code>pactl</code>, dari paket
-                    <code>pulseaudio-utils</code> (berfungsi juga dengan PipeWire).</li>
+                    berbeda. qFT8 menjangkau perangkat suara (dan penggeser volume perangkat) melalui <code>pactl</code> dan <code>parec</code>, dari paket <code>pulseaudio-utils</code> (berfungsi juga dengan PipeWire): pasang paket itu, atau qFT8 sering tidak mendengar kartu suara apa pun.</li>
             </ul>
 
             <h4>Memilih radio dan portnya</h4>
@@ -783,7 +783,7 @@
                 <li><strong>Remote web.</strong> Program komputer punya <a href="#remote-control">Server Web Kendali
                     Jarak Jauh</a> yang sama seperti Android (mati secara bawaan, port 13497) dan menampilkan halaman yang
                     sama, termasuk penggeser volume. Pakailah untuk mengoperasikan dari ponsel atau komputer lain di
-                    jaringan Anda.</li>
+                    jaringan Anda. Program ini juga bisa berjalan tanpa jendela (<code>--webserver</code>, lihat <a href="#webserver-headless">Menjalankan qFT8 tanpa layar (server web remote)</a>), untuk komputer tanpa layar.</li>
                 <li><strong>Bridge.</strong> Komputer adalah <a href="#bridge">bridge</a> yang lazim: radio dicolokkan
                     ke dalamnya, dan qFT8 di ponsel, iPhone, atau komputer lain mengoperasikannya. Ia juga dapat berjalan
                     tanpa jendela (<code>qFT8 --bridge</code>), untuk komputer yang tidak punya tugas lain.</li>
@@ -791,7 +791,7 @@
                     menampilkannya): <code>--list-devices</code> mendaftar setiap port serial dan perangkat suara yang
                     dilihat qFT8 lalu keluar; <code>--port &lt;perangkat&gt;</code> mengatur port serial bawaan
                     (<code>COM3</code>, <code>/dev/ttyACM0</code>); <code>--qft8_profile &lt;folder&gt;</code> memilih
-                    folder profil; <code>--bridge</code> memulai bridge; <code>--video-mode=&lt;mode&gt;</code> menggambar jendela dengan cara lain untuk satu kali jalan itu, bahkan saat qFT8 tidak bisa dibuka sampai cukup jauh untuk mengubah <strong>Mode video</strong> di Pengaturan (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> menggambar jendela lewat
+                    folder profil; <code>--bridge</code> memulai bridge; <code>--webserver</code> menjalankan qFT8 tanpa jendela, dengan remote web terbuka; <code>--video-mode=&lt;mode&gt;</code> menggambar jendela dengan cara lain untuk satu kali jalan itu, bahkan saat qFT8 tidak bisa dibuka sampai cukup jauh untuk mengubah <strong>Mode video</strong> di Pengaturan (Windows: <code>default</code>, <code>d3d</code>, <code>gdi</code>; Linux: <code>default</code>, <code>xrender</code>, <code>opengl</code>, <code>x11</code>); <code>--opengl</code> menggambar jendela lewat
                     OpenGL (lihat <a href="#pc-trouble">Jika ada yang tidak berfungsi</a>).</li>
             </ul>
 
@@ -1848,7 +1848,7 @@
                         <li><strong>Radio jaringan</strong> (experimental, in DEVICE CONFIGURATION; the web remote shows it read only): choosing <strong>Radio jaringan (eksperimental)</strong> in <strong>Koneksi radio</strong> uses a radio reached over the network with its own protocol, with no cable and no sound card: <span translate="no">TCI</span> (the <span translate="no">SDR</span> programs and radios that serve it: frequency, mode, <span translate="no">PTT</span> and the audio both ways) or <span translate="no">FlexRadio SmartSDR</span> (6000 / 8000 / Aurora: one slice, <span translate="no">DAX</span> audio both ways; found on the network by itself on the phone and the computer). Type the address (name or IP, optionally <code>:port</code>), the receiver or <span translate="no">DAX</span> channel and press <strong>SAMBUNGKAN</strong>. <span translate="no">FT8</span> and the other timed modes transmit through it; the voice, <span translate="no">CW</span>, <span translate="no">RTTY</span> and <span translate="no">SSTV</span> modes do not yet (&ldquo;This mode cannot transmit through a network radio yet.&rdquo;). qFT8 never changes the radio's power, never keys a server that says it cannot transmit, and a lost connection turns <span translate="no">TX</span> <span translate="no">OFF</span>. It has only been tried against simulated servers so far.</li>
                         <li><strong>Rig servers and SDR programs</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Rig server (rigctl protocol)</span></strong> and <strong><span translate="no">FLrig (XML-RPC)</span></strong> drive a radio that another program controls (default ports 4532 and 12345): qFT8 tunes, sets the mode and keys it through that program; the audio comes from your sound card, as with a cable, and the transmit power is only read, never set. In <span translate="no">FLrig</span>, turn on its own <span translate="no">PTT</span> via <span translate="no">CAT</span>. <strong><span translate="no">SDR++ (rigctl + network audio)</span></strong> is receive only: qFT8 follows and sets its frequency and demodulator through its <span translate="no">Rigctl Server</span> module (port 4532) and takes the audio from its <span translate="no">Network</span> sink at 48000 Hz, mono or stereo: <span translate="no">TCP</span> (qFT8 connects to it; <strong>Port aliran audio</strong> 7355 by default) or <span translate="no">UDP</span> (the program sends to this device's address and that port); choose <strong>Kartu suara</strong> under <strong>Audio</strong> to use a cable instead. Works with <span translate="no">rigctld</span>, <span translate="no">FLrig</span> and <span translate="no">SDR++</span>; tried against the real <span translate="no">FLrig</span> and <span translate="no">SDR++</span> programs, not yet with a real radio.</li>
                         <li><strong>More network radios</strong> (experimental, the same rows, another <strong>Metode</strong>): <strong><span translate="no">Icom LAN / Wi-Fi</span></strong> (<span translate="no">IC-705, IC-9700, IC-7610, IC-7300 MKII, IC-R8600, IC-905, IC-7851</span> and the <span translate="no">Xiegu X6100 / X6200</span> with open firmware) and <strong><span translate="no">Kenwood LAN</span></strong> (<span translate="no">TS-890S, TS-990S</span>) ask for the <strong>Alamat</strong>, the <strong>Radio</strong> (the model; <span translate="no">IC-705</span> and <span translate="no">TS-890S</span> first), the radio&#39;s own <strong>Nama pengguna</strong> and <strong>Kata sandi</strong>: Icom LAN also carries the audio over the network, Kenwood LAN takes it from your sound card. <strong><span translate="no">Elecraft K4 Ethernet</span></strong>, <strong><span translate="no">CAT over TCP (adapter)</span></strong> (a serial-to-network adapter; <strong>Radio</strong> says which radio, <strong>Seperti dipilih di Perangkat</strong> uses the one chosen in the Device row), <strong><span translate="no">X6100 companion server</span></strong> and <strong><span translate="no">QuantumSDR (UDP)</span></strong> ask for the address (and the radio) only. qFT8 sends the radio&#39;s own <span translate="no">CAT</span> commands, never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Tried only against simulated radios so far; the <span translate="no">QuantumSDR</span> format is an assumption until its maker confirms it.</li>
-                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimental)</strong> in <strong>Sambungan radio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Pilih perangkat</strong> under <strong>Perangkat Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Seperti dipilih di Perangkat</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>SAMBUNGKAN</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. Not yet tried with real radios.</li>
+                        <li><strong>Bluetooth radio</strong> (experimental): choosing <strong>Bluetooth (eksperimental)</strong> in <strong>Sambungan radio</strong> reaches a radio whose <span translate="no">CAT</span> runs over Bluetooth, with no USB cable. On the phone pair the radio in the system&#39;s Bluetooth settings first, then press <strong>Pilih perangkat</strong> under <strong>Perangkat Bluetooth</strong> and choose it (on the iPhone the list is a few seconds of Bluetooth scan and the system asks for permission the first time; on the computer it lists the serial ports of the paired radios). On the iPhone and iPad qFT8 reaches a radio&#39;s <span translate="no">CAT</span> link only when the radio uses Bluetooth Low Energy, because Apple does not let apps use classic Bluetooth for that; a radio that pairs with the iPhone for audio may therefore still not appear in the Bluetooth scan. On Android and on the computer, classic Bluetooth radios work. Under <strong>Radio</strong>, <strong>Seperti dipilih di Perangkat</strong> uses the radio chosen in the Device row, or pick another model, then press <strong>SAMBUNGKAN</strong>. On Android 12 and later qFT8 asks for the Nearby devices permission at that moment, never at start-up; if you refuse it, the connection stays as it was. Audio comes from your sound card, or from a Bluetooth headset chosen as the audio device on Android; Bluetooth audio is narrowband, so a cable decodes weak signals better. Set a <span translate="no">TX</span> time-out on the radio itself. qFT8 never changes the radio&#39;s power, and a lost link turns <span translate="no">TX</span> <span translate="no">OFF</span> and does not turn it on again by itself. If the radio stops answering qFT8&#39;s <span translate="no">CAT</span> commands during 2 transmissions in a row while the Bluetooth link stays up, qFT8 turns <span translate="no">TX</span> <span translate="no">OFF</span>, reconnects the Bluetooth link once and tells you in a window whether the radio answers again; press <span translate="no">TX ON</span> to transmit again (USB and network radios are not affected). Not yet tried with real radios.</li>
                     </ul>
                 </li>
                 <li><strong>QSO</strong> and <strong>SWL</strong> (the two buttons at the very top of Settings, experimental; QSO with the Ham features on, SWL with <span translate="no">SWL</span> on): each shows a star and the stars you have earned; tap the QSO or SWL button to open its live diploma (see <a href="#awards">Awards</a>).</li>
@@ -1929,7 +1929,8 @@
                     Changing it closes the old connection and connects the radio the new way; it never turns
                     <span translate="no">TX</span> on. The web remote's settings page has the same choice.</li>
             <li><strong>Pengaturan Audio</strong>: <strong>Sistem audio</strong>, <strong>Dupleks penuh</strong>, <strong>Sumber input audio</strong> (pada ponsel yang menawarkannya, <em>Unprocessed</em> terbaik untuk sinyal lemah, dengan AGC radio dimatikan), perangkat suara radio (<strong>Input dari Perangkat Radio</strong>, <strong>Output ke Perangkat Radio</strong>) dan ukuran buffer-nya, <strong>Hasilkan nada dengan volume</strong> (level audio TX), volume perangkat saat memakai radio dan saat memakai speaker, serta <strong>Tampilkan peringatan glitch buffer audio</strong>. Biarkan di <span translate="no">AUTO</span> kecuali ada yang tidak berfungsi.</li>
-            <li><strong>Pengaturan Perangkat</strong>, untuk radio yang terhubung lewat USB: <strong>Izinkan menimpa pengaturan</strong> membuka kunci <strong>Perangkat USB</strong>, <strong>Kecepatan Baud</strong>, <strong>Bit Data</strong>, <strong>Bit Berhenti</strong>, <strong>Paritas</strong> dan cara radio dipancarkan (<strong>PTT</strong>: dengan perintah CAT, atau saluran RTS atau DTR), dengan jeda PTT sebelum memancar. <strong>Atur mode transceiver saat inisialisasi dan setiap siklus</strong> menjaga radio di mode yang benar. Sebuah catatan di halaman utama menyebutkan bila perangkat ini memiliki penggantian pengaturan.</li>
+            <li><strong>Pengaturan Perangkat</strong>, untuk radio yang terhubung lewat USB: <strong>Izinkan menimpa pengaturan</strong> membuka kunci <strong>Perangkat USB</strong>, <strong>Kecepatan Baud</strong>, <strong>Bit Data</strong>, <strong>Bit Berhenti</strong>, <strong>Paritas</strong> dan cara radio dipancarkan (<strong>PTT</strong>: dengan perintah CAT, atau saluran RTS atau DTR), dengan jeda PTT sebelum memancar. Dengan RTS atau DTR, <strong>Port PTT</strong> memilih di mana jalur itu berada: <strong>Sama dengan CAT</strong> (kabel radio itu sendiri) atau port serial kedua, untuk stasiun dengan CAT di satu kabel dan PTT di antarmuka lain (di ponsel, kedua adaptor lewat hub USB; tidak di iPhone).
+                    <strong>Atur mode transceiver saat inisialisasi dan setiap siklus</strong> menjaga radio di mode yang benar. Sebuah catatan di halaman utama menyebutkan bila perangkat ini memiliki penggantian pengaturan.</li>
             <li><strong>Penalaan (radio ini)</strong>: <a href="#tune-offset">Offset penalaan spektrogram</a> dan <a href="#tx-limit">Batas pancaran terus-menerus</a>.</li>
             </ul>
 
@@ -4518,9 +4519,9 @@
                     dari locator Anda.</li>
                 <li>Setiap baris sebuah memori, atau setiap baris yang Anda ketik, adalah satu frame:
                     <span translate="no">BEACON</span> [komentar] mengirim posisi Anda, hingga derajat, dari locator Anda
-                    (tidak pernah lebih tepat daripada locator); <span translate="no">CALL: text</span> mengirim pesan ke stasiun
+                    (tidak pernah lebih tepat daripada locator); <span translate="no">BEACON</span> lintang bujur [komentar] mengirim posisi tepat dalam derajat desimal, Selatan dan Barat negatif (<span translate="no">BEACON -34.3543 -58.2535</span> berarti 34.35 S, 58.25 W; hurufnya juga bisa: <span translate="no">BEACON 34.3543S 58.2535W</span>); <span translate="no">CALL: text</span> mengirim pesan ke stasiun
                     tersebut; <span translate="no">STATUS text</span> sebuah status; baris yang diawali karakter
-                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) dikirim apa adanya.</li>
+                    <span translate="no">APRS</span> (<span translate="no">! = : &gt; ;</span>) dikirim apa adanya. Di bawah setiap memori di Pengaturan &gt; <span translate="no">Packet</span>, satu baris abu-abu menjelaskan apa yang dikirimnya ("Posisi 34.35 S, 58.25 W", "Status: ..."); dua angka yang ditulis tanpa <span translate="no">BEACON</span> keluar sebagai teks status, bukan posisi, dan satu baris merah di bawah memori menyatakannya.</li>
                 <li>Frame Anda berasal dari tanda panggil Anda dengan <span translate="no">SSID</span> yang dipilih di Pengaturan &gt;
                     <span translate="no">Packet</span> (roda gigi pada layar), melalui jalur digipeater yang diatur di sana
                     (<span translate="no">WIDE1-1,WIDE2-1</span> secara bawaan, hanya 2 m).</li>
@@ -5102,22 +5103,19 @@
                 <strong>HF tanpa konverter (sampling langsung)</strong> untuk menerima di bawah 24 MHz pada
                 masukan <span translate="no">HF</span>-nya. qFT8 tidak pernah menyalakan bias tee dongle (daya antena).
             </p>
-            <p>
-                <strong>Komputer, Linux</strong>: baris yang sama, driver bawaan yang sama. qFT8 mengambil dongle dari driver TV
-                yang dimuat sistem sendiri untuknya. Pengguna Anda perlu izin untuk membuka dongle; jika baris status berbunyi
-                &ldquo;tidak ada izin&rdquo;, tambahkan satu kali sebuah berkas aturan (misalnya
-                <code>/etc/udev/rules.d/20-rtlsdr.rules</code>) dengan baris
-                <code dir="ltr">SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2838", MODE="0666"</code>
-                (<code>2832</code> untuk beberapa dongle lama), jalankan
-                <code dir="ltr">sudo udevadm control --reload-rules</code> dan colokkan dongle lagi.
+            <p id="rtl-stock-dongle">
+                <strong>Dongle standar tidak perlu di-flash.</strong> Dongle sebagaimana datang dari toko berfungsi: tidak ada yang ditulis ke dalamnya, dan qFT8 tidak pernah mengubah memorinya (EEPROM). Yang penting adalah chip tunernya: <span translate="no">R820T / R820T2 / R828D</span> berfungsi; dongle dengan tuner <span translate="no">E4000 / FC0012 / FC0013 / FC2580</span> tidak, dan baris status menyebutkannya. <span translate="no">RTL-SDR Blog V4</span> dikenali dari nama yang dibawanya dari pabrik; dongle <span translate="no">R828D</span> tanpa nama itu (misalnya V4 yang namanya ditulis ulang) mendapat peringatan di baris status bahwa HF mungkin tidak berfungsi. Di macOS, gunakan server jaringan (di bawah) untuk dongle apa pun.
             </p>
-            <p>
-                <strong>Komputer, Windows dan macOS</strong>: dongle belum dapat dibuka langsung oleh qFT8. Jalankan
-                server jaringan <span translate="no">RTL-SDR</span> di komputer yang sama (atau di komputer lain, seperti
-                <span translate="no">Raspberry Pi</span>) dan pilih <strong><span translate="no">SDR: RTL-SDR (network)</span></strong>
-                dengan alamat <code>127.0.0.1</code>, atau layani dongle dari ponsel atau komputer Linux dengan
-                <a href="#bridge">qFT8 bridge</a>.
+            <p id="rtl-usb-linux">
+                <strong>Komputer, Linux</strong>: baris yang sama, driver bawaan yang sama. qFT8 mengambil dongle dari driver TV yang dimuat sistem sendiri untuknya. Pengguna Anda memerlukan izin untuk membuka dongle: jika belum punya, qFT8 menyatakannya dalam kartu begitu dongle dicolokkan, dan <strong>PERBAIKI</strong> menambahkan izin untuk Anda. Terminal terbuka dan meminta kata sandi Anda sekali (jika tidak ada terminal, jendela kata sandi sistem sendiri yang melakukannya). Ia menulis berkas aturan <code dir="ltr">/etc/udev/rules.d/60-qft8-usb-sdr.rules</code>, yang memberi orang yang memakai komputer akses ke penerima <span translate="no">USB</span> (<span translate="no">RTL-SDR, Airspy, HackRF</span>); dongle lalu langsung bekerja, tanpa restart dan tanpa login ulang. Kartu juga menampilkan perintahnya, agar Anda jalankan sendiri di terminal.
             </p>
+            <p id="rtl-usb-windows">
+                <strong>Komputer, Windows</strong>: baris yang sama, driver bawaan yang sama, melalui driver <span translate="no">WinUSB</span> yang disertakan Windows. Windows biasanya tidak memberi dongle baru driver apa pun, atau memberi driver TV yang tidak dapat dipakai qFT8. qFT8 menyadarinya saat dongle dicolokkan dan menawarkan untuk menyiapkannya: tekan <strong>ATUR</strong> dan izinkan perubahan di jendela administrator Windows (sekali); dongle bekerja beberapa detik kemudian. Tidak ada yang diunduh dan tidak ada driver kami yang dipasang: qFT8 mengalihkan dongle ke driver <span translate="no">WinUSB</span> milik Windows sendiri. Program TV yang memerlukan driver TV tidak lagi melihat dongle. Untuk mengembalikannya ke Windows: di <strong>Device Manager</strong>, klik kanan dongle di bawah <strong>Universal Serial Bus devices</strong>, pilih <strong>Uninstall device</strong> (biarkan kotak tentang driver tidak dicentang), lalu <strong>Action &gt; Scan for hardware changes</strong>. Pembaruan Windows juga dapat mengembalikan driver TV; qFT8 lalu menawarkan penyiapan lagi. Versi Microsoft Store tidak dapat mengubah driver sendiri: di <strong>Device Manager</strong>, klik kanan dongle (sering &ldquo;Bulk-In, Interface (Interface 0)&rdquo;), pilih <strong>Update driver &gt; Browse my computer for drivers &gt; Let me pick from a list of available drivers</strong>, lalu <strong>Universal Serial Bus devices &gt; WinUsb Device</strong>.
+            </p>
+            <p id="rtl-usb-macos">
+                <strong>Komputer, macOS</strong>: dongle belum dapat dibuka langsung oleh qFT8. Jalankan server jaringan <span translate="no">RTL-SDR</span> di komputer yang sama (atau di komputer lain, seperti <span translate="no">Raspberry Pi</span>) dan pilih <strong><span translate="no">SDR: RTL-SDR (network)</span></strong> dengan alamat <code>127.0.0.1</code>, atau layani dongle dari ponsel atau komputer dengan <a href="#bridge">qFT8 bridge</a>.
+            </p>
+
 
             <h4 id="swl-drivers">Server jaringan <span translate="no">RTL-SDR</span> dan drivernya</h4>
             <p>
@@ -5218,7 +5216,7 @@
                 <li>Log menyimpan setiap entri (tanpa batas) dalam berkas yang hanya ditambah, sehingga log yang sangat panjang tidak memperlambat awal aplikasi; halaman hanya membaca entri terbaru dan menampilkan lebih banyak saat Anda menggulir.</li>
                 <li>Dengan fitur Ham nonaktif, setiap stasiun <span translate="no">FT8, FT4, LQ ...</span> yang terdengar dicatat (sekali per jam per stasiun dan mode); dengan fitur Ham aktif, hanya QSO lengkap yang terdengar yang dicatat. Stasiun yang pertama kali Anda dengar (belum pernah ada di log <span translate="no">SWL</span> Anda) memiliki tanda panggilan berwarna cyan di daftar Stasiun saat fitur Ham nonaktif.</li>
                 <li>Penerima sinyal menulis apa yang mereka identifikasi ke log, sekali per stasiun per hari <span translate="no">UTC</span>: kapal (<span translate="no">AIS</span>), pesawat (<span translate="no">ADS-B</span>, <span translate="no">UAT</span>), radiosonde, stasiun <span translate="no">NAVTEX</span>, <span translate="no">DSC</span>, stasiun waktu, suar <span translate="no">NCDXF</span>, tanda panggilan <span translate="no">ALE / ARDOP / PACTOR</span> dan <span translate="no">APRS</span>, gambar faks cuaca dan satelit cuaca, dan stasiun <span translate="no">FM</span> menurut kode <span translate="no">RDS</span> dan namanya. Semuanya dihitung untuk penghargaan <span translate="no">SWL</span>; tidak pernah dikirim ke eQSL dan tidak ada dalam ekspor <span translate="no">ADIF</span> (<span translate="no">CSV</span> memilikinya, dengan nama yang terdengar di kolom terakhir).</li>
-                <li>Unggahan mengikuti satu aturan: akun eQSL <span translate="no">SWL</span> mengarsipkan setiap stasiun yang terdengar di bawah akun itu (akun eQSL ham ditolak); <span translate="no">PSK Reporter</span> dan <span translate="no">WSPRnet</span> melapor atas nama tanda panggilan Anda, jika tidak atas id <span translate="no">SWL</span> Anda.</li>
+                <li>Unggahan mengikuti satu aturan: akun eQSL <span translate="no">SWL</span> mengarsipkan setiap stasiun yang terdengar di bawah akun itu (akun eQSL ham ditolak); <span translate="no">PSK Reporter</span> dan <span translate="no">WSPRnet</span> melaporkan setiap spot atas tanda panggilan Anda dan atas id <span translate="no">SWL</span> Anda, masing-masing yang diisi; Pengaturan menampilkan nama-namanya di bawah setiap kotak.</li>
                 <li><strong>Someone else's <span translate="no">SDR</span>:</strong> when you select a network receiver at an internet address (a public <span translate="no">KiwiSDR</span> or web receiver), qFT8 asks once <strong>Apakah SDR ini milik Anda?</strong> (<strong>YES</strong> / <strong>NO</strong>). Receiving never waits for the answer. Until you answer <strong>YES</strong>, what you hear through it is marked <em>remote</em> (at the end of its line): it stays in the log, but the <span translate="no">SWL</span> awards do not count it (the awards page says how many were left out). The answer lasts until you change the receiver; a receiver on <span translate="no">USB</span>, on your own network or the radio itself is never asked. A tap on an entry and on its <strong>Penerima siapa</strong> row changes it.</li>
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Server ini milik saya</strong> in its rows, the same answer as <strong>Apakah SDR ini milik Anda?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
@@ -5533,6 +5531,70 @@
                     <p><strong>Catatan:</strong> Server web tetap berfungsi saat layar mati bila pengaturan untuk berjalan di latar belakang diaktifkan (bawaannya tetap berjalan di latar belakang selama <span translate="no">qFT8</span> terhubung ke transceiver).
                     </p>
                 </div>
+            </section>
+
+            <section id="webserver-headless">
+                <h3>Menjalankan qFT8 tanpa layar (server web remote)</h3>
+                <p>
+                    Program komputer juga bisa berjalan tanpa jendela sama sekali, di komputer yang tidak punya layar: Raspberry Pi di samping radio, server kecil, atau komputer apa pun yang Anda jangkau lewat SSH. qFT8 lalu mengerjakan semuanya seperti biasa (suara, kendali radio, dekode, <span translate="no">AUTO</span>, pencatatan, unggahan), dan Anda mengoperasikannya dari browser lewat <a href="#remote-control">Server Web Kendali Jarak Jauh</a>, di ponsel, tablet, atau komputer lain di jaringan Anda.
+                </p>
+
+                <h4>Server web atau bridge?</h4>
+                <p>Keduanya berjalan tanpa layar. Bedanya ada pada perangkat mana yang mengerjakan tugasnya:</p>
+                <ul>
+                    <li><strong>Server web</strong> (<code>--webserver</code>): komputer yang menjalankan qFT8 yang mendekode, memancarkan, dan mencatat; browser hanya menampilkannya dan memegang tombol-tombolnya. Cocok untuk komputer rumah yang kuat yang Anda kendalikan dari ponsel.</li>
+                    <li><strong>Bridge</strong> (<code>--bridge</code>, lihat <a href="#bridge">qFT8 bridge</a>): perangkat di samping radio hanya meneruskan perintah radio dan suaranya lewat jaringan Anda, dan qFT8 di perangkat yang Anda pakai untuk mengoperasikan (program komputer, aplikasi Android, atau aplikasi iPhone/iPad) yang mendekode. Cocok untuk Raspberry Pi di radio dengan komputer Anda sendiri yang bekerja.</li>
+                </ul>
+                <p>Keduanya tidak bisa berjalan bersamaan.</p>
+
+                <h4>Atur dulu</h4>
+                <p>
+                    qFT8 memakai pengaturan tersimpannya persis seperti dengan jendelanya: tanda panggil, locator, radio, perangkat suara, mode, pencatatan, dan layanan unggah QSO. Misalnya, bila <a href="#raw-message-logs">Log pesan mentah</a> dicentang, ia tetap menulis berkas .tsv-nya. Jadi atur qFT8 dulu: jalankan sekali dengan jendelanya di komputer itu (atau salin folder profil dari komputer lain, lihat <a href="#pc-settings">Pengaturan: di mana disimpan, memindahkan dari ponsel</a>), atau jalankan tanpa layar dan atur dari Pengaturan remote web, yang menyimpannya seperti biasa.
+                </p>
+
+                <h4>Memulainya</h4>
+                <p>Di terminal pada komputer itu (lewat SSH juga boleh), di folder qFT8:</p>
+                <ul>
+                    <li><strong>Linux</strong>, juga Raspberry Pi: <code>./qFT8 --webserver</code>. Dengan unduhan .jar dan Java 21 atau lebih baru: <code>java -jar</code>, nama berkas .jar, dan <code>--webserver</code>.</li>
+                    <li><strong>Windows</strong>: <code>qFT8.exe --webserver</code>.</li>
+                    <li><strong>macOS</strong>: <code>/Applications/qFT8.app/Contents/MacOS/qFT8 --webserver</code>.</li>
+                </ul>
+                <p>
+                    Terminal menyatakan bahwa qFT8 berjalan tanpa jendela, bahwa <span translate="no">TX</span> mati, dan apakah halaman meminta kata sandi, lalu menampilkan tautan pribadi remote web: buka di browser pada jaringan yang sama. Bagian setelah <code>#k=</code> adalah kunci tautan: jaga kerahasiaannya. Kunci itu hanya tampil di terminal, tidak pernah ditulis ke berkas log qFT8. <code>Ctrl+C</code> menghentikan qFT8 dan mengembalikan radio ke penerimaan.
+                </p>
+                <p>
+                    <span translate="no">TX</span> selalu mati saat qFT8 dimulai dengan cara ini. Hanya tombol <span translate="no">TX</span> di remote web yang menyalakannya.
+                </p>
+
+                <h4>Opsi</h4>
+                <p>
+                    Setiap opsi mengubah satu pengaturan untuk satu kali jalan itu saja: tidak ada yang disimpan, dan tanpa opsi, pengaturan tersimpan yang dipakai. <code>qFT8 --webserver --help</code> mendaftarkannya.
+                </p>
+                <ul>
+                    <li><code>--web-port N</code>: port remote web, 1024 sampai 65534 (13497 kecuali Anda mengubahnya).</li>
+                    <li><code>--bind ADDRESS</code>: hanya mendengarkan pada alamat komputer itu.</li>
+                    <li><code>--password TEXT</code>, atau <code>--password-file FILE</code> (baris pertama berkas; lebih aman, karena pengguna lain di komputer dapat melihat baris perintah), atau <code>--no-password</code>.</li>
+                    <li><code>--https</code> atau <code>--no-https</code>: alamat aman (port + 1) yang dibutuhkan browser untuk memakai mikrofonnya.</li>
+                    <li><code>--access read</code>, <code>stop</code> atau <code>full</code>: yang boleh dilakukan halaman: hanya melihat, melihat dan menghentikan <span translate="no">TX</span>, atau semuanya.</li>
+                    <li><code>--audio-in NAME</code> dan <code>--audio-out NAME</code>: perangkat suara radio, dengan nama yang ditampilkan <code>qFT8 --list-devices</code>, atau <code>auto</code>.</li>
+                    <li><code>--radio TYPE</code>: radionya (<code>auto</code>, <code>qmx</code>, <code>icom7300</code> ...), dan <code>--port DEVICE</code>: port serialnya (<code>/dev/ttyUSB0</code>, <code>COM3</code>).</li>
+                    <li><code>--qft8_profile FOLDER</code>: folder profil yang dipakai.</li>
+                </ul>
+                <p>
+                    Jika port dipakai program lain, atau qFT8 lain sudah memakai folder profil yang sama, qFT8 memberi tahu di terminal dan berhenti.
+                </p>
+
+                <h4>Contoh: Raspberry Pi</h4>
+                <p>
+                    Radio dicolokkan ke Pi lewat USB, dan qFT8 sudah diatur sekali (dengan layar di Pi, atau dari remote web). Dari komputer lain:
+                </p>
+                <pre><code>ssh pi@raspberrypi.local
+cd qFT8
+./qFT8 --webserver --password-file ~/qft8-password.txt</code></pre>
+                <p>
+                    Lalu buka tautan yang ditampilkannya di ponsel Anda. Raspberry Pi 4 atau 5 mendekode <span translate="no">FT8</span> tepat waktu; komputer yang lebih cepat menemukan lebih banyak sinyal terlemah.
+                </p>
+                <a href="#top" class="back-to-toc">&uarr; Kembali ke Daftar Isi</a>
             </section>
 
             <section id="bridge">
@@ -6095,6 +6157,19 @@
                 <li>Di Linux, bila qFT8 mengatakan tidak punya izin membuka port radio, terima tawarannya untuk memperbaiki (akun Anda dimasukkan ke grup port itu), atau tanyakan administrator sistem Anda.</li>
                 <li>Bila masalah muncul khusus saat memancar, penyebabnya bisa interferensi radio. Memasang choke atau ferit pada kabel USB dapat membantu. Anda juga dapat mencoba memancar di band lain, karena sebagian perangkat hanya peka terhadap interferensi di band tertentu.</li>
             </ul>
+            <p>
+                Saat qFT8 berbicara dengan radio lewat <span translate="no">CAT</span> (radio yang dipilih di <strong>Pengaturan &gt; Perangkat</strong>, atau yang ditemukan oleh <span translate="no">AUTO</span>) dan radio tidak menjawab, peringatan merah <strong>Tidak ada <span translate="no">CAT</span></strong> muncul di spektrogram (dan di bawah radio di <strong>Pengaturan &gt; Perangkat</strong>). Ketuk: kartu itu menyebutkan apa yang diukur qFT8 pada sambungan dan mendaftar apa yang bisa dicoba untuk kasus tersebut:
+            </p>
+            <ul>
+                <li><strong>qFT8 tidak melihat radio</strong>: radio mati, kabel longgar, kabel hanya untuk mengisi daya (gunakan kabel data USB), adaptor atau hub tidak meneruskan data, atau <span translate="no">USB OTG</span> mati di pengaturan sistem ponsel. Di komputer: driver USB radio, dan port yang dipilih di <strong>Pengaturan &gt; Konfigurasi Perangkat</strong>.</li>
+                <li><strong>Radio tersambung, tetapi qFT8 tidak dapat membuka portnya (tidak ada izin, atau program lain sedang memakainya)</strong>: izinkan qFT8 memakai perangkat USB saat Android bertanya, dan tutup program lain yang memakai port radio.</li>
+                <li><strong>Radio tidak menjawab</strong> (tidak ada satu byte pun yang kembali): radio menyala, kabel masuk ke soket <span translate="no">CAT</span>-nya, model radio sudah benar, dan kecepatan baud <span translate="no">CAT</span> radio sama dengan kecepatan baud qFT8 (<strong>Pengaturan &gt; Konfigurasi Perangkat &gt; Kecepatan Baud</strong>). Radio Yaesu dengan menu <span translate="no">CAT RTS</span>: atur ke <span translate="no">DISABLE</span>. Radio Xiegu: kabel data (<span translate="no">CI-V</span>) antarmuka dipasang di jack <span translate="no">COMM</span> / <span translate="no">CIV</span> / <span translate="no">DEV</span> / <span translate="no">USB</span> radio, bukan hanya kabel audio, dan alamat <span translate="no">CI-V</span> serta kecepatan baud radio sama dengan di qFT8 (kartu menampilkannya).</li>
+                <li><strong>Hanya perintah qFT8 sendiri yang kembali</strong>: kabel atau antarmuka memantulkan data kembali tanpa radio (kabel Icom <span translate="no">CI-V</span> melakukan ini saat radio mati).</li>
+                <li><strong>Radio menjawab, tetapi qFT8 tidak dapat membaca jawabannya</strong>: kecepatan baud atau model radio tidak cocok.</li>
+                <li><strong>Radio berhenti menjawab saat memancar</strong>: interferensi RF. Pasang ferrite choke jepit pada kabel USB dan audio di dekat kedua ujung, coba daya lebih rendah (diatur di radio) sebagai uji, dan periksa antena serta saluran umpan untuk arus common-mode.</li>
+                <li><strong>Radio sempat menjawab, lalu berhenti menjawab</strong>: radio dimatikan, atau kabel terlepas.</li>
+            </ul>
+            <p><strong>PERIKSA ULANG</strong> menyambung ke radio lagi dan memeriksa sekali lagi; <strong>KIRIM LAPORAN</strong> mengirimkan kepada kami apa yang diukur, beserta log perintah radio.</p>
 
             <h3 id="trouble-otg-charging">Transceiver menghilang saat ponsel terisi penuh (Android)</h3>
             <p>
