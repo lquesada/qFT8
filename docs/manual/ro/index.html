@@ -173,6 +173,7 @@
                         <li><a href="#remote-control">Server web pentru control de la distanță</a></li>
                         <li><a href="#webserver-headless">Rularea qFT8 fără ecran (server web pentru control de la distanță)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protocolul qFT8log</a></li>
                         <li><a href="#layouts">Dispuneri ale ecranului</a></li>
@@ -216,7 +217,7 @@
             </p>
 
             <p>
-                qFT8 include părți din usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) și mediul de execuție Java Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Niciunul dintre acești autori sau proiecte terțe nu susține qFT8 și nu este afiliat cu qFT8.
+                qFT8 include părți din usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratuit pentru comunitatea radioamatorilor) și mediul de execuție Java Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Niciunul dintre acești autori sau proiecte terțe nu susține qFT8 și nu este afiliat cu qFT8.
             </p>
 
 
@@ -733,14 +734,10 @@
 
             <h4>Mutarea setărilor de pe un telefon (sau pe unul)</h4>
             <p>
-                <strong>EXPORTĂ SETĂRILE</strong> și <strong>IMPORTĂ SETĂRILE</strong>, pe pagina principală Setări (sub
-                <strong>Fișiere de setări</strong>), creează și citesc un singur fișier care este <strong>același pe Android și pe
-                    calculator</strong>. Exportați pe telefon, copiați fișierul pe calculator (e-mail, cloud, cablu) și importați-l
-                acolo; invers funcționează la fel.
+                <strong>EXPORTĂ SETĂRILE</strong> și <strong>IMPORTĂ SETĂRILE</strong>, pe pagina principală Setări (sub <strong>Fișiere de setări</strong>), deschid paginile Export și Import (vedeți <a href="#settings-profiles">Profiluri</a>). Fișierul este <strong>același pe Android, pe iPhone și pe calculator</strong>. Exportați pe telefon, copiați fișierul pe calculator (e-mail, cloud, cablu) și importați-l acolo; invers funcționează la fel.
             </p>
             <ul>
-                <li>Fișierul conține cheia dvs. API QRZ, certificatul LoTW și parolele. <strong>Nu îl partajați
-                    niciodată.</strong></li>
+                <li>Conturile, parolele și certificatul LoTW sunt în fișier numai dacă bifați <strong>Include conturile și parolele</strong>; ele sunt atunci protejate de o frază de acces pe care o scrieți. Chiar și așa, <strong>nu partajați niciodată fișierul.</strong></li>
                 <li>Nu conține QSO: mutați jurnalul cu <a href="#adif-import-export">ADIF</a> sau lăsați
                     <a href="#qft8-log">serverele de jurnal qFT8</a> să îl copieze.</li>
                 <li>Nu conține ce ține doar de acest calculator: alegerea dispozitivelor de sunet (sunt alte dispozitive),
@@ -1292,7 +1289,7 @@
             <ul>
                 <li>Intervale de un minut: o transmisie începe la o secundă după începutul unui minut <span translate="no">UTC</span> par sau impar și durează aproximativ 47 s (<span translate="no">JT65</span>) sau 49 s (<span translate="no">JT9</span>); alegeți par sau impar ca în <span translate="no">FT8</span>.</li>
                 <li>Mesaje: 72 de biți: CQ, doi indicativi cu un locator, un raport (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span>, sau până la 13 caractere de text liber. QSO-ul se desfășoară la fel ca în <span translate="no">FT8</span> (<span translate="no">AUTO</span>, lista de stații, jurnalul). Un indicativ care ar avea nevoie de prefix și sufix în același timp nu poate fi trimis.</li>
-                <li>Submodurile <span translate="no">JT65</span>: A (HF), B și C (VHF și mai sus, spațiere mai mare a tonurilor), alese lângă mod în bara de jos sau în Setări; ambele stații trebuie să folosească același submod. <span translate="no">JT9</span> este <span translate="no">JT9-1</span>, lat de numai 16 Hz.</li>
+                <li>Submodurile <span translate="no">JT65</span>: A (HF), B și C (VHF și mai sus, spațiere mai mare a tonurilor), B2 și C2 (B și C de două ori mai rapide, sloturi de 30 s), alese lângă mod în bara de jos sau în Setări; ambele stații trebuie să folosească același submod. Submodurile <span translate="no">JT9</span>: A (<span translate="no">JT9-1</span>, lat de numai 16 Hz), de la B la H (tonuri mai largi), de la <span translate="no">JT9-2</span> la <span translate="no">JT9-30</span> (perioade de 2 până la 30 de minute pentru LF și MF) și de la E la H <span translate="no">FAST</span> (perioade de 5 până la 30 s pentru dispersie), alese în același mod.</li>
             </ul>
             <p>
                 Opțiunile sunt descrise în <a href="#jt65-settings">Setări &gt; <span translate="no">JT65</span></a> și <a href="#jt9-settings">Setări &gt; <span translate="no">JT9</span></a>.
@@ -1843,8 +1840,10 @@
                 <li><strong>Sincronizare QSO</strong>: un rând pentru fiecare serviciu pe care sunt încărcate QSO-urile dvs.: comutatorul lui, o pictogramă a stării și rotița lui (vedeți <a href="#qso-services">Servicii de încărcare a QSO-urilor</a> și <a href="#choosing-services">Alegerea serviciilor și a serverelor</a>).</li>
                 <li><strong>Raportare</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> și <a href="#lq8-announce">anunțarea activității dvs. <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Comunitate</strong>: cele două grupuri Telegram (vedeți <a href="#community">Comunitate</a>).</li>
-                <li><strong>Fișiere de setări</strong>: <strong>IMPORTĂ SETĂRILE</strong> și <strong>EXPORTĂ SETĂRILE</strong> (vedeți <a href="#settings-pages">mai jos</a>).</li>
+                <li><strong>Profil</strong>: rândul de sus, cu <strong>SCHIMBĂ</strong> (vezi <a href="#settings-profiles">Profiluri</a>).</li>
+                <li><strong>Fișiere de setări</strong>: <strong>IMPORTĂ SETĂRILE</strong> și <strong>EXPORTĂ SETĂRILE</strong>, mereu prezente, chiar și cu <strong>Afișează setările avansate</strong> debifat (vedeți <a href="#settings-files">mai jos</a>).</li>
                 <li><strong>Mai multe setări</strong>: <strong>MODURI</strong> (o pagină cu, în această ordine <strong>OPERARE AUTOMATĂ</strong>, <strong>MODURI DIGITALE</strong> și <strong>SELECTARE BANDĂ</strong>, apoi, sub „Setări pe moduri”, câte un buton pentru fiecare mod: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> iar celelalte moduri digitale deschid MODURI DIGITALE la acel mod; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> și <strong><span translate="no">PACKET</span></strong> paginile lor proprii; ÎNAPOI revine la MODURI), <strong>SURSE DE DATE</strong>, <strong>SERVERE</strong> (ce oferă acest dispozitiv altor programe, vedeți <a href="#choosing-services">Alegerea serviciilor și a serverelor</a>) și <strong>ȘTERGE QSO-URI</strong>, fiecare descrisă în <a href="#settings-pages">Paginile Setărilor</a>.</li>
+                <li><strong>Înregistrări</strong> (doar cu <strong>Afișează setările avansate</strong> bifat, sub instrumente): <strong>PORNEȘTE ÎNREGISTRAREA</strong> înregistrează ce recepționați și transmiteți într-un fișier <span translate="no">.qft8</span> pe acest dispozitiv (<strong>OPREȘTE ÎNREGISTRAREA</strong> și timpul cât înregistrează); lupa și rotița dințată deschid pagina înregistrărilor cu înregistrările salvate (redare, partajare, redenumire, ștergere). <strong>Scurtătură de înregistrare</strong> afișează și un mic buton <span translate="no">REC</span> în dreapta jos a cascadei. Deschiderea unui fișier <span translate="no">.qft8</span> (sau a unui link către unul) îl redă indiferent ce spune această casetă: o bară subțire de-a lungul părții de jos a cascadei are redare, poziția, <strong>?</strong> (textul propriu al înregistrării) și un X pentru ieșire; nu se transmite nimic cât timp rulează o înregistrare (butonul <span translate="no">TX</span> dispare).</li>
                 <li><strong>Caută versiuni noi la pornire</strong> și <strong>Trimite un rezumat zilnic anonim al performanței</strong> (vedeți <a href="#reports-updates">Rapoarte de erori și versiuni noi</a>).</li>
                 <li><strong>Limbă</strong>: limba qFT8, sub o linie la sfârșitul listei.</li>
                 <li>La final: versiunea, cu legături către acest manual și politica de confidențialitate, permisiunile și dispozitivul USB conectat, și <strong><span translate="no">RAPORTEAZĂ EROARE</span></strong> (vedeți <a href="#report-bug">Raportarea unei probleme</a>).</li>
@@ -1935,7 +1934,7 @@
                     <strong>Sincronizare de urgență din mesaje</strong> ascultă banda și potrivește ceasul după momentul mesajelor pe care le decodează.</li>
                 <li><strong>Locație (locator Maidenhead)</strong>: locatorul dvs., cu <strong>SINCRONIZARE GPS</strong>,
                     și dacă este actualizat de la GPS la fiecare pornire a qFT8.</li>
-                <li><strong>Țara pentru regulile de recepție</strong>: țara pe care qFT8 o folosește pentru regulile despre ce aveți voie să recepționați și să transmiteți (vezi <a href="#swl-legal">Ascultarea și legea</a> și <a href="#tx-legal">Transmisia și legea</a>). Afișează &ldquo;Nealeasă: după locație, locator sau indicativ&rdquo; până alegeți una; <strong>SCHIMBĂ</strong> deschide lista țărilor (cele mai apropiate primele, apoi toate de la A la Z), iar țara aleasă este reținută.</li>
+                <li><strong>Țara</strong>: țara pe care qFT8 o folosește pentru regulile despre ce aveți voie să recepționați și să transmiteți (vezi <a href="#swl-legal">Ascultarea și legea</a> și <a href="#tx-legal">Transmisia și legea</a>). În listă, prima opțiune, <strong>Auto</strong>, folosește țara pe care o detectează qFT8 (în paranteză), apoi urmează țările cele mai apropiate și toate țările de la A la Z. Alegerea altei țări cere o confirmare, iar țara aleasă este reținută.</li>
             </ul>
 
             <h4 id="settings-application">Setările aplicației</h4>
@@ -2045,11 +2044,48 @@
                 <strong>ȘTERGE TOATE QSO-URILE</strong>, <strong>ȘTERGE QSO-URILE PENTRU ALTE INDICATIVE</strong> (QSO-uri înregistrate cu un indicativ care nu este cel curent) și <strong>ȘTERGE TOATE QSO-URILE DUPLICATE</strong>. Fiecare întreabă mai întâi. Șterg doar QSO-urile de pe acest dispozitiv, niciodată de pe un serviciu online.
             </p>
 
+            <h4 id="settings-profiles">Profiluri</h4>
+            <p>
+                Un profil este o configurație de stație: propriul indicativ, conturi și parole, jurnale <span translate="no">QSO</span> și
+                <span translate="no">SWL</span>, memorii, temă și setări. Radioul, dispozitivele audio și limba sunt
+                comune tuturor profilurilor. Folosiți un profil pentru fiecare indicativ (de exemplu indicativul dvs. și cel al unui club sau al unei stații speciale).
+            </p>
+            <p>
+                <strong>Unde</strong>: rândul de sus din Setări, <strong>Profil: NUME</strong> și <strong>SCHIMBĂ</strong>. Apare
+                când este bifat <strong>Afișează setările avansate</strong> sau ori de câte ori există mai mult de un profil. <strong>SCHIMBĂ</strong>
+                deschide pagina Profiluri.
+            </p>
+            <p>
+                Pagina Profiluri vă afișează profilurile ca butoane, în ordinea dvs., fiecare în culorile propriei teme (culoarea barei de jos a acelei teme); o săgeată verde indică profilul în uz. Atingeți alt profil pentru a-l folosi. Săgețile mută un profil în sus sau în jos, creionul îl redenumește, coșul îl șterge (profilul în uz nu are coș).
+            </p>
+            <p>
+                <strong>Trecerea</strong>: qFT8 enumeră ce se oprește: <span translate="no">TX</span> este trecut pe <span translate="no">OFF</span>,
+                <span translate="no">AUTO</span> este trecut pe <span translate="no">OFF</span>, un <span translate="no">QSO</span> în curs este abandonat,
+                activările se încheie cu <span translate="no">QRT</span>, serviciile, serverele și browserele telecomenzii web sunt oprite sau
+                deconectate, iar <span translate="no">QSO</span>-urile sau rapoartele <span translate="no">SWL</span> încă netrimise sunt enumerate (ele așteaptă
+                profilul respectiv și sunt trimise când acesta este din nou în uz). Când se enumeră ceva, scrieți <strong>yes</strong> (în engleză)
+                pentru a trece; altfel este o confirmare simplă. Cât timp trecerea se desfășoară, o acoperire <strong>Se trece la profilul ...</strong> ascunde
+                ecranul; nu se poate atinge nimic până când noul profil este gata. Dacă <span translate="no">TX</span> nu poate fi oprit, nimic nu
+                se schimbă, iar qFT8 vă spune. O trecere nu pornește niciodată <span translate="no">TX</span>.
+            </p>
+            <p>
+                <strong>NOU</strong> creează o copie a profilului în uz: setările, memoriile și tema lui, fără indicativ, conturi și jurnale. Îi dați un nume, apoi alegeți tema lui. Fiecare temă din listă este arătată în culorile ei. Temele pe care nu le folosește niciun profil sunt primele, ca fiecare profil să arate diferit; sub <strong>Deja folosite</strong> vin temele folosite de alt profil și temele cu același fundal ca una dintre ele (de exemplu, toate temele albe, de îndată ce una este folosită). Ele sunt marcate ca atare și pot fi totuși alese. Apoi <strong>CREEAZĂ</strong>. Dacă indicativul dvs. este scris în memorii sau texte (memoriile <span translate="no">CW</span>, <span translate="no">RTTY</span>, <span translate="no">JTTY</span>, <span translate="no">Packet</span>, <span translate="no">JS8</span> INFO / STATUS, plăcuța <span translate="no">PIX</span>), copia are acolo <span translate="no">[MYCALL]</span> (indicativul propriu al noului profil), iar confirmarea enumeră aceste texte ca să le puteți verifica înainte de a transmite.
+            </p>
+            <p>
+                <strong>Șterge</strong>: dialogul indică profilul, indicativul lui și dimensiunea jurnalelor; scrieți <strong>yes</strong>.
+                Tot ce se află numai în acel profil dispare; serviciile online își păstrează copiile (qFT8 nu șterge niciodată nimic acolo). Pentru a păstra jurnalul lui,
+                treceți la el și folosiți mai întâi <span translate="no">ADIF EXPORT</span>.
+            </p>
+            <p>
+                <strong>EXPORTĂ</strong> (și <strong>EXPORTĂ SETĂRILE</strong> din Fișiere de setări): bifați profilurile de salvat într-un fișier (profilul în uz este bifat) și, opțional, <strong>Configurația dispozitivelor (radio și audio)</strong> și <strong>Include conturile și parolele</strong> (inițial debifate). Conturile, parolele și certificatul <span translate="no">LoTW</span> sunt protejate de o frază de acces scrisă la export; nu este salvată. <strong>EXPORTĂ TOT</strong> salvează toate profilurile și configurația dispozitivelor. Jurnalele <span translate="no">QSO</span> și <span translate="no">SWL</span> nu sunt în fișier (<span translate="no">ADIF EXPORT</span> le salvează).
+            </p>
+            <p>
+                <strong>IMPORTĂ</strong> (și <strong>IMPORTĂ SETĂRILE</strong> din Fișiere de setări): alegeți un fișier de setări; qFT8 enumeră ce conține. Un profil cu același nume ca unul al dvs. apare cu roșu și îi înlocuiește setările (jurnalele rămân); scrieți <strong>yes</strong>, iar dialogul indică fiecare profil înlocuit cu indicativul și numărul de <span translate="no">QSO</span>-uri. Un fișier de la o singură stație (orice fișier de setări făcut înainte de profiluri) poate deveni un profil nou sau poate intra în profilul în uz; cu un singur profil și cu <strong>Afișează setările avansate</strong> debifat, intră direct în profilul în uz, ca înainte: <span translate="no">TX</span> trebuie să fie oprit, scrieți <strong>yes</strong>, iar un fișier fără parole le păstrează pe ale dvs. numai cât timp folosește același indicativ și aceleași adrese. Importul în profilul în uz oprește mai întâi ce rulează, ca la o trecere, și nu pornește niciodată <span translate="no">TX</span>.
+            </p>
+
             <h4 id="settings-files">Fișiere de setări</h4>
             <p>
-                <strong>EXPORTĂ SETĂRILE</strong> salvează toate setările dvs. într-un singur fișier, iar <strong>IMPORTĂ SETĂRILE</strong>
-                îl citește înapoi, pe acest dispozitiv sau pe altul, telefon sau calculator (vedeți
-                <a href="#pc-settings">Setările: unde se află și cum le mutați de pe un telefon</a>). Fișierul conține cheile și parolele dvs.: nu îl partajați niciodată.
+                <strong>EXPORTĂ SETĂRILE</strong> și <strong>IMPORTĂ SETĂRILE</strong> deschid paginile Export și Import descrise la <a href="#settings-profiles">Profiluri</a>: profilul în uz (sau mai multe, sau toate), configurația dispozitivelor dacă o bifați, conturile și parolele numai dacă le bifați. Ele există chiar și cu <strong>Afișează setările avansate</strong> debifat; cu un singur profil, pur și simplu salvează și citesc acel profil. Fișierele de setări mai vechi se importă în continuare (în profilul în uz). Vedeți și <a href="#pc-settings">Setările: unde se află și cum le mutați de pe un telefon</a>.
             </p>
 
             <h3 id="raw-message-logs">Jurnale brute ale mesajelor</h3>
@@ -2632,7 +2668,7 @@
                 <span translate="no">GridTracker2</span> (testat cu versiunea 2.261019.5) afișează pe hartă și înregistrează ce trimite <span translate="no">FT8 network log</span> la portul 2237; cu recepția ADIF UDP pornită primește și <span translate="no">ADIF over UDP</span> pe portul 2333. Redirecționările sale de log trimit QSO-urile sale la receptoarele qFT8.
             </p>
             <p>
-                Invers, qFT8 poate primi în jurnalul său QSO-urile altor programe. În Mai multe setări &gt; <strong>SERVERE</strong> bifați rândul receptorului pentru formatul pe care îl trimite celălalt program: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), interfața <span translate="no">AC Log</span> (TCP 1100) sau interfața <span translate="no">DXLab</span> (TCP 52001). Pagina lui arată adresa de introdus în celălalt program și permite schimbarea portului și acceptarea QSO-urilor doar de la anumite adrese. Nimic din ce se primește astfel nu poate emite, schimba stația sau șterge un QSO. Receptoarele sunt oprite până le porniți; pe iPhone funcționează doar cât qFT8 este deschis și nu intră niciodată într-un grup multicast.
+                Invers, qFT8 poate primi în jurnalul său QSO-urile altor programe. În Mai multe setări &gt; <strong>SERVERE</strong> bifați rândul receptorului pentru formatul pe care îl trimite celălalt program: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), interfața <span translate="no">AC Log</span> (TCP 1100) sau interfața <span translate="no">DXLab</span> (TCP 52001). Pagina lui arată adresa de introdus în celălalt program și permite schimbarea portului și acceptarea QSO-urilor doar de la anumite adrese. Nimic din ce se primește astfel nu poate emite, schimba stația sau șterge un QSO. Receptoarele sunt oprite până le porniți; pe iPhone funcționează doar cât qFT8 este deschis și nu intră niciodată într-un grup multicast. Pagina receptorului <span translate="no">FT8 network log</span> adaugă: <em>Acest server doar primește QSO-uri de la alte programe; pentru a trimite decodările și QSO-urile dvs. către un program de hartă sau de jurnal, folosiți <strong>Sincronizarea jurnalului</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3109,7 +3145,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Transmisie specială</strong>, directly above <strong>Evenimente</strong>. Its
+                Settings has a section <strong>Transmisie specială</strong>, directly below <strong>Programe</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Multiton</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Mod Fox</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4020,7 +4056,9 @@
                 <p>
                 <strong>Buclă</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Oprit</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Oprit</strong>
+                stops it). <strong>Număr de trimiteri</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -4142,6 +4180,7 @@
                 <li><strong><span translate="no">Țintă</span></strong> și <strong><span translate="no">Schimb</span></strong>: indicativul stației pe care o lucrați și schimbul de concurs. Completează <code>[TARGET]</code> și <code>[EXCH]</code> în mesajele dvs. Atingeți unul pentru a-l tasta; atingeți un indicativ în linia decodorului (elementul nr. 7) pentru a-l lua ca țintă.</li>
                 <li><strong><span translate="no">BAUD</span></strong>: viteza: 45,45 (cea obișnuită), 50 sau 75. Fiecare atingere trece la următoarea.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: distanța dintre cele două tonuri: 170 Hz (cea obișnuită), 200, 425 sau 850 Hz. Filtrul urmează deplasarea.</li>
+                <li>Deplasările înguste: după 850 Hz, <span translate="no">SHIFT</span> oferă și 85 și 23 Hz (și în Setări &gt; <span translate="no">RTTY</span>). O deplasare îngustă este copiată doar sub bara de recepție: setați-o la cea a celeilalte stații; celelalte semnale din bandă sunt căutate la deplasările obișnuite.</li>
                 <li><strong><span translate="no">REV</span></strong>: schimbă între ele cele două tonuri, pentru o stație care le emite invers. Este de culoarea chihlimbarului cât timp este activat.</li>
                 <li><strong><span translate="no">FILTER</span></strong> și <strong><span translate="no">NR</span></strong>: filtrul de recepție și reducerea zgomotului.</li>
                 <li><strong>Memorii</strong>: Mesaje pregătite, cu aceleași macrocomenzi ca în <span translate="no">CW</span>. O atingere trimite unul. Un mesaj cu un câmp gol este estompat: atingeți-l pentru a vedea ce lipsește. <strong><span translate="no">Tastatură</span></strong> (și <strong><span translate="no">Voce</span></strong> pe telefon și pe iPhone) sunt la sfârșitul listei.</li>
@@ -4322,7 +4361,7 @@
                 <span translate="no">JT65</span> (rândul <span translate="no">JT65</span> (experimental) din selectorul de mod) este un mod de QSO de un minut cu 65 de tonuri și un cod Reed-Solomon; sensibilitate de aproximativ -25 dB (în 2500 Hz). QSO-urile sunt înregistrate ca <span translate="no">MODE=JT65</span> cu submodul (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>), iar spoturile merg la <span translate="no">PSKReporter</span> ca <span translate="no">JT65</span>. Frecvențe uzuale (dial în USB): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Submod (A): A, B sau C, ca în bara de jos.</li>
+                <li>Submod (A): A, B, C, B2 sau C2, ca în bara de jos. B2 și C2 sunt B și C trimise de două ori mai rapid: sloturi de 30 s, transmisii de 23 s, cu o sensibilitate mai mică cu aproximativ 3 dB.</li>
                 <li>Decodare doar lângă frecvența de recepție (dezactivată): dezactivată decodează toată banda; activată, doar în jurul frecvenței de recepție.</li>
                 <li>Toleranța de recepție: lățimea în Hz în jurul frecvenței de recepție (implicit 100).</li>
                 <li>Referințe: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -4333,6 +4372,7 @@
                 <span translate="no">JT9</span> (rândul <span translate="no">JT9</span> (experimental) din selectorul de mod) este un mod de QSO de un minut cu 9 tonuri, lat de 16 Hz; sensibilitate de aproximativ -27 dB (în 2500 Hz). QSO-urile sunt înregistrate ca <span translate="no">MODE=JT9</span>, iar spoturile merg la <span translate="no">PSKReporter</span> ca <span translate="no">JT9</span>. Frecvențe uzuale (dial în USB): cu 2 kHz peste cele <span translate="no">JT65</span>, de la 160 m până la 10 m (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Submod (A): A (<span translate="no">JT9-1</span>) pe HF; de la B la H, același semnal cu tonuri mai largi (spațiate la 3,5 până la 222 Hz) pentru VHF și mai sus; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> și <span translate="no">JT9-30</span>, semnalul întins pe perioade de 2 până la 30 de minute pentru LF și MF (fiecare pas cu o sensibilitate mai mare cu aproximativ 3 până la 5 dB); de la E la H <span translate="no">FAST</span> într-o perioadă de 5, 10, 15 sau 30 s, cadre scurte trimise unul după altul pentru dispersia pe meteori și avioane. Submodurile întinse caută semnale doar în limita toleranței de recepție față de frecvența de recepție.</li>
                 <li>Decodare doar lângă frecvența de recepție (dezactivată): dezactivată decodează toată banda; activată, doar în jurul frecvenței de recepție.</li>
                 <li>Toleranța de recepție: lățimea în Hz în jurul frecvenței de recepție (implicit 100).</li>
                 <li>Referințe: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -4371,7 +4411,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> și <span translate="no">DominoEX</span> (experimental)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
                         <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>Familia MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -4399,6 +4439,7 @@
                     între <span translate="no">MFSK16</span> și <span translate="no">MFSK32</span>.
                     <span translate="no">DominoEX</span>: 18 tonuri,
                     insensibil la acord și la derivă, mai rapid.</li>
+                <li>Mai multe variante, la sfârșitul listei fiecărei familii: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> și <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 de tonuri în 125 Hz, foarte lent, pentru semnale foarte slabe), <strong><span translate="no">MFSK31</span></strong> (8 tonuri în 250 Hz), <strong><span translate="no">MFSK64L</span></strong> și <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> și <span translate="no">MFSK128</span> cu o întrețesere lungă care întinde fiecare caracter pe aproximativ 20 de secunde: mai bun la fading, dar textul apare cu aproximativ 20 de secunde mai târziu și fiecare transmisie se termină cu aproximativ 20 de secunde de tonuri în plus); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 simboluri pe secundă, lat de 36 Hz, foarte lent), <strong><span translate="no">DOMINOEX 44</span></strong> și <strong><span translate="no">DOMINOEX 88</span></strong> (rapide, late de aproximativ 1,5 kHz). În bara de jos, cele foarte lente apar ca <span translate="no">DX-M</span> și <span translate="no">TH-M</span>. Cele lente au nevoie de timp în emisie: un apel în <span translate="no">MFSK4</span> durează aproximativ 40 de secunde, în <span translate="no">DOMINOEX MICRO</span> aproximativ 35, deci o linie poate avea nevoie de mai mult decât permite limita de emisie continuă.</li>
                 <li>Se decodează semnalul de sub bara de recepție (bara este mijlocul semnalului). Puneți bara pe semnal; câțiva herți diferență nu contează.</li>
                 <li>Ecranul nu are butoanele <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> și <span translate="no">REV</span> în aceste moduri. O memorie pleacă ca o singură emisie; textul tastat de la tastatură pleacă linie cu linie, când apăsați Enter.</li>
                 <li>Fiecare familie are propria frecvență pe benzile unde este folosită îndeobște (pe 20 m: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); în rest, frecvența <span translate="no">RTTY</span>.</li>
@@ -4419,6 +4460,7 @@
             <ul>
                 <li><span translate="no">THOR</span>: tonurile <span translate="no">DominoEX</span> (insensibile la acord și la derivă) cu corecția erorilor de la <span translate="no">MFSK16</span>; ceva mai lent decât <span translate="no">DominoEX</span> la același număr de viteză, dar mult mai robust.</li>
                 <li><span translate="no">Contestia</span> (tonuri / lățime în Hz): o rudă mai rapidă a lui <span translate="no">Olivia</span>, doar cu majuscule, populară în concursuri; litere, cifre și punctuația obișnuită (celelalte caractere sunt trimise ca ?).</li>
+                <li>Mai multe variante: <strong><span translate="no">THOR MICRO</span></strong> (2 simboluri pe secundă, lat de 36 Hz, foarte lent: un apel durează peste un minut, mai mult decât permite implicit limita de emisie continuă), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> și <strong><span translate="no">THOR 100</span></strong> (rapide, late de 900 până la 1800 Hz, cu o corecție de erori mai puternică); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> și <strong><span translate="no">CONTESTIA 64/1000</span></strong>. În fișierele <span translate="no">ADIF</span>, <span translate="no">THOR MICRO</span> este scris ca <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (lățime în Hz, L = intercalare lungă, S = scurtă): 64 de purtătoare deodată, late de 500, 1000 sau 2000 Hz, aproximativ 5 până la 20 de caractere pe secundă; robust împotriva fadingului și a rafalelor de zgomot, folosit în rețelele de urgență. Bara de recepție este mijlocul semnalului. Intercalarea lungă este mai robustă, cea scurtă începe să afișeze mai devreme.</li>
                 <li>Frecvențe: pe 20 m <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 și <span translate="no">MT63</span> 14,105 MHz; în rest, <span translate="no">THOR</span> folosește frecvențele lui <span translate="no">DominoEX</span>, <span translate="no">Contestia</span> pe cele ale lui <span translate="no">Olivia</span>, iar <span translate="no">MT63</span> segmentele digitale late (de exemplu 7,050 MHz). O frecvență setată de dumneavoastră are în continuare prioritate.</li>
                 <li>Înregistrarea în log: loggerul se deschide cu numele modului (de exemplu <span translate="no">THOR 16</span>); în fișierele <span translate="no">ADIF</span> <span translate="no">THOR</span> este scris ca mod <span translate="no">THOR</span> cu submodul lui (<span translate="no">THOR16</span> ...), <span translate="no">Contestia</span> ca mod <span translate="no">CONTESTI</span>, iar <span translate="no">MT63</span> ca mod <span translate="no">MT63</span> (<span translate="no">ADIF</span> nu are submoduri pentru aceste două).</li>
@@ -4638,6 +4680,11 @@
                 <li><strong>Indicativ cu mai multe contururi</strong>: indicativul dvs. cu mai multe contururi în jurul literelor.</li>
             </ol>
             <p><strong>Fără indicativ</strong> nu scrie nimic pe imagine (doar linia dvs. de text, dacă ați adăugat una). Indicativul este totuși trimis în Morse sau ca <span translate="no">FSK ID</span> dacă acestea sunt pornite în setări. O imagine de răspuns folosește în loc una dintre cele cinci așezări de răspuns (unul deasupra celuilalt, unul lângă altul, sus și jos, contur mare, cu dată + bandă); săgețile și paleta le parcurg pe acestea.</p>
+
+            <h3 id="sstv-fax">Fax de amator</h3>
+            <p>
+                Aceeași jumătate de transmisie trimite imaginea și ca <strong>fax</strong> de amator (fax HF, formatul emisiunilor de hărți meteo): după modurile <span translate="no">SSTV</span>, lista de moduri din bara de jos conține <strong>Fax 288/120</strong> (formatul uzual de amator), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> și patru formate <strong>Colour fax</strong> (288 sau 576, 120 sau 240 de linii pe minut). Primul număr este indicele de cooperare: 288 trimite 905 pixeli pe linie, 576 trimite 1810. Un fax trimite un semnal de start de 5 s, 30 s de linii de fazare, imaginea în forma ei proprie (la 120, o linie la fiecare jumătate de secundă), un semnal de oprire de 5 s și 10 s de negru, între 1500 Hz (negru) și 2300 Hz (alb). Faxul color trimite fiecare rând de trei ori, roșu, verde și albastru, după un semnal de start de 200 Hz. Un fax este lung (o imagine 4:3: aproximativ 6,5 minute la 288/120), de aceea este oferit doar sub o limită de transmisie continuă suficient de lungă; lista arată secundele fiecărui format. Faxul trimite imaginea însăși: nu i se adaugă text de indicativ și nici identificare <span translate="no">CW</span> sau <span translate="no">FSK</span>. Receptorul de fax meteo (<a href="#swl-wefax">Weather fax</a>) îl recepționează.
+            </p>
 
             <h3 id="sstv-limits">Limite de emisie</h3>
             <p>O imagine este o singură emisie continuă la putere maximă: aproximativ 40 de secunde în Robot 36, două minute în Martin 1 și peste patru minute în modurile cele mai lente. Totul contează: semnalul de start, indicativul în Morse, imaginea și <span translate="no">FSK ID</span>, iar secundele de pe <span translate="no">TRIMITE</span> și din lista de moduri sunt tot acest timp.</p>
@@ -5170,6 +5217,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Acest server este al meu</strong> in its rows, the same answer as <strong>Este acest SDR al dvs.?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Exporturi: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> și <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>EXPORTĂ ADIF</strong>: o înregistrare pentru fiecare stație auzită, două pentru fiecare QSO, așa cum se trimit rapoartele și cărțile <span translate="no">SWL</span>: <span translate="no">SWL=Y</span>, identificatorul dumneavoastră ca operator, stația auzită în <span translate="no">CALL</span> cu raportul dumneavoastră, stația cu care lucra în mesajul cărții &ldquo;Heard working ...&rdquo; și în comentariu, referințele de program (<span translate="no">SOTA_REF</span>, <span translate="no">POTA_REF</span>, <span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>) și receptorul în <span translate="no">MY_RIG</span>.</li>
@@ -5272,7 +5321,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>LOCAȚIA MEA ESTE GREȘITĂ</strong> in the Signals pane.</li>
                 <li>Același lucru este valabil în Franța, care include Corsica, departamentele de peste mări (Guadelupa, Martinica, Guyana Franceză, Réunion, Mayotte) și partea franceză din Sfântul Martin (indicativele <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> și prefixele de peste mări).</li>
-                <li><strong>În ce țară vă aflați?</strong> qFT8 stabilește țara dumneavoastră din cea mai exactă informație pe care o are: mai întâi locația precisă, apoi o locație aproximativă, apoi centrul locatorului sau indicativul dumneavoastră (oricare dintre ultimele două este suficient pentru a aplica o restricție). Când țara respectivă nu permite un mod, dialogul <strong>În ce țară vă aflați?</strong> spune &ldquo;Credem că vă aflați în …, unde recepția sau decodarea acestui mod nu este permisă.&rdquo;, cu țările listate cele mai apropiate primele, apoi toate de la A la Z. Schimbați țara doar dacă qFT8 a detectat-o greșit: sunteți responsabil să respectați legea țării în care vă aflați. Dacă nici țara aleasă nu permite modul, dialogul o spune. Țara aleasă este reținută (Setări &gt; <a href="#settings-time-location">ORĂ ȘI LOCAȚIE</a>, <strong>Țara pentru regulile de recepție</strong>) și este cerută din nou doar dacă locația dumneavoastră o contrazice mai târziu.</li>
+                <li><strong>În ce țară vă aflați?</strong> qFT8 stabilește țara dumneavoastră din cea mai exactă informație pe care o are: mai întâi locația precisă, apoi o locație aproximativă, apoi centrul locatorului sau indicativul dumneavoastră (oricare dintre ultimele două este suficient pentru a aplica o restricție). Când țara respectivă nu permite un mod, dialogul <strong>În ce țară vă aflați?</strong> spune &ldquo;Credem că vă aflați în …, unde recepția sau decodarea acestui mod nu este permisă.&rdquo;, cu țările listate cele mai apropiate primele, apoi toate de la A la Z. Schimbați țara doar dacă qFT8 a detectat-o greșit: sunteți responsabil să respectați legea țării în care vă aflați. Dacă nici țara aleasă nu permite modul, dialogul o spune. Țara aleasă este reținută (Setări &gt; <a href="#settings-time-location">ORĂ ȘI LOCAȚIE</a>, <strong>Țara</strong>) și este cerută din nou doar dacă locația dumneavoastră o contrazice mai târziu.</li>
                 <li>Lângă o frontieră qFT8 numără cu grijă: dacă locația dumneavoastră aproximativă ar putea fi într-o țară care nu permite modul, întreabă. Dacă a ghicit țara greșită, corectați-o în dialogul <strong>În ce țară vă aflați?</strong> sau în Setări.</li>
                 <li>În Regatul Unit și în Irlanda, receptorul TV afișează o notă, o dată pe sesiune, că este necesară o licență TV pentru a vedea sau înregistra TV în direct; numește țara în care vă aflați.</li>
                 <li>Un <span translate="no">KiwiSDR</span> public aparține proprietarului său: respectați limitele acestuia.</li>
@@ -5748,6 +5797,8 @@ cd qFT8
                         manipulat și el prin bridge.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -6351,7 +6402,7 @@ cd qFT8
             Copyright &copy; 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Toate drepturile rezervate.
         </p>
         <p>
-            Include părți din usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) și mediul de execuție Java Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Niciunul dintre acești autori sau proiecte terțe nu susține qFT8 și nu este afiliat cu qFT8.
+            Include părți din usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratuit pentru comunitatea radioamatorilor) și mediul de execuție Java Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Niciunul dintre acești autori sau proiecte terțe nu susține qFT8 și nu este afiliat cu qFT8.
         </p>
         <div class="footer-links">
             <a href="../../ro/">Pagina principală</a> - <a href="../../privacy/">Politica de confidențialitate</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Licență</a>

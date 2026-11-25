@@ -1,0 +1,65 @@
+/* the site's body is a centring flex column: without an explicit width the main column shrinks to its content, and the
+   canvases' device-pixel widths then feed back into their own size (overflow at phone width, user 11-10) */
+.sc-main { width: 100%; max-width: 860px; box-sizing: border-box; margin: 0 auto; padding: 24px 16px 48px; min-width: 0; overflow-wrap: anywhere; }
+.sc-card, .sc-spec, .sc-row, .sc-foot, .sc-count { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.sc-main h1 { margin: 8px 0 6px; font-size: 2rem; }
+.sc-lead { color: var(--text-secondary); margin: 0 0 18px; }
+.sc-back { display: inline-flex; align-items: center; gap: 4px; color: var(--link-color); text-decoration: none; font-weight: 600; }
+.sc-back svg, .sc-mode svg, .sc-icon-btn svg, .sc-open svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.sc-card { background: var(--surface-glass); border: 1px solid var(--surface-border); border-radius: 14px; padding: 16px; }
+.sc-row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+.sc-mode { flex: 1 1 200px; min-width: 0; display: flex; align-items: center; gap: 10px; justify-content: space-between; min-height: 56px;
+    background: var(--card-item-bg); color: var(--text-color); border: 1px solid var(--surface-border); border-radius: 10px;
+    padding: 8px 14px; font-size: 1.35rem; font-weight: 700; cursor: pointer; text-align: left; }
+.sc-mode:hover { border-color: var(--surface-border-hover); }
+.sc-sub { flex: 1; font-size: 0.95rem; font-weight: 500; color: var(--text-muted); }
+.sc-play { flex: 0 1 220px; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; border: 0;
+    border-radius: 10px; background: var(--accent-color); color: #04121c; font-size: 1.5rem; font-weight: 800; letter-spacing: .04em; cursor: pointer; }
+.sc-play svg { width: 28px; height: 28px; fill: currentColor; }
+.sc-play:disabled { opacity: .45; cursor: default; }
+.sc-play.sc-on { background: #f1f5f9; }
+.sc-count { min-height: 1.2em; margin: 14px 0 10px; text-align: center; font-variant-numeric: tabular-nums; font-size: 1.1rem; color: var(--text-secondary); }
+.sc-count b { display: block; font-size: clamp(2.6rem, 14vw, 4.2rem); line-height: 1.05; color: var(--text-color); }
+.sc-now { margin: -2px 0 12px; text-align: center; }
+.sc-now[hidden] { display: none; }
+.sc-now-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px;
+  background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 10px; font: inherit;
+  font-weight: 700; letter-spacing: .04em; cursor: pointer; }
+.sc-now-btn svg { width: 20px; height: 20px; fill: currentColor; }
+.sc-now-btn:hover { background: var(--card-item-hover); }
+.sc-now-note { margin: 8px auto 0; max-width: 36em; font-size: .8rem; line-height: 1.35; color: var(--text-muted); }
+.sc-spec { background: #000; border-radius: 8px; overflow: hidden; }
+.sc-spec canvas { display: block; width: 100%; max-width: 100%; }
+.sc-note { color: var(--text-secondary); margin: 12px 0 6px; }
+.sc-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+.sc-clock { color: var(--text-muted); font-size: .85rem; }
+.sc-open { display: inline-flex; align-items: center; gap: 6px; color: var(--link-color); text-decoration: none; font-weight: 600; }
+.sc-about { margin-top: 26px; color: var(--text-secondary); }
+.sc-about h2 { color: var(--text-color); font-size: 1.2rem; }
+.sc-dialog { position: fixed; inset: 0; background: rgba(0, 0, 0, .6); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 50; }
+.sc-dialog[hidden] { display: none; }
+.sc-dialog-card { width: 100%; max-width: 560px; max-height: 86vh; overflow: auto; background: #101625; border: 1px solid var(--surface-border); border-radius: 14px; padding: 14px; }
+.sc-dialog-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.sc-dialog-head h3 { flex: 1; margin: 0; font-size: 1.15rem; }
+.sc-icon-btn { background: none; border: 0; color: var(--text-color); padding: 6px; cursor: pointer; border-radius: 8px; }
+.sc-icon-btn[hidden] { display: none; }
+.sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+.sc-grid button { min-height: 48px; background: var(--card-item-bg); color: var(--text-color); border: 1px solid var(--surface-border);
+    border-radius: 9px; font-size: 1rem; font-weight: 600; cursor: pointer; padding: 6px 8px; }
+.sc-grid button:hover { background: var(--card-item-hover); border-color: var(--surface-border-hover); }
+.sc-grid button.sc-sel { border-color: var(--accent-color); box-shadow: 0 0 0 1px var(--accent-color) inset; }
+.sc-grid .sc-grp { grid-column: 1 / -1; font-weight: 700; font-size: .85rem; letter-spacing: .06em; color: var(--text-muted); margin-top: 6px; }
+.sc-grid button small { display: block; font-weight: 400; color: var(--text-muted); font-size: .78rem; }
+@media (max-width: 520px) { .sc-main h1 { font-size: 1.6rem; } .sc-play { flex: 1 1 100%; } }
+.sc-bar { display: flex; align-items: center; gap: 6px; margin-top: 8px; min-width: 0; }
+.sc-bar[hidden] { display: none; }
+.sc-bar .sc-icon-btn svg, .sc-align svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sc-seek { flex: 1 1 auto; min-width: 60px; accent-color: var(--accent-color); }
+.sc-time { color: var(--text-muted); font-size: .85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sc-align { border: 0; border-radius: 8px; padding: 5px; color: #fff; cursor: pointer; line-height: 0; }
+.sc-align[hidden] { display: none; }
+.sc-align.sc-green { background: #1f9d55; }
+.sc-align.sc-red { background: #d93025; animation: sc-blink 1s ease-in-out infinite; }
+@keyframes sc-blink { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .sc-align.sc-red { animation: none; } }
+@media (max-width: 380px) { .sc-time { display: none; } }

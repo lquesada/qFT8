@@ -173,6 +173,7 @@
                         <li><a href="#remote-control">Kaukokäyttö-verkkopalvelin</a></li>
                         <li><a href="#webserver-headless">qFT8:n käyttö ilman näyttöä (kaukokäytön verkkopalvelin)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log -protokolla</a></li>
                         <li><a href="#layouts">Näytön asettelut</a></li>
@@ -216,7 +217,7 @@
             </p>
 
             <p>
-                qFT8 sisältää osia seuraavista: usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) ja Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Yksikään näistä kolmannen osapuolen tekijöistä tai projekteista ei tue qFT8:aa eikä ole sidoksissa siihen.
+                qFT8 sisältää osia seuraavista: usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, ilmainen radioamatööriyhteisölle) ja Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Yksikään näistä kolmannen osapuolen tekijöistä tai projekteista ei tue qFT8:aa eikä ole sidoksissa siihen.
             </p>
 
 
@@ -734,14 +735,10 @@
 
             <h4>Asetusten siirto puhelimesta (tai puhelimeen)</h4>
             <p>
-                <strong>VIE ASETUKSET</strong> ja <strong>TUO ASETUKSET</strong> pääasetussivulla (kohdassa
-                <strong>Asetustiedostot</strong>) luovat ja lukevat yhden tiedoston, joka on <strong>sama Androidilla ja
-                    tietokoneella</strong>. Vie puhelimessa, kopioi tiedosto tietokoneelle (sähköposti, pilvi, kaapeli) ja tuo se
-                siellä; toiseen suuntaan se toimii myös.
+                <strong>VIE ASETUKSET</strong> ja <strong>TUO ASETUKSET</strong> pääasetussivulla (kohdassa <strong>Asetustiedostot</strong>) avaavat vienti- ja tuontisivut (katso <a href="#settings-profiles">Profiilit</a>). Tiedosto on <strong>sama Androidilla, iPhonella ja tietokoneella</strong>. Vie puhelimessa, kopioi tiedosto tietokoneelle (sähköposti, pilvi, kaapeli) ja tuo se siellä; toiseen suuntaan se toimii myös.
             </p>
             <ul>
-                <li>Tiedostossa ovat QRZ API -avaimesi, LoTW-varmenteesi ja salasanasi. <strong>Älä koskaan jaa
-                    sitä.</strong></li>
+                <li>Kirjautumistiedot, salasanat ja <span translate="no">LoTW</span>-varmenne ovat tiedostossa vain, jos valitset <strong>Sisällytä kirjautumistiedot ja salasanat</strong>; silloin ne suojataan salalauseella, jonka kirjoitat. Silloinkin <strong>älä koskaan jaa tiedostoa.</strong></li>
                 <li>Siinä ei ole QSO:ita: siirrä loki <a href="#adif-import-export">ADIFilla</a> tai anna
                     <a href="#qft8-log">qFT8-lokipalvelinten</a> kopioida se.</li>
                 <li>Siinä ei ole sitä, mikä koskee vain tätä tietokonetta: äänilaitteiden valinnat (ne ovat eri laitteita),
@@ -1294,7 +1291,7 @@
             <ul>
                 <li>Minuutin jaksot: lähetys alkaa sekunnin kuluttua parillisen tai parittoman <span translate="no">UTC</span>-minuutin alusta ja kestää noin 47 s (<span translate="no">JT65</span>) tai 49 s (<span translate="no">JT9</span>); valitset parillisen tai parittoman kuten <span translate="no">FT8</span>:ssa.</li>
                 <li>Viestit: 72 bittiä: CQ, kaksi kutsumerkkiä ja lokaattori, raportti (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> tai enintään 13 merkkiä vapaata tekstiä. QSO etenee samalla tavalla kuin <span translate="no">FT8</span>:ssa (<span translate="no">AUTO</span>, asemaluettelo, kirjaus). Kutsumerkkiä, joka tarvitsisi sekä etuliitteen että jälkiliitteen, ei voi lähettää.</li>
-                <li><span translate="no">JT65</span>:n alalajit: A (HF), B ja C (VHF ja ylöspäin, leveämpi äänivälistys), valitaan lajin vierestä alapalkista tai Asetuksista; molempien asemien on käytettävä samaa. <span translate="no">JT9</span> on <span translate="no">JT9-1</span>, vain 16 Hz leveä.</li>
+                <li><span translate="no">JT65</span>:n alalajit: A (HF), B ja C (VHF ja ylöspäin, leveämpi äänivälistys), B2 ja C2 (B ja C kaksinkertaisella nopeudella, 30 s:n jaksot), valitaan lajin vierestä alapalkista tai Asetuksista; molempien asemien on käytettävä samaa. <span translate="no">JT9</span>:n alalajit: A (<span translate="no">JT9-1</span>, vain 16 Hz leveä), B–H (leveämmät äänet), <span translate="no">JT9-2</span>–<span translate="no">JT9-30</span> (2–30 minuutin jaksot LF:lle ja MF:lle) ja E–H <span translate="no">FAST</span> (5–30 s:n jaksot sironnalle), valitaan samalla tavalla.</li>
             </ul>
             <p>
                 Asetukset kuvataan kohdissa <a href="#jt65-settings">Asetukset &gt; <span translate="no">JT65</span></a> ja <a href="#jt9-settings">Asetukset &gt; <span translate="no">JT9</span></a>.
@@ -1830,8 +1827,10 @@
                 <li><strong>QSO-synkronointi</strong>: yksi rivi jokaiselle palvelulle, johon QSO:si lähetetään: sen kytkin, tilaa kuvaava kuvake ja sen hammaspyörä (katso <a href="#qso-services">QSO-lähetyspalvelut</a> ja <a href="#choosing-services">Palveluiden ja palvelimien valitseminen</a>).</li>
                 <li><strong>Raportointi</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> ja <a href="#lq8-announce"><span translate="no">LQ8</span>-toimintasi ilmoittaminen</a>.</li>
                 <li><strong>Yhteisö</strong>: kaksi Telegram-ryhmää (katso <a href="#community">Yhteisö</a>).</li>
-                <li><strong>Asetustiedostot</strong>: <strong>TUO ASETUKSET</strong> ja <strong>VIE ASETUKSET</strong> (katso <a href="#settings-pages">alla</a>).</li>
+                <li><strong>Profiili</strong>: ylin rivi, jossa <strong>VAIHDA</strong> (katso <a href="#settings-profiles">Profiilit</a>).</li>
+                <li><strong>Asetustiedostot</strong>: <strong>TUO ASETUKSET</strong> ja <strong>VIE ASETUKSET</strong>, aina saatavilla, vaikka <strong>Näytä lisäasetukset</strong> ei olisi valittuna (katso <a href="#settings-files">alla</a>).</li>
                 <li><strong>Lisää asetuksia</strong>: <strong>LÄHETELAJIT</strong> (sivu, jossa on tässä järjestyksessä <strong>AUTOMAATTINEN TOIMINTA</strong>, <strong>DIGITAALISET MODET</strong> ja <strong>BANDIEN VALINTA</strong>, sitten, otsikon ”Lähetelajien asetukset” alla, yksi painike kutakin lajia kohti: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> ja muut digitaaliset lajit avaavat DIGITAALISET MODET-sivun kyseisen lajin kohdalta; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> ja <strong><span translate="no">PACKET</span></strong> omat sivunsa; TAKAISIN palaa sivulle LÄHETELAJIT), <strong>TIETOLÄHTEET</strong>, <strong>PALVELIMET</strong> (mitä tämä laite tarjoaa muille ohjelmille, katso <a href="#choosing-services">Palveluiden ja palvelimien valitseminen</a>) ja <strong>POISTA QSO:T</strong>, jotka kaikki on kuvattu kohdassa <a href="#settings-pages">Asetussivut</a>.</li>
+                <li><strong>Tallenteet</strong> (vain kun <strong>Näytä lisäasetukset</strong> on valittuna, työkalujen alla): <strong>ALOITA TALLENNUS</strong> tallentaa vastaanottamasi ja lähettämäsi tähän laitteeseen <span translate="no">.qft8</span>-tiedostoon (<strong>PYSÄYTÄ TALLENNUS</strong> ja aika tallennuksen aikana); suurennuslasi ja ratas avaavat tallennesivun tallennettuine tallenteineen (toista, jaa, nimeä uudelleen, poista). <strong>Tallennuksen pikakuvake</strong> näyttää myös pienen <span translate="no">REC</span>-painikkeen vesiputouksen oikeassa alakulmassa. <span translate="no">.qft8</span>-tiedoston (tai siihen johtavan linkin) avaaminen toistaa sen riippumatta tästä valinnasta: kapea palkki vesiputouksen alareunassa sisältää toiston, kohdan, <strong>?</strong> (tallenteen oma teksti) ja ruksin poistumiseen; mitään ei lähetetä tallenteen toiston aikana (<span translate="no">TX</span>-painike katoaa).</li>
                 <li><strong>Tarkista uudet versiot käynnistyksen yhteydessä</strong> ja <strong>Lähetä nimetön päivittäinen suorituskykykooste</strong> (katso <a href="#reports-updates">Virheilmoitukset ja uudet versiot</a>).</li>
                 <li><strong>Kieli</strong>: qFT8:n kieli, luettelon lopussa viivan alla.</li>
                 <li>Aivan alhaalla: versio sekä linkit tähän oppaaseen ja tietosuojakäytäntöön, käyttöoikeudet ja yhdistetty USB-laite sekä <strong>ILMOITA VIRHEESTÄ</strong> (katso <a href="#report-bug">Ongelmasta ilmoittaminen</a>).</li>
@@ -1937,7 +1936,7 @@
                     viestien ajoituksen mukaan.</li>
                 <li><strong>Sijainti (Maidenhead-ruutu)</strong>: lokaattorisi, painikkeella <strong>GPS-SYNK</strong>,
                     ja päivitetäänkö se GPS:stä aina, kun qFT8 käynnistyy.</li>
-                <li><strong>Maa vastaanottosääntöjä varten</strong>: maa, jota qFT8 käyttää säännöissä siitä, mitä saat vastaanottaa ja lähettää (katso <a href="#swl-legal">Kuuntelu ja laki</a> ja <a href="#tx-legal">Lähettäminen ja laki</a>). Siinä lukee &ldquo;Ei valittu: sijainnin, lokaattorin tai kutsun perusteella&rdquo;, kunnes valitset maan; <strong>VAIHDA</strong> avaa maiden luettelon (lähimmät ensin, sitten kaikki aakkosjärjestyksessä) ja valitsemasi maa muistetaan.</li>
+                <li><strong>Maa</strong>: maa, jota qFT8 käyttää säännöissä siitä, mitä saat vastaanottaa ja lähettää (katso <a href="#swl-legal">Kuuntelu ja laki</a> ja <a href="#tx-legal">Lähettäminen ja laki</a>). Luettelossa ensimmäinen vaihtoehto, <strong>Auto</strong>, käyttää maata, jonka qFT8 tunnistaa (suluissa), sitten tulevat lähimmät maat ja kaikki maat A:sta Z:aan. Toisen maan valinta pyytää vahvistuksen, ja valitsemasi maa muistetaan.</li>
             </ul>
 
             <h4 id="settings-application">Sovelluksen asetukset</h4>
@@ -2060,12 +2059,48 @@
                 Ne poistavat vain tämän laitteen QSO:t, eivät koskaan verkkopalvelun QSO:ita.
             </p>
 
+            <h4 id="settings-profiles">Profiilit</h4>
+            <p>
+                Profiili on yksi aseman kokoonpano: oma kutsumerkki, omat kirjautumistiedot ja salasanat, <span translate="no">QSO</span>- ja
+                <span translate="no">SWL</span>-lokit, muistit, teema ja asetukset. Radio, äänilaitteet ja kieli ovat
+                yhteisiä kaikille profiileille. Käytä yhtä profiilia kutsumerkkiä kohti (esimerkiksi oma kutsumerkkisi ja kerhon tai erikoistapahtuman kutsumerkki).
+            </p>
+            <p>
+                <strong>Missä</strong>: Asetusten ylin rivi, <strong>Profiili: NIMI</strong> ja <strong>VAIHDA</strong>. Se näkyy,
+                kun <strong>Näytä lisäasetukset</strong> on valittu tai kun profiileja on useampi kuin yksi. <strong>VAIHDA</strong>
+                avaa Profiilit-sivun.
+            </p>
+            <p>
+                Profiilit-sivu luettelee profiilisi painikkeina omassa järjestyksessäsi, kukin oman teemansa väreissä (teeman alapalkin väri); vihreä nuoli osoittaa käytössä olevaa. Napauta toista profiilia ottaaksesi sen käyttöön. Nuolet siirtävät profiilia ylös tai alas, kynä nimeää sen uudelleen ja roskakori poistaa sen (käytössä olevassa profiilissa ei ole roskakoria).
+            </p>
+            <p>
+                <strong>Vaihtaminen</strong>: qFT8 luettelee, mikä pysähtyy: <span translate="no">TX</span> kytketään <span translate="no">OFF</span>-tilaan,
+                <span translate="no">AUTO</span> kytketään <span translate="no">OFF</span>-tilaan, käynnissä oleva <span translate="no">QSO</span> keskeytetään,
+                aktivoinnit päättyvät <span translate="no">QRT</span>:hen, palvelut, palvelimet ja web-kaukosäätimen selaimet pysäytetään tai
+                katkaistaan, ja vielä lähettämättömät <span translate="no">QSO</span>t tai <span translate="no">SWL</span>-raportit luetellaan (ne odottavat
+                kyseistä profiilia ja lähetetään, kun se on taas käytössä). Kun jotain on lueteltu, kirjoitat <strong>yes</strong> (englanniksi)
+                vaihtaaksesi; muuten riittää tavallinen vahvistus. Vaihdon aikana <strong>Vaihdetaan profiiliin ...</strong> -peite peittää
+                näytön; mitään ei voi koskea, ennen kuin uusi profiili on valmis. Jos <span translate="no">TX</span>:ää ei voi kytkeä pois päältä, mikään
+                ei muutu ja qFT8 kertoo siitä. Vaihto ei koskaan kytke <span translate="no">TX</span>:ää päälle.
+            </p>
+            <p>
+                <strong>UUSI</strong> luo kopion käytössä olevasta profiilista: sen asetukset, muistit ja teema, ilman kutsumerkkiä, kirjautumistietoja ja lokeja. Annat sille nimen ja valitset sitten sen teeman. Luettelon jokainen teema näytetään omissa väreissään. Teemat, joita mikään profiili ei käytä, tulevat ensin, jotta jokainen profiili näyttää erilaiselta; kohdan <strong>Jo käytössä</strong> alla ovat teemat, joita jokin toinen profiili käyttää, sekä teemat, joilla on sama tausta kuin jollakin niistä (esimerkiksi kaikki valkoiset teemat, kun yksi on käytössä). Ne on merkitty sellaisiksi, ja ne voi silti valita. Sitten <strong>LUO</strong>. Jos kutsumerkkisi on kirjoitettu muisteihin tai teksteihin (<span translate="no">CW</span>-, <span translate="no">RTTY</span>-, <span translate="no">JTTY</span>-, <span translate="no">Packet</span>-muistit, <span translate="no">JS8</span> INFO / STATUS, <span translate="no">PIX</span>-kilpi), kopiossa lukee siellä sen sijaan <span translate="no">[MYCALL]</span> (uuden profiilin oma kutsumerkki), ja vahvistus luettelee nämä tekstit, jotta voit tarkistaa ne ennen lähettämistä.
+            </p>
+            <p>
+                <strong>Poista</strong>: ikkuna kertoo profiilin, sen kutsumerkin ja lokien koon; kirjoitat <strong>yes</strong>.
+                Kaikki, mikä on vain siinä profiilissa, poistuu; verkkopalvelut säilyttävät kopionsa (qFT8 ei koskaan poista mitään niistä). Säilyttääksesi sen lokin
+                vaihda siihen ja käytä ensin <span translate="no">ADIF EXPORT</span>.
+            </p>
+            <p>
+                <strong>VIE</strong> (myös <strong>VIE ASETUKSET</strong> kohdassa Asetustiedostot): valitse tallennettavat profiilit yhteen tiedostoon (käytössä oleva profiili on valittuna) ja halutessasi <strong>Laitteiden asetukset (radio ja ääni)</strong> ja <strong>Sisällytä kirjautumistiedot ja salasanat</strong> (kumpikin aluksi valitsematta). Kirjautumistiedot, salasanat ja <span translate="no">LoTW</span>-varmenne suojataan salalauseella, jonka kirjoitat viennin yhteydessä; sitä ei tallenneta. <strong>VIE KAIKKI</strong> tallentaa kaikki profiilit ja laitteiden asetukset. <span translate="no">QSO</span>- ja <span translate="no">SWL</span>-lokit eivät ole tiedostossa (<span translate="no">ADIF EXPORT</span> tallentaa ne).
+            </p>
+            <p>
+                <strong>TUO</strong> (myös <strong>TUO ASETUKSET</strong> kohdassa Asetustiedostot): valitse asetustiedosto; qFT8 luettelee, mitä siinä on. Profiili, jolla on sama nimi kuin omallasi, näkyy punaisena ja korvaa kyseisen profiilin asetukset (sen lokit säilyvät); kirjoitat <strong>yes</strong>, ja ikkuna kertoo jokaisen korvattavan profiilin kutsumerkin ja <span translate="no">QSO</span>-määrän. Yhden aseman tiedostosta (jokainen ennen profiileja tehty asetustiedosto) voi tulla uusi profiili tai se voidaan tuoda käytössä olevaan profiiliin; kun profiileja on yksi ja <strong>Näytä lisäasetukset</strong> ei ole valittuna, tiedosto menee suoraan käytössä olevaan profiiliin kuten ennenkin: <span translate="no">TX</span> on oltava pois päältä, kirjoitat <strong>yes</strong>, ja ilman salasanoja oleva tiedosto säilyttää omasi vain, jos se käyttää samaa kutsumerkkiä ja samoja osoitteita. Käytössä olevaan profiiliin tuonti pysäyttää ensin käynnissä olevat asiat, kuten vaihto, eikä koskaan kytke <span translate="no">TX</span>:ää päälle.
+            </p>
+
             <h4 id="settings-files">Asetustiedostot</h4>
             <p>
-                <strong>VIE ASETUKSET</strong> tallentaa kaikki asetuksesi yhteen tiedostoon ja <strong>TUO ASETUKSET</strong>
-                lukee sen takaisin, tällä laitteella tai toisella, puhelimella tai tietokoneella (katso
-                <a href="#pc-settings">Asetukset: missä ne ovat, siirto puhelimesta</a>). Tiedostossa ovat avaimesi ja
-                salasanasi: älä koskaan jaa sitä.
+                <strong>VIE ASETUKSET</strong> ja <strong>TUO ASETUKSET</strong> avaavat kohdassa <a href="#settings-profiles">Profiilit</a> kuvatut vienti- ja tuontisivut: käytössä oleva profiili (tai useampi, tai kaikki), laitteiden asetukset jos valitset ne, kirjautumistiedot ja salasanat vain jos valitset ne. Ne ovat saatavilla, vaikka <strong>Näytä lisäasetukset</strong> ei olisi valittuna; yhden profiilin kanssa ne tallentavat ja lukevat yksinkertaisesti sen profiilin. Vanhat asetustiedostot voi yhä tuoda (käytössä olevaan profiiliin). Katso myös <a href="#pc-settings">Asetukset: missä ne ovat, siirto puhelimesta</a>.
             </p>
 
             <h3 id="raw-message-logs">Raakaviestilokit</h3>
@@ -2624,7 +2659,7 @@
                 <span translate="no">GridTracker2</span> (testattu versiolla 2.261019.5) näyttää kartalla ja kirjaa sen, mitä <span translate="no">FT8 network log</span> lähettää porttiin 2237; kun sen ADIF UDP -vastaanotto on päällä, se ottaa myös <span translate="no">ADIF over UDP</span>-muodon portissa 2333. Sen lokin edelleenlähetykset lähettävät sen QSO:t qFT8:n vastaanottimille.
             </p>
             <p>
-                Toisin päin qFT8 voi ottaa muiden ohjelmien yhteydet lokiinsa. Rastita kohdassa Lisää asetuksia &gt; <strong>PALVELIMET</strong> rivi vastaanottimelle sille muodolle, jota toinen ohjelma lähettää: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), <span translate="no">AC Log</span>-liittymä (TCP 1100) tai <span translate="no">DXLab</span>-liittymä (TCP 52001). Sen sivu näyttää osoitteen, joka annetaan toiseen ohjelmaan, ja antaa vaihtaa portin ja ottaa yhteyksiä vain tietyistä osoitteista. Mikään näin vastaanotettu ei voi lähettää, muuttaa radiota eikä poistaa yhteyttä. Vastaanottimet ovat pois päältä, kunnes kytket ne päälle; iPhonessa ne toimivat vain qFT8:n ollessa auki eivätkä koskaan liity multicast-ryhmään.
+                Toisin päin qFT8 voi ottaa muiden ohjelmien yhteydet lokiinsa. Rastita kohdassa Lisää asetuksia &gt; <strong>PALVELIMET</strong> rivi vastaanottimelle sille muodolle, jota toinen ohjelma lähettää: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), <span translate="no">AC Log</span>-liittymä (TCP 1100) tai <span translate="no">DXLab</span>-liittymä (TCP 52001). Sen sivu näyttää osoitteen, joka annetaan toiseen ohjelmaan, ja antaa vaihtaa portin ja ottaa yhteyksiä vain tietyistä osoitteista. Mikään näin vastaanotettu ei voi lähettää, muuttaa radiota eikä poistaa yhteyttä. Vastaanottimet ovat pois päältä, kunnes kytket ne päälle; iPhonessa ne toimivat vain qFT8:n ollessa auki eivätkä koskaan liity multicast-ryhmään. Vastaanottimen <span translate="no">FT8 network log</span> sivu lisää: <em>Tämä palvelin vain vastaanottaa yhteyksiä muilta ohjelmilta; lähettääksesi dekoodauksesi ja yhteytesi kartta- tai lokiohjelmalle käytä kohtaa <strong>Lokin synkronointi</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3167,7 +3202,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Erikoislähetys</strong>, directly above <strong>Tapahtumat</strong>. Its
+                Settings has a section <strong>Erikoislähetys</strong>, directly below <strong>Ohjelmat</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Monisävy</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Fox-tila</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4078,7 +4113,9 @@
                 <p>
                 <strong>Silmukka</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Pois</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Pois</strong>
+                stops it). <strong>Lähetysten määrä</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -4200,6 +4237,7 @@
                 <li><strong><span translate="no">Kohde</span></strong> ja <strong><span translate="no">Sanoma</span></strong>: Sen aseman kutsumerkki, jonka kanssa työskentelet, ja kilpailusanoma. Ne täyttävät viestiesi kohdat <code>[TARGET]</code> ja <code>[EXCH]</code>. Napauta kenttää kirjoittaaksesi sen; napauta kutsua dekooderirivillä (kohta 7) ottaaksesi sen kohteeksi.</li>
                 <li><strong><span translate="no">BAUD</span></strong>: Nopeus: 45,45 (tavallinen), 50 tai 75. Jokainen napautus siirtyy seuraavaan.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: Kahden äänen väli: 170 Hz (tavallinen), 200, 425 tai 850 Hz. Suodin seuraa siirtoa.</li>
+                <li>Kapeat shiftit: 850 Hz:n jälkeen <span translate="no">SHIFT</span> tarjoaa myös 85 ja 23 Hz (myös kohdassa Asetukset &gt; <span translate="no">RTTY</span>). Kapea shift dekoodataan vain vastaanottopalkin alta: aseta se toisen aseman shiftiksi; muita kaistan signaaleja etsitään tavallisilla shifteillä.</li>
                 <li><strong><span translate="no">REV</span></strong>: Vaihtaa kaksi ääntä keskenään asemaa varten, joka lähettää ne toisin päin. Se on meripihkan värinen niin kauan kuin se on päällä.</li>
                 <li><strong><span translate="no">FILTER</span></strong> ja <strong><span translate="no">NR</span></strong>: Vastaanottosuodatin ja kohinanvaimennus.</li>
                 <li><strong>Muistit</strong>: Valmiita viestejä samoilla makroilla kuin <span translate="no">CW</span>:ssä. Napautus lähettää yhden. Viesti, jossa on tyhjä kenttä, on himmennetty: napauta sitä nähdäksesi, mitä puuttuu. <strong><span translate="no">Näppäimistö</span></strong> (ja <strong><span translate="no">Puhe</span></strong> puhelimessa ja iPhonessa) ovat listan lopussa.</li>
@@ -4380,7 +4418,7 @@
                 <span translate="no">JT65</span> (tilanvalitsimen rivi <span translate="no">JT65</span> (kokeellinen)) on minuutin QSO-lähetelaji, jossa on 65 ääntä ja Reed-Solomon-koodi; herkkyys noin -25 dB (2500 Hz:ssä). QSO:t kirjataan muodossa <span translate="no">MODE=JT65</span> alalajeineen (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>) ja spotit lähetetään <span translate="no">PSKReporter</span>-palveluun lajina <span translate="no">JT65</span>. Tavalliset taajuudet (viritys USB:ssä): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Alalaji (A): A, B tai C, kuten alapalkissa.</li>
+                <li>Alalaji (A): A, B, C, B2 tai C2, kuten alapalkissa. B2 ja C2 ovat B ja C lähetettynä kaksi kertaa nopeammin: 30 s:n jaksot, 23 s:n lähetykset, noin 3 dB heikompi herkkyys.</li>
                 <li>Dekoodaa vain vastaanottotaajuuden lähellä (pois): pois päältä dekoodaa koko bandin; päällä dekoodaa vain vastaanottotaajuuden ympäriltä.</li>
                 <li>Vastaanottotoleranssi: leveys hertseinä vastaanottotaajuuden ympärillä (oletus 100).</li>
                 <li>Lähteet: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -4391,6 +4429,7 @@
                 <span translate="no">JT9</span> (tilanvalitsimen rivi <span translate="no">JT9</span> (kokeellinen)) on minuutin QSO-lähetelaji, jossa on 9 ääntä ja 16 Hz:n leveys; herkkyys noin -27 dB (2500 Hz:ssä). QSO:t kirjataan muodossa <span translate="no">MODE=JT9</span> ja spotit lähetetään <span translate="no">PSKReporter</span>-palveluun lajina <span translate="no">JT9</span>. Tavalliset taajuudet (viritys USB:ssä): 2 kHz <span translate="no">JT65</span>:n taajuuksien yläpuolella 160 m:stä 10 m:iin (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Alalaji (A): A (<span translate="no">JT9-1</span>) HF:llä; B–H, sama signaali leveämmillä äänillä (3,5–222 Hz:n välein) VHF:lle ja ylemmäs; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> ja <span translate="no">JT9-30</span>, signaali venytettynä 2–30 minuutin jaksoihin LF:lle ja MF:lle (jokainen porras noin 3–5 dB herkempi); E–H <span translate="no">FAST</span> 5, 10, 15 tai 30 s:n jaksossa, lyhyet peräkkäin lähetetyt kehykset meteori- ja lentokonesironnalle. Venytetyt alalajit etsivät signaaleja vain vastaanottotaajuuden vastaanottotoleranssin sisältä.</li>
                 <li>Dekoodaa vain vastaanottotaajuuden lähellä (pois): pois päältä dekoodaa koko bandin; päällä dekoodaa vain vastaanottotaajuuden ympäriltä.</li>
                 <li>Vastaanottotoleranssi: leveys hertseinä vastaanottotaajuuden ympärillä (oletus 100).</li>
                 <li>Lähteet: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -4429,7 +4468,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> ja <span translate="no">DominoEX</span> (kokeellinen)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>MFSK-perhe</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -4452,6 +4491,7 @@
                     (32 säveltä, noin 250 Hz) ja <span translate="no">MFSK11</span> ovat hitaampia, verrattuna lajiin
                     <span translate="no">MFSK16</span> ja lukevat heikompia signaaleja; <span translate="no">MFSK22</span> sijoittuu näiden väliin: <span translate="no">MFSK16</span> ja <span translate="no">MFSK32</span>.
                     <span translate="no">DominoEX</span>: 18 säveltä, ei herkkä viritykselle eikä ajelehtimiselle, nopeampi.</li>
+                <li>Lisää muunnelmia, kunkin perheen luettelon lopussa: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> ja <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 säveltä 125 Hz:n alueella, erittäin hidas, erittäin heikoille signaaleille), <strong><span translate="no">MFSK31</span></strong> (8 säveltä 250 Hz:n alueella), <strong><span translate="no">MFSK64L</span></strong> ja <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> ja <span translate="no">MFSK128</span> pitkällä lomituksella, joka levittää jokaisen merkin noin 20 sekunnin ajalle: parempi häipymässä, mutta teksti näkyy noin 20 sekuntia myöhemmin ja jokainen lähetys päättyy noin 20 sekuntia pidempään säveliin); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 symbolia sekunnissa, 36 Hz leveä, erittäin hidas), <strong><span translate="no">DOMINOEX 44</span></strong> ja <strong><span translate="no">DOMINOEX 88</span></strong> (nopeat, noin 1,5 kHz leveät). Alapalkissa erittäin hitaat näkyvät muodossa <span translate="no">DX-M</span> ja <span translate="no">TH-M</span>. Hitaat tarvitsevat aikaa ilmassa: kutsu lajilla <span translate="no">MFSK4</span> kestää noin 40 sekuntia, lajilla <span translate="no">DOMINOEX MICRO</span> noin 35, joten rivi voi tarvita enemmän kuin jatkuvan lähetyksen raja sallii.</li>
                 <li>Vastaanottopalkin alla oleva signaali dekoodataan (palkki on signaalin keskikohta). Aseta palkki signaalin kohdalle; muutaman hertsin ero ei haittaa.</li>
                 <li>Näkymässä ei ole <span translate="no">BAUD</span>-, <span translate="no">SHIFT</span>- eikä <span translate="no">REV</span>-painikkeita näissä lajeissa. Muisti lähtee yhtenä lähetyksenä; näppäimistöllä kirjoitettu teksti lähtee rivi kerrallaan, kun painat Enteriä.</li>
                 <li>Jokaisella perheellä on oma taajuutensa bandeilla, joilla sitä yleisesti käytetään (20 m:llä: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); muualla <span translate="no">RTTY</span>-taajuus.</li>
@@ -4472,6 +4512,7 @@
             <ul>
                 <li><span translate="no">THOR</span>: <span translate="no">DominoEX</span>:n äänet (ei herkkä virittämiselle eikä ajelehtimiselle) ja <span translate="no">MFSK16</span>:n virheenkorjaus; hieman hitaampi kuin <span translate="no">DominoEX</span> samalla nopeusnumerolla, paljon vankempi.</li>
                 <li><span translate="no">Contestia</span> (äänet / leveys Hz): <span translate="no">Olivia</span>n nopeampi, vain isoja kirjaimia käyttävä sukulainen, suosittu kilpailuissa; kirjaimet, numerot ja tavalliset välimerkit (muut merkit lähetetään ?-merkkinä).</li>
+                <li>Lisää muunnelmia: <strong><span translate="no">THOR MICRO</span></strong> (2 symbolia sekunnissa, 36 Hz leveä, erittäin hidas: kutsu kestää yli minuutin, enemmän kuin jatkuvan lähetyksen raja oletuksena sallii), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> ja <strong><span translate="no">THOR 100</span></strong> (nopeat, 900–1800 Hz leveät, vahvemmalla virheenkorjauksella); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> ja <strong><span translate="no">CONTESTIA 64/1000</span></strong>. <span translate="no">ADIF</span>-tiedostoihin <span translate="no">THOR MICRO</span> kirjoitetaan muodossa <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (leveys Hz, L = pitkä, S = lyhyt lomitus): 64 kantoaaltoa yhtä aikaa, 500, 1000 tai 2000 Hz leveä, noin 5–20 merkkiä sekunnissa; kestää hyvin häipymistä ja kohinapurskeita, käytössä hätäverkoissa. Vastaanottopalkki on signaalin keskikohta. Pitkä lomitus on vankempi, lyhyt alkaa tulostaa nopeammin.</li>
                 <li>Taajuudet: 20 m:llä <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 ja <span translate="no">MT63</span> 14,105 MHz; muualla <span translate="no">THOR</span> käyttää <span translate="no">DominoEX</span>:n taajuuksia, <span translate="no">Contestia</span> <span translate="no">Olivia</span>n taajuuksia ja <span translate="no">MT63</span> leveitä digitaalisia segmenttejä (esimerkiksi 7,050 MHz). Itse asettamasi taajuus pätee silti.</li>
                 <li>Kirjaus: kirjaus avautuu lajin nimellä (esimerkiksi <span translate="no">THOR 16</span>); <span translate="no">ADIF</span>-tiedostoihin <span translate="no">THOR</span> kirjoitetaan lajina <span translate="no">THOR</span> alalajeineen (<span translate="no">THOR16</span> ...), <span translate="no">Contestia</span> lajina <span translate="no">CONTESTI</span> ja <span translate="no">MT63</span> lajina <span translate="no">MT63</span> (<span translate="no">ADIF</span>:ssa ei ole alalajeja näille kahdelle).</li>
@@ -4684,6 +4725,11 @@
                 <li><strong>Kutsu monella ääriviivalla</strong>: kutsumerkkisi monella ääriviivalla kirjainten ympärillä.</li>
             </ol>
             <p><strong>Ei kutsumerkkiä</strong> ei kirjoita kuvaan mitään (vain oman tekstirivisi, jos lisäsit sellaisen). Kutsumerkki lähetetään silti sähkötyksellä tai <span translate="no">FSK ID</span>:nä, jos ne ovat päällä asetuksissa. Vastauskuva käyttää sen sijaan yhtä viidestä vastausasettelusta (päällekkäin, vierekkäin, ylhäällä ja alhaalla, suuri ääriviiva, päiväys + bandi); nuolet ja paletti selaavat niitä.</p>
+
+            <h3 id="sstv-fax">Radioamatöörifaksi</h3>
+            <p>
+                Sama lähetyspuoli lähettää kuvasi myös radioamatöörin <strong>faksi</strong>na (HF-faksi, sääkarttalähetysten muoto): <span translate="no">SSTV</span>-tilojen jälkeen alapalkin tilaluettelossa ovat <strong>Fax 288/120</strong> (tavallinen amatöörimuoto), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> ja neljä <strong>Colour fax</strong>-muotoa (288 tai 576, 120 tai 240 riviä minuutissa). Ensimmäinen luku on yhteistyöindeksi: 288 lähettää 905 pikseliä riviä kohti, 576 lähettää 1810. Faksi lähettää 5 s aloitussignaalin, 30 s vaiheistusrivejä, kuvan omassa muodossaan (120:lla yksi rivi puolen sekunnin välein), 5 s lopetussignaalin ja 10 s mustaa, taajuuksien 1500Hz (musta) ja 2300Hz (valkoinen) välillä. Värifaksi lähettää jokaisen rivin kolme kertaa, punaisen, vihreän ja sinisen, 200Hz aloitussignaalin jälkeen. Faksi on pitkä (4:3-kuva: noin 6,5 minuuttia muodolla 288/120), joten se tarjotaan vain riittävän pitkän jatkuvan lähetyksen rajan alla; luettelo näyttää kunkin muodon sekunnit. Faksi lähettää itse kuvan: siihen ei lisätä kutsumerkkitekstiä eikä <span translate="no">CW</span>- tai <span translate="no">FSK</span>-tunnistetta. Sääfaksin vastaanotin (<a href="#swl-wefax">Weather fax</a>) vastaanottaa sen.
+            </p>
 
             <h3 id="sstv-limits">Lähetysrajat</h3>
             <p>Kuva on yksi yhtäjaksoinen lähetys täydellä teholla: noin 40 sekuntia Robot 36:ssa, kaksi minuuttia Martin 1:ssä ja yli neljä minuuttia hitaimmissa modeissa. Kaikki lasketaan: aloitussignaali, sähkötetty kutsumerkki, kuva ja <span translate="no">FSK ID</span>, ja <span translate="no">LÄHETÄ</span>-painikkeen ja modeluettelon sekunnit ovat koko tämä aika.</p>
@@ -5223,6 +5269,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Tämä palvelin on minun</strong> in its rows, the same answer as <strong>Onko tämä SDR sinun?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Viennit: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> ja <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>VIE ADIF</strong>: yksi tietue kuultua asemaa kohti, kaksi QSO:ta kohti, tavalla, jolla <span translate="no">SWL</span>-raportit ja -kortit lähetetään: <span translate="no">SWL=Y</span>, tunnuksesi operaattorina, kuultu asema kentässä
@@ -5331,7 +5379,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>SIJAINTINI ON VÄÄRIN</strong> in the Signals pane.</li>
                 <li>Sama pätee maassa Ranska, johon kuuluvat Korsika, merentakaiset departementit (Guadeloupe, Martinique, Ranskan Guayana, Réunion, Mayotte) ja Saint-Martinin ranskalainen puoli (kutsumerkit <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> ja merentakaiset etuliitteet).</li>
-                <li><strong>Missä maassa olet?</strong> qFT8 päättelee maasi tarkimmasta tietämästään: ensin tarkasta sijainnista, sitten likimääräisestä sijainnista, sitten lokaattorisi keskipisteestä tai kutsumerkistäsi (jompikumpi kahdesta viimeisestä riittää rajoituksen soveltamiseen). Kun kyseinen maa ei salli jotakin lajia, valintaikkuna <strong>Missä maassa olet?</strong> sanoo &ldquo;Arvelemme, että olet maassa …, jossa tämän lähetelajin vastaanotto tai dekoodaus ei ole sallittua.&rdquo;, ja maat luetellaan lähimmät ensin, sitten kaikki aakkosjärjestyksessä. Vaihda maa vain, jos qFT8 tunnisti sen väärin: vastaat itse siitä, että noudatat sen maan lakia, jossa olet. Jos valitsemasi maakaan ei salli lajia, valintaikkuna kertoo sen. Valitsemasi maa muistetaan (Asetukset &gt; <a href="#settings-time-location">AIKA JA SIJAINTI</a>, <strong>Maa vastaanottosääntöjä varten</strong>) ja sitä kysytään uudelleen vain, jos sijaintisi myöhemmin on ristiriidassa sen kanssa.</li>
+                <li><strong>Missä maassa olet?</strong> qFT8 päättelee maasi tarkimmasta tietämästään: ensin tarkasta sijainnista, sitten likimääräisestä sijainnista, sitten lokaattorisi keskipisteestä tai kutsumerkistäsi (jompikumpi kahdesta viimeisestä riittää rajoituksen soveltamiseen). Kun kyseinen maa ei salli jotakin lajia, valintaikkuna <strong>Missä maassa olet?</strong> sanoo &ldquo;Arvelemme, että olet maassa …, jossa tämän lähetelajin vastaanotto tai dekoodaus ei ole sallittua.&rdquo;, ja maat luetellaan lähimmät ensin, sitten kaikki aakkosjärjestyksessä. Vaihda maa vain, jos qFT8 tunnisti sen väärin: vastaat itse siitä, että noudatat sen maan lakia, jossa olet. Jos valitsemasi maakaan ei salli lajia, valintaikkuna kertoo sen. Valitsemasi maa muistetaan (Asetukset &gt; <a href="#settings-time-location">AIKA JA SIJAINTI</a>, <strong>Maa</strong>) ja sitä kysytään uudelleen vain, jos sijaintisi myöhemmin on ristiriidassa sen kanssa.</li>
                 <li>Rajan lähellä qFT8 laskee huolellisesti: jos likimääräinen sijaintisi voi olla sellaisen maan sisällä, joka ei salli lajia, se kysyy. Jos se arvasi maan väärin, korjaa se valintaikkunassa <strong>Missä maassa olet?</strong> tai asetuksissa.</li>
                 <li>Isossa-Britanniassa ja Irlannissa TV-vastaanotin näyttää kerran istunnossa ilmoituksen, että suoran television katseluun tai tallentamiseen tarvitaan TV-lupa; se mainitsee maan, jossa olet.</li>
                 <li>Julkinen <span translate="no">KiwiSDR</span> kuuluu omistajalleen: noudata omistajan rajoja.</li>
@@ -5801,6 +5849,8 @@ cd qFT8
                         lähetykseen myös bridgen kautta.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -6411,7 +6461,7 @@ cd qFT8
             Copyright &copy; 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Kaikki oikeudet pidätetään.
         </p>
         <p>
-            Sisältää osia seuraavista: usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) ja Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Yksikään näistä kolmannen osapuolen tekijöistä tai projekteista ei tue qFT8:aa eikä ole sidoksissa siihen.
+            Sisältää osia seuraavista: usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, ilmainen radioamatööriyhteisölle) ja Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Yksikään näistä kolmannen osapuolen tekijöistä tai projekteista ei tue qFT8:aa eikä ole sidoksissa siihen.
         </p>
         <div class="footer-links">
             <a href="../../fi/">Pääsivu</a> - <a href="../../privacy/">Tietosuojakäytäntö</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Lisenssi</a>

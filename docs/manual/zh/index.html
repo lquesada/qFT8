@@ -170,6 +170,7 @@
                         <li><a href="#remote-control">远程控制 Web 服务器</a></li>
                         <li><a href="#webserver-headless">无屏幕运行 qFT8（网页服务器）</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log 协议</a></li>
                         <li><a href="#layouts">屏幕布局</a></li>
@@ -213,7 +214,7 @@
             </p>
 
             <p>
-                qFT8 包含来自以下项目的部分内容：usb-serial-for-android（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、Roboto（版权所有 &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0）、Roboto Mono（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0）、Natural Earth（Public Domain）、hamradio-zones-geojson（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT license）、RADE V1 and V2 speech-codec model weights (data)（版权所有 &copy; 2024, drowe67, BSD-2-Clause）、FARGAN vocoder and pitch estimator model weights (data)（版权所有 &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause）、Big CTY（版权所有 &copy; Jim Reisert AD1C）以及 Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime（版权所有 &copy; Oracle and/or its affiliates and other contributors，GPLv2 with the Classpath Exception）。这些第三方作者或项目均未对 qFT8 表示认可，也与 qFT8 没有关联。
+                qFT8 包含来自以下项目的部分内容：usb-serial-for-android（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、Roboto（版权所有 &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0）、Roboto Mono（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0）、Natural Earth（Public Domain）、hamradio-zones-geojson（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT license）、RADE V1 and V2 speech-codec model weights（版权所有 &copy; 2024, drowe67, BSD-2-Clause）、FARGAN vocoder and pitch estimator model weights（版权所有 &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause）、Big CTY（版权所有 &copy; Jim Reisert AD1C，免费提供给业余无线电社区）以及 Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime（版权所有 &copy; Oracle and/or its affiliates and other contributors，GPLv2 with the Classpath Exception）。这些第三方作者或项目均未对 qFT8 表示认可，也与 qFT8 没有关联。
             </p>
 
 
@@ -597,10 +598,10 @@
 
             <h4>把设置从手机迁移过来（或迁移到手机）</h4>
             <p>
-                <strong>导出设置</strong>和<strong>导入设置</strong>（在主设置页面上，<strong>设置文件</strong>下）会生成和读取一个文件，该文件在 Android 和电脑上<strong>完全相同</strong>。在手机上导出，把文件复制到电脑（邮件、云端、数据线），在电脑上导入；反过来也行。
+                <strong>导出设置</strong>和<strong>导入设置</strong>（在主设置页面上，<strong>设置文件</strong>下）会打开导出和导入页面（见<a href="#settings-profiles">配置文件</a>）。该文件在 Android、iPhone 和电脑上<strong>完全相同</strong>。在手机上导出，把文件复制到电脑（邮件、云端、数据线），在电脑上导入；反过来也行。
             </p>
             <ul>
-                <li>该文件包含您的 QRZ API 密钥、LoTW 证书和密码。<strong>绝不要分享它。</strong></li>
+                <li>只有当您勾选<strong>包含登录信息和密码</strong>时，登录信息、密码和 LoTW 证书才会在文件中；它们由您输入的口令保护。即便如此，<strong>也绝不要分享该文件。</strong></li>
                 <li>它不包含 QSO：请用 <a href="#adif-import-export">ADIF</a> 迁移日志，或让 <a href="#qft8-log">qFT8 日志服务器</a>复制。</li>
                 <li>它不包含只与这台电脑有关的内容：声音设备的选择（它们是不同的设备）、布局和窗口。请在电脑上重新选择。</li>
                 <li>导入时需要您输入 <strong>yes</strong> 确认，要求 <span translate="no">TX</span> 处于关闭状态，保留您的 QSO，并且绝不会打开 <span translate="no">TX</span>。</li>
@@ -1102,7 +1103,7 @@
             <ul>
                 <li>一分钟时隙：发射在偶数或奇数 <span translate="no">UTC</span> 分钟开始后一秒启动，持续约 47 秒（<span translate="no">JT65</span>）或 49 秒（<span translate="no">JT9</span>）；偶数或奇数的选择与 <span translate="no">FT8</span> 相同。</li>
                 <li>消息：72 位：CQ、带网格定位的两个呼号、报告（-NN、R-NN）、<span translate="no">RRR</span>、<span translate="no">RR73</span>、<span translate="no">73</span>，或最多 13 个字符的自由文本。QSO 的进行方式与 <span translate="no">FT8</span> 相同（<span translate="no">AUTO</span>、电台列表、日志）。同时需要前缀和后缀的呼号无法发送。</li>
-                <li><span translate="no">JT65</span> 子模式：A（短波）、B 和 C（VHF 及以上，音调间隔更宽），在底栏的模式旁或设置中选择；两台电台必须使用同一个。<span translate="no">JT9</span> 即 <span translate="no">JT9-1</span>，只有 16 Hz 宽。</li>
+                <li><span translate="no">JT65</span> 子模式：A（HF）、B 和 C（VHF 及以上，音调间隔更宽）、B2 和 C2（B 和 C 的两倍速度，30 s 时隙），在底栏的模式旁或设置中选择；两台电台必须使用同一个。<span translate="no">JT9</span> 子模式：A（<span translate="no">JT9-1</span>，只有 16 Hz 宽）、B 到 H（更宽的音调）、<span translate="no">JT9-2</span> 到 <span translate="no">JT9-30</span>（用于 LF 和 MF 的 2 到 30 分钟周期）以及 E 到 H <span translate="no">FAST</span>（用于散射的 5 到 30 s 周期），选择方式相同。</li>
             </ul>
             <p>
                 各选项见 <a href="#jt65-settings">设置 &gt; <span translate="no">JT65</span></a> 和 <a href="#jt9-settings">设置 &gt; <span translate="no">JT9</span></a>。
@@ -1638,8 +1639,10 @@
                 <li><strong>QSO 同步</strong>：您的 QSO 所上传到的每项服务各占一行，每行有它的开关、表示状态的图标和齿轮（见 <a href="#qso-services">QSO 上传服务</a>和<a href="#choosing-services">选择服务和服务器</a>）。</li>
                 <li><strong>上报</strong>：<span translate="no">PSKReporter</span>、<span translate="no">WSPRnet</span> 和<a href="#lq8-announce">公告您的 <span translate="no">LQ8</span> 活动</a>。</li>
                 <li><strong>社区</strong>：两个 Telegram 群组（见<a href="#community">社区</a>）。</li>
-                <li><strong>设置文件</strong>：<strong>导入设置</strong>和<strong>导出设置</strong>（见<a href="#settings-pages">下文</a>）。</li>
+                <li><strong>配置文件</strong>：顶部一行，带有 <strong>更改</strong>（见<a href="#settings-profiles">配置文件</a>）。</li>
+                <li><strong>设置文件</strong>：<strong>导入设置</strong>和<strong>导出设置</strong>，始终存在，即使<strong>显示高级设置</strong>关闭也是如此（见<a href="#settings-files">下文</a>）。</li>
                 <li><strong>更多设置</strong>：<strong>模式</strong> (依次包含以下内容的页面 <strong>自动操作</strong>, <strong>数字模式</strong> 和 <strong>波段选择</strong>, 然后在“模式设置”下，每种模式一个按钮: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> 其他数字模式则在该模式处打开数字模式; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> 和 <strong><span translate="no">PACKET</span></strong> 各自的页面; 返回返回模式), <strong>数据来源</strong>, <strong>服务器</strong>（本设备向其他程序提供的内容，见<a href="#choosing-services">选择服务和服务器</a>）和<strong>删除 QSO</strong>，每一页都在<a href="#settings-pages">设置页面</a>中说明。</li>
+                <li><strong>录音</strong>（仅在勾选 <strong>显示高级设置</strong> 时显示，位于工具下方）：<strong>开始录音</strong> 将您接收和发射的内容录制到本设备上的 <span translate="no">.qft8</span> 文件中（录制时显示 <strong>停止录音</strong> 和时长）；放大镜和齿轮打开录音页面，其中有已保存的录音（播放、分享、重命名、删除）。<strong>录音快捷方式</strong> 还会在瀑布图右下角显示一个小的 <span translate="no">REC</span> 按钮。打开 <span translate="no">.qft8</span> 文件（或指向它的链接）时，无论此复选框如何都会播放：瀑布图底部的一条细栏上有播放、位置、<strong>?</strong>（录音自带的文字）和用于退出的叉号；播放录音时不会发射任何内容（<span translate="no">TX</span> 按钮消失）。</li>
                 <li><strong>启动时检查新版本</strong>和<strong>发送匿名的每日性能摘要</strong>（见<a href="#reports-updates">错误报告和新版本</a>）。</li>
                 <li><strong>语言</strong>：qFT8 的语言，位于列表末尾的一条线下方。</li>
                 <li>最下方：版本号，以及指向本手册和隐私政策的链接、权限和已连接的 USB 设备，还有<strong><span translate="no">报告错误</span></strong>（见<a href="#report-bug">报告问题</a>）。</li>
@@ -1743,7 +1746,7 @@
                     <strong>从消息紧急同步</strong>会监听波段，并根据所解码报文的时间设置时钟。</li>
                 <li><strong>位置 (梅登黑德网格)</strong>：您的网格定位，带有<strong>GPS 同步</strong>，
                     以及是否在每次 qFT8 启动时从 GPS 更新它。</li>
-                <li><strong>接收规则所用的国家</strong>：qFT8 用来判断你可以接收和发射什么的国家（见<a href="#swl-legal">收听与法律</a>和<a href="#tx-legal">发射与法律</a>）。在你选择之前显示&ldquo;未选择：根据您的位置、网格或呼号&rdquo;；<strong>更改</strong> 会打开国家列表（最近的在前，然后按 A 到 Z 列出全部），你选的国家会被记住。</li>
+                <li><strong>国家</strong>：qFT8 用来判断你可以接收和发射什么的国家（见<a href="#swl-legal">收听与法律</a>和<a href="#tx-legal">发射与法律</a>）。列表的第一项 <strong>自动</strong> 使用 qFT8 检测到的国家（显示在括号中），之后是最近的国家，然后是从 A 到 Z 的全部国家。选择其他国家时会请你确认，你选择的国家会被记住。</li>
             </ul>
 
             <h4 id="settings-application">应用设置</h4>
@@ -1869,12 +1872,48 @@
                 它们只删除本设备上的 QSO，绝不删除任何在线服务上的。
             </p>
 
+            <h4 id="settings-profiles">配置文件</h4>
+            <p>
+                配置文件是一套电台设置：有自己的呼号、登录信息和密码、<span translate="no">QSO</span> 和
+                <span translate="no">SWL</span> 日志、记忆、主题和设置。电台、音频设备和语言由每个配置文件共用。
+                每个呼号使用一个配置文件（例如您自己的呼号，以及俱乐部或特别活动的呼号）。
+            </p>
+            <p>
+                <strong>位置</strong>：设置的顶部一行，<strong>配置文件：名称</strong> 和 <strong>更改</strong>。当勾选 <strong>显示高级设置</strong>
+                时，或存在多个配置文件时，它就会出现。<strong>更改</strong>
+                会打开配置文件页面。
+            </p>
+            <p>
+                配置文件页面按您的顺序以按钮形式列出配置文件，每个都使用其主题的颜色（该主题底部栏的颜色）；绿色箭头指向正在使用的配置文件。点按其他配置文件即可使用它。箭头可上移或下移配置文件，铅笔可重命名，垃圾桶可删除（使用中的配置文件没有垃圾桶）。
+            </p>
+            <p>
+                <strong>切换</strong>：qFT8 会列出将停止的内容：<span translate="no">TX</span> 被关闭为 <span translate="no">OFF</span>，
+                <span translate="no">AUTO</span> 被关闭为 <span translate="no">OFF</span>，进行中的 <span translate="no">QSO</span> 被放弃，
+                激活以 <span translate="no">QRT</span> 结束，服务、服务器和网页远程控制浏览器被停止或
+                断开，尚未上传的 <span translate="no">QSO</span> 或 <span translate="no">SWL</span> 报告会被列出（它们会等待
+                该配置文件，并在其再次使用时上传）。只要有内容被列出，您就需要输入 <strong>yes</strong>（英文）
+                来切换；否则只是普通确认。切换期间，<strong>正在切换到配置文件 ...</strong> 遮罩会盖住
+                屏幕；在新配置文件就绪之前无法操作。如果无法关闭 <span translate="no">TX</span>，则不会
+                有任何更改，qFT8 会告知。切换绝不会打开 <span translate="no">TX</span>。
+            </p>
+            <p>
+                <strong>新建</strong>会复制当前使用的配置文件：其设置、记忆和主题，不含呼号、登录信息和日志。您为它命名，然后选择其主题。列表中的每个主题都以自己的颜色显示。没有配置文件使用的主题排在前面，使每个配置文件看起来都不同；在<strong>已使用</strong>之下是其他配置文件使用的主题，以及与其中某个背景相同的主题（例如一旦某个白色主题被使用，所有白色主题）。它们会被如此标记，仍然可以选择。然后点<strong>创建</strong>。如果您的呼号被输入在记忆或文本中（<span translate="no">CW</span>、<span translate="no">RTTY</span>、<span translate="no">JTTY</span>、<span translate="no">Packet</span> 记忆，<span translate="no">JS8</span> INFO / STATUS，<span translate="no">PIX</span> 呼号牌），副本中该处会改为 <span translate="no">[MYCALL]</span>（新配置文件自己的呼号），确认对话框会列出这些文本，方便您在发射前检查。
+            </p>
+            <p>
+                <strong>删除</strong>：对话框会显示配置文件的名称、呼号和日志大小；您输入 <strong>yes</strong>。
+                只存在于该配置文件中的所有内容都会消失；在线服务保留各自的副本（qFT8 绝不会删除那里的任何内容）。若要保留其日志，
+                请先切换到该配置文件并使用 <span translate="no">ADIF EXPORT</span>。
+            </p>
+            <p>
+                <strong>导出</strong>（也可用“设置文件”下的<strong>导出设置</strong>）：勾选要保存到一个文件中的配置文件（使用中的已被勾选），并可选择<strong>设备配置（电台和音频）</strong>和<strong>包含登录信息和密码</strong>（两者起初都不勾选）。登录信息、密码和 <span translate="no">LoTW</span> 证书由您在导出时输入的口令保护；口令不会被保存。<strong>全部导出</strong>会保存每个配置文件和设备配置。<span translate="no">QSO</span> 和 <span translate="no">SWL</span> 日志不在文件中（<span translate="no">ADIF EXPORT</span> 会保存它们）。
+            </p>
+            <p>
+                <strong>导入</strong>（也可用“设置文件”下的<strong>导入设置</strong>）：选择一个设置文件；qFT8 会列出其中的内容。与您已有配置文件同名的配置文件以红色显示，并会替换该配置文件的设置（其日志保留）；您输入 <strong>yes</strong>，对话框会列出每个被替换的配置文件及其呼号和 <span translate="no">QSO</span> 数量。来自单个电台的文件（配置文件出现之前生成的每个设置文件）可以成为新配置文件，或导入当前使用的配置文件；只有一个配置文件且<strong>显示高级设置</strong>关闭时，它会像以前一样直接导入当前使用的配置文件：<span translate="no">TX</span> 必须关闭，您输入 <strong>yes</strong>，不含密码的文件只有在使用相同呼号和相同地址时才会保留您的密码。导入到当前使用的配置文件时，会像切换一样先停止正在运行的内容，并且绝不会打开 <span translate="no">TX</span>。
+            </p>
+
             <h4 id="settings-files">设置文件</h4>
             <p>
-                <strong>导出设置</strong>把您的全部设置保存到一个文件中，<strong>导入设置</strong>
-                再把它读回来，可在本设备或另一台设备上，手机或电脑均可（见
-                <a href="#pc-settings">设置：存放位置，以及从手机迁移</a>）。该文件包含您的密钥和
-                密码：切勿分享。
+                <strong>导出设置</strong>和<strong>导入设置</strong>会打开<a href="#settings-profiles">配置文件</a>中介绍的导出和导入页面：当前使用的配置文件（或几个，或全部）；勾选后才包含设备配置；勾选后才包含登录信息和密码。即使<strong>显示高级设置</strong>关闭，它们也始终存在；只有一个配置文件时，它们就只是保存和读取该配置文件。旧的设置文件仍可导入（导入当前使用的配置文件）。另见<a href="#pc-settings">设置：存放位置，以及从手机迁移</a>。
             </p>
 
             <h3 id="raw-message-logs">原始消息日志</h3>
@@ -2418,7 +2457,7 @@
                 <span translate="no">GridTracker2</span>（已用 2.261019.5 版测试）在地图上显示并记录 <span translate="no">FT8 network log</span> 发往端口 2237 的内容；开启 ADIF UDP 接收后，也在端口 2333 接收 <span translate="no">ADIF over UDP</span>。其日志转发功能会把它的 QSO 发给 qFT8 的接收器。
             </p>
             <p>
-                反过来,qFT8 也可以把其他程序的 QSO 收进自己的日志。在 更多设置 &gt; <strong>服务器</strong> 中勾选另一个程序所发送格式的接收器的行:<span translate="no">FT8 network log</span>(UDP 2237)、<span translate="no">ADIF over UDP</span>(UDP 2333)、<span translate="no">AC Log</span> 接口(TCP 1100)或 <span translate="no">DXLab</span> 接口(TCP 52001)。它的页面显示要在另一个程序中填写的地址,并可更改端口、只接受部分地址的 QSO。这样收到的任何内容都不能发射、更改电台或删除 QSO。接收器在您打开之前保持关闭;在 iPhone 上只在 qFT8 打开时运行,且从不加入组播组。
+                反过来,qFT8 也可以把其他程序的 QSO 收进自己的日志。在 更多设置 &gt; <strong>服务器</strong> 中勾选另一个程序所发送格式的接收器的行:<span translate="no">FT8 network log</span>(UDP 2237)、<span translate="no">ADIF over UDP</span>(UDP 2333)、<span translate="no">AC Log</span> 接口(TCP 1100)或 <span translate="no">DXLab</span> 接口(TCP 52001)。它的页面显示要在另一个程序中填写的地址,并可更改端口、只接受部分地址的 QSO。这样收到的任何内容都不能发射、更改电台或删除 QSO。接收器在您打开之前保持关闭;在 iPhone 上只在 qFT8 打开时运行,且从不加入组播组。 <span translate="no">FT8 network log</span> 接收器的页面还写着： <em>此服务器只接收其他程序发来的 QSO；如需将您的解码和 QSO 发送到地图或日志程序，请使用 <strong>日志同步</strong> &gt; <span translate="no">FT8 network log</span>。</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -2895,7 +2934,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>特殊发射</strong>, directly above <strong>活动</strong>. Its
+                Settings has a section <strong>特殊发射</strong>, directly below <strong>计划</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>多音</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Fox 模式</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -3800,7 +3839,9 @@
                 <p>
                 <strong>循环</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>关</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>关</strong>
+                stops it). <strong>发送次数</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -3922,6 +3963,7 @@
                 <li><strong><span translate="no">目标</span></strong> 和 <strong><span translate="no">交换</span></strong>：您正在通联的电台的呼号，以及比赛交换内容。它们会填入您报文中的 <code>[TARGET]</code> 和 <code>[EXCH]</code>。 点按其中一个即可输入;点按解码行(第 7 项)中的呼号,可将其设为目标。</li>
                 <li><strong><span translate="no">BAUD</span></strong>：速度：45.45（常用）、50 或 75。每点按一次切换到下一个。</li>
                 <li><strong><span translate="no">频移</span></strong>：两个音调之间的间距：170 Hz（常用）、200、425 或 850 Hz。 滤波器随频移变化。</li>
+                <li>窄频移：在 850 Hz 之后，<span translate="no">SHIFT</span> 还提供 85 和 23 Hz（设置 &gt; <span translate="no">RTTY</span> 中也有）。窄频移只在接收棒下抄收：请把它设为对方电台的频移；频段内的其他信号按常用频移去寻找。</li>
                 <li><strong><span translate="no">REV</span></strong>：对调两个音调，用于对方以相反方式发送的情况。 开启时显示为琥珀色。</li>
                 <li><strong><span translate="no">FILTER</span></strong> 和 <strong><span translate="no">NR</span></strong>：接收滤波器和降噪。</li>
                 <li><strong>存储</strong>:预设消息,宏与 <span translate="no">CW</span> 中相同。点按一次发送一条。有空字段的消息显示为灰色:点按它可查看缺少什么。<strong><span translate="no">键盘</span></strong>(在手机和 iPhone 上还有 <strong><span translate="no">语音</span></strong>)位于列表末尾。</li>
@@ -4102,7 +4144,7 @@
                 <span translate="no">JT65</span>（模式选择器中的 <span translate="no">JT65</span>（实验性）一行）是一分钟的 QSO 模式，有 65 个音调和 Reed-Solomon 编码；灵敏度约为 -25 dB（2500 Hz 内）。QSO 记录为 <span translate="no">MODE=JT65</span> 并带子模式（<span translate="no">JT65A</span>、<span translate="no">JT65B</span>、<span translate="no">JT65C</span>），spots 以 <span translate="no">JT65</span> 发送到 <span translate="no">PSKReporter</span>。常用频率（USB 拨号）：160 m <span translate="no">1.838</span>，80 m <span translate="no">3.570</span>，40 m <span translate="no">7.076</span>，30 m <span translate="no">10.138</span>，20 m <span translate="no">14.076</span>，17 m <span translate="no">18.102</span>，15 m <span translate="no">21.076</span>，12 m <span translate="no">24.917</span>，10 m <span translate="no">28.076</span>，6 m <span translate="no">50.276</span>，2 m <span translate="no">144.120</span> MHz。
             </p>
             <ul>
-                <li>子模式（A）：A、B 或 C，与底栏相同。</li>
+                <li>子模式（A）：A、B、C、B2 或 C2，与底栏相同。B2 和 C2 是以两倍速度发送的 B 和 C：30 s 时隙，23 s 发射，灵敏度约低 3 dB。</li>
                 <li>仅在接收频率附近解码（关）：关为解码整个波段；开则只解码接收频率周围。</li>
                 <li>接收容差：接收频率周围的宽度，单位 Hz（默认 100）。</li>
                 <li>参考文献: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -4113,6 +4155,7 @@
                 <span translate="no">JT9</span>（模式选择器中的 <span translate="no">JT9</span>（实验性）一行）是一分钟的 QSO 模式，有 9 个音调，宽 16 Hz；灵敏度约为 -27 dB（2500 Hz 内）。QSO 记录为 <span translate="no">MODE=JT9</span>，spots 以 <span translate="no">JT9</span> 发送到 <span translate="no">PSKReporter</span>。常用频率（USB 拨号）：从 160 m 到 10 m 比 <span translate="no">JT65</span> 的高 2 kHz（20 m <span translate="no">14.078</span> MHz）。
             </p>
             <ul>
+                <li>子模式（A）：HF 上用 A（<span translate="no">JT9-1</span>）；B 到 H 是同一信号，音调更宽（间隔 3.5 到 222 Hz），用于 VHF 及以上；<span translate="no">JT9-2</span>、<span translate="no">JT9-5</span>、<span translate="no">JT9-10</span> 和 <span translate="no">JT9-30</span> 把信号拉长到 2 到 30 分钟的周期，用于 LF 和 MF（每级灵敏度约提高 3 到 5 dB）；E 到 H <span translate="no">FAST</span> 的周期为 5、10、15 或 30 s，连续发送短帧，用于流星和飞机散射。拉长的子模式只在接收频率的接收容差范围内寻找信号。</li>
                 <li>仅在接收频率附近解码（关）：关为解码整个波段；开则只解码接收频率周围。</li>
                 <li>接收容差：接收频率周围的宽度，单位 Hz（默认 100）。</li>
                 <li>参考文献: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -4151,7 +4194,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>、<span translate="no">MFSK16</span> 和 <span translate="no">DominoEX</span> （实验性）</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>MFSK 系列</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -4169,6 +4212,7 @@
             </p>
             <ul>
                 <li><span translate="no">Olivia</span>（音调数 / 带宽，单位 Hz）：缓慢且非常稳健，适用于微弱和衰落的信号；音调越多，越能深入噪声。<span translate="no">MFSK16</span>：约 316 Hz 内 16 个音调，带纠错，是一种适合日常使用的好模式；<span translate="no">MFSK32</span> 和 <span translate="no">MFSK64</span> 与之相同，但速度分别为两倍和四倍（更宽，需要更强的信号；<span translate="no">MFSK32</span> 常见于应急通信网）；<span translate="no">MFSK128</span> 的速度又快一倍，带宽 2 kHz。<span translate="no">MFSK8</span>（32 个音调，约 250 Hz）和 <span translate="no">MFSK11</span> 比 <span translate="no">MFSK16</span> 慢，能读取更弱的信号；<span translate="no">MFSK22</span> 介于 <span translate="no">MFSK16</span> 和 <span translate="no">MFSK32</span> 之间。<span translate="no">DominoEX</span>：18 个音调，对调谐和漂移不敏感，速度更快。</li>
+                <li>更多变体，位于每个系列列表的末尾：<strong><span translate="no">OLIVIA 4/500</span></strong>、<strong><span translate="no">OLIVIA 8/1000</span></strong> 和 <strong><span translate="no">OLIVIA 64/2000</span></strong>；<strong><span translate="no">MFSK4</span></strong>（125 Hz 内 32 个音调，非常慢，用于非常弱的信号）、<strong><span translate="no">MFSK31</span></strong>（250 Hz 内 8 个音调）、<strong><span translate="no">MFSK64L</span></strong> 和 <strong><span translate="no">MFSK128L</span></strong>（<span translate="no">MFSK64</span> 和 <span translate="no">MFSK128</span> 加长交织，把每个字符分散到约 20 秒：抗衰落更好，但文字约晚 20 秒显示，每次发射结束时还多出约 20 秒的音调）；<strong><span translate="no">DOMINOEX MICRO</span></strong>（每秒 2 个符号，宽 36 Hz，非常慢）、<strong><span translate="no">DOMINOEX 44</span></strong> 和 <strong><span translate="no">DOMINOEX 88</span></strong>（快速，宽约 1,5 kHz）。在底部栏中，非常慢的显示为 <span translate="no">DX-M</span> 和 <span translate="no">TH-M</span>。慢速的需要空中时间：<span translate="no">MFSK4</span> 的一次呼叫约需 40 秒，<span translate="no">DOMINOEX MICRO</span> 约需 35 秒，所以一行可能需要超过连续发射时间上限所允许的时间。</li>
                 <li>接收标线下的信号会被解码（标线是信号的中心）。把标线放在信号上；偏差几赫兹没有关系。</li>
                 <li>在这些模式下界面没有 <span translate="no">BAUD</span>、<span translate="no">SHIFT</span> 和 <span translate="no">REV</span> 按钮。存储作为一次发射发出；用键盘输入的文字逐行发出，按回车键时发送。</li>
                 <li>每个系列在通常使用它的波段都有各自的频率（20 m 波段：<span translate="no">Olivia</span> 14.1065、<span translate="no">MFSK16</span> 14.0785、<span translate="no">DominoEX</span> 14.0715 MHz）；其他波段则使用 <span translate="no">RTTY</span> 的频率。</li>
@@ -4189,6 +4233,7 @@
             <ul>
                 <li><span translate="no">THOR</span>：<span translate="no">DominoEX</span> 的音调（对调谐和漂移不敏感）加上 <span translate="no">MFSK16</span> 的纠错；同一速度编号下比 <span translate="no">DominoEX</span> 稍慢，但稳健得多。</li>
                 <li><span translate="no">Contestia</span>（音调数 / 带宽，单位 Hz）：<span translate="no">Olivia</span> 的较快变体，只有大写字母，在竞赛中很流行；字母、数字和常用标点（其他字符以 ? 发送）。</li>
+                <li>更多变体：<strong><span translate="no">THOR MICRO</span></strong>（每秒 2 个符号，宽 36 Hz，非常慢：一次呼叫需要一分钟以上，超过连续发射时间上限默认允许的时间）、<strong><span translate="no">THOR 25X4</span></strong>、<strong><span translate="no">THOR 50X1</span></strong>、<strong><span translate="no">THOR 50X2</span></strong> 和 <strong><span translate="no">THOR 100</span></strong>（快速，宽 900 至 1800 Hz，纠错能力更强）；<strong><span translate="no">CONTESTIA 4/500</span></strong>、<strong><span translate="no">CONTESTIA 8/1000</span></strong> 和 <strong><span translate="no">CONTESTIA 64/1000</span></strong>。在 <span translate="no">ADIF</span> 文件中，<span translate="no">THOR MICRO</span> 写作 <span translate="no">THOR-M</span>。</li>
                 <li><span translate="no">MT63</span>（带宽，单位 Hz，L = 长交织，S = 短交织）：同时 64 个载波，带宽 500、1000 或 2000 Hz，每秒约 5 到 20 个字符；对衰落和突发噪声很稳健，用于应急网络。接收标线是信号的中心。长交织更稳健，短交织更早开始显示文字。</li>
                 <li>频率：20 m 波段 <span translate="no">THOR</span> 14.077、<span translate="no">Contestia</span> 14.1095 和 <span translate="no">MT63</span> 14.105 MHz；其他波段 <span translate="no">THOR</span> 使用 <span translate="no">DominoEX</span> 的频率，<span translate="no">Contestia</span> 使用 <span translate="no">Olivia</span> 的频率，<span translate="no">MT63</span> 使用宽带数字段（例如 7.050 MHz）。您自己设定的频率仍然优先。</li>
                 <li>记录：记录器以模式名称打开（例如 <span translate="no">THOR 16</span>）；在 <span translate="no">ADIF</span> 文件中，<span translate="no">THOR</span> 写为模式 <span translate="no">THOR</span> 加子模式（<span translate="no">THOR16</span> ...），<span translate="no">Contestia</span> 写为模式 <span translate="no">CONTESTI</span>，<span translate="no">MT63</span> 写为模式 <span translate="no">MT63</span>（<span translate="no">ADIF</span> 对这两者没有子模式）。</li>
@@ -4394,6 +4439,11 @@
                 <li><strong>多层描边呼号</strong>：字母周围有多层描边的呼号。</li>
             </ol>
             <p><strong>无呼号</strong> 不在图片上写任何内容（只写您自己添加的那行文字，如果有的话）。如果在设置中打开了莫尔斯呼号或 <span translate="no">FSK ID</span>，呼号仍会发送。回复图片则改用五种回复布局之一（上下排列、左右并排、顶部和底部、粗描边、含日期 + 波段），箭头和调色板在这些布局间切换。</p>
+
+            <h3 id="sstv-fax">业余传真</h3>
+            <p>
+                同一个发送部分还能把您的图片作为业余<strong>传真</strong>(短波传真,气象图广播所用的格式)发送:在 <span translate="no">SSTV</span> 模式之后,底部栏的模式列表中有 <strong>Fax 288/120</strong>(常用的业余格式)、<strong>Fax 288/60</strong>、<strong>Fax 576/120</strong>、<strong>Fax 576/60</strong>以及四种<strong>Colour fax</strong>格式(288 或 576,每分钟 120 或 240 行)。第一个数字是协作指数:288 每行发送 905 个像素,576 发送 1810 个。传真依次发送5s的起始信号、30s的相位行、按其自身形状发送的图片(120 时每半秒一行)、5s的停止信号和10s的黑色,信号在1500Hz(黑)与2300Hz(白)之间。彩色传真在200Hz的起始信号之后,把每一行发送三次,依次为红、绿、蓝。传真很长(4:3 的图片:288/120 时约 6.5 分钟),因此只有在连续发射限制足够长时才提供;列表中显示每种格式的秒数。传真发送的是图片本身:不会附加呼号文字,也不会附加 <span translate="no">CW</span> 或 <span translate="no">FSK</span> 识别。气象传真接收器(<a href="#swl-wefax">Weather fax</a>)可以接收它。
+            </p>
 
             <h3 id="sstv-limits">发射限制</h3>
             <p>一张图片就是一次全功率的连续发射：Robot 36 约 40 秒，Martin 1 两分钟，最慢的模式超过四分钟。所有部分都计入：起始信号、莫尔斯呼号、图片和 <span translate="no">FSK ID</span>；<span translate="no">发送</span> 上和模式列表中显示的秒数就是这整段时间。</p>
@@ -4888,6 +4938,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>这台服务器是我的</strong> in its rows, the same answer as <strong>这个 SDR 是您的吗?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">导出：<span translate="no">ADIF</span>、<span translate="no">CSV</span>、<span translate="no">SOTA</span> 和 <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>导出 ADIF</strong>：每个听到的电台一条记录，每个 QSO 两条，采用发送 <span translate="no">SWL</span> 报告和卡片的方式：<span translate="no">SWL=Y</span>，您的标识作为操作员，听到的电台放在 <span translate="no">CALL</span> 并附上您的报告，其正在联络的电台写在卡片留言&ldquo;Heard working ...&rdquo;和注释中，活动参考（<span translate="no">SOTA_REF</span>、<span translate="no">POTA_REF</span>、<span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>），以及 <span translate="no">MY_RIG</span> 中的接收机。</li>
@@ -4991,7 +5043,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>我的位置有误</strong> in the Signals pane.</li>
                 <li>法国 同样适用，包括科西嘉、海外省（瓜德罗普、马提尼克、法属圭亚那、留尼汪、马约特）以及 法属圣马丁 的法属一侧（呼号 <span translate="no">F</span>、<span translate="no">TK</span>、<span translate="no">TM</span> 和海外前缀）。</li>
-                <li><strong>您在哪个国家？</strong> qFT8 根据它所知最精确的信息确定你的国家：先是你的精确位置，然后是大致位置，再然后是你的网格定位（locator）中心或你的呼号（后两者任一就足以应用限制）。当该国不允许某个模式时，对话框 <strong>您在哪个国家？</strong> 会显示&ldquo;我们认为您在…，当地不允许接收或解码此模式。&rdquo;，国家按最近的在前、其后按 A 到 Z 列出。只有在 qFT8 检测错误时才更改国家：遵守你所在国家的法律是你的责任。如果你选的国家同样不允许该模式，对话框会告知。你选的国家会被记住（设置 &gt; <a href="#settings-time-location">时间和位置</a>，<strong>接收规则所用的国家</strong>），只有当你之后的位置与之相矛盾时才会再次询问。</li>
+                <li><strong>您在哪个国家？</strong> qFT8 根据它所知最精确的信息确定你的国家：先是你的精确位置，然后是大致位置，再然后是你的网格定位（locator）中心或你的呼号（后两者任一就足以应用限制）。当该国不允许某个模式时，对话框 <strong>您在哪个国家？</strong> 会显示&ldquo;我们认为您在…，当地不允许接收或解码此模式。&rdquo;，国家按最近的在前、其后按 A 到 Z 列出。只有在 qFT8 检测错误时才更改国家：遵守你所在国家的法律是你的责任。如果你选的国家同样不允许该模式，对话框会告知。你选的国家会被记住（设置 &gt; <a href="#settings-time-location">时间和位置</a>，<strong>国家</strong>），只有当你之后的位置与之相矛盾时才会再次询问。</li>
                 <li>靠近边境时 qFT8 会谨慎判断：如果你的大致位置可能在不允许该模式的国家内，它会询问。如果它猜错了国家，请在对话框 <strong>您在哪个国家？</strong> 或设置中更正。</li>
                 <li>在英国和爱尔兰，电视接收器每次会话显示一次提示：观看或录制直播电视需要电视执照；提示中会写明你所在的国家。</li>
                 <li>公共 <span translate="no">KiwiSDR</span> 属于其所有者：请遵守所有者的限制。</li>
@@ -5399,6 +5451,8 @@ cd qFT8
                     <li>通过控制线（RTS 或 DTR）而不是命令切换到发射的电台，同样可以通过 bridge 键控。</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -5970,7 +6024,7 @@ cd qFT8
 </div>
 <div class="footer">
 <p>版权所有 &copy; 2026，<a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a>（<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>）。保留所有权利。</p>
-<p>包含来自 usb-serial-for-android（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、Roboto（版权所有 &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0）、Roboto Mono（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0）、Natural Earth（Public Domain）、hamradio-zones-geojson（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT license）、RADE V1 and V2 speech-codec model weights (data)（版权所有 &copy; 2024, drowe67, BSD-2-Clause）、FARGAN vocoder and pitch estimator model weights (data)（版权所有 &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause）、Big CTY（版权所有 &copy; Jim Reisert AD1C）以及 Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime（版权所有 &copy; Oracle and/or its affiliates and other contributors，GPLv2 with the Classpath Exception）的部分代码。这些第三方作者或项目均未对 qFT8 表示认可，也与 qFT8 没有关联。</p>
+<p>包含来自 usb-serial-for-android（版权所有 &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause）、Roboto（版权所有 &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0）、Roboto Mono（版权所有 &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0）、Natural Earth（Public Domain）、hamradio-zones-geojson（版权所有 &copy; 2024 HB9HIL, HA8TKS, MIT license）、RADE V1 and V2 speech-codec model weights（版权所有 &copy; 2024, drowe67, BSD-2-Clause）、FARGAN vocoder and pitch estimator model weights（版权所有 &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause）、Big CTY（版权所有 &copy; Jim Reisert AD1C，免费提供给业余无线电社区）以及 Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime（版权所有 &copy; Oracle and/or its affiliates and other contributors，GPLv2 with the Classpath Exception）的部分代码。这些第三方作者或项目均未对 qFT8 表示认可，也与 qFT8 没有关联。</p>
 <div class="footer-links">
             <a href="../../zh/">主页</a> - <a href="../../privacy/">隐私政策</a> -
             <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">许可证</a>

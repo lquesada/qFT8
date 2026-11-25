@@ -175,6 +175,7 @@
                         <li><a href="#remote-control">Spletni strežnik za daljinsko upravljanje</a></li>
                         <li><a href="#webserver-headless">Zagon qFT8 brez zaslona (spletni strežnik)</a></li>
                         <li><a href="#bridge">Most qFT8</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protokol qFT8log</a></li>
                         <li><a href="#layouts">Razporeditve zaslona</a></li>
@@ -227,7 +228,7 @@
             </p>
 
             <p>
-                qFT8 vsebuje dele iz usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (javna last), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, licenca MIT), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C), SatNOGS DB (CC BY-SA 4.0), CelesTrak ter Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle in/ali njegove podružnice in drugi sodelavci, GPLv2 with the Classpath Exception). Nobeden od teh zunanjih avtorjev ali projektov qFT8 ne podpira in ni z njim povezan.
+                qFT8 vsebuje dele iz usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (javna last), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, licenca MIT), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, brezplačno za radioamatersko skupnost), SatNOGS DB (CC BY-SA 4.0), CelesTrak ter Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle in/ali njegove podružnice in drugi sodelavci, GPLv2 with the Classpath Exception). Nobeden od teh zunanjih avtorjev ali projektov qFT8 ne podpira in ni z njim povezan.
             </p>
 
 
@@ -748,14 +749,10 @@
 
             <h4>Prenos nastavitev s telefona (ali nanj)</h4>
             <p>
-                <strong>IZVOZI NASTAVITVE</strong> in <strong>UVOZI NASTAVITVE</strong> na glavni strani Nastavitev (pod
-                <strong>Datoteke nastavitev</strong>) naredita in prebereta eno datoteko, ki je <strong>enaka na Androidu in na
-                    računalniku</strong>. Izvozite na telefonu, datoteko kopirajte na računalnik (e-pošta, oblak, kabel), tam jo
-                uvozite; deluje tudi obratno.
+                <strong>IZVOZI NASTAVITVE</strong> in <strong>UVOZI NASTAVITVE</strong> na glavni strani Nastavitve (pod <strong>Datoteke nastavitev</strong>) odpreta strani Izvoz in Uvoz (glejte <a href="#settings-profiles">Profili</a>). Datoteka je <strong>enaka na Androidu, iPhonu in računalniku</strong>. Izvozite na telefonu, kopirajte datoteko v računalnik (e-pošta, oblak, kabel) in jo tam uvozite; deluje tudi v nasprotni smeri.
             </p>
             <ul>
-                <li>Datoteka vsebuje vaš ključ API za QRZ, potrdilo LoTW in vaša gesla. <strong>Nikoli je ne
-                    delite.</strong></li>
+                <li>Prijave, gesla in certifikat LoTW so v datoteki le, če označite <strong>Vključi prijave in gesla</strong>; takrat so zaščiteni z geslom, ki ga vpišete. Kljub temu <strong>datoteke nikoli ne delite.</strong></li>
                 <li>Ne vsebuje zvez QSO: dnevnik prenesite z <a href="#adif-import-export">ADIF</a> ali pa ga pustite kopirati
                     <a href="#qft8-log">strežnikom dnevnika qFT8</a>.</li>
                 <li>Ne vsebuje tistega, kar velja samo za ta računalnik: izbire zvočnih naprav (to so druge naprave),
@@ -1497,7 +1494,7 @@
             <ul>
                 <li>Enominutne reže: oddaja se začne eno sekundo po začetku sode ali lihe minute <span translate="no">UTC</span> in traja približno 47 s (<span translate="no">JT65</span>) ali 49 s (<span translate="no">JT9</span>); sodo ali liho izberete kot pri <span translate="no">FT8</span>.</li>
                 <li>Sporočila: 72 bitov: CQ, dva klicna znaka z lokatorjem, poročilo (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> ali do 13 znakov prostega besedila. Zveza QSO poteka enako kot pri <span translate="no">FT8</span> (<span translate="no">AUTO</span>, seznam postaj, dnevnik). Klicnega znaka, ki bi potreboval tako predpono kot pripono, ni mogoče poslati.</li>
-                <li>Podnačini <span translate="no">JT65</span>: A (HF), B in C (VHF in više, širši razmik tonov), izbrani ob vrsti dela v spodnji vrstici ali v Nastavitvah; obe postaji morata uporabljati istega. <span translate="no">JT9</span> je <span translate="no">JT9-1</span>, širok le 16 Hz.</li>
+                <li>Podnačini <span translate="no">JT65</span>: A (HF), B in C (VHF in višje, širši razmik tonov), B2 in C2 (B in C dvakrat hitreje, 30 s okna), izbrani ob vrsti dela v spodnji vrstici ali v Nastavitvah; obe postaji morata uporabljati istega. Podnačini <span translate="no">JT9</span>: A (<span translate="no">JT9-1</span>, širok le 16 Hz), B do H (širši toni), <span translate="no">JT9-2</span> do <span translate="no">JT9-30</span> (obdobja od 2 do 30 minut za LF in MF) ter E do H <span translate="no">FAST</span> (obdobja od 5 do 30 s za sipanje), izbrani na enak način.</li>
             </ul>
             <p>
                 Možnosti so opisane v <a href="#jt65-settings">Nastavitve &gt; <span translate="no">JT65</span></a> in <a href="#jt9-settings">Nastavitve &gt; <span translate="no">JT9</span></a>.
@@ -2211,8 +2208,10 @@
                 <li><strong>Sinhronizacija QSO</strong>: ena vrstica za vsako storitev, na katero se nalagajo vaše zveze QSO: njeno stikalo, ikona za njeno stanje in njen zobnik (glejte <a href="#qso-services">Storitve za nalaganje zvez QSO</a> in <a href="#choosing-services">Izbira storitev in strežnikov</a>).</li>
                 <li><strong>Poročanje</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> in <a href="#lq8-announce">objava vaše dejavnosti <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Skupnost</strong>: skupini Telegram (glejte <a href="#community">Skupnost</a>).</li>
-                <li><strong>Datoteke nastavitev</strong>: <strong>UVOZI NASTAVITVE</strong> in <strong>IZVOZI NASTAVITVE</strong> (glejte <a href="#settings-pages">spodaj</a>).</li>
+                <li><strong>Profil</strong>: zgornja vrstica z gumbom <strong>ZAMENJAJ</strong> (glejte <a href="#settings-profiles">Profili</a>).</li>
+                <li><strong>Datoteke nastavitev</strong>: <strong>UVOZI NASTAVITVE</strong> in <strong>IZVOZI NASTAVITVE</strong>, vedno tam, tudi ko <strong>Pokaži napredne nastavitve</strong> ni označeno (glejte <a href="#settings-files">spodaj</a>).</li>
                 <li><strong>Več nastavitev</strong>: <strong>NAČINI</strong> (stran z, v tem vrstnem redu <strong>SAMODEJNO DELOVANJE</strong>, <strong>DIGITALNI NAČINI</strong> in <strong>IZBIRA PASOV</strong>, nato, pod »Nastavitve načinov«, po en gumb za vsak način: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> ostali digitalni načini pa odprejo DIGITALNI NAČINI pri tem načinu; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> in <strong><span translate="no">PACKET</span></strong> svoje strani; NAZAJ vrne na NAČINI), <strong>VIRI PODATKOV</strong>, <strong>STREŽNIKI</strong> (kar ta naprava streže drugim programom, glejte <a href="#choosing-services">Izbira storitev in strežnikov</a>) in <strong>IZBRIŠI QSO</strong>, vsaka opisana v <a href="#settings-pages">Strani nastavitev</a>.</li>
+                <li><strong>Posnetki</strong> (samo z označenim <strong>Pokaži napredne nastavitve</strong>, pod orodji): <strong>ZAČNI SNEMANJE</strong> snema, kar sprejemate in oddajate, v datoteko <span translate="no">.qft8</span> v tej napravi (<strong>USTAVI SNEMANJE</strong> in čas med snemanjem); lupa in zobnik odpreta stran posnetkov s shranjenimi posnetki (predvajaj, deli, preimenuj, izbriši). <strong>Bližnjica za snemanje</strong> prikaže tudi majhen gumb <span translate="no">REC</span> spodaj desno na slapu. Odpiranje datoteke <span translate="no">.qft8</span> (ali povezave nanjo) jo predvaja ne glede na to polje: ozka vrstica ob spodnjem robu slapu ima predvajanje, položaj, <strong>?</strong> (lastno besedilo posnetka) in križec za izhod; med predvajanjem posnetka se nič ne oddaja (gumba <span translate="no">TX</span> ni).</li>
                 <li><strong>Ob zagonu preveri za nove različice</strong> in <strong>Pošlji anonimni dnevni povzetek zmogljivosti</strong> (glejte <a href="#reports-updates">Poročila o napakah in nove različice</a>).</li>
                 <li><strong>Jezik</strong>: jezik qFT8, pod črto na koncu seznama.</li>
                 <li>Na dnu: različica s povezavami na ta priročnik in politiko zasebnosti, dovoljenja in povezana naprava USB ter <strong>JAVI NAPAKO</strong> (glejte <a href="#report-bug">Prijava težave</a>).</li>
@@ -2329,7 +2328,7 @@
                     poteku sporočil, ki jih dekodira.</li>
                 <li><strong>Lokacija (lokator Maidenhead)</strong>: vaš lokator, s <strong>SINH. GPS</strong>,
                     in ali se ob vsakem zagonu qFT8 posodobi z GPS.</li>
-                <li><strong>Država za pravila sprejema</strong>: država, ki jo qFT8 uporablja za pravila o tem, kaj smete sprejemati in oddajati (glejte <a href="#swl-legal">Poslušanje in zakon</a> in <a href="#tx-legal">Oddajanje in zakon</a>). Dokler je ne izberete, piše &ldquo;Ni izbrana: glede na lokacijo, lokator ali klicni znak&rdquo;; <strong>SPREMENI</strong> odpre seznam držav (najprej najbližje, nato vse od A do Ž) in izbrana država se zapomni.</li>
+                <li><strong>Država</strong>: država, ki jo qFT8 uporablja za pravila o tem, kaj smete sprejemati in oddajati (glejte <a href="#swl-legal">Poslušanje in zakon</a> in <a href="#tx-legal">Oddajanje in zakon</a>). Na seznamu prvi vnos, <strong>Auto</strong>, uporabi državo, ki jo zazna qFT8 (v oklepaju), nato sledijo najbližje države in vse države od A do Z. Izbira druge države zahteva potrditev, izbrana država pa se zapomni.</li>
             </ul>
 
             <h4 id="settings-application">Nastavitve aplikacije</h4>
@@ -2458,12 +2457,48 @@
                 Izbrišejo samo QSO na tej napravi, nikoli na spletni storitvi.
             </p>
 
+            <h4 id="settings-profiles">Profili</h4>
+            <p>
+                Profil je ena postavitev postaje: lasten klicni znak, prijave in gesla, loga <span translate="no">QSO</span> in
+                <span translate="no">SWL</span>, pomnilniki, tema in nastavitve. Radio, zvočne naprave in jezik so
+                skupni vsem profilom. Uporabite en profil na klicni znak (na primer vaš klicni znak ter klubski ali posebni klicni znak).
+            </p>
+            <p>
+                <strong>Kje</strong>: zgornja vrstica nastavitev, <strong>Profil: IME</strong> in <strong>ZAMENJAJ</strong>. Prikazana je,
+                ko je označeno <strong>Pokaži napredne nastavitve</strong>, ali kadar obstaja več kot en profil. <strong>ZAMENJAJ</strong>
+                odpre stran Profili.
+            </p>
+            <p>
+                Stran Profili našteje vaše profile kot gumbe, v vašem vrstnem redu, vsakega v barvah lastne teme (barva spodnje vrstice te teme); zelena puščica kaže na tistega v uporabi. Dotaknite se drugega profila, da ga uporabite. Puščici premakneta profil navzgor ali navzdol, svinčnik ga preimenuje, koš ga izbriše (profil v uporabi nima koša).
+            </p>
+            <p>
+                <strong>Preklop</strong>: qFT8 našteje, kaj se bo ustavilo: <span translate="no">TX</span> se izklopi na <span translate="no">OFF</span>,
+                <span translate="no">AUTO</span> se izklopi na <span translate="no">OFF</span>, <span translate="no">QSO</span> v teku se prekine,
+                aktivacije se končajo s <span translate="no">QRT</span>, storitve, strežniki in brskalniki spletnega daljinca se ustavijo ali
+                prekinejo, <span translate="no">QSO</span> in poročila <span translate="no">SWL</span>, ki še niso naloženi, pa so navedeni (počakajo
+                na ta profil in se naložijo, ko je spet v uporabi). Če je karkoli navedeno, vpišete <strong>yes</strong> (v angleščini),
+                da preklopite; sicer je navadna potrditev. Med preklopom zaslon prekrije pokrov <strong>Preklapljanje na profil ...</strong>;
+                nič se ne da dotakniti, dokler novi profil ne deluje. Če <span translate="no">TX</span> ni mogoče izklopiti, se nič
+                ne spremeni in qFT8 to sporoči. Preklop nikoli ne vklopi <span translate="no">TX</span>.
+            </p>
+            <p>
+                <strong>NOV</strong> ustvari kopijo profila v uporabi: njegove nastavitve, pomnilnike in temo, brez klicnega znaka, prijav in logov. Poimenujete ga, nato izberete njegovo temo. Vsaka tema na seznamu je prikazana v svojih barvah. Teme, ki jih ne uporablja noben profil, so na vrhu, da je vsak profil videti drugače; pod <strong>Že uporabljene</strong> so teme, ki jih uporablja drug profil, in teme z enakim ozadjem kot ena od njih (na primer vse bele teme, ko je ena uporabljena). So tako označene in jih je še vedno mogoče izbrati. Nato <strong>USTVARI</strong>. Če je vaš klicni znak vpisan v pomnilnikih ali besedilih (pomnilniki <span translate="no">CW</span>, <span translate="no">RTTY</span>, <span translate="no">JTTY</span>, <span translate="no">Packet</span>, <span translate="no">JS8</span> INFO / STATUS, tablica <span translate="no">PIX</span>), kopija tam vsebuje <span translate="no">[MYCALL]</span> (lastni klicni znak novega profila), potrditev pa našteje ta besedila, da jih lahko preverite, preden oddajate.
+            </p>
+            <p>
+                <strong>Izbriši</strong>: pogovorno okno navede profil, njegov klicni znak in velikost njegovih logov; vpišete <strong>yes</strong>.
+                Vse, kar je samo v tem profilu, izgine; spletne storitve obdržijo svoje kopije (qFT8 tam nikoli nič ne izbriše). Če želite obdržati njegov log,
+                preklopite nanj in najprej uporabite <span translate="no">ADIF EXPORT</span>.
+            </p>
+            <p>
+                <strong>IZVOZ</strong> (tudi <strong>IZVOZI NASTAVITVE</strong> pod Datoteke nastavitev): označite profile, ki jih želite shraniti v eno datoteko (profil v uporabi je označen), po želji tudi <strong>Konfiguracija naprav (radio in zvok)</strong> in <strong>Vključi prijave in gesla</strong> (sprva neoznačeni). Prijave, gesla in certifikat <span translate="no">LoTW</span> so zaščiteni z geslom, ki ga vpišete ob izvozu; ni shranjeno. <strong>IZVOZI VSE</strong> shrani vse profile in konfiguracijo naprav. Loga <span translate="no">QSO</span> in <span translate="no">SWL</span> nista v datoteki (<span translate="no">ADIF EXPORT</span> ju shrani).
+            </p>
+            <p>
+                <strong>UVOZ</strong> (tudi <strong>UVOZI NASTAVITVE</strong> pod Datoteke nastavitev): izberite datoteko z nastavitvami; qFT8 našteje, kaj vsebuje. Profil z enakim imenom kot eden vaših je prikazan rdeče in zamenja nastavitve tega profila (logi ostanejo); vpišete <strong>yes</strong>, pogovorno okno pa navede vsak zamenjani profil z njegovim klicnim znakom in številom <span translate="no">QSO</span>. Datoteka ene postaje (vsaka datoteka z nastavitvami, narejena pred profili) lahko postane nov profil ali gre v profil v uporabi; pri enem profilu in neoznačenem <strong>Pokaži napredne nastavitve</strong> gre naravnost v profil v uporabi, kot prej: <span translate="no">TX</span> mora biti izklopljen, vpišete <strong>yes</strong>, datoteka brez gesel pa obdrži vaša gesla le, dokler uporablja isti klicni znak in iste naslove. Uvoz v profil v uporabi najprej ustavi, kar teče, kot pri preklopu, in nikoli ne vklopi <span translate="no">TX</span>.
+            </p>
+
             <h4 id="settings-files">Datoteke nastavitev</h4>
             <p>
-                <strong>IZVOZI NASTAVITVE</strong> shrani vse vaše nastavitve v eno datoteko, <strong>UVOZI NASTAVITVE</strong>
-                pa jo prebere nazaj, na tej ali drugi napravi, telefonu ali računalniku (glejte
-                <a href="#pc-settings">Nastavitve: kje so in prenos s telefona</a>). Datoteka vsebuje vaše ključe in
-                gesla: nikoli je ne delite.
+                <strong>IZVOZI NASTAVITVE</strong> in <strong>UVOZI NASTAVITVE</strong> odpreta strani Izvoz in Uvoz, opisani v razdelku <a href="#settings-profiles">Profili</a>: profil v uporabi (ali več profilov, ali vse), konfiguracijo naprav, če jo označite, prijave in gesla samo, če jih označite. Gumba sta tam tudi, ko <strong>Pokaži napredne nastavitve</strong> ni označeno; z enim profilom preprosto shranita in prebereta ta profil. Starejše datoteke z nastavitvami se še vedno uvozijo (v profil v uporabi). Glejte tudi <a href="#pc-settings">Nastavitve: kje so in prenos s telefona</a>.
             </p>
 
             <h3 id="raw-message-logs">Surovi dnevniki sporočil</h3>
@@ -3204,7 +3239,7 @@
                 <span translate="no">GridTracker2</span> (preizkušen z različico 2.261019.5) prikaže na zemljevidu in zabeleži, kar pošilja <span translate="no">FT8 network log</span> na vrata 2237; z vklopljenim sprejemom ADIF UDP prevzema tudi <span translate="no">ADIF over UDP</span> na vratih 2333. Njegovi posredniki beleženja pošiljajo njegove QSO sprejemnikom qFT8.
             </p>
             <p>
-                V nasprotni smeri lahko qFT8 v svoj dnevnik prevzame QSO iz drugih programov. V Več nastavitev &gt; <strong>Strežniki</strong> obkljukajte vrstico sprejemnika za obliko, ki jo pošilja drugi program: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), vmesnik <span translate="no">AC Log</span> (TCP 1100) ali vmesnik <span translate="no">DXLab</span> (TCP 52001). Njegova stran kaže naslov, ki ga vnesete v drugem programu, in omogoča spremembo vrat ter sprejem QSO samo z nekaterih naslovov. Nič, prejeto na ta način, ne more oddajati, spreminjati radia ali brisati QSO. Sprejemniki so izklopljeni, dokler jih ne vklopite; na iPhonu delujejo samo, dokler je qFT8 odprt, in se nikoli ne pridružijo skupini multicast.
+                V nasprotni smeri lahko qFT8 v svoj dnevnik prevzame QSO iz drugih programov. V Več nastavitev &gt; <strong>Strežniki</strong> obkljukajte vrstico sprejemnika za obliko, ki jo pošilja drugi program: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), vmesnik <span translate="no">AC Log</span> (TCP 1100) ali vmesnik <span translate="no">DXLab</span> (TCP 52001). Njegova stran kaže naslov, ki ga vnesete v drugem programu, in omogoča spremembo vrat ter sprejem QSO samo z nekaterih naslovov. Nič, prejeto na ta način, ne more oddajati, spreminjati radia ali brisati QSO. Sprejemniki so izklopljeni, dokler jih ne vklopite; na iPhonu delujejo samo, dokler je qFT8 odprt, in se nikoli ne pridružijo skupini multicast. Stran sprejemnika <span translate="no">FT8 network log</span> dodaja: <em>Ta strežnik samo sprejema QSO-je iz drugih programov; za pošiljanje svojih dekodiranj in QSO-jev programu za zemljevide ali beleženje uporabite <strong>Sinhronizacija dnevnika</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3868,7 +3903,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Posebno oddajanje</strong>, directly above <strong>Dogodki</strong>. Its
+                Settings has a section <strong>Posebno oddajanje</strong>, directly below <strong>Programi</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Večtonsko</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Način Fox</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4985,7 +5020,9 @@
                 <p>
                 <strong>Zanka</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Izklopljeno</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Izklopljeno</strong>
+                stops it). <strong>Število oddaj</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -5140,6 +5177,7 @@
                     dotik preskoči na naslednjo.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: Razdalja med obema tonoma: 170 Hz (običajna),
                     200, 425 ali 850 Hz. Filter sledi premiku.</li>
+                <li>Ozki zamiki: po 850 Hz <span translate="no">SHIFT</span> ponuja tudi 85 in 23 Hz (tudi v Nastavitve &gt; <span translate="no">RTTY</span>). Ozek zamik se kopira samo pod sprejemnim trakom: nastavite ga na zamik druge postaje; drugi signali v pasu se iščejo pri običajnih zamikih.</li>
                 <li><strong><span translate="no">REV</span></strong>: Zamenja oba tona, za postajo, ki ju pošilja
                     obratno. Ko je vklopljen, je jantarne barve.</li>
                 <li><strong><span translate="no">FILTER</span></strong> in <strong><span translate="no">NR</span></strong>:
@@ -5415,7 +5453,7 @@
                 <span translate="no">JT65</span> (vrstica <span translate="no">JT65</span> (eksperimentalno) izbirnika načina) je enominutni način QSO s 65 toni in kodo Reed-Solomon; občutljivost približno -25 dB (v 2500 Hz). QSO se beležijo kot <span translate="no">MODE=JT65</span> s podnačinom (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>), spoti pa gredo na <span translate="no">PSKReporter</span> kot <span translate="no">JT65</span>. Običajne frekvence (klicalo USB): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Podnačin (A): A, B ali C, kot v spodnji vrstici.</li>
+                <li>Podnačin (A): A, B, C, B2 ali C2, kot v spodnji vrstici. B2 in C2 sta B in C, poslana dvakrat hitreje: 30 s okna, 23 s oddaje, približno 3 dB manjša občutljivost.</li>
                 <li>Dekodiraj samo blizu sprejemne frekvence (izklopljeno): izklopljeno dekodira ves pas; vklopljeno dekodira samo okoli sprejemne frekvence.</li>
                 <li>Sprejemna toleranca: širina v Hz okoli sprejemne frekvence (privzeto 100).</li>
                 <li>Reference: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -5426,6 +5464,7 @@
                 <span translate="no">JT9</span> (vrstica <span translate="no">JT9</span> (eksperimentalno) izbirnika načina) je enominutni način QSO z 9 toni, širokimi 16 Hz; občutljivost približno -27 dB (v 2500 Hz). QSO se beležijo kot <span translate="no">MODE=JT9</span>, spoti pa gredo na <span translate="no">PSKReporter</span> kot <span translate="no">JT9</span>. Običajne frekvence (klicalo USB): 2 kHz nad frekvencami <span translate="no">JT65</span> od 160 m do 10 m (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Podnačin (A): A (<span translate="no">JT9-1</span>) na HF; B do H, isti signal s širšimi toni (razmik od 3,5 do 222 Hz) za VHF in višje; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> in <span translate="no">JT9-30</span>, signal, raztegnjen na obdobja od 2 do 30 minut za LF in MF (vsak korak približno 3 do 5 dB občutljivejši); E do H <span translate="no">FAST</span> v obdobju 5, 10, 15 ali 30 s, kratki okvirji, poslani drug za drugim za sipanje na meteorjih in letalih. Raztegnjeni podnačini iščejo signale le znotraj sprejemne tolerance od sprejemne frekvence.</li>
                 <li>Dekodiraj samo blizu sprejemne frekvence (izklopljeno): izklopljeno dekodira ves pas; vklopljeno dekodira samo okoli sprejemne frekvence.</li>
                 <li>Sprejemna toleranca: širina v Hz okoli sprejemne frekvence (privzeto 100).</li>
                 <li>Reference: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -5469,7 +5508,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> in <span translate="no">DominoEX</span> (eksperimentalno)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>Družina MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -5497,6 +5536,7 @@
                     med <span translate="no">MFSK16</span> in <span translate="no">MFSK32</span>.
                     <span translate="no">DominoEX</span>: 18 tonov,
                     neobčutljiv na uglasitev in premik, hitrejši.</li>
+                <li>Več različic, na koncu seznama vsake družine: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> in <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 tonov v 125 Hz, zelo počasen, za zelo šibke signale), <strong><span translate="no">MFSK31</span></strong> (8 tonov v 250 Hz), <strong><span translate="no">MFSK64L</span></strong> in <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> in <span translate="no">MFSK128</span> z dolgim prepletanjem, ki razprši vsak znak na približno 20 sekund: boljše pri bledenju, vendar se besedilo prikaže približno 20 sekund pozneje in vsaka oddaja se konča s približno 20 sekundami tonov več); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 simbola na sekundo, širok 36 Hz, zelo počasen), <strong><span translate="no">DOMINOEX 44</span></strong> in <strong><span translate="no">DOMINOEX 88</span></strong> (hitra, široka približno 1,5 kHz). V spodnji vrstici se zelo počasna prikazujeta kot <span translate="no">DX-M</span> in <span translate="no">TH-M</span>. Počasni potrebujejo čas v etru: klic v <span translate="no">MFSK4</span> traja približno 40 sekund, v <span translate="no">DOMINOEX MICRO</span> približno 35, zato vrstica morda potrebuje več, kot dovoljuje omejitev neprekinjenega oddajanja.</li>
                 <li>Signal pod sprejemno črto se dekodira (črta je sredina signala). Postavite črto na
                     signal; nekaj herzov ob strani je v redu.</li>
                 <li>Zaslon nima gumbov <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> in
@@ -5530,6 +5570,7 @@
                     nekoliko počasnejši od <span translate="no">DominoEX</span> pri isti številki hitrosti, veliko robustnejši.</li>
                 <li><span translate="no">Contestia</span> (toni / širina v Hz): hitrejši sorodnik načina <span translate="no">Olivia</span>, samo z velikimi črkami, priljubljen na tekmovanjih;
                     črke, številke in običajna ločila (drugi znaki se pošljejo kot ?).</li>
+                <li>Več različic: <strong><span translate="no">THOR MICRO</span></strong> (2 simbola na sekundo, širok 36 Hz, zelo počasen: klic traja več kot minuto, več, kot privzeto dovoljuje omejitev neprekinjenega oddajanja), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> in <strong><span translate="no">THOR 100</span></strong> (hitri, široki od 900 do 1800 Hz, z močnejšim popravljanjem napak); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> in <strong><span translate="no">CONTESTIA 64/1000</span></strong>. V datotekah <span translate="no">ADIF</span> se <span translate="no">THOR MICRO</span> zapiše kot <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (širina v Hz, L = dolgo, S = kratko prepletanje): 64 nosilcev hkrati, široko 500, 1000 ali 2000 Hz,
                     približno 5 do 20 znakov na sekundo; robusten proti fadingu in izbruhom šuma, uporablja se v omrežjih za nujni promet.
                     Sprejemna črta je sredina signala. Dolgo prepletanje je robustnejše, kratko
@@ -5881,6 +5922,11 @@
                 vklopljena v nastavitvah. Slika z odgovorom namesto tega uporabi eno od petih postavitev odgovora (ena nad drugo,
                 ena ob drugi, zgoraj in spodaj, velik obris, z datumom + pasom); puščici in paleta preskakujeta med
                 njimi.
+            </p>
+
+            <h3 id="sstv-fax">Amaterski faks</h3>
+            <p>
+                Ista oddajna polovica pošilja vašo sliko tudi kot amaterski <strong>faks</strong> (KV faks, format oddaj vremenskih kart): za načini <span translate="no">SSTV</span> ima seznam načinov v spodnji vrstici <strong>Fax 288/120</strong> (običajni amaterski format), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> in štiri formate <strong>Colour fax</strong> (288 ali 576, 120 ali 240 vrstic na minuto). Prva številka je indeks sodelovanja: 288 pošlje 905 pik na vrstico, 576 pošlje 1810. Faks pošlje začetni signal 5 s, 30 s fazirnih vrstic, sliko v njeni lastni obliki (pri 120 ena vrstica na pol sekunde), končni signal 5 s in 10 s črnine, med 1500 Hz (črna) in 2300 Hz (bela). Barvni faks pošlje vsako vrstico trikrat, rdečo, zeleno in modro, po začetnem signalu 200 Hz. Faks je dolg (slika 4:3: približno 6,5 minute pri 288/120), zato se ponuja samo pri dovolj dolgi omejitvi neprekinjenega oddajanja; seznam prikazuje sekunde vsakega formata. Faks pošlje samo sliko: ne doda se besedilo klicnega znaka ali identifikacija <span translate="no">CW</span> ali <span translate="no">FSK</span>. Sprejemnik vremenskega faksa (<a href="#swl-wefax">Weather fax</a>) ga sprejme.
             </p>
 
             <h3 id="sstv-limits">Omejitve oddajanja</h3>
@@ -6578,6 +6624,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Ta strežnik je moj</strong> in its rows, the same answer as <strong>Je ta SDR vaš?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Izvozi: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> in <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>IZVOZI ADIF</strong>: en zapis na slišano postajo, dva na QSO, tako kot se pošiljajo poročila in kartice
@@ -6708,7 +6756,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>MOJA LOKACIJA JE NAPAČNA</strong> in the Signals pane.</li>
                 <li>Enako velja v Francija, ki vključuje Korziko, čezmorske departmaje (Guadeloupe, Martinik, Francoska Gvajana, Reunion, Mayotte) in francoski del otoka Saint Martin (klicni znaki <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> in čezmorske predpone).</li>
-                <li><strong>V kateri državi ste?</strong> qFT8 vzame vašo državo iz najnatančnejšega podatka, ki ga pozna: najprej vaš natančen položaj, nato približen položaj, nato sredina vašega lokatorja ali vaš klicni znak (za uveljavitev omejitve zadostuje kateri koli od zadnjih dveh). Ko ta država načina ne dovoljuje, pogovorno okno <strong>V kateri državi ste?</strong> pokaže &ldquo;Mislimo, da ste v državi …, kjer sprejem ali dekodiranje tega načina ni dovoljeno.&rdquo;, države pa so navedene najprej najbližje, nato vse od A do Ž. Državo spremenite le, če jo je qFT8 zaznal napačno: za spoštovanje zakonov države, v kateri ste, ste odgovorni sami. Če tudi izbrana država načina ne dovoljuje, okno to sporoči. Izbrana država se zapomni (Nastavitve &gt; <a href="#settings-time-location">ČAS IN LOKACIJA</a>, <strong>Država za pravila sprejema</strong>) in se znova vpraša le, če ji vaš položaj pozneje nasprotuje.</li>
+                <li><strong>V kateri državi ste?</strong> qFT8 vzame vašo državo iz najnatančnejšega podatka, ki ga pozna: najprej vaš natančen položaj, nato približen položaj, nato sredina vašega lokatorja ali vaš klicni znak (za uveljavitev omejitve zadostuje kateri koli od zadnjih dveh). Ko ta država načina ne dovoljuje, pogovorno okno <strong>V kateri državi ste?</strong> pokaže &ldquo;Mislimo, da ste v državi …, kjer sprejem ali dekodiranje tega načina ni dovoljeno.&rdquo;, države pa so navedene najprej najbližje, nato vse od A do Ž. Državo spremenite le, če jo je qFT8 zaznal napačno: za spoštovanje zakonov države, v kateri ste, ste odgovorni sami. Če tudi izbrana država načina ne dovoljuje, okno to sporoči. Izbrana država se zapomni (Nastavitve &gt; <a href="#settings-time-location">ČAS IN LOKACIJA</a>, <strong>Država</strong>) in se znova vpraša le, če ji vaš položaj pozneje nasprotuje.</li>
                 <li>Blizu meje qFT8 šteje previdno: če bi bil vaš približen položaj lahko v državi, ki načina ne dovoljuje, vpraša. Če je ugibal napačno državo, jo popravite v oknu <strong>V kateri državi ste?</strong> ali v nastavitvah.</li>
                 <li>V Združenem kraljestvu in na Irskem televizijski sprejemnik enkrat na sejo prikaže obvestilo, da je za ogled ali snemanje televizije v živo potrebna televizijska licenca; navede državo, v kateri ste.</li>
                 <li>Javni <span translate="no">KiwiSDR</span> pripada svojemu lastniku: upoštevajte lastnikove omejitve.</li>
@@ -7263,6 +7311,8 @@ cd qFT8
                         prek bridgea vklaplja prav tako.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -7954,7 +8004,7 @@ cd qFT8
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Vse pravice pridržane.
         </p>
         <p>
-            Vsebuje dele iz usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C), in Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nobeden od teh zunanjih avtorjev ali projektov qFT8 ne podpira in ni z njim povezan.
+            Vsebuje dele iz usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, brezplačno za radioamatersko skupnost), in Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nobeden od teh zunanjih avtorjev ali projektov qFT8 ne podpira in ni z njim povezan.
         </p>
         <div class="footer-links">
             <a href="../../sl/">Glavna stran</a> - <a href="../../privacy/">Politika zasebnosti</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Licenca</a>

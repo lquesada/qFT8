@@ -175,6 +175,7 @@
                         <li><a href="#remote-control">Pelayan Web Kawalan Jauh</a></li>
                         <li><a href="#webserver-headless">Menjalankan qFT8 tanpa skrin (pelayan web kawalan jauh)</a></li>
                         <li><a href="#bridge">Jambatan qFT8</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protokol qFT8log</a></li>
                         <li><a href="#layouts">Susun atur skrin</a></li>
@@ -228,7 +229,7 @@
             </p>
 
             <p>
-                qFT8 termasuk bahagian daripada usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C), SatNOGS DB (CC BY-SA 4.0), CelesTrak, dan Java Runtime Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Tiada satu pun pengarang atau projek pihak ketiga ini menyokong atau berkaitan dengan qFT8.
+                qFT8 termasuk bahagian daripada usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, percuma untuk komuniti radio amatur), SatNOGS DB (CC BY-SA 4.0), CelesTrak, dan Java Runtime Eclipse Temurin / BellSoft Liberica (OpenJDK) (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Tiada satu pun pengarang atau projek pihak ketiga ini menyokong atau berkaitan dengan qFT8.
             </p>
 
 
@@ -748,14 +749,10 @@
 
             <h4>Memindahkan tetapan anda dari telefon (atau ke telefon)</h4>
             <p>
-                <strong>EKSPORT TETAPAN</strong> dan <strong>IMPORT TETAPAN</strong>, pada halaman Tetapan utama (di bawah
-                <strong>Fail tetapan</strong>), membuat dan membaca satu fail yang <strong>sama pada Android dan pada
-                    komputer</strong>. Eksport pada telefon, salin fail ke komputer (mel, awan, kabel), import di
-                sana; sebaliknya juga berfungsi.
+                <strong>EKSPORT TETAPAN</strong> dan <strong>IMPORT TETAPAN</strong>, pada halaman Tetapan utama (di bawah <strong>Fail tetapan</strong>), membuka halaman Eksport dan Import (lihat <a href="#settings-profiles">Profil</a>). Fail itu <strong>sama pada Android, iPhone dan komputer</strong>. Eksport pada telefon, salin fail ke komputer (mel, awan, kabel), import di sana; sebaliknya juga berfungsi.
             </p>
             <ul>
-                <li>Fail itu mengandungi kunci API QRZ anda, sijil LoTW anda dan kata laluan anda. <strong>Jangan sekali-kali
-                    kongsikannya.</strong></li>
+                <li>Maklumat log masuk, kata laluan dan sijil LoTW hanya ada dalam fail apabila anda menanda <strong>Sertakan maklumat log masuk dan kata laluan</strong>; ia kemudian dilindungi oleh frasa laluan yang anda taip. Walaupun begitu, <strong>jangan sekali-kali kongsikan fail itu.</strong></li>
                 <li>Ia tidak mengandungi QSO: pindahkan log dengan <a href="#adif-import-export">ADIF</a>, atau biarkan
                     <a href="#qft8-log">pelayan log qFT8</a> menyalinnya.</li>
                 <li>Ia tidak mengandungi apa yang hanya berkaitan dengan komputer ini: pilihan peranti bunyi (ia peranti yang berbeza),
@@ -1502,7 +1499,7 @@
             <ul>
                 <li>Slot satu minit: penghantaran bermula satu saat selepas permulaan minit <span translate="no">UTC</span> genap atau ganjil dan berlangsung kira-kira 47 s (<span translate="no">JT65</span>) atau 49 s (<span translate="no">JT9</span>); anda memilih genap atau ganjil seperti dalam <span translate="no">FT8</span>.</li>
                 <li>Mesej: 72 bit: CQ, dua tanda panggilan dengan lokator, laporan (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span>, atau sehingga 13 aksara teks bebas. QSO berjalan dengan cara yang sama seperti dalam <span translate="no">FT8</span> (<span translate="no">AUTO</span>, senarai stesen, log). Tanda panggilan yang memerlukan awalan dan akhiran sekaligus tidak dapat dihantar.</li>
-                <li>Sub-mod <span translate="no">JT65</span>: A (HF), B dan C (VHF ke atas, jarak nada lebih lebar), dipilih di sebelah mod dalam bar bawah atau dalam Tetapan; kedua-dua stesen mesti menggunakan yang sama. <span translate="no">JT9</span> ialah <span translate="no">JT9-1</span>, hanya selebar 16 Hz.</li>
+                <li>Sub-mod <span translate="no">JT65</span>: A (HF), B dan C (VHF ke atas, jarak nada lebih lebar), B2 dan C2 (B dan C dua kali lebih pantas, slot 30 s), dipilih di sebelah mod dalam bar bawah atau dalam Tetapan; kedua-dua stesen mesti menggunakan yang sama. Sub-mod <span translate="no">JT9</span>: A (<span translate="no">JT9-1</span>, hanya selebar 16 Hz), B hingga H (nada lebih lebar), <span translate="no">JT9-2</span> hingga <span translate="no">JT9-30</span> (tempoh 2 hingga 30 minit untuk LF dan MF) dan E hingga H <span translate="no">FAST</span> (tempoh 5 hingga 30 s untuk serakan), dipilih dengan cara yang sama.</li>
             </ul>
             <p>
                 Pilihan diterangkan dalam <a href="#jt65-settings">Tetapan &gt; <span translate="no">JT65</span></a> dan <a href="#jt9-settings">Tetapan &gt; <span translate="no">JT9</span></a>.
@@ -2217,8 +2214,10 @@
                 <li><strong>Penyegerakan QSO</strong>: satu baris bagi setiap perkhidmatan tempat QSO anda dimuat naik: suisnya, ikon untuk keadaannya dan gearnya (lihat <a href="#qso-services">Perkhidmatan muat naik QSO</a> dan <a href="#choosing-services">Memilih perkhidmatan dan pelayan</a>).</li>
                 <li><strong>Pelaporan</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> dan <a href="#lq8-announce">mengumumkan aktiviti <span translate="no">LQ8</span> anda</a>.</li>
                 <li><strong>Komuniti</strong>: dua kumpulan Telegram (lihat <a href="#community">Komuniti</a>).</li>
-                <li><strong>Fail tetapan</strong>: <strong>IMPORT TETAPAN</strong> dan <strong>EKSPORT TETAPAN</strong> (lihat <a href="#settings-pages">di bawah</a>).</li>
+                <li><strong>Profil</strong>: baris teratas, dengan <strong>TUKAR</strong> (lihat <a href="#settings-profiles">Profil</a>).</li>
+                <li><strong>Fail tetapan</strong>: <strong>IMPORT TETAPAN</strong> dan <strong>EKSPORT TETAPAN</strong>, sentiasa ada, walaupun <strong>Tunjukkan tetapan lanjutan</strong> dimatikan (lihat <a href="#settings-files">di bawah</a>).</li>
                 <li><strong>Lebih banyak tetapan</strong>: <strong>MOD</strong> (halaman dengan, mengikut susunan ini <strong>OPERASI AUTO</strong>, <strong>MOD DIGITAL</strong> dan <strong>PEMILIHAN JALUR</strong>, kemudian, di bawah "Tetapan mod", satu butang bagi setiap mod: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> dan mod digital lain membuka MOD DIGITAL pada mod itu; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> dan <strong><span translate="no">PACKET</span></strong> halaman mereka sendiri; KEMBALI kembali ke MOD), <strong>SUMBER DATA</strong>, <strong>PELAYAN</strong> (apa yang dihidangkan oleh peranti ini kepada program lain, lihat <a href="#choosing-services">Memilih perkhidmatan dan pelayan</a>) dan <strong>PADAM QSO</strong>, masing-masing diterangkan dalam <a href="#settings-pages">Halaman Tetapan</a>.</li>
+                <li><strong>Rakaman</strong> (hanya apabila <strong>Tunjukkan tetapan lanjutan</strong> ditanda, di bawah alatan): <strong>MULA REKOD</strong> merakam apa yang anda terima dan pancarkan ke dalam fail <span translate="no">.qft8</span> pada peranti ini (<strong>HENTI REKOD</strong> dan masa semasa merakam); kanta pembesar dan gear membuka halaman rakaman dengan rakaman yang disimpan (main, kongsi, namakan semula, padam). <strong>Pintasan rakaman</strong> juga menunjukkan butang <span translate="no">REC</span> kecil di kanan bawah waterfall. Membuka fail <span translate="no">.qft8</span> (atau pautan kepadanya) memainkannya walau apa pun kotak ini katakan: bar nipis di sepanjang bahagian bawah waterfall mempunyai main, kedudukan, <strong>?</strong> (teks rakaman itu sendiri) dan pangkah untuk keluar; tiada apa yang dipancarkan semasa rakaman dimainkan (butang <span translate="no">TX</span> hilang).</li>
                 <li><strong>Semak versi baharu semasa permulaan</strong> dan <strong>Hantar ringkasan prestasi harian tanpa nama</strong> (lihat <a href="#reports-updates">Laporan pepijat dan versi baharu</a>).</li>
                 <li><strong>Bahasa</strong>: bahasa qFT8, di bawah satu garisan di hujung senarai.</li>
                 <li>Di bahagian bawah: versi, dengan pautan ke manual ini dan dasar privasi, kebenaran dan peranti USB yang disambungkan, dan <strong>LAPORKAN PEPIJAT</strong> (lihat <a href="#report-bug">Melaporkan masalah</a>).</li>
@@ -2337,7 +2336,7 @@
                     mesej yang dinyahkodnya.</li>
                 <li><strong>Lokasi (grid Maidenhead)</strong>: lokasi anda, dengan <strong>SYNC GPS</strong>,
                     dan sama ada ia dikemas kini daripada GPS setiap kali qFT8 bermula.</li>
-                <li><strong>Negara untuk peraturan penerimaan</strong>: negara yang digunakan oleh qFT8 untuk peraturan tentang apa yang anda boleh terima dan hantar (lihat <a href="#swl-legal">Mendengar dan undang-undang</a> dan <a href="#tx-legal">Menghantar dan undang-undang</a>). Ia menunjukkan &ldquo;Tidak dipilih: daripada lokasi, lokator atau tanda panggilan anda&rdquo; sehingga anda memilih satu; <strong>TUKAR</strong> membuka senarai negara (yang terdekat dahulu, kemudian semuanya dari A hingga Z) dan negara yang anda pilih diingati.</li>
+                <li><strong>Negara</strong>: negara yang digunakan oleh qFT8 untuk peraturan tentang apa yang anda boleh terima dan hantar (lihat <a href="#swl-legal">Mendengar dan undang-undang</a> dan <a href="#tx-legal">Menghantar dan undang-undang</a>). Dalam senarainya, entri pertama, <strong>Auto</strong>, menggunakan negara yang dikesan oleh qFT8 (dalam kurungan), kemudian negara terdekat dan semua negara dari A hingga Z. Memilih negara lain meminta pengesahan, dan negara yang anda pilih diingati.</li>
             </ul>
 
             <h4 id="settings-application">Tetapan aplikasi</h4>
@@ -2466,12 +2465,48 @@
                 Ia hanya memadam QSO pada peranti ini, tidak sekali-kali pada perkhidmatan dalam talian.
             </p>
 
+            <h4 id="settings-profiles">Profil</h4>
+            <p>
+                Profil ialah satu persediaan stesen: tanda panggilan sendiri, maklumat log masuk dan kata laluan, log <span translate="no">QSO</span> dan
+                <span translate="no">SWL</span>, memori, tema dan tetapan. Radio, peranti audio dan bahasa dikongsi oleh setiap
+                profil. Gunakan satu profil bagi setiap tanda panggilan (contohnya tanda panggilan anda sendiri dan tanda panggilan kelab atau acara khas).
+            </p>
+            <p>
+                <strong>Di mana</strong>: baris teratas Tetapan, <strong>Profil: NAMA</strong> dan <strong>TUKAR</strong>. Ia ada
+                apabila <strong>Tunjukkan tetapan lanjutan</strong> ditanda, atau apabila lebih daripada satu profil wujud. <strong>TUKAR</strong>
+                membuka halaman Profil.
+            </p>
+            <p>
+                Halaman Profil menyenaraikan profil anda sebagai butang, mengikut susunan anda, setiap satu dalam warna temanya sendiri (warna bar bawah tema itu); anak panah hijau menunjuk kepada yang sedang digunakan. Ketik profil lain untuk menggunakannya. Anak panah menggerakkan profil ke atas atau ke bawah, pensel menamakannya semula, tong sampah memadamnya (profil yang digunakan tiada tong sampah).
+            </p>
+            <p>
+                <strong>Beralih</strong>: qFT8 menyenaraikan apa yang akan dihentikan: <span translate="no">TX</span> dimatikan (<span translate="no">OFF</span>),
+                <span translate="no">AUTO</span> dimatikan (<span translate="no">OFF</span>), <span translate="no">QSO</span> yang sedang berlangsung ditinggalkan,
+                pengaktifan tamat dengan <span translate="no">QRT</span>, perkhidmatan, pelayan dan pelayar kawalan jauh web dihentikan atau
+                diputuskan, dan <span translate="no">QSO</span> atau laporan <span translate="no">SWL</span> yang belum dimuat naik disenaraikan (ia menunggu
+                profil itu dan dimuat naik apabila ia digunakan semula). Apabila ada sesuatu disenaraikan, anda menaip <strong>yes</strong> (dalam bahasa Inggeris)
+                untuk beralih; jika tidak, pengesahan biasa sahaja. Semasa peralihan berjalan, tirai <strong>Beralih ke profil ...</strong> menyembunyikan
+                skrin; tiada apa boleh disentuh sehingga profil baharu sedia. Jika <span translate="no">TX</span> tidak dapat dimatikan, tiada apa
+                berubah dan qFT8 memberitahunya. Peralihan tidak pernah menghidupkan <span translate="no">TX</span>.
+            </p>
+            <p>
+                <strong>BARU</strong> membuat salinan profil yang digunakan: tetapan, memori dan temanya, tanpa tanda panggilan, maklumat log masuk dan lognya. Anda menamakannya, kemudian memilih temanya. Setiap tema dalam senarai ditunjukkan dalam warnanya sendiri. Tema yang tidak digunakan oleh mana-mana profil datang dahulu, supaya setiap profil kelihatan berbeza; di bawah <strong>Sudah digunakan</strong> datang tema yang digunakan oleh profil lain, dan tema dengan latar belakang yang sama seperti salah satunya (contohnya setiap tema putih apabila satu sudah digunakan). Ia ditandakan sedemikian dan masih boleh dipilih. Kemudian <strong>BUAT</strong>. Jika tanda panggilan anda ditaip dalam memori atau teks (memori <span translate="no">CW</span>, <span translate="no">RTTY</span>, <span translate="no">JTTY</span>, <span translate="no">Packet</span>, <span translate="no">JS8</span> INFO / STATUS, plat <span translate="no">PIX</span>), salinan itu menyebut <span translate="no">[MYCALL]</span> di sana sebagai gantinya (tanda panggilan profil baharu itu sendiri), dan pengesahan menyenaraikan teks tersebut supaya anda boleh menyemaknya sebelum menghantar.
+            </p>
+            <p>
+                <strong>Padam</strong>: dialog menyebut profil, tanda panggilannya dan saiz lognya; anda menaip <strong>yes</strong>.
+                Semua yang hanya ada dalam profil itu hilang; perkhidmatan dalam talian menyimpan salinan mereka (qFT8 tidak pernah memadam apa-apa di sana). Untuk menyimpan lognya,
+                beralih kepadanya dan gunakan <span translate="no">ADIF EXPORT</span> dahulu.
+            </p>
+            <p>
+                <strong>EKSPORT</strong> (juga <strong>EKSPORT TETAPAN</strong> di bawah Fail tetapan): tanda profil yang hendak disimpan dalam satu fail (profil yang digunakan sudah ditanda), dan secara pilihan <strong>Konfigurasi peranti (radio dan audio)</strong> dan <strong>Sertakan maklumat log masuk dan kata laluan</strong> (kedua-duanya tidak ditanda pada mulanya). Maklumat log masuk, kata laluan dan sijil <span translate="no">LoTW</span> dilindungi oleh frasa laluan yang anda taip semasa eksport; ia tidak disimpan. <strong>EKSPORT SEMUA</strong> menyimpan setiap profil dan konfigurasi peranti. Log <span translate="no">QSO</span> dan <span translate="no">SWL</span> tidak ada dalam fail (<span translate="no">ADIF EXPORT</span> menyimpannya).
+            </p>
+            <p>
+                <strong>IMPORT</strong> (juga <strong>IMPORT TETAPAN</strong> di bawah Fail tetapan): pilih fail tetapan; qFT8 menyenaraikan kandungannya. Profil dengan nama yang sama seperti salah satu profil anda ditunjukkan dalam warna merah dan menggantikan tetapan profil itu (lognya kekal); anda menaip <strong>yes</strong>, dan dialog menamakan setiap profil yang diganti dengan tanda panggilan dan bilangan <span translate="no">QSO</span>nya. Fail daripada satu stesen (setiap fail tetapan yang dibuat sebelum profil) boleh menjadi profil baharu atau masuk ke dalam profil yang digunakan; dengan satu profil dan <strong>Tunjukkan tetapan lanjutan</strong> dimatikan, ia terus masuk ke dalam profil yang digunakan, seperti dahulu: <span translate="no">TX</span> mesti dimatikan, anda menaip <strong>yes</strong>, dan fail tanpa kata laluan mengekalkan kata laluan anda hanya selagi ia menggunakan tanda panggilan dan alamat yang sama. Mengimport ke dalam profil yang digunakan menghentikan apa yang sedang berjalan dahulu, seperti penukaran, dan tidak sekali-kali menghidupkan <span translate="no">TX</span>.
+            </p>
+
             <h4 id="settings-files">Fail tetapan</h4>
             <p>
-                <strong>EKSPORT TETAPAN</strong> menyimpan semua tetapan anda dalam satu fail dan <strong>IMPORT TETAPAN</strong>
-                membacanya semula, pada peranti ini atau peranti lain, telefon atau komputer (lihat
-                <a href="#pc-settings">Tetapan: tempat ia disimpan, berpindah dari telefon</a>). Fail itu mengandungi kunci dan
-                kata laluan anda: jangan sekali-kali berkongsinya.
+                <strong>EKSPORT TETAPAN</strong> dan <strong>IMPORT TETAPAN</strong> membuka halaman Eksport dan Import yang diterangkan dalam <a href="#settings-profiles">Profil</a>: profil yang digunakan (atau beberapa, atau semua), konfigurasi peranti jika anda menandanya, maklumat log masuk dan kata laluan hanya jika anda menandanya. Ia ada walaupun <strong>Tunjukkan tetapan lanjutan</strong> dimatikan; dengan satu profil, ia hanya menyimpan dan membaca profil itu. Fail tetapan yang lebih lama masih boleh diimport (ke dalam profil yang digunakan). Lihat juga <a href="#pc-settings">Tetapan: tempat ia disimpan, berpindah dari telefon</a>.
             </p>
 
             <h3 id="raw-message-logs">Log mesej mentah</h3>
@@ -3198,7 +3233,7 @@
                 <span translate="no">GridTracker2</span> (diuji dengan versi 2.261019.5) memetakan dan melog apa yang dihantar oleh <span translate="no">FT8 network log</span> ke port 2237; dengan penerimaan ADIF UDP-nya dihidupkan ia juga menerima <span translate="no">ADIF over UDP</span> pada port 2333. Penghantar pengelogannya menghantar QSOnya kepada penerima qFT8.
             </p>
             <p>
-                Sebaliknya, qFT8 boleh mengambil QSO daripada program lain ke dalam lognya. Dalam Lebih banyak tetapan &gt; <strong>PELAYAN</strong> tandakan baris penerima untuk format yang dihantar oleh program lain itu: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), antara muka <span translate="no">AC Log</span> (TCP 1100) atau antara muka <span translate="no">DXLab</span> (TCP 52001). Halamannya menunjukkan alamat untuk dimasukkan dalam program lain itu dan membolehkan anda menukar port serta mengambil QSO hanya daripada alamat tertentu. Tiada apa yang diterima dengan cara ini boleh menghantar, mengubah radio atau memadam QSO. Penerima dimatikan sehingga anda menghidupkannya; pada iPhone ia hanya berjalan semasa qFT8 dibuka dan tidak pernah menyertai kumpulan multicast.
+                Sebaliknya, qFT8 boleh mengambil QSO daripada program lain ke dalam lognya. Dalam Lebih banyak tetapan &gt; <strong>PELAYAN</strong> tandakan baris penerima untuk format yang dihantar oleh program lain itu: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), antara muka <span translate="no">AC Log</span> (TCP 1100) atau antara muka <span translate="no">DXLab</span> (TCP 52001). Halamannya menunjukkan alamat untuk dimasukkan dalam program lain itu dan membolehkan anda menukar port serta mengambil QSO hanya daripada alamat tertentu. Tiada apa yang diterima dengan cara ini boleh menghantar, mengubah radio atau memadam QSO. Penerima dimatikan sehingga anda menghidupkannya; pada iPhone ia hanya berjalan semasa qFT8 dibuka dan tidak pernah menyertai kumpulan multicast. Halaman penerima <span translate="no">FT8 network log</span> menambah: <em>Pelayan ini hanya menerima QSO daripada program lain; untuk menghantar nyahkod dan QSO anda kepada program peta atau pengelog, gunakan <strong>Penyegerakan log</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3863,7 +3898,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Pancaran khas</strong>, directly above <strong>Acara</strong>. Its
+                Settings has a section <strong>Pancaran khas</strong>, directly below <strong>Program</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Berbilang nada</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Mod Fox</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4981,7 +5016,9 @@
                 <p>
                 <strong>Gelung</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Mati</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Mati</strong>
+                stops it). <strong>Bilangan hantaran</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -5136,6 +5173,7 @@
                     ketukan beralih ke yang seterusnya.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: Jarak antara dua nada: 170 Hz (yang
                     biasa), 200, 425 atau 850 Hz. Penapis mengikut anjakan.</li>
+                <li>Anjakan sempit: selepas 850 Hz, <span translate="no">SHIFT</span> juga menawarkan 85 dan 23 Hz (juga dalam Tetapan &gt; <span translate="no">RTTY</span>). Anjakan sempit hanya disalin di bawah bar RX: tetapkan kepada anjakan stesen lain; isyarat lain di jalur dicari pada anjakan biasa.</li>
                 <li><strong><span translate="no">REV</span></strong>: Menukar kedua-dua nada, untuk stesen yang menghantarnya
                     secara terbalik. Ia berwarna ambar semasa hidup.</li>
                 <li><strong><span translate="no">FILTER</span></strong> dan <strong><span translate="no">NR</span></strong>:
@@ -5413,7 +5451,7 @@
                 <span translate="no">JT65</span> (baris <span translate="no">JT65</span> (eksperimen) pada pemilih mod) ialah mod QSO satu minit dengan 65 nada dan kod Reed-Solomon; kepekaan kira-kira -25 dB (dalam 2500 Hz). QSO direkodkan sebagai <span translate="no">MODE=JT65</span> dengan sub-mod (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>) dan spot pergi ke <span translate="no">PSKReporter</span> sebagai <span translate="no">JT65</span>. Frekuensi lazim (dail USB): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Sub-mod (A): A, B atau C, seperti pada bar bawah.</li>
+                <li>Sub-mod (A): A, B, C, B2 atau C2, seperti pada bar bawah. B2 dan C2 ialah B dan C yang dihantar dua kali lebih pantas: slot 30 s, penghantaran 23 s, kira-kira 3 dB kurang sensitif.</li>
                 <li>Nyahkod hanya berhampiran frekuensi terima (mati): mati menyahkod seluruh jalur; hidup menyahkod hanya di sekitar frekuensi terima.</li>
                 <li>Toleransi terima: lebar dalam Hz di sekitar frekuensi terima (lalai 100).</li>
                 <li>Rujukan: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -5424,6 +5462,7 @@
                 <span translate="no">JT9</span> (baris <span translate="no">JT9</span> (eksperimen) pada pemilih mod) ialah mod QSO satu minit dengan 9 nada, lebar 16 Hz; kepekaan kira-kira -27 dB (dalam 2500 Hz). QSO direkodkan sebagai <span translate="no">MODE=JT9</span> dan spot pergi ke <span translate="no">PSKReporter</span> sebagai <span translate="no">JT9</span>. Frekuensi lazim (dail USB): 2 kHz di atas frekuensi <span translate="no">JT65</span> dari 160 m hingga 10 m (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Sub-mod (A): A (<span translate="no">JT9-1</span>) pada HF; B hingga H, isyarat yang sama dengan nada lebih lebar (berjarak 3.5 hingga 222 Hz) untuk VHF ke atas; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> dan <span translate="no">JT9-30</span>, isyarat yang diregangkan kepada tempoh 2 hingga 30 minit untuk LF dan MF (setiap langkah kira-kira 3 hingga 5 dB lebih sensitif); E hingga H <span translate="no">FAST</span> dalam tempoh 5, 10, 15 atau 30 s, bingkai pendek yang dihantar berturut-turut untuk serakan meteor dan pesawat. Sub-mod yang diregangkan hanya mencari isyarat dalam toleransi terima bagi frekuensi terima.</li>
                 <li>Nyahkod hanya berhampiran frekuensi terima (mati): mati menyahkod seluruh jalur; hidup menyahkod hanya di sekitar frekuensi terima.</li>
                 <li>Toleransi terima: lebar dalam Hz di sekitar frekuensi terima (lalai 100).</li>
                 <li>Rujukan: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -5467,7 +5506,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> dan <span translate="no">DominoEX</span> (eksperimen)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>Keluarga MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -5495,6 +5534,7 @@
                     antara <span translate="no">MFSK16</span> dan <span translate="no">MFSK32</span>.
                     <span translate="no">DominoEX</span>: 18 nada,
                     tidak peka pada penalaan dan hanyutan, lebih laju.</li>
+                <li>Lebih banyak varian, di hujung senarai setiap keluarga: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> dan <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 nada dalam 125 Hz, sangat perlahan, untuk isyarat yang sangat lemah), <strong><span translate="no">MFSK31</span></strong> (8 nada dalam 250 Hz), <strong><span translate="no">MFSK64L</span></strong> dan <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> dan <span translate="no">MFSK128</span> dengan interleave panjang yang menyebarkan setiap aksara sekitar 20 saat: lebih baik ketika fading, tetapi teks muncul sekitar 20 saat kemudian dan setiap penghantaran berakhir dengan sekitar 20 saat nada tambahan); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 simbol sesaat, lebar 36 Hz, sangat perlahan), <strong><span translate="no">DOMINOEX 44</span></strong> dan <strong><span translate="no">DOMINOEX 88</span></strong> (pantas, lebar sekitar 1.5 kHz). Dalam bar bawah, yang sangat perlahan tertera <span translate="no">DX-M</span> dan <span translate="no">TH-M</span>. Yang perlahan memerlukan masa di udara: satu panggilan dalam <span translate="no">MFSK4</span> mengambil masa sekitar 40 saat, dalam <span translate="no">DOMINOEX MICRO</span> sekitar 35, jadi satu baris mungkin memerlukan lebih daripada yang dibenarkan oleh had penghantaran berterusan.</li>
                 <li>Isyarat di bawah bar terima dinyahkod (bar ialah tengah isyarat). Letakkan bar pada
                     isyarat; beberapa hertz tersasar tidak mengapa.</li>
                 <li>Skrin tidak mempunyai butang <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> dan
@@ -5528,6 +5568,7 @@
                     sedikit lebih perlahan daripada <span translate="no">DominoEX</span> pada nombor kelajuan yang sama, jauh lebih teguh.</li>
                 <li><span translate="no">Contestia</span> (nada / lebar dalam Hz): saudara <span translate="no">Olivia</span> yang lebih laju dan hanya huruf besar, popular dalam peraduan;
                     huruf, angka dan tanda baca biasa (aksara lain dihantar sebagai ?).</li>
+                <li>Lebih banyak varian: <strong><span translate="no">THOR MICRO</span></strong> (2 simbol sesaat, lebar 36 Hz, sangat perlahan: satu panggilan mengambil masa lebih daripada seminit, melebihi yang dibenarkan oleh had penghantaran berterusan secara lalai), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> dan <strong><span translate="no">THOR 100</span></strong> (pantas, lebar 900 hingga 1800 Hz, dengan pembetulan ralat yang lebih kuat); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> dan <strong><span translate="no">CONTESTIA 64/1000</span></strong>. Dalam fail <span translate="no">ADIF</span> <span translate="no">THOR MICRO</span> ditulis sebagai <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (lebar dalam Hz, L = panjang, S = interleave pendek): 64 pembawa sekali gus, lebar 500, 1000 atau 2000 Hz,
                     kira-kira 5 hingga 20 aksara sesaat; teguh terhadap pudaran dan letusan hingar, digunakan pada jaringan kecemasan.
                     Bar terima ialah tengah isyarat. Interleave panjang lebih teguh, yang pendek
@@ -5881,6 +5922,11 @@
                 hidup dalam Tetapan. Gambar balasan menggunakan salah satu daripada lima susun atur balasan sebaliknya (satu di atas yang lain,
                 sebelah-menyebelah, atas dan bawah, garis luar besar, dengan tarikh + jalur); anak panah dan palet melangkah melalui
                 susun atur itu.
+            </p>
+
+            <h3 id="sstv-fax">Faks amatur</h3>
+            <p>
+                Separuh penghantaran yang sama juga menghantar gambar anda sebagai <strong>faks</strong> amatur (faks HF, format siaran peta cuaca): selepas mod <span translate="no">SSTV</span>, senarai mod pada bar bawah mempunyai <strong>Fax 288/120</strong> (format amatur biasa), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> dan empat format <strong>Colour fax</strong> (288 atau 576, 120 atau 240 baris seminit). Nombor pertama ialah indeks kerjasama: 288 menghantar 905 piksel setiap baris, 576 menghantar 1810. Sebuah faks menghantar isyarat mula 5 s, 30 s baris fasa, gambar dalam bentuknya sendiri (pada 120, satu baris setiap setengah saat), isyarat berhenti 5 s dan 10 s hitam, antara 1500Hz (hitam) dan 2300Hz (putih). Faks warna menghantar setiap baris tiga kali, merah, hijau dan biru, selepas isyarat mula 200Hz. Sebuah faks itu panjang (gambar 4:3: kira-kira 6.5 minit pada 288/120), jadi ia hanya ditawarkan di bawah had penghantaran berterusan yang cukup panjang; senarai menunjukkan saat bagi setiap format. Faks menghantar gambar itu sendiri: tiada teks tanda panggilan atau pengenalan <span translate="no">CW</span> atau <span translate="no">FSK</span> ditambah. Penerima faks cuaca (<a href="#swl-wefax">Weather fax</a>) menerimanya.
             </p>
 
             <h3 id="sstv-limits">Had penghantaran</h3>
@@ -6579,6 +6625,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Pelayan ini milik saya</strong> in its rows, the same answer as <strong>Adakah SDR ini milik anda?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Eksport: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> dan <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>EKSPORT ADIF</strong>: satu rekod bagi setiap stesen yang didengar, dua bagi setiap QSO, seperti cara laporan dan kad
@@ -6709,7 +6757,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>LOKASI SAYA SALAH</strong> in the Signals pane.</li>
                 <li>Perkara yang sama berlaku di Perancis, yang merangkumi Corsica, jabatan seberang laut (Guadeloupe, Martinique, Guiana Perancis, Reunion, Mayotte) dan bahagian Perancis Saint Martin (tanda panggilan <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> dan awalan seberang laut).</li>
-                <li><strong>Anda berada di negara mana?</strong> qFT8 mengambil negara anda daripada perkara paling tepat yang diketahuinya: lokasi tepat anda dahulu, kemudian lokasi anggaran, kemudian pusat locator atau tanda panggilan anda (salah satu daripada dua yang terakhir sudah memadai untuk menggunakan sekatan). Apabila negara itu tidak membenarkan sesuatu mod, dialog <strong>Anda berada di negara mana?</strong> menyatakan &ldquo;Kami fikir anda berada di …, tempat menerima atau menyahkod mod ini tidak dibenarkan.&rdquo;, dengan negara disenaraikan yang terdekat dahulu, kemudian semuanya dari A hingga Z. Tukar negara hanya jika qFT8 mengesannya dengan salah: anda bertanggungjawab mematuhi undang-undang negara tempat anda berada. Jika negara yang anda pilih juga tidak membenarkan mod itu, dialog memberitahu. Negara yang anda pilih diingati (Tetapan &gt; <a href="#settings-time-location">MASA DAN LOKASI</a>, <strong>Negara untuk peraturan penerimaan</strong>) dan ditanya semula hanya jika lokasi anda kemudian bercanggah dengannya.</li>
+                <li><strong>Anda berada di negara mana?</strong> qFT8 mengambil negara anda daripada perkara paling tepat yang diketahuinya: lokasi tepat anda dahulu, kemudian lokasi anggaran, kemudian pusat locator atau tanda panggilan anda (salah satu daripada dua yang terakhir sudah memadai untuk menggunakan sekatan). Apabila negara itu tidak membenarkan sesuatu mod, dialog <strong>Anda berada di negara mana?</strong> menyatakan &ldquo;Kami fikir anda berada di …, tempat menerima atau menyahkod mod ini tidak dibenarkan.&rdquo;, dengan negara disenaraikan yang terdekat dahulu, kemudian semuanya dari A hingga Z. Tukar negara hanya jika qFT8 mengesannya dengan salah: anda bertanggungjawab mematuhi undang-undang negara tempat anda berada. Jika negara yang anda pilih juga tidak membenarkan mod itu, dialog memberitahu. Negara yang anda pilih diingati (Tetapan &gt; <a href="#settings-time-location">MASA DAN LOKASI</a>, <strong>Negara</strong>) dan ditanya semula hanya jika lokasi anda kemudian bercanggah dengannya.</li>
                 <li>Berhampiran sempadan qFT8 mengira dengan teliti: jika lokasi anggaran anda mungkin berada di dalam negara yang tidak membenarkan mod itu, ia bertanya. Jika ia tersilap meneka negara, betulkan dalam dialog <strong>Anda berada di negara mana?</strong> atau dalam Tetapan.</li>
                 <li>Di United Kingdom dan Ireland, penerima TV menunjukkan notis, sekali bagi setiap sesi, bahawa lesen TV diperlukan untuk menonton atau merakam TV langsung; ia menyebut negara tempat anda berada.</li>
                 <li><span translate="no">KiwiSDR</span> awam kepunyaan pemiliknya: ikut had pemiliknya.</li>
@@ -7264,6 +7312,8 @@ cd qFT8
                         dihidupkan melalui jambatan.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -7958,7 +8008,7 @@ cd qFT8
                 href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Hak cipta terpelihara.
         </p>
         <p>
-            Termasuk bahagian daripada usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C), dan Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Tiada satu pun pengarang atau projek pihak ketiga ini menyokong atau berkaitan dengan qFT8.
+            Termasuk bahagian daripada usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, percuma untuk komuniti radio amatur), dan Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Tiada satu pun pengarang atau projek pihak ketiga ini menyokong atau berkaitan dengan qFT8.
         </p>
         <div class="footer-links">
             <a href="../../ms/">Laman Utama</a> - <a href="../../privacy/">Dasar Privasi</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Lesen</a>

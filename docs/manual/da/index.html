@@ -173,6 +173,7 @@
                         <li><a href="#remote-control">Webserver til fjernbetjening</a></li>
                         <li><a href="#webserver-headless">Kør qFT8 uden skærm (webserveren til fjernbetjening)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">qFT8log-protokollen</a></li>
                         <li><a href="#layouts">Skærmlayouts</a></li>
@@ -216,7 +217,7 @@
             </p>
 
             <p>
-                qFT8 indeholder dele fra usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) og Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Ingen af disse tredjepartsforfattere eller -projekter står bag qFT8 eller er tilknyttet qFT8.
+                qFT8 indeholder dele fra usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratis for amatørradiosamfundet) og Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Ingen af disse tredjepartsforfattere eller -projekter står bag qFT8 eller er tilknyttet qFT8.
             </p>
 
 
@@ -736,13 +737,13 @@
             <h4>Flyt dine indstillinger fra en telefon (eller til en)</h4>
             <p>
                 <strong>EKSPORTÉR INDSTILLINGER</strong> og <strong>IMPORTÉR INDSTILLINGER</strong> på hovedsiden i Indstillinger (under
-                <strong>Indstillingsfiler</strong>) laver og læser én fil, der er <strong>den samme på Android og på
-                    computeren</strong>. Eksportér på telefonen, kopiér filen til computeren (mail, sky, kabel), importér den
-                dér; den anden vej virker også.
+                <strong>Indstillingsfiler</strong>) åbner siderne Eksport og Import (se <a href="#settings-profiles">Profiler</a>). Filen er
+                <strong>den samme på Android, på iPhone og på computeren</strong>. Eksportér på telefonen, kopiér filen til computeren (mail, sky, kabel),
+                importér den dér; den anden vej virker også.
             </p>
             <ul>
-                <li>Filen indeholder din QRZ API-nøgle, dit LoTW-certifikat og dine adgangskoder. <strong>Del den
-                    aldrig.</strong></li>
+                <li>Logins, adgangskoder og LoTW-certifikatet er kun i filen, hvis du afkrydser <strong>Medtag logins og adgangskoder</strong>; de er så beskyttet
+                    af en adgangsfrase, du skriver. Alligevel <strong>del aldrig filen.</strong></li>
                 <li>Den indeholder ikke QSO'er: flyt loggen med <a href="#adif-import-export">ADIF</a>, eller lad
                     <a href="#qft8-log">qFT8-logserverne</a> kopiere den.</li>
                 <li>Den indeholder ikke det, der kun gælder denne computer: valget af lydenheder (det er andre enheder),
@@ -1295,7 +1296,7 @@
             <ul>
                 <li>Ét-minuts-slots: en udsendelse starter ét sekund inde i et lige eller ulige <span translate="no">UTC</span>-minut og varer omkring 47 s (<span translate="no">JT65</span>) eller 49 s (<span translate="no">JT9</span>); du vælger lige eller ulige som i <span translate="no">FT8</span>.</li>
                 <li>Meddelelser: 72 bit: CQ, to kaldesignaler med en locator, en rapport (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span> eller op til 13 tegn fri tekst. QSO'et forløber som i <span translate="no">FT8</span> (<span translate="no">AUTO</span>, stationslisten, loggen). Et kaldesignal, der både skulle have præfiks og suffiks, kan ikke sendes.</li>
-                <li>Undertilstande for <span translate="no">JT65</span>: A (HF), B og C (VHF og opefter, bredere toneafstand), vælges ved siden af tilstanden i den nederste bjælke eller i indstillingerne; begge stationer skal bruge den samme. <span translate="no">JT9</span> er <span translate="no">JT9-1</span>, kun 16 Hz bred.</li>
+                <li>Undertilstande for <span translate="no">JT65</span>: A (HF), B og C (VHF og opefter, bredere toneafstand), B2 og C2 (B og C sendt dobbelt så hurtigt, slots på 30 s), vælges ved siden af tilstanden i den nederste bjælke eller i indstillingerne; begge stationer skal bruge den samme. Undertilstande for <span translate="no">JT9</span>: A (<span translate="no">JT9-1</span>, kun 16 Hz bred), B til H (bredere toner), <span translate="no">JT9-2</span> til <span translate="no">JT9-30</span> (perioder på 2 til 30 minutter til LF og MF) og E til H <span translate="no">FAST</span> (perioder på 5 til 30 s til scatter), vælges på samme måde.</li>
             </ul>
             <p>
                 Indstillingerne er beskrevet under <a href="#jt65-settings">Indstillinger &gt; <span translate="no">JT65</span></a> og <a href="#jt9-settings">Indstillinger &gt; <span translate="no">JT9</span></a>.
@@ -1831,8 +1832,10 @@
                 <li><strong>QSO-synkronisering</strong>: én række for hver tjeneste, dine QSO'er uploades til: dens kontakt, et ikon for dens tilstand og dens tandhjul (se <a href="#qso-services">Tjenester til upload af QSO</a> og <a href="#choosing-services">Vælg tjenester og servere</a>).</li>
                 <li><strong>Rapportering</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> og <a href="#lq8-announce">annoncering af din <span translate="no">LQ8</span>-aktivitet</a>.</li>
                 <li><strong>Fællesskab</strong>: de to Telegram-grupper (se <a href="#community">Fællesskab</a>).</li>
-                <li><strong>Indstillingsfiler</strong>: <strong>IMPORTÉR INDSTILLINGER</strong> og <strong>EKSPORTÉR INDSTILLINGER</strong> (se <a href="#settings-pages">nedenfor</a>).</li>
+                <li><strong>Profil</strong>: den øverste række med <strong>SKIFT</strong> (se <a href="#settings-profiles">Profiler</a>).</li>
+                <li><strong>Indstillingsfiler</strong>: <strong>IMPORTÉR INDSTILLINGER</strong> og <strong>EKSPORTÉR INDSTILLINGER</strong>, altid der, også når <strong>Vis avancerede indstillinger</strong> er slået fra (se <a href="#settings-files">nedenfor</a>).</li>
                 <li><strong>Flere indstillinger</strong>: <strong>Moder</strong> (en side med, i denne rækkefølge <strong>Automatisk drift</strong>, <strong>Digitale modes</strong> og <strong>Båndvalg</strong>, derefter, under „Indstillinger for moder“, én knap pr. driftsart: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> og de øvrige digitale driftsarter åbner Digitale modes ved den driftsart; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> og <strong><span translate="no">PACKET</span></strong> deres egne sider; TILBAGE fører tilbage til Moder), <strong>Datakilder</strong>, <strong>Servere</strong> (hvad denne enhed stiller til rådighed for andre programmer, se <a href="#choosing-services">Vælg tjenester og servere</a>) og <strong>Slet QSO'er</strong>, hver beskrevet i <a href="#settings-pages">Indstillingssiderne</a>.</li>
+                <li><strong>Optagelser</strong> (kun med <strong>Vis avancerede indstillinger</strong> afkrydset, under værktøjerne): <strong>START OPTAGELSE</strong> optager det, du modtager og sender, i en <span translate="no">.qft8</span>-fil på denne enhed (<strong>STOP OPTAGELSE</strong> og tiden, mens den optager); luppen og tandhjulet åbner optagelsessiden med de gemte optagelser (afspil, del, omdøb, slet). <strong>Genvej til optagelse</strong> viser også en lille <span translate="no">REC</span>-knap nederst til højre i vandfaldet. Når du åbner en <span translate="no">.qft8</span>-fil (eller et link til en), afspilles den, uanset hvad dette felt siger: en smal bjælke langs bunden af vandfaldet har afspilning, positionen, <strong>?</strong> (optagelsens egen tekst) og et kryds til at afslutte; intet sendes, mens en optagelse afspilles (<span translate="no">TX</span>-knappen er væk).</li>
                 <li><strong>Søg efter nye versioner ved opstart</strong> og <strong>Send en anonym daglig ydelsesoversigt</strong> (se <a href="#reports-updates">Fejlrapporter og nye versioner</a>).</li>
                 <li><strong>Sprog</strong>: qFT8's sprog, under en streg nederst på listen.</li>
                 <li>Nederst: versionen med links til denne manual og privatlivspolitikken, tilladelserne og den tilsluttede USB-enhed samt <strong><span translate="no">RAPPORTER FEJL</span></strong> (se <a href="#report-bug">Rapportér et problem</a>).</li>
@@ -1937,7 +1940,7 @@
                     beskeder, det afkoder.</li>
                 <li><strong>Placering (Maidenhead-felt)</strong>: din lokator, med <strong>GPS-SYNK</strong>,
                     og om den opdateres fra GPS'en hver gang qFT8 starter.</li>
-                <li><strong>Land for modtagereglerne</strong>: det land, qFT8 bruger til reglerne for, hvad du må modtage og sende (se <a href="#swl-legal">Lytning og loven</a> og <a href="#tx-legal">Sending og loven</a>). Den viser &ldquo;Ikke valgt: ud fra din placering, lokator eller kaldesignal&rdquo;, indtil du vælger ét; <strong>SKIFT</strong> åbner listen over lande (de nærmeste først, derefter alle fra A til Å), og det land, du vælger, huskes.</li>
+                <li><strong>Land</strong>: det land, qFT8 bruger til reglerne for, hvad du må modtage og sende (se <a href="#swl-legal">Lytning og loven</a> og <a href="#tx-legal">Sending og loven</a>). I listen bruger første punkt, <strong>Auto</strong>, det land, qFT8 finder (vist i parentes), derefter kommer de nærmeste lande og alle lande fra A til Z. Vælger du et andet land, bliver du bedt om at bekræfte det, og det valgte land huskes.</li>
             </ul>
 
             <h4 id="settings-application">Applikationsindstillinger</h4>
@@ -2060,12 +2063,39 @@
                 De sletter kun QSO'erne på denne enhed, aldrig på en onlinetjeneste.
             </p>
 
+            <h4 id="settings-profiles">Profiler</h4>
+            <p>
+                En profil er én stationsopsætning: dens eget kaldesignal, logins og adgangskoder, <span translate="no">QSO</span>- og <span translate="no">SWL</span>-logge, hukommelser, tema og indstillinger. Radioen, lydenhederne og sproget deles af alle profiler. Brug én profil pr. kaldesignal (for eksempel dit eget kald og et klub- eller special event-kald).
+            </p>
+            <p>
+                <strong>Hvor</strong>: den øverste række i Indstillinger, <strong>Profil: NAME</strong> og <strong>SKIFT</strong>. Den er der, når <strong>Vis avancerede indstillinger</strong> er afkrydset, eller når der findes mere end én profil. <strong>SKIFT</strong> åbner siden Profiler.
+            </p>
+            <p>
+                Siden Profiler viser dine profiler som knapper i din rækkefølge, hver i farverne fra sit eget tema (farven på temaets nederste bjælke); en grøn pil peger på den, der er i brug. Tryk på en anden profil for at bruge den. Pilene flytter en profil op eller ned, blyanten omdøber den, skraldespanden sletter den (profilen i brug har ingen skraldespand).
+            </p>
+            <p>
+                <strong>Skift</strong>: qFT8 viser, hvad der stopper: <span translate="no">TX</span> slås <span translate="no">OFF</span>, <span translate="no">AUTO</span> slås <span translate="no">OFF</span>, en igangværende <span translate="no">QSO</span> opgives, aktiveringer afsluttes med deres <span translate="no">QRT</span>, tjenester, servere og webfjernbetjeningens browsere stoppes eller afbrydes, og <span translate="no">QSO</span>'er eller <span translate="no">SWL</span>-rapporter, der endnu ikke er uploadet, vises på listen (de venter på deres profil og uploades, når den er i brug igen). Når noget er vist, skriver du <strong>yes</strong> (på engelsk) for at skifte; ellers er det en almindelig bekræftelse. Mens skiftet kører, skjuler et dæksel med <strong>Skifter til profilen ...</strong> skærmen; intet kan røres, før den nye profil er oppe. Hvis <span translate="no">TX</span> ikke kan slås fra, ændres intet, og qFT8 siger det. Et skift slår aldrig <span translate="no">TX</span> til.
+            </p>
+            <p>
+                <strong>NY</strong> laver en kopi af den profil, der er i brug: dens indstillinger, hukommelser og tema, uden kaldesignal, logins og logge. Du navngiver den og vælger så dens tema. Hvert tema på listen vises i sine egne farver. De temaer, ingen profil bruger, kommer først, så hver profil ser forskellig ud; under <strong>Allerede brugt</strong> kommer de temaer, en anden profil bruger, og de temaer, der har samme baggrund som et af dem (for eksempel alle hvide temaer, når ét er i brug). De er markeret som sådan og kan stadig vælges. Så <strong>OPRET</strong>. Hvis dit kaldesignal er skrevet i hukommelser eller tekster (<span translate="no">CW</span>-, <span translate="no">RTTY</span>-, <span translate="no">JTTY</span>-, <span translate="no">Packet</span>-hukommelser, <span translate="no">JS8</span> INFO / STATUS, <span translate="no">PIX</span>-skiltet), står der <span translate="no">[MYCALL]</span> i kopien i stedet (den nye profils eget kaldesignal), og bekræftelsen viser disse tekster, så du kan tjekke dem, før du sender.
+            </p>
+            <p>
+                <strong>Slet</strong>: dialogen nævner profilen, dens kaldesignal og størrelsen på dens logge; du skriver <strong>yes</strong>. Alt, der kun findes i den profil, forsvinder; onlinetjenester beholder deres kopier (qFT8 sletter aldrig noget dér). For at beholde dens log skal du skifte til den og først bruge <span translate="no">ADIF EXPORT</span>.
+            </p>
+            <p>
+                <strong>EKSPORTÉR</strong> (også <strong>EKSPORTÉR INDSTILLINGER</strong> under Indstillingsfiler): afkryds de profiler, der skal gemmes i én fil (profilen i brug er afkrydset), og eventuelt <strong>Enhedskonfiguration (radio og lyd)</strong> og <strong>Medtag logins og adgangskoder</strong> (til at begynde med er begge fra). Logins, adgangskoder og <span translate="no">LoTW</span>-certifikatet er beskyttet af en adgangsfrase, du skriver ved eksporten; den bliver ikke gemt. <strong>EKSPORTÉR ALT</strong> gemmer alle profiler og enhedskonfigurationen. <span translate="no">QSO</span>- og <span translate="no">SWL</span>-loggene er ikke i filen (<span translate="no">ADIF EXPORT</span> gemmer dem).
+            </p>
+            <p>
+                <strong>IMPORTÉR</strong> (også <strong>IMPORTÉR INDSTILLINGER</strong> under Indstillingsfiler): vælg en indstillingsfil; qFT8 viser, hvad den indeholder. En profil med samme navn som en af dine vises med rødt og erstatter denne profils indstillinger (dens logge bliver); du skriver <strong>yes</strong>, og dialogen nævner hver erstattet profil med dens kaldesignal og antal <span translate="no">QSO</span>'er. En fil fra én station (enhver indstillingsfil lavet før profilerne) kan blive en ny profil eller gå ind i den profil, der er i brug; med én profil og <strong>Vis avancerede indstillinger</strong> slået fra går den direkte ind i profilen i brug, som før: <span translate="no">TX</span> skal være slået fra, du skriver <strong>yes</strong>, og en fil uden adgangskoder beholder dine kun, så længe den bruger samme kaldesignal og samme adresser. Import til den profil, der er i brug, stopper først det, der kører, som et skift gør, og slår aldrig <span translate="no">TX</span> til.
+            </p>
+
             <h4 id="settings-files">Indstillingsfiler</h4>
             <p>
-                <strong>EKSPORTÉR INDSTILLINGER</strong> gemmer alle dine indstillinger i én fil, og <strong>IMPORTÉR INDSTILLINGER</strong>
-                læser den ind igen, på denne enhed eller en anden, telefon eller computer (se
-                <a href="#pc-settings">Indstillinger: hvor de ligger, og flytning fra en telefon</a>). Filen indeholder dine nøgler og
-                adgangskoder: del den aldrig.
+                <strong>EKSPORTÉR INDSTILLINGER</strong> og <strong>IMPORTÉR INDSTILLINGER</strong> åbner siderne Eksport og Import, som er beskrevet under
+                <a href="#settings-profiles">Profiler</a>: profilen i brug (eller flere, eller alle), enhedskonfigurationen hvis du afkrydser den,
+                logins og adgangskoder kun hvis du afkrydser dem. De er der også, når <strong>Vis avancerede indstillinger</strong> er slået fra; med én
+                profil gemmer og læser de blot den profil. Ældre indstillingsfiler kan stadig importeres (til profilen i brug). Se også
+                <a href="#pc-settings">Indstillinger: hvor de ligger, og flytning fra en telefon</a>.
             </p>
 
             <h3 id="raw-message-logs">Rå beskedlogge</h3>
@@ -2616,7 +2646,7 @@
                 <span translate="no">GridTracker2</span> (testet med version 2.261019.5) viser på kortet og logger det, <span translate="no">FT8 network log</span> sender til port 2237; med ADIF-UDP-modtagelse slået til modtager det også <span translate="no">ADIF over UDP</span> på port 2333. Dets log-videresendelser sender dets QSO'er til qFT8's modtagere.
             </p>
             <p>
-                Den anden vej kan qFT8 tage QSO'er fra andre programmer ind i sin log. I Flere indstillinger &gt; <strong>Servere</strong> sætter du flueben i rækken for modtageren af det format, det andet program sender: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), <span translate="no">AC Log</span>-grænsefladen (TCP 1100) eller <span translate="no">DXLab</span>-grænsefladen (TCP 52001). Dens side viser adressen, der skal indtastes i det andet program, og lader dig ændre porten og kun tage imod QSO'er fra bestemte adresser. Intet modtaget på denne måde kan sende, ændre radioen eller slette en QSO. Modtagerne er slukket, indtil du tænder dem; på iPhone kører de kun, mens qFT8 er åben, og de tilslutter sig aldrig en multicast-gruppe.
+                Den anden vej kan qFT8 tage QSO'er fra andre programmer ind i sin log. I Flere indstillinger &gt; <strong>Servere</strong> sætter du flueben i rækken for modtageren af det format, det andet program sender: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), <span translate="no">AC Log</span>-grænsefladen (TCP 1100) eller <span translate="no">DXLab</span>-grænsefladen (TCP 52001). Dens side viser adressen, der skal indtastes i det andet program, og lader dig ændre porten og kun tage imod QSO'er fra bestemte adresser. Intet modtaget på denne måde kan sende, ændre radioen eller slette en QSO. Modtagerne er slukket, indtil du tænder dem; på iPhone kører de kun, mens qFT8 er åben, og de tilslutter sig aldrig en multicast-gruppe. Siden for modtageren <span translate="no">FT8 network log</span> tilføjer: <em>Denne server modtager kun QSO'er fra andre programmer; for at sende dine dekodninger og QSO'er til et kort- eller logprogram skal du bruge <strong>Logsynkronisering</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3093,7 +3123,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Særlig udsendelse</strong>, directly above <strong>Begivenheder</strong>. Its
+                Settings has a section <strong>Særlig udsendelse</strong>, directly below <strong>Programmer</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Flertone</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Fox-tilstand</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4003,7 +4033,9 @@
                 <p>
                 <strong>Loop</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Fra</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Fra</strong>
+                stops it). <strong>Antal udsendelser</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -4125,6 +4157,7 @@
                 <li><strong><span translate="no">Mål</span></strong> og <strong><span translate="no">Udv.</span></strong>: Kaldesignalet på den station, du kører, og contestudvekslingen. De udfylder <code>[TARGET]</code> og <code>[EXCH]</code> i dine beskeder. Tryk på et af dem for at skrive det; tryk på et kaldesignal i dekoderlinjen (punkt 7) for at tage det som mål.</li>
                 <li><strong><span translate="no">BAUD</span></strong>: Hastigheden: 45,45 (den sædvanlige), 50 eller 75. Hvert tryk går videre til den næste.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: Afstanden mellem de to toner: 170 Hz (den sædvanlige), 200, 425 eller 850 Hz. Filteret følger skiftet.</li>
+                <li>De smalle shifts: efter 850 Hz tilbyder <span translate="no">SHIFT</span> også 85 og 23 Hz (også i Indstillinger &gt; <span translate="no">RTTY</span>). Et smalt shift afkodes kun under modtagebjælken: sæt det til den anden stations; de andre signaler på båndet søges med de sædvanlige shifts.</li>
                 <li><strong><span translate="no">REV</span></strong>: Bytter om på de to toner, til en station, der sender dem omvendt. Den er ravgul, så længe den er slået til.</li>
                 <li><strong><span translate="no">FILTER</span></strong> og <strong><span translate="no">NR</span></strong>: Modtagefilteret og støjreduktionen.</li>
                 <li><strong>Hukommelser</strong>: Færdige beskeder med de samme makroer som i <span translate="no">CW</span>. Et tryk sender én. En besked med et tomt felt er nedtonet: tryk på den for at se, hvad der mangler. <strong><span translate="no">Tastatur</span></strong> (og <strong><span translate="no">Tale</span></strong> på telefonen og iPhone) står sidst i listen.</li>
@@ -4305,7 +4338,7 @@
                 <span translate="no">JT65</span> (rækken <span translate="no">JT65</span> (eksperimentel) i tilstandsvælgeren) er en ét-minuts QSO-tilstand med 65 toner og en Reed-Solomon-kode; følsomhed omkring -25 dB (i 2500 Hz). QSO'er logges som <span translate="no">MODE=JT65</span> med undertilstanden (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>), og spots sendes til <span translate="no">PSKReporter</span> som <span translate="no">JT65</span>. Almindelige frekvenser (USB-dial): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Undertilstand (A): A, B eller C, som i den nederste bjælke.</li>
+                <li>Undertilstand (A): A, B, C, B2 eller C2, som i den nederste bjælke. B2 og C2 er B og C sendt dobbelt så hurtigt: slots på 30 s, sendinger på 23 s, ca. 3 dB mindre følsomme.</li>
                 <li>Afkod kun nær modtagefrekvensen (fra): fra afkoder hele båndet; til kun omkring modtagefrekvensen.</li>
                 <li>Modtagetolerance: bredden i Hz omkring modtagefrekvensen (standard 100).</li>
                 <li>Referencer: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -4316,6 +4349,7 @@
                 <span translate="no">JT9</span> (rækken <span translate="no">JT9</span> (eksperimentel) i tilstandsvælgeren) er en ét-minuts QSO-tilstand med 9 toner, 16 Hz bred; følsomhed omkring -27 dB (i 2500 Hz). QSO'er logges som <span translate="no">MODE=JT9</span>, og spots sendes til <span translate="no">PSKReporter</span> som <span translate="no">JT9</span>. Almindelige frekvenser (USB-dial): 2 kHz over dem for <span translate="no">JT65</span> fra 160 m til 10 m (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Undertilstand (A): A (<span translate="no">JT9-1</span>) på HF; B til H, det samme signal med bredere toner (3,5 til 222 Hz fra hinanden) til VHF og opefter; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> og <span translate="no">JT9-30</span>, signalet strakt ud til perioder på 2 til 30 minutter til LF og MF (hvert trin ca. 3 til 5 dB mere følsomt); E til H <span translate="no">FAST</span> i en periode på 5, 10, 15 eller 30 s, korte rammer sendt lige efter hinanden til meteor- og flyscatter. De strakte undertilstande leder kun efter signaler inden for modtagetolerancen af modtagefrekvensen.</li>
                 <li>Afkod kun nær modtagefrekvensen (fra): fra afkoder hele båndet; til kun omkring modtagefrekvensen.</li>
                 <li>Modtagetolerance: bredden i Hz omkring modtagefrekvensen (standard 100).</li>
                 <li>Referencer: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -4354,7 +4388,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> og <span translate="no">DominoEX</span> (eksperimentel)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>MFSK-familien</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -4372,6 +4406,7 @@
             </p>
             <ul>
                 <li><span translate="no">Olivia</span> (toner / bredde i Hz): langsom og meget robust, til svage og fadende signaler; jo flere toner, jo dybere ned i støjen. <span translate="no">MFSK16</span>: 16 toner på ca. 316 Hz, med fejlretning, en god hverdagstilstand; <span translate="no">MFSK32</span> og <span translate="no">MFSK64</span> er det samme ved to og fire gange hastigheden (bredere, kræver et stærkere signal; <span translate="no">MFSK32</span> er almindelig på nødtrafiknet); <span translate="no">MFSK128</span> er igen dobbelt så hurtig og 2 kHz bred. <span translate="no">MFSK8</span> (32 toner, ca. 250 Hz) og <span translate="no">MFSK11</span> er langsommere end <span translate="no">MFSK16</span> og læser svagere signaler; <span translate="no">MFSK22</span> ligger mellem <span translate="no">MFSK16</span> og <span translate="no">MFSK32</span>. <span translate="no">DominoEX</span>: 18 toner, ufølsom over for indstilling og drift, hurtigere.</li>
+                <li>Flere varianter, i slutningen af hver families liste: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> og <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 toner på 125 Hz, meget langsom, til meget svage signaler), <strong><span translate="no">MFSK31</span></strong> (8 toner på 250 Hz), <strong><span translate="no">MFSK64L</span></strong> og <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> og <span translate="no">MFSK128</span> med en lang interleave, der spreder hvert tegn over cirka 20 sekunder: bedre ved fading, men teksten vises cirka 20 sekunder senere, og hver udsendelse slutter med cirka 20 sekunder flere toner); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 symboler i sekundet, 36 Hz bred, meget langsom), <strong><span translate="no">DOMINOEX 44</span></strong> og <strong><span translate="no">DOMINOEX 88</span></strong> (hurtige, cirka 1,5 kHz brede). I bundlinjen står de meget langsomme som <span translate="no">DX-M</span> og <span translate="no">TH-M</span>. De langsomme har brug for tid i luften: et opkald i <span translate="no">MFSK4</span> tager cirka 40 sekunder, i <span translate="no">DOMINOEX MICRO</span> cirka 35, så en linje kan kræve mere, end grænsen for uafbrudt sending tillader.</li>
                 <li>Signalet under modtagebjælken afkodes (bjælken er signalets midte). Sæt bjælken på signalet; et par hertz ved siden af gør ikke noget.</li>
                 <li>Skærmen har ikke knapperne <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> og <span translate="no">REV</span> i disse tilstande. En hukommelse sendes som én udsendelse; tekst skrevet på tastaturet sendes én linje ad gangen, når du trykker på Enter.</li>
                 <li>Hver familie har sin egen frekvens på de bånd, hvor den almindeligvis bruges (på 20 m: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); ellers frekvensen for <span translate="no">RTTY</span>.</li>
@@ -4392,6 +4427,7 @@
             <ul>
                 <li><span translate="no">THOR</span>: tonerne fra <span translate="no">DominoEX</span> (ufølsom over for indstilling og drift) med fejlrettelsen fra <span translate="no">MFSK16</span>; en anelse langsommere end <span translate="no">DominoEX</span> ved samme hastighedstal, men meget mere robust.</li>
                 <li><span translate="no">Contestia</span> (toner / bredde i Hz): en hurtigere slægtning til <span translate="no">Olivia</span>, kun med store bogstaver, populær i contests; bogstaver, tal og den almindelige tegnsætning (andre tegn sendes som ?).</li>
+                <li>Flere varianter: <strong><span translate="no">THOR MICRO</span></strong> (2 symboler i sekundet, 36 Hz bred, meget langsom: et opkald tager over et minut, mere end grænsen for uafbrudt sending som standard tillader), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> og <strong><span translate="no">THOR 100</span></strong> (hurtige, 900 til 1800 Hz brede, med en stærkere fejlretning); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> og <strong><span translate="no">CONTESTIA 64/1000</span></strong>. I <span translate="no">ADIF</span>-filer skrives <span translate="no">THOR MICRO</span> som <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (bredde i Hz, L = lang, S = kort interleave): 64 bærebølger på én gang, 500, 1000 eller 2000 Hz brede, omkring 5 til 20 tegn i sekundet; robust over for fading og støjstød, bruges i nødnet. Modtagebjælken er signalets midte. Den lange interleave er mere robust, den korte begynder at udskrive før.</li>
                 <li>Frekvenser: på 20 m <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 og <span translate="no">MT63</span> 14,105 MHz; ellers bruger <span translate="no">THOR</span> frekvenserne for <span translate="no">DominoEX</span>, <span translate="no">Contestia</span> dem for <span translate="no">Olivia</span> og <span translate="no">MT63</span> de brede digitale segmenter (for eksempel 7,050 MHz). En frekvens, du selv har valgt, har stadig forrang.</li>
                 <li>Logning: loggeren åbner med tilstandens navn (for eksempel <span translate="no">THOR 16</span>); i <span translate="no">ADIF</span>-filer skrives <span translate="no">THOR</span> som tilstand <span translate="no">THOR</span> med sin undertilstand (<span translate="no">THOR16</span> ...), <span translate="no">Contestia</span> som tilstand <span translate="no">CONTESTI</span> og <span translate="no">MT63</span> som tilstand <span translate="no">MT63</span> (<span translate="no">ADIF</span> har ingen undertilstande for disse to).</li>
@@ -4599,6 +4635,11 @@
                 <li><strong>Kaldesignal med flere kanter</strong>: dit kaldesignal med flere omrids rundt om bogstaverne.</li>
             </ol>
             <p><strong>Intet kaldesignal</strong> skriver intet på billedet (kun din egen tekstlinje, hvis du har tilføjet en). Kaldesignalet sendes stadig i morse eller som <span translate="no">FSK ID</span>, hvis de er slået til i indstillingerne. Et svarbillede bruger i stedet et af de fem svarlayouts (over hinanden, side om side, øverst og nederst, stort omrids, med dato + bånd); pilene og paletten går gennem dem.</p>
+
+            <h3 id="sstv-fax">Amatørfax</h3>
+            <p>
+                Den samme sendehalvdel sender også dit billede som amatør<strong>fax</strong> (HF-fax, formatet for vejrkortudsendelser): efter <span translate="no">SSTV</span>-tilstandene har tilstandslisten i den nederste bjælke <strong>Fax 288/120</strong> (det almindelige amatørformat), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> og fire <strong>Colour fax</strong>-formater (288 eller 576, 120 eller 240 linjer i minuttet). Det første tal er samarbejdsindekset: 288 sender 905 pixel pr. linje, 576 sender 1810. En fax sender et startsignal på 5 s, 30 s faseringslinjer, billedet i sin egen form (ved 120 en linje hvert halve sekund), et stopsignal på 5 s og 10 s sort, mellem 1500Hz (sort) og 2300Hz (hvid). Farvefax sender hver række tre gange, rød, grøn og blå, efter et startsignal på 200Hz. En fax er lang (et 4:3-billede: omkring 6,5 minutter ved 288/120), så den tilbydes kun under en tilstrækkelig lang grænse for kontinuerlig sending; listen viser sekunderne for hvert format. Faxen sender selve billedet: der tilføjes ingen kaldesignaltekst og ingen <span translate="no">CW</span>- eller <span translate="no">FSK</span>-identifikation. Vejrfaxmodtageren (<a href="#swl-wefax">Weather fax</a>) modtager den.
+            </p>
 
             <h3 id="sstv-limits">Sendegrænser</h3>
             <p>Et billede er én kontinuerlig sending med fuld effekt: omkring 40 sekunder i Robot 36, to minutter i Martin 1 og mere end fire minutter i de langsomste modes. Alt tæller: startsignalet, kaldesignalet i morse, billedet og <span translate="no">FSK ID</span>, og sekunderne på <span translate="no">SEND</span> og i modelisten er hele den tid.</p>
@@ -5107,6 +5148,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Denne server er min</strong> in its rows, the same answer as <strong>Er denne SDR din?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Eksport: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> og <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>EKSPORTÉR ADIF</strong>: én post pr. hørt station, to pr. QSO, på den måde <span translate="no">SWL</span>-rapporter og kort sendes: <span translate="no">SWL=Y</span>, din identifikator som operatør, den hørte station i <span translate="no">CALL</span> med din rapport, den station, den arbejdede, i kortets meddelelse &ldquo;Heard working ...&rdquo; og i kommentaren, programreferencerne (<span translate="no">SOTA_REF</span>, <span translate="no">POTA_REF</span>, <span translate="no">SIG</span> / <span translate="no">SIG_INFO</span>) og modtageren i <span translate="no">MY_RIG</span>.</li>
@@ -5208,7 +5251,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>MIN PLACERING ER FORKERT</strong> in the Signals pane.</li>
                 <li>Det samme gælder i Frankrig, som omfatter Korsika, de oversøiske departementer (Guadeloupe, Martinique, Fransk Guyana, Réunion, Mayotte) og den franske del af Saint Martin (kaldesignaler <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> og de oversøiske præfikser).</li>
-                <li><strong>Hvilket land er du i?</strong> qFT8 tager dit land fra det mest præcise, den ved: først din præcise placering, så en omtrentlig placering, så midten af din locator eller dit kaldesignal (en af de to sidste er nok til at anvende en begrænsning). Når landet ikke tillader en driftsform, siger dialogen <strong>Hvilket land er du i?</strong> &ldquo;Vi tror, du er i …, hvor det ikke er tilladt at modtage eller afkode denne mode.&rdquo;, med landene opført de nærmeste først, derefter alle fra A til Å. Skift kun land, hvis qFT8 har registreret det forkert: Du er ansvarlig for at følge loven i det land, du befinder dig i. Hvis det land, du vælger, heller ikke tillader driftsformen, siger dialogen det. Det valgte land huskes (Indstillinger &gt; <a href="#settings-time-location">Tid og placering</a>, <strong>Land for modtagereglerne</strong>) og spørges kun igen, hvis din placering senere modsiger det.</li>
+                <li><strong>Hvilket land er du i?</strong> qFT8 tager dit land fra det mest præcise, den ved: først din præcise placering, så en omtrentlig placering, så midten af din locator eller dit kaldesignal (en af de to sidste er nok til at anvende en begrænsning). Når landet ikke tillader en driftsform, siger dialogen <strong>Hvilket land er du i?</strong> &ldquo;Vi tror, du er i …, hvor det ikke er tilladt at modtage eller afkode denne mode.&rdquo;, med landene opført de nærmeste først, derefter alle fra A til Å. Skift kun land, hvis qFT8 har registreret det forkert: Du er ansvarlig for at følge loven i det land, du befinder dig i. Hvis det land, du vælger, heller ikke tillader driftsformen, siger dialogen det. Det valgte land huskes (Indstillinger &gt; <a href="#settings-time-location">Tid og placering</a>, <strong>Land</strong>) og spørges kun igen, hvis din placering senere modsiger det.</li>
                 <li>Nær en grænse regner qFT8 forsigtigt: Hvis din omtrentlige placering kan være inde i et land, der ikke tillader driftsformen, spørger den. Hvis den gættede forkert på landet, ret det i dialogen <strong>Hvilket land er du i?</strong> eller i Indstillinger.</li>
                 <li>I Storbritannien og Irland viser tv-modtageren én gang pr. session en meddelelse om, at der kræves en tv-licens for at se eller optage live-tv; den nævner det land, du befinder dig i.</li>
                 <li>En offentlig <span translate="no">KiwiSDR</span> tilhører sin ejer: følg ejerens grænser.</li>
@@ -5679,6 +5722,8 @@ cd qFT8
                         nøgles også gennem bridgen.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -6283,7 +6328,7 @@ cd qFT8
             Copyright &copy; 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Alle rettigheder forbeholdes.
         </p>
         <p>
-            Indeholder dele fra usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) og Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Ingen af disse tredjepartsforfattere eller -projekter står bag qFT8 eller er tilknyttet qFT8.
+            Indeholder dele fra usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratis for amatørradiosamfundet) og Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Ingen af disse tredjepartsforfattere eller -projekter står bag qFT8 eller er tilknyttet qFT8.
         </p>
         <div class="footer-links">
             <a href="../../da/">Forside</a> - <a href="../../privacy/">Privatlivspolitik</a> - <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Licens</a>

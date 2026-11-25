@@ -171,6 +171,7 @@
                         <li><a href="#remote-control">Server web di controllo remoto</a></li>
                         <li><a href="#webserver-headless">Usare qFT8 senza schermo (server web di controllo remoto)</a></li>
                         <li><a href="#bridge">qFT8 bridge</a></li>
+                        <!-- QFT8-HIDDEN id=toc -->
                         <li><a href="#qft8-log">qFT8log</a></li>
                         <li><a href="#qft8-log-protocol">Protocollo qFT8log</a></li>
                         <li><a href="#layouts">Disposizioni dello schermo</a></li>
@@ -216,7 +217,7 @@
             </p>
 
             <p>
-                qFT8 include parti di usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) ed Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nessuno di questi autori o progetti di terze parti approva qFT8 né è affiliato a qFT8.
+                qFT8 include parti di usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratuito per la comunità radioamatoriale) ed Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nessuno di questi autori o progetti di terze parti approva qFT8 né è affiliato a qFT8.
             </p>
 
 
@@ -736,13 +737,12 @@
             <h4>Portare le impostazioni da un telefono (o verso un telefono)</h4>
             <p>
                 <strong>ESPORTA IMPOSTAZIONI</strong> e <strong>IMPORTA IMPOSTAZIONI</strong>, nella pagina principale delle Impostazioni (sotto
-                <strong>File di impostazioni</strong>), creano e leggono un file che è <strong>lo stesso su Android e sul
+                <strong>File di impostazioni</strong>), aprono le pagine di Esportazione e Importazione (vedi <a href="#settings-profiles">Profili</a>). Il file è <strong>lo stesso su Android, su iPhone e sul
                     computer</strong>. Esporta sul telefono, copia il file sul computer (e-mail, cloud, cavo) e importalo
                 lì; funziona anche al contrario.
             </p>
             <ul>
-                <li>Il file contiene la tua chiave API di QRZ, il tuo certificato LoTW e le tue password. <strong>Non condividerlo
-                    mai.</strong></li>
+                <li>Accessi, password e certificato LoTW sono nel file solo se selezioni <strong>Includi accessi e password</strong>; sono poi protetti da una passphrase che scrivi tu. Anche così, <strong>non condividere mai il file.</strong></li>
                 <li>Non contiene i QSO: sposta il log con l'<a href="#adif-import-export">ADIF</a>, oppure lascia che i
                     <a href="#qft8-log">server di log di qFT8</a> lo copino.</li>
                 <li>Non contiene ciò che riguarda solo questo computer: la scelta dei dispositivi audio (sono dispositivi diversi),
@@ -1295,7 +1295,7 @@
             <ul>
                 <li>Slot di un minuto: la trasmissione inizia un secondo dopo l'inizio di un minuto <span translate="no">UTC</span> pari o dispari e dura circa 47 s (<span translate="no">JT65</span>) o 49 s (<span translate="no">JT9</span>); scegli pari o dispari come in <span translate="no">FT8</span>.</li>
                 <li>Messaggi: 72 bit: CQ, due nominativi con un locatore, un rapporto (-NN, R-NN), <span translate="no">RRR</span>, <span translate="no">RR73</span>, <span translate="no">73</span>, oppure fino a 13 caratteri di testo libero. Il QSO si svolge come in <span translate="no">FT8</span> (<span translate="no">AUTO</span>, l'elenco delle stazioni, il log). Un nominativo che richiederebbe sia un prefisso sia un suffisso non può essere inviato.</li>
-                <li>Sottomodi di <span translate="no">JT65</span>: A (HF), B e C (VHF e oltre, toni più distanziati), scelti accanto al modo nella barra inferiore o in Impostazioni; entrambe le stazioni devono usare lo stesso. <span translate="no">JT9</span> è <span translate="no">JT9-1</span>, largo solo 16 Hz.</li>
+                <li>Sottomodi di <span translate="no">JT65</span>: A (HF), B e C (VHF e oltre, toni più distanziati), B2 e C2 (B e C inviati al doppio della velocità, slot da 30 s), scelti accanto al modo nella barra inferiore o in Impostazioni; entrambe le stazioni devono usare lo stesso. Sottomodi di <span translate="no">JT9</span>: A (<span translate="no">JT9-1</span>, largo solo 16 Hz), da B a H (toni più larghi), da <span translate="no">JT9-2</span> a <span translate="no">JT9-30</span> (periodi da 2 a 30 minuti per LF e MF) e da E a H <span translate="no">FAST</span> (periodi da 5 a 30 s per lo scatter), scelti allo stesso modo.</li>
             </ul>
             <p>
                 Le opzioni sono descritte in <a href="#jt65-settings">Impostazioni &gt; <span translate="no">JT65</span></a> e <a href="#jt9-settings">Impostazioni &gt; <span translate="no">JT9</span></a>.
@@ -1832,8 +1832,10 @@
                 <li><strong>Sincronizzazione QSO</strong>: una riga per ogni servizio su cui vengono caricati i tuoi QSO: il suo interruttore, un'icona del suo stato e il suo ingranaggio (vedi <a href="#qso-services">Servizi di caricamento dei QSO</a> e <a href="#choosing-services">Scegliere servizi e server</a>).</li>
                 <li><strong>Segnalazioni</strong>: <span translate="no">PSKReporter</span>, <span translate="no">WSPRnet</span> e <a href="#lq8-announce">l'annuncio della tua attività <span translate="no">LQ8</span></a>.</li>
                 <li><strong>Comunità</strong>: i due gruppi Telegram (vedi <a href="#community">Comunità</a>).</li>
-                <li><strong>File di impostazioni</strong>: <strong>IMPORTA IMPOSTAZIONI</strong> e <strong>ESPORTA IMPOSTAZIONI</strong> (vedi <a href="#settings-pages">più avanti</a>).</li>
+                <li><strong>Profilo</strong>: la riga in alto, con <strong>CAMBIA</strong> (vedi <a href="#settings-profiles">Profili</a>).</li>
+                <li><strong>File di impostazioni</strong>: <strong>IMPORTA IMPOSTAZIONI</strong> e <strong>ESPORTA IMPOSTAZIONI</strong>, sempre presenti, anche con <strong>Mostra impostazioni avanzate</strong> disattivato (vedi <a href="#settings-files">più avanti</a>).</li>
                 <li><strong>Altre impostazioni</strong>: <strong>MODI</strong> (una pagina con, in quest'ordine <strong>FUNZIONAMENTO AUTOMATICO</strong>, <strong>MODI DIGITALI</strong> e <strong>SELEZIONE BANDA</strong>, poi, sotto «Impostazioni dei modi», un pulsante per modo: <strong><span translate="no">FT8</span></strong>, <strong><span translate="no">FT4</span></strong>, <strong><span translate="no">FT2</span></strong>, <strong><span translate="no">LQ8</span></strong>, <strong><span translate="no">JS8</span></strong>, <strong><span translate="no">WSPR</span></strong> e gli altri modi digitali aprono MODI DIGITALI su quel modo; <strong><span translate="no">SSB</span></strong>, <strong><span translate="no">CW</span></strong>, <strong><span translate="no">RTTY</span></strong>, <strong><span translate="no">JTTY</span></strong>, <strong><span translate="no">SSTV</span></strong> e <strong><span translate="no">PACKET</span></strong> le loro pagine; INDIETRO torna a MODI), <strong>FONTI DI DATI</strong>, <strong>SERVER</strong> (ciò che questo dispositivo offre ad altri programmi, vedi <a href="#choosing-services">Scegliere servizi e server</a>) e <strong>ELIMINA QSO</strong>, ciascuna descritta in <a href="#settings-pages">Le pagine delle Impostazioni</a>.</li>
+                <li><strong>Registrazioni</strong> (solo con <strong>Mostra impostazioni avanzate</strong> spuntato, sotto gli strumenti): <strong>AVVIA REGISTRAZIONE</strong> registra ciò che ricevi e trasmetti in un file <span translate="no">.qft8</span> su questo dispositivo (<strong>FERMA REGISTRAZIONE</strong> e il tempo durante la registrazione); la lente e l'ingranaggio aprono la pagina delle registrazioni con le registrazioni salvate (riproduci, condividi, rinomina, elimina). <strong>Scorciatoia di registrazione</strong> mostra anche un piccolo pulsante <span translate="no">REC</span> in basso a destra della cascata. Aprire un file <span translate="no">.qft8</span> (o un link a uno) lo riproduce qualunque cosa dica questa casella: una barra sottile lungo il fondo della cascata ha la riproduzione, la posizione, <strong>?</strong> (il testo proprio della registrazione) e una croce per uscire; nulla viene trasmesso mentre si riproduce una registrazione (il pulsante <span translate="no">TX</span> scompare).</li>
                 <li><strong>Controlla nuove versioni all'avvio</strong> e <strong>Invia un riepilogo giornaliero anonimo delle prestazioni</strong> (vedi <a href="#reports-updates">Segnalazioni di bug e nuove versioni</a>).</li>
                 <li><strong>Lingua</strong>: la lingua di qFT8, sotto una linea in fondo all'elenco.</li>
                 <li>In fondo: la versione, con i link a questo manuale e all'informativa sulla privacy, i permessi e il dispositivo USB collegato, e <strong><span translate="no">SEGNALA BUG</span></strong> (vedi <a href="#report-bug">Segnalare un problema</a>).</li>
@@ -1911,7 +1913,7 @@
             <ul>
             <li><strong>Offset temporale (ms)</strong>: di quanto viene corretto il tuo orologio. <strong>SINCR. NTP</strong> lo imposta da internet, <strong>SINCR. GPS</strong> dal GPS e <strong>Sincronizzazione automatica ora</strong> lo mantiene giusto da solo (all'avvio di qFT8 e ogni 30 minuti, da internet, oppure dal GPS). Senza internet né GPS, <strong>Sincronizzazione di emergenza da messaggi</strong> ascolta la banda e imposta l'orologio in base alla temporizzazione dei messaggi che decodifica.</li>
             <li><strong>Posizione (locator Maidenhead)</strong>: il tuo locator, con <strong>SINCR. GPS</strong>, e se viene aggiornato dal GPS a ogni avvio di qFT8.</li>
-                <li><strong>Paese per le regole di ricezione</strong>: il paese che qFT8 usa per le regole su ciò che puoi ricevere e trasmettere (vedi <a href="#swl-legal">L'ascolto e la legge</a> e <a href="#tx-legal">La trasmissione e la legge</a>). Mostra &ldquo;Non scelto: dalla posizione, dal locatore o dal nominativo&rdquo; finché non ne scegli uno; <strong>CAMBIA</strong> apre l'elenco dei paesi (prima i più vicini, poi tutti da A a Z) e il paese scelto viene ricordato.</li>
+                <li><strong>Paese</strong>: il paese che qFT8 usa per le regole su ciò che puoi ricevere e trasmettere (vedi <a href="#swl-legal">L'ascolto e la legge</a> e <a href="#tx-legal">La trasmissione e la legge</a>). Nel suo elenco, la prima voce, <strong>Auto</strong>, usa il paese che qFT8 rileva (tra parentesi), poi vengono i paesi più vicini e tutti i paesi dalla A alla Z. Scegliere un altro paese chiede una conferma, e il paese scelto viene ricordato.</li>
             </ul>
 
             <h4 id="settings-application">Impostazioni dell'applicazione</h4>
@@ -1998,9 +2000,48 @@
             <strong>ELIMINA TUTTI I QSO</strong>, <strong>ELIMINA QSO PER ALTRI NOMINATIVI</strong> (QSO registrati con un nominativo diverso dal tuo attuale) e <strong>ELIMINA TUTTI I QSO DUPLICATI</strong>. Ognuno chiede prima conferma. Eliminano solo i QSO su questo dispositivo, mai su un servizio online.
             </p>
 
+            <h4 id="settings-profiles">Profili</h4>
+            <p>
+                Un profilo è la configurazione di una stazione: nominativo, accessi e password, log <span translate="no">QSO</span> e
+                <span translate="no">SWL</span>, memorie, tema e impostazioni propri. La radio, i dispositivi audio e la lingua sono
+                condivisi da tutti i profili. Usa un profilo per nominativo (per esempio il tuo nominativo e quello di un club o di una stazione per eventi speciali).
+            </p>
+            <p>
+                <strong>Dove</strong>: la riga in alto delle Impostazioni, <strong>Profilo: NOME</strong> e <strong>CAMBIA</strong>. Compare
+                quando <strong>Mostra impostazioni avanzate</strong> è selezionato, oppure quando esiste più di un profilo. <strong>CAMBIA</strong>
+                apre la pagina Profili.
+            </p>
+            <p>
+                La pagina Profili elenca i tuoi profili come pulsanti, nel tuo ordine, ognuno con i colori del proprio tema (il colore della barra inferiore di quel tema); una freccia verde indica quello in uso. Tocca un altro profilo per usarlo. Le frecce spostano un profilo su o giù, la matita lo rinomina, il cestino lo elimina (il profilo in uso non ha il cestino).
+            </p>
+            <p>
+                <strong>Cambio di profilo</strong>: qFT8 elenca ciò che si fermerà: <span translate="no">TX</span> viene portato su <span translate="no">OFF</span>,
+                <span translate="no">AUTO</span> viene portato su <span translate="no">OFF</span>, un <span translate="no">QSO</span> in corso viene abbandonato,
+                le attivazioni terminano con il loro <span translate="no">QRT</span>, servizi, server e browser del controllo remoto web vengono fermati o
+                disconnessi, e i <span translate="no">QSO</span> o i rapporti <span translate="no">SWL</span> non ancora caricati vengono elencati (attendono
+                quel profilo e vengono caricati quando sarà di nuovo in uso). Quando c'è qualcosa in elenco scrivi <strong>yes</strong> (in inglese)
+                per cambiare; altrimenti basta una semplice conferma. Mentre il cambio è in corso, una schermata <strong>Passaggio al profilo ...</strong> copre lo
+                schermo; non si può toccare nulla finché il nuovo profilo non è pronto. Se <span translate="no">TX</span> non può essere portato su OFF, nulla
+                cambia e qFT8 lo segnala. Un cambio non porta mai <span translate="no">TX</span> su ON.
+            </p>
+            <p>
+                <strong>NUOVO</strong> crea una copia del profilo in uso: impostazioni, memorie e tema, senza nominativo, accessi e log. Gli dai un nome, poi scegli il tema. Ogni tema dell'elenco è mostrato nei propri colori. I temi che nessun profilo usa vengono per primi, così ogni profilo ha un aspetto diverso; sotto <strong>Già usati</strong> vengono i temi usati da un altro profilo e quelli con lo stesso sfondo di uno di essi (per esempio tutti i temi bianchi quando uno è già in uso). Sono contrassegnati come tali e si possono comunque scegliere. Poi <strong>CREA</strong>. Se il tuo nominativo è scritto in memorie o testi (memorie <span translate="no">CW</span>, <span translate="no">RTTY</span>, <span translate="no">JTTY</span>, <span translate="no">Packet</span>, INFO / STATUS di <span translate="no">JS8</span>, la targa <span translate="no">PIX</span>), la copia riporta al suo posto <span translate="no">[MYCALL]</span> (il nominativo del nuovo profilo), e la conferma elenca quei testi così puoi controllarli prima di trasmettere.
+            </p>
+            <p>
+                <strong>Elimina</strong>: la finestra indica il profilo, il suo nominativo e la dimensione dei suoi log; scrivi <strong>yes</strong>.
+                Tutto ciò che è solo in quel profilo viene eliminato; i servizi online conservano le loro copie (qFT8 non elimina mai nulla lì). Per conservare il suo log,
+                passa a questo profilo e usa prima <span translate="no">ADIF EXPORT</span>.
+            </p>
+            <p>
+                <strong>ESPORTA</strong> (anche <strong>ESPORTA IMPOSTAZIONI</strong> sotto File di impostazioni): seleziona i profili da salvare in un file (il profilo in uso è selezionato) e, facoltativamente, <strong>Configurazione dei dispositivi (radio e audio)</strong> e <strong>Includi accessi e password</strong> (all'inizio entrambi deselezionati). Accessi, password e il certificato <span translate="no">LoTW</span> sono protetti da una passphrase che scrivi all'esportazione; non viene salvata. <strong>ESPORTA TUTTO</strong> salva ogni profilo e la configurazione dei dispositivi. I log <span translate="no">QSO</span> e <span translate="no">SWL</span> non sono nel file (<span translate="no">ADIF EXPORT</span> li salva).
+            </p>
+            <p>
+                <strong>IMPORTA</strong> (anche <strong>IMPORTA IMPOSTAZIONI</strong> sotto File di impostazioni): scegli un file di impostazioni; qFT8 elenca ciò che contiene. Un profilo con lo stesso nome di uno dei tuoi è mostrato in rosso e sostituisce le impostazioni di quel profilo (i suoi log restano); scrivi <strong>yes</strong>, e la finestra indica ogni profilo sostituito con il suo nominativo e il numero di <span translate="no">QSO</span>. Un file di una sola stazione (ogni file di impostazioni creato prima dei profili) può diventare un nuovo profilo oppure andare nel profilo in uso; con un solo profilo e <strong>Mostra impostazioni avanzate</strong> disattivato va direttamente nel profilo in uso, come prima: <span translate="no">TX</span> deve essere spento, scrivi <strong>yes</strong>, e un file senza password mantiene le tue solo finché usa lo stesso nominativo e gli stessi indirizzi. Importare nel profilo in uso ferma prima ciò che è in esecuzione, come un cambio di profilo, e non porta mai <span translate="no">TX</span> su ON.
+            </p>
+
             <h4 id="settings-files">File di impostazioni</h4>
             <p>
-            <strong>ESPORTA IMPOSTAZIONI</strong> salva tutte le tue impostazioni in un unico file e <strong>IMPORTA IMPOSTAZIONI</strong> le rilegge, su questo dispositivo o su un altro, telefono o computer (vedi <a href="#pc-settings">Impostazioni: dove si trovano, come portarle da un telefono</a>). Il file contiene le tue chiavi e le tue password: non condividerlo mai.
+                <strong>ESPORTA IMPOSTAZIONI</strong> e <strong>IMPORTA IMPOSTAZIONI</strong> aprono le pagine di Esportazione e Importazione descritte in <a href="#settings-profiles">Profili</a>: il profilo in uso (o più profili, o tutti), la configurazione dei dispositivi se la selezioni, accessi e password solo se li selezioni. Ci sono anche con <strong>Mostra impostazioni avanzate</strong> disattivato; con un solo profilo salvano e leggono semplicemente quel profilo. I vecchi file di impostazioni si importano ancora (nel profilo in uso). Vedi anche <a href="#pc-settings">Impostazioni: dove si trovano, come portarle da un telefono</a>.
             </p>
 
             <h3 id="raw-message-logs">Registri dei messaggi grezzi</h3>
@@ -2552,7 +2593,7 @@
                 <span translate="no">GridTracker2</span> (provato con la versione 2.261019.5) mostra sulla mappa e registra ciò che <span translate="no">FT8 network log</span> invia alla porta 2237; con la ricezione ADIF UDP attivata riceve anche <span translate="no">ADIF over UDP</span> sulla porta 2333. I suoi inoltri del log inviano i suoi QSO ai ricevitori di qFT8.
             </p>
             <p>
-                Al contrario, qFT8 può accogliere nel suo log i QSO di altri programmi. In Altre impostazioni &gt; <strong>SERVER</strong> spunta la riga del ricevitore del formato che invia l'altro programma: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), l'interfaccia <span translate="no">AC Log</span> (TCP 1100) o l'interfaccia <span translate="no">DXLab</span> (TCP 52001). La sua pagina mostra l'indirizzo da inserire nell'altro programma e permette di cambiare la porta e di accettare QSO solo da alcuni indirizzi. Nulla di ciò che arriva così può trasmettere, cambiare la radio o cancellare un QSO. I ricevitori sono spenti finché non li accendi; sull'iPhone funzionano solo mentre qFT8 è aperto e non entrano mai in un gruppo multicast.
+                Al contrario, qFT8 può accogliere nel suo log i QSO di altri programmi. In Altre impostazioni &gt; <strong>SERVER</strong> spunta la riga del ricevitore del formato che invia l'altro programma: <span translate="no">FT8 network log</span> (UDP 2237), <span translate="no">ADIF over UDP</span> (UDP 2333), l'interfaccia <span translate="no">AC Log</span> (TCP 1100) o l'interfaccia <span translate="no">DXLab</span> (TCP 52001). La sua pagina mostra l'indirizzo da inserire nell'altro programma e permette di cambiare la porta e di accettare QSO solo da alcuni indirizzi. Nulla di ciò che arriva così può trasmettere, cambiare la radio o cancellare un QSO. I ricevitori sono spenti finché non li accendi; sull'iPhone funzionano solo mentre qFT8 è aperto e non entrano mai in un gruppo multicast. La pagina del ricevitore <span translate="no">FT8 network log</span> aggiunge: <em>Questo server riceve soltanto QSO da altri programmi; per inviare le tue decodifiche e i tuoi QSO a un programma di mappa o di log, usa <strong>Sincronizzazione del log</strong> &gt; <span translate="no">FT8 network log</span>.</em>
             </p>
 
             <div class="highlight" id="lan-udp-note">
@@ -3094,7 +3135,7 @@
         <section id="multitone">
             <h2>Multi-tone: several signals at once</h2>
             <p>
-                Settings has a section <strong>Trasmissione speciale</strong>, directly above <strong>Eventi</strong>. Its
+                Settings has a section <strong>Trasmissione speciale</strong>, directly below <strong>Programmi</strong>. Its
                 <strong>?</strong> opens a card with all the explanations and a link to this page. In it, in this order:
                 the button <strong>Multitono</strong> (experimental; blue while on, a tap switches it on or off); under it <strong>Modalità Fox</strong> (off by default,
                 usable only while Multi-tone is ticked: multi-tone the way a DXpedition runs it), the red power line,
@@ -4004,7 +4045,9 @@
                 <p>
                 <strong>Ciclo</strong>: the button with two arrows in a loop, at the right end of each memory, sends that
                 memory again and again, for a CQ or a beacon-like call. A tap on it asks for the pause between two sends:
-                15, 30, 60, 90 or 120 seconds, counted from the end of the message (<strong>Disattivo</strong> stops it). While
+                3, 5, 10, 15, 30, 60, 90, 120, 180, 240 or 300 seconds, counted from the end of the message (<strong>Disattivo</strong>
+                stops it). <strong>Numero di invii</strong> at the top of that list sets how many times it is sent in all:
+                endless (the first choice), or 1, 2, 3, 5 or 10 times, after which the loop ends by itself. While
                 it loops the button is green and counts down the pause. It works only while <span translate="no">TX</span>
                 is <span translate="no">ON</span>; any touch of the paddles or the key (that touch is not sent), another
                 memory, a typed message, <span translate="no">STOP</span>, <span translate="no">TX OFF</span> or a station
@@ -4126,6 +4169,7 @@
                 <li><strong><span translate="no">Corrispondente</span></strong> e <strong><span translate="no">Scamb.</span></strong>: Il nominativo della stazione che stai lavorando e lo scambio contest. Riempiono <code>[TARGET]</code> ed <code>[EXCH]</code> nei tuoi messaggi. Toccane uno per scriverlo; tocca un nominativo nella riga del decodificatore (elemento n. 7) per prenderlo come obiettivo.</li>
                 <li><strong><span translate="no">BAUD</span></strong>: La velocità: 45,45 (quella abituale), 50 o 75. Ogni tocco passa alla successiva.</li>
                 <li><strong><span translate="no">SHIFT</span></strong>: La distanza tra i due toni: 170 Hz (quella abituale), 200, 425 o 850 Hz. Il filtro segue lo shift.</li>
+                <li>Gli shift stretti: dopo 850 Hz, <span translate="no">SHIFT</span> offre anche 85 e 23 Hz (anche in Impostazioni &gt; <span translate="no">RTTY</span>). Uno shift stretto viene copiato solo sotto la barra di ricezione: impostalo su quello dell'altra stazione; gli altri segnali della banda vengono cercati con gli shift abituali.</li>
                 <li><strong><span translate="no">REV</span></strong>: Scambia i due toni, per una stazione che li trasmette al contrario. È ambra finché è attivo.</li>
                 <li><strong><span translate="no">FILTER</span></strong> e <strong><span translate="no">NR</span></strong>: Il filtro di ricezione e la riduzione del rumore.</li>
                 <li><strong>Memorie</strong>: Messaggi pronti con le stesse macro del <span translate="no">CW</span>. Un tocco ne invia uno. Un messaggio con un campo vuoto è attenuato: toccalo per vedere cosa manca. <strong><span translate="no">Tastiera</span></strong> (e <strong><span translate="no">Voce</span></strong> sul telefono e sull'iPhone) sono in fondo all'elenco.</li>
@@ -4306,7 +4350,7 @@
                 <span translate="no">JT65</span> (la riga <span translate="no">JT65</span> (sperimentale) del selettore di modo) è un modo per QSO a periodi di un minuto con 65 toni e un codice Reed-Solomon; sensibilità circa -25 dB (in 2500 Hz). I QSO vengono registrati come <span translate="no">MODE=JT65</span> con il sottomodo (<span translate="no">JT65A</span>, <span translate="no">JT65B</span>, <span translate="no">JT65C</span>) e gli spot vanno a <span translate="no">PSKReporter</span> come <span translate="no">JT65</span>. Frequenze abituali (sintonia USB): 160 m <span translate="no">1.838</span>, 80 m <span translate="no">3.570</span>, 40 m <span translate="no">7.076</span>, 30 m <span translate="no">10.138</span>, 20 m <span translate="no">14.076</span>, 17 m <span translate="no">18.102</span>, 15 m <span translate="no">21.076</span>, 12 m <span translate="no">24.917</span>, 10 m <span translate="no">28.076</span>, 6 m <span translate="no">50.276</span>, 2 m <span translate="no">144.120</span> MHz.
             </p>
             <ul>
-                <li>Sottomodo (A): A, B o C, come nella barra inferiore.</li>
+                <li>Sottomodo (A): A, B, C, B2 o C2, come nella barra inferiore. B2 e C2 sono B e C inviati al doppio della velocità: slot da 30 s, trasmissioni da 23 s, circa 3 dB meno sensibili.</li>
                 <li>Decodifica solo vicino alla frequenza di ricezione (disattivato): disattivato decodifica tutta la banda; attivato decodifica solo intorno alla frequenza di ricezione.</li>
                 <li>Tolleranza di ricezione: la larghezza in Hz intorno alla frequenza di ricezione (predefinito 100).</li>
                 <li>Riferimenti: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">The JT65 Communications Protocol</span>&rdquo;, <span translate="no">QEX</span> (2005); <span translate="no">S. Franke K9AN, J. Taylor K1JT</span>: &ldquo;<span translate="no">Open Source Soft-Decision Decoder for the JT65 (63,12) Reed-Solomon Code</span>&rdquo;, <span translate="no">QEX</span> (2016).</li>
@@ -4317,6 +4361,7 @@
                 <span translate="no">JT9</span> (la riga <span translate="no">JT9</span> (sperimentale) del selettore di modo) è un modo per QSO a periodi di un minuto con 9 toni, largo 16 Hz; sensibilità circa -27 dB (in 2500 Hz). I QSO vengono registrati come <span translate="no">MODE=JT9</span> e gli spot vanno a <span translate="no">PSKReporter</span> come <span translate="no">JT9</span>. Frequenze abituali (sintonia USB): 2 kHz sopra quelle del <span translate="no">JT65</span> da 160 m a 10 m (20 m <span translate="no">14.078</span> MHz).
             </p>
             <ul>
+                <li>Sottomodo (A): A (<span translate="no">JT9-1</span>) in HF; da B a H, lo stesso segnale con toni più larghi (distanziati da 3,5 a 222 Hz) per VHF e oltre; <span translate="no">JT9-2</span>, <span translate="no">JT9-5</span>, <span translate="no">JT9-10</span> e <span translate="no">JT9-30</span>, il segnale dilatato in periodi da 2 a 30 minuti per LF e MF (ogni passo circa 3-5 dB più sensibile); da E a H <span translate="no">FAST</span> in un periodo di 5, 10, 15 o 30 s, trame brevi inviate di seguito per lo scatter da meteore e aerei. I sottomodi dilatati cercano segnali solo entro la tolleranza di ricezione della frequenza di ricezione.</li>
                 <li>Decodifica solo vicino alla frequenza di ricezione (disattivato): disattivato decodifica tutta la banda; attivato decodifica solo intorno alla frequenza di ricezione.</li>
                 <li>Tolleranza di ricezione: la larghezza in Hz intorno alla frequenza di ricezione (predefinito 100).</li>
                 <li>Riferimenti: <span translate="no">J. Taylor K1JT</span>: &ldquo;<span translate="no">JT9 protocol description</span>&rdquo; (2012).</li>
@@ -4355,7 +4400,7 @@
 
         <section id="olivia-mode">
             <h2><span translate="no">Olivia</span>, <span translate="no">MFSK16</span> e <span translate="no">DominoEX</span> (sperimentale)</h2>
-            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="dominoex-mode"></span>
+            <span id="mfsk16-mode"></span><span id="mfsk32-mode"></span><span id="mfsk64-mode"></span><span id="mfsk8-mode"></span><span id="mfsk11-mode"></span><span id="mfsk22-mode"></span><span id="mfsk128-mode"></span><span id="mfsk4-mode"></span><span id="mfsk31-mode"></span><span id="mfsk64l-mode"></span><span id="mfsk128l-mode"></span><span id="dominoex-mode"></span>
             <p>
                 The keyboard modes that send one tone at a time are in the HAM tab of the mode selector, one button per family
                 (<strong>OLIVIA</strong>, <strong>Famiglia MFSK</strong> with <span translate="no">MFSK</span>, <span translate="no">THOR</span>,
@@ -4383,6 +4428,7 @@
                     tra <span translate="no">MFSK16</span> e <span translate="no">MFSK32</span>.
                     <span translate="no">DominoEX</span>: 18 toni,
                     insensibile a sintonia e deriva, più veloce.</li>
+                <li>Altre varianti, in fondo all'elenco di ogni famiglia: <strong><span translate="no">OLIVIA 4/500</span></strong>, <strong><span translate="no">OLIVIA 8/1000</span></strong> e <strong><span translate="no">OLIVIA 64/2000</span></strong>; <strong><span translate="no">MFSK4</span></strong> (32 toni in 125 Hz, molto lenta, per segnali molto deboli), <strong><span translate="no">MFSK31</span></strong> (8 toni in 250 Hz), <strong><span translate="no">MFSK64L</span></strong> e <strong><span translate="no">MFSK128L</span></strong> (<span translate="no">MFSK64</span> e <span translate="no">MFSK128</span> con un interleave lungo che distribuisce ogni carattere su circa 20 secondi: meglio con il fading, ma il testo compare circa 20 secondi dopo e ogni trasmissione finisce con circa 20 secondi di toni in più); <strong><span translate="no">DOMINOEX MICRO</span></strong> (2 simboli al secondo, larga 36 Hz, molto lenta), <strong><span translate="no">DOMINOEX 44</span></strong> e <strong><span translate="no">DOMINOEX 88</span></strong> (veloci, larghe circa 1,5 kHz). Nella barra in basso quelle molto lente si leggono <span translate="no">DX-M</span> e <span translate="no">TH-M</span>. Quelle lente richiedono tempo in onda: una chiamata in <span translate="no">MFSK4</span> dura circa 40 secondi, in <span translate="no">DOMINOEX MICRO</span> circa 35, quindi una riga può richiedere più di quanto consente il limite di trasmissione continua.</li>
                 <li>Viene decodificato il segnale sotto la barra di ricezione (la barra è il centro del segnale). Metti la barra sul segnale; qualche hertz di scarto non è un problema.</li>
                 <li>In questi modi la schermata non ha i pulsanti <span translate="no">BAUD</span>, <span translate="no">SHIFT</span> e <span translate="no">REV</span>. Una memoria parte come un'unica trasmissione; il testo digitato con la tastiera parte una riga alla volta, quando premi Invio.</li>
                 <li>Ogni famiglia ha la sua frequenza sulle bande in cui è usata comunemente (sui 20 m: <span translate="no">Olivia</span> 14,1065, <span translate="no">MFSK16</span> 14,0785, <span translate="no">DominoEX</span> 14,0715 MHz); altrove, la frequenza del <span translate="no">RTTY</span>.</li>
@@ -4403,6 +4449,7 @@
             <ul>
                 <li><span translate="no">THOR</span>: i toni di <span translate="no">DominoEX</span> (insensibili alla sintonia e alla deriva) con la correzione degli errori di <span translate="no">MFSK16</span>; un po' più lento di <span translate="no">DominoEX</span> con lo stesso numero di velocità, molto più robusto.</li>
                 <li><span translate="no">Contestia</span> (toni / larghezza in Hz): un parente più veloce di <span translate="no">Olivia</span>, solo in maiuscolo, popolare nei contest; lettere, cifre e la punteggiatura usuale (gli altri caratteri vengono inviati come ?).</li>
+                <li>Altre varianti: <strong><span translate="no">THOR MICRO</span></strong> (2 simboli al secondo, larga 36 Hz, molto lenta: una chiamata dura più di un minuto, più di quanto il limite di trasmissione continua consenta per impostazione predefinita), <strong><span translate="no">THOR 25X4</span></strong>, <strong><span translate="no">THOR 50X1</span></strong>, <strong><span translate="no">THOR 50X2</span></strong> e <strong><span translate="no">THOR 100</span></strong> (veloci, larghe da 900 a 1800 Hz, con una correzione degli errori più forte); <strong><span translate="no">CONTESTIA 4/500</span></strong>, <strong><span translate="no">CONTESTIA 8/1000</span></strong> e <strong><span translate="no">CONTESTIA 64/1000</span></strong>. Nei file <span translate="no">ADIF</span> <span translate="no">THOR MICRO</span> viene scritto come <span translate="no">THOR-M</span>.</li>
                 <li><span translate="no">MT63</span> (larghezza in Hz, L = interleave lungo, S = corto): 64 portanti insieme, larghe 500, 1000 o 2000 Hz, circa da 5 a 20 caratteri al secondo; robusto contro evanescenza e picchi di rumore, usato nelle reti di emergenza. La barra di ricezione è il centro del segnale. L'interleave lungo è più robusto, quello corto inizia a stampare prima.</li>
                 <li>Frequenze: sui 20 m <span translate="no">THOR</span> 14,077, <span translate="no">Contestia</span> 14,1095 e <span translate="no">MT63</span> 14,105 MHz; altrove <span translate="no">THOR</span> usa quelle di <span translate="no">DominoEX</span>, <span translate="no">Contestia</span> quelle di <span translate="no">Olivia</span> e <span translate="no">MT63</span> i segmenti digitali larghi (per esempio 7,050 MHz). Una frequenza impostata da te vince comunque.</li>
                 <li>Log: il log si apre con il nome del modo (per esempio <span translate="no">THOR 16</span>); nei file <span translate="no">ADIF</span> <span translate="no">THOR</span> è scritto come modo <span translate="no">THOR</span> con il suo sottomodo (<span translate="no">THOR16</span> …), <span translate="no">Contestia</span> come modo <span translate="no">CONTESTI</span> e <span translate="no">MT63</span> come modo <span translate="no">MT63</span> (<span translate="no">ADIF</span> non ha sottomodi per questi due).</li>
@@ -4617,6 +4664,11 @@
                 <li><strong>Nominativo a più contorni</strong>: il tuo nominativo con più contorni intorno alle lettere.</li>
             </ol>
             <p><strong>Nessun nominativo</strong> non scrive nulla sull'immagine (solo la tua riga di testo, se ne hai aggiunta una). Il nominativo viene comunque inviato in Morse o come <span translate="no">FSK ID</span> se sono attivi nelle impostazioni. Un'immagine di risposta usa invece una delle cinque disposizioni di risposta (uno sopra l'altro, affiancati, in alto e in basso, contorno grande, con data + banda); le frecce e la tavolozza scorrono quelle.</p>
+
+            <h3 id="sstv-fax">Fax amatoriale</h3>
+            <p>
+                La stessa metà di invio trasmette la tua immagine anche come <strong>fax</strong> amatoriale (fax HF, il formato delle trasmissioni di carte meteorologiche): dopo i modi <span translate="no">SSTV</span>, l'elenco dei modi della barra inferiore contiene <strong>Fax 288/120</strong> (il formato amatoriale più usato), <strong>Fax 288/60</strong>, <strong>Fax 576/120</strong>, <strong>Fax 576/60</strong> e quattro formati <strong>Colour fax</strong> (288 o 576, 120 o 240 righe al minuto). Il primo numero è l'indice di cooperazione: 288 invia 905 pixel per riga, 576 ne invia 1810. Un fax invia un segnale di avvio di 5 s, 30 s di righe di fasatura, l'immagine nella sua forma (una riga ogni mezzo secondo a 120), un segnale di arresto di 5 s e 10 s di nero, tra 1500 Hz (nero) e 2300 Hz (bianco). Il fax a colori invia ogni riga tre volte, rosso, verde e blu, dopo un segnale di avvio di 200 Hz. Un fax è lungo (un'immagine 4:3: circa 6,5 minuti a 288/120), quindi viene offerto solo con un limite di trasmissione continua abbastanza lungo; l'elenco mostra i secondi di ogni formato. Il fax invia l'immagine stessa: non viene aggiunto alcun testo del nominativo né identificazione <span translate="no">CW</span> o <span translate="no">FSK</span>. Il ricevitore di fax meteo (<a href="#swl-wefax">Weather fax</a>) lo riceve.
+            </p>
 
             <h3 id="sstv-limits">Limiti di trasmissione</h3>
             <p>Un'immagine è un'unica trasmissione continua a piena potenza: circa 40 secondi in Robot 36, due minuti in Martin 1, e più di quattro minuti nei modi più lenti. Conta tutto: il segnale di inizio, il nominativo in Morse, l'immagine e l'<span translate="no">FSK ID</span>, e i secondi su <span translate="no">INVIA</span> e nell'elenco dei modi sono tutto quel tempo.</p>
@@ -5194,6 +5246,8 @@
                 <li><strong>Your own network receiver:</strong> a receiver at an address on your own network is yours; one reached through an internet address shows the box <strong>Questo server è mio</strong> in its rows, the same answer as <strong>Questo SDR è tuo?</strong>, kept until you change the receiver. On your own web receiver server, when you move the dial outside the band it is on, qFT8 switches to the server's profile for that band: a profile it has seen cover the frequency, or one whose name says the band ("20m", "14 MHz"). A profile change moves the band for everyone listening and restarts the server's services, so qFT8 asks once for that receiver, never changes it when you connect, and waits at least a minute between changes. The own spy-type server (when it would move the device) and the receiver of your <span translate="no">SDR</span> program over <span translate="no">TCI</span> ask once the same way. Someone else's receiver is never moved: it just says the band it covers.</li>
             </ul>
 
+            <!-- QFT8-HIDDEN id=swl -->
+
             <h3 id="swl-exports">Esportazioni: <span translate="no">ADIF</span>, <span translate="no">CSV</span>, <span translate="no">SOTA</span> e <span translate="no">RAZA</span> <span translate="no">SWL</span></h3>
             <ul>
                 <li><strong>ESPORTA ADIF</strong>: un record per stazione ascoltata, due per QSO, nel modo in cui si inviano rapporti e cartoline <span translate="no">SWL</span>:
@@ -5314,7 +5368,7 @@
                     outside the amateur bands are not received anywhere. If your location is wrong, correct it with
                     <strong>LA MIA POSIZIONE È SBAGLIATA</strong> in the Signals pane.</li>
                 <li>Lo stesso vale in Francia, che comprende la Corsica, i dipartimenti d'oltremare (Guadalupa, Martinica, Guyana Francese, Riunione, Mayotte) e la parte francese di Saint Martin (nominativi <span translate="no">F</span>, <span translate="no">TK</span>, <span translate="no">TM</span> e prefissi d'oltremare).</li>
-                <li><strong>In quale paese ti trovi?</strong> qFT8 ricava il tuo paese dall'informazione più precisa che ha: prima la tua posizione esatta, poi una posizione approssimativa, poi il centro del tuo locatore o il tuo nominativo (basta uno degli ultimi due per applicare una restrizione). Quando quel paese non consente un modo, la finestra <strong>In quale paese ti trovi?</strong> dice &ldquo;Pensiamo che tu sia in …, dove ricevere o decodificare questo modo non è consentito.&rdquo;, con i paesi elencati dal più vicino, poi tutti da A a Z. Cambia il paese solo se qFT8 lo ha rilevato male: sei responsabile del rispetto della legge del paese in cui ti trovi. Se nemmeno il paese che scegli consente il modo, la finestra lo dice. Il paese scelto viene ricordato (Impostazioni &gt; <a href="#settings-time-location">ORA E POSIZIONE</a>, <strong>Paese per le regole di ricezione</strong>) e richiesto di nuovo solo se in seguito la tua posizione lo contraddice.</li>
+                <li><strong>In quale paese ti trovi?</strong> qFT8 ricava il tuo paese dall'informazione più precisa che ha: prima la tua posizione esatta, poi una posizione approssimativa, poi il centro del tuo locatore o il tuo nominativo (basta uno degli ultimi due per applicare una restrizione). Quando quel paese non consente un modo, la finestra <strong>In quale paese ti trovi?</strong> dice &ldquo;Pensiamo che tu sia in …, dove ricevere o decodificare questo modo non è consentito.&rdquo;, con i paesi elencati dal più vicino, poi tutti da A a Z. Cambia il paese solo se qFT8 lo ha rilevato male: sei responsabile del rispetto della legge del paese in cui ti trovi. Se nemmeno il paese che scegli consente il modo, la finestra lo dice. Il paese scelto viene ricordato (Impostazioni &gt; <a href="#settings-time-location">ORA E POSIZIONE</a>, <strong>Paese</strong>) e richiesto di nuovo solo se in seguito la tua posizione lo contraddice.</li>
                 <li>Vicino a un confine qFT8 conta con cautela: se la tua posizione approssimativa potrebbe trovarsi in un paese che non consente il modo, lo chiede. Se ha indovinato il paese sbagliato, correggilo nella finestra <strong>In quale paese ti trovi?</strong> o nelle impostazioni.</li>
                 <li>Nel Regno Unito e in Irlanda il ricevitore TV mostra un avviso, una volta per sessione, che serve una licenza TV per guardare o registrare la TV in diretta; indica il paese in cui ti trovi.</li>
                 <li>Un <span translate="no">KiwiSDR</span> pubblico appartiene al suo proprietario: rispetta i limiti del proprietario.</li>
@@ -5790,6 +5844,8 @@ cd qFT8
                         che con un comando viene manovrata attraverso il bridge.</li>
                 </ul>
             </section>
+
+            <!-- QFT8-HIDDEN id=modem -->
 
             <section id="qft8-log">
                 <h3>qFT8log</h3>
@@ -6394,7 +6450,7 @@ cd qFT8
 
     <div class="footer">
 <p>Copyright © 2026, <a href="https://www.luisquesada.com"><span translate="no">Luis Quesada Torres</span></a> (<a href="https://www.qrz.com/db/HB9IPH">HB9IPH</a>). Tutti i diritti riservati.</p>
-<p>Include parti di usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (data) (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (data) (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C) ed Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nessuno di questi autori o progetti di terze parti approva o è affiliato a qFT8.</p>
+<p>Include parti di usb-serial-for-android (Copyright &copy; 2011-2020 Google Inc., Mike Wakerly, Andreas Butti, Kai Morich, BSD-3-Clause), Roboto (Copyright &copy; 2015 Google Inc. / Christian Robertson, Apache-2.0), Roboto Mono (Copyright &copy; 2015 Google / The Roboto Mono Project Authors, Apache-2.0), Natural Earth (Public Domain), hamradio-zones-geojson (Copyright &copy; 2024 HB9HIL, HA8TKS, MIT license), RADE V1 and V2 speech-codec model weights (Copyright &copy; 2024, drowe67, BSD-2-Clause), FARGAN vocoder and pitch estimator model weights (Copyright &copy; 2001-2023 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo, Mozilla, Amazon, BSD-3-Clause), Big CTY (Copyright &copy; Jim Reisert AD1C, gratuito per la comunità radioamatoriale) ed Eclipse Temurin / BellSoft Liberica (OpenJDK) Java Runtime (Copyright &copy; Oracle and/or its affiliates and other contributors, GPLv2 with the Classpath Exception). Nessuno di questi autori o progetti di terze parti approva o è affiliato a qFT8.</p>
 <div class="footer-links">
             <a href="../../it/">Pagina principale</a> - <a href="../../privacy/">Informativa sulla privacy</a> -
             <a href="https://github.com/lquesada/qFT8/blob/main/LICENSE">Licenza</a>
