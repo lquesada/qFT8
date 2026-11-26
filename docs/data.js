@@ -1,8 +1,8 @@
 // qFT8 Global Release and App Metadata Configuration
-const LATEST_VERSION = "3.37";
-const LATEST_DATE = "2026-11-25";
+const LATEST_VERSION = "3.38";
+const LATEST_DATE = "2026-11-26";
 const LATEST_SIZE = "17.68MB";
-const PC_SIZES = {"linux-32bits.tar.gz":"93.86MB","linux-64bits.tar.gz":"71.25MB","linux-arm64.tar.gz":"90.56MB","linux-armv7l.tar.gz":"85.40MB","macos-universal.dmg":"114.24MB","manual.zip":"17.88MB","windows-32bits.zip":"66.13MB","windows-64bits.zip":"58.52MB"};
+const PC_SIZES = {"linux-32bits.tar.gz":"93.86MB","linux-64bits.tar.gz":"71.25MB","linux-arm64.tar.gz":"90.56MB","linux-armv7l.tar.gz":"85.40MB","macos-universal.dmg":"114.25MB","manual.zip":"17.88MB","windows-32bits.zip":"66.14MB","windows-64bits.zip":"58.54MB"};
 const JAR_SIZE = "44.22MB";
 const IPA_SIZE = "31.26MB";
 
